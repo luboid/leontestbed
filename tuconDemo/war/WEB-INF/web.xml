@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Tucon Demo for BCCMI</display-name>
+
+	<description>Tucon Demo for BCCMI</description>
+
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+
+
+	</context-param>
+
+
+
+	<!--
+		- Loads the root application context of this web app at startup,
+		- by default from "/WEB-INF/applicationContext.xml".
+		- Note that you need to fall back to Spring's ContextLoaderServlet for
+		- J2EE servers that do not follow the Servlet 2.4 initialization order.
+		-
+		- Use WebApplicationContextUtils.getWebApplicationContext(servletContext)
+		- to access it anywhere in the web application, outside of the framework.
+		-
+		- The root context is the parent of all servlet-specific contexts.
+		- This means that its beans are automatically available in these child contexts,
+		- both for getBean(name) calls and (external) bean references.
+	-->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+
+	<servlet>
+		<servlet-name>test</servlet-name>
+		<servlet-class>com.tibco.cmidemo.TestServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>test</servlet-name>
+		<url-pattern>test.do</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+
+	<welcome-file-list>
+		<!-- Redirects to "welcome.htm" for dispatcher handling -->
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<!-- Displays a stack trace -->
+		<location>/WEB-INF/jsp/uncaughtException.jsp</location>
+	</error-page>
+
+
+
+</web-app>
