@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC  "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN" "http://getahead.org/dwr/dwr30.dtd">
+
+<dwr>
+	<allow>
+		<convert converter="null" match="void" />
+		<create creator="new" javascript="__System" scope="application">
+			<!-- ExportUtil.isSystemClass assumes the name __System -->
+			<param name="class" value="org.directwebremoting.export.System" />
+			<param name="hidden" value="true" />
+		</create>
+	</allow>
+</dwr>
