@@ -21,11 +21,12 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  */
 public class UploadServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
+
+    private static final long serialVersionUID = -4784200610574969144L;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+        
         boolean isMultipart = ServletFileUpload.isMultipartContent(req); 
         if(isMultipart) {
             try {
@@ -40,8 +41,9 @@ public class UploadServlet extends HttpServlet {
                     }
                 }
             } catch (FileUploadException e) {
-                // TODO Auto-generated catch block
-                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "file upload error: " + e.getMessage());
+                resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "parse file content error: " + e.getMessage());
+            } catch (Exception e) {
+                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "internal server error: " + e.getMessage());
             }
         } else {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "request content should be multipart");
