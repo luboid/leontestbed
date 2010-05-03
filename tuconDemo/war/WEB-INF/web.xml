@@ -54,10 +54,19 @@
 		</init-param>
 	</servlet>
 
+	<servlet>
+		<servlet-name>upload</servlet-name>
+		<servlet-class>com.tibco.cmidemo.web.servlet.UploadServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>dwr-invoker</servlet-name>
 		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>upload</servlet-name>
+		<url-pattern>/upload</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
