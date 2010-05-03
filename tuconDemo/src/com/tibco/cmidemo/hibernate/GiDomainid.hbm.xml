@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.tibco.cmidemo.hibernate.GiDomainid" 
+    table="gi_domainid"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="gi_domainid"
+    </meta>
+
+    <id
+        name="binindex"
+        type="java.lang.Long"
+        column="BININDEX"
+        unsaved-value="0"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="identity"
+            type="java.lang.Long"
+            column="BININDEX"
+            unsaved-value="0"
+
+        </meta>
+        <generator class="identity" />
+    </id>
+
+    <property
+        name="displayName"
+        type="java.lang.String"
+        column="DISPLAY_NAME"
+        length="255"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="DISPLAY_NAME"
+            length="255"
+        </meta>    
+    </property>
+    <property
+        name="PBinindex"
+        type="java.lang.Long"
+        column="P_BININDEX"
+        not-null="true"
+        length="18"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="P_BININDEX"
+            length="18"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="domid"
+        type="java.lang.String"
+        column="DOMID"
+        not-null="true"
+        length="255"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="DOMID"
+            length="255"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="CDomid"
+        type="java.lang.String"
+        column="C_DOMID"
+        not-null="true"
+        length="255"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="C_DOMID"
+            length="255"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="domaintype"
+        type="java.lang.String"
+        column="DOMAINTYPE"
+        not-null="true"
+        length="255"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="DOMAINTYPE"
+            length="255"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="lastmodified"
+        type="java.sql.Timestamp"
+        column="LASTMODIFIED"
+        update="false"
+        insert="false"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="LASTMODIFIED"
+            update="false"
+            insert="false"
+            length="19"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

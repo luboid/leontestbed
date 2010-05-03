@@ -16,6 +16,18 @@
         <property name="mappingResources">
             <list>
                 <value>com/tibco/cmidemo/model/Test.hbm.xml</value>
+                <value>com/tibco/cmidemo/hibernate/GiBizagreement.hbm.xml</value>
+				<value>com/tibco/cmidemo/hibernate/GiContact.hbm.xml</value>                
+				<value>com/tibco/cmidemo/hibernate/GiDomainid.hbm.xml</value>
+				<value>com/tibco/cmidemo/hibernate/GiEmailmoniker.hbm.xml</value>
+				<value>com/tibco/cmidemo/hibernate/GiLocation.hbm.xml</value>
+				<value>com/tibco/cmidemo/hibernate/GiOpbinding.hbm.xml</value>
+				<value>com/tibco/cmidemo/hibernate/GiPartner.hbm.xml</value>
+				<value>com/tibco/cmidemo/hibernate/GiPkistoreitem.hbm.xml</value>
+				<value>com/tibco/cmidemo/hibernate/GiProtbinding.hbm.xml</value>
+				<value>com/tibco/cmidemo/hibernate/GiProtbindview.hbm.xml</value>
+				<value>com/tibco/cmidemo/hibernate/GiProtocol.hbm.xml</value>
+				<value>com/tibco/cmidemo/hibernate/GiTransport.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -28,23 +40,7 @@
         </props>
         </property>
     </bean>
-
-    <!--  Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
-    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-        <property name="sessionFactory"><ref local="sessionFactory"/></property>
-    </bean>
-    
-    
-    <bean id="txProxyTemplate" abstract="true"
-        class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-        <property name="transactionManager"><ref bean="transactionManager"/></property>
-        <property name="transactionAttributes">
-            <props>
-            	<prop key="getGoodsTypeList">PROPAGATION_REQUIRED</prop>
-            </props>
-        </property>
-    </bean>
-    
+ 
     
     <!-- Add DAOs here -->
     <bean id="TestDAO" class="com.tibco.cmidemo.dao.impl.TestDAOImpl">
@@ -52,5 +48,9 @@
 			<ref local="sessionFactory"/>
 		</property>
 	</bean>
-
+    <bean id="DAO" class="com.tibco.cmidemo.dao.impl.DAOImpl">
+		<property name="sessionFactory">
+			<ref local="sessionFactory"/>
+		</property>
+	</bean>
 </beans>

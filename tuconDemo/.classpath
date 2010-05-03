@@ -33,7 +33,8 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/standard.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/mysql-connector-java-3.1.12-bin.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="D:/tibco-dev/ActiveExchange/TUCON2010/tuconDemo/war/WEB-INF/lib/dwr.jar"/>
-	<classpathentry kind="lib" path="D:/tibco-dev/ActiveExchange/TUCON2010/tuconDemo/war/WEB-INF/lib/commons-fileupload-1.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/dwr.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-fileupload-1.2.jar"/>	
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

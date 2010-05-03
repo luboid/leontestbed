@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.tibco.cmidemo.hibernate.GiEmailmoniker" 
+    table="gi_emailmoniker"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="gi_emailmoniker"
+    </meta>
+
+    <id
+        name="binindex"
+        type="java.lang.Long"
+        column="BININDEX"
+        unsaved-value="0"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="identity"
+            type="java.lang.Long"
+            column="BININDEX"
+            unsaved-value="0"
+
+        </meta>
+        <generator class="identity" />
+    </id>
+
+    <property
+        name="EBinindex"
+        type="java.lang.Long"
+        column="E_BININDEX"
+        not-null="true"
+        length="18"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="E_BININDEX"
+            length="18"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="email"
+        type="java.lang.String"
+        column="EMAIL"
+        not-null="true"
+        length="255"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="EMAIL"
+            length="255"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="tpBinindex"
+        type="java.lang.Long"
+        column="TP_BININDEX"
+        not-null="true"
+        length="18"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="TP_BININDEX"
+            length="18"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="lastmodified"
+        type="java.sql.Timestamp"
+        column="LASTMODIFIED"
+        update="false"
+        insert="false"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="LASTMODIFIED"
+            update="false"
+            insert="false"
+            length="19"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.tibco.cmidemo.hibernate.GiBizagreement" 
+    table="gi_bizagreement"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="gi_bizagreement"
+    </meta>
+
+    <id
+        name="binindex"
+        type="java.lang.Long"
+        column="BININDEX"
+        unsaved-value="0"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="identity"
+            type="java.lang.Long"
+            column="BININDEX"
+            unsaved-value="0"
+
+        </meta>
+        <generator class="identity" />
+    </id>
+
+    <property
+        name="objnid"
+        type="java.lang.String"
+        column="OBJNID"
+        not-null="true"
+        length="255"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="OBJNID"
+            length="255"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="displayName"
+        type="java.lang.String"
+        column="DISPLAY_NAME"
+        length="255"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="DISPLAY_NAME"
+            length="255"
+        </meta>    
+    </property>
+    <property
+        name="HBinindex"
+        type="java.lang.Long"
+        column="H_BININDEX"
+        not-null="true"
+        length="18"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="H_BININDEX"
+            length="18"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="tpBinindex"
+        type="java.lang.Long"
+        column="TP_BININDEX"
+        not-null="true"
+        length="18"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="TP_BININDEX"
+            length="18"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="validStart"
+        type="java.sql.Timestamp"
+        column="VALID_START"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="VALID_START"
+            length="19"
+        </meta>    
+    </property>
+    <property
+        name="validEnd"
+        type="java.sql.Timestamp"
+        column="VALID_END"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="VALID_END"
+            length="19"
+        </meta>    
+    </property>
+    <property
+        name="isValid"
+        type="boolean"
+        column="IS_VALID"
+        not-null="true"
+        length="11"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="IS_VALID"
+            length="11"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="lastmodified"
+        type="java.sql.Timestamp"
+        column="LASTMODIFIED"
+        update="false"
+        insert="false"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="LASTMODIFIED"
+            update="false"
+            insert="false"
+            length="19"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

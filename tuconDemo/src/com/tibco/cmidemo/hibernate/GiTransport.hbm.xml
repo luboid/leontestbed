@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.tibco.cmidemo.hibernate.GiTransport" 
+    table="gi_transport"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="gi_transport"
+    </meta>
+
+    <id
+        name="binindex"
+        type="java.lang.Long"
+        column="BININDEX"
+        unsaved-value="0"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="identity"
+            type="java.lang.Long"
+            column="BININDEX"
+            unsaved-value="0"
+
+        </meta>
+        <generator class="identity" />
+    </id>
+
+    <property
+        name="name"
+        type="java.lang.String"
+        column="NAME"
+        length="255"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="NAME"
+            length="255"
+        </meta>    
+    </property>
+    <property
+        name="url"
+        type="java.lang.String"
+        column="URL"
+        length="255"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="URL"
+            length="255"
+        </meta>    
+    </property>
+    <property
+        name="type"
+        type="java.lang.String"
+        column="TYPE"
+        length="60"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="TYPE"
+            length="60"
+        </meta>    
+    </property>
+    <property
+        name="EBinindex"
+        type="java.lang.Long"
+        column="E_BININDEX"
+        not-null="true"
+        length="18"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="E_BININDEX"
+            length="18"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="retrycount"
+        type="java.lang.Integer"
+        column="RETRYCOUNT"
+        length="11"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="RETRYCOUNT"
+            length="11"
+        </meta>    
+    </property>
+    <property
+        name="sockTimeout"
+        type="java.lang.Integer"
+        column="SOCK_TIMEOUT"
+        length="11"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="SOCK_TIMEOUT"
+            length="11"
+        </meta>    
+    </property>
+    <property
+        name="retryint"
+        type="java.lang.Integer"
+        column="RETRYINT"
+        length="11"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="RETRYINT"
+            length="11"
+        </meta>    
+    </property>
+    <property
+        name="status"
+        type="int"
+        column="STATUS"
+        not-null="true"
+        length="11"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="STATUS"
+            length="11"
+            not-null="true"
+        </meta>    
+    </property>
+    <property
+        name="lastmodified"
+        type="java.sql.Timestamp"
+        column="LASTMODIFIED"
+        update="false"
+        insert="false"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="LASTMODIFIED"
+            update="false"
+            insert="false"
+            length="19"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

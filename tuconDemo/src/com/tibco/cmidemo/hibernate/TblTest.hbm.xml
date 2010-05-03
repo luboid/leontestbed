@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.1
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="com.tibco.cmidemo.hibernate.TblTest" 
+    table="tbl_test"
+>
+    <meta attribute="class-description" inherit="false">
+       @hibernate.class
+        table="tbl_test"
+    </meta>
+
+    <id
+        name="oid"
+        type="java.lang.String"
+        column="OID"
+        unsaved-value="0"
+    >
+        <meta attribute="field-description">
+           @hibernate.id
+            generator-class="identity"
+            type="java.lang.String"
+            column="OID"
+            unsaved-value="0"
+
+        </meta>
+        <generator class="identity" />
+    </id>
+
+    <property
+        name="desc"
+        type="java.lang.String"
+        column="DESC"
+        length="200"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="DESC"
+            length="200"
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>
