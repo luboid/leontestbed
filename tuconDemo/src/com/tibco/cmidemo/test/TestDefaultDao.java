@@ -43,4 +43,22 @@ public class TestDefaultDao extends BaseDaoTest {
         }
     }
     
+    public void testDeletePA() {
+        try {
+            Criteria c = new Criteria(GiPartner.class);
+            c.addCondition(new Condition(ColumnConst.PA_NAME, Condition.EQUALS, "p1"));
+            
+            GiPartner p = (GiPartner)getDAO().getOne(c);
+
+            Long id = p.getBinindex();
+            
+            DAO dao = getDAO();
+            dao.deleteById(id, GiPartner.class);
+            
+            System.out.println("Done");
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 }
