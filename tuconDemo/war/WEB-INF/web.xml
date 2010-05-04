@@ -36,12 +36,6 @@
 
 
 	<servlet>
-		<servlet-name>test</servlet-name>
-		<servlet-class>com.tibco.cmidemo.TestServlet</servlet-class>
-		<load-on-startup>2</load-on-startup>
-	</servlet>
-
-	<servlet>
 		<servlet-name>dwr-invoker</servlet-name>
 		<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
 		<init-param>
@@ -67,11 +61,6 @@
 	<servlet-mapping>
 		<servlet-name>upload</servlet-name>
 		<url-pattern>/upload</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>test</servlet-name>
-		<url-pattern>test.do</url-pattern>
 	</servlet-mapping>
 
 	<session-config>

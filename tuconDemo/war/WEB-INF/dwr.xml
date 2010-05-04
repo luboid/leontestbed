@@ -20,37 +20,37 @@
 		<convert converter="exception" match="java.lang.Exception"/>
 		
 		
-		<create creator="new" javascript="PA" scope="application">
+		<create creator="new" javascript="PARTNER" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.PARTNER" />
 		</create>
-		<create creator="new" javascript="BA" scope="application">
+		<create creator="new" javascript="BIZAGREEMENT" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.BIZAGREEMENT" />
 		</create>
-		<create creator="new" javascript="LOC" scope="application">
+		<create creator="new" javascript="LOCATION" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.LOCATION" />
 		</create>
-		<create creator="new" javascript="CONT" scope="application">
+		<create creator="new" javascript="CONTACT" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.CONTACT" />
 		</create>
-		<create creator="new" javascript="DI" scope="application">
+		<create creator="new" javascript="DOMAINID" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.DOMAINID" />
 		</create>
-		<create creator="new" javascript="MAIL" scope="application">
+		<create creator="new" javascript="EMAILMONIKER" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.EMAILMONIKER" />
 		</create>
-		<create creator="new" javascript="PB" scope="application">
+		<create creator="new" javascript="PROTBINDING" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.PROTBINDING" />
 		</create>
-		<create creator="new" javascript="PBV" scope="application">
+		<create creator="new" javascript="PROTBINDVIEW" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.PROTBINDVIEW" />
 		</create>
-		<create creator="new" javascript="PROT" scope="application">
+		<create creator="new" javascript="PROTOCOL" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.PROTOCOL" />
 		</create>
-		<create creator="new" javascript="TP" scope="application">
+		<create creator="new" javascript="TRANSPORT" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.TRANSPORT" />
 		</create>
-		<create creator="new" javascript="KI" scope="application">
+		<create creator="new" javascript="PKISTOREITEM" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.PKISTOREITEM" />
 		</create>
 		
