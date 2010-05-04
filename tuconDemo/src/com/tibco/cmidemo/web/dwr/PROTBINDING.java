@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.tibco.cmidemo.dao.ColumnConst;
 import com.tibco.cmidemo.hibernate.GiProtbinding;
+import com.tibco.cmidemo.hibernate.GiProtbindview;
 import com.tibco.cmidemo.web.WebAppException;
+import com.tibco.cmidemo.web.dwr.DWR;
 
 /**
  * 
@@ -28,6 +30,17 @@ public class PROTBINDING extends DWR {
     public static void saveProtBinding(GiProtbinding pb) throws WebAppException {
         
         save(pb);
+        
+        GiProtbindview hostView = new GiProtbindview();
+        hostView.setPbBinindex(pb.getBinindex());
+        hostView.setType(ColumnConst.PA_CAT_HOST);
+        save(hostView);
+        
+        GiProtbindview partnerView = new GiProtbindview();
+        partnerView.setPbBinindex(pb.getBinindex());
+        partnerView.setType(ColumnConst.PA_CAT_PARTNER);
+        save(partnerView);
+        
     }
     
     public static void removeProtBinding(List<Long> pbs) throws WebAppException {
