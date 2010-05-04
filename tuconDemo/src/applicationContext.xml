@@ -48,4 +48,7 @@
 			<ref local="sessionFactory"/>
 		</property>
 	</bean>
+	
+	<bean id="spring" class="com.tibco.cmidemo.util.SpringUtil">
+   	</bean>
 </beans>
