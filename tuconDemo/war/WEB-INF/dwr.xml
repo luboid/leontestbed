@@ -11,7 +11,7 @@
 		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiLocation" />
 		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiOpbinding" />
 		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiPartner" />
-		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiGiProtocol" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiProtocol" />
 		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiPkistoreitem" />
 		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiProtbinding" />
 		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiProtbindview" />
