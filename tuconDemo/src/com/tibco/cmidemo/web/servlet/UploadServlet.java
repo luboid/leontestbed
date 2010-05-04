@@ -38,8 +38,8 @@ public class UploadServlet extends HttpServlet {
             try {
                 ServletFileUpload uploader = new ServletFileUpload();
                 FileItemIterator itr = uploader.getItemIterator(req);
+                String fileName = null, tpBinindex = null;
                 while(itr.hasNext()) {
-                    String fileName = null, tpBinindex = null;
                     FileItemStream item = itr.next();
                     InputStream stream = item.openStream();
                     if(item.isFormField()) {
