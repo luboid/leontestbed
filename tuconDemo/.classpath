@@ -37,5 +37,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-fileupload-1.2.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/junit-4.4.jar"/>
 	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-io-1.2.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

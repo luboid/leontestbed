@@ -53,6 +53,8 @@
 		<create creator="new" javascript="PKISTOREITEM" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.PKISTOREITEM" />
 		</create>
-		
+		<create creator="new" javascript="DOMAIN" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.DOMAIN" />
+		</create>
 	</allow>
 </dwr>

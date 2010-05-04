@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bc:BC
+    xmlns="http://www.tibco.com/20050404/AX/BC"
+    xmlns:bc="http://www.tibco.com/20050404/AX/BC"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="BC.xsd"
+    >
+  <bc:ProtocolDomains>
+    <bc:LOXSI bc:_id="domains">
+    <bc:XSI bc:_element="Domain" bc:_id="AS2_ID" bc:displayName="" bc:description="Identity for AS2">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="DUNS" bc:displayName="" bc:description="DUNS (Dun &amp; Bradstreet)" bc:canonicalizer="com.tibco.ax.fw.impl.db.pprofiles.DbDUNSCanonicalizer">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="DUNS+4(C)" bc:displayName="" bc:description="DUNS (Dun &amp; Bradstreet) Plus 4 (characters suffix)" bc:canonicalizer="com.tibco.ax.fw.impl.db.pprofiles.DbDUNSP4CCanonicalizer">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="DUNS+4(D)" bc:displayName="" bc:description="DUNS (Dun &amp; Bradstreet) Plus 4 (digits suffix)" bc:canonicalizer="com.tibco.ax.fw.impl.db.pprofiles.DbDUNSP4DCanonicalizer">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="1" bc:displayName="" bc:description="DUNS (Dun &amp; Bradstreet)" >
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="4" bc:displayName="" bc:description="IATA (International Air Transport Association)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="5" bc:displayName="" bc:description="INSEE (Institut National de la Statistique et des Etudes Economiques)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="8" bc:displayName="" bc:description="Uniform Code Council Communications Identifier">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="9" bc:displayName="" bc:description="DUNS (Dun &amp; Bradstreet) Plus 4 (digits suffix)" >
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="01" bc:displayName="" bc:description="DUNS (Dun &amp; Bradstreet)" >
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="02" bc:displayName="" bc:description="SCAC (Standard Carrier Alpha Code)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="03" bc:displayName="" bc:description="FMC (Federal Maritime Commission)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="04" bc:displayName="" bc:description="IATA (International Air Transport Association)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="07" bc:displayName="" bc:description="GLN (Global Location Number)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="08" bc:displayName="" bc:description="UCC EDI Communications ID">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="09" bc:displayName="" bc:description="X.121 - CCITT">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="10" bc:displayName="" bc:description="Department of Defense (DoD) Activity Address Code">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="11" bc:displayName="" bc:description="DEA (Drug Enforcement Administration)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="12" bc:displayName="" bc:description="Phone - Telephone Companies">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="13" bc:displayName="" bc:description="Code Used for UCS Transmissions; it includes the Area Code and Telephone Number of a Modem; it does not include punctuation, blanks or access codes">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="14" bc:displayName="" bc:description="DUNS Plus Suffix">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="15" bc:displayName="" bc:description="Petroleum Accountants Society of Canada Company code">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="16" bc:displayName="" bc:description="DUNS (Dun &amp; Bradstreet) Plus 4 (characters suffix)" >
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="17" bc:displayName="" bc:description="American Bankers Association (ABA) Transit Routing Number (Including Check Digit, 9 Digit)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="18" bc:displayName="" bc:description="Association of American Railroads (AAR) Standard Distribution Code">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="19" bc:displayName="" bc:description="EDI Council of Australia (EDICA) Communications ID Number (COMM ID)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="20" bc:displayName="" bc:description="HIN (Health Industry Number)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="21" bc:displayName="" bc:description="IPEDS (Integrated Postsecondary Education Data System)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="22" bc:displayName="" bc:description="FICE (Federal Interagency Commission on Education)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="23" bc:displayName="" bc:description="National Center for Education Statistics Common Core or Data 12-Digit Number for Pre-K-Grade 12 Institutes">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="24" bc:displayName="" bc:description="The College Board's Admission Testing Program 4-Digit Code of Postsecondary Institutes">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="25" bc:displayName="" bc:description="ACT, Inc. 4-Digit Code of Postsecondary Institutions">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="26" bc:displayName="" bc:description="Statistics of Canada List of Postsecondary Institutions">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="27" bc:displayName="" bc:description="Carrier Identification Number as assigned by Health Care Financing Administration">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="28" bc:displayName="" bc:description="Fiscal Intermediary Identification Number as assigned by Health Care Financing Administration">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="29" bc:displayName="" bc:description="Medicare Provider and Supplier Identification Number as assigned by Health Care Financing Administration">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="30" bc:displayName="" bc:description="U.S. Federal Tax Identification Number">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="31" bc:displayName="" bc:description="Jurisdiction Identification Number Plus 4 as assigned by the International Association of Industrial Accident Boards and Commissions">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="32" bc:displayName="" bc:description="FEIN (U.S. Federal Employer Identification Number)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="33" bc:displayName="" bc:description="NAIC (National Association of Insurance Commissioners Company Code)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="34" bc:displayName="" bc:description="Medicaid Provider and Supplier Identification Number as assigned by individual State Medicaid Agencies in conjunction with HCFA">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="35" bc:displayName="" bc:description="Statistics Canada Canadian College Student Information System Institution Codes">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="36" bc:displayName="" bc:description="Statistics Canada University Student Information System Institution Codes">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="37" bc:displayName="" bc:description="Society of Property Information Compilers and Analysts">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="38" bc:displayName="" bc:description="The College Board and ACT, Inc. 6-Digit Code List of Secondary Institutions">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="51" bc:displayName="" bc:description="GEIS (General Electric Information Services)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="52" bc:displayName="" bc:description="IBM Network Services">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="53" bc:displayName="" bc:description="Datenzentrale des Einzelhandels, Germany">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="54" bc:displayName="" bc:description="Bundesverband der Deutschen Baustoffhaendler">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="55" bc:displayName="" bc:description="Bank Identifier Code">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="57" bc:displayName="" bc:description="Korea Trade Network Services">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="58" bc:displayName="" bc:description="Universal Postal Union">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="59" bc:displayName="" bc:description="ODETTE (Organization for Data Exchange through Tele-Transmission in Europe)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="61" bc:displayName="" bc:description="SCAC (Standard Carrier Alpha Code)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="63"   bc:displayName="" bc:description="ECA (Electronic Commerce Australia)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="65" bc:displayName="" bc:description="TELEBOX 400 - Deutsche Bundespost">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="80" bc:displayName="" bc:description="NHS (National Health Service)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="82" bc:displayName="" bc:description="Statens Teleforvaltning">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="84" bc:displayName="" bc:description="Athens Chamber of Commerce">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="85" bc:displayName="" bc:description="Swiss Chamber of Commerce">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="86" bc:displayName="" bc:description="US Council for International Business">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="87" bc:displayName="" bc:description="National Federation of Chambers of Commerce and Industry">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="89" bc:displayName="" bc:description="Association of British Chambers of Commerce">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="90" bc:displayName="" bc:description="SITA (Societe Internationale de Telecommunications Aeronautiques)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="91" bc:displayName="" bc:description="Assigned by seller or seller's agent">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="92" bc:displayName="" bc:description="Assigned by buyer or buyer's agent">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="103" bc:displayName="" bc:description="TW, Trade-van">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="128" bc:displayName="" bc:description="CH, BCNR - Swiss Clearing Bank Number">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="129" bc:displayName="" bc:description="CH, BPI - Swiss Business Partner Identification">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="144" bc:displayName="" bc:description="Department of Defense Activity Address Code">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="145" bc:displayName="" bc:description="FR, DGCP - Direction Generale de la Comptabilite Publique">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="146" bc:displayName="" bc:description="FR, DGI - Direction Generale des Impots">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="147" bc:displayName="" bc:description="JP, JIPDEC/ECPC - Japan Information Processing Development Corportation/ Electronic Commerce Promotion Center">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="148" bc:displayName="" bc:description="ITU (International Telecommunications Union) Data Network Identification Code (DNIC)">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="Z01" bc:displayName="" bc:description="Vehicle registration number">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="AM" bc:displayName="" bc:description="AMECOP">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="NR" bc:displayName="" bc:description="NRMA">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="SA" bc:displayName="" bc:description="User Identification Number">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="SN" bc:displayName="" bc:description="Standard Address Number">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="ZZ" bc:displayName="" bc:description="Mutually Defined">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    <bc:XSI bc:_element="Domain" bc:_id="ZZZ" bc:displayName="" bc:description="User defined">
+        <bc:propertyListDefinition/>
+    </bc:XSI>
+    </bc:LOXSI>
+  </bc:ProtocolDomains>
+</bc:BC>
