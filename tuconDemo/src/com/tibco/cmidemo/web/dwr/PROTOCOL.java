@@ -2,6 +2,7 @@ package com.tibco.cmidemo.web.dwr;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,10 +31,10 @@ public class PROTOCOL extends DWR {
     public static List<String> getDisabledProtocolList(String parentId) throws WebAppException {
         
         if(installed_protocols == null) {
-            InputStream inStream = PROTOCOL.class.getResourceAsStream("com/tibco/cmidemo/web/dwr/installed_protocols.properties");
+            InputStream inStream = PROTOCOL.class.getResourceAsStream("/com/tibco/cmidemo/web/dwr/installed_protocols.properties");
             installed_protocols = new Properties();
             try {
-                installed_protocols.load(inStream);
+                installed_protocols.load(new InputStreamReader(inStream));
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
