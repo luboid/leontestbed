@@ -121,7 +121,7 @@ public class GiProtbindview extends ModelObject implements Serializable {
      *            @hibernate.property
      *             column="TP_BININDEX"
      *             length="18"
-     *             not-null="true"
+     *             not-null="false"
      *         
      */
     public Long getTpBinindex() {
@@ -193,7 +193,7 @@ public class GiProtbindview extends ModelObject implements Serializable {
      *            @hibernate.property
      *             column="TR_BININDEX"
      *             length="18"
-     *             not-null="true"
+     *             not-null="false"
      *         
      */
     public Long getTrBinindex() {

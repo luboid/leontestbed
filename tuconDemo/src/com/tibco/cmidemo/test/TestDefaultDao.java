@@ -5,6 +5,9 @@ import com.tibco.cmidemo.dao.Condition;
 import com.tibco.cmidemo.dao.Criteria;
 import com.tibco.cmidemo.dao.DAO;
 import com.tibco.cmidemo.hibernate.GiPartner;
+import com.tibco.cmidemo.hibernate.GiPkistoreitem;
+
+import java.util.List;
 
 public class TestDefaultDao extends BaseDaoTest {
     public void testInsertPA() {
@@ -54,6 +57,28 @@ public class TestDefaultDao extends BaseDaoTest {
             
             DAO dao = getDAO();
             dao.deleteById(id, GiPartner.class);
+            
+            System.out.println("Done");
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void testPKI() {
+        try {
+            GiPkistoreitem pki = new GiPkistoreitem();
+            pki.setTpBinindex(1000l);
+            pki.setUrl("url");
+            pki.setContent("abc".getBytes());
+            
+            getDAO().save(pki);
+            
+            List<GiPkistoreitem> res = getDAO().getList(GiPkistoreitem.class);
+            for(GiPkistoreitem p : res) {
+                System.out.println("url="+p.getUrl());
+                System.out.println("content="+new String(p.getContent()));
+            }
             
             System.out.println("Done");
             
