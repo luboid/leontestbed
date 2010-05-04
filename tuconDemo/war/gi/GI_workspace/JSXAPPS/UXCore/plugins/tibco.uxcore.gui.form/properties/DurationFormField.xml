@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+  <record group="object" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="1" jsxid="jsx3block" jsxtext="Block">
+    <record children="1" group="jsxtagname" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  </record>
+  <record group="1" jsxid="uxcoreFormRow" jsxtext="Form Field">
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='fieldtitletext']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='jsxtitledisplay']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='fieldinstructionstext']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='alwaysShowInstructions']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='fieldexampletext']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='cdfattribute']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='isrequired']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='hideoptionalstring']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='hiderequiredstring']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='validator']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='jsxenabled']" include="FormField.xml"/>
+      <record jsxid="showdays"  jsxtext="Show Days Field" docgetter="getShowDaysField" docsetter="setShowDaysField"
+          jsxexecute="objJSX.setShowDaysField(vntValue, true);" docdefault="&lt;code&gt;jsx3.Boolean.TRUE&lt;/code&gt;"
+          eval="1" jsxmask="jsxselect" jsxtip="Sets the whether or not to show the days field in the duration editor">
+        <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+        <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+      </record>
+      <record jsxid="showhours"  jsxtext="Show Hours Field" docgetter="getShowHoursField" docsetter="setShowHoursField"
+          jsxexecute="objJSX.setShowHoursField(vntValue, true);" docdefault="&lt;code&gt;jsx3.Boolean.TRUE&lt;/code&gt;"
+          eval="1" jsxmask="jsxselect" jsxtip="Sets the whether or not to show the hours field in the duration editor">
+        <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+        <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+      </record>
+      <record jsxid="showminutes"  jsxtext="Show Minutes Field" docgetter="getShowMinutesField" docsetter="setShowMinutesField"
+          jsxexecute="objJSX.setShowMinutesField(vntValue, true);" docdefault="&lt;code&gt;jsx3.Boolean.TRUE&lt;/code&gt;"
+          eval="1" jsxmask="jsxselect" jsxtip="Sets the whether or not to show the minutes field in the duration editor">
+        <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+        <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+      </record>
+      <record jsxid="showseconds"  jsxtext="Show Seconds Field" docgetter="getShowSecondsField" docsetter="setShowSecondsField"
+          jsxexecute="objJSX.setShowSecondsField(vntValue, true);" docdefault="&lt;code&gt;jsx3.Boolean.TRUE&lt;/code&gt;"
+          eval="1" jsxmask="jsxselect" jsxtip="Sets the whether or not to show the seconds field in the duration editor">
+        <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+        <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+      </record>
+      <record jsxid="showmillis"  jsxtext="Show Millis Field" docgetter="getShowMillisField" docsetter="setShowMillisField"
+          jsxexecute="objJSX.setShowMillisField(vntValue, true);" docdefault="&lt;code&gt;jsx3.Boolean.TRUE&lt;/code&gt;"
+          eval="1" jsxmask="jsxselect" jsxtip="Sets the whether or not to show the milliseconds field in the duration editor">
+        <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+        <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+      </record>
+  </record>
+  <record group="css" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="interaction" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="drag" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="move" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="metadata" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+</data>

@@ -1,0 +1,15 @@
+<!--
+  ~ Copyright (c) 2001-2009, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+
+<gi-merger>
+  <file path="Linkbutton.js" provides="tibco.uxcore.gui.Linkbutton" requires=""/>
+  <file path="Splitline.js" provides="tibco.uxcore.gui.Splitline" requires=""/>
+  <file path="Desktop.js" provides="tibco.uxcore.gui.Desktop" requires="tibco.uxcore.gui.Splitline"/>
+  <file path="TabbedNavMenuButton.js" provides="tibco.uxcore.gui.TabbedNavMenuButton" requires=""/>
+  <file path="TabbedNavPane.js" provides="tibco.uxcore.gui.TabbedNavPane" requires=""/>
+  <file path="TabbedNav.js" provides="tibco.uxcore.gui.TabbedNav"
+        requires="tibco.uxcore.gui.TabbedNavMenuButton tibco.uxcore.gui.TabbedNavePane"/>
+
+</gi-merger>

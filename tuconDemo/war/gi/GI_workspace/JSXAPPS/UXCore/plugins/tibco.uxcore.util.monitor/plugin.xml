@@ -1,0 +1,33 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.util.monitor"
+        class="tibco.uxcore.util.MonitorPlugIn"
+        name="AMP Plugin monitor at runtime"
+        version="0.1">
+
+  <requires>
+  </requires>
+
+  <resources>
+    <script id="plugin_js" path="classes/PlugIn.js" load="early"/>
+    <script id="monitor_js" path="classes/Monitor.js"/>
+    <xml id="monitorDlg_xml" path="ui/monitorDlg.xml">
+      <prereq id="monitor_js"/>
+    </xml>
+    <xml id="monitor_xml" path="ui/monitor.xml"/>
+    <xsl id="xslPlugin" path="xsl/plugin.xsl"/>
+    <xsl id="xslExtPoint" path="xsl/extPoint.xsl"/>
+    <xsl id="xslResults" path="xsl/searchResults.xsl"/>
+  </resources>
+
+  <extension point="jsx3.ide.ui.action" id="">
+    <action
+      id="jsx3.ide.monitor" label="Plugin Monitor..."
+      tip="Show plugins information at runtime"
+      menupath="/jsx3.ide.tools/monitor" hkconfig="true" hotkey="{hk.monitor}"
+      execute="this.getPlugIn().execute();"
+      enabled=""/>
+  </extension>
+
+</plugin>

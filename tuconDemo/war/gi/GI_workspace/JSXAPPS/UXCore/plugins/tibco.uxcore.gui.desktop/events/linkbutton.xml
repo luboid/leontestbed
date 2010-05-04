@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+    <record jsxid="linkbuttonclick" jsxtext="Link button Click" jsxtip="Fires when the Link button clicked.">
+        <record jsxid="objEVENT" jsxtext="the browser event that triggers this event." type="jsx3.gui.Event"/>
+        <record jsxid="strHOOK" jsxtext="the name of the current Hook name." type="String"/>
+    </record>
+
+</data>

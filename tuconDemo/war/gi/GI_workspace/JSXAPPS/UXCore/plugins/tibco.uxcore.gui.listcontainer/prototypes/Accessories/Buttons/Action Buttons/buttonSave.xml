@@ -1,0 +1,13 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Save</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/save.gif</icon>
+  <description>A tibco.uxcore.gui.ActionButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+            <object type="tibco.uxcore.gui.ActionButton">
+              <variants jsxenabled="1" jsxprefetch="1"/>
+              <strings jsxname="actionButtonSave" jsxoverimage="1" jsxdownimage="1" jsxactionid="Save"/>
+              <dynamics jsxtext="@uxcore10@Btn Text Save" jsxicon="@uxcore10@Btn Image Save"/>
+              <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+            </object>
+</serialization>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+-->
+  
+<data jsxid="jsxroot">
+
+    <record group="object" include="master.xml"/>
+    <record group="1" jsxid="uxcoreSimpleSearch" jsxtext="SimpleSearch">
+        <record jsxid="jsxselectwidth" jsxtext="SelectBox Width" jsxtip="Sets width of attribute select box"
+            docsetter="setSelectBoxWidth" docgetter="getSelectBoxWidth" 
+            eval="0" jsxexecute="objJSX.setSelectBoxWidth(vntValue);" jsxmask="jsxtext"/>
+
+        <record jsxid="jsxtextboxwidth" jsxtext="TextBox Width" jsxtip="Sets width of keyword text box"
+            docsetter="setTextBoxWidth" docgetter="getTextBoxWidth" 
+            eval="0" jsxexecute="objJSX.setTextBoxWidth(vntValue);" jsxmask="jsxtext"/>
+
+        <record jsxid="jsxattributes" jsxtext="Attributes"
+            jsxtip="Sets the Attribute(s) for SimpleSearch" 
+            docsetter="setAttributes" eval="0"
+            jsxexecute="objJSX.setAttributes(vntValue);"
+            jsxmask="jsxtext"/>
+                
+        <record docdefault="&lt;code&gt;true (jsx3.Boolean.TRUE)&lt;/code&gt;" docgetter="getControlVeto" docsetter="setControlVeto"
+            eval="1" jsxexecute="objJSX.setControlVeto(vntValue);" jsxid="jsxcontrolVeto" jsxmask="jsxselect"
+            jsxtext="Control veto"
+            jsxtip="To decide wether the component control the veto of any action in the SimpleSearch">
+                <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+                <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+    </record>
+
+    <record group="css" include="master.xml"/>
+
+</data>

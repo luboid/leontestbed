@@ -1,0 +1,4 @@
+<data jsxid="jsxroot">
+    <record jsxid="a" jsxtext="Name1" value1="test" value2="default text 2" radio="C" value3="test value" value4="testing" value5="b1" date="1232006400000" time="93723010" description="default description" myflc1="test"/>
+    <record jsxid="b" jsxtext="Name2" value1="some other text" value2="default text 2" description="default description"/>
+</data>

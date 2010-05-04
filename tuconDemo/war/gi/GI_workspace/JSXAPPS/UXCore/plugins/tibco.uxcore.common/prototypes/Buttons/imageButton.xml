@@ -1,0 +1,9 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Image Button</name>
+  <icon>jsxplugin://tibco.uxcore.common/images/prototype/image-button.gif</icon>
+  <object type="tibco.uxcore.gui.ImageButton">
+    <variants jsxheight="18" jsxprefetch="1" jsxwidth="20"/>
+    <strings jsxname="btnClear" jsximage="jsxplugin://tibco.uxcore.common/images/button/icons/clear.gif" affordance="0 0 0 0" jsxpadding="0" jsxdownimage="jsxplugin://tibco.uxcore.common/images/button/icons/cleardown.gif" jsxonimage="jsxplugin://tibco.uxcore.common/images/button/icons/cleardown.gif" jsxmargin="2"/>
+    <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+  </object>
+</serialization>

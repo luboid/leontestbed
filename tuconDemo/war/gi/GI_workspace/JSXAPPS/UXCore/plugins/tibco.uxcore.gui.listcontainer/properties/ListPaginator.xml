@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+	<record group="object" include="master.xml"/>
+
+	<record group="1" jsxid="jsx3block" jsxtext="Block">
+		<record children="1" group="jsxtagname" include="master.xml"/>
+	</record>
+
+  <record group="2" jsxid="uxcoreListPaginator" jsxtext="ListPaginator">
+    <record docdefault="&lt;code&gt;true (jsx3.Boolean.TRUE)&lt;/code&gt;" docgetter="getControlVeto" docsetter="setControlVeto"
+                eval="1" jsxexecute="objJSX.setControlVeto(vntValue);" jsxid="jsxcontrolVeto" jsxmask="jsxselect"
+                jsxtext="Control veto"
+                jsxtip="To decide wether the component control the veto of any action in the ListContainer">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+     </record>
+  </record>
+
+  <record group="css" include="master.xml"/>
+
+</data>

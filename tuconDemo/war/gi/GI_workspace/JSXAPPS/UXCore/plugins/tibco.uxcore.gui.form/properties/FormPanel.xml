@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+	<record group="object" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+
+    <record group="1" jsxid="uxcoreForm" jsxtext="Form">
+        <record jsxid="titletext" jsxtext="Title Text"
+            jsxtip="Sets the title label for the form"
+            docgetter="getTitleText" docsetter="setTitleText"
+            eval="0"
+            jsxexecute="objJSX.setTitleText(vntValue, true);"
+            jsxmask="jsxtext"/>
+        <record disallow="'" docdefault="&lt;code&gt;true (jsx3.Boolean.TRUE)&lt;/code&gt;" docgetter="isOpen"
+                docsetter="setOpen" eval="1" jsxid="jsxopen" jsxmask="jsxselect" jsxtext="Is Open"
+                jsxtip="Sets whether or not the form panel's content area is open or not" jsxexecute="objJSX.setOpen(vntValue,true)">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+        <record docdefault="&lt;code&gt;true (jsx3.Boolean.FALSE)&lt;/code&gt;" docgetter="isLiveSave"
+                docsetter="setLiveSave" eval="1" jsxid="livesave" jsxmask="jsxselect" jsxtext="Is Live Save"
+                jsxtip="Sets whether or not the form panel's content is expected to be saved live, or upon click of the Save button" jsxexecute="objJSX.setLiveSave(vntValue)">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+    </record>
+
+	<record group="css" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="interaction" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="drag" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="move" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="metadata" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+</data>

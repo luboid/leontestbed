@@ -1,0 +1,18 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name/>
+  <icon/>
+  <description/>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize>this.setWizardState = function(bOn) {
+    button.setEnabled(!bOn, true);
+}</onAfterDeserialize>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxpadding="10"/>
+    <object type="jsx3.gui.Button">
+      <variants jsxindex="0" jsxheight="18"/>
+      <strings jsxname="button" jsxtext="Launch Wizard" jsxmargin="0 4 0 0"/>
+      <events jsxexecute="block.getPlugIn().launch();"/>
+    </object>
+  </object>
+</serialization>

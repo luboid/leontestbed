@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<data jsxid="jsxroot">
+
+    <record jsxid="object" group="1" jsxtext="Object" jsxopen="1" jsxunselectable="1">
+        <record jsxid="jsxinstanceof" jsxtext="Object Type" getter="getClass"
+                jsxtip="The JSX foundation class that this object is an instance of." docnoprop="true" eval="0"
+                uneditable="1"/>
+        <record jsxid="_jsxid" jsxtext="ID" jsxtip="The unique, system-assigned ID for this object." docgetter="getId"
+                docnoprop="true" eval="0" uneditable="1"/>
+        <record jsxid="jsxname" jsxtext="Name" jsxtip="Sets the name assigned by the developer to identify this object."
+                jsxexecute="objJSX.setName(vntValue);" domchanged="true" docgetter="getName" docsetter="setName"
+                eval="0" disallow="[\[\]\u0022\u003C\u003E\u0027\u0026\\]" jsxmask="jsxtext"/>
+    </record>
+
+    <record group="1" jsxid="uxcoreDesktop" jsxtext="DeskTop">
+        <record jsxid="switchpane" jsxtext="Switch Mode"
+                eval="1"
+                jsxtip="If true switches the tab immediately upon an execute event on menu item."
+                docgetter="getSwitchTab" docsetter="setSwitchTab"
+                docdefault="true (&lt;code&gt;jsx3.Boolean.True&lt;/code&gt;)"
+                jsxmask="jsxselect">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="true"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="false"/>
+        </record>
+        <record jsxid="reloadresource" jsxtext="Reload Resource"
+                eval="1"
+                jsxtip="If true reloads resources specified in objRECORD.strRsrcId if objRECORD.loadRsrc is set to true."
+                docgetter="getReloadResource" docsetter="setReloadResource"
+                docdefault="True (&lt;code&gt;jsx3.Boolean.True&lt;/code&gt;)"
+                jsxmask="jsxselect">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+    </record>
+
+
+    <record jsxid="interaction" group="1" jsxtext="Interaction" jsxopen="1" jsxunselectable="1">
+        <record jsxid="jsxcursor" jsxtext="Cursor" eval="0"
+                jsxtip="Sets the CSS cursor definition, such as &lt;code&gt;default&lt;/code&gt;, &lt;code&gt;wait&lt;/code&gt;, or &lt;code&gt;col-resize&lt;/code&gt;."
+                docgetter="getCursor" docsetter="setCursor" docdefault="Empty" disallow="" jsxmask="jsxtext"/>
+        <record jsxid="jsxkeycode" jsxtext="Key Binding" eval="0"
+                jsxtip="Sets the key binding (keyboard shortcut) for this form control, which is specified as a '+' delimited string. For example, &lt;code&gt;ctrl+s&lt;/code&gt;. See API Documentation for &lt;code&gt;jsx3.gui.Form.doKeyBinding()&lt;/code&gt;."
+                docgetter="getKeyBinding" docsetter="setKeyBinding" disallow="[^\da-zA-Z\+\]\[]" jsxmask="jsxtext"/>
+    </record>
+
+    <record jsxid="drag" group="1" jsxtext="Drop">
+        <record jsxid="jsxdrop" jsxtext="Can Drop On"
+                eval="1"
+                jsxtip="If &lt;code&gt;true (1)&lt;/code&gt; (Enabled), this object can be the target of drop events."
+                docgetter="getCanDrop" docsetter="getCanDrop"
+                docdefault="Disabled (&lt;code&gt;jsx3.Boolean.FALSE&lt;/code&gt;)"
+                jsxmask="jsxselect">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="Enabled"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="Disabled"/>
+        </record>
+    </record>
+    <record jsxid="access" group="1" jsxtext="Accessibility" jsxopen="1" jsxunselectable="1">
+        <record jsxid="jsxindex" jsxtext="Tab Index" eval="1"
+                jsxtip="Sets the tab index. When tabbing between controls, the index group this component belongs to."
+                docgetter="getIndex" docsetter="setIndex" docdefault="Empty"
+                jsxexecute="objJSX.setIndex(vntValue,true);" disallow="[^0-9^-]" jsxmask="jsxtext"/>
+        <record jsxid="jsxtip" jsxtext="Tooltip" eval="0"
+                jsxtip="Sets the text displayed when hovered over this object (text only)." docgetter="getTip"
+                docsetter="setTip" docdefault="Empty" jsxexecute="objJSX.setTip(vntValue,true);" jsxmask="jsxtextarea"/>
+    </record>
+
+
+</data>

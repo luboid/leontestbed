@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxid="jsxroot">
+
+	<record jsxid="onbeforetabchange" jsxtext="Before Tab Change" jsxtip="Fires before tabpane will be changed. eval false to veto the change" vetoable="1">
+		<record jsxid="this" jsxtext="the tabpane publish the event" type="$class$"/>
+		<record jsxid="currentTab" jsxtext="current tab" type="jsx3.gui.Tab"/>
+		<record jsxid="targetTab" jsxtext="target tab user clicked" type="jsx3.gui.Tab"/>
+	</record>
+
+</data>

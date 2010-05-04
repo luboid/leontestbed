@@ -1,0 +1,27 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>View Buttons</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/button.gif</icon>
+  <description>A set includes a block and several Toggle Icon Buttons</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="2"/>
+    <strings jsxname="viewButtons"/>
+    <dynamics jsxborder="@uxcore10@View Container Border"/>
+    <object type="tibco.uxcore.gui.ViewButton">
+      <variants jsxenabled="1" bgpersist="1" focusstyle="0" jsxprefetch="1" jsxtype="1" jsxstate="0" jsxwidth="17" jsxheight="18"/>
+      <strings jsxname="btnViewTree" affordance="0 0 0 0" jsxgroupname="toggleGroup1"/>
+      <dynamics jsximage="@uxcore10@Btn View Tree" jsxdownimage="@uxcore10@Btn View Tree Down" jsxonimage="@uxcore10@Btn View Tree Down"/>
+    </object>
+    <object type="tibco.uxcore.gui.ViewButton">
+      <variants jsxenabled="1" bgpersist="1" focusstyle="0" jsxprefetch="1" jsxtype="1" jsxstate="0" jsxwidth="17" jsxheight="18"/>
+      <strings jsxname="btnViewFlat" affordance="0 0 0 0" jsxgroupname="toggleGroup1"/>
+      <dynamics jsximage="@uxcore10@Btn View Flat" jsxdownimage="@uxcore10@Btn View Flat Down" jsxonimage="@uxcore10@Btn View Flat Down"/>
+    </object>
+    <object type="tibco.uxcore.gui.ViewButton">
+      <variants jsxenabled="1" bgpersist="1" focusstyle="0" jsxprefetch="1" jsxtype="1" jsxstate="0" jsxwidth="17" jsxheight="18"/>
+      <strings jsxname="btnViewDetail" affordance="0 0 0 0" jsxgroupname="toggleGroup1"/>
+      <dynamics jsximage="@uxcore10@Btn View Detail" jsxdownimage="@uxcore10@Btn View Detail Down" jsxonimage="@uxcore10@Btn View Detail Down"/>
+    </object>
+  </object>
+</serialization>

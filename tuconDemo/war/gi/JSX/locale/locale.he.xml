@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxnamespace="propsbundle">
+  <locale key="he">
+    <record jsxid="format.number" jsxtext="#,##0.###"/>
+    <record jsxid="format.number.percent" jsxtext="#,##0%"/>
+    <record jsxid="format.datetime" jsxtext="{0} {1}"/>
+    <record jsxid="format.time.long" jsxtext="HH:mm:ss z"/>
+    <record jsxid="format.time.short" jsxtext="HH:mm"/>
+    <record jsxid="number.grouping" jsxtext=","/>
+    <record jsxid="format.date.medium" jsxtext="dd/MM/yyyy"/>
+    <record jsxid="format.date.short" jsxtext="dd/MM/yy"/>
+    <record jsxid="number.decimal" jsxtext="."/>
+    <record jsxid="format.date.full" jsxtext="EEEE d MMMM yyyy"/>
+    <record jsxid="format.time.medium" jsxtext="HH:mm:ss"/>
+    <record jsxid="format.date.long" jsxtext="d MMMM yyyy"/>
+    <record jsxid="format.number.currency" jsxtext="#,##0.00 ¤"/>
+    <record eval="1" jsxid="date.month.abbrev" jsxtext="['ינו','פבר','מרץ','אפר','מאי','יונ','יול','אוג','ספט','אוק','נוב','דצמ']"/>
+    <record eval="1" jsxid="date.month" jsxtext="['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר']"/>
+    <record eval="1" jsxid="date.month.narrow" jsxtext="['1','2','3','4','5','6','7','8','9','10','11','12']"/>
+    <record eval="1" jsxid="date.day.abbrev" jsxtext="['א','ב','ג','ד','ה','ו','ש']"/>
+    <record eval="1" jsxid="date.day" jsxtext="['יום ראשון','יום שני','יום שלישי','יום רביעי','יום חמישי','יום שישי','שבת']"/>
+    <record eval="1" jsxid="date.day.narrow" jsxtext="['א','ב','ג','ד','ה','ו','ש']"/>
+    <record eval="1" jsxid="date.era.long" jsxtext="['לפני הספירה','לספירה']"/>
+    <record eval="1" jsxid="date.era" jsxtext="['לפנה״ס','לסה״נ']"/>
+    <record eval="1" jsxid="time.ampm" jsxtext="['לפה&quot;צ','אחה&quot;צ']"/>
+    <record jsxid="string.lang.ar" jsxtext="ערבית"/>
+    <record jsxid="string.lang.da" jsxtext="דנית"/>
+    <record jsxid="string.lang.de" jsxtext="גרמנית"/>
+    <record jsxid="string.lang.el" jsxtext="יוונית"/>
+    <record jsxid="string.lang.en" jsxtext="אנגלית"/>
+    <record jsxid="string.lang.es" jsxtext="ספרדית"/>
+    <record jsxid="string.lang.fi" jsxtext="פינית"/>
+    <record jsxid="string.lang.fr" jsxtext="צרפתית"/>
+    <record jsxid="string.lang.he" jsxtext="עברית"/>
+    <record jsxid="string.lang.id" jsxtext="אינדונזית"/>
+    <record jsxid="string.lang.it" jsxtext="איטלקית"/>
+    <record jsxid="string.lang.ja" jsxtext="יפנית"/>
+    <record jsxid="string.lang.ko" jsxtext="קוריאנית"/>
+    <record jsxid="string.lang.nl" jsxtext="הולנדית"/>
+    <record jsxid="string.lang.nn" jsxtext="נורבגית חדשה (נינורשק)"/>
+    <record jsxid="string.lang.pl" jsxtext="פולנית"/>
+    <record jsxid="string.lang.pt" jsxtext="פורטוגזית"/>
+    <record jsxid="string.lang.ru" jsxtext="רוסית"/>
+    <record jsxid="string.lang.sv" jsxtext="שוודית"/>
+    <record jsxid="string.lang.th" jsxtext="תאי"/>
+    <record jsxid="string.lang.tr" jsxtext="טורקית"/>
+    <record jsxid="string.lang.vi" jsxtext="ויאטנמית"/>
+    <record jsxid="string.lang.zh" jsxtext="סינית"/>
+    <record jsxid="string.terr.AU" jsxtext="אוסטרליה"/>
+    <record jsxid="string.terr.BE" jsxtext="בלגיה"/>
+    <record jsxid="string.terr.BR" jsxtext="ברזיל"/>
+    <record jsxid="string.terr.CA" jsxtext="קנדה"/>
+    <record jsxid="string.terr.CN" jsxtext="סין"/>
+    <record jsxid="string.terr.DE" jsxtext="גרמניה"/>
+    <record jsxid="string.terr.DK" jsxtext="דנמרק"/>
+    <record jsxid="string.terr.ES" jsxtext="ספרד"/>
+    <record jsxid="string.terr.FI" jsxtext="פינלנד"/>
+    <record jsxid="string.terr.FR" jsxtext="צרפת"/>
+    <record jsxid="string.terr.GB" jsxtext="בריטניה"/>
+    <record jsxid="string.terr.GR" jsxtext="יוון"/>
+    <record jsxid="string.terr.HK" jsxtext="הונג קונג S.A.R. של סין"/>
+    <record jsxid="string.terr.ID" jsxtext="אינדונזיה"/>
+    <record jsxid="string.terr.IL" jsxtext="ישראל"/>
+    <record jsxid="string.terr.IT" jsxtext="איטליה"/>
+    <record jsxid="string.terr.JP" jsxtext="יפן"/>
+    <record jsxid="string.terr.KR" jsxtext="דרום קוריאה"/>
+    <record jsxid="string.terr.MX" jsxtext="מקסיקו"/>
+    <record jsxid="string.terr.NL" jsxtext="הולנד"/>
+    <record jsxid="string.terr.NO" jsxtext="נורווגיה"/>
+    <record jsxid="string.terr.NZ" jsxtext="ניו זילנד"/>
+    <record jsxid="string.terr.PL" jsxtext="פולין"/>
+    <record jsxid="string.terr.PT" jsxtext="פורטוגל"/>
+    <record jsxid="string.terr.RU" jsxtext="רוסיה"/>
+    <record jsxid="string.terr.SE" jsxtext="שוודיה"/>
+    <record jsxid="string.terr.TH" jsxtext="תאילנד"/>
+    <record jsxid="string.terr.TR" jsxtext="טורקיה"/>
+    <record jsxid="string.terr.TW" jsxtext="טאיוון"/>
+    <record jsxid="string.terr.US" jsxtext="ארצות הברית"/>
+    <record jsxid="string.terr.VN" jsxtext="וייטנאם"/>
+    <record jsxid="string.terr.ZA" jsxtext="דרום אפריקה"/>
+    <record eval="1" jsxid="time.24hour" jsxtext="true"/>
+    <record jsxid="format.number.integer" jsxtext="#,##0"/>
+    <record jsxid="time.sep.hour-min" jsxtext=":"/>
+    <record jsxid="time.sep.min-sec" jsxtext=":"/>
+    <record jsxid="format.time.full" jsxtext="HH:mm:ss z"/>
+  </locale>
+<locale key="he_IL">
+    <record eval="1" jsxid="date.firstWeekDay" jsxtext="0"/>
+    <record jsxid="currency.code" jsxtext="ILS"/>
+  </locale>
+</data>

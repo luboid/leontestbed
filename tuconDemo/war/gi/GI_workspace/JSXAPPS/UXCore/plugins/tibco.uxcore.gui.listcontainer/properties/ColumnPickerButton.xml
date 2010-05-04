@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+-->
+<data jsxid="jsxroot">
+
+    <record group="object" include="../../tibco.uxcore.common/properties/Button.xml"/>
+    <record group="actiontrigger" include="jsxplugin://tibco.uxcore.common/properties/Button.xml"/>
+    <record group="1" jsxid="columnPikcerButton" jsxtext="ColumnPicker Button">
+        <record path="/data/record[@jsxid='position']/record[@jsxid='jsxwidth']" include="../../tibco.uxcore.common/properties/Button.xml"/>
+        <record path="/data/record[@jsxid='position']/record[@jsxid='jsxheight']" include="../../tibco.uxcore.common/properties/Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxicon']" include="../../tibco.uxcore.common/properties/Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxstate']" include="../../tibco.uxcore.common/properties/Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxenabled']" include="../../tibco.uxcore.common/properties/Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxrequired']" include="../../tibco.uxcore.common/properties/Button.xml"/>
+        <record jsxid="jsxexcluded" jsxtext="Exclued Columns" jsxtip="Sets comma-splitted name string of exclued columns, those columns will not appear in column picker. For example: mcStatus,mcFileName" docsetter="setExclusionColumns" eval="0" jsxexecute="objJSX.setExclusionColumns(vntValue);" jsxmask="jsxtext"/>
+        <record jsxid="jsxuneditable" jsxtext="Uneditable Columns" jsxtip="Sets comma-splitted name string of uneditable columns, those columns will appear in column picker with grey color, and user cannot change their visibilty. For example: mcStatus,mcFileName" docsetter="setUneditableColumns" eval="0" jsxexecute="objJSX.setUneditableColumns(vntValue);" jsxmask="jsxtext"/>
+    </record>
+    <record group="box_nobg" include="../../tibco.uxcore.common/properties/Button.xml"/>
+    <record group="css_noclass" include="../../tibco.uxcore.common/properties/Button.xml"/>
+    <record group="access" include="../../tibco.uxcore.common/properties/Button.xml"/>
+    <record group="metadata" include="../../tibco.uxcore.common/properties/Button.xml"/>
+</data>

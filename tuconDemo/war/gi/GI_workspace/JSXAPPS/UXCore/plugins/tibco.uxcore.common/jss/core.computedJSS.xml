@@ -1,0 +1,50 @@
+<data jsxid="jsxroot" jsxns="urn:tibco.com/v3.0/dynamicproperties/1">
+  <record jsxid="@uxcore10@dialogBackgroundImage" type="jsxbg" eval="1" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI(&quot;jsxplugin://tibco.uxcore.common/images/matrix/dialogBackground.jpg&quot;) + &quot;); background-repeat:repeat-x;&quot;"/>
+  <record jsxid="@uxcore10@dialogHeaderBGImage" type="jsxbg" eval="1" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI(&quot;jsxplugin://tibco.uxcore.common/images/matrix/dialogBackground.jpg&quot;) + &quot;); background-repeat:repeat-x;&quot; + ((navigator.appVersion.indexOf('MSIE')!=-1) ? &quot;background-position: -1px -1px; border-width: 0&quot; : &quot;background-position: -2px -2px; border-color: transparent&quot;) + &quot;;&quot;"/>
+  <record jsxid="@uxcore10@querySearchBarBackgroundImage" type="jsxbg" eval="1" jsxtext="'background-image: url(' + jsx3.resolveURI(&quot;jsxplugin://tibco.uxcore.common/images/matrix/search_background_closed.jpg&quot;) + '); background-repeat: repeat-x;'"/>
+  <record jsxid="@uxcore10@querySearchBarBackgroundOpenImage" type="jsxbg" eval="1" jsxtext="'background-image: url(' + jsx3.resolveURI(&quot;jsxplugin://tibco.uxcore.common/images/matrix/search_background_open.jpg&quot;) + '); background-repeat: repeat-x;'"/>
+  <record jsxid="@uxcore10@Mapped Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/mapped.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Red LED Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/LED_red.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Yellow LED Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/LED_yellow.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Green LED Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/LED_green.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Off LED Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/LED_off.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Defined Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/defined.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Marked For Install Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/marked_for_install.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Marked For Uninstall Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/marked_for_uninstall.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Marked For Activation Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/marked_for_activation.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Marked For Deactivation Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/marked_for_deactivation.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Installed Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/installed.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Uninstalled Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/uninstalled.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Installed_Stopped Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/stopped.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Install Failed Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/installFailed_16x16.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Unknown Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/unknown.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Installing Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/installing.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Uninstalling Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/uninstalling.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Uninstall Failed Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/uninstallFailed.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Start Failed Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/start_failed.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Stop Failed Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/stop_failed.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Starting Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/starting.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Stopping Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/stopping.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Running Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/started_running.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Delete Failed Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/delete_failed.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Running With Error Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/start_failed.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Deployed With Error Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/installFailed_16x16.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Not Deployed Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/defined.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Deployed Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/installed.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Out Of Sync Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/outOfSync.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Redeployable Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/blank_status.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Error Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/alert.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Blank Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/blank_status.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@ClientSSL Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/SSLsharedResource.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@EMS Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/JMSsharedResource.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@HTTP Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/httpServerSharedResource.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@Identity Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/identity.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@JDBC Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/JDBCsharedResource.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@JNDI Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/JNDIsharedResource.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@RV Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/RVsharedResource.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@ServerSSL Icon Path" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/SSLsharedResource.gif')" eval="1" type="jsxtext"/>
+  <record jsxid="@uxcore10@SearchCloseIcon Path" type="jsxtext" eval="1" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/close_search.gif')"/>
+  <record jsxid="@uxcore10@SearchCloseIcon BG" type="jsxbg" eval="1" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/close_search.gif') + &quot;)&quot;"/>
+  <record jsxid="@uxcore10@Running Icon Path Relative" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/started_running.gif')" eval="1" type="jsximage"/>
+  <record jsxid="@uxcore10@Installed_Stopped Icon Path Relative" jsxtext="jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/stopped.gif')" eval="1" type="jsxtext"/>
+</data>

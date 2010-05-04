@@ -1,0 +1,10 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Refresh Button</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/button.gif</icon>
+  <description>A tibco.uxcore.gui.IconButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.RefreshButton">
+    <strings jsxname="btnRefresh" jsxtextalign="center"/>
+  </object>
+</serialization>

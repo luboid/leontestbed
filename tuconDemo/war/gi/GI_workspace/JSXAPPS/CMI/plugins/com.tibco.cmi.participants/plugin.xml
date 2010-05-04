@@ -1,0 +1,36 @@
+<plugin xmlns="http://www.tibco.com/gi/amp" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd" 
+		id="com.tibco.cmi.participants" name="CMI - participants" version="0.1">
+
+  <requires>
+	  <plugin id='tibco.uxcore.gui.listcontainer'/>
+		<plugin id='tibco.uxcore.gui.masterdetail'/>
+		<plugin id='tibco.uxcore.common'/>
+		<plugin id='tibco.uxcore.gui.section'/>
+		<plugin id='tibco.uxcore.gui.tabbedpane'/>
+
+  </requires>
+  
+  <resources>
+	   <script id='Participant_js' path='Participant.js'/>
+		 <xml id='General_xml' path='ui/General.xml'/>
+		 <xml id='Location_xml' path='ui/Location.xml'/>
+		 <xml id='LocationList_xml' path='ui/LocationList.xml'/>
+		 <xml id='Protocal_xml' path='ui/Protocal.xml'/>
+		 <xml id='Participants_xml' path='ui/Participants.xml'>
+		   <prereq id='General_xml'/>
+			 <prereq id='LocationList_xml'/>
+			 <prereq id='Protocal_xml'/>
+		 </xml>
+	   <xml id='ParticipantsList_xml' path='ui/ParticipantsList.xml'>
+		    <prereq id='Participants_xml'/>
+				<prereq id='Participant_js'/>
+		 </xml>
+
+  </resources>
+
+	<extension point='com.tibco.cmi.desktop.menu' id='participant'>
+	  <participant strRsrcId='ParticipantsList_xml' text='Participants' auto='true'/>
+	</extension>
+</plugin>

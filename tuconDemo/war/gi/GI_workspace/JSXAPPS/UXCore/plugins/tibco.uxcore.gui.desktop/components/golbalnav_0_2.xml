@@ -1,0 +1,75 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Block - 100%</name>
+  <icon>images/prototypes/block.gif</icon>
+  <description>Simple block, relatively positioned with overflow=scroll.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20" jsxbgcolor=""/>
+    <object type="tibco.uxcore.gui.Section">
+      <variants/>
+      <strings jsxname="section" jsxwidth="100%" jsxheight="100%"/>
+      <object type="tibco.uxcore.gui.TitleBox">
+        <variants/>
+        <strings jsxname="titleBox" jsxwidth="100%"/>
+      </object>
+      <object type="tibco.uxcore.gui.MasterDetail">
+        <variants jsxorientation="0" jsxleft="0" jsxtop="0"/>
+        <strings jsxname="masterDetail" jsxsubcontainer1pct="28.87323943661972%"/>
+        <dynamics/>
+        <object type="jsx3.gui.Block">
+          <variants/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="2"/>
+            <strings jsxname="matrixBlock" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+            <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"/>
+            <object type="tibco.uxcore.gui.Matrix">
+              <variants jsxheaderheight="0"/>
+              <strings jsxname="matrix1" jsxrenderingmodel="hierarchical" jsxpagingmodel="4" jsxdrag="1" jsxdrop="1" jsxselectionmodel="2" jsxxml="       &lt;data jsxid=&quot;jsxroot&quot;&gt;         &lt;record jsxid=&quot;1&quot; jsxtext=&quot;rootnode&quot; jsxopen=&quot;1&quot; jsximg=&quot;GI_Builder/images/icon_7.gif&quot;&gt;           &lt;record jsxid=&quot;2&quot; jsxtext=&quot;node a&quot; jsxopen=&quot;1&quot; jsximg=&quot;GI_Builder/images/icon_7.gif&quot;&gt;             &lt;record jsxid=&quot;3&quot; jsxtext=&quot;node b&quot; jsximg=&quot;GI_Builder/images/icon_7.gif&quot;&gt;               &lt;record jsxid=&quot;4&quot; jsxtext=&quot;node c&quot;  jsximg=&quot;GI_Builder/images/icon_7.gif&quot;&gt;                 &lt;record jsxid=&quot;5&quot; jsxtext=&quot;node d&quot; jsximg=&quot;GI_Builder/images/icon_16.gif&quot;/&gt;               &lt;/record&gt;             &lt;/record&gt;             &lt;record jsxid=&quot;6&quot; jsxtext=&quot;node e&quot; jsximg=&quot;GI_Builder/images/icon_7.gif&quot;&gt;               &lt;record jsxid=&quot;7&quot; jsxtext=&quot;node f with a lot of text to see what the impact&quot; jsximg=&quot;GI_Builder/images/icon_7.gif&quot;&gt;                 &lt;record jsxid=&quot;8&quot; jsxtext=&quot;node g&quot; jsximg=&quot;GI_Builder/images/icon_16.gif&quot;/&gt;               &lt;/record&gt;             &lt;/record&gt;           &lt;/record&gt;         &lt;/record&gt;       &lt;/data&gt;     "/>
+              <dynamics jsxbgcolor="@Solid Light" jsxselectionbg="@uxcore10@Matrix Selection BG"/>
+              <object type="jsx3.gui.Matrix.Column">
+                <variants/>
+                <strings jsxname="mc1" jsxwidth="*" jsxcellpadding="2" jsxpath="jsxtext"/>
+                <dynamics jsxborder="@Outset" jsxbg="@Bevel TopDown" jsxbgcolor="@Solid Disabled"/>
+              </object>
+            </object>
+          </object>
+        </object>
+        <object type="jsx3.gui.Block">
+          <variants/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+          <object type="tibco.uxcore.gui.ListContainer">
+            <variants jsxoverflow="1" timer="2738"/>
+            <strings jsxname="listContainer" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxview="matrix1"/>
+            <object type="tibco.uxcore.gui.ListPaginator">
+              <variants jsxoverflow="1" intTotalPageNumber="100" currentPageNumber="1" jsxtextwidth="40" jsxcontrolVeto="true"/>
+              <strings jsxname="listPaginator" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+            </object>
+            <object type="tibco.uxcore.gui.TableListView">
+              <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0" _historyData="[]"/>
+              <strings jsxname="matrix1" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;         &lt;record jsxid=&quot;AI&quot;  jsxtext=&quot;Austria&quot;/&gt;         &lt;record jsxid=&quot;AZ&quot;  jsxtext=&quot;Azerbaijan&quot;/&gt;         &lt;record jsxid=&quot;AG&quot;  jsxtext=&quot;Afghanistan&quot;&gt;         &lt;record jsxid=&quot;AL&quot;  jsxtext=&quot;Albania&quot;/&gt;         &lt;record jsxid=&quot;AR&quot;  jsxtext=&quot;Algeria&quot;/&gt;         &lt;record jsxid=&quot;AS&quot;  jsxtext=&quot;American Samoa&quot;/&gt;         &lt;/record&gt;         &lt;record jsxid=&quot;AD&quot;  jsxtext=&quot;Andorra&quot;/&gt;         &lt;record jsxid=&quot;AO&quot;  jsxtext=&quot;Angola&quot;/&gt;         &lt;record jsxid=&quot;AU&quot;  jsxtext=&quot;Anguilla&quot;/&gt;         &lt;record jsxid=&quot;AX&quot;  jsxtext=&quot;Antarctica&quot;/&gt;         &lt;record jsxid=&quot;AT&quot;  jsxtext=&quot;Antigua and Barbuda&quot;/&gt;         &lt;record jsxid=&quot;AE&quot;  jsxtext=&quot;Argentina&quot;/&gt;         &lt;record jsxid=&quot;AM&quot;  jsxtext=&quot;Armenia&quot;/&gt;         &lt;record jsxid=&quot;AB&quot;  jsxtext=&quot;Aruba&quot;/&gt;         &lt;record jsxid=&quot;AA&quot;  jsxtext=&quot;Australia&quot;/&gt;       &lt;/data&gt;" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending" _editMode="tibco.uxcore.gui.TableListView.NORMAL_MODE"/>
+              <dynamics/>
+              <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
+              <object type="jsx3.gui.Matrix.Column">
+                <variants jsxwidth="165"/>
+                <strings jsxname="mc2" jsxtext="Name" jsxpath="jsxtext"/>
+                <dynamics/>
+              </object>
+              <object type="jsx3.gui.Matrix.Column">
+                <variants/>
+                <strings jsxname="textColumn" jsxwidth="100" jsxtext="Text" jsxpath="jsxtext"/>
+                <dynamics/>
+              </object>
+            </object>
+            <object type="tibco.uxcore.gui.FilterSearch">
+              <variants jsxheight="20" jsxoverflow="1" jsxcontrolVeto="true"/>
+              <strings jsxname="filterSearch" jsxrelativeposition="1" jsxtagname=""/>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

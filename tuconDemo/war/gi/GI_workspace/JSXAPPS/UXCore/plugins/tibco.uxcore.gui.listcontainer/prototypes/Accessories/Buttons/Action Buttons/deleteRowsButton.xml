@@ -1,0 +1,12 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Delete Rows</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/delete.gif</icon>
+  <description>A tibco.uxcore.gui.ActionButton object for deleting the selected records in a TreeListBuilder.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+    <object type="tibco.uxcore.gui.DeleteRowsButton">
+      <variants jsxenabled="0" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+      <strings jsxname="actionButtonDeleteRows" jsxactionid="Delete Rows" jsxtext="Delete"/>
+      <dynamics jsxicon="@uxcore10@Btn Image Delete"/>
+    </object>
+</serialization>

@@ -1,0 +1,13 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Uninstall</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/uninstall.gif</icon>
+  <description>A tibco.uxcore.gui.ActionButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+            <object type="tibco.uxcore.gui.ActionButton">
+              <variants jsxenabled="1" jsxprefetch="1"/>
+              <strings jsxname="actionButtonUninstall" jsxoverimage="1" jsxdownimage="1" jsxactionid="Uninstall"/>
+              <dynamics jsxtext="@uxcore10@Btn Text Uninstall" jsxicon="@uxcore10@Btn Image Uninstall" />
+              <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+            </object>
+</serialization>

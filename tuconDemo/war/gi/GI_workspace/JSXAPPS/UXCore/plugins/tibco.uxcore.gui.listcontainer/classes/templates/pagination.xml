@@ -1,0 +1,52 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+  <model>
+    <var id="firstimage" name="src">return this.complex.jsxFirstImg;</var>
+    <var id="firsttip">return this.complex.jsxFirstTip;</var>
+    <var id="backimage" name="src">return this.complex.jsxBackImg;</var>
+    <var id="backtip">return this.complex.jsxBackTip;</var>
+    <var id="nextimage" name="src">return this.complex.jsxNextImg;</var>
+    <var id="nexttip">return this.complex.jsxNextTip;</var>
+    <var id="lastimage" name="src">return this.complex.jsxLastImg;</var>
+    <var id="lasttip">return this.complex.jsxLastTip;</var>
+    <var id="pageCaption">return this.complex.jsxPageCaption;</var>
+    <var id="currentPageNumber" triggers="currentPageNumber">return this.getCurrentPageNumber();</var>
+    <var id="allPageNumber" triggers="allPageNumber">return this.getTotalPageCaption();</var>
+    <var id="ButtonSytle">return this.complex.jsxButtonSytle;</var>
+    <var id="xtop">return jsx3.CLASS_LOADER.IE? 1: 0;</var>
+    <var id="xheight">return "18px"</var>
+  </model>
+  <template>
+    <div class="pagination" index="{$index}" jsxindex="{$jsxindex}" style="position:{$position};left:{$left};top:{$top};width:{$width};height:{xheight};">
+      <div u:id="paginationPane" style="text-align:center;">
+            
+              <span u:protected="true" style="position:relative;top:1px;">
+                  <img u:id="Firstbutton" title="{firsttip}" src="{firstimage};" 
+                     onclick="{$onclick}" onmousedown="{$onmousedown}" onmouseup="{$onmouseup}" 
+                     style="cursor:pointer;margin:0 3 0 0" />
+                  <img u:id="Backbutton" title="{backtip}" src="{backimage}" 
+                     onclick="{$onclick}" onmousedown="{$onmousedown}" onmouseup="{$onmouseup}" 
+                     style="cursor:pointer;margin:0 5 0 0"/>
+                  
+                  <span u:protected="true" style="font-size:11px;font-family:Arial;color:#000000;top:-1;position:relative;"><text>{pageCaption}</text></span>
+              </span>
+              
+              <span u:protected="true" style="position:relative;top:{xtop};">
+                  <input u:id="pageinput" u:protected="true" type="text" value="{currentPageNumber}" 
+                       style="width:{jsxtextwidth|40};height:18px;border-width:1px;border-color:#626262 #A2A2A2;text-align:right;margin:0 5 0 5;padding:1 2 0 0;font-size:11px;font-family:Arial;color:#000000" 
+                       onkeydown="{$onkeydown}" />
+              </span>
+                   
+              <span u:protected="true" style="position:relative;top:1px;">
+                <span u:protected="true" style="font-size:11px;font-family:Arial;color:#000000;top:-1;position:relative;margin:0 5 0 0"><text>{allPageNumber}</text></span>
+        
+                <img u:id="Nextbutton" title="{nexttip}" src="{nextimage}" 
+                     onclick="{$onclick}" onmousedown="{$onmousedown}" onmouseup="{$onmouseup}"
+                    style="cursor:pointer;margin:0 3 0 0" />
+                <img u:id="Lastbutton" title="{lasttip}" src="{lastimage}" 
+                     onclick="{$onclick}" onmousedown="{$onmousedown}" onmouseup="{$onmouseup}" 
+                    style="cursor:pointer;" />
+              </span>
+      </div>
+    </div>
+  </template>
+</transform>

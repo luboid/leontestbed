@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxid="jsxroot">
+
+    <record jsxid="tibco.uxcore.gui.Form" jsxtext="events/Form.xml"/>
+    <record jsxid="tibco.uxcore.gui.FormGroup" jsxtext="events/FormGroup.xml"/>
+    <record jsxid="tibco.uxcore.gui.FormField" jsxtext="events/FormField.xml"/>
+    <record jsxid="tibco.uxcore.gui.CheckBoxFormField" jsxtext="events/CheckBoxFormField.xml"/>
+    <record jsxid="tibco.uxcore.gui.TextBoxWithLinkFormField" jsxtext="events/TextBoxWithLinkFormField.xml"/>
+    <record jsxid="tibco.uxcore.gui.TextBoxWithButtonFormField" jsxtext="events/TextBoxWithButtonFormField.xml"/>
+</data>
+

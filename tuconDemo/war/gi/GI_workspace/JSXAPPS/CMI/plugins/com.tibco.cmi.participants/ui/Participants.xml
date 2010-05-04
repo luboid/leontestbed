@@ -1,0 +1,80 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Block - 100%</name>
+  <icon>images/prototypes/block.gif</icon>
+  <description>Simple block, relatively positioned with overflow=scroll.</description>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="3"/>
+    <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+    <object type="tibco.uxcore.gui.Section">
+      <variants bShowContent="true"/>
+      <strings jsxname="section" jsxwidth="100%" jsxheight="100%"/>
+      <object type="tibco.uxcore.gui.TitleBox">
+        <variants/>
+        <strings jsxname="titleBox" jsxwidth="100%" title="&lt;font size='2px' family='arial'&gt;Participant&lt;/font&gt;" titleFontSize=""/>
+        <object type="tibco.uxcore.gui.Button">
+          <variants focusstyle="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="button" jsxtext="Save" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1"/>
+          <dynamics/>
+          <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').save();"/>
+        </object>
+        <object type="tibco.uxcore.gui.Button">
+          <variants focusstyle="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="button" jsxtext="Cancel" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1"/>
+          <dynamics/>
+          <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').save();"/>
+        </object>
+      </object>
+      <object type="tibco.uxcore.gui.TabbedPane">
+        <variants jsxoverflow="1" tabStyle="0"/>
+        <strings jsxname="mainBlock" jsxheight="100%" jsxwidth="100%"/>
+        <object type="jsx3.gui.LayoutGrid">
+          <variants jsxrows="[22,'*']" jsxoverflow="2"/>
+          <strings/>
+          <object type="jsx3.gui.Block">
+            <variants jsxideinvisible="1"/>
+            <strings jsxborder="0px;0px;1px solid #555555;0px"/>
+          </object>
+          <object type="jsx3.gui.TabbedPane">
+            <variants jsxselectedindex="0" jsxshowtabs="0" jsxoverflow="3"/>
+            <strings jsxborder="0px;1px solid #555555;1px solid #555555;1px solid #555555"/>
+            <object type="jsx3.gui.Tab">
+              <variants patchedSetText="true"/>
+              <strings jsxname="tab1" jsxtext="General"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="1"/>
+                <strings jsxwidth="100%" jsxheight="100%" jsxtext="" jsxvisibility="" jsxpadding="20" jsxdisplay="" jsxbg="background-image:url(../GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA"/>
+                <include src="jsxplugin://com.tibco.cmi.participants/ui/General.xml" async="true"/>
+              </object>
+            </object>
+            <object type="jsx3.gui.Tab">
+              <variants patchedSetText="true"/>
+              <strings jsxname="tab2" jsxtext="Business Location"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="1"/>
+                <strings jsxwidth="100%" jsxheight="100%" jsxvisibility="" jsxpadding="20" jsxdisplay="none" jsxbg="background-image:url(../GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA"/>
+                <include src="jsxplugin://com.tibco.cmi.participants/ui/LocationList.xml" async="true"/>
+              </object>
+            </object>
+            <object type="jsx3.gui.Tab">
+              <variants patchedSetText="true"/>
+              <strings jsxname="tab" jsxtext="Credentials"/>
+              <object type="jsx3.gui.Block">
+                <variants/>
+                <strings jsxwidth="100%" jsxheight="100%" jsxtext="Tab Content" jsxvisibility="" jsxpadding="20" jsxbg="background-image:url(../GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA" jsxdisplay="none"/>
+              </object>
+            </object>
+            <object type="jsx3.gui.Tab">
+              <variants patchedSetText="true"/>
+              <strings jsxname="tab3" jsxtext="Protocal"/>
+              <object type="jsx3.gui.Block">
+                <variants/>
+                <strings jsxwidth="100%" jsxheight="100%" jsxvisibility="" jsxpadding="20" jsxdisplay="none" jsxbg="background-image:url(../GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA"/>
+                <include src="jsxplugin://com.tibco.cmi.participants/ui/Protocal.xml" async="true"/>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

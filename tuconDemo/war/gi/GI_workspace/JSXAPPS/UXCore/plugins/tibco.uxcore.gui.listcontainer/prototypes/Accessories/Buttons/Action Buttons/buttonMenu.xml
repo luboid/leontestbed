@@ -1,0 +1,19 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Menu</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/delete.gif</icon>
+  <description>A tibco.uxcore.gui.ActionMenuButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.ActionMenuButton">
+    <variants jsxenabled="1" jsxprefetch="1"/>
+    <strings jsxname="actionButtonMenu" jsxoverimage="1" jsxdownimage="1" jsxactionid="menu"/>
+    <dynamics jsxtext="@uxcore10@Btn Text Delete" jsxicon="@uxcore10@Btn Image Delete"/>
+    <object type="jsx3.gui.Menu">
+      <variants jsxxmlasync="1"/>
+      <strings jsxname="menu" jsxtip="menu" jsxtext="menu"
+               jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;  &lt;record jsxid=&quot;1&quot; jsxtext=&quot;New&quot; /&gt;  &lt;record jsxid=&quot;2&quot; jsxtext=&quot;Open&quot;/&gt;  &lt;record jsxid=&quot;3&quot; jsxtext=&quot;Save&quot;/&gt;  &lt;/data&gt;"
+               jsxdisplay="none" jsxvisibility="hidden"/>
+      <events jsxexecute="alert(this+ &quot;  &quot; + objEVENT+ &quot;   &quot; +strRECORDID + &quot;   &quot;+objRECORD)"/>
+    </object>
+  </object>
+</serialization>

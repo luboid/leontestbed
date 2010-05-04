@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+-->
+<data jsxid="jsxroot">
+
+	<!--
+    * CONTAINER.LIST_RECORD_EDITED           = "jsxedit";
+    * CONTAINER.LIST_SEARCH_REQUESTED        = "jsxsearch";
+    * CONTAINER.LIST_VIEW_CHANGED            = "jsxviewchanged";
+    * CONTAINER.LIST_ACTION_REQUESTED        = "jsxaction";
+    * CONTAINER.LIST_VISIBILITY_CHANGED      = "jsxvisibilitychanged";
+    * CONTAINER.LIST_REFRESH_REQUESTED       = "jsxrefresh";
+    * CONTAINER.LIST_COLUMNS_CHANGED         = "jsxcolumnschanged";
+    * CONTAINER.LIST_DATA_CHANGED            = "jsxdatachanged";
+    * CONTAINER.LIST_PAGE_CHANGE_REQUESTED   = "jsxpagechange";
+    * CONTAINER.LIST_RESET                   = "jsxreset";
+    * CONTAINER.LIST_SELECTION_CHANGED       = "jsxselectionchanged";
+    * CONTAINER.LIST_REVERTED                = "jsxreverted";
+    -->
+
+    <!-- Search Requested -->
+    <record jsxid="jsxbeforesearch" jsxtext="Before Search" jsxtip="Fires when the user execute query. Canceling this event prevents searching." vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="queryXML" jsxtext="The XML representation of the search criteria to be applied to the query." type="String"/>
+    </record>
+    <record jsxid="jsxsearch" jsxtext="Search" jsxtip="Fires after the user execute query.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="queryXML" jsxtext="The XML representation of the search criteria to be applied to the query." type="String"/>
+    </record>
+
+    <!-- Search Requested -->
+    <record jsxid="jsxbeforeedit" jsxtext="Before Edit" jsxtip="Fires before the List is edited, to allow vetoing of the edit. Canceling this event prevents the edit." vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="strRecordId" jsxtext="The jsxid of the record the action is being performed on" type="String"/>
+        <record jsxid="strAction" jsxtext="The action being perforemed (one of 'added','deleted','moved' or 'edited')" type="String"/>
+        <record jsxid="entityRecord" jsxtext="A clone of the record Entity object" type="jsx3.xml.Entity"/>
+        <record jsxid="strInsertBefore" jsxtext="For add and move actions, the id of the record to insert before.  'null' indicates the record should be the last child" type="String"/>
+        <record jsxid="objCaller" jsxtext="The class that requested the edit" type="jsx3.lang.Object"/>
+    </record>
+    <record jsxid="jsxedit" jsxtext="After Edit" jsxtip="Fires after the List is edited.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="strRecordId" jsxtext="The jsxid of the record the action is being performed on" type="String"/>
+        <record jsxid="strAction" jsxtext="The action being perforemed (one of 'added','deleted','moved' or 'edited')" type="String"/>
+        <record jsxid="entityRecord" jsxtext="A clone of the record Entity object" type="jsx3.xml.Entity"/>
+        <record jsxid="strInsertBefore" jsxtext="For add and move actions, the id of the record to insert before.  'null' indicates the record should be the last child" type="String"/>
+        <record jsxid="objCaller" jsxtext="The class that requested the edit" type="jsx3.lang.Object"/>
+    </record>
+
+    <!-- View Changed -->
+    <record jsxid="jsxbeforeviewchange" jsxtext="Before ViewChange" jsxtip="Fires when the user change view of list container. Canceling this event prevents view changing." vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="strNewListViewId" jsxtext="the id of the view that was switched to." type="String"/>
+        <record jsxid="strOldListViewId" jsxtext="the id of the view that was switched away from (or null if no previous view was set)." type="String"/>
+    </record>
+    <record jsxid="jsxviewchanged" jsxtext="After ViewChange" jsxtip="Fires after the user change view of list container.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="strNewListViewId" jsxtext="the id of the view that was switched to." type="String"/>
+        <record jsxid="strOldListViewId" jsxtext="the id of the view that was switched away from (or null if no previous view was set)." type="String"/>
+    </record>
+
+    <!-- Action Requested -->
+    <record jsxid="jsxbeforeaction" jsxtext="Before Action" jsxtip="Fires when an ActionButton action is being requested. Canceling this event prevents action." vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="strActionId" jsxtext="the id of the action being requested." type="String"/>
+    </record>
+    <record jsxid="jsxaction" jsxtext="Action" jsxtip="Fires after the user change view of list container.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="strActionId" jsxtext="the id of the action being requested." type="String"/>
+    </record>
+
+    <!-- Visibility Changed -->
+    <record jsxid="jsxbeforevisibilitychange" jsxtext="Before VisibilityChange" jsxtip="Fires when the user change view's visibility of list container. Canceling this event prevents view visibility changing." vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="bVisible" jsxtext="the visibility state to be set (true for visible, false for hidden." type="String"/>
+    </record>
+    <record jsxid="jsxvisibilitychanged" jsxtext="After VisibilityChange" jsxtip="Fires after the user change view's visibility of list container.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="bVisible" jsxtext="the visibility state to be set (true for visible, false for hidden." type="String"/>
+    </record>
+
+    <!-- Refresh Requested -->
+    <record jsxid="jsxbeforerefresh" jsxtext="Before Refresh" jsxtip="Fires when a data refresh is being requested. Canceling this event prevents data refreshing." vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+    </record>
+    <record jsxid="jsxrefresh" jsxtext="Refresh" jsxtip="Fires after a data refresh is being requested.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+    </record>
+
+    <!-- Columns Changed -->
+    <record jsxid="jsxbeforecolumnschanged" jsxtext="Before ColumnsChanged" jsxtip="Fires when column change is being requested. Canceling this event prevents changing columns." vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="arrNewAtts" jsxtext="array of Strings representing the jsxattribute names for the columns to be shown in the list." type="Array"/>
+        <record jsxid="arrOldAtts" jsxtext="columns currently showned in the list." type="Array"/>
+    </record>
+    <record jsxid="jsxcolumnschanged" jsxtext="After ColumnsChanged" jsxtip="Fires after column change is being requested.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="arrNewAtts" jsxtext="array of Strings representing the jsxattribute names for the columns to be shown in the list." type="Array"/>
+        <record jsxid="arrOldAtts" jsxtext="columns currently showned in the list." type="Array"/>
+    </record>
+
+    <!-- Data Changed -->
+    <record jsxid="jsxbeforedatachange" jsxtext="Before DataChange" jsxtip="Fires when the user change view's data. Canceling this event prevents view data changing." vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="dataCDF" jsxtext="the cdf data." type="jsx3.xml.CDF.Document"/>
+        <record jsxid="intCurrentPage" jsxtext="the page number of the data, with respect to the whole data set." type="Integer"/>
+        <record jsxid="intTotalPages" jsxtext="This parameter is used for browse type. Specifies the browse component id that this cdf blongs to." type="Integer"/>
+        <record jsxid="auxId" jsxtext="the auxiliary data id" type="String"/>
+    </record>
+    <record jsxid="jsxdatachanged" jsxtext="After DataChange" jsxtip="Fires after the user change view's data.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="dataCDF" jsxtext="the cdf data." type="jsx3.xml.CDF.Document"/>
+        <record jsxid="intCurrentPage" jsxtext="the page number of the data, with respect to the whole data set." type="Integer"/>
+        <record jsxid="intTotalPages" jsxtext="This parameter is used for browse type. Specifies the browse component id that this cdf blongs to." type="Integer"/>
+        <record jsxid="auxId" jsxtext="the auxiliary data id" type="String"/>
+    </record>
+
+	<!-- Page Changed -->
+    <record jsxid="jsxbeforepagechange" jsxtext="Before PageChange" jsxtip="Fires when the user change page of list container. Canceling this event prevents page changing." vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="intNewPage" jsxtext="the page to change to." type="Integer"/>
+        <record jsxid="intOldPage" jsxtext="the page being changed from (or 0 if no previous page was set)." type="Integer"/>
+        <record jsxid="intTotalPages" jsxtext="the total number of pages in the data set." type="Integer"/>
+    </record>
+    <record jsxid="jsxpagechange" jsxtext="PageChange" jsxtip="Fires after the user change page of list container.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="intNewPage" jsxtext="the page to change to." type="Integer"/>
+        <record jsxid="intOldPage" jsxtext="the page being changed from (or 0 if no previous page was set)." type="Integer"/>
+        <record jsxid="intTotalPages" jsxtext="the total number of pages in the data set." type="Integer"/>
+    </record>
+
+    <!-- Reset -->
+    <record jsxid="jsxbeforereset" jsxtext="Before Reset" jsxtip="Fires when the user reset list container. Canceling this event prevents resetting." vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+    </record>
+    <record jsxid="jsxreset" jsxtext="Reset" jsxtip="Fires after the user reset of list container.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+    </record>
+
+    <!-- Selection Changed -->
+    <record jsxid="jsxbeforeselect" jsxtext="Before Select" jsxtip="Fires when the user change selection of list view." vetoable="0">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="arrRecordIds" jsxtext="array of the jsxids of the records that are currently selected in the list" type="Array"/>
+        <record jsxid="auxId" jsxtext="an Auxiliary object id" type="String"/>
+    </record>
+    <record jsxid="jsxselectionchanged" jsxtext="After Select" jsxtip="Fires after user change selection of list view.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="arrRecordIds" jsxtext="array of the jsxids of the records that are currently selected in the list" type="Array"/>
+        <record jsxid="auxId" jsxtext="an Auxiliary object id" type="String"/>
+    </record>
+
+    <!-- Revert -->
+    <record jsxid="jsxbeforerevert" jsxtext="Before Revert" jsxtip="Fires when the user revert view in edit mode. Canceling this event prevents revertting." vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+    </record>
+    <record jsxid="jsxreverted" jsxtext="After Revert" jsxtip="Fires after the user revert view in edit mode.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+    </record>
+
+    <record jsxid="jsxchange" jsxtext="After Change" jsxtip="Fires after the data or selection has been changed, reverted, or reset.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="isDirty" jsxtext="Whether or not the ListContainer state is dirty" type="boolean"/>
+        <record jsxid="type" jsxtext="The type of change.  One of: select, edit, revert, reset, or datachange (which may include selection changes)" type="String"/>
+    </record>
+</data>

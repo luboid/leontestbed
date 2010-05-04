@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+-->
+<data jsxid="jsxroot">
+
+    <!-- Key Down -->
+    <record jsxid="jsxkeydown" jsxtext="Key Down" jsxtip="Fires when a key down event occurs on the text field.">
+        <record jsxid="this" jsxtext="the form field object that publishes this event." type="$class$"/>
+    </record>
+
+    <!-- Key Down -->
+    <record jsxid="jsxkeyup" jsxtext="Key Up" jsxtip="Fires when a key up event occurs on the text field.">
+        <record jsxid="this" jsxtext="the form field object that publishes this event." type="$class$"/>
+    </record>
+
+    <!-- Key Down -->
+    <record jsxid="jsxkeypress" jsxtext="Key Pressed" jsxtip="Fires when a key press event occurs on the text field.">
+        <record jsxid="this" jsxtext="the form field object that publishes this event." type="$class$"/>
+    </record>
+
+    <!-- Link Clicked -->
+    <record jsxid="jsxlinkclicked" jsxtext="Link Clicked" jsxtip="Fires when the user clicks the link.">
+        <record jsxid="this" jsxtext="the form field object that publishes this event." type="$class$"/>
+    </record>
+
+</data>

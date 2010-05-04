@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+	<record group="object" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="position" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+
+
+	<record group="1" jsxid="jsx3block" jsxtext="Block">
+
+		<record children="1" group="jsxtext" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+		<record children="1" group="jsxtagname" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	</record>
+
+    <record group="1" jsxid="wizard" jsxtext="Wizard">
+        <record jsxid="activecolor"  jsxtext="Active Color"
+            docgetter="getActiveColor"
+            docsetter="setActiveColor"
+            eval="0"
+            jsxmask="jsxcolor"
+            jsxtip="The font color to use for the active step">
+        </record>
+
+        <record jsxid="inactivecolor"  jsxtext="Inactive Color"
+            docgetter="getInactiveColor"
+            docsetter="setInactiveColor"
+            eval="0"
+            jsxmask="jsxcolor"
+            jsxtip="The font color to use for the inactive steps">
+        </record>
+
+        <record jsxid="activebg"  jsxtext="Active Background"
+            docgetter="getActiveBackground"
+            docsetter="setActiveBackground"
+            eval="0"
+            jsxmask="jsxcolor"
+            jsxtip="The background to use for the active step">
+        </record>
+
+        <record jsxid="inactivebg"  jsxtext="Inactive Background"
+            docgetter="getInactiveBackground"
+            docsetter="setInactiveBackground"
+            eval="0"
+            jsxmask="jsxcolor"
+            jsxtip="The background to use for the inactive steps">
+        </record>
+    </record>
+
+	<record group="font" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="box" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="css" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="interaction" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="drag" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="move" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="access" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="metadata" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+</data>

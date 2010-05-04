@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<serialization jsxversion="3.8" xmlns="urn:tibco.com/v3.0">
+  <name><![CDATA[Block - 100%]]></name>
+  <icon><![CDATA[images/prototypes/block.gif]]></icon>
+  <description><![CDATA[Simple block, relatively positioned with overflow=scroll.]]></description>
+  <object type="com.tibco.cmi.editAgreement.EditAgreement">
+    <variants jsxoverflow="2"></variants>
+    <strings jsxheight="100%" jsxname="blkEditAgreement" jsxwidth="100%" jsxrelativeposition="1"></strings>
+    <object type="tibco.uxcore.gui.MasterDetail">
+      <variants jsxorientation="1" jsxenabled="0"></variants>
+      <strings jsxname="editAgreementLayout" jsxvsplitimage="" jsxhsplitimage="" jsxsubcontainer1pct="*,0"></strings>
+      <dynamics></dynamics>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="2"></variants>
+        <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"></strings>
+        <dynamics></dynamics>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2" jsxheight="500"></variants>
+          <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"></strings>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="1" jsxheight="30" jsxfontsize="13"></variants>
+            <strings jsxname="blkEditAgreementTitle" jsxwidth="100%" jsxrelativeposition="1" jsxtext="Edit Agreement: host-partner" jsxfontname="arial" jsxfontweight="bold" jsxpadding="5"></strings>
+          </object>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="2"></variants>
+            <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"></strings>
+            <object type="tibco.uxcore.gui.MasterDetail">
+              <variants jsxorientation="1" jsxenabled="0"></variants>
+              <strings jsxname="masterDetail" jsxvsplitimage="" jsxhsplitimage="" jsxsubcontainer1pct="25,*"></strings>
+              <dynamics></dynamics>
+              <object type="jsx3.gui.Block">
+                <variants></variants>
+                <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxtextalign="right"></strings>
+                <dynamics></dynamics>
+                <object type="tibco.uxcore.gui.Button">
+                  <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
+                  <strings jsxname="btnSave" jsxtext="Save" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+                  <dynamics></dynamics>
+                  <events jsxexecute="this.getAncestorOfName(&quot;blkEditAgreement&quot;).saveAgreement();"></events>
+                </object>
+                <object type="tibco.uxcore.gui.Button">
+                  <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
+                  <strings jsxname="btnCancel" jsxtext="Cancel" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+                  <dynamics></dynamics>
+                  <events jsxexecute="this.getAncestorOfName(&quot;blkEditAgreement&quot;).cancel();"></events>
+                </object>
+                <object type="tibco.uxcore.gui.Button">
+                  <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
+                  <strings jsxname="btnApply" jsxtext="Apply" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1" jsxmargin="2 5 2 2"></strings>
+                  <dynamics></dynamics>
+                  <events jsxexecute="jsx3.log(this + ' was executed.');"></events>
+                </object>
+              </object>
+              <object type="jsx3.gui.Block">
+                <variants></variants>
+                <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"></strings>
+                <object type="tibco.uxcore.gui.MasterDetail">
+                  <variants jsxorientation="1" jsxenabled="0"></variants>
+                  <strings jsxname="masterDetail" jsxsubcontainer1pct="130,*" jsxvsplitimage="" jsxhsplitimage=""></strings>
+                  <dynamics></dynamics>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxoverflow="2"></variants>
+                    <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="5"></strings>
+                    <object type="tibco.uxcore.gui.Section">
+                      <variants></variants>
+                      <strings jsxname="section" jsxwidth="100%" jsxheight="100%"></strings>
+                      <object type="tibco.uxcore.gui.TitleBox">
+                        <variants></variants>
+                        <strings jsxname="titleBox" jsxwidth="100%" title="Agreement" titleFontSize="12"></strings>
+                      </object>
+                      <object type="jsx3.gui.Block">
+                        <variants jsxoverflow="1" jsxheight="20"></variants>
+                        <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxbgcolor="#BBBBBB" jsxmargin="0 0 1 0"></strings>
+                        <object type="tibco.uxcore.gui.MasterDetail">
+                          <variants jsxorientation="0" jsxenabled="0"></variants>
+                          <strings jsxname="masterDetail" jsxsubcontainer1pct="30%" jsxvsplitimage="" jsxhsplitimage=""></strings>
+                          <dynamics></dynamics>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtext="This Party" jsxtextalign="right" jsxbgcolor="#BBBBBB"></strings>
+                          </object>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="blk" jsxwidth="100%" jsxheight="100%" jsxtext="host" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
+                          </object>
+                        </object>
+                      </object>
+                      <object type="jsx3.gui.Block">
+                        <variants jsxoverflow="1" jsxheight="20"></variants>
+                        <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxbgcolor="#BBBBBB" jsxmargin="0 0 1 0"></strings>
+                        <object type="tibco.uxcore.gui.MasterDetail">
+                          <variants jsxorientation="0" jsxenabled="0"></variants>
+                          <strings jsxname="masterDetail" jsxsubcontainer1pct="30%" jsxvsplitimage="" jsxhsplitimage=""></strings>
+                          <dynamics></dynamics>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtext="Counter Party" jsxtextalign="right" jsxbgcolor="#BBBBBB"></strings>
+                          </object>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="blk" jsxwidth="100%" jsxheight="100%" jsxtext="partner" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
+                          </object>
+                        </object>
+                      </object>
+                      <object type="jsx3.gui.Block">
+                        <variants jsxoverflow="1" jsxheight="20"></variants>
+                        <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxbgcolor="#BBBBBB" jsxmargin="0 0 1 0"></strings>
+                        <object type="tibco.uxcore.gui.MasterDetail">
+                          <variants jsxorientation="0" jsxenabled="0"></variants>
+                          <strings jsxname="masterDetail" jsxsubcontainer1pct="30%" jsxvsplitimage="" jsxhsplitimage=""></strings>
+                          <dynamics></dynamics>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtext="Valid" jsxtextalign="right" jsxbgcolor="#BBBBBB"></strings>
+                          </object>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="blk" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
+                            <object type="jsx3.gui.CheckBox">
+                              <variants jsxheight="18" jsxdefaultchecked="0"></variants>
+                              <strings jsxname="checkbox" jsxmargin="0 4 0 0"></strings>
+                              <events jsxexecute="jsx3.log('The jsxexecute method was fired for checkbox ' + this);"></events>
+                            </object>
+                          </object>
+                        </object>
+                      </object>
+                      <object type="jsx3.gui.Block">
+                        <variants jsxoverflow="1" jsxheight="20"></variants>
+                        <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxbgcolor="#BBBBBB" jsxmargin="0 0 1 0"></strings>
+                        <object type="tibco.uxcore.gui.MasterDetail">
+                          <variants jsxorientation="0" jsxenabled="0"></variants>
+                          <strings jsxname="masterDetail" jsxsubcontainer1pct="30%" jsxvsplitimage="" jsxhsplitimage=""></strings>
+                          <dynamics></dynamics>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtext="Start Date" jsxtextalign="right" jsxbgcolor="#BBBBBB"></strings>
+                          </object>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="blk" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
+                            <object type="jsx3.gui.DatePicker">
+                              <variants jsxwidth="100" jsxrelativeposition="1" jsxheight="18"></variants>
+                              <strings jsxname="startDate" jsxmargin="0 4 0 0"></strings>
+                            </object>
+                          </object>
+                        </object>
+                      </object>
+                      <object type="jsx3.gui.Block">
+                        <variants jsxoverflow="1" jsxheight="20"></variants>
+                        <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxbgcolor="#BBBBBB"></strings>
+                        <object type="tibco.uxcore.gui.MasterDetail">
+                          <variants jsxorientation="0" jsxenabled="0"></variants>
+                          <strings jsxname="masterDetail" jsxsubcontainer1pct="30%" jsxvsplitimage="" jsxhsplitimage=""></strings>
+                          <dynamics></dynamics>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtext="End Date" jsxtextalign="right" jsxbgcolor="#BBBBBB"></strings>
+                          </object>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="blk" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
+                            <object type="jsx3.gui.DatePicker">
+                              <variants jsxwidth="100" jsxrelativeposition="1" jsxheight="18"></variants>
+                              <strings jsxname="endDate" jsxmargin="0 4 0 0"></strings>
+                            </object>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxoverflow="2"></variants>
+                    <strings jsxname="pane" jsxwidth="100%" jsxheight="60%" jsxpadding="5"></strings>
+                    <object type="tibco.uxcore.gui.Section">
+                      <variants></variants>
+                      <strings jsxname="section" jsxwidth="100%" jsxheight="100%"></strings>
+                      <object type="tibco.uxcore.gui.TitleBox">
+                        <variants></variants>
+                        <strings jsxname="titleBox" jsxwidth="100%" title="Protocol Bindings" titleFontSize="12"></strings>
+                      </object>
+                      <object type="tibco.uxcore.gui.MasterDetail">
+                        <variants jsxorientation="1" jsxenabled="0"></variants>
+                        <strings jsxname="masterDetail" jsxvsplitimage="" jsxhsplitimage="" jsxsubcontainer1pct="20,*"></strings>
+                        <dynamics></dynamics>
+                        <object type="jsx3.gui.Block">
+                          <variants></variants>
+                          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"></strings>
+                          <dynamics></dynamics>
+                          <object type="tibco.uxcore.gui.Button">
+                            <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
+                            <strings jsxname="btnAddBinding" jsxtext="Add Protocol Binding" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+                            <dynamics></dynamics>
+                            <events jsxexecute="this.getAncestorOfName(&quot;blkEditAgreement&quot;).newProtocol();"></events>
+                          </object>
+                          <object type="tibco.uxcore.gui.Button">
+                            <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0" jsxenabled="0"></variants>
+                            <strings jsxname="btnRemove" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+                            <dynamics></dynamics>
+                            <events jsxexecute="jsx3.log(this + ' was executed.');"></events>
+                          </object>
+                        </object>
+                        <object type="jsx3.gui.Block">
+                          <variants></variants>
+                          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"></strings>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxoverflow="2" _masked="false"></variants>
+                            <strings jsxname="matrixBlock" jsxwidth="100%" jsxheight="90%" jsxrelativeposition="1"></strings>
+                            <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"></dynamics>
+                            <object type="tibco.uxcore.gui.Matrix">
+                              <variants jsxsloaddefaultproperties="true" jsxpagingmodel="1" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"></variants>
+                              <strings jsxname="mtxProtocolBinding" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;&#xA;   &lt;record jsxid=&quot;AI&quot;  protocolName=&quot;EDI-EDIFACT &quot;/&gt;&#xA;&lt;/data&gt;"></strings>
+                              <dynamics></dynamics>
+                              <object type="jsx3.gui.Matrix.Column">
+                                <variants jsxwidth="25"></variants>
+                                <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxvaluetemplate="@empty"></strings>
+                                <dynamics></dynamics>
+                                <object type="jsx3.gui.CheckBox">
+                                  <variants jsxdefaultchecked="0" jsxchecked="0" jsxenabled="1"></variants>
+                                  <strings jsxname="checkboxMask" jsxtext=""></strings>
+                                </object>
+                              </object>
+                              <object type="jsx3.gui.Matrix.Column">
+                                <variants jsxwidth="290"></variants>
+                                <strings jsxname="colProtocolName" jsxtext="Agreement Protocol Binding" jsxpath="protocolName" jsxvaluetemplate="&lt;xsl:template xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;&#xA;  &lt;label style=&quot;text-decoration:underline;cursor:pointer;&quot; onclick=&quot;com.tibco.cmi.getJSXByName('blkEditAgreement').editProtocol()&quot;&gt;&lt;xsl:value-of select=&quot;@protocolName&quot;/&gt;&lt;/label&gt;&#xA;&lt;/xsl:template&gt;"></strings>
+                                <dynamics></dynamics>
+                              </object>
+                            </object>
+                          </object>
+                        </object>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="2" jsxheight="500"></variants>
+        <strings jsxname="blkEditContainer" jsxwidth="100%"></strings>
+      </object>
+    </object>
+  </object>
+</serialization>

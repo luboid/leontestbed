@@ -1,0 +1,10 @@
+<!--
+  ~ Copyright (c) 2001-2009, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+
+<gi-merger>
+  <file path="TitleBox.js" provides="tibco.uxcore.gui.TitleBox" requires=""/>
+  <file path="Section.js" provides="tibco.uxcore.gui.Section"
+        requires="tibco.ucore.gui.TitleBox"/>
+</gi-merger>

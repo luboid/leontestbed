@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+-->
+<data jsxid="jsxroot">
+
+    <!-- Save Clicked -->
+    <record jsxid="saveclicked" jsxtext="onSave" jsxtip="Fires when a form group save is requested.">
+        <record jsxid="this" jsxtext="the form field object that publishes this event." type="$class$"/>
+    </record>
+
+    <!-- Revert Requested -->
+    <record jsxid="contentreverted" jsxtext="onAfterRevert" jsxtip="Fires after form group content is reverted.">
+        <record jsxid="this" jsxtext="the form field object that publishes this event." type="$class$"/>
+    </record>
+
+    <record jsxid="jsxchange" jsxtext="After Change" jsxtip="Fires after the field data has been changed or reverted.  If the field is a ListContainerFormField, also fires on selection events or a reset.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="formfield" jsxtext="the formfield from which the change was triggered." type="tibco.uxcore.gui.FormField"/>
+        <record jsxid="isDirty" jsxtext="Whether or not the Form Group state is dirty" type="boolean"/>
+        <record jsxid="type" jsxtext="The type of change.  One of: select, edit, revert, reset, or datachange (which may include selection changes).  select, reset, and datachange will only come from ListContainerFormFields.  The edit type can come from any type of FormField.  The revert type will only be triggered once for the whole form group" type="String"/>
+    </record>
+
+    <record jsxid="onCloseMessage" jsxtext="On Close Message" jsxtip="Fires after the user manually closes the message area (used for success and error notifications) at the top of the form group.  Evaluate to false to veto the closing of the message.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>
+        <record jsxid="intTYPE" jsxtext="the type of message being closed.  One of: tibco.uxcore.gui.Form.TYPE_GLOBAL_ERROR, tibco.uxcore.gui.Form.TYPE_ERROR, tibco.uxcore.gui.Form.TYPE_SUCCESS, tibco.uxcore.gui.Form.TYPE_SAVING" type="integer"/>
+        <record jsxid="strMESSAGE" jsxtext="the text of the message being closed." type="string"/>
+    </record>
+</data>

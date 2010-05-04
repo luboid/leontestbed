@@ -1,0 +1,17 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.gui.wizard2"
+        name="UX Core Wizard"
+        version="0.1">
+
+  <requires>
+      <plugin id="tibco.uxcore.common"/>
+      <plugin id="tibco.uxcore.gui.dialog"/>
+  </requires>
+
+  <resources>
+    <script id="uxwizard_uxcore-plugin_js" path="classes/uxcore-plugin.js" eval="true"/>
+  </resources>
+
+</plugin>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxnamespace="propsbundle" locales="">
+  <locale>
+      <record jsxid="uxcore@formrow@defaultTitle" jsxtext="[Field Name]"/>
+      <record jsxid="uxcore@formrow@requiredText" jsxtext=""/>
+      <record jsxid="uxcore@formrow@optionalText" jsxtext="(optional)"/>
+      <record jsxid="uxcore@forms@validation@field@defaultError" jsxtext="{0} value is not valid"/>
+  </locale>
+</data>

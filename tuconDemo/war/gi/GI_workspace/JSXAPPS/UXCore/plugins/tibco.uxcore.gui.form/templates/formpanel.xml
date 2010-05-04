@@ -1,0 +1,24 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <template recalc="true">
+        <inlinebox class="formpanel" index="{$index}" jsxindex="{$jsxindex}" label="{$label}" title="{$tip}"
+                   style="width: {donotsetme|100%}; display:{$display}; top: 0px;" tabindex="{donotsetme3|-1}">
+            <if test="MODE == 'paintchild'">
+            <var name="jsxdrawspace">{}</var>
+            </if>
+            <var name="childwidth" triggers="jsxwidth">this.getChildWidth($$parentwidth ? $$parentwidth : null)</var>
+            <var name="viewpanewidth" triggers="jsxwidth">(this.getChildren().length > 0) ? ((childwidth * this.getChildren().length) + (this.getChildSpacing() * (this.getChildren().length - 1))) : null</var>
+                <div u:id="panelspane" style="position: relative; width: {viewpanewidth}" tabindex="-1">
+                    <var name="titledisplay">(this.allowTitle() &amp;&amp; this.getTitleText()) ? '' : 'none'</var>
+                    <var name="handleImage">this.isOpen() ? tibco.uxcore.System.getServer().resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/arrowDown.gif') : tibco.uxcore.System.getServer().resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/arrow.gif')</var>
+                    <var name="contentdisplay">(this.allowTitle() &amp;&amp; this.getTitleText() &amp;&amp; (this.jsxopen == jsx3.Boolean.FALSE)) ? 'none' : ''</var>
+                    <var name="titleborder">'0px solid #D2D2D2; 0px solid #D2D2D2; 1px solid #D2D2D2; 0px solid #D2D2D2'</var>
+                    <div style="display: {titledisplay}; width: 100%; padding: 0px 0px 15px 0px;"><div style="border: {titleborder}; width:100%; cursor: pointer; overflow: hidden;" onclick="{toggleDisplay}"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td valign="middle" width="10"><img u:id="handle" src="{handleImage}" height="10"/></td><td valign="middle"><span style="font-size: 12px; color: #000000; font-family: Arial; font-weight: bold; padding: 0px 0px 0px 5px;"><text>{titletext|}</text></span></td></tr></tbody></table></div></div>
+                    <div u:id="contentpane" style="display: {contentdisplay}; width: 100%;" tabindex="-1">
+                        <attach select="new jsx3.util.List(this.getFormChildren()).iterator()">
+                            <drawspace boxtype="'box'" position="'relative'" top="0" margin="'0px 0px 0px ' + (($$target.getChildIndex() == 0) ? '0px' : (this.getChildSpacing() + 'px'))" width="this.getPaintProfile().childwidth"/>
+                        </attach>
+                    </div>
+                </div>
+        </inlinebox>
+    </template>
+</transform>

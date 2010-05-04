@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<data jsxid="jsxroot">
+
+    <record jsxid="object" group="1" jsxtext="Object" jsxopen="1" jsxunselectable="1">
+        <record jsxid="jsxinstanceof" jsxtext="Object Type" getter="getClass"
+                jsxtip="The JSX foundation class that this object is an instance of." docnoprop="true" eval="0"
+                uneditable="1"/>
+        <record jsxid="_jsxid" jsxtext="ID" jsxtip="The unique, system-assigned ID for this object." docgetter="getId"
+                docnoprop="true" eval="0" uneditable="1"/>
+        <record jsxid="jsxname" jsxtext="Name" jsxtip="Sets the name assigned by the developer to identify this object."
+                jsxexecute="objJSX.setName(vntValue);" domchanged="true" docgetter="getName" docsetter="setName"
+                eval="0" disallow="[\[\]\u0022\u003C\u003E\u0027\u0026\\]" jsxmask="jsxtext"/>
+    </record>
+    <record group="1" jsxid="uxcoreDesktop" jsxtext="DeskTop">
+        <record jsxid="desktoplogo" jsxtext="Desktop Logo"
+                jsxtip="Sets the logo for the Desktop"
+                docgetter="getLogoImage" docsetter="setLogoImage"
+                eval="0"
+                jsxexecute="objJSX.setLogoImage(vntValue);"
+                jsxmask="jsxtext"/>
+        <record jsxid="minSize" jsxtext="Minimum Size"
+                jsxtip="Sets the minimum size of the browser window to display the application.  Specified as a dimension in the format of WxH. Note that this is not the same as the actual application's size, as window borders, title bar, and toolbars will decrease the view pane's size.  The view pane minimum size will therefore be calculated using an allowance of 118 pixels for the vertical dimension and 30 pixels for the horizontal dimension.  Please take this into account when setting the minimum desktop size."
+                docgetter="getMinimumSize" docsetter="setMinimumSize" docdefault="1024x768"
+                eval="0"
+                jsxexecute="objJSX.setMinimumSize(vntValue);"
+                jsxmask="jsxtext"/>
+        <record jsxid="poitext" jsxtext="POI Text"
+                jsxtip="Sets the text content of the process operation indicator"
+                docgetter="getPoiText" docsetter="setPoiText"
+                eval="0"
+                jsxexecute="objJSX.setPoiText(vntValue);"
+                jsxmask="jsxtext"/>
+       <record jsxid="poitooltip" jsxtext="POI Tool Tip"
+                jsxtip="Sets the tool tip for process operation indicator"
+                docgetter="getTip" docsetter="setTip"
+                eval="0"
+                jsxexecute="objJSX.setTip(vntValue);"
+                jsxmask="jsxtext"/>
+        <record jsxid="poidisplay" jsxtext="Display POI"
+                eval="0"
+                jsxtip="Used to hide process operation indicator without removing it from the DOM hierarchy."
+                docgetter="getDisplayPoi" docsetter="setDisplayPoi"
+                docdefault="Block (&lt;code&gt;tibco.uxcore.gui.Desktop.DISPLAYINLINE&lt;/code&gt;)"
+                jsxexecute="objJSX.setDisplayPoi(vntValue,true)"
+                jsxmask="jsxselect">
+            <enum jsxid="tibco.uxcore.gui.Desktop.DISPLAYINLINE" jsxtext="Inline"/>
+            <enum jsxid="jsx3.gui.Block.DISPLAYNONE" jsxtext="None"/>
+        </record>
+
+        <record jsxid="poivisibility" jsxtext="Visibility POI"
+                eval="0"
+                jsxtip="Sets the CSS visibility property for process operation indicator. When set to Hidden, content is hidden."
+                docgetter="getVisibilityPoi" docsetter="setVisibilityPoi"
+                docdefault="Visible (&lt;code&gt;jsx3.gui.Block.VISIBILITYVISIBLE&lt;/code&gt;)"
+                jsxexecute="objJSX.setVisibilityPoi(vntValue);"
+                jsxmask="jsxselect">
+            <enum jsxid="jsx3.gui.Block.VISIBILITYVISIBLE" jsxtext="Visible"/>
+            <enum jsxid="jsx3.gui.Block.VISIBILITYHIDDEN" jsxtext="Hidden"/>
+        </record>
+
+
+    </record>
+
+
+    <record jsxid="interaction" group="1" jsxtext="Interaction" jsxopen="1" jsxunselectable="1">
+        <!--record jsxid="jsxcursor" jsxtext="Cursor" eval="0"
+                jsxtip="Sets the CSS cursor definition, such as &lt;code&gt;default&lt;/code&gt;, &lt;code&gt;wait&lt;/code&gt;, or &lt;code&gt;col-resize&lt;/code&gt;."
+                docgetter="getCursor" docsetter="setCursor" docdefault="Empty" disallow="" jsxmask="jsxtext"/-->
+        <record jsxid="jsxkeycode" jsxtext="Key Binding" eval="0"
+                jsxtip="Sets the key binding (keyboard shortcut) for this form control, which is specified as a '+' delimited string. For example, &lt;code&gt;ctrl+s&lt;/code&gt;. See API Documentation for &lt;code&gt;jsx3.gui.Form.doKeyBinding()&lt;/code&gt;."
+                docgetter="getKeyBinding" docsetter="setKeyBinding" disallow="[^\da-zA-Z\+\]\[]" jsxmask="jsxtext"/>
+    </record>
+
+    <!--record jsxid="drag" group="1" jsxtext="Drop">
+        <record jsxid="jsxdrop" jsxtext="Can Drop On"
+                eval="1"
+                jsxtip="If &lt;code&gt;true (1)&lt;/code&gt; (Enabled), this object can be the target of drop events."
+                docgetter="getCanDrop" docsetter="getCanDrop"
+                docdefault="Disabled (&lt;code&gt;jsx3.Boolean.FALSE&lt;/code&gt;)"
+                jsxmask="jsxselect">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="Enabled"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="Disabled"/>
+        </record>
+    </record-->
+
+    <record jsxid="access" group="1" jsxtext="Accessibility" jsxopen="1" jsxunselectable="1">
+        <record jsxid="jsxindex" jsxtext="Tab Index" eval="1"
+                jsxtip="Sets the tab index. When tabbing between controls, the index group this component belongs to."
+                docgetter="getIndex" docsetter="setIndex" docdefault="Empty"
+                jsxexecute="objJSX.setIndex(vntValue,true);" disallow="[^0-9^-]" jsxmask="jsxtext"/>
+        <record jsxid="jsxtip" jsxtext="Tooltip" eval="0"
+                jsxtip="Sets the text displayed when hovered over this object (text only)." docgetter="getTip"
+                docsetter="setTip" docdefault="Empty" jsxexecute="objJSX.setTip(vntValue,true);" jsxmask="jsxtextarea"/>
+    </record>
+
+
+</data>

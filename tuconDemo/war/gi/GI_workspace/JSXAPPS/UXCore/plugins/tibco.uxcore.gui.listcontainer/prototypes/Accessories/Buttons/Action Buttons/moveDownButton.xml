@@ -1,0 +1,12 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Move Down</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/moveDown.png</icon>
+  <description>A tibco.uxcore.gui.ActionButton object for moving records down in a TreeListBuilder.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+    <object type="tibco.uxcore.gui.MoveRecordButton">
+      <variants jsxenabled="0" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+      <strings jsxname="actionButtonNew" jsxactionid="MoveDown" jsxtext="Move Down"/>
+      <dynamics/>
+    </object>
+</serialization>

@@ -1,0 +1,9 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Button</name>
+  <icon>jsxplugin://tibco.uxcore.common/images/prototype/button.gif</icon>
+  <object type="tibco.uxcore.gui.Button">
+    <variants focusstyle="1" jsxheight="18"/>
+    <strings jsxname="button" jsxtext="[Button]" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
+    <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+  </object>
+</serialization>

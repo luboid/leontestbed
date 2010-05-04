@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+  <record group="object" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="1" jsxid="jsx3block" jsxtext="Block">
+    <record children="1" group="jsxtagname" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  </record>
+  <record group="1" jsxid="uxcoreFormRow" jsxtext="Form Field">
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='fieldinstructionstext']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='alwaysShowInstructions']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='jsxenabled']" include="FormField.xml"/>
+      <record jsxid="buttonalignment"  jsxtext="Button Alignment"
+          docgetter="getButtonAlignment" docsetter="setButtonAlignment"
+          jsxexecute="objJSX.setButtonAlignment(vntValue, true);"
+          docdefault="jsx3.gui.Block.ALIGNLEFT"
+          eval="0"
+          jsxmask="jsxselect"
+          jsxtip="Sets the alignment of the button">
+        <enum jsxid="jsx3.gui.Block.ALIGNLEFT" jsxtext="Left"/>
+        <enum jsxid="jsx3.gui.Block.ALIGNRIGHT" jsxtext="Right"/>
+        <enum jsxid="jsx3.gui.Block.ALIGNCENTER" jsxtext="Center"/>
+      </record>
+  </record>
+  <record group="css" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="interaction" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="drag" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="move" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="metadata" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+</data>

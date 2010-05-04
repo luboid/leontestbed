@@ -1,0 +1,53 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Block - 100%</name>
+  <icon>images/prototypes/block.gif</icon>
+  <description>Simple block, relatively positioned with overflow=scroll.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20"/>
+    <object type="jsx3.gui.Block">
+      <variants jsxrelativeposition="1" jsxoverflow="3"/>
+      <strings jsxname="label" jsxtext="This is a UxCore Dialog" jsxfontweight="bold"/>
+    </object>
+    <object type="tibco.uxcore.gui.Dialog">
+      <variants jsxwidth="500" jsxheight="350" jsxzindex="5000" jsxwindowstate="1" jsxoverflow="2" jsxleft="50" jsxtop="67"/>
+      <strings jsxname="dialog"/>
+      <dynamics/>
+      <object type="jsx3.gui.WindowBar">
+        <variants jsxheight="30"/>
+        <strings jsxname="windowBar" jsxtext="Test Dialog"/>
+        <dynamics/>
+        <object type="jsx3.gui.ImageButton">
+          <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="btnClose"/>
+          <dynamics/>
+        </object>
+        <object type="jsx3.gui.ImageButton">
+          <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="btnMaximize"/>
+          <dynamics/>
+        </object>
+        <object type="jsx3.gui.ImageButton">
+          <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="btnMinimize"/>
+          <dynamics/>
+        </object>
+      </object>
+      <object type="jsx3.gui.Block">
+        <variants/>
+        <strings jsxname="content" jsxwidth="100%" jsxheight="100%"/>
+        <dynamics/>
+        <object type="jsx3.gui.Block">
+          <variants jsxrelativeposition="1" jsxoverflow="3"/>
+          <strings jsxname="label" jsxtext="[label]"/>
+        </object>
+        <object type="jsx3.gui.Image">
+          <variants jsxoverflow="2" jsxrelativeposition="1"/>
+          <strings jsxname="image" jsxsrc="jsx:///images/icons/logo_234_18.gif"/>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

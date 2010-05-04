@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>FilterSearch</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/prototype/filter.gif</icon>
+  <description>FilterSearch</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.FilterSearch">
+    <variants jsxheight="20" jsxoverflow="1"/>
+    <strings jsxname="filterSearch" jsxrelativeposition="1" jsxtagname=""/>
+  </object>
+</serialization>

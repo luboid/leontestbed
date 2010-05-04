@@ -1,0 +1,64 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Browse Form Field</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/prototype/browse.png</icon>
+  <description>A UX Core Browse Form Field.</description>
+  <onBeforeDeserialize>undefined</onBeforeDeserialize>
+  <onAfterDeserialize>undefined</onAfterDeserialize>
+    <object type="tibco.uxcore.gui.ListContainerFormField">
+      <variants jsxindex="0" bEditable="true" isrequired="0" jsxenabled="1" jsxheight="200"/>
+      <strings jsxname="listContainerFormField" text="" fieldtitletext="Browse" jsxtitledisplay=""/>
+      <object type="tibco.uxcore.gui.ListContainer">
+        <variants jsxoverflow="1" timer="883" jsxenabled="1" jsxhideactionbg="0" jsxvisibility="true"/>
+        <strings jsxname="listContainer" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxview="myBrowseView"/>
+        <events jsxaction=""/>
+        <object type="tibco.uxcore.gui.HideShowButton">
+          <variants jsxtype="1"/>
+          <strings jsxstate="0" jsxname="btnHideShow"/>
+          <dynamics/>
+        </object>
+        <object type="tibco.uxcore.gui.ActionButton">
+          <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="actionButtonDelete" jsxoverimage="1" jsxdownimage="1" jsxactionid="Delete"/>
+          <dynamics jsxtext="@uxcore10@Btn Text Delete" jsxicon="@uxcore10@Btn Image Delete"/>
+          <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+        </object>
+        <object type="tibco.uxcore.gui.BrowseView">
+          <variants panellabels="['Servers','Nodes','Machines']" panelids="['servers','nodes','machines']" labels="['Servers','Nodes','Machines']" _historyData="[]" selections="[]"/>
+          <strings jsxtext="My Sample Title" jsxname="myBrowseView" jsxpanelwidths="34%,33%,*" _editMode="tibco.uxcore.gui.TableListView.NORMAL_MODE"/>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="2"/>
+            <strings jsxname="panel"/>
+            <object type="tibco.uxcore.gui.Matrix">
+              <variants jsxpagingmodel="0" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxxmlasync="1" jsxheaderheight="0"/>
+              <strings jsxname="matrix1" jsxsortpath="jsxtext" jsxsorttype="text" jsxsortdirection="ascending"/>
+              <dynamics jsxbgcolor="@uxcore10@Matrix BG" jsxbg="@uxcore10@Matrix BG Image" jsxrowheight="@uxcore10@Matrix RowHeight" jsxheaderborder="@uxcore10@Matrix HeaderBorder" jsxbodyborder="@uxcore10@Matrix BodyBorder" jsxfocusstyle="@uxcore10@Matrix Focus Style" jsxselectionbg="@uxcore10@Matrix Selection BG" jsxspystyle="@uxcore10@Matrix Spy Style"/>
+              <events jsxexecute="1;" jsxselect="1;" jsxchange="1;"/>
+              <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
+              <object type="jsx3.gui.Matrix.Column">
+                <variants jsxwidth="20" jsxresize="0"/>
+                <strings jsxname="mc1" jsxtext="&amp;#160;" jsxpath="jsximg" jsxvaluetemplate="@image"/>
+                <dynamics jsxfontname="@uxcore10@MatrixC Font Name" jsxfontsize="@uxcore10@MatrixC Font Size" jsxfontweight="@uxcore10@MatrixC Font Weight" jsxcolor="@uxcore10@MatrixC Color" jsxbgcolor="@uxcore10@MatrixC BGColor" jsxbg="@uxcore10@MatrixC BackGround" jsxpadding="@uxcore10@MatrixC Padding" jsxborder="@uxcore10@MatrixC Border" jsxcellfontname="@uxcore10@MatrixCell Font Name" jsxcellfontsize="@uxcore10@MatrixCell Font Size" jsxcellfontweight="@uxcore10@MatrixCell Font Weight" jsxcellcolor="@uxcore10@MatrixCell Color" jsxcellbgcolor="@uxcore10@MatrixCell BGColor" jsxcellpadding="@uxcore10@MatrixCell Padding" jsxcellborder="@uxcore10@MatrixCell Border"/>
+              </object>
+              <object type="jsx3.gui.Matrix.Column">
+                <variants/>
+                <strings jsxname="textColumn" jsxwidth="*" jsxtext="Text" jsxpath="jsxtext"/>
+                <dynamics jsxfontname="@uxcore10@MatrixC Font Name" jsxfontsize="@uxcore10@MatrixC Font Size" jsxfontweight="@uxcore10@MatrixC Font Weight" jsxcolor="@uxcore10@MatrixC Color" jsxbgcolor="@uxcore10@MatrixC BGColor" jsxbg="@uxcore10@MatrixC BackGround" jsxpadding="@uxcore10@MatrixC Padding" jsxborder="@uxcore10@MatrixC Border" jsxcellfontname="@uxcore10@MatrixCell Font Name" jsxcellfontsize="@uxcore10@MatrixCell Font Size" jsxcellfontweight="@uxcore10@MatrixCell Font Weight" jsxcellcolor="@uxcore10@MatrixCell Color" jsxcellbgcolor="@uxcore10@MatrixCell BGColor" jsxcellpadding="@uxcore10@MatrixCell Padding" jsxcellborder="@uxcore10@MatrixCell Border Last"/>
+              </object>
+            </object>
+          </object>
+        </object>
+        <object type="tibco.uxcore.gui.ActionButton">
+          <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="actionButtonNew" jsxoverimage="1" jsxdownimage="1" jsxactionid="New"/>
+          <dynamics jsxtext="@uxcore10@Btn Text New" jsxicon="@uxcore10@Btn Image New"/>
+          <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+        </object>
+        <object type="tibco.uxcore.gui.ActionButton">
+          <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="actionButtonReprovision" jsxoverimage="1" jsxdownimage="1" jsxactionid="Reprovision"/>
+          <dynamics jsxtext="@uxcore10@Btn Text Reprovision" jsxicon="@uxcore10@Btn Image Reprovision"/>
+          <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+        </object>
+      </object>
+    </object>
+</serialization>

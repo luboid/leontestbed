@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+	<record group="object" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+
+    <record group="1" jsxid="uxcoreForm" jsxtext="Form">
+        <record jsxid="titletext" jsxtext="Title Text"
+            jsxtip="Sets the title label for the form group"
+            docgetter="getTitleText" docsetter="setTitleText"
+            eval="0"
+            jsxexecute="objJSX.setTitleText(vntValue, true);"
+            jsxmask="jsxtext"/>
+<!--        <record jsxid="errortext" jsxtext="Error Text"
+            jsxtip="Sets the global error text for the form"
+            docgetter="getErrorText" docsetter="setErrorText"
+            eval="0"
+            jsxexecute="objJSX.setErrorText(vntValue, true);"
+            jsxmask="jsxtext"/> -->
+        <record jsxid="instructionstext" jsxtext="Instructions Text"
+            jsxtip="Sets the instructions text for the form group"
+            docgetter="getInstructionsText" docsetter="setInstructionsText"
+            eval="0"
+            jsxexecute="objJSX.setInstructionsText(vntValue, true);"
+            jsxmask="jsxtext"/>
+        <record docdefault="&lt;code&gt;true (jsx3.Boolean.TRUE)&lt;/code&gt;" docgetter="getShowGlobalErrors"
+                docsetter="setShowGlobalErrors" eval="1" jsxid="showGlobalErrors" jsxmask="jsxselect" jsxtext="Show Global Errors"
+                jsxtip="Sets whether or not the form group shows a global error message when there is a no other global error message and at least one field has error text." jsxexecute="objJSX.setShowGlobalErrors(vntValue)">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+        <record docdefault="&lt;code&gt;true (jsx3.Boolean.TRUE)&lt;/code&gt;" docgetter="getToggleEditModeOnLoseFocus"
+                docsetter="setToggleEditModeOnLoseFocus" eval="1" jsxid="toggleEditModeOnLoseFocus" jsxmask="jsxselect" jsxtext="Toggle Edit Mode On Lose Focus"
+                jsxtip="Sets whether or not the form group may toggle out of edit mode when it loses focus.  Used to refine the global value one a per-form basis.  If the global value does not disable this feature, it can be overridden here in the form group to disable it." jsxexecute="objJSX.setToggleEditModeOnLoseFocus(vntValue)">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+        <record docdefault="&lt;code&gt;true (jsx3.Boolean.TRUE)&lt;/code&gt;" docgetter="getConfirmEditsOnLoseFocus"
+                docsetter="setConfirmEditsOnLoseFocus" eval="1" jsxid="confirmEditsOnLoseFocus" jsxmask="jsxselect" jsxtext="Confirm Edits On Lose Focus"
+                jsxtip="Sets whether or not the form group may display the confirmation dialog when it loses focus.  Used to refine the global value one a per-form basis.  If the global value does not disable this feature, it can be overridden here in the form group to disable it." jsxexecute="objJSX.setConfirmEditsOnLoseFocus(vntValue)">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+    </record>
+
+	<record group="css" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="interaction" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="drag" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="move" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+    <record group="1" jsxid="access" jsxtext="Accessibility">
+        <record include="jsxplugin://tibco.uxcore.common/properties/master.xml" path="/data/record[@jsxid='access']/record[@jsxid='jsxindex']"/>
+    </record>
+
+    <record group="metadata" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+</data>

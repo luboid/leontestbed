@@ -1,0 +1,23 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <template onpaint="this.prepaint()" onresize="this.onResize()">
+        <inlinebox class="formrow" index="{$index}" jsxindex="{$jsxindex}" label="{$label}" title="{$tip}"
+                   style="display:{$display}; float:left; width: {donotsetme|100%};">
+            <margin>'0px 0px 15px 0px'</margin>
+            <var name="removeHandler">this.getDynamicValue("@uxcore10@advsearch@removeHandler");</var>
+            <span u:id="panelbutton" style="width:30px;height:23px;float:left;background:{removeHandler};cursor:pointer;" onclick="{clickRemove}"><text>&amp;#160;</text></span>
+            <span style="width:100%;height:100%;">
+              <if test="MODE == 'paintchild'">
+                  <var name="jsxdrawspace">{}</var>
+              </if>
+              <span><text>{text}</text></span>
+              <var name="parentchildwidth" triggers="jsxwidth">this.getChildWidth($$parentwidth ? $$parentwidth : null) - 30</var>
+              <var name="childwidth" triggers="jsxwidth">this.getChildWidth($$parentwidth ? $$parentwidth : null) - 50</var>
+              <span u:id="panelspane" style="position: relative; top:0; width:{parentchildwidth};float:left;background-color:white;">
+                  <attach select="new jsx3.util.List(this.getFormChildren()).iterator()">
+                      <drawspace boxtype="'box'" position="'relative'" left="0" width="this.getPaintProfile().childwidth" margin="'10px 10px 10px ' + (($$target.getChildIndex() == 0) ? '10px' : '15px')"/>
+                  </attach>
+              </span>
+            </span>
+        </inlinebox>
+    </template>
+</transform>

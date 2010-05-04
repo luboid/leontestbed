@@ -1,0 +1,13 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Undeploy</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/undeploy.gif</icon>
+  <description>A tibco.uxcore.gui.ActionButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+            <object type="tibco.uxcore.gui.ActionButton">
+              <variants jsxenabled="1" jsxprefetch="1"/>
+              <strings jsxname="actionButtonUndeploy" jsxoverimage="1" jsxdownimage="1" jsxactionid="Undeploy"/>
+              <dynamics jsxtext="@uxcore10@Btn Text Undeploy" jsxicon="@uxcore10@Btn Image Undeploy" />
+              <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+            </object>
+</serialization>

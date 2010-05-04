@@ -1,0 +1,38 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Block - 100%</name>
+  <icon>images/prototypes/block.gif</icon>
+  <description>Simple block, relatively positioned with overflow=scroll.</description>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+    <object type="jsx3.gui.Block">
+      <variants jsxoverflow="2"/>
+      <strings jsxname="matrixBlock" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+      <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"/>
+      <object type="tibco.uxcore.gui.Matrix">
+        <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"/>
+        <strings jsxname="mtxlocation" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending"/>
+        <dynamics/>
+        <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
+        <object type="jsx3.gui.Matrix.Column">
+          <variants/>
+          <strings jsxwidth="*" jsxname="colname" jsxtext="Name" jsxpath="name"/>
+          <dynamics/>
+        </object>
+        <object type="jsx3.gui.Matrix.Column">
+          <variants/>
+          <strings jsxwidth="*" jsxname="colemail" jsxtext="Email" jsxpath="email"/>
+        </object>
+        <object type="jsx3.gui.Matrix.Column">
+          <variants/>
+          <strings jsxname="colphone" jsxwidth="*" jsxtext="Phone" jsxpath="phone"/>
+          <dynamics/>
+        </object>
+        <object type="jsx3.gui.Matrix.Column">
+          <variants/>
+          <strings jsxname="colaction" jsxwidth="100" jsxtext="Action" jsxpath="action"/>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Read-Only Form Field</name>
+    <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/block-text.gif</icon>
+  <description>A UXCore read-only Form Field object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.FormField">
+    <variants jsxindex="0"/>
+    <strings jsxname="genericFormField"/>
+  </object>
+</serialization>

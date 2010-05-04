@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<plugin xmlns="http://www.tibco.com/gi/amp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd" id="com.tibco.cmi.newProtocolBinding" name="Business Connect - newProtocolBinding" version="0.1">
+
+  <requires>
+      <plugin id="tibco.uxcore.gui.masterdetail"/>
+      <plugin id="tibco.uxcore.gui.matrix"/>
+		<plugin id="tibco.uxcore.gui.form"/>
+    <plugin id="tibco.uxcore.gui.section"/> 
+  </requires>
+  
+  <resources>
+		<script id="NewProtocolBinding_js" path="NewProtocolBinding.js" eval="true"/>
+    <xml id="NewProtocolBinding_xml" path="ui/NewProtocolBinding.xml">
+			<prereq id="NewProtocolBinding_js"/>
+		</xml>
+  </resources>
+	
+	<extension point="com.tibco.cmi.editAgreement.newProtocol">
+      <newProtocol uiId="NewProtocolBinding_xml"/>
+  </extension>
+
+</plugin>

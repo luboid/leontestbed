@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<data>
+
+  <!-- jsx3.gui.Select -->
+  <record jsxid="jsx3.gui.Select.defaultText" jsxtext="- Ausw\u00e4hlen -"/>
+  <record jsxid="jsx3.gui.Select.dataUnavailable" jsxtext="- Daten nicht verf\u00fcgbar -"/>
+  <record jsxid="jsx3.gui.Select.noMatch" jsxtext="- Keine \u00dcbereinstimmung gefunden -"/>
+
+  <!-- jsx3.gui.Menu -->
+  <record jsxid="jsx3.gui.Menu.noData" jsxtext="- Keine Daten -"/>
+
+  <!-- jsx3.gui.Matrix -->
+  <record jsxid="jsx3.gui.Matrix.seek" jsxtext="Anzeigen der Reihen {0} bis {1} von {2}"/>
+
+  <!-- jsx3.gui.BlockX -->
+  <record jsxid="jsx3.gui.BlockX.loading" jsxtext="XSL wird geladen..."/>
+  <record jsxid="jsx3.gui.BlockX.timeout" jsxtext="XSL Zeit\u00fcberschreitung"/>
+  <record jsxid="jsx3.gui.BlockX.error" jsxtext=" XSL Fehler"/>
+
+  <!-- jsx3.xml.Cacheable -->
+  <record jsxid="jsx3.xml.Cacheable.loading" jsxtext="{0} wird geladen..."/>
+  <record jsxid="jsx3.xml.Cacheable.timeout" jsxtext="Zeit\u00fcberschreitung beim Laden von {0}"/>
+  <record jsxid="jsx3.xml.Cacheable.error" jsxtext="Fehler beim Laden {0}"/>
+  <record jsxid="jsx3.xml.Cacheable.data" jsxtext="Daten"/>
+
+  <!-- jsx3.gui.Dialog -->
+  <record jsxid="jsx3.gui.Dialog.close" jsxtext="Schlie\u00dfen"/>
+  <record jsxid="jsx3.gui.Dialog.min" jsxtext="Anzeige umschalten"/>
+  <record jsxid="jsx3.gui.Dialog.max" jsxtext="Vergr\u00f6\u00dfert umschalten"/>
+  <record jsxid="jsx3.gui.Dialog.restore" jsxtext="Verkleinern"/>
+</data>

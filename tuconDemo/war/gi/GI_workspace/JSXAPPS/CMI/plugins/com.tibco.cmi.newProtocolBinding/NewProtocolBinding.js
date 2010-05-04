@@ -1,0 +1,1 @@
+jsx3.lang.Class.defineClass("com.tibco.cmi.newProtocolBinding.NewProtocolBinding",    jsx3.gui.Block,    null,    function(NewProtocolBinding,instance){			instance.save = function(){				this.getServer().publish({subject:"showEditAgreement"});							}						instance.cancel = function() {				this.getServer().publish({subject:"showEditAgreement"});				}    })

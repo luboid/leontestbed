@@ -1,0 +1,88 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Block - 100%</name>
+  <icon>images/prototypes/block.gif</icon>
+  <description>Simple block, relatively positioned with overflow=scroll.</description>
+  <object type="com.tibco.cmi.participants.Participant">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="blkparticipants" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+    <object type="tibco.uxcore.gui.MasterDetail">
+      <variants jsxorientation="1" jsxenabled="0"/>
+      <strings jsxname="seplayout" jsxvsplitimage="" jsxhsplitimage="" jsxsubcontainer1pct="*,0"/>
+      <dynamics/>
+      <object type="jsx3.gui.Block">
+        <variants/>
+        <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+        <dynamics/>
+        <object type="jsx3.gui.LayoutGrid">
+          <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+          <strings jsxname="layoutRows" jsxrows="26,*" jsxwidth="100%" jsxheight="100%"/>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="2"/>
+            <strings jsxname="pane1" jsxwidth="100%" jsxheight="100%"/>
+            <object type="tibco.uxcore.gui.Button">
+              <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
+              <strings jsxname="button" jsxtext="Add" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
+              <dynamics/>
+              <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').editParticipant(0);"/>
+            </object>
+            <object type="tibco.uxcore.gui.Button">
+              <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
+              <strings jsxname="button" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
+              <dynamics/>
+              <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+            </object>
+          </object>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="1"/>
+            <strings jsxname="pane2" jsxwidth="100%" jsxheight="100%"/>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="2"/>
+              <strings jsxname="matrixBlock" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+              <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"/>
+              <object type="tibco.uxcore.gui.Matrix">
+                <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"/>
+                <strings jsxname="mtxparticipants" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending"/>
+                <dynamics/>
+                <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
+                <object type="jsx3.gui.Matrix.Column">
+                  <variants jsxwidth="40"/>
+                  <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxvaluetemplate="@empty"/>
+                  <dynamics/>
+                  <object type="jsx3.gui.CheckBox">
+                    <variants jsxchecked="0" jsxenabled="1" jsxdefaultchecked="0"/>
+                    <strings jsxname="checkboxMask" jsxtext=""/>
+                  </object>
+                </object>
+                <object type="jsx3.gui.Matrix.Column">
+                  <variants jsxwidth="200"/>
+                  <strings jsxname="colname" jsxtext="Name" jsxpath="name" jsxformathandler="" jsxvaluetemplate="&lt;xsl:template xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;   &lt;label style=&quot;text-decoration:underline;cursor :pointer;&quot; onclick=&quot;com.tibco.cmi.getJSXByName('blkparticipants').editParticipant(1)&quot;&gt;&lt;xsl:value-of select=&quot;{0}&quot;/&gt;&lt;/label&gt; &lt;/xsl:template&gt;"/>
+                  <dynamics/>
+                </object>
+                <object type="jsx3.gui.Matrix.Column">
+                  <variants jsxwidth="120"/>
+                  <strings jsxname="coltype" jsxtext="Type" jsxpath="type"/>
+                  <dynamics/>
+                </object>
+                <object type="jsx3.gui.Matrix.Column">
+                  <variants jsxwidth="120"/>
+                  <strings jsxname="colisactive" jsxtext="Active" jsxpath="isActive"/>
+                  <dynamics/>
+                </object>
+                <object type="jsx3.gui.Matrix.Column">
+                  <variants/>
+                  <strings jsxwidth="*" jsxname="coldesc" jsxtext="Description" jsxpath="desc"/>
+                  <dynamics/>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object type="jsx3.gui.Block">
+        <variants/>
+        <strings jsxname="participant" jsxwidth="100%" jsxheight="100%"/>
+        <include src="jsxplugin://com.tibco.cmi.participants/ui/Participants.xml" async="true"/>
+      </object>
+    </object>
+  </object>
+</serialization>

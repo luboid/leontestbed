@@ -1,0 +1,63 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Wizard</name>
+  <icon/>
+  <description>A basic wizard with a layout for the wizard panels and buttons only</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Wizard2">
+    <variants jsxoverflow="2" contentPaneExplicit="true"/>
+    <strings jsxname="wizard" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" contentPaneName="contentPane" currentPanel="wizardPanel1" buttonPanelName="buttonPane" stepsPaneName="stepsPane" detailsPaneName="detailsPane" initialPanelName="wizardPanel1"/>
+    <object type="jsx3.gui.LayoutGrid">
+      <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+      <strings jsxname="layout (--)" jsxrows="*,38" jsxwidth="100%" jsxheight="100%"/>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="2"/>
+        <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2"/>
+          <strings jsxname="contentPane" jsxwidth="100%" jsxheight="100%"/>
+          <object type="tibco.uxcore.gui.WizardPanel">
+            <variants jsxoverflow="1" jsxfontsize="40" buttonStatesArr="[]"/>
+            <strings jsxname="wizardPanel1" jsxtext="Panel 1" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20 20 20 20" buttonStates="buttonPrev:DISABLED,buttonFinish:HIDDEN" jsxdisplay="" jsxtextalign="center"/>
+          </object>
+          <object type="tibco.uxcore.gui.WizardPanel">
+            <variants jsxoverflow="1" jsxfontsize="40" buttonStatesArr="[]"/>
+            <strings jsxname="wizardPanel2" jsxtext="Panel 2" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20 20 20 20" buttonStates="buttonFinish:HIDDEN" jsxdisplay="none" jsxtextalign="center"/>
+          </object>
+          <object type="tibco.uxcore.gui.WizardPanel">
+            <variants jsxoverflow="1" jsxfontsize="40" buttonStatesArr="[]"/>
+            <strings jsxname="wizardPanel3" jsxtext="Panel 3" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20 20 20 20" buttonStates="buttonFinish:HIDDEN" jsxdisplay="none" jsxtextalign="center"/>
+          </object>
+          <object type="tibco.uxcore.gui.WizardPanel">
+            <variants jsxoverflow="1" jsxfontsize="40" buttonStatesArr="[]"/>
+            <strings jsxname="wizardPanel4" jsxtext="Panel 4" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20 20 20 20" buttonStates="buttonNext:DISABLED" jsxdisplay="none" jsxtextalign="center"/>
+          </object>
+        </object>
+      </object>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="2"/>
+        <strings jsxname="buttonPane" jsxwidth="100%" jsxheight="100%" jsxborder="1px solid #8F8F8F; 0px solid black; 0px solid black; 0px solid black;" jsxpadding="10 20 10 20" jsxtextalign="right"/>
+        <object type="tibco.uxcore.gui.WizardPrevButton">
+          <variants jsxindex="0" jsxenabled="0" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="buttonPrev" jsxtext="Prev" jsxdisplay="" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+          <dynamics/>
+        </object>
+        <object type="tibco.uxcore.gui.WizardNextButton">
+          <variants jsxindex="0" jsxenabled="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="buttonNext" jsxtext="Next" jsxdisplay="" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+          <dynamics/>
+        </object>
+        <object type="tibco.uxcore.gui.WizardCancelButton">
+          <variants jsxindex="0" jsxenabled="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="buttonCancel" jsxtext="Cancel" jsxdisplay="" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+          <dynamics/>
+        </object>
+        <object type="tibco.uxcore.gui.WizardFinishButton">
+          <variants jsxindex="0" jsxenabled="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="buttonFinish" jsxtext="Finish" jsxdisplay="none" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+          <dynamics/>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

@@ -1,0 +1,8 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Select</name>
+  <icon>jsxplugin://tibco.uxcore.common/images/prototype/select.gif</icon>
+  <object type="tibco.uxcore.gui.Select">
+    <variants jsxwidth="150" jsxxmlasync="1"/>
+    <strings jsxname="select" jsxxmlurl="jsx:///xml/sample.xml"/>
+  </object>
+</serialization>

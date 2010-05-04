@@ -1,0 +1,26 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Radio Button Form Field</name>
+    <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/radio.gif</icon>
+  <description>A UXCore form field object for a group of radio buttons.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.RadioButtonFormField">
+    <variants jsxindex="0"/>
+    <strings fieldtitletext="[Field Title]" jsxname="radioButtonFormField"/>
+      <object type="jsx3.gui.RadioButton">
+        <variants jsxheight="18" jsxdefaultselected="1" jsxselected="1" jsxrelativeposition="1" jsxenabled="0"/>
+        <strings jsxname="radio" jsxtext="Radio Button Option A" jsxstyleoverride="float:left; position: relative" jsxvalue="A"/>
+        <events jsxselect=""/>
+      </object>
+      <object type="jsx3.gui.RadioButton">
+        <variants jsxheight="18" jsxdefaultselected="1" jsxselected="0" jsxrelativeposition="1" jsxenabled="0"/>
+        <strings jsxname="radio" jsxtext="Radio Button Option B" jsxstyleoverride="float:left; position: relative" jsxvalue="B"/>
+        <events jsxselect=""/>
+      </object>
+      <object type="jsx3.gui.RadioButton">
+        <variants jsxheight="18" jsxdefaultselected="1" jsxselected="0" jsxrelativeposition="1" jsxenabled="0"/>
+        <strings jsxname="radio" jsxtext="Radio Button Option C" jsxstyleoverride="float:left; position: relative" jsxvalue="C"/>
+        <events jsxselect=""/>
+      </object>
+  </object>
+</serialization>

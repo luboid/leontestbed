@@ -1,0 +1,19 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>4b. Row (Filled)</name>
+  <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/row.gif</icon>
+  <description>A UX Core Form Row object. Can only be added to a Column.</description>
+  <onBeforeDeserialize>undefined</onBeforeDeserialize>
+  <onAfterDeserialize>undefined</onAfterDeserialize>
+  <object type="tibco.uxcore.gui.FormRow">
+    <variants jsxoverflow="1" cleaned="true"/>
+    <strings jsxname="formRow" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+    <object type="tibco.uxcore.gui.TextBoxFormField">
+      <variants jsxindex="0" isrequired="0" bEditable="true" cleaned="true" jsxtype="0" jsxenabled="1"/>
+      <strings jsxname="textBoxFormField" fieldtitletext="[Field Name]" jsxtitledisplay=""/>
+    </object>
+    <object type="tibco.uxcore.gui.TextBoxFormField">
+      <variants jsxindex="0" isrequired="0" bEditable="true" cleaned="true" jsxtype="0" jsxenabled="1"/>
+      <strings jsxname="textBoxFormField" fieldtitletext="[Field Name]" jsxtitledisplay=""/>
+    </object>
+  </object>
+</serialization>

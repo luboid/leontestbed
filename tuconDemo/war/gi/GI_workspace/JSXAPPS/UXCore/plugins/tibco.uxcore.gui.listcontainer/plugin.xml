@@ -1,0 +1,137 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.gui.listcontainer"
+        name="UX Core ListContainer"
+        version="0.1">
+    <requires>
+        <plugin id="jsx3.gui.Template"/>
+        <plugin id="tibco.uxcore.common"/>
+        <plugin id="tibco.uxcore.gui.matrix"/>
+        <plugin id="jsx3.gui.TextBox"/>
+        <plugin id="jsx3.gui.ImageButton"/>
+        <plugin id="jsx3.gui.RadioButton"/>
+        <plugin id="jsx3.gui.CheckBox"/>
+        <plugin id="jsx3.gui.Select"/>
+        <plugin id="tibco.uxcore.gui.form"/>
+    </requires>
+
+    <resources>
+        <propsbundle id="textJSS" path="jss/textJSS.xml"/>
+        <jss id="styleJSS" path="jss/styleJSS.xml"/>
+
+        <script id="QueryDocument_JS" path="classes/util/QueryDocument.js"/>
+        <script id="IListSearch_JS" path="classes/IListSearch.js"/>
+        <script id="IListAccessory_JS" path="classes/IListAccessory.js"/>
+        <script id="IListView_JS" path="classes/IListView.js"/>
+        <script id="AbstractBlock_JS" path="classes/AbstractBlock.js" eval="true"/>
+        <script id="ListPaginator_JS" path="classes/ListPaginator.js">
+            <prereq id="AbstractBlock_JS"/>
+            <prereq id="IListAccessory_JS"/>
+        </script>
+
+        <script id="SimpleSearch_JS" path="classes/SimpleSearch.js" eval="true">
+            <prereq id="IListSearch_JS"/>
+            <prereq id="IListAccessory_JS"/>
+        </script>
+
+        <script id="AdvancedSearch_JS" path="classes/AdvancedSearch.js" eval="true">
+            <prereq id="AbstractBlock_JS"/>
+            <prereq id="IListSearch_JS"/>
+            <prereq id="IListAccessory_JS"/>
+        </script>
+
+        <script id="FilterSearch_JS" path="classes/FilterSearch.js" eval="true">
+            <prereq id="IListSearch_JS"/>
+            <prereq id="IListAccessory_JS"/>
+        </script>
+
+        <script id="ActionButtonList_JS" path="classes/ActionButtonList.js" eval="true">
+            <prereq id="IListAccessory_JS"/>
+        </script>
+
+        <script id="ListContainer_JS" path="classes/ListContainer.js">
+            <prereq id="AbstractBlock_JS"/>
+        </script>
+        <script id="GenericTableView_JS" path="classes/GenericTableView.js">
+            <prereq id="IListView_JS"/>
+            <prereq id="IListAccessory_JS"/>
+        </script>
+
+        <script id="TableListView_JS" path="classes/TableListView.js">
+            <prereq id="GenericTableView_JS"/>
+        </script>
+
+        <script id="TableSelector_JS" path="classes/TableSelector.js" eval="true">
+            <prereq id="GenericTableView_JS"/>
+        </script>
+
+        <script id="TableListBuilder_JS" path="classes/TableListBuilder.js" eval="true">
+            <prereq id="GenericTableView_JS"/>
+        </script>
+        <script id="TreeListBuilder_JS" path="classes/TreeListBuilder.js" eval="true">
+            <prereq id="GenericTableView_JS"/>
+        </script>
+        <script id="BrowseView_JS" path="classes/BrowseView.js">
+            <prereq id="IListView_JS"/>
+            <prereq id="IListAccessory_JS"/>
+        </script>
+
+        <script id="ListContainerButton_js" path="classes/ListContainerButton.js" eval="true">
+            <prereq id="styleJSS"/>
+          <prereq id="IListAccessory_JS"/>
+        </script>
+        <script id="ActionButton_js" path="classes/ActionButton.js">
+          <prereq id="ListContainerButton_js"/>
+        </script>
+        <script id="TreeListBuilderButton_js" path="classes/TreeListBuilderButton.js">
+          <prereq id="ActionButton_js"/>
+        </script>
+        <script id="AddRowButton_js" path="classes/AddRowButton.js">
+          <prereq id="TreeListBuilderButton_js"/>
+        </script>
+        <script id="AddChildButton_js" path="classes/AddChildButton.js">
+            <prereq id="TreeListBuilderButton_js"/>
+        </script>
+        <script id="MoveRecordButton_js" path="classes/MoveRecordButton.js">
+            <prereq id="TreeListBuilderButton_js"/>
+        </script>
+        <script id="DeleteRowsButton_js" path="classes/DeleteRowsButton.js">
+            <prereq id="TreeListBuilderButton_js"/>
+        </script>
+        <script id="IconButton_js" path="classes/IconButton.js">
+          <prereq id="ListContainerButton_js"/>
+        </script>
+        <script id="RefreshButton_js" path="classes/RefreshButton.js">
+          <prereq id="IconButton_js"/>
+        </script>
+        <script id="ToggleIconButton_js" path="classes/ToggleIconButton.js">
+          <prereq id="IconButton_js"/>
+        </script>
+          <script id="ViewButton_js" path="classes/ViewButton.js">
+          <prereq id="ToggleIconButton_js"/>
+        </script>
+        <script id="HideShowButton_js" path="classes/HideShowButton.js">
+          <prereq id="ToggleIconButton_js"/>
+        </script>
+        <script id="ColumnPicker_js" path="classes/ColumnPicker.js" eval="true"/>
+        <script id="ColumnPickerButton_js" path="classes/ColumnPickerButton.js" eval="true">
+          <prereq id="ToggleIconButton_js"/>
+          <prereq id="ColumnPicker_js"/>
+        </script>
+        <xml id="columnPicker_xml" path="components/columnPicker.xml">
+          <prereq id="ColumnPicker_js"/>
+        </xml>
+        <script id="AccumulatorView_JS" path="classes/AccumulatorView.js" eval="true">
+            <prereq id="IListView_JS"/>
+            <prereq id="IListAccessory_JS"/>
+        </script>
+        <script id="ActionMenuButton_js" path="classes/ActionMenuButton.js">
+          <prereq id="ActionButton_js"/>
+        </script>
+
+
+    </resources>
+
+</plugin>
+

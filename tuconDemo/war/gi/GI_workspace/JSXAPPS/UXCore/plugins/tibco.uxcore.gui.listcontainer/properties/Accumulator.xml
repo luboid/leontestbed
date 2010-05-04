@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+	<record group="object" include="master.xml"/>
+
+    <record group="1" jsxid="AccumulatorInfo" jsxtext="Accumulator Info">
+        <record jsxid="leftTitle" jsxtext="Left Title"
+            jsxtip="Sets the title for the left matrix"
+            docgetter="getLeftTitle" docsetter="setLeftTitle"
+            eval="0"
+            jsxexecute="objJSX.setLeftTitle(vntValue);"
+            jsxmask="jsxtext"/>
+        <record jsxid="rightTitle" jsxtext="Right Title"
+            jsxtip="Sets the title for the right matrix"
+            docgetter="getRightTitle" docsetter="setRightTitle"
+            eval="0"
+            jsxexecute="objJSX.setRightTitle(vntValue);"
+            jsxmask="jsxtext"/>
+    </record>
+
+	<record group="css" include="master.xml"/>
+
+
+</data>

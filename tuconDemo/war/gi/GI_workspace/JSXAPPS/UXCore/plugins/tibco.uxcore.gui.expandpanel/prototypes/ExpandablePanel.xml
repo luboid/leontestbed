@@ -1,0 +1,42 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Expandable Panel</name>
+  <onAfterDeserialize/>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="mainBlock" jsxheight="100%" jsxwidth="100%" jsxpadding="0"/>
+    <object type="tibco.uxcore.gui.ExpandablePanel">
+      <strings jsxname="expPanel" jsxheight="100%" jsxwidth="100%" jsxbgcolor="#F4F4F4"/>
+      <object type="jsx3.gui.Block">
+        <strings jsxname="pane1" jsxheight="100%" jsxwidth="100%" jsxpadding="20"/>
+        <object type="jsx3.gui.Block">
+          <strings jsxtext="Step Name &gt; Panel 1 Name" jsxwidth="100%" jsxfontname="Arial" jsxfontsize="14"
+              jsxfontweight="bold" jsxpadding="0 0 30 0"/>
+        </object>
+      </object>
+      <object type="jsx3.gui.Block">
+        <strings jsxname="pane2" jsxheight="100%" jsxwidth="100%" jsxpadding="20"/>
+        <object type="jsx3.gui.Block">
+          <strings jsxtext="Step Name &gt; Panel 2 Name" jsxwidth="100%" jsxfontname="Arial" jsxfontsize="14"
+              jsxfontweight="bold" jsxpadding="0 0 30 0"/>
+        </object>
+      </object>
+      <object type="jsx3.gui.Block">
+        <strings jsxname="pane3" jsxheight="100%" jsxwidth="100%" jsxpadding="20"/>
+        <object type="jsx3.gui.Block">
+          <strings jsxtext="Step Name &gt; Panel 3 Name" jsxwidth="100%" jsxfontname="Arial" jsxfontsize="14"
+              jsxfontweight="bold" jsxpadding="0 0 30 0"/>
+        </object>
+      </object>
+    </object>
+    <object type="jsx3.gui.Button">
+      <variants jsxrelativeposition="0" jsxleft="410" jsxtop="10" jsxwidth="50"/>
+      <strings jsxname="bt1" jsxtext="&lt;- Swap"/>
+      <events jsxexecute="expPanel.swap(-1)"/>
+    </object>
+    <object type="jsx3.gui.Button">
+      <variants jsxrelativeposition="0" jsxleft="470" jsxtop="10" jsxwidth="50"/>
+      <strings jsxname="bt1" jsxtext="Swap -&gt;"/>
+      <events jsxexecute="expPanel.swap(1)"/>
+    </object>
+  </object>
+</serialization>

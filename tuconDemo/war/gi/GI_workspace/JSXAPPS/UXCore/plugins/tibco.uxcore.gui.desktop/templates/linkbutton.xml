@@ -1,0 +1,9 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <template>
+        <span class="linkbutton" index="{$index}" jsxindex="{$jsxindex}" label="{$label}" title="{$tip}"
+                   style="display:{$display}; margin: 0px 0px 10px 0px;">
+            <var name="title" triggers="hookname">this.hookname ? this.hookname : "Profile"</var>
+            <span u:id="hookName" style=" position: relative; font-size: 10px; color: #BDEDEA; font-family: Arial; text-decoration:underline; cursor:pointer;"  onmousedown="{clickHook}"><text>{title}</text></span>
+        </span>
+    </template>
+</transform>

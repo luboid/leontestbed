@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+  <record group="object" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="1" jsxid="jsx3block" jsxtext="Block">
+    <record children="1" group="jsxtagname" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  </record>
+  <record group="1" jsxid="uxcoreFormRow" jsxtext="Form Field">
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='fieldtitletext']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='jsxtitledisplay']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='fieldinstructionstext']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='alwaysShowInstructions']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='fieldexampletext']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='cdfattribute']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='isrequired']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='hideoptionalstring']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='hiderequiredstring']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='validator']" include="FormField.xml"/>
+      <record path="/data/record[@jsxid='uxcoreFormRow']/record[@jsxid='jsxenabled']" include="FormField.xml"/>
+      <record jsxid="columns"  jsxtext="# Columns"
+          docgetter="getColumnCount" docsetter="setColumnCount"
+          jsxexecute="objJSX.setColumnCount(vntValue ? parseInt(vntValue) : null, true);"
+          docdefault="3"
+          eval="1"
+          jsxmask="jsxtext"
+          jsxtip="Sets the number of columns to use for displaying child radio buttons">
+      </record>
+  </record>
+  <record group="css" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="interaction" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="drag" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="move" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+  <record group="metadata" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+</data>

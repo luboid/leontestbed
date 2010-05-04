@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugins xmlns="http://www.generalinterface.org/gi/amp"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.generalinterface.org/gi/amp http://www.generalinterface.org/xsd/plugins.xsd">
+
+  
+	<plugin id='com.tibco.cmi.dwr'/>
+	<plugin id="com.tibco.cmi.system"/>
+	<plugin id='com.tibco.cmi.desktop'/>
+	<plugin id='com.tibco.cmi.participants'/>
+	<plugin id="com.tibco.cmi.businessAgreements"/>
+	<plugin id="com.tibco.cmi.newAgreement"/>
+	<plugin id="com.tibco.cmi.editAgreement"/>
+	<plugin id="com.tibco.cmi.editProtocolBinding"/>
+	<plugin id="com.tibco.cmi.newProtocolBinding"/>
+	<plugin id="com.tibco.cmi.newOperationBinding"/>
+
+</plugins>

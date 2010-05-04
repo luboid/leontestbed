@@ -1,0 +1,53 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <model>
+        <!--var id="headlogo">return "url(" + this.resolveURI(this.getLogoImage()) + ")"; </var-->
+        <var id="headlogo">return this.resolveURI(this.getLogoImage())</var>
+        <var id="HeadBar">return "url(" + this.getUriResolver().resolveURI(tibco.uxcore.gui.Desktop.HeadBar) + ")";</var>
+        <var id="HeadAdminBG">return "url(" + this.getUriResolver().resolveURI(tibco.uxcore.gui.Desktop.HeadAdminBG)+")";</var>
+        <var id="POIIcon">return this.getUriResolver().resolveURI(tibco.uxcore.gui.Desktop.POIIcon)</var>
+        <var id="POIText" triggers="poitext">return this.getPoiText()</var>
+        <var id="POIToolTip" triggers="poitooltip">return this.getTip()</var>
+        <var id="UserInfo" triggers="jsxuserinfo">return this.getUserInfo()</var>
+        <var id="UserInfoDisplay" triggers="jsxuserinfo">return this.jsxuserinfo ? "inline" : "none" </var>
+        <var id="headbarHeight">return 40</var>
+    </model>
+    <template>
+        <div style="position:{$position};left:{$left};top:{$top};width:{$width};height:{$height};margin:{$margin}; ">
+            <var name="POIDisplay" triggers="poidisplay">this.getDisplayPoi()</var>
+            <var name="POIVisibility" triggers="poivisibility">this.getVisibilityPoi()</var>
+            <div style=" width:100%; height:100%;  ">
+                <div style="width:100%; height:100%; ">
+                    <div style="width:100%; height:{headbarHeight}; background-image:{HeadBar}; background-repeat:repeat-x;  border:1px solid #338BDA; ">
+                        <div style=" height:100%; float:left;     ">
+                            <img src="{headlogo}" style="position:absolute; "></img>
+                        </div>
+                        <div style=" height:100%; float:right;   ">
+                            <div id="tibco.uxcore.gui.desktop.linkButtonArea"
+                                 style="height:100%;padding:10px 20px 0px 20px;float:right; background-image:{HeadAdminBG}; background-repeat:repeat; border\-left: 1px solid #338BDA;">
+                                <span u:id="poi" title="{POIToolTip}"  style="position: relative;display:{POIDisplay};visibility:{POIVisibility}; margin: -5 0 0 0;cursor: pointer">
+                                    <span style=" height:100%;width:100%; margin: 0 3 0 0; ">
+                                        <img src="{POIIcon}" style="vertical-align:middle"></img>
+                                    </span>
+                                    <span u:id="poitext" style="position: relative; font-size: 10px; color: #BDEDEA;font-family: Arial; text-decoration:none; margin:0 10 0 0;  ">
+                                        <text>{POIText}</text>
+                                    </span>
+                                </span>
+                                <span style="position: relative; padding:3px 8px 2px 2px;font-size: 10px; color: #cccccc; font-weight:bold; font-family: Arial;display:{UserInfoDisplay}">
+                                  <text>{UserInfo}</text>
+                                </span>
+                                <attach select="this.applicationHookIterator()">
+                                    <drawspace boxtype="'box'" position="'relative'" top="0" left="0"/>
+                                </attach>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="left:0px;top:0px;width:100%; height:100%-40px;  ">
+                        <attach select="this.NavBarIterator()">
+                            <drawspace boxtype="'box'" position="'relative'" top="0" left="0"/>
+                        </attach>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</transform>

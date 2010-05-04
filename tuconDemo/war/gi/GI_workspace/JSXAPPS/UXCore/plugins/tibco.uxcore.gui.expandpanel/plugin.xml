@@ -1,0 +1,16 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.gui.expandpanel"
+        name="UX Core ExpandablePanel"
+        version="0.1">
+
+  <requires>
+    <plugin id="jsx3.gui.Block"/>
+  </requires>
+
+  <resources>
+    <script id="js" path="classes/ExpandablePanel.js" eval="true"/>
+  </resources>
+
+</plugin>

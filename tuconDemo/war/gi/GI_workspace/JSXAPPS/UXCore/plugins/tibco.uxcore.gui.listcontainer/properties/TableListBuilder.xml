@@ -1,0 +1,104 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<data jsxid="jsxroot">
+  <record include="master.xml" group="object"/>
+
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="uxcore"/>
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="jsx3mx"/>
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="pagingtuners"/>
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="mtxprops"/>
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="jsx3mtxtree"/>
+  <record jsxid="mtxcolumns" group="1" jsxtext="Interaction">
+      <record jsxid="jsxsortpath" jsxtext="Sort Path"
+          eval="0"
+          jsxtip="Sets the attribute path to sort on, such as &lt;code&gt;@jsxtext&lt;/code&gt;."
+          docgetter="getSortPath" docsetter="setSortPath"
+          jsxmask="jsxtext"
+          jsxexecute="objJSX.setSortPath(vntValue);objJSX.repaint();">
+      </record>
+      <record jsxid="jsxsorttype" jsxtext="Sort Data Type"
+          eval="0"
+          jsxtip="Sets the default data type for columns in this list/grid."
+          docgetter="getSortType" docsetter="setSortType"
+          docdefault="Text (&lt;code&gt;jsx3.gui.Column.TYPETEXT&lt;/code&gt;)"
+          jsxmask="jsxselect">
+        <enum jsxid="jsx3.gui.Matrix.Column.TYPE_TEXT" jsxtext="Text"/>
+        <enum jsxid="jsx3.gui.Matrix.Column.TYPE_NUMBER" jsxtext="Numerical"/>
+      </record>
+      <record jsxid="jsxsortdirection" jsxtext="Sort Direction"
+          eval="0"
+          jsxtip="Sets whether the Grid is sorted ascending (a-z) or descending (z-a)."
+          docgetter="getSortDirection" docsetter="setSortDirection"
+          docdefault="Ascending (&lt;code&gt;jsx3.gui.List.SORTASCENDING&lt;/code&gt;)"
+          jsxmask="jsxselect"
+          jsxexecute="objJSX.setSortDirection(vntValue);objJSX.repaint();">
+        <enum jsxid="jsx3.gui.Matrix.SORT_ASCENDING" jsxtext="Ascending (a-z)"/>
+        <enum jsxid="jsx3.gui.Matrix.SORT_DESCENDING" jsxtext="Descending (z-a)"/>
+      </record>
+      <record jsxid="jsxsort" jsxtext="Sortable"
+          eval="1"
+          jsxtip="Sets whether or not this column is sortable."
+          docgetter="getCanSort" docsetter="setCanSort"
+          jsxmask="jsxselect"
+          jsxexecute="objJSX.setCanSort(vntValue);">
+        <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+        <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+      </record>
+      <record jsxid="jsxresize" jsxtext="Resizable"
+          eval="1"
+          jsxtip="Sets whether or not the instance is resizable."
+          docgetter="getResizable" docsetter="setResizable"
+          jsxmask="jsxselect"
+          jsxexecute="objJSX.setResizable(vntValue);objJSX.repaintHead();">
+        <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+        <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+      </record>
+      <record jsxid="jsxreorder" jsxtext="Reorderable"
+          eval="1"
+          jsxtip="Sets whether or not the instance is sortable."
+          docgetter="getCanReorder" docsetter="setCanReorder"
+          jsxmask="jsxselect"
+          jsxexecute="objJSX.setCanReorder(vntValue);">
+        <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+        <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+      </record>
+      <record jsxid="jsxfixedcolumnindex" jsxtext="Fixed Columns"
+          eval="1"
+          jsxtip="Sets index of the first column that can be reordered. All columns of a lesser index can not be reordered."
+          docgetter="getFixedColumnIndex" docsetter="setFixedColumnIndex"
+          jsxmask="jsxtext"
+          jsxexecute="objJSX.setFixedColumnIndex(vntValue);"/>
+      <record jsxid="jsxautorow" jsxtext="Auto Row"
+          eval="1"
+          jsxtip="Sets whether or not the instance allows new rows to be added at runtime via user interaction. Note that hierarchical rendering and pagination (Matrix.PAGING_PAGED) do not support the auto row behavior."
+          docgetter="getAutoRow" docsetter="setAutoRow"
+          jsxmask="jsxselect"
+          jsxexecute="objJSX.setAutoRow(vntValue);objJSX.repaint();">
+        <enum jsxid="jsx3.gui.Matrix.AUTOROW_NONE" jsxtext="Disabled"/>
+        <enum jsxid="jsx3.gui.Matrix.AUTOROW_LAST_ROW" jsxtext="Last Row"/>
+        <enum jsxid="jsx3.gui.Matrix.AUTOROW_FIRST_ROW" jsxtext="First Row"/>
+      </record>
+      <record jsxid="jsxdrop" jsxtext="Can Drop On"
+          eval="1"
+          jsxtip="If &lt;code&gt;true (1)&lt;/code&gt; (Enabled), this object can be the target of drop events."
+          docgetter="getCanDrop" docsetter="getCanDrop"
+          docdefault="Disabled (&lt;code&gt;jsx3.Boolean.FALSE&lt;/code&gt;)"
+          jsxexecute="objJSX.setCanDrop(vntValue);"
+          jsxmask="jsxselect">
+        <enum jsxid="jsx3.Boolean.TRUE" jsxtext="Enabled"/>
+        <enum jsxid="jsx3.Boolean.FALSE" jsxtext="Disabled"/>
+      </record>
+      <record include="master.xml" path="/data/record[@jsxid='jsxmenu']/*"/>
+      <record include="master.xml" path="//record[@jsxid='jsxindex']"/>
+      <record include="master.xml" group="jsxrequired" children="1"/>
+  </record>
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="intractionstyles"/>
+
+
+  <record include="master.xml" group="blockx-xml"/>
+  <record include="master.xml" group="metadata"/>
+
+</data>

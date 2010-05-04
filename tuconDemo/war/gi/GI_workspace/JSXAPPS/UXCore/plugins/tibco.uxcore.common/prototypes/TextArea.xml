@@ -1,0 +1,9 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Text Area</name>
+  <icon>jsxplugin://tibco.uxcore.common/images/prototype/textbox-area.gif</icon>
+  <description>Text Area object.</description>
+  <object type="tibco.uxcore.gui.TextBox">
+    <variants jsxheight="72" jsxtype="1" jsxwidth="200"/>
+    <strings jsxname="textArea"/>
+  </object>
+</serialization>

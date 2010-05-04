@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+-->
+<data jsxid="jsxroot">
+
+    <record group="object" include="jsxplugin://tibco.uxcore.common/properties/Button.xml"/>
+    <record group="actiontrigger" include="jsxplugin://tibco.uxcore.common/properties/Button.xml"/>
+    <record group="1" jsxid="helpButton" jsxtext="Help Button">
+        <record jsxid="pluginId" jsxtext="Plugin ID" jsxtip="Sets plugin id for the help button"
+            docsetter="setPluginId" docgetter="getPluginId"
+            eval="0" jsxexecute="objJSX.setPluginId(vntValue);" jsxmask="jsxtext"/>
+        <record jsxid="helpId" jsxtext="Help ID" jsxtip="Sets help id for the help button"
+            docsetter="setHelpId" docgetter="getHelpId"
+            eval="0" jsxexecute="objJSX.setHelpId(vntValue);" jsxmask="jsxtext"/>
+    </record>
+    <record group="box_nobg" include="jsxplugin://tibco.uxcore.common/properties/Button.xml"/>
+    <record group="css_noclass" include="jsxplugin://tibco.uxcore.common/properties/Button.xml"/>
+    <record group="access" include="jsxplugin://tibco.uxcore.common/properties/Button.xml"/>
+    <record jsxid="metadata" group="1" jsxtext="Metadata" jsxopen="1" jsxunselectable="1">
+        <record jsxid="jsxannotation" jsxtext="Annotation" eval="0" jsxtip="The annotation comment visible in the Component Hierarchy palette." jsxmask="jsxtextarea"/>
+    </record>
+</data>

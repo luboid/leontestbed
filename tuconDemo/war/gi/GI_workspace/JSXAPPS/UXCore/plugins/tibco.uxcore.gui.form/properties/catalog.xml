@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<data jsxid="jsxroot">
+    <record jsxid="tibco.uxcore.gui.Form" jsxtext="properties/Form.xml"/>
+    <record jsxid="tibco.uxcore.gui.FormGroup" jsxtext="properties/FormGroup.xml"/>
+    <record jsxid="tibco.uxcore.gui.FormPanel" jsxtext="properties/FormPanel.xml"/>
+    <record jsxid="tibco.uxcore.gui.FormColumn" jsxtext="properties/FormColumn.xml"/>
+    <record jsxid="tibco.uxcore.gui.FormRow" jsxtext="properties/FormRow.xml"/>
+    <record jsxid="tibco.uxcore.gui.TitleRow" jsxtext="properties/TitleRow.xml"/>
+    <record jsxid="tibco.uxcore.gui.FormField" jsxtext="properties/FormField.xml"/>
+    <record jsxid="tibco.uxcore.gui.TextBoxFormField" jsxtext="properties/TextBoxFormField.xml"/>
+    <record jsxid="tibco.uxcore.gui.TextBoxWithLinkFormField" jsxtext="properties/TextBoxWithLinkFormField.xml"/>
+    <record jsxid="tibco.uxcore.gui.CheckBoxFormField" jsxtext="properties/CheckBoxFormField.xml"/>
+    <record jsxid="tibco.uxcore.gui.RadioButtonFormField" jsxtext="properties/RadioButtonFormField.xml"/>
+    <record jsxid="tibco.uxcore.gui.DurationFormField" jsxtext="properties/DurationFormField.xml"/>
+    <record jsxid="tibco.uxcore.gui.ListContainerFormField" jsxtext="properties/ListContainerFormField.xml"/>
+    <record jsxid="tibco.uxcore.gui.ButtonFormField" jsxtext="properties/ButtonFormField.xml"/>
+</data>

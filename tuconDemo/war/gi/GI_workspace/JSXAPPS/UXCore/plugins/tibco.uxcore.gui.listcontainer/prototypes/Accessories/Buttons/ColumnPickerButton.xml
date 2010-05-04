@@ -1,0 +1,10 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>ColumnPicker Button</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/prototype/columnpicker.gif</icon>
+  <description>A tibco.uxcore.gui.ColumnPickerButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.ColumnPickerButton">
+    <strings jsxname="btnColumnPicker"/>
+  </object>
+</serialization>

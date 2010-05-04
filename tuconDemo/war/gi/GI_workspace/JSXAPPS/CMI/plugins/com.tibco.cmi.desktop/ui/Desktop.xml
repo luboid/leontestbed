@@ -1,0 +1,21 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Block - 100%</name>
+  <icon>images/prototypes/block.gif</icon>
+  <description>Simple block, relatively positioned with overflow=scroll.</description>
+  <object type="com.tibco.cmi.desktop.Desktop">
+    <variants jsxoverflow="3"/>
+    <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+    <object type="tibco.uxcore.gui.Desktop">
+      <variants jsxoverflow="1"/>
+      <strings jsxname="desktop" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxxml="" desktoplogo="jsxplugin://com.tibco.cmi.desktop/images/logo.jpg" poidisplay="none" minSize="0"/>
+      <object type="tibco.uxcore.gui.Linkbutton">
+        <variants jsxoverflow="1"/>
+        <strings jsxname="btnhelp" jsxrelativeposition="1" hookname="Help"/>
+      </object>
+      <object type="tibco.uxcore.gui.TabbedNav">
+        <variants jsxoverflow="1" childMenuIndex="0" childTabIndex="0" jsxrelativeposition="1" _visibleMenu="0" reloadresource="0" switchpane="1"/>
+        <strings jsxname="TabbedNav" jsxwidth="100%" jsxheight="100%"/>
+      </object>
+    </object>
+  </object>
+</serialization>

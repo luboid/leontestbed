@@ -1,0 +1,22 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.5">
+  <name>Wizard Step</name>
+  <icon/>
+  <description>A step indicator for showing the current step in a SteppedWizard</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.WizardStep">
+    <variants jsxheight="16" jsxoverflow="2" active="false"/>
+    <strings jsxname="step" jsxwidth="100%" jsxmargin="0 0 25 0" inactivecolor="#7E7E7E" activecolor="#000000"/>
+    <dynamics jsxborder="@No jsxborder"/>
+    <object type="jsx3.gui.Block">
+      <variants jsxwidth="16" jsxheight="16" jsxoverflow="2" jsxleft="0" jsxtop="0" jsxfontsize="12"/>
+      <strings jsxname="block" jsxrelativeposition="1" jsxstyleoverride="float: left" jsxtextalign="center" jsxcolor="white" jsxfontweight="bold" jsxpadding="0 0 0 1" jsxbg="background-image:url(../../../SVN/Matrix/dev/admin/client/administrator/depot/JSXAPPS/spm/addins/spm/images/stepsBkgrd_gray.gif)" jsxbgcolor=""/>
+      <dynamics jsxfontname="@addin@Title Font Name"/>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants jsxrelativeposition="1" jsxoverflow="3" jsxleft="0" jsxtop="0" jsxheight="16"/>
+      <strings jsxname="lblSetActions_90" jsxstyleoverride="float:left" jsxcolor="#7E7E7E"/>
+      <dynamics jsxfontname="@addin@lbl Font Name" jsxfontsize="@addin@Title Font Size" jsxbgcolor="@addin@lbl BGColor" jsxbg="@addin@lbl Background" jsxclassname="@addin@lbl Css Rule Name" jsxfontweight="@addin@lbl Font Weight" jsxmargin="@addin@rad Margin"/>
+    </object>
+  </object>
+</serialization>

@@ -1,0 +1,13 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Stop</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/stopped.gif</icon>
+  <description>A tibco.uxcore.gui.ActionButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+            <object type="tibco.uxcore.gui.ActionButton">
+              <variants jsxenabled="1" jsxprefetch="1"/>
+              <strings jsxname="actionButtonStopped" jsxoverimage="1" jsxdownimage="1" jsxactionid="Stop"/>
+              <dynamics jsxtext="@uxcore10@Btn Text Stopped" jsxicon="@uxcore10@Btn Image Stopped"/>
+              <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+            </object>
+</serialization>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxnamespace="propsbundle" locales="">
+  <locale>
+	  <record jsxid="@uxcore10@MatrixBTMask Text/Html" jsxtext="Deploy"/>
+	  <record jsxid="@uxcore10@Btn Delete" jsxtext="Delete"/>
+	  <record jsxid="@uxcore10@Btn Remove" jsxtext="Remove"/>
+	  <record jsxid="@uxcore10@Btn Edit" jsxtext="Edit"/>
+	  <record jsxid="@uxcore10@Btn Save" jsxtext="Save"/>
+	  <record jsxid="@uxcore10@Btn Cancel" jsxtext="Cancel"/>
+	  <record jsxid="@uxcore10@Btn Update" jsxtext="Update"/>
+	  <record jsxid="@uxcore10@Btn Add" jsxtext="Add"/>
+	  <record jsxid="@uxcore10@Btn New" jsxtext="New"/>
+	  <record jsxid="@uxcore10@Btn Deploy" jsxtext="Deploy"/>
+	  <record jsxid="@uxcore10@Btn Undeploy" jsxtext="Undeploy"/>
+	  <record jsxid="@uxcore10@Btn Actions" jsxtext="Actions"/>
+	  <record jsxid="@uxcore10@Btn Refresh" jsxtext="Refresh"/>
+	  <record jsxid="@uxcore10@btnReturnToLoginScreen" jsxtext="Return To Login Screen"/>
+	  <record jsxid="@uxcore10@WebServiceCallErrorTitle" jsxtext="Error"/>
+	  <record jsxid="@uxcore10@WebServiceCallErrorMessage" jsxtext="The service call failed. The HTTP Status code is: {0}"/>
+	  <record jsxid="@uxcore10@WebServiceCallInvalidTitle" jsxtext="Invalid"/>
+	  <record jsxid="@uxcore10@WebServiceCallInvalidMessage" jsxtext="The following message node just failed validation:\n\n {0}"/>
+	  <record jsxid="@uxcore10@radBtn Yes" jsxtext="Yes"/>
+	  <record jsxid="@uxcore10@radBtn No" jsxtext="No"/>
+	  <record jsxid="@uxcore10@Btn Yes" jsxtext="Yes"/>
+	  <record jsxid="@uxcore10@Btn No" jsxtext="No"/>
+	  <record jsxid="@uxcore10@Btn OK" jsxtext="OK"/>
+	  <record jsxid="@uxcore10@btnSetPermission" jsxtext="Set Permission"/>
+	  <record jsxid="@uxcore10@btnAddPermissions" jsxtext="Add Permissions"/>
+	  <record jsxid="@uxcore10@btnRemovePermissions" jsxtext="Remove Permissons"/>
+	  <record jsxid="@uxcore10@wsdl@getEnvironments" jsxtext="Get All Environments"/>
+	  <record jsxid="@uxcore10@wsdl@getAllServiceAssemblies" jsxtext="Get All Service Assemblies"/>
+	  <record jsxid="@uxcore10@wsdl@removeServiceAssemblies" jsxtext="Remove Service Assemblies"/>
+	  <record jsxid="@uxcore10@wsdl@deployServiceAssemblies" jsxtext="Deploy Service Assemblies"/>
+	  <record jsxid="@uxcore10@wsdl@redeployServiceAssemblies" jsxtext="Redeploy Service Assemblies"/>
+	  <record jsxid="@uxcore10@wsdl@undeployServiceAssemblies" jsxtext="Undeploy Service Assemblies"/>
+	  <record jsxid="@uxcore10@wsdl@startServiceAssemblies" jsxtext="Start Service Assemblies"/>
+	  <record jsxid="@uxcore10@wsdl@stopServiceAssemblies" jsxtext="Stop Service Assemblies"/>
+	  <record jsxid="@uxcore10@wsdl@getAllServiceUnitsSummary" jsxtext="Get All Service Units Summary"/>
+	  <record jsxid="@uxcore10@wsdl@getSRProfileDefinitionBindings" jsxtext="Get Shared Resource Profile Definition Bindings"/>
+	  <record jsxid="@uxcore10@wsdl@getSharedResourceDefinitions" jsxtext="Get Shared Resource Definitions"/>
+	  <record jsxid="@uxcore10@wsdl@updateSRProfileDefinitionBindings" jsxtext="Update Shared Resource Profile Definition Bindings"/>
+	  <record jsxid="@uxcore10@wsdl@createMissingSharedResources" jsxtext="Create Missing Shared Resources"/>
+	  <record jsxid="@uxcore10@wsdl@getServiceUnitNodeMappings" jsxtext="Get Service Unit Node Mappings"/>
+	  <record jsxid="@uxcore10@wsdl@getAvailableNodesforServiceUnit" jsxtext="Get Available Nodes For Service Unit"/>
+	  <record jsxid="@uxcore10@wsdl@updateServiceUnitNodeMappings" jsxtext="Update Service Unit Node Mappings"/>
+	  <record jsxid="@uxcore10@wsdl@getServiceAssemblySVars" jsxtext="Get Service Assembly Substitution Variables"/>
+	  <record jsxid="@uxcore10@wsdl@updateServiceAssemblySVars" jsxtext="Update Service Assembly Substitution Variables"/>
+	  <record jsxid="@uxcore10@wsdl@getServiceUnitSVars" jsxtext="Get Service Unit Substitution Variables"/>
+	  <record jsxid="@uxcore10@wsdl@updateServiceUnitSVars" jsxtext="Update Service Unit Substitution Variables"/>
+	  <record jsxid="@uxcore10@wsdl@getServicesForServiceAssembly" jsxtext="Get Services For Service Assembly"/>
+	  <record jsxid="@uxcore10@wsdl@updateServicesForServiceAssembly" jsxtext="Update Services For Service Assembly"/>
+	  <record jsxid="@uxcore10@wsdl@getTopicDefinitions" jsxtext="Get Topic Definitions"/>
+	  <record jsxid="@uxcore10@wsdl@updateTopicDefinition" jsxtext="Update Topic Definition"/>
+	  <record jsxid="@uxcore10@wsdl@updateServiceAssemblyDetail" jsxtext="Update Service Assembly Detail"/>
+	  <record jsxid="@uxcore10@wsdl@deployServiceAssemblies" jsxtext="Deploy Service Assemblies"/>
+	  <record jsxid="@uxcore10@wsdl@undeployServiceAssemblies" jsxtext="Undeploy Service Assemblies"/>
+	  <record jsxid="@uxcore10@wsdl@addServiceAssembly" jsxtext="Add Service Assembly"/>
+	  <record jsxid="@uxcore10@wsdl@updateServiceAssembly" jsxtext="Update Service Assembly"/>
+	  <record jsxid="@uxcore10@wsdl@changePassword" jsxtext="Change User Password"/>
+	  <record jsxid="@uxcore10@wsdl@getInstalledPlugins" jsxtext="Get All Installed Plugins"/>
+	  <record jsxid="@uxcore10@wsdl@getPlugins" jsxtext="Get Plugins For Container"/>
+	  <record jsxid="@uxcore10@PluginContainer Default Confirm Discard Title" jsxtext="Discard Edits?"/>
+	  <record jsxid="@uxcore10@PluginContainer Default Confirm Discard Text" jsxtext="Do you wish to discard your edits?"/>
+	  <record jsxid="@uxcore10@State Defined" jsxtext="Defined"/>
+	  <record jsxid="@uxcore10@State Installed" jsxtext="Installed"/>
+	  <record jsxid="@uxcore10@State Uninstalled" jsxtext="Uninstalled"/>
+	  <record jsxid="@uxcore10@State Installed_Stopped" jsxtext="Installed/Stopped"/>
+	  <record jsxid="@uxcore10@State Stopped" jsxtext="Stopped"/>
+	  <record jsxid="@uxcore10@State Install Failed" jsxtext="Install Failed"/>
+	  <record jsxid="@uxcore10@State Marked for Install" jsxtext="Marked for Install"/>
+	  <record jsxid="@uxcore10@State Marked for Uninstall" jsxtext="Marked for Uninstall"/>
+	  <record jsxid="@uxcore10@State Unknown" jsxtext="Unknown"/>
+	  <record jsxid="@uxcore10@State Installing" jsxtext="Installing"/>
+	  <record jsxid="@uxcore10@State Uninstalling" jsxtext="Uninstalling"/>
+	  <record jsxid="@uxcore10@State Uninstall Failed" jsxtext="Uninstall Failed"/>
+	  <record jsxid="@uxcore10@State Start Failed" jsxtext="Start Failed"/>
+	  <record jsxid="@uxcore10@State Stop Failed" jsxtext="Stop Failed"/>
+	  <record jsxid="@uxcore10@State Starting" jsxtext="Starting"/>
+	  <record jsxid="@uxcore10@State Stopping" jsxtext="Stopping"/>
+	  <record jsxid="@uxcore10@State Running" jsxtext="Running"/>
+	  <record jsxid="@uxcore10@State Delete Failed" jsxtext="Delete Failed"/>
+	  <record jsxid="@uxcore10@State Deployed" jsxtext="Deployed"/>
+	  <record jsxid="@uxcore10@State Not Deployed" jsxtext="Not Deployed"/>
+	  <record jsxid="@uxcore10@State Running With Error" jsxtext="Running With Error"/>
+	  <record jsxid="@uxcore10@State Deployed With Error" jsxtext="Deployed With Error"/>
+	  <record jsxid="@uxcore10@State Active" jsxtext="Active"/>
+	  <record jsxid="@uxcore10@State Not Active" jsxtext="Not Active"/>
+	  <record jsxid="@uxcore10@State Marked for Activation" jsxtext="Marked for Activation"/>
+	  <record jsxid="@uxcore10@State Marked for Deactivation" jsxtext="Marked for Deactivation"/>
+	  <record jsxid="@uxcore10@State Out Of Sync" jsxtext="Out of sync"/>
+	  <record jsxid="@uxcore10@State Redeployable" jsxtext="Redeployable"/>
+	  <record jsxid="@uxcore10@State Error" jsxtext="Error"/>
+	  <record jsxid="@uxcore10@Resolve Link Text" jsxtext="Resolve"/>
+	  <record jsxid="@uxcore10@ErrorDialogHeader" jsxtext="Error for the operation "/>
+      <record jsxid="@Validation Port Number" jsxtext="{0} invalid. Port numbers must be between 1 and 65535"/>
+      <record jsxid="@Validation Select Box Empty" jsxtext="{0} is empty"/>
+      <record jsxid="@Validation Select Box Unselected" jsxtext="{0} has nothing selected"/>
+      <record jsxid="@Validation Field Empty" jsxtext="{0} is empty"/>
+      <record jsxid="@Validation Default Field Name" jsxtext="Field"/>
+      <record jsxid="@Validation No Whitespace Title" jsxtext="Whitespace not allowed"/>
+      <record jsxid="@Validation Whitespace In Id Label" jsxtext="{0}: Whitespace in &quot;{1}&quot; is not allowed. Use underscore instead"/>
+      <record jsxid="@Validation Whitespace In Number Label" jsxtext="{0}: Whitespace in &quot;{1}&quot; is not allowed. Type a number without whitespace"/>
+      <record jsxid="@Validation Only Digits" jsxtext="{0} may only contain digit characters"/>
+      <record jsxid="@Validation Not A Number Label" jsxtext="{0}: &quot;{1}&quot; is not a number. Type a valid number"/>
+      <record jsxid="@Validation Not An Integer Label" jsxtext="{0}: &quot;{1}&quot; is not a valid integer"/>
+      <record jsxid="@Validation Length Greater Than" jsxtext="{0} is not valid. Length must be greater than {1} characters"/>
+      <record jsxid="@Validation Length Less Than" jsxtext="{0} is not valid. Length must be less than {1} characters"/>
+      <record jsxid="@Validation Length Equals" jsxtext="{0} is not valid. Length must be exactly {1} characters"/>
+      <record jsxid="@Validation Not A Positive Number Label" jsxtext="{0}: &quot;{1}&quot; is not valid. Type a positive integer less than 2147483647"/>
+      <record jsxid="@Validation Not A Positive Float Label" jsxtext="{0}: &quot;{1}&quot; is not valid. Type a positive floating point number less than 2147483647"/>
+      <record jsxid="@Validation Not A Negative Number Label" jsxtext="{0}: &quot;{1}&quot; is not valid. Type a negative integer greater than -2147483647"/>
+      <record jsxid="@Validation Not A Negative Float Label" jsxtext="{0}: &quot;{1}&quot; is not valid. Type a negative floating point number greater than -2147483647"/>
+      <record jsxid="@Validation Not An IP Label" jsxtext="{0}: &quot;{1}&quot; is not a valid IP adress"/>
+      <record jsxid="@Validation Not An URL Label" jsxtext="{0}: &quot;{1}&quot; is not a valid URL"/>
+      <record jsxid="@Validation No Leading Or Trailing Spaces" jsxtext="{0}: &quot;{1}&quot; is not valid. Leading and trailing spaces are not allowed"/>
+  </locale>
+</data>

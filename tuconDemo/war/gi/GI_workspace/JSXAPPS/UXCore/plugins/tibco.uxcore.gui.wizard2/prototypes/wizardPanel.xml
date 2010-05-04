@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.5">
+  <name>Wizard Panel</name>
+  <icon/>
+  <description>A single wizard panel used to display one screen's worth of content in a wizard.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.WizardPanel">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="wizardPanel" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20 20 20 20"/>
+  </object>
+</serialization>

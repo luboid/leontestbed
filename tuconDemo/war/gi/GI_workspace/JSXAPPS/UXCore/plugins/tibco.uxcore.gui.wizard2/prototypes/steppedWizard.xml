@@ -1,0 +1,139 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.5">
+  <name>Stepped Wizard</name>
+  <icon/>
+  <description>A basic wizard with a layout for the wizard panels, indication of the current step, and details of the entire wizard values</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.SteppedWizard">
+    <variants jsxoverflow="2" contentPaneExplicit="true"/>
+    <strings jsxname="steppedWizard" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" contentPaneName="contentPane" currentPanel="wizardPanel1" buttonPanelName="buttonPane" stepsPaneName="stepsPane" detailsPaneName="detailsPane" initialPanelName="wizardPanel1"/>
+    <object type="jsx3.gui.LayoutGrid">
+      <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+      <strings jsxname="layout (--)" jsxrows="*,38" jsxwidth="100%" jsxheight="100%"/>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="2"/>
+        <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+        <object type="jsx3.gui.LayoutGrid">
+          <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+          <strings jsxname="layout ( | )" jsxcols="210,*" jsxwidth="100%" jsxheight="100%"/>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="2"/>
+            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+            <object type="jsx3.gui.LayoutGrid">
+              <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+              <strings jsxname="layout (--)" jsxrows="180,*" jsxwidth="100%" jsxheight="100%"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="1"/>
+                <strings jsxname="stepsPane" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxbgcolor="#F4F4F4" jsxborder="0px solid black; 1px solid #8F8F8F; 1px solid #8F8F8F; 0px solid black;" jsxpadding="20"/>
+                <object type="tibco.uxcore.gui.WizardStep">
+                  <variants jsxheight="16" jsxoverflow="2" active="true"/>
+                  <strings jsxname="step1" jsxwidth="100%" jsxmargin="0 0 25 0" inactivecolor="#7E7E7E" activecolor="#000000"/>
+                  <dynamics jsxborder="@No jsxborder"/>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxwidth="16" jsxheight="16" jsxoverflow="2" jsxleft="0" jsxtop="0" jsxfontsize="12"/>
+                    <strings jsxname="block" jsxrelativeposition="1" jsxstyleoverride="float: left" jsxtextalign="center" jsxcolor="white" jsxfontweight="bold" jsxpadding="0 0 0 1" jsxbg="background-image:url(../../../SVN/Matrix/dev/admin/client/administrator/depot/JSXAPPS/spm/addins/spm/images/stepsBkgrd_black.gif)" jsxbgcolor="" jsxtext="1"/>
+                    <dynamics jsxfontname="@addin@Title Font Name"/>
+                  </object>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxrelativeposition="1" jsxoverflow="3" jsxleft="0" jsxtop="0" jsxheight="16"/>
+                    <strings jsxname="lblSetActions_90" jsxstyleoverride="float:left" jsxcolor="#000000" jsxtext="Step 1"/>
+                    <dynamics jsxfontname="@addin@lbl Font Name" jsxfontsize="@addin@Title Font Size" jsxbgcolor="@addin@lbl BGColor" jsxbg="@addin@lbl Background" jsxclassname="@addin@lbl Css Rule Name" jsxfontweight="@addin@lbl Font Weight" jsxmargin="@addin@rad Margin"/>
+                  </object>
+                </object>
+                <object type="tibco.uxcore.gui.WizardStep">
+                  <variants jsxheight="16" jsxoverflow="2" active="false"/>
+                  <strings jsxname="step2" jsxwidth="100%" jsxmargin="0 0 25 0" inactivecolor="#7E7E7E" activecolor="#000000"/>
+                  <dynamics jsxborder="@No jsxborder"/>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxwidth="16" jsxheight="16" jsxoverflow="2" jsxleft="0" jsxtop="0" jsxfontsize="12"/>
+                    <strings jsxname="block" jsxrelativeposition="1" jsxstyleoverride="float: left" jsxtextalign="center" jsxcolor="white" jsxfontweight="bold" jsxpadding="0 0 0 1" jsxbg="background-image:url(../../../SVN/Matrix/dev/admin/client/administrator/depot/JSXAPPS/spm/addins/spm/images/stepsBkgrd_gray.gif)" jsxbgcolor="" jsxtext="2"/>
+                    <dynamics jsxfontname="@addin@Title Font Name"/>
+                  </object>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxrelativeposition="1" jsxoverflow="3" jsxleft="0" jsxtop="0" jsxheight="16"/>
+                    <strings jsxname="lblSetActions_90" jsxstyleoverride="float:left" jsxcolor="#7E7E7E" jsxtext="Step 2"/>
+                    <dynamics jsxfontname="@addin@lbl Font Name" jsxfontsize="@addin@Title Font Size" jsxbgcolor="@addin@lbl BGColor" jsxbg="@addin@lbl Background" jsxclassname="@addin@lbl Css Rule Name" jsxfontweight="@addin@lbl Font Weight" jsxmargin="@addin@rad Margin"/>
+                  </object>
+                </object>
+                <object type="tibco.uxcore.gui.WizardStep">
+                  <variants jsxheight="16" jsxoverflow="2" active="false"/>
+                  <strings jsxname="step3" jsxwidth="100%" jsxmargin="0 0 25 0" inactivecolor="#7E7E7E" activecolor="#000000"/>
+                  <dynamics jsxborder="@No jsxborder"/>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxwidth="16" jsxheight="16" jsxoverflow="2" jsxleft="0" jsxtop="0" jsxfontsize="12"/>
+                    <strings jsxname="block" jsxrelativeposition="1" jsxstyleoverride="float: left" jsxtextalign="center" jsxcolor="white" jsxfontweight="bold" jsxpadding="0 0 0 1" jsxbg="background-image:url(../../../SVN/Matrix/dev/admin/client/administrator/depot/JSXAPPS/spm/addins/spm/images/stepsBkgrd_gray.gif)" jsxbgcolor="" jsxtext="3"/>
+                    <dynamics jsxfontname="@addin@Title Font Name"/>
+                  </object>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxrelativeposition="1" jsxoverflow="3" jsxleft="0" jsxtop="0" jsxheight="16"/>
+                    <strings jsxname="lblSetActions_90" jsxstyleoverride="float:left" jsxcolor="#7E7E7E" jsxtext="Step 3"/>
+                    <dynamics jsxfontname="@addin@lbl Font Name" jsxfontsize="@addin@Title Font Size" jsxbgcolor="@addin@lbl BGColor" jsxbg="@addin@lbl Background" jsxclassname="@addin@lbl Css Rule Name" jsxfontweight="@addin@lbl Font Weight" jsxmargin="@addin@rad Margin"/>
+                  </object>
+                </object>
+                <object type="tibco.uxcore.gui.WizardStep">
+                  <variants jsxheight="16" jsxoverflow="2" active="false"/>
+                  <strings jsxname="step4" jsxwidth="100%" inactivecolor="#7E7E7E" activecolor="#000000"/>
+                  <dynamics jsxborder="@No jsxborder"/>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxwidth="16" jsxheight="16" jsxoverflow="2" jsxleft="0" jsxtop="0" jsxfontsize="12"/>
+                    <strings jsxname="block" jsxrelativeposition="1" jsxstyleoverride="float: left" jsxtextalign="center" jsxcolor="white" jsxfontweight="bold" jsxpadding="0 0 0 1" jsxbg="background-image:url(../../../SVN/Matrix/dev/admin/client/administrator/depot/JSXAPPS/spm/addins/spm/images/stepsBkgrd_gray.gif)" jsxbgcolor="" jsxtext="4"/>
+                    <dynamics jsxfontname="@addin@Title Font Name"/>
+                  </object>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxrelativeposition="1" jsxoverflow="3" jsxleft="0" jsxtop="0" jsxheight="16"/>
+                    <strings jsxname="lblSetActions_90" jsxstyleoverride="float:left" jsxcolor="#7E7E7E" jsxtext="Step 4"/>
+                    <dynamics jsxfontname="@addin@lbl Font Name" jsxfontsize="@addin@Title Font Size" jsxbgcolor="@addin@lbl BGColor" jsxbg="@addin@lbl Background" jsxclassname="@addin@lbl Css Rule Name" jsxfontweight="@addin@lbl Font Weight" jsxmargin="@addin@rad Margin"/>
+                  </object>
+                </object>
+              </object>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="2"/>
+                <strings jsxname="detailsPane" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxbgcolor="#D9D9D9" jsxborder="0px solid black; 1px solid #8F8F8F; 0px solid black; 0px solid black;" jsxpadding="20 10 20 10"/>
+              </object>
+            </object>
+          </object>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="2"/>
+            <strings jsxname="contentPane" jsxwidth="100%" jsxheight="100%"/>
+            <object type="tibco.uxcore.gui.WizardPanel">
+              <variants jsxoverflow="1" jsxfontsize="40" buttonStatesArr="[]"/>
+              <strings jsxname="wizardPanel1" jsxtext="Panel 1" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20 20 20 20" buttonStates="buttonPrev:DISABLED,buttonFinish:HIDDEN" jsxdisplay="" jsxtextalign="center"/>
+            </object>
+            <object type="tibco.uxcore.gui.WizardPanel">
+              <variants jsxoverflow="1" jsxfontsize="40"/>
+              <strings jsxname="wizardPanel2" jsxtext="Panel 2" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20 20 20 20" buttonStates="buttonFinish:HIDDEN" jsxdisplay="none" jsxtextalign="center"/>
+            </object>
+            <object type="tibco.uxcore.gui.WizardPanel">
+              <variants jsxoverflow="1" jsxfontsize="40"/>
+              <strings jsxname="wizardPanel3" jsxtext="Panel 3" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20 20 20 20" buttonStates="buttonFinish:HIDDEN" jsxdisplay="none" jsxtextalign="center"/>
+            </object>
+            <object type="tibco.uxcore.gui.WizardPanel">
+              <variants jsxoverflow="1" jsxfontsize="40"/>
+              <strings jsxname="wizardPanel4" jsxtext="Panel 4" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20 20 20 20" buttonStates="buttonNext:DISABLED" jsxdisplay="none" jsxtextalign="center"/>
+            </object>
+          </object>
+        </object>
+      </object>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="2"/>
+        <strings jsxname="buttonPane" jsxwidth="100%" jsxheight="100%" jsxborder="1px solid #8F8F8F; 0px solid black; 0px solid black; 0px solid black;" jsxpadding="10 20 10 20" jsxtextalign="right"/>
+        <object type="tibco.uxcore.gui.WizardPrevButton">
+          <variants jsxindex="0" jsxenabled="0"/>
+          <strings jsxname="buttonPrev" jsxtext="Prev" jsxdisplay="" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+        </object>
+        <object type="tibco.uxcore.gui.WizardNextButton">
+          <variants jsxindex="0" jsxenabled="1"/>
+          <strings jsxname="buttonNext" jsxtext="Next" jsxmargin="0 20 0 0" jsxdisplay="" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+        </object>
+        <object type="tibco.uxcore.gui.WizardCancelButton">
+          <variants jsxindex="0" jsxenabled="1"/>
+          <strings jsxname="buttonCancel" jsxtext="Cancel" jsxdisplay="" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+        </object>
+        <object type="tibco.uxcore.gui.WizardFinishButton">
+          <variants jsxindex="0" jsxenabled="1"/>
+          <strings jsxname="buttonFinish" jsxtext="Finish" jsxdisplay="none" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

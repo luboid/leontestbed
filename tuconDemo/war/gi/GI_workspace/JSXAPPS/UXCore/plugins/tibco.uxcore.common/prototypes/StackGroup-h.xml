@@ -1,0 +1,30 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Stack Group - H</name>
+  <icon>jsxplugin://tibco.uxcore.common/images/prototype/stackgroup-over.gif</icon>
+  <description>Stack group with two horizontal (under/over) stack items.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.StackGroupBlock">
+    <strings jsxwidth="100%" jsxheight="100%" jsxname="stackContainer"/>
+    <object type="tibco.uxcore.gui.StackGroup">
+      <variants jsxoverflow="2"/>
+      <strings jsxname="stackgroup" jsxrows="*,27"/>
+      <object type="tibco.uxcore.gui.Stack">
+        <variants/>
+        <strings jsxname="stack" jsxtext="Stack 1"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="1" jsxloadtype="4"/>
+          <strings jsxname="pane" jsxdisplay=""/>
+        </object>
+      </object>
+      <object type="tibco.uxcore.gui.Stack">
+        <variants/>
+        <strings jsxname="stack" jsxtext="Stack 2"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="1" jsxloadtype="4"/>
+          <strings jsxname="pane" jsxdisplay="none"/>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

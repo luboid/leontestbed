@@ -1,0 +1,20 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.gui.matrix"
+        name="UX Core Matrix"
+        version="0.1">
+    <requires>
+        <plugin id="jsx3.gui.Matrix"/>
+    </requires>
+
+    <resources>
+    	<jss id="styleJSS" path="jss/styleJSS.xml"/>
+        <script id="Matrix" path="classes/Matrix.js" eval="true">
+            <prereq plugin="jsx3.gui.Matrix"/>
+            <prereq id="styleJSS"/>
+        </script>
+    </resources>
+
+</plugin>
+

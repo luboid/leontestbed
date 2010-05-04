@@ -1,0 +1,18 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Tabbed Navigation Menu</name>
+  <icon/>
+  <description>Block object with Text/HTML property.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.TabbedNavMenuButton">
+    <variants jsxrelativeposition="1" jsxoverflow="3" jsxheight="22" jsxfontsize="11"/>
+    <strings jsxname="Menu" jsxtext="Menu" jsxfontname="Arial" jsxfontweight="bold" jsxpadding="6 10 0 10"/>
+    <events jsxclick="this.doPressed(objEVENT)"/>
+    <object type="jsx3.gui.Menu">
+      <variants jsxxmlasync="1" jsxenabled="1"/>
+      <strings jsxtip="menu" jsxtext="menu" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;  &lt;record jsxid=&quot;1&quot; jsxtext=&quot;New&quot;/&gt;  &lt;record jsxid=&quot;2&quot; jsxtext=&quot;Open&quot;/&gt;  &lt;record jsxid=&quot;3&quot; jsxtext=&quot;Save&quot;/&gt;  &lt;/data&gt;" jsxdisplay="none" jsxbg="dummy"/>
+      <events jsxexecute="this.getParent().selected(objEVENT, strRECORDID, objRECORD)"/>
+      <xslparameters jsxleftbuffer="12"/>
+    </object>
+  </object>
+</serialization>

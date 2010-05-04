@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>SimpleSearch</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/prototype/search.gif</icon>
+  <description>Simple Search object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.SimpleSearch">
+    <variants jsxheight="18" jsxtop="4"/>
+    <strings jsxname="simpleSearch" jsxmargin="4 0 0 0"/>
+  </object>
+</serialization>

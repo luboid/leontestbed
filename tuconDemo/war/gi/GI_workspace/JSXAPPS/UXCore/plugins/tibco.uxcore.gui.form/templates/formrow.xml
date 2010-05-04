@@ -1,0 +1,17 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <template recalc="true" onresize="this.onResize()">
+        <inlinebox class="formrow" index="{$index}" jsxindex="{$jsxindex}" label="{$label}" title="{$tip}"
+                   style="display:{$display}; float:{doFloat}; width: {donotsetme|100%};" tabindex="{donotsetme3|-1}">
+            <margin>'0px 0px 10px 0px'</margin>
+            <if test="MODE == 'paintchild'">
+                <var name="jsxdrawspace">{}</var>
+            </if>
+            <var name="childwidth" triggers="jsxwidth">this.getChildWidth($$parentwidth ? $$parentwidth : null)</var>
+                <span u:id="panelspane" style="position: relative; top:0; width: 100%;" tabindex="-1">
+                    <attach select="new jsx3.util.List(this.getFormChildren()).iterator()">
+                        <drawspace boxtype="'box'" position="'relative'" left="0" width="this.getPaintProfile().childwidth" margin="'0px 0px 0px ' + (($$target.getChildIndex() == 0) ? '0px' : (this.getChildSpacing() + 'px'))"/>
+                    </attach>
+                </span>
+        </inlinebox>
+    </template>
+</transform>

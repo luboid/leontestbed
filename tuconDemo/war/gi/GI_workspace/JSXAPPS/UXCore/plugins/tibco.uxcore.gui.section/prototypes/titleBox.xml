@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>TitleBox</name>
+  <icon/>
+  <description/>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.TitleBox">
+    <variants/>
+    <strings jsxname="titleBox" jsxwidth="100%"/>
+  </object>
+</serialization>

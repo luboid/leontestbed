@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxnamespace="propsbundle">
+  <locale key="ko">
+    <record jsxid="format.number" jsxtext="#,##0.###"/>
+    <record jsxid="format.number.percent" jsxtext="#,##0%"/>
+    <record jsxid="format.datetime" jsxtext="{1} {0}"/>
+    <record jsxid="format.time.long" jsxtext="a hh시 mm분 ss초 z"/>
+    <record jsxid="format.time.short" jsxtext="a h:mm"/>
+    <record jsxid="number.grouping" jsxtext=","/>
+    <record jsxid="format.date.medium" jsxtext="yyyy. M. d."/>
+    <record jsxid="format.date.short" jsxtext="yy. M. d."/>
+    <record jsxid="number.decimal" jsxtext="."/>
+    <record jsxid="format.date.full" jsxtext="yyyy년 M월 d일 EEEE"/>
+    <record jsxid="format.time.medium" jsxtext="a h:mm:ss"/>
+    <record jsxid="format.date.long" jsxtext="yyyy년 M월 d일"/>
+    <record jsxid="format.number.currency" jsxtext="¤#,##0.00"/>
+    <record eval="1" jsxid="date.month.abbrev" jsxtext="['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']"/>
+    <record eval="1" jsxid="date.month" jsxtext="['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']"/>
+    <record eval="1" jsxid="date.month.narrow" jsxtext="['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']"/>
+    <record eval="1" jsxid="date.day.abbrev" jsxtext="['일','월','화','수','목','금','토']"/>
+    <record eval="1" jsxid="date.day" jsxtext="['일요일','월요일','화요일','수요일','목요일','금요일','토요일']"/>
+    <record eval="1" jsxid="date.day.narrow" jsxtext="['일','월','화','수','목','금','토']"/>
+    <record eval="1" jsxid="date.era.long" jsxtext="['서력기원전','서력기원']"/>
+    <record eval="1" jsxid="date.era" jsxtext="['기원전','서기']"/>
+    <record eval="1" jsxid="time.ampm" jsxtext="['오전','오후']"/>
+    <record jsxid="string.lang.ar" jsxtext="아랍어"/>
+    <record jsxid="string.lang.da" jsxtext="덴마크어"/>
+    <record jsxid="string.lang.de" jsxtext="독일어"/>
+    <record jsxid="string.lang.el" jsxtext="그리스어"/>
+    <record jsxid="string.lang.en" jsxtext="영어"/>
+    <record jsxid="string.lang.es" jsxtext="스페인어"/>
+    <record jsxid="string.lang.fi" jsxtext="핀란드어"/>
+    <record jsxid="string.lang.fr" jsxtext="프랑스어"/>
+    <record jsxid="string.lang.he" jsxtext="히브리어"/>
+    <record jsxid="string.lang.id" jsxtext="인도네시아어"/>
+    <record jsxid="string.lang.it" jsxtext="이탈리아어"/>
+    <record jsxid="string.lang.ja" jsxtext="일본어"/>
+    <record jsxid="string.lang.ko" jsxtext="한국어"/>
+    <record jsxid="string.lang.nl" jsxtext="네덜란드어"/>
+    <record jsxid="string.lang.nn" jsxtext="노르웨이어(뉴노시크)"/>
+    <record jsxid="string.lang.pl" jsxtext="폴란드어"/>
+    <record jsxid="string.lang.pt" jsxtext="포르투갈어"/>
+    <record jsxid="string.lang.ru" jsxtext="러시아어"/>
+    <record jsxid="string.lang.sv" jsxtext="스웨덴어"/>
+    <record jsxid="string.lang.th" jsxtext="태국어"/>
+    <record jsxid="string.lang.tr" jsxtext="터키어"/>
+    <record jsxid="string.lang.vi" jsxtext="베트남어"/>
+    <record jsxid="string.lang.zh" jsxtext="중국어"/>
+    <record jsxid="string.terr.AU" jsxtext="오스트레일리아"/>
+    <record jsxid="string.terr.BE" jsxtext="벨기에"/>
+    <record jsxid="string.terr.BR" jsxtext="브라질"/>
+    <record jsxid="string.terr.CA" jsxtext="캐나다"/>
+    <record jsxid="string.terr.CN" jsxtext="중국"/>
+    <record jsxid="string.terr.DE" jsxtext="독일"/>
+    <record jsxid="string.terr.DK" jsxtext="덴마크"/>
+    <record jsxid="string.terr.ES" jsxtext="스페인"/>
+    <record jsxid="string.terr.FI" jsxtext="핀란드"/>
+    <record jsxid="string.terr.FR" jsxtext="프랑스"/>
+    <record jsxid="string.terr.GB" jsxtext="영국"/>
+    <record jsxid="string.terr.GR" jsxtext="그리스"/>
+    <record jsxid="string.terr.HK" jsxtext="홍콩, 중국 특별행정구"/>
+    <record jsxid="string.terr.ID" jsxtext="인도네시아"/>
+    <record jsxid="string.terr.IL" jsxtext="이스라엘"/>
+    <record jsxid="string.terr.IT" jsxtext="이탈리아"/>
+    <record jsxid="string.terr.JP" jsxtext="일본"/>
+    <record jsxid="string.terr.KR" jsxtext="대한민국"/>
+    <record jsxid="string.terr.MX" jsxtext="멕시코"/>
+    <record jsxid="string.terr.NL" jsxtext="네덜란드"/>
+    <record jsxid="string.terr.NO" jsxtext="노르웨이"/>
+    <record jsxid="string.terr.NZ" jsxtext="뉴질랜드"/>
+    <record jsxid="string.terr.PL" jsxtext="폴란드"/>
+    <record jsxid="string.terr.PT" jsxtext="포르투갈"/>
+    <record jsxid="string.terr.RU" jsxtext="러시아"/>
+    <record jsxid="string.terr.SE" jsxtext="스웨덴"/>
+    <record jsxid="string.terr.TH" jsxtext="태국"/>
+    <record jsxid="string.terr.TR" jsxtext="터키"/>
+    <record jsxid="string.terr.TW" jsxtext="대만"/>
+    <record jsxid="string.terr.US" jsxtext="미국"/>
+    <record jsxid="string.terr.VN" jsxtext="베트남"/>
+    <record jsxid="string.terr.ZA" jsxtext="남아프리카"/>
+    <record jsxid="jsx3.gui.Select.defaultText" jsxtext="-선택-"/>
+    <record jsxid="jsx3.gui.Select.dataUnavailable" jsxtext="-가용 데이터 없음-"/>
+    <record jsxid="jsx3.gui.Select.noMatch" jsxtext="-일치된 결과 없음-"/>
+    <record jsxid="jsx3.gui.Menu.noData" jsxtext="- 데이터 없음 -"/>
+    <record jsxid="jsx3.gui.Matrix.seek" jsxtext="{2}의 {0} 부터 {1} 까지의 행을 보는 중"/>
+    <record jsxid="jsx3.gui.BlockX.loading" jsxtext="XSL 로드 중 …"/>
+    <record jsxid="jsx3.gui.BlockX.timeout" jsxtext="XSL 타임아웃"/>
+    <record jsxid="jsx3.gui.BlockX.error" jsxtext="XSL 오류"/>
+    <record jsxid="jsx3.xml.Cacheable.loading" jsxtext="{0} 로드 중 …"/>
+    <record jsxid="jsx3.xml.Cacheable.timeout" jsxtext="{0} 로드 중 타임 아웃"/>
+    <record jsxid="jsx3.xml.Cacheable.error" jsxtext="{0} 오류 로드 중"/>
+    <record jsxid="jsx3.xml.Cacheable.data" jsxtext="데이터"/>
+    <record jsxid="jsx3.gui.Dialog.close" jsxtext="닫기"/>
+    <record jsxid="jsx3.gui.Dialog.min" jsxtext="토글 표시"/>
+    <record jsxid="jsx3.gui.Dialog.max" jsxtext="토글 최대화"/>
+    <record jsxid="jsx3.gui.Dialog.restore" jsxtext="원래 크기로 복구"/>
+    <record eval="1" jsxid="time.24hour" jsxtext="false"/>
+    <record jsxid="format.number.integer" jsxtext="#,##0"/>
+    <record jsxid="time.sep.hour-min" jsxtext="시 "/>
+    <record jsxid="time.sep.min-sec" jsxtext="분 "/>
+    <record jsxid="format.time.full" jsxtext="a hh시 mm분 ss초 z"/>
+  </locale>
+<locale key="ko_KR">
+    <record eval="1" jsxid="date.firstWeekDay" jsxtext="0"/>
+    <record jsxid="currency.code" jsxtext="KRW"/>
+  </locale>
+</data>

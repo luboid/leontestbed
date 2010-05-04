@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>List Paginator</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/prototype/paginator.png</icon>
+  <description>A UXCore List Paginator object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.ListPaginator">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="listPaginator" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+  </object>
+</serialization>

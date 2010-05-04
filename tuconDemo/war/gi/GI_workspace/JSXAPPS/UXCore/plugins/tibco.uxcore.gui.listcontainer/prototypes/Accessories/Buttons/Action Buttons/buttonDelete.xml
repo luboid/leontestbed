@@ -1,0 +1,13 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Delete</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/delete.gif</icon>
+  <description>A tibco.uxcore.gui.ActionButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+            <object type="tibco.uxcore.gui.ActionButton">
+              <variants jsxenabled="1" jsxprefetch="1"/>
+              <strings jsxname="actionButtonDelete" jsxoverimage="1" jsxdownimage="1" jsxactionid="Delete"/>
+              <dynamics jsxtext="@uxcore10@Btn Text Delete" jsxicon="@uxcore10@Btn Image Delete"/>
+              <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+            </object>
+</serialization>

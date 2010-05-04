@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxid="jsxroot">
+  <record jsxid="tibco.uxcore.gui.Button" jsxtext="properties/Button.xml"/>
+  <record jsxid="tibco.uxcore.gui.ImageButton" jsxtext="properties/ImageButton.xml"/>
+  <record jsxid="tibco.uxcore.gui.HelpButton" jsxtext="properties/helpButton.xml"/>
+</data>

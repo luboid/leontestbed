@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<data jsxid="jsxroot">
+	<record include="master.xml" group="object"/>
+	<record include="master.xml" group="position"/>
+
+    <record jsxid="uxcoreTitleBox" group="1" jsxtext="TitleBox">
+        <record jsxid="title" jsxtext="Title"
+            jsxtip="Sets the title for the TitleBox."
+            docgetter="getTitle" docsetter="setTitle"
+            eval="0"
+            jsxexecute="objJSX.setTitle(vntValue);"
+            jsxmask="jsxtext"/>
+        <record jsxid="description" jsxtext="Description"
+            jsxtip="Sets the description for the TitleBox"
+            docgetter="getDescription" docsetter="setDescription"
+            eval="0"
+            jsxexecute="objJSX.setDescription(vntValue);"
+            jsxmask="jsxtext"/>
+        <record jsxid="titleFontSize" jsxtext="Title Font Size"
+            jsxtip="Sets the font size for the Title"
+            docgetter="getTitleFontSize" docsetter="setTitleFontSize"
+            eval="0"
+            jsxexecute="objJSX.setTitleFontSize(vntValue);"
+            jsxmask="jsxtext"/>
+    </record>
+	
+	<!--<record include="master.xml" group="font"/>-->
+	<record include="master.xml" group="box"/>
+	<record include="master.xml" group="css"/>
+    <!--
+	<record include="master.xml" group="interaction"/>
+	<record include="master.xml" group="drag"/>
+	<record include="master.xml" group="move"/>
+	<record include="master.xml" group="access"/>
+	<record include="master.xml" group="metadata"/>
+    -->
+</data>

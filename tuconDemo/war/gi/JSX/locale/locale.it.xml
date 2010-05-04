@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxnamespace="propsbundle">
+  <locale key="it">
+    <record jsxid="format.datetime" jsxtext="{1} {0}"/>
+    <record jsxid="format.time.long" jsxtext="HH:mm:ss z"/>
+    <record jsxid="format.time.short" jsxtext="HH:mm"/>
+    <record jsxid="number.grouping" jsxtext="."/>
+    <record jsxid="format.date.medium" jsxtext="dd/MMM/yyyy"/>
+    <record jsxid="format.date.short" jsxtext="dd/MM/yy"/>
+    <record jsxid="number.decimal" jsxtext=","/>
+    <record jsxid="format.date.full" jsxtext="EEEE d MMMM yyyy"/>
+    <record jsxid="format.time.medium" jsxtext="HH:mm:ss"/>
+    <record jsxid="number.currency.decimal" jsxtext=","/>
+    <record jsxid="format.date.long" jsxtext="dd MMMM yyyy"/>
+    <record jsxid="number.currency.grouping" jsxtext="."/>
+    <record eval="1" jsxid="date.month.abbrev" jsxtext="['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic']"/>
+    <record eval="1" jsxid="date.month" jsxtext="['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre']"/>
+    <record eval="1" jsxid="date.month.narrow" jsxtext="['G','F','M','A','M','G','L','A','S','O','N','D']"/>
+    <record eval="1" jsxid="date.day.abbrev" jsxtext="['dom','lun','mar','mer','gio','ven','sab']"/>
+    <record eval="1" jsxid="date.day" jsxtext="['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato']"/>
+    <record eval="1" jsxid="date.day.narrow" jsxtext="['D','L','M','M','G','V','S']"/>
+    <record eval="1" jsxid="date.era" jsxtext="['aC','dC']"/>
+    <record eval="1" jsxid="time.ampm" jsxtext="['m.','p.']"/>
+    <record jsxid="string.lang.ar" jsxtext="arabo"/>
+    <record jsxid="string.lang.da" jsxtext="danese"/>
+    <record jsxid="string.lang.de" jsxtext="tedesco"/>
+    <record jsxid="string.lang.el" jsxtext="greco"/>
+    <record jsxid="string.lang.en" jsxtext="inglese"/>
+    <record jsxid="string.lang.es" jsxtext="spagnolo"/>
+    <record jsxid="string.lang.fi" jsxtext="finlandese"/>
+    <record jsxid="string.lang.fr" jsxtext="francese"/>
+    <record jsxid="string.lang.he" jsxtext="ebraico"/>
+    <record jsxid="string.lang.id" jsxtext="indonesiano"/>
+    <record jsxid="string.lang.it" jsxtext="italiano"/>
+    <record jsxid="string.lang.ja" jsxtext="giapponese"/>
+    <record jsxid="string.lang.ko" jsxtext="coreano"/>
+    <record jsxid="string.lang.nl" jsxtext="olandese"/>
+    <record jsxid="string.lang.nn" jsxtext="norvegese nynorsk"/>
+    <record jsxid="string.lang.pl" jsxtext="polacco"/>
+    <record jsxid="string.lang.pt" jsxtext="portoghese"/>
+    <record jsxid="string.lang.ru" jsxtext="russo"/>
+    <record jsxid="string.lang.sv" jsxtext="svedese"/>
+    <record jsxid="string.lang.th" jsxtext="thai"/>
+    <record jsxid="string.lang.tr" jsxtext="turco"/>
+    <record jsxid="string.lang.vi" jsxtext="vietnamita"/>
+    <record jsxid="string.lang.zh" jsxtext="cinese"/>
+    <record jsxid="string.terr.AU" jsxtext="Australia"/>
+    <record jsxid="string.terr.BE" jsxtext="Belgio"/>
+    <record jsxid="string.terr.BR" jsxtext="Brasile"/>
+    <record jsxid="string.terr.CA" jsxtext="Canada"/>
+    <record jsxid="string.terr.CN" jsxtext="Cina"/>
+    <record jsxid="string.terr.DE" jsxtext="Germania"/>
+    <record jsxid="string.terr.DK" jsxtext="Danimarca"/>
+    <record jsxid="string.terr.ES" jsxtext="Spagna"/>
+    <record jsxid="string.terr.FI" jsxtext="Finlandia"/>
+    <record jsxid="string.terr.FR" jsxtext="Francia"/>
+    <record jsxid="string.terr.GB" jsxtext="Regno Unito"/>
+    <record jsxid="string.terr.GR" jsxtext="Grecia"/>
+    <record jsxid="string.terr.HK" jsxtext="Regione Amministrativa Speciale di Hong Kong, Cina"/>
+    <record jsxid="string.terr.ID" jsxtext="Indonesia"/>
+    <record jsxid="string.terr.IL" jsxtext="Israele"/>
+    <record jsxid="string.terr.IT" jsxtext="Italia"/>
+    <record jsxid="string.terr.JP" jsxtext="Giappone"/>
+    <record jsxid="string.terr.KR" jsxtext="Corea del Sud"/>
+    <record jsxid="string.terr.MX" jsxtext="Messico"/>
+    <record jsxid="string.terr.NL" jsxtext="Paesi Bassi"/>
+    <record jsxid="string.terr.NO" jsxtext="Norvegia"/>
+    <record jsxid="string.terr.NZ" jsxtext="Nuova Zelanda"/>
+    <record jsxid="string.terr.PL" jsxtext="Polonia"/>
+    <record jsxid="string.terr.PT" jsxtext="Portogallo"/>
+    <record jsxid="string.terr.RU" jsxtext="Federazione Russa"/>
+    <record jsxid="string.terr.SE" jsxtext="Svezia"/>
+    <record jsxid="string.terr.TH" jsxtext="Tailandia"/>
+    <record jsxid="string.terr.TR" jsxtext="Turchia"/>
+    <record jsxid="string.terr.TW" jsxtext="Taiwan"/>
+    <record jsxid="string.terr.US" jsxtext="Stati Uniti"/>
+    <record jsxid="string.terr.VN" jsxtext="Vietnam"/>
+    <record jsxid="string.terr.ZA" jsxtext="Sudafrica"/>
+    <record eval="1" jsxid="time.24hour" jsxtext="true"/>
+    <record jsxid="time.sep.hour-min" jsxtext=":"/>
+    <record jsxid="time.sep.min-sec" jsxtext=":"/>
+    <record jsxid="format.time.full" jsxtext="HH:mm:ss z"/>
+  </locale>
+<locale key="it_IT">
+    <record jsxid="currency.code" jsxtext="EUR"/>
+  </locale>
+</data>

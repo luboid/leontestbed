@@ -1,0 +1,9 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <template recalc="true" onresize="this.onResize()">
+        <inlinebox class="titlerow" index="{$index}" jsxindex="{$jsxindex}" label="{$label}" title="{$tip}"
+                   style="display:{$display}; float:left; width: {donotsetme|100%};" tabindex="{donotsetme3|-1}">
+            <margin>'20px 0px 10px 0px'</margin>
+                <span u:id="title" style="position: relative; top:0; width: 100%; font-size: 14px; color: #000000; font-family: Arial; font-weight: bold;" tabindex="-1"><text>{titletext|}</text></span>
+        </inlinebox>
+    </template>
+</transform>

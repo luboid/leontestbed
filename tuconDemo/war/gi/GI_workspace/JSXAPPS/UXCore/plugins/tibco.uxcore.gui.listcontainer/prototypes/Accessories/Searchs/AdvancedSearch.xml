@@ -1,0 +1,9 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>AdvancedSearch</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/prototype/search.gif</icon>
+  <description>Advanced Search object.</description>
+  <object type="tibco.uxcore.gui.AdvancedSearch">
+    <variants jsxheight="18"/>
+    <strings jsxname="advancedSearch"/>
+  </object>
+</serialization>

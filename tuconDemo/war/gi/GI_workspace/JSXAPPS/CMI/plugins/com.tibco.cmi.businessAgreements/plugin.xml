@@ -1,0 +1,35 @@
+﻿<plugin xmlns="http://www.generalinterface.org/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.generalinterface.org/gi/amp http://www.generalinterface.org/xsd/plugin.xsd"
+        id="com.tibco.cmi.businessAgreements"
+        name="Business Connect - businessAgreements"
+        version="0.1">
+
+  <requires>
+    <plugin id="jsx3.gui.Block"/>
+    <plugin id="tibco.uxcore.gui.masterdetail"/>
+    <plugin id="tibco.uxcore.gui.matrix"/>
+		<plugin id="tibco.uxcore.gui.form"/>
+  </requires>
+
+  <resources>
+    <script id="businessAgreementsPlugIn_js" path="businessAgreementsPlugIn.js" eval="true"/>
+		<script id="BusinessAgreements_js" path="BusinessAgreements.js" eval="true"/>
+    <xml id="BusinessAgreements_xml" path="ui/BusinessAgreements.xml">
+			<prereq id="BusinessAgreements_js"/>
+		</xml>
+  </resources>
+
+  <!-- Extensions -->
+
+  <extension point="com.tibco.cmi.desktop.menu" id="ba">
+    <ba strRsrcId='BusinessAgreements_xml' text='Business Agreements'/>
+  </extension>
+	
+	<extension-point id="newAgreement">
+  </extension-point>
+	
+	<extension-point id="editAgreement">
+  </extension-point>
+
+</plugin>

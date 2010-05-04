@@ -1,0 +1,68 @@
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<serialization xmlns="urn:tibco.com/v3.0">
+  <onAfterDeserialize><![CDATA[
+
+var WizardPane = tibco.uxcore.gui.WizardPane;
+
+var textColors = {};
+textColors[WizardPane.INCOMPLETE] = "#747474";
+textColors[WizardPane.IN_PROGRESS] = "";
+textColors[WizardPane.COMPLETE] = "#747474";
+
+jsx3.$O(this).extend({
+
+  _state: WizardPane.INCOMPLETE,
+  _clickable: false,
+  _images: {},
+
+  setTitle: function(strTitle) {
+    title.setText(strTitle, true);
+  },
+
+  setImages: function(strIncomplete, strInProgress, strComplete) {
+    var i = this._images = {};
+    i[WizardPane.INCOMPLETE] = strIncomplete;
+    i[WizardPane.IN_PROGRESS] = strInProgress;
+    i[WizardPane.COMPLETE] = strComplete;
+
+    icon.setSrc(i[this._state]);
+    icon.setDisplay(jsx3.gui.Block.DISPLAYBLOCK, true);
+  },
+
+  setState: function(intState) {
+    this._state = intState;
+    icon.setSrc(this._images[intState]).repaint();
+    title.setColor(textColors[intState], true);
+  },
+
+  setClickable: function(bClickable) {
+    this._clickable = bClickable;
+    this.setCursor(bClickable ? "pointer" : "default", true);
+  },
+
+  _onClick: function(objEvent) {
+    if (this._clickable)
+      this.publish({subject:"clicked"});
+  }
+
+});
+
+ ]]></onAfterDeserialize>
+  <object type="jsx3.gui.Block">
+    <variants/>
+    <strings jsxname="step" jsxpadding="0 0 22 0" jsxwidth="100%"/>
+    <object type="jsx3.gui.Image">
+      <variants/>
+      <strings jsxname="icon" jsxdisplay="none" jsxpadding="0 10 0 0" jsxstyleoverride="vertical-align:middle;"/>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants/>
+      <strings jsxname="title" jsxcolor="#747474"
+            jsxfontname="Arial, sans-serif" jsxfontsize="12" jsxstyleoverride="vertical-align:middle;" jsxfontweight="bold"/>
+    </object>
+    <events jsxclick="this._onClick(objEVENT)"/>
+  </object>
+</serialization>

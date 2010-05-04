@@ -1,0 +1,131 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name/>
+  <icon/>
+  <description/>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize>
+
+jsx3.$O(this).extend({
+
+  getContentPane: function() { return contentArea; },
+  getStepArea: function() { return stepArea; },
+  setTitle: function(s) {
+        try{ //integrate with Form.
+            var wizard = this.getWizard();
+            //var index = wizard.getPaneIndex(wizard.getActivePane());
+            /* TODO: it is better to manually change the contentPane title.
+            contentArea.getDescendantsOfType(tibco.uxcore.gui.Form)[index].setTitleText(s, true);
+            */
+            //wizard.getActivePane().getUI().setTitle(s);
+        }catch(e){
+            this.getPlugIn().getLog().error("Error " + e );
+        }
+    },
+  setCols: function(cols) {
+        wizard.getFirstChild().setCols(cols, true);
+  },
+
+  clearPane: function() {
+  },
+
+  setInstructions: function(i) {
+  }
+
+});
+
+objJSX.setButtonState = function(previous, next, finish, cancel) {
+  if (previous != null)
+    previousBtn.setEnabled(previous, true);
+  if (next != null) {
+    // TODO: determine highlighted style, also Enter key behavior
+    //nextBtn.setBorder(next &amp;&amp; finish != null &amp;&amp; !finish ? "1px solid #186F98" : "");
+    nextBtn.setEnabled(next, true);
+  }
+  if (finish != null) {
+    //finishBtn.setBorder(finish &amp;&amp; next != null &amp;&amp; !next ? "1px solid #186F98" : "");
+    finishBtn.setEnabled(finish, true);
+  }
+  if (cancel != null)
+    cancelBtn.setEnabled(cancel, true);
+};
+
+objJSX._onCancel = function() {
+  this.getWizard().cancel();
+};
+
+objJSX._onFinish = function() {
+  this.getWizard().finish();
+};
+
+objJSX._onPrevious = function() {
+  this.getWizard().previous();
+};
+
+objJSX._onNext = function() {
+  this.getWizard().next();
+};
+
+this.onRsrcLoad = function() {
+  buttonBar.setBackground("background-image:url(" + this.getPlugIn().resolveURI("button-bar-background.jpg") + ")")
+}
+
+contentArea._doCancel = function(objEvent) {
+  wizard._onCancel();
+};
+
+contentArea._doNext = function(objEvent) {
+  var src = objEvent.srcElement();
+  if (src != null &amp;&amp; src.nodeName.toUpperCase() == "INPUT")
+    return;
+
+  if (objJSX.getWizard().getActivePane().mayNext())
+    objJSX._onNext();
+  else if (objJSX.getWizard().getActivePane().mayFinish())
+    objJSX._onFinish();
+};
+
+contentArea.registerHotKey('_doNext', jsx3.gui.Event.KEY_ENTER, false, false, false); // save on return key
+contentArea.registerHotKey('_doCancel', ".", false, true, false); // save on return key
+
+ </onAfterDeserialize>
+  <object type="jsx3.gui.LayoutGrid">
+    <variants jsxoverflow="2"/>
+    <strings jsxname="wizard" jsxrows="*,38" jsxbgcolor="#f4f4f4" jsxwidth="100%" jsxheight="100%"/>
+    <object type="jsx3.gui.LayoutGrid">
+      <variants jsxoverflow="2"/>
+      <strings jsxcols="200,*"/>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="1" jsxpadding="20"/>
+        <strings jsxname="stepArea" jsxwidth="100%" jsxheight="100%" jsxborder="0px;1px solid #555555;0px;0px"/>
+      </object>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="1" jsxindex="1"/>
+        <strings jsxname="contentArea" jsxwidth="100%" jsxheight="100%"/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants jsxoverflow="2"/>
+      <strings jsxname="buttonBar" jsxwidth="100%" jsxheight="100%" jsxtextalign="right" jsxpadding="10" jsxborder="1px solid #555555;0px;0px;0px"/>
+      <object type="tibco.uxcore.gui.Button">
+        <variants jsxindex="0" jsxheight="18" jsxenabled="0" jsxtype="0" jsxstate="0" focusstyle="0" queueing="2"/>
+        <strings jsxname="previousBtn" jsxtext="&lt; Previous" jsxmargin="0 6 0 0" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
+        <events jsxexecute="wizard._onPrevious();"/>
+      </object>
+      <object type="tibco.uxcore.gui.Button">
+        <variants jsxindex="0" jsxheight="18" jsxenabled="0" jsxtype="0" jsxstate="0" focusstyle="0" queueing="2"/>
+        <strings jsxname="nextBtn" jsxtext="Next &gt;" jsxmargin="0 20 0 0" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
+        <events jsxexecute="wizard._onNext();"/>
+      </object>
+      <object type="tibco.uxcore.gui.Button">
+        <variants jsxindex="0" jsxheight="18" jsxenabled="0" jsxtype="0" jsxstate="0" focusstyle="0" queueing="2"/>
+        <strings jsxname="finishBtn" jsxtext="Finish" jsxmargin="0 6 0 0" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
+        <events jsxexecute="wizard._onFinish();"/>
+      </object>
+      <object type="tibco.uxcore.gui.Button">
+        <variants jsxindex="0" jsxheight="18" jsxtype="0" jsxstate="0" focusstyle="0" queueing="2"/>
+        <strings jsxname="cancelBtn" jsxtext="Cancel" jsxmargin="0 0 0 0" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
+        <events jsxexecute="wizard._onCancel();"/>
+      </object>
+    </object>
+  </object>
+</serialization>

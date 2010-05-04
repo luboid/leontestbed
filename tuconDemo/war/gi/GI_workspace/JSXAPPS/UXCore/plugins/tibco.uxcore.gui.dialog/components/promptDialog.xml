@@ -1,0 +1,87 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Dialog  With Save Cancel Button</name>
+  <icon/>
+  <description>Dialog box.  (Set Modal property for a modal dialog with Save and Cancel buttons).</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize>objJSX.setMessage = function(strMessage) {
+  this.getDescendantOfName('message').setText(strMessage, true);
+};
+
+objJSX.doCancel = function(objEvent) {
+  this.getDescendantOfName('cancel').doExecute(objEvent);
+};
+
+objJSX.setValidationRegex = function(regex) {
+  this.getDescendantOfName('value')._jsxregex = regex;
+};
+
+objJSX.getDescendantOfName('value').checkInput = function(strValue) {
+  if (this._jsxregex != null) {
+    if (strValue &amp;&amp; !strValue.match(this._jsxregex)) {
+      this.beep();
+      return false;
+    }
+  }
+  return true;
+};
+
+objJSX.onEnter = function(objEvent) {
+  var ok = this.getDescendantOfName('ok');
+  if (ok) ok.doExecute(objEvent);
+};
+
+objJSX.registerHotKey('onEnter', 13, false, false, false);
+objJSX.registerHotKey('doCancel', '.', false, true, false);
+</onAfterDeserialize>
+  <object type="tibco.uxcore.gui.Dialog">
+    <variants jsxwidth="400" jsxheight="175" jsxzindex="5000" jsxwindowstate="1" jsxoverflow="2" jsxresize="0" jsxmodal="1"/>
+    <strings jsxname="jsx_dialog_prompt"/>
+    <dynamics/>
+    <object type="jsx3.gui.WindowBar">
+      <variants jsxheight="30"/>
+      <strings jsxname="title" jsxtext="Prompt"/>
+      <dynamics/>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnClose" jsxdlgbtntype="btnClose"/>
+        <dynamics/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants/>
+      <strings jsxname="content" jsxwidth="100%" jsxheight="100%"/>
+      <object type="jsx3.gui.LayoutGrid">
+        <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+        <strings jsxname="layout_horiz" jsxrows="*,30,28" jsxwidth="100%" jsxheight="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2"/>
+          <strings jsxname="message" jsxwidth="100%" jsxheight="100%"/>
+        </object>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2"/>
+          <strings jsxname="button_block" jsxpadding="2 0 2 0"/>
+          <object type="tibco.uxcore.gui.TextBox">
+            <variants/>
+            <strings jsxname="value" jsxwidth="100%" jsxvalue=""/>
+            <dynamics jsxheight="@uxcore10@txtBox Height"/>
+            <events jsxincchange="this.checkInput(strVALUE);"/>
+          </object>
+        </object>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="1"/>
+          <strings jsxname="button_block" jsxwidth="100%" jsxheight="100%"/>
+          <object type="tibco.uxcore.gui.Button">
+            <variants queueing="2" focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
+            <strings jsxname="ok" jsxtext="OK" jsxmargin="2" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxpadding="2 4 2 4" affordance="3 5 3 5" jsxindex="1"/>
+            <events jsxexecute="this.getAncestorOfType(jsx3.gui.Dialog).doClose();"/>
+          </object>
+          <object type="tibco.uxcore.gui.Button">
+            <variants queueing="2" focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
+            <strings jsxname="cancel" jsxtext="Cancel" jsxmargin="2" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxpadding="2 4 2 4" affordance="3 5 3 5" jsxindex="1"/>
+            <events jsxexecute="this.getAncestorOfType(jsx3.gui.Dialog).doClose();"/>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

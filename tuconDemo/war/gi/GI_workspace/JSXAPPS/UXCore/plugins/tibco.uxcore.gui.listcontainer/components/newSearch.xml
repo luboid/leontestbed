@@ -1,0 +1,86 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Dialog</name>
+  <icon/>
+  <description>Dialog box.  (Set Modal property for a modal dialog).</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Dialog">
+    <variants jsxwidth="599" jsxheight="311" jsxzindex="5003" jsxwindowstate="1" jsxoverflow="2" jsxleft="5" jsxtop="2"/>
+    <strings jsxname="dialog" jsxcontentborder="10px solid transparent;10px solid transparent;20px solid transparent;10px solid transparent;"/>
+    <dynamics/>
+    <object type="jsx3.gui.WindowBar">
+      <variants jsxheight="30"/>
+      <strings jsxname="windowBar" jsxtext="Search"/>
+      <dynamics/>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnClose"/>
+        <dynamics/>
+      </object>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnMaximize"/>
+        <dynamics/>
+      </object>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnMinimize"/>
+        <dynamics/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants/>
+      <strings jsxname="content" jsxwidth="100%" jsxheight="100%" jsxborder="1px solid #A4A4A4;"/>
+      <dynamics/>
+      <object type="jsx3.gui.LayoutGrid">
+        <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+        <strings jsxname="" jsxcols="174,*" jsxwidth="100%" jsxheight="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2"/>
+          <strings jsxname="paneButton" jsxwidth="100%" jsxheight="100%" jsxborder="0;1px solid #A4A4A4;0;0" jsxbgcolor="#DFDFDF" jsxpadding="10px solid transparent;"/>
+        </object>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="1"/>
+          <strings jsxname="paneContent" jsxwidth="100%" jsxheight="100%" jsxpadding="10 10 10 10"/>
+          <dynamics jsxbg="@uxcore10@advsearch@contentBG"/>
+          <object type="tibco.uxcore.gui.Form">
+            <variants jsxoverflow="1" minChildWidth="225" useControllers="0" enableControllersUsage="false" rescanChildren.null="157" rescanChildren._jsx_1_r="262" rescanChildren._jsx_1_8="1668" editMode="false" rescanChildren._jsx_1_u="719" allowControllers="false" rescanChildren._jsx_1_2k="1214" rescanChildren._jsx_1_9="310" recalc._jsx_1_8="232" rescanChildren._jsx_1_v="853" rescanChildren._jsx_1_16="471" rescanChildren._jsx_1_66="5511" recalc._jsx_1_65="5509" rescanChildren._jsx_1_5="276" rescanChildren._jsx_1_23="314" rescanChildren._jsx_1_2j="1440" rescanChildren._jsx_1_7d="1852" rescanChildren._jsx_1_8b="2065" rescanChildren._jsx_1_m="174" rescanChildren._jsx_1_13="390" rescanChildren._jsx_1_1l="689" rescanChildren._jsx_1_3v="1675" rescanChildren._jsx_1_4m="1800" rescanChildren._jsx_1_5d="1869" rescanChildren._jsx_1_63="2317" recalc._jsx_1_62="2219" rescanChildren._jsx_1_q="192" rescanChildren._jsx_1_19="1365"/>
+            <strings jsxname="form" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+            <object type="tibco.uxcore.gui.FormPanel">
+              <variants jsxoverflow="1" useControllers="0" minChildWidth="225" enableControllersUsage="false" rescanChildren.null="156" rescanChildren._jsx_1_s="258" rescanChildren._jsx_1_9="192" lastParentWidth="539" editMode="true" rescanChildren._jsx_1_v="694" allowControllers="false" rescanChildren._jsx_1_2l="989" rescanChildren._jsx_1_a="231" recalc._jsx_1_9="231" rescanChildren._jsx_1_w="851" rescanChildren._jsx_1_17="4879" rescanChildren._jsx_1_75="5508" rescanChildren._jsx_1_6="274" rescanChildren._jsx_1_24="312" rescanChildren._jsx_1_2k="1277" rescanChildren._jsx_1_7e="1849" rescanChildren._jsx_1_8c="2062" rescanChildren._jsx_1_n="172" rescanChildren._jsx_1_14="388" rescanChildren._jsx_1_1m="590" rescanChildren._jsx_1_3w="1659" rescanChildren._jsx_1_4n="1752" rescanChildren._jsx_1_5e="1855" rescanChildren._jsx_1_64="2310" recalc._jsx_1_63="2211" rescanChildren._jsx_1_r="181" rescanChildren._jsx_1_1a="1359" fits="1" childWidth="381"/>
+              <strings jsxname="formPanel" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+              <object type="tibco.uxcore.gui.FormColumn">
+                <variants jsxoverflow="1" minChildWidth="225" enableControllersUsage="false" rescanChildren.null="155" rescanChildren._jsx_1_t="250" rescanChildren._jsx_1_a="184" editMode="true" rescanChildren._jsx_1_w="691" allowControllers="false" rescanChildren._jsx_1_2m="985" rescanChildren._jsx_1_b="227" recalc._jsx_1_a="226" rescanChildren._jsx_1_x="304" rescanChildren._jsx_1_18="4656" rescanChildren._jsx_1_76="5504" rescanChildren._jsx_1_7="270" rescanChildren._jsx_1_25="308" rescanChildren._jsx_1_2l="374" rescanChildren._jsx_1_7f="1844" rescanChildren._jsx_1_8d="2056" rescanChildren._jsx_1_o="168" rescanChildren._jsx_1_15="382" rescanChildren._jsx_1_1n="585" rescanChildren._jsx_1_3x="1638" rescanChildren._jsx_1_4o="1733" rescanChildren._jsx_1_5f="1836" rescanChildren._jsx_1_65="2300" recalc._jsx_1_64="2206" rescanChildren._jsx_1_s="166" rescanChildren._jsx_1_1b="1351"/>
+                <strings jsxname="formColumn" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+                <object type="tibco.uxcore.gui.AdvancedSearch.FormRow">
+                  <variants jsxoverflow="1" useControllers="0" rescanChildren._jsx_1_n="1657" minChildWidth="225" recalc._jsx_1_m="1661" enableControllersUsage="false" rescanChildren.null="150" editMode="true" allowControllers="false" fits="1" childWidth="381"/>
+                  <strings jsxname="formRow" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+                  <object type="tibco.uxcore.gui.TextBoxFormField">
+                    <variants jsxindex="0" isrequired="0" editMode="true" bEditable="true" jsxtype="0" jsxenabled="1"/>
+                    <strings jsxname="textBoxFormField" fieldtitletext="[Field Name]" text="" jsxtitledisplay="" fieldvalue=""/>
+                  </object>
+                </object>
+                <object type="tibco.uxcore.gui.AdvancedSearch.FormRow">
+                  <variants jsxoverflow="1" useControllers="0" rescanChildren._jsx_1_n="1657" minChildWidth="225" recalc._jsx_1_m="1661" enableControllersUsage="false" rescanChildren.null="152" editMode="true" allowControllers="false" fits="1" childWidth="381"/>
+                  <strings jsxname="formRow" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+                  <object type="tibco.uxcore.gui.TextBoxFormField">
+                    <variants jsxindex="0" isrequired="0" editMode="true" bEditable="true" jsxtype="0" jsxenabled="1"/>
+                    <strings jsxname="textBoxFormField" fieldtitletext="[Field Name]" text="" jsxtitledisplay="" fieldvalue=""/>
+                  </object>
+                </object>
+                <object type="tibco.uxcore.gui.AdvancedSearch.FormRow">
+                  <variants jsxoverflow="1" useControllers="0" rescanChildren._jsx_1_n="1657" minChildWidth="225" recalc._jsx_1_m="1661" enableControllersUsage="false" rescanChildren.null="154" editMode="true" allowControllers="false" fits="1" childWidth="381"/>
+                  <strings jsxname="formRow" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+                  <object type="tibco.uxcore.gui.TextBoxFormField">
+                    <variants jsxindex="0" isrequired="0" editMode="true" bEditable="true" jsxtype="0" jsxenabled="1"/>
+                    <strings jsxname="textBoxFormField" fieldtitletext="[Field Name]" text="" jsxtitledisplay="" fieldvalue=""/>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

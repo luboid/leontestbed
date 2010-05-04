@@ -1,0 +1,59 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>MatrixAdmin Dialog</name>
+  <icon/>
+  <description>Dialog box.  (Set Modal property for a modal dialog).</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize>objJSX.setMessage = function(strMessage) {
+	this.getDescendantOfName('message').setText(strMessage, true);
+};
+
+objJSX.onEnter = function(objEvent) {
+  var ok = this.getDescendantOfName('ok');
+  if (ok) ok.doExecute(objEvent);
+};
+
+objJSX.hideButton = function() {
+  var block = this.getDescendantOfName('button_block');
+  this.getDescendantOfName('layout_horiz').setRows("100%", false);
+  block.getParent().removeChild(block);
+};
+
+objJSX.registerHotKey('onEnter', 13, false, false, false); // enter
+</onAfterDeserialize>
+  <object type="tibco.uxcore.gui.Dialog">
+    <variants jsxwidth="400" jsxheight="175" jsxzindex="5000" jsxwindowstate="1" jsxoverflow="2" jsxresize="0" jsxmodal="1"/>
+    <strings jsxname="dlgAlertDialog"/>
+    <dynamics/>
+    <object type="jsx3.gui.WindowBar">
+      <variants jsxheight="30"/>
+      <strings jsxname="title" jsxtext="Alert"/>
+      <dynamics/>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnClose" jsxdlgbtntype="btnClose"/>
+        <dynamics/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants/>
+      <strings jsxname="content" jsxwidth="100%" jsxheight="100%"/>
+      <object type="jsx3.gui.LayoutGrid">
+        <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+        <strings jsxname="layout_horiz" jsxrows="*,25" jsxwidth="100%" jsxheight="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2"/>
+          <strings jsxname="message" jsxwidth="100%" jsxheight="100%"/>
+        </object>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="1"/>
+          <strings jsxname="button_block" jsxwidth="100%" jsxheight="100%"/>
+          <object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" queueing="2" jsxheight="18" jsxtype="0" jsxstate="0"/>
+            <strings jsxname="ok" jsxtext="OK" jsxmargin="2" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxpadding="2 4 2 4" affordance="3 5 3 5" jsxindex="1"/>
+            <events jsxexecute="this.getAncestorOfType(jsx3.gui.Dialog).doClose();"/>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

@@ -1,0 +1,43 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.gui.wizard2"
+        name="UX Core Wizard"
+        version="0.1">
+
+  <requires>
+      <plugin id="tibco.uxcore.common"/>
+      <plugin id="tibco.uxcore.gui.dialog"/>
+  </requires>
+
+  <resources>
+    <script id="uxwizard_Wizard2_js" path="classes/tibco/uxcore/gui/Wizard2.js" eval="true"/>
+    <script id="uxwizard_SteppedWizard_js" path="classes/tibco/uxcore/gui/SteppedWizard.js" eval="false">
+        <prereq id="uxwizard_Wizard2_js"/>
+    </script>
+    <script id="uxwizard_WizardStep_js" path="classes/tibco/uxcore/gui/WizardStep.js" eval="false"/>
+    <script id="uxwizard_WizardButton_js" path="classes/tibco/uxcore/gui/WizardButton.js" eval="false"/>
+    <script id="uxwizard_WizardPanel_js" path="classes/tibco/uxcore/gui/WizardPanel.js" eval="false">
+        <prereq id="uxwizard_WizardButton_js"/>
+    </script>
+    <script id="uxwizard_WizardNavButton_js" path="classes/tibco/uxcore/gui/WizardNavButton.js" eval="false">
+        <prereq id="uxwizard_WizardButton_js"/>
+    </script>
+    <script id="uxwizard_WizardPrevButton_js" path="classes/tibco/uxcore/gui/WizardPrevButton.js" eval="false">
+        <prereq id="uxwizard_WizardNavButton_js"/>
+    </script>
+    <script id="uxwizard_WizardNextButton_js" path="classes/tibco/uxcore/gui/WizardNextButton.js" eval="false">
+        <prereq id="uxwizard_WizardNavButton_js"/>
+    </script>
+    <script id="uxwizard_WizardCancelButton_js" path="classes/tibco/uxcore/gui/WizardCancelButton.js" eval="false">
+        <prereq id="uxwizard_WizardNavButton_js"/>
+    </script>
+    <script id="uxwizard_WizardFinishButton_js" path="classes/tibco/uxcore/gui/WizardFinishButton.js" eval="false">
+        <prereq id="uxwizard_WizardNavButton_js"/>
+    </script>
+    <script id="uxwizard_WizardRevertButton_js" path="classes/tibco/uxcore/gui/WizardRevertButton.js" eval="false">
+        <prereq id="uxwizard_WizardNavButton_js"/>
+    </script>
+  </resources>
+
+</plugin>

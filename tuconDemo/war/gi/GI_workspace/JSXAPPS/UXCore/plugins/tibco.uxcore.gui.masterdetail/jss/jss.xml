@@ -1,0 +1,10 @@
+<data jsxid="jsxroot" jsxns="urn:tibco.com/v3.0/dynamicproperties/1">
+  <record jsxid="@uxcore@MasterDetail@SplitterBGColor" jsxtext="transparent" type="jsxbgcolor"/>
+  <record jsxid="@uxcore@MasterDetail@SplitterHImage" jsxtext="jsxplugin://tibco.uxcore.gui.masterdetail/images/splitter_horizontal.jpg" type="jsximage"/>	
+  <record jsxid="@uxcore@MasterDetail@SplitterVImage" jsxtext="jsxplugin://tibco.uxcore.gui.masterdetail/images/splitter_vertical.jpg" type="jsximage"/>	
+  <record jsxid="@uxcore@MasterDetail@TopPadding" jsxtext="0 0 5 0" type="jsxpadding"/>	
+  <record jsxid="@uxcore@MasterDetail@BottomPadding" jsxtext="5 0 0 0" type="jsxpadding"/>	
+  <record jsxid="@uxcore@MasterDetail@LeftPadding" jsxtext="0 5 0 0" type="jsxpadding"/>	
+  <record jsxid="@uxcore@MasterDetail@RightPadding" jsxtext="0 0 0 5" type="jsxpadding"/>	
+  <record jsxid="@uxcore@MasterDetail@DetailPromptText" jsxtext="Choose an item from master list to display details." type="jsxtext"/>	
+</data>

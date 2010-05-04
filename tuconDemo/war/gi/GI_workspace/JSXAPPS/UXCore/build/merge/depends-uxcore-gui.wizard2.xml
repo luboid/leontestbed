@@ -1,0 +1,26 @@
+<!--
+  ~ Copyright (c) 2001-2009, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+
+<gi-merger>
+  <file path="tibco/uxcore/gui/Wizard2.js" provides="tibco.uxcore.gui.Wizard2" requires=""/>
+  <file path="tibco/uxcore/gui/SteppedWizard.js" provides="tibco.uxcore.gui.SteppedWizard"
+        requires="tibco.ucore.gui.Wizard2"/>
+  <file path="tibco/uxcore/gui/WizardStep.js" provides="tibco.uxcore.gui.WizardStep" requires=""/>
+  <file path="tibco/uxcore/gui/WizardButton.js" provides="tibco.uxcore.gui.WizardButton" requires=""/>
+  <file path="tibco/uxcore/gui/WizardPanel.js" provides="tibco.uxcore.gui.WizardPanel"
+        requires="tibco.ucore.gui.WizardButton"/>
+  <file path="tibco/uxcore/gui/WizardNavButton.js" provides="tibco.uxcore.gui.WizardNavButton"
+        requires="tibco.ucore.gui.WizardButton"/>
+  <file path="tibco/uxcore/gui/WizardPrevButton.js" provides="tibco.uxcore.gui.WizardPrevButton"
+        requires="tibco.ucore.gui.WizardNavButton"/>
+  <file path="tibco/uxcore/gui/WizardNextButton.js" provides="tibco.uxcore.gui.WizardNextButton"
+        requires="tibco.ucore.gui.WizardNavButton"/>
+  <file path="tibco/uxcore/gui/WizardCancelButton.js" provides="tibco.uxcore.gui.WizardCancelButton"
+        requires="tibco.ucore.gui.WizardNavButton"/>
+  <file path="tibco/uxcore/gui/WizardFinishButton.js" provides="tibco.uxcore.gui.WizardFinishButton"
+        requires="tibco.ucore.gui.WizardNavButton"/>
+  <file path="tibco/uxcore/gui/WizardRevertButton.js" provides="tibco.uxcore.gui.WizardRevertButton"
+        requires="tibco.ucore.gui.WizardNavButton"/>
+</gi-merger>

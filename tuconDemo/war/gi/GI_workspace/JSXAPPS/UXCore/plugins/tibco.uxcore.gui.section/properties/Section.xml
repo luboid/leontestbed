@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<data jsxid="jsxroot">
+	<record include="master.xml" group="object"/>
+	<record include="master.xml" group="position"/>
+
+    <record jsxid="uxcoreSection" group="1" jsxtext="Section">
+        <record jsxid="strStatusMessage" jsxtext="Status Message"
+            jsxtip="Sets the status message for the Section."
+            docgetter="getStatusMessage" docsetter="setStatusMessage"
+            eval="0"
+            jsxexecute="objJSX.setStatusMessage(vntValue);"
+            jsxmask="jsxtext"/>
+        <record jsxid="statusEnabled" jsxtext="Enable Status"
+            jsxtip="Enable or disable status message for the Section."
+            docgetter="getStatusEnabled" docsetter="setStatusEnabled"
+            eval="0"
+            jsxexecute="objJSX.setStatusEnabled(vntValue);"
+            jsxmask="jsxselect">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+    </record>
+	
+	<!--<record include="master.xml" group="font"/>-->
+	<record include="master.xml" group="box"/>
+	<record include="master.xml" group="css"/>
+    <!--
+	<record include="master.xml" group="interaction"/>
+	<record include="master.xml" group="drag"/>
+	<record include="master.xml" group="move"/>
+	<record include="master.xml" group="access"/>
+	<record include="master.xml" group="metadata"/>
+    -->
+</data>

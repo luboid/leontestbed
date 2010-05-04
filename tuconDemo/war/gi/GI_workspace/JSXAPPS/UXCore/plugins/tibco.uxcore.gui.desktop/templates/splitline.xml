@@ -1,0 +1,8 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <template>
+        <span class="splitline" index="{$index}" jsxindex="{$jsxindex}" label="{$label}" title="{$tip}"
+                   style="display:{$display}; margin: 0px 0px 10px 0px;">
+                   <span style="margin: 0px 4px 0px 4px;position: relative; display: -moz-inline-box; font-size: 11px; color: rgb(189, 224, 234); font-family: Arial;" label="split"><text>|</text></span>
+        </span>
+    </template>
+</transform>

@@ -1,0 +1,13 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.4">
+  <name>Help Button - ImageButton</name>
+  <icon>jsxplugin://tibco.uxcore.common/images/matrix/unknown.gif</icon>
+  <description>A UXCore Help button.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.HelpButton">
+    <variants jsxwidth="16" jsxheight="16" jsxtype="0" jsxprefetch="1" jsxstate="0"/>
+    <strings jsxname="helpbutton" jsxmargin="0 0 0 5"/>
+    <dynamics jsximage="@uxcore10@Help Button Image"/>
+    <events jsxexecute="this.openHelp()"/>
+  </object>
+</serialization>

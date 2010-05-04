@@ -1,0 +1,13 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Reprovision</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/reprovision.gif</icon>
+  <description>A tibco.uxcore.gui.ActionButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+            <object type="tibco.uxcore.gui.ActionButton">
+              <variants jsxenabled="1" jsxprefetch="1"/>
+              <strings jsxname="actionButtonReprovision" jsxoverimage="1" jsxdownimage="1" jsxactionid="Reprovision"/>
+              <dynamics jsxtext="@uxcore10@Btn Text Reprovision" jsxicon="@uxcore10@Btn Image Reprovision" />
+              <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+            </object>
+</serialization>

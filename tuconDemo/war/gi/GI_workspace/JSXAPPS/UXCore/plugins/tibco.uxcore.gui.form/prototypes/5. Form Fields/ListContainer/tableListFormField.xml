@@ -1,0 +1,69 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Table Form Field</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/prototype/matrix.gif</icon>
+  <description>A UX Core Table Form Field.</description>
+  <onBeforeDeserialize>undefined</onBeforeDeserialize>
+  <onAfterDeserialize>undefined</onAfterDeserialize>
+<object type="tibco.uxcore.gui.ListContainerFormField">
+  <variants jsxindex="0" bEditable="true" isrequired="0" jsxenabled="1"/>
+  <strings jsxname="listContainerFormField" text="" fieldtitletext="[Field Name]" jsxtitledisplay=""/>
+  <object type="tibco.uxcore.gui.ListContainer">
+    <variants jsxoverflow="1" timer="306" jsxenabled="1" jsxvisibility="true"/>
+    <strings jsxname="listContainer" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxview="matrix1"/>
+    <events jsxaction=""/>
+    <object type="tibco.uxcore.gui.ListPaginator">
+      <variants jsxoverflow="1" intTotalPageNumber="100" currentPageNumber="1" jsxtextwidth="40" jsxcontrolVeto="true"/>
+      <strings jsxname="listPaginator" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+    </object>
+    <object type="tibco.uxcore.gui.TableListView">
+      <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0" _historyData="[]"/>
+      <strings jsxname="matrix1" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;         &lt;record jsxid=&quot;AI&quot;  jsxtext=&quot;Austria&quot;/&gt;         &lt;record jsxid=&quot;AZ&quot;  jsxtext=&quot;Azerbaijan&quot;/&gt;         &lt;record jsxid=&quot;AG&quot;  jsxtext=&quot;Afghanistan&quot;&gt;         &lt;record jsxid=&quot;AL&quot;  jsxtext=&quot;Albania&quot;/&gt;         &lt;record jsxid=&quot;AR&quot;  jsxtext=&quot;Algeria&quot;/&gt;         &lt;record jsxid=&quot;AS&quot;  jsxtext=&quot;American Samoa&quot;/&gt;         &lt;/record&gt;         &lt;record jsxid=&quot;AD&quot;  jsxtext=&quot;Andorra&quot;/&gt;         &lt;record jsxid=&quot;AO&quot;  jsxtext=&quot;Angola&quot;/&gt;         &lt;record jsxid=&quot;AU&quot;  jsxtext=&quot;Anguilla&quot;/&gt;         &lt;record jsxid=&quot;AX&quot;  jsxtext=&quot;Antarctica&quot;/&gt;         &lt;record jsxid=&quot;AT&quot;  jsxtext=&quot;Antigua and Barbuda&quot;/&gt;         &lt;record jsxid=&quot;AE&quot;  jsxtext=&quot;Argentina&quot;/&gt;         &lt;record jsxid=&quot;AM&quot;  jsxtext=&quot;Armenia&quot;/&gt;         &lt;record jsxid=&quot;AB&quot;  jsxtext=&quot;Aruba&quot;/&gt;         &lt;record jsxid=&quot;AA&quot;  jsxtext=&quot;Australia&quot;/&gt;       &lt;/data&gt;" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending" _editMode="tibco.uxcore.gui.TableListView.NORMAL_MODE"/>
+      <dynamics/>
+      <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
+      <object type="jsx3.gui.Matrix.Column">
+        <variants jsxwidth="165"/>
+        <strings jsxname="mc2" jsxtext="Name" jsxpath="jsxtext"/>
+        <dynamics/>
+      </object>
+      <object type="jsx3.gui.Matrix.Column">
+        <variants/>
+        <strings jsxname="textColumn" jsxwidth="100" jsxtext="Text" jsxpath="jsxtext"/>
+        <dynamics/>
+      </object>
+    </object>
+    <object type="tibco.uxcore.gui.SimpleSearch">
+      <variants jsxheight="18" jsxcontrolVeto="true"/>
+      <strings jsxname="simpleSearch" jsxpadding="0"/>
+    </object>
+    <object type="tibco.uxcore.gui.HideShowButton">
+      <variants bgpersist="1" focusstyle="0" jsxprefetch="1" jsxtype="1"/>
+      <strings jsxstate="0" jsxname="hideShowButton" affordance="0 0 0 0"/>
+      <dynamics/>
+    </object>
+    <object type="tibco.uxcore.gui.ActionButton">
+      <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+      <strings jsxname="actionButtonNew" jsxoverimage="1" jsxdownimage="1" jsxactionid="New"/>
+      <dynamics jsxtext="@uxcore10@Btn Text New" jsxicon="@uxcore10@Btn Image New"/>
+      <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+    </object>
+    <object type="tibco.uxcore.gui.ActionButton">
+      <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+      <strings jsxname="actionButtonDelete" jsxoverimage="1" jsxdownimage="1" jsxactionid="Delete" jsxcolor=""/>
+      <dynamics jsxtext="@uxcore10@Btn Text Delete" jsxicon="@uxcore10@Btn Image Delete"/>
+      <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+    </object>
+    <object type="tibco.uxcore.gui.ActionButton">
+      <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+      <strings jsxname="actionButtonInstall" jsxoverimage="1" jsxdownimage="1" jsxactionid="Install"/>
+      <dynamics jsxtext="@uxcore10@Btn Text Install" jsxicon="@uxcore10@Btn Image Install"/>
+      <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+    </object>
+    <object type="tibco.uxcore.gui.ActionButton">
+      <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+      <strings jsxname="actionButtonUninstall" jsxoverimage="1" jsxdownimage="1" jsxactionid="Uninstall"/>
+      <dynamics jsxtext="@uxcore10@Btn Text Uninstall" jsxicon="@uxcore10@Btn Image Uninstall"/>
+      <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+    </object>
+  </object>
+</object>
+</serialization>

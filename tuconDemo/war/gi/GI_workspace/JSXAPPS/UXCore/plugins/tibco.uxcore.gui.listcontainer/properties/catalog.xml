@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+-->
+<data jsxid="jsxroot">
+    <record jsxid="tibco.uxcore.gui.ListContainer" jsxtext="properties/ListContainer.xml"/>
+
+    <record jsxid="tibco.uxcore.gui.FilterSearch" jsxtext="properties/FilterSearch.xml"/>
+    <record jsxid="tibco.uxcore.gui.SimpleSearch" jsxtext="properties/SimpleSearch.xml"/>
+
+    <record jsxid="tibco.uxcore.gui.BrowseView" jsxtext="properties/BrowseView.xml"/>
+    <record jsxid="tibco.uxcore.gui.AccumulatorView" jsxtext="properties/Accumulator.xml"/>
+    <record jsxid="tibco.uxcore.gui.TableSelector" jsxtext="properties/TableSelector.xml"/>
+    <record jsxid="tibco.uxcore.gui.TableListBuilder" jsxtext="properties/TableListBuilder.xml"/>
+    <record jsxid="tibco.uxcore.gui.TreeListBuilder" jsxtext="properties/TreeListBuilder.xml"/>
+
+    <record jsxid="tibco.uxcore.gui.ListPaginator" jsxtext="properties/ListPaginator.xml"/>
+
+    <record jsxid="tibco.uxcore.gui.ActionButton" jsxtext="properties/ActionButton.xml"/>
+    <record jsxid="tibco.uxcore.gui.ActionMenuButton" jsxtext="properties/ActionMenuButton.xml"/>
+    <record jsxid="tibco.uxcore.gui.LCIconButton" jsxtext="properties/IconButton.xml"/>
+    <record jsxid="tibco.uxcore.gui.RefreshButton" jsxtext="properties/RefreshButton.xml"/>
+    <record jsxid="tibco.uxcore.gui.HideShowButton" jsxtext="properties/HideShowButton.xml"/>
+    <record jsxid="tibco.uxcore.gui.ColumnPickerButton" jsxtext="properties/ColumnPickerButton.xml"/>
+
+</data>

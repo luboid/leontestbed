@@ -1,0 +1,53 @@
+<!--
+  ~ Copyright (c) 2001-2009, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+
+<gi-merger>
+    <file path="tibco/uxcore/gui/FormContainer.js" provides="tibco.uxcore.gui.FormContainer"
+          requires=""/>
+    <file path="tibco/uxcore/gui/GenericFormContainer.js" provides="tibco.uxcore.gui.GenericFormContainer"
+          requires="tibco.uxcore.gui.FormContainer"/>
+    <file path="tibco/uxcore/gui/FormGroup.js" provides="tibco.uxcore.gui.FormGroup"
+          requires="tibco.uxcore.gui.GenericFormContainer"/>
+    <file path="tibco/uxcore/gui/Form.js" provides="tibco.uxcore.gui.Form"
+          requires="tibco.uxcore.gui.GenericFormContainer"/>
+    <file path="tibco/uxcore/gui/FormPanel.js" provides="tibco.uxcore.gui.FormPanel"
+          requires="tibco.uxcore.gui.GenericFormContainer"/>
+    <file path="tibco/uxcore/gui/FormColumn.js" provides="tibco.uxcore.gui.FormColumn"
+          requires="tibco.uxcore.gui.GenericFormContainer"/>
+    <file path="tibco/uxcore/gui/FormRow.js" provides="tibco.uxcore.gui.FormRow"
+          requires="tibco.uxcore.gui.GenericFormContainer"/>
+    <file path="tibco/uxcore/gui/TitleRow.js" provides="tibco.uxcore.gui.TitleRow"
+          requires="tibco.uxcore.gui.FormRow"/>
+    <file path="tibco/uxcore/gui/FormField.js" provides="tibco.uxcore.gui.FormField"
+          requires="tibco.uxcore.gui.FormContainer"/>
+    <file path="tibco/uxcore/gui/TextBoxFormField.js" provides="tibco.uxcore.gui.TextBoxFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/TextBoxWithLinkFormField.js" provides="tibco.uxcore.gui.TextBoxWithLinkFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/TextBoxWithButtonFormField.js" provides="tibco.uxcore.gui.TextBoxWithButtonFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/TextAreaFormField.js" provides="tibco.uxcore.gui.TextAreaFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/SelectFormField.js" provides="tibco.uxcore.gui.SelectFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/RadioButtonFormField.js" provides="tibco.uxcore.gui.RadioButtonFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/CheckboxFormField.js" provides="tibco.uxcore.gui.CheckboxFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/DatePickerFormField.js" provides="tibco.uxcore.gui.DatePickerFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/TimePickerFormField.js" provides="tibco.uxcore.gui.TimePickerFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/DurationFormField.js" provides="tibco.uxcore.gui.DurationFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/ListContainerFormField.js" provides="tibco.uxcore.gui.ListContainerFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/ButtonFormField.js"
+          provides="tibco.uxcore.gui.ButtonFormField"
+          requires="tibco.uxcore.gui.FormField"/>
+    <file path="tibco/uxcore/gui/FormButton.js" provides="tibco.uxcore.gui.FormButton"
+          requires=""/>
+
+</gi-merger>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxnamespace="propsbundle" locales="">
+  <locale>
+    <record jsxid="@tibco_transaction_lbltransactioninprogress" jsxtext="Transactions in Progress"></record>
+    <record jsxid="@tibco_transaction_tabpending" jsxtext="Pending{0}"></record>
+    <record jsxid="@tibco_transaction_tabrecovery" jsxtext="Recovery{0}"></record>
+    <record jsxid="@tibco_transaction_lblpendingtransaction" jsxtext="Pending Transactions"></record>
+    <record jsxid="@tibco_transaction_btncanceltransaction" jsxtext="Cancel Transaction"></record>
+    <record jsxid="@tibco_transaction_mtxpending_coltimestamp" jsxtext="Start Time"></record>
+    <record jsxid="@tibco_transaction_mtxpending_coldirection" jsxtext="Direction"></record>
+    <record jsxid="@tibco_transaction_mtxpending_colfileName" jsxtext="File Name"></record>
+    <record jsxid="@tibco_transaction_mtxpending_coltransferedsize" jsxtext="Transferred Size"></record>
+    <record jsxid="@tibco_transaction_mtxpending_coltransferedpercentage" jsxtext="Progress"></record>
+    <record jsxid="@tibco_transaction_mtxpending_colstatus" jsxtext="Status"></record>
+    <record jsxid="@tibco_transaction_mtxpending_coltransactionid" jsxtext="Transaction ID"></record>
+    <record jsxid="@tibco_transaction_lblrecovery" jsxtext="Recoverable Transactions"></record>
+    <record jsxid="@tibco_transaction_btnrecovertransaction" jsxtext="Recover Transaction"></record>
+    <record jsxid="@tibco_transaction_mtxrecovery_coltransactionid" jsxtext="Transaction ID"></record>
+    <record jsxid="@tibco_transaction_mtxrecovery_colrecoveryid" jsxtext="Recovery ID"></record>
+    <record jsxid="@tibco_transaction_mtxrecovery_colfilename" jsxtext="File Name"></record>
+    <record jsxid="@tibco_transaction_mtxrecovery_colevent" jsxtext="Event"></record>
+    <record jsxid="@tibco_transaction_mtxrecovery_colrecoverypoint" jsxtext="Recovery Point"></record>
+    <record jsxid="@tibco_transaction_mtxrecovery_colrecoverytime" jsxtext="Recovery Time"></record>
+		<record jsxid="@tibco_transaction_pending_btncanceltooltip" jsxtext="Cancel selected transaction"></record>
+		<record jsxid="@tibco_transaction_pending_btnrefreshtooltip" jsxtext="Refresh list"></record>
+		<record jsxid="@tibco_transaction_recovery_btnrecoverytooltip" jsxtext="Recover selected transaction"></record>
+		<record jsxid="@tibco_transaction_recovery_btnrefreshtooltip" jsxtext="Refresh list"></record>
+		<record jsxid="@tibco_transaction_cancelJob" jsxtext="Do you want to cancel this transaction?"></record>
+		<record jsxid="@tibco_transaction_cancelJob_warning" jsxtext="Please select one transaction to cancel."></record>
+		<record jsxid="@tibco_transaction_recoverJob_warning" jsxtext="Please select one transaction to recover."></record>
+    <record jsxid="@tibco_transaction_recoverJob" jsxtext="Do you want to recover this transaction?"></record>
+    <record jsxid="@tibco_home_lblgeneral" jsxtext="General"></record>
+    <record jsxid="@tibco_home_lblstatistics" jsxtext="Statistics"></record>
+    <record jsxid="@tibco_home_mtxgeneral_colagent" jsxtext="Agent"></record>
+    <record jsxid="@tibco_home_mtxgeneral_colserver" jsxtext="Server"></record>
+    <record jsxid="@tibco_home_mtxgeneral_colstarted" jsxtext="Started"></record>
+    <record jsxid="@tibco_home_mtxgeneral_colos" jsxtext="OS"></record>
+    <record jsxid="@tibco_home_mtxgeneral_colagenthttps" jsxtext="Agent-HTTPS"></record>
+    <record jsxid="@tibco_home_mtxgeneral_colserverhttps" jsxtext="Server-HTTPS"></record>
+    <record jsxid="@tibco_home_mtxgeneral_colversion" jsxtext="Version"></record>
+    <record jsxid="@tibco_home_mtxgeneral_coljre" jsxtext="JRE"></record>
+    <record jsxid="@tibco_home_lbloutbound" jsxtext="Outbound"></record>
+    <record jsxid="@tibco_home_lblinbound" jsxtext="Inbound"></record>
+    <record jsxid="@tibco_home_mtxstatisticsoutbound_colreqsent" jsxtext="Requests Sent"></record>
+    <record jsxid="@tibco_home_mtxstatisticsoutbound_coldatasent" jsxtext="Data Sent"></record>
+    <record jsxid="@tibco_home_mtxstatisticsoutbound_colreqcompleted" jsxtext="Requests Completed"></record>
+    <record jsxid="@tibco_home_mtxstatisticsoutbound_colreqprocessing" jsxtext="Requests Processing"></record>
+    <record jsxid="@tibco_home_mtxstatisticsoutbound_colreqerror" jsxtext="Errors in Requests "></record>
+    <record jsxid="@tibco_home_mtxstatisticsoutbound_colreqqueued" jsxtext="Requests Queued"></record>
+    <record jsxid="@tibco_home_mtxstatisticsoutbound_colmaxdatasent" jsxtext="Max Data Sent/min"></record>
+    <record jsxid="@tibco_home_mtxstatisticsoutbound_colavgdatasent" jsxtext="Avg Data Sent/min"></record>
+    <record jsxid="@tibco_home_lblstatisticInbound" jsxtext="Inbound Statistics"></record>
+    <record jsxid="@tibco_home_lblstatisticoutbound " jsxtext="Outbound Statistics"></record>
+	  <record jsxid="@tibco_activity_btnadvance" jsxtext="Advanced"></record>
+    <record jsxid="@tibco_activity_btnsearch" jsxtext="Search"></record>
+		<record jsxid="@tibco_activity_btndownload" jsxtext="Download"></record>
+		<record jsxid="@tibco_activity_chkdeleteondownload" jsxtext="Delete on download"></record>
+		<record jsxid="@tibco_activity_dlgSFfile_lbllwaitting" jsxtext="Retrieving Data..."></record>
+		<record jsxid="@tibco_search_details_noselectedtransaction" jsxtext="Please Choose a transaction to show the details.&#xA;"></record>
+		<record jsxid="@tibco_search_details_download_filenoexist_error" jsxtext="Downloading file failed.This file has been removed from server."></record>
+		<record jsxid="@tibco_search_searchCondition_timeError" jsxtext="The specified 'To' date and time cannot occur before the 'From' date and time."></record>
+		<record jsxid="@tibco_search_entries_found" jsxtext=" entries found, "></record>
+		<record jsxid="@tibco_search_dlgSFfile_tipNarrowSearch" jsxtext=" Need to do a narrow search"></record>  
+		<record jsxid="@tibco_search_entry_returned" jsxtext=" entry returned."></record>
+		<record jsxid="@tibco_search_entries_returned" jsxtext=" entries returned."></record>
+		<record jsxid="@tibco_cli_parametersHint" jsxtext="To compose a File Transfer Request, drag acommand instruction to the Parameter Table on the right."></record>
+		<record jsxid="@tibco_alert_confirmation" jsxtext="Confirmation"></record>
+		<record jsxid="@mftAlert.btnok" jsxtext="OK"></record>
+    <record jsxid="@mftAlert.btncancel" jsxtext="Cancel"></record>
+		<record jsxid="@tibco_dlgAlert_title_alertError" jsxtext="Error"/>
+		<record jsxid="@tibco_dlgAlert_title_alertWarning" jsxtext="Warning"/>
+		<record jsxid="@tibco_request_clearTransactions" jsxtext="Do you want to clear all history log entries?"></record>
+		<record jsxid="@tibco_request_mtxlog_coltimestamp" jsxtext="Log Time"></record>
+		<record jsxid="@tibco_cli_menu_send" jsxtext="Send"></record>
+		<record jsxid="@tibco_cli_menu_retrieve" jsxtext="Retrieve"></record>
+		<record jsxid="@tibco_cli_treeparams_header_send" jsxtext="Parameters For Sending Files"></record>
+		<record jsxid="@tibco_cli_treeparams_header_retrieve" jsxtext="Parameters For Retrieving Files"></record>
+		<record jsxid="@tibco_cli_templatebar_btnuse_tip" jsxtext="Use selected template"></record>
+		<record jsxid="@tibco_cli_templatebar_btnsave_tip" jsxtext="Save current parameters and values as template"></record>
+		<record jsxid="@tibco_cli_templatebar_btnremove_tip" jsxtext="Delete selected template"></record>
+		<record jsxid="@tibco_cli_templatebar_btnuse_promote" jsxtext="Do you want to use this template ?"></record>
+		<record jsxid="@tibco_cli_btnreset_tip" jsxtext="Clear list and reset parameters"></record>
+		<record jsxid="@tibco_cli_btnsubmit_tip" jsxtext="Submit file for processing"></record>
+		<record jsxid="@tibco_cli_mtx_colname" jsxtext="Parameters"></record>
+		<record jsxid="@tibco_cli_mtx_colvalue" jsxtext="Value"></record>
+		<record jsxid="@tibco_cli_mtx_colerror" jsxtext="Error"></record>
+		<record jsxid="@tibco_cli_mtx_coldelete" jsxtext="Delete"></record>
+		
+		<record jsxid="@tibco_cli_dlgtemplate_caption" jsxtext="Save Template..."></record>
+		<record jsxid="@tibco_cli_dlgtemplate_lblname" jsxtext="Template Name"></record>
+		<record jsxid="@tibco_cli_dlgtemplate_btnsave" jsxtext="Save"></record>
+		<record jsxid="@tibco_cli_dlgtemplate_btnclose" jsxtext="Close"></record>
+		<record jsxid="@tibco_cli_dlgtemplate_withoutname" jsxtext="This template name is empty, please enter a name and try again."></record>
+		<record jsxid="@tibco_cli_dlgtemplate_duplicate" jsxtext="This template name is exist, please enter another name and try again."></record>
+		<record jsxid="@tibco_operation_dlgheader" jsxtext="Select Operation"></record>
+		<record jsxid="@tibco_operation_mtx_coloperation" jsxtext="Operations"></record>
+		<record jsxid="@tibco_operation_btnselect" jsxtext="Select"></record>
+		<record jsxid="@tibco_operation_btnclose" jsxtext="Close"></record>
+		<record jsxid="@tibco_operation_blkwaiting" jsxtext="Retrieving Data..."></record>
+		<record jsxid="@tibco_operation_blkresult" jsxtext="{0} operation(s) retrieved."></record>
+		<record jsxid="@tibco_sffile_dlgheader" jsxtext="Select Inbox File"></record>
+		<record jsxid="@tibco_sffile_rdrelative" jsxtext="Relative"></record>
+		<record jsxid="@tibco_sffile_rdabsolute" jsxtext="Absolute"></record>
+		<record jsxid="@tibco_sffile_lblfrom" jsxtext="From"></record>
+		<record jsxid="@tibco_sffile_lblto" jsxtext="To"></record>
+		<record jsxid="@tibco_sffile_btnselect" jsxtext="Select"></record>
+		<record jsxid="@tibco_sffile_btnclose" jsxtext="Close"></record>
+		<record jsxid="@tibco_sffile_mtx_coltranid" jsxtext="Transaction ID"></record>
+		<record jsxid="@tibco_sffile_mtx_colfilename" jsxtext="File Name"></record>
+		<record jsxid="@tibco_sffile_mtx_colpayloadsize" jsxtext="Payload Size"></record>
+		<record jsxid="@tibco_sffile_mtx_coloperation" jsxtext="Operation ID"></record>
+		<record jsxid="@tibco_sffile_mtx_coldaystoexpire" jsxtext="Days To Expire"></record>
+		<record jsxid="@tibco_sffile_mtx_colexpirytime" jsxtext="Expiry Time"></record>
+		<record jsxid="@tibco_sffile_mtx_colcreatetime" jsxtext="Created Time"></record>
+		<record jsxid="@tibco_sffile_mtx_coldesc" jsxtext="Description"></record>
+		<record jsxid="@tibco_sffile_blkwaiting" jsxtext="Retrieving Data..."></record>
+		<record jsxid="@tibco_sffile_blkresult" jsxtext="{0} file(s) retrieved."></record>
+		<record jsxid="@tibco_sffile_withoutpwd" jsxtext="Access Password missing. This is required for retrieving files."></record>
+		<record jsxid="@tibco_request_mtxlog_coltransactionid" jsxtext="Transaction ID"></record>
+		<record jsxid="@tibco_request_mtxlog_colagentname" jsxtext="Agent Name"></record>
+		<record jsxid="@tibco_request_mtxlog_colfilename" jsxtext="File Name"></record>
+		<record jsxid="@tibco_request_mtxlog_colresult" jsxtext="Status"></record>
+		<record jsxid="@tibco_request_mtxlog_colinfo" jsxtext="Information"></record>
+		<record jsxid="@tibco_request_transfer_processing" jsxtext="Processing"></record>
+		<record jsxid="@tibco_request_transfer_seccess" jsxtext="Success"></record>
+		<record jsxid="@tibco_request_transfer_failed" jsxtext="Error"></record>
+		<record jsxid="@tibco_request_transfer_scheduled_seccess" jsxtext="Scheduled"></record>
+		<record jsxid="@tibco_common_unit_bytes" jsxtext="Bytes"></record>
+		<record jsxid="@tibco_common_unit_kb" jsxtext="KB"></record>
+		<record jsxid="@tibco_common_unit_mb" jsxtext="MB"></record>
+		<record jsxid="@tibco_common_unit_gb" jsxtext="GB"></record>
+		<record jsxid="@tibco_mftalert_caption_error" jsxtext="Error"></record>
+		<record jsxid="@tibco_mftalert_caption_warning" jsxtext="Warning"></record>
+		<record jsxid="@tibco_mftalert_caption_confirmation" jsxtext="Confirmation"></record>
+		<record jsxid="@tibco_desktop_link_help" jsxtext="Help"></record>
+		<record jsxid="@tibco_desktop_link_logout" jsxtext="Logout"></record>
+		<record jsxid="@tibco_desktop_menu_home" jsxtext="Home"></record>
+		<record jsxid="@tibco_desktop_menu_request" jsxtext="Request"></record>
+		<record jsxid="@tibco_desktop_menu_activity" jsxtext="Activity"></record>
+		<record jsxid="@tibco_mftalert_dwr_timeout" jsxtext="Operation timed out, most likely due to network connection error. Try again later."></record>
+		<record jsxid="@tibco_mftalert_dwr_error" jsxtext="Command could not be executed due to server error."></record>
+  </locale>
+</data>

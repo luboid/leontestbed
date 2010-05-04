@@ -1,0 +1,19 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>MasterDetail</name>
+  <icon/>
+  <description>MasterDetail</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.MasterDetail">
+    <variants jsxorientation="1"/>
+    <strings jsxname="masterDetail"/>
+    <object type="jsx3.gui.Block">
+      <variants/>
+      <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants/>
+      <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+    </object>
+  </object>
+</serialization>

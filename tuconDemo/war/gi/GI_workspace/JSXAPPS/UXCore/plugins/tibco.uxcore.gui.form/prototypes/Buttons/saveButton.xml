@@ -1,0 +1,12 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.6">
+    <name>Form Save Button</name>
+    <icon>jsxplugin://tibco.uxcore.common/images/prototype/button.gif</icon>
+    <description>A UX Core Form Save Button object.</description>
+  <onBeforeDeserialize>undefined</onBeforeDeserialize>
+  <onAfterDeserialize>undefined</onAfterDeserialize>
+    <object type="tibco.uxcore.gui.FormButton">
+      <variants jsxindex="0" jsxprefetch="1" jsxtype="0" jsxstate="0" jsxheight="18" focusstyle="1" wastab="false" wasshift="false"/>
+      <strings jsxname="saveButton" jsxfontname="Arial" jsxfontsize="10px" jsxfontweight="bold" jsxtext="Save" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1" jsxmargin="0 5 0 0"/>
+      <events jsxexecute="this.getParent().doSave();"/>
+    </object>
+</serialization>

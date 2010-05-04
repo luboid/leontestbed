@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<data jsxid="jsxroot">
+  <record include="master.xml" group="object"/>
+
+  <record jsxid="tableselector" group="1" jsxtext="Table Selector">
+        <record jsxid="jsxselectiontype"  jsxtext="Selector Type"
+            docgetter="getSelectionType"  docsetter="setSelectionType"
+            jsxexecute="objJSX.setSelectionType(vntValue, true);"
+            eval="0"
+            jsxmask="jsxselect"
+            jsxtip="Sets whether or not the item selection is multiple">
+            <enum jsxid="tibco.uxcore.gui.TableSelector.MULTI_SELECTION" jsxtext="Check Box"/>
+            <enum jsxid="tibco.uxcore.gui.TableSelector.SINGLE_SELECTION" jsxtext="Radio Button"/>
+        </record>
+        <record jsxid="jsxhidecheckcolumn" jsxtext="Hide CheckColumn"
+            docgetter="getHideCheckColumn" docsetter="setHideCheckColumn"
+            jsxexecute="objJSX.setHideCheckColumn(vntValue, true);"
+            eval="0"
+            jsxmask="jsxselect"
+            jsxtip="Sets whether or not hide check column in Normal mode">
+            <enum jsxid="tibco.uxcore.gui.TableSelector.HIDECOLUMN" jsxtext="Hide"/>
+            <enum jsxid="tibco.uxcore.gui.TableSelector.SHOWCOLUMN" jsxtext="Show"/>
+        </record>
+        <record jsxid="jsxeditmode"  jsxtext="Edit Mode"
+            docgetter="getEditMode"  docsetter="setEditMode"
+            jsxexecute="objJSX.setEditMode(vntValue, true);"
+            eval="1"
+            jsxmask="jsxselect"
+            jsxtip="Sets normal/edit mode of TableSelector, check column will be visible in edit mode">
+            <enum jsxid="tibco.uxcore.gui.GenericTableView.EDIT_MODE" jsxtext="Edit Mode"/>
+            <enum jsxid="tibco.uxcore.gui.GenericTableView.NORMAL_MODE" jsxtext="Normal Mode"/>
+        </record>
+  </record>
+
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="uxcore"/>
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="jsx3mx"/>
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="pagingtuners"/>
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="mtxprops"/>
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="jsx3mtxtree"/>
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="mtxcolumns"/>
+  <record include="jsxplugin://tibco.uxcore.gui.matrix/properties/Matrix.xml" group="intractionstyles"/>
+
+  <record include="master.xml" group="blockx-xml"/>
+  <record include="master.xml" group="metadata"/>
+
+</data>

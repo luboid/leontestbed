@@ -1,0 +1,14 @@
+<data jsxid = "jsxroot"   >
+<locale key="en_US">
+<record jsxid="ID_TOP" jsxtext="doc/en/default.html" type="jsxtip"></record>
+<record jsxid="test1"   jsxtext="doc/en/test1.html" type="jsxtip"></record>
+<record jsxid="test2" jsxtext="doc/en/test2.html" type="jsxtip"></record>
+<record jsxid="test3" jsxtext="doc/en/test3.html" type="jsxtip"></record>
+</locale>
+<locale key="de_GE">
+<record jsxid="ID_TOP" jsxtext="doc/de/default.html" type="jsxtip"></record>
+<record jsxid="test1"   jsxtext="doc/de/test1.html" type="jsxtip"></record>
+<record jsxid="test2" jsxtext="doc/de/test2.html" type="jsxtip"></record>
+<record jsxid="test3" jsxtext="doc/de/test3.html" type="jsxtip"></record>
+</locale>
+</data>

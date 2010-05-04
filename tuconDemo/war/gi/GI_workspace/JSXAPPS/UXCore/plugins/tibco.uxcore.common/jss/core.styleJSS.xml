@@ -1,0 +1,488 @@
+<data jsxid="jsxroot" jsxns="urn:tibco.com/v3.0/dynamicproperties/1">
+  <record jsxid="@uxcore10@Btn Height" jsxtext="18" type="jsxheight"/>
+  <record jsxid="@uxcore10@Btn Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@Btn Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@Btn Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@Btn Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@Btn Color" jsxtext="#2F525D" type="jsxcolor"/>
+  <record jsxid="@uxcore10@Btn Pressed Color" jsxtext="#E2E2E2" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@Btn Disabled Color" jsxtext="#C2C2C2" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@Btn BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@Btn Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@Btn Padding" jsxtext="1 9 0 9" type="jsxpadding"/>
+  <record jsxid="@uxcore10@Btn Margin" jsxtext="0 5 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@Btn Border" jsxtext="1px solid #000000" type="jsxborder"/>
+  <record jsxid="@uxcore10@Btn Default Selected Border" jsxtext="2px solid #000000" type="jsxborder"/>
+  <record jsxid="@uxcore10@Btn Disabled Border" jsxtext="1px solid #C2C2C2" type="jsxborder"/>
+  <record jsxid="@uxcore10@Btn Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@Btn Css Override" jsxtext="" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@pipe Height" jsxtext="22" type="jsxheight"/>
+  <record jsxid="@uxcore10@pipe Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@pipe Font Name" jsxtext="Verdana" type="jsxfontname"/>
+  <record jsxid="@uxcore10@pipe Font Size" jsxtext="10" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@pipe Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@pipe Color" jsxtext="#727272" type="jsxcolor"/>
+  <record jsxid="@uxcore10@pipe BGColor" jsxtext="#727272" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@pipe Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@pipe Padding" jsxtext="1 0 1 1" type="jsxpadding"/>
+  <record jsxid="@uxcore10@pipe Margin" jsxtext="" type="jsxmargin"/>
+  <record jsxid="@uxcore10@pipe Border" jsxtext="0px" type="jsxborder"/>
+  <record jsxid="@uxcore10@pipe Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@pipe Css Override" jsxtext="" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@pipeBtn Height" jsxtext="20" type="jsxheight"/>
+  <record jsxid="@uxcore10@pipeBtn Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@pipeBtn Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@pipeBtn Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@pipeBtn Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@pipeBtn Color" jsxtext="#727272" type="jsxcolor"/>
+  <record jsxid="@uxcore10@pipeBtn Disabled Color" jsxtext="#000000" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@pipeBtn BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@pipeBtn Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@pipeBtn Padding" jsxtext="3 10 0 10" type="jsxpadding"/>
+  <record jsxid="@uxcore10@pipeBtn Margin" jsxtext="0 1 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@pipeBtn Border" jsxtext="0px" type="jsxborder"/>
+  <record jsxid="@uxcore10@pipeBtn Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@pipeBtn Css Override" jsxtext="vertical-align:middle" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@pipelbl Height" jsxtext="" type="jsxheight"/>
+  <record jsxid="@uxcore10@pipelbl Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@pipelbl Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@pipelbl Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@pipelbl Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@pipelbl Color" jsxtext="" type="jsxcolor"/>
+  <record jsxid="@uxcore10@pipelbl Disabled Color" jsxtext="#000000" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@pipelbl BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@pipelbl Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@pipelbl Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@pipelbl Padding" jsxtext="3 0 0 0" type="jsxpadding"/>
+  <record jsxid="@uxcore10@pipelbl Margin" jsxtext="0 10 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@pipelbl Border" jsxtext="0px none #000000;" type="jsxborder"/>
+  <record jsxid="@uxcore10@pipelbl Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@pipeLbl Css Override" jsxtext="" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@toolbarpipe Height" jsxtext="17" type="jsxheight"/>
+  <record jsxid="@uxcore10@toolbarpipeOuter Height" jsxtext="30" type="jsxheight"/>
+  <record jsxid="@uxcore10@toolbarpipe Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@toolbarpipe Font Name" jsxtext="Verdana" type="jsxfontname"/>
+  <record jsxid="@uxcore10@toolbarpipe Font Size" jsxtext="10" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@toolbarpipe Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@toolbarpipe Color" jsxtext="#72727272" type="jsxcolor"/>
+  <record jsxid="@uxcore10@toolbarpipe BGColor" jsxtext="#9898a5" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@toolbarpipeOuter BGColor" jsxtext="#e8e8f5" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@toolbarpipe Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@toolbarpipe Padding" jsxtext="1 0 1 2" type="jsxpadding"/>
+  <record jsxid="@uxcore10@toolbarpipeOuter Padding" jsxtext="4 10 4 10" type="jsxpadding"/>
+  <record jsxid="@uxcore10@toolbarpipe Margin" jsxtext="" type="jsxmargin"/>
+  <record jsxid="@uxcore10@toolbarpipe Border" jsxtext="solid 1px #8C8C8C" type="jsxborder"/>
+  <record jsxid="@uxcore10@toolbarpipe BorderOuter" jsxtext="solid 0 #FFFFFF" type="jsxborder"/>
+  <record jsxid="@uxcore10@toolbarpipe Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@toolbarpipe Css Override" jsxtext="vertical-align:middle" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Height" jsxtext="17" type="jsxheight"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Font Name" jsxtext="Verdana" type="jsxfontname"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Font Size" jsxtext="10" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Color" jsxtext="#006883" type="jsxcolor"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Disabled Color" jsxtext="#000000" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn BGColor" jsxtext="#B7E2EE" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Padding" jsxtext="2 10 4 10" type="jsxpadding"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Margin" jsxtext="0 1 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Border" jsxtext="" type="jsxborder"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@toolbarpipeBtn Css Override" jsxtext="vertical-align:middle" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Height" jsxtext="17" type="jsxheight"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Color" jsxtext="" type="jsxcolor"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Disabled Color" jsxtext="#000000" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@toolbarpipelbl BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Padding" jsxtext="3 0 3 0" type="jsxpadding"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Margin" jsxtext="0 10 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Border" jsxtext="0px none #000000;" type="jsxborder"/>
+  <record jsxid="@uxcore10@toolbarpipelbl Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@toolbarpipeLbl Css Override" jsxtext="vertical-align:middle" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@txtBox Height" jsxtext="20" type="jsxheight"/>
+  <record jsxid="@uxcore10@txtBox Width" jsxtext="185" type="jsxwidth"/>
+  <record jsxid="@uxcore10@txtBox Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@txtBox Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@txtBox Font Weight" jsxtext="normal" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@txtBox Color" jsxtext="" type="jsxcolor"/>
+  <record jsxid="@uxcore10@txtBox Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@txtBox BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@txtBox Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@txtBox Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@txtBox Padding" jsxtext="1 5 0 5" type="jsxpadding"/>
+  <record jsxid="@uxcore10@txtBox Margin" jsxtext="0 0 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@txtBox Border" jsxtext="1px solid #555555;" type="jsxborder"/>
+  <record jsxid="@uxcore10@txtBox Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@txtBox Css Override" jsxtext="vertical-align:middle" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@txtArea Height" jsxtext="72" type="jsxheight"/>
+  <record jsxid="@uxcore10@txtArea Width" jsxtext="185" type="jsxwidth"/>
+  <record jsxid="@uxcore10@txtArea Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@txtArea Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@txtArea Font Weight" jsxtext="normal" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@txtArea Color" jsxtext="" type="jsxcolor"/>
+  <record jsxid="@uxcore10@txtArea Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@txtArea BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@txtArea Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@txtArea Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@txtArea Padding" jsxtext="1 5 0 5" type="jsxpadding"/>
+  <record jsxid="@uxcore10@txtArea Margin" jsxtext="0 0 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@txtArea Border" jsxtext="1px solid #555555;" type="jsxborder"/>
+  <record jsxid="@uxcore10@txtArea Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@txtArea Css Override" jsxtext="" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@select Height" jsxtext="20" type="jsxheight"/>
+  <record jsxid="@uxcore10@select Width" jsxtext="185" type="jsxwidth"/>
+  <record jsxid="@uxcore10@select Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@select Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@select Font Weight" jsxtext="normal" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@select Color" jsxtext="" type="jsxcolor"/>
+  <record jsxid="@uxcore10@select Disabled Color" jsxtext="#C2C2C2" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@select BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@select Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@select Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@select Padding" jsxtext="0 0 0 0" type="jsxpadding"/>
+  <record jsxid="@uxcore10@select Margin" jsxtext="0 0 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@select Border" jsxtext="1px solid #555555;" type="jsxborder"/>
+  <record jsxid="@uxcore10@select Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@select Css Override" jsxtext="vertical-align:middle" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@lbl Height" jsxtext="" type="jsxheight"/>
+  <record jsxid="@uxcore10@lbl Width" jsxtext="100" type="jsxwidth"/>
+  <record jsxid="@uxcore10@lbl Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@lbl Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@lbl Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@lbl Color" jsxtext="#000000" type="jsxcolor"/>
+  <record jsxid="@uxcore10@lbl Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@lbl BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@lbl Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@lbl Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@lbl Padding" jsxtext="0 0 0 0" type="jsxpadding"/>
+  <record jsxid="@uxcore10@lbl Indent Padding" jsxtext="0 0 0 10" type="jsxpadding"/>
+  <record jsxid="@uxcore10@lbl Margin" jsxtext="0 5 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@lbl Border" jsxtext="0px none #555555;" type="jsxborder"/>
+  <record jsxid="@uxcore10@lbl Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@lbl Css Override" jsxtext="" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@lblField Tooltip" jsxtext="Don't remove block labelField. FF related" type="jsxtip"/>
+  <record jsxid="@uxcore10@lblField Width" jsxtext="133" type="jsxwidth"/>
+  <record jsxid="@uxcore10@lblField Margin" jsxtext="0 10 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@lblFieldRoot Margin" jsxtext="0 0 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@lblField Padding" jsxtext="0 0 0 0" type="jsxpadding"/>
+  <record jsxid="@uxcore10@lblFieldF Css Rule Name" jsxtext="labelFieldTextBox" type="jsxclassname"/>
+  <record jsxid="@uxcore10@lblFieldL Css Rule Name" jsxtext="labelFieldLabel" type="jsxclassname"/>
+  <record jsxid="@uxcore10@lblFieldF Css Override" jsxtext="vertical-align:middle" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@lblFieldL Css Override" jsxtext="vertical-align:middle" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@lblFieldBtn Padding" jsxtext="2 0 0 5" type="jsxpadding"/>
+  <record jsxid="@uxcore10@lblContent Width" jsxtext="185" type="jsxwidth"/>
+  <record jsxid="@uxcore10@lblContent Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@lblContent Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@lblContent Font Weight" jsxtext="normal" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@lblContent Color" jsxtext="" type="jsxcolor"/>
+  <record jsxid="@uxcore10@lblContent Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@lblContent BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@lblContent Disabled BGColor" jsxtext="#fffeff" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@lblContent Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@lblContent Padding" jsxtext="0 0 0 0" type="jsxpadding"/>
+  <record jsxid="@uxcore10@lblContent Margin" jsxtext="0 0 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@lblContent Border" jsxtext="0px none #555555;" type="jsxborder"/>
+  <record jsxid="@uxcore10@lblContent Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@lblContent Css Override" jsxtext="" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@Splitter BGColor" jsxtext="transparent" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@Splitter H Image" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/splitter_horizontal.jpg" type="jsxvsplitimage"/>
+  <record jsxid="@uxcore10@Splitter V Image" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/splitter_vertical.jpg" type="jsxhsplitimage"/>
+  <record jsxid="@uxcore10@rad Height" jsxtext="20" type="jsxheight"/>
+  <record jsxid="@uxcore10@rad Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@rad Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@rad Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@rad Font Weight" jsxtext="normal" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@rad Color" jsxtext="" type="jsxcolor"/>
+  <record jsxid="@uxcore10@rad Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@rad BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@rad Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@rad Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@rad Padding" jsxtext="0 5 0 5" type="jsxpadding"/>
+  <record jsxid="@uxcore10@rad Margin" jsxtext="0 0 0 10" type="jsxmargin"/>
+  <record jsxid="@uxcore10@rad Border" jsxtext="" type="jsxborder"/>
+  <record jsxid="@uxcore10@rad Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@rad Css Override" jsxtext="" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@selectBox Height" jsxtext="18" type="jsxheight"/>
+  <record jsxid="@uxcore10@selectBox Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@selectBox Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@selectBox Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@selectBox Font Weight" jsxtext="normal" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@selectBox Color" jsxtext="" type="jsxcolor"/>
+  <record jsxid="@uxcore10@selectBox Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@selectBox BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@selectBox Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@selectBox Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@selectBox Padding" jsxtext="1 5 0 5" type="jsxpadding"/>
+  <record jsxid="@uxcore10@selectBox Margin" jsxtext="0 0 0 10" type="jsxmargin"/>
+  <record jsxid="@uxcore10@selectBox styleoverride" jsxtext="font:11px Arial;color:#000000;margin:0px 5px 0 0;" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@selectBox Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/other/dropDownArrow.gif" type="jsximage"/>
+  <record jsxid="@uxcore10@selectBox Border" jsxtext="1px solid #9F9F9F;1px solid #C7C7C7;1px solid #C7C7C7;1px solid #9F9F9F" type="jsxborder"/>
+  <record jsxid="@uxcore10@Header Layout" type="jsxcols" jsxtext="378,*,207,203"/>
+  <record jsxid="@uxcore10@Header BG" type="jsxbgcolor" jsxtext="#3A6671"/>
+  <record jsxid="@uxcore10@Header Font Color" type="jsxcolor" jsxtext="#BDE0EA"/>
+  <record jsxid="@uxcore10@Header Logon Font Size" type="jsxfontsize" jsxtext="10"/>
+  <record jsxid="@uxcore10@Header Bar Backgroud" type="jsxbg" eval="1" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/headerBar.bmp') + &quot;);background-repeat: repeat-x; background-position: 0px 0px;&quot;"/>
+  <record jsxid="@uxcore10@Header Logo Backgroud" type="jsxbg" eval="1" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/headerLogo.bmp') + &quot;);background-repeat: no-repeat; background-position: 0px 0px;&quot;"/>
+  <record jsxid="@uxcore10@Header TextBox Backgroud" type="jsxbg" eval="1" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/headerTextBox.jpg') + &quot;);background-repeat: repeat-x; background-position: 0px 0px;&quot;"/>
+  <record jsxid="@uxcore10@Perspective Display Backgroud" type="jsxbg" eval="1" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/fadeUpBkgrdTile.jpg') + &quot;);background-repeat: repeat-x; background-position: bottom;&quot;"/>
+  <record jsxid="@uxcore10@Arrow For Header" type="jsxbg" eval="1" jsxtext="&quot;url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/arrowforheader.gif') + &quot;)&quot;"/>
+
+  <record jsxid="@uxcore10@Section Title Decoration Color" type="jsxbgcolor" jsxtext="#F9DB6D"/>
+  <record jsxid="@uxcore10@Section Title Font Size" type="jsxfontsize" jsxtext="14"/>
+  <record jsxid="@uxcore10@NavBar BG Color" type="jsxbgcolor" jsxtext="#396570"/>
+  <record jsxid="@uxcore10@Title Height" jsxtext="18" type="jsxheight"/>
+  <record jsxid="@uxcore10@Title Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@Title Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@Title Font Size" jsxtext="12" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@Title Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@Title Color" jsxtext="#000000" type="jsxcolor"/>
+  <record jsxid="@uxcore10@Title Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@Title BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@Title Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@Title Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@Title Padding" jsxtext="0 0 0 0" type="jsxpadding"/>
+  <record jsxid="@uxcore10@Title Margin" jsxtext="5 5 5 5" type="jsxmargin"/>
+  <record jsxid="@uxcore10@Title Border" jsxtext="" type="jsxborder"/>
+  <record jsxid="@uxcore10@Title Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@Title Css Override" jsxtext="" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@DropDown Height" jsxtext="18" type="jsxheight"/>
+  <record jsxid="@uxcore10@DropDown Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@DropDown Font Name" jsxtext="" type="jsxfontname"/>
+  <record jsxid="@uxcore10@DropDown Font Size" jsxtext="" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@DropDown Font Weight" jsxtext="" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@DropDown Color" jsxtext="" type="jsxcolor"/>
+  <record jsxid="@uxcore10@DropDown Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@DropDown BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@DropDown Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@DropDown Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@DropDown Padding" jsxtext="" type="jsxpadding"/>
+  <record jsxid="@uxcore10@DropDown Margin" jsxtext="5 5 5 5" type="jsxmargin"/>
+  <record jsxid="@uxcore10@DropDown Border" jsxtext="" type="jsxborder"/>
+  <record jsxid="@uxcore10@DropDown Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@DropDown Css Override" jsxtext="" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@EditSectionHeader Height" jsxtext="35" type="jsxheight"/>
+  <record jsxid="@uxcore10@EditSectionHeader Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@EditSectionHeader Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@EditSectionHeader Font Size" jsxtext="12" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@EditSectionHeader Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@EditSectionHeader Color" jsxtext="#000000" type="jsxcolor"/>
+  <record jsxid="@uxcore10@EditSectionHeader Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@EditSectionHeader BGColor" jsxtext="#c5c49b" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@EditSectionHeader Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@EditSectionHeader Background" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/subheaderBarTile.jpg') + &quot;); background-repeat-x: repeat;&quot;" eval="1"/>
+  <record jsxid="@uxcore10@EditSectionHeader Padding" jsxtext="" type="jsxpadding"/>
+  <record jsxid="@uxcore10@EditSectionHeader Margin" jsxtext="" type="jsxmargin"/>
+  <record jsxid="@uxcore10@EditSectionHeader Border" jsxtext="" type="jsxborder"/>
+  <record jsxid="@uxcore10@EditSectionHeader Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@EditSectionHeader Css Override" jsxtext="" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@EditSection Height" jsxtext="" type="jsxheight"/>
+  <record jsxid="@uxcore10@EditSection Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@EditSection Font Name" jsxtext="" type="jsxfontname"/>
+  <record jsxid="@uxcore10@EditSection Font Size" jsxtext="" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@EditSection Font Weight" jsxtext="" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@EditSection Color" jsxtext="" type="jsxcolor"/>
+  <record jsxid="@uxcore10@EditSection Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@EditSection BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@EditSection Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@EditSection Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@EditSection Padding" jsxtext="" type="jsxpadding"/>
+  <record jsxid="@uxcore10@EditSection Margin" jsxtext="" type="jsxmargin"/>
+  <record jsxid="@uxcore10@EditSection Border" jsxtext="1px solid #555555;" type="jsxborder"/>
+  <record jsxid="@uxcore10@EditSection Css Rule Name" jsxtext="" type="jsxclassname"/>
+  <record jsxid="@uxcore10@EditSection Css Override" jsxtext="" type="jsxstyleoverride"/>
+  <record jsxid="@uxcore10@lblSubContent Height" jsxtext="" type="jsxheight"/>
+  <record jsxid="@uxcore10@lblSubContent Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@lblSubContent Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@lblSubContent Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@lblSubContent Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@lblSubContent Color" jsxtext="" type="jsxcolor"/>
+  <record jsxid="@uxcore10@lblSubContent Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+  <record jsxid="@uxcore10@lblSubContent BGColor" jsxtext="" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@lblSubContent Disabled BGColor" jsxtext="" type="jsxdisabledbgcolor"/>
+  <record jsxid="@uxcore10@lblSubContent Background" jsxtext="" type="jsxbg"/>
+  <record jsxid="@uxcore10@lblSubContent Padding" jsxtext="0 5 0 0" type="jsxpadding"/>
+  <record jsxid="@uxcore10@lblSubContent Margin" jsxtext="0 5 0 5" type="jsxmargin"/>
+  <record jsxid="@uxcore10@lblSubContent Border" jsxtext="0px none #555555;" type="jsxborder"/>
+  <record jsxid="@uxcore10@lblSubContent Text Align" type="jsxtextalign" jsxtext="right"/>
+  <record jsxid="@uxcore10@FormRowMargin" type="jsxmargin" jsxtext="0 0 5 0"/>
+  <record jsxid="@uxcore10@FormRowOverflow" type="jsxoverflow" jsxtext="jsx3.gui.Block.OVERFLOWEXPAND"/>
+  <record jsxid="@uxcore10@FormRowCSSOverride" type="jsxstyleoverride" jsxtext="float: left;"/>
+  <record jsxid="@uxcore10@txtBox Short Width" type="jsxwidth" jsxtext="80"/>
+  <record jsxid="@uxcore10@radio Margin" type="jsxmargin" jsxtext="0 4 0 0"/>
+  <record jsxid="@uxcore10@txtBox Medium Width" type="jsxwidth" jsxtext="133"/>
+  <record jsxid="@uxcore10@lblUnits Margin" type="jsxmargin" jsxtext="0 0 0 5"/>
+  <record jsxid="@uxcore10@lblUnits Short Width" type="jsxwidth" jsxtext="100"/>
+  <record jsxid="@uxcore10@lblUnits Medium Width" type="jsxwidth" jsxtext="47"/>
+  <record jsxid="@uxcore10@txtBox with Button Width" type="jsxwidth" jsxtext="100"/>
+  <record jsxid="@uxcore10@formButton Width" type="jsxwidth" jsxtext="80"/>
+  <record jsxid="@uxcore10@formButton Margin" type="jsxmargin" jsxtext="1 0 0 5"/>
+  <record jsxid="@uxcore10@LeftSelectButton Height" type="jsxheight" jsxtext="25"/>
+  <record jsxid="@uxcore10@LeftSelectButton Font Size" type="jsxfontsize" jsxtext="12"/>
+  <record jsxid="@uxcore10@LeftSelectButton Color" type="jsxcolor" jsxtext="#528391"/>
+  <record jsxid="@uxcore10@LeftSelectButton Selected Color" type="jsxcolor" jsxtext="#000000"/>
+  <record jsxid="@uxcore10@LeftSelectButton Font Weight" type="jsxfontweight" jsxtext="bold"/>
+  <record jsxid="@uxcore10@LeftSelectButton Padding" type="jsxpadding" jsxtext="4 0 0 18"/>
+  <record jsxid="@uxcore10@LeftSelectButton Border" type="jsxborder" jsxtext="1px solid #555555; 0px; 0px; 0px"/>
+  <record jsxid="@uxcore10@LeftSelectButton No Border" type="jsxborder" jsxtext="0px; 0px; 0px; 0px"/>
+  <record jsxid="@uxcore10@LeftSelectButton Font Name" type="jsxfontname" jsxtext="Arial"/>
+  <record jsxid="@uxcore10@LeftSelectButton Width" type="jsxwidth" jsxtext="100%"/>
+  <record jsxid="@uxcore10@LeftSelectButton Text Align" type="jsxtextalign" jsxtext="left"/>
+  <record jsxid="@uxcore10@LeftSelectButton Disabled Color" type="jsxdisabledcolor" jsxtext="#B6CDD4"/>
+  <record jsxid="@uxcore10@LeftSelectButton Disabled BG Color" type="jsxdisabledbgcolor" jsxtext="-1"/>
+  <record jsxid="@uxcore10@LeftSelectPane TopBlock Padding" type="jsxpadding" jsxtext="8 0 0 0"/>
+  <record jsxid="@uxcore10@LeftSelectPane TopBlock Overflow" type="jsxoverflow" jsxtext="2"/>
+  <record jsxid="@uxcore10@LeftSelectPane Label Font Name" type="jsxfontname" jsxtext="Arial"/>
+  <record jsxid="@uxcore10@LeftSelectPane Label Font Size" type="jsxfontsize" jsxtext="14"/>
+  <record jsxid="@uxcore10@LeftSelectPane Label Font Weight" type="jsxfontweight" jsxtext="bold"/>
+  <record jsxid="@uxcore10@LeftSelectPane Label Color" type="jsxcolor" jsxtext="#000000"/>
+  <record jsxid="@uxcore10@LeftSelectPane Label BG Color" type="jsxbgcolor" jsxtext="-1"/>
+  <record jsxid="@uxcore10@LeftSelectPane Label Text Align" type="jsxtextalign" jsxtext="left"/>
+  <record jsxid="@uxcore10@LeftSelectPane Label Overflow" type="jsxoverflow" jsxtext="2"/>
+  <record jsxid="@uxcore10@LeftSelectPane LowerPane Overflow" type="jsxoverflow" jsxtext="2"/>
+  <record jsxid="@uxcore10@LeftSelectPane ButtonPane Overflow" type="jsxoverflow" jsxtext="1"/>
+  <record jsxid="@uxcore10@LeftSelectPane Label Border" type="jsxborder" jsxtext="0px; 0px; 1px solid #555555; 0px"/>
+  <record jsxid="@uxcore10@LeftSelectPane Layout1 Rows" type="jsxrows" jsxtext="26,*"/>
+  <record jsxid="@uxcore10@LeftSelectPane Layout1 Cols" type="jsxcols" jsxtext="*"/>
+  <record jsxid="@uxcore10@LeftSelectPane Layout2 Rows" type="jsxrows" jsxtext="*"/>
+  <record jsxid="@uxcore10@LeftSelectPane Layout2 Cols" type="jsxcols" jsxtext="180,60,*"/>
+  <record jsxid="@uxcore10@LeftSelectPane LowerPane Padding" type="jsxpadding" jsxtext="20 0 0 0"/>
+  <record jsxid="@uxcore10@Btn Refresh Height" jsxtext="16" type="jsxheight"/>
+  <record jsxid="@uxcore10@Btn Refresh Width" jsxtext="16" type="jsxwidth"/>
+  <record jsxid="@uxcore10@Btn Refresh Image" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/update_16x16.gif" type="jsximage"/>
+  <record jsxid="@uxcore10@Btn Refresh Over Image" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/update_16x16.gif" type="jsxoverimage"/>
+  <record jsxid="@uxcore10@Btn Refresh Down Image" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/update_16x16.gif" type="jsxdownimage"/>
+  <record jsxid="@uxcore10@Btn Refresh On Image" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/update_16x16.gif" type="jsxonimage"/>
+  <record jsxid="@uxcore10@Btn Refresh Disabled Image" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/update_disabled_16x16.gif" type="jsxdisabledimage"/>
+  <record jsxid="@uxcore10@ListHeader Font Size" type="jsxfontsize" jsxtext="14"/>
+  <record jsxid="@uxcore10@ListHeader Font Name" type="jsxfontname" jsxtext="Arial"/>
+  <record jsxid="@uxcore10@ListHeader Font Weight" type="jsxfontweight" jsxtext="bold"/>
+  <record jsxid="@uxcore10@ListHeader Font Color" type="jsxcolor" jsxtext="#000000"/>
+  <record jsxid="@uxcore10@ListHeader Padding" type="jsxpadding" jsxtext="30 0 0 0"/>
+  <record jsxid="@uxcore10@DetailsPane Rows" type="jsxrows" jsxtext="23,*"/>
+  <record jsxid="@uxcore10@DetailsPane Cols" type="jsxcols" jsxtext="*"/>
+  <record jsxid="@uxcore10@DetailsPane Label Padding" type="jsxpadding" jsxtext="3 5 0 0"/>
+  <record jsxid="@uxcore10@DetailsPane Content Area Padding" type="jsxpadding" jsxtext="10 0 0 0"/>
+  <record jsxid="@uxcore10@DetailsForm Header Rows" type="jsxrows" jsxtext="34,*"/>
+  <record jsxid="@uxcore10@DetailsForm Header Cols" type="jsxcols" jsxtext="*"/>
+  <record jsxid="@uxcore10@DetailsForm Header Border" type="jsxborder" jsxtext="1px solid #555555;"/>
+  <record jsxid="@uxcore10@DetailsForm Content Border" type="jsxborder" jsxtext="0px solid black; 1px solid #555555; 1px solid #555555; 1px solid #555555;"/>
+  <record jsxid="@uxcore10@DetailsForm Header Padding" type="jsxpadding" jsxtext="7 10 0 10"/>
+  <record jsxid="@uxcore10@DetailsForm Content Padding" type="jsxpadding" jsxtext="10 20 10 20"/>
+  <record jsxid="@uxcore10@DetailsForm Content BG Color" type="jsxbgcolor" jsxtext="#FFFFFF"/>
+  <record jsxid="@uxcore10@DetailsForm Header BG Color" type="jsxbgcolor" jsxtext="#E7E6D2"/>
+  <record jsxid="@uxcore10@DetailsForm Header BG" type="jsxbg" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/subheaderBarTile.jpg') + &quot;); background-repeat: repeat;&quot;" eval="1"/>
+  <record jsxid="@uxcore10@DetailsForm Header Font" type="jsxfontname" jsxtext="Arial"/>
+  <record jsxid="@uxcore10@DetailsForm Header Font Size" type="jsxfontsize" jsxtext="12"/>
+  <record jsxid="@uxcore10@DetailsForm Header Font Weight" type="jsxfontweight" jsxtext="bold"/>
+  <record jsxid="@uxcore10@DetailsForm Header Font Color" type="jsxcolor" jsxtext="#000000"/>
+  <record jsxid="@uxcore10@LiveAbove Separator Border" type="jsxborder" jsxtext="1px solid #555555; 0px; 0px; 0px"/>
+  <record jsxid="@uxcore10@toolbarButton Margin" type="jsxmargin" jsxtext="3 3 0 0"/>
+  <record jsxid="@uxcore10@DialogContent Padding" type="jsxpadding" jsxtext="10 20 20 20"/>
+  <record jsxid="@uxcore10@PerspectiveTab Font" type="jsxfontname" jsxtext="Arial"/>
+  <record jsxid="@uxcore10@PerspectiveTab Font Size" type="jsxfontsize" jsxtext="11"/>
+  <record jsxid="@uxcore10@Tab Font" type="jsxfontname" jsxtext="Arial"/>
+  <record jsxid="@uxcore10@Tab Font Size" type="jsxfontsize" jsxtext="11"/>
+  <record jsxid="@uxcore10@Tab Font Weight" type="jsxfontweight" jsxtext="bold"/>
+  <record jsxid="@uxcore10@Tab Font Color" type="jsxcolor" jsxtext="#2F525D"/>
+  <record jsxid="@uxcore10@PerspectiveTab Padding" type="jsxpadding" jsxtext="5 7 8 11"/>
+  <record jsxid="@uxcore10@Help Button Image" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/help.gif"/>
+
+  <record jsxid="@uxcore10@Welcome EA Icon" type="jsxsrc" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/ent_assets_icon_32x32.gif"/>
+  <record jsxid="@uxcore10@Welcome Env Icon" type="jsxsrc" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/config_environ_icon_32x32.gif"/>
+  <record jsxid="@uxcore10@Welcome Deploy Icon" type="jsxsrc" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/deploy_icon_32x32.gif"/>
+  <record jsxid="@uxcore10@Welcome MM Icon" type="jsxsrc" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/monitor_icon_32x32.gif"/>
+  <record jsxid="@uxcore10@Default Perspective Icon" type="jsxsrc" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/monitor_icon_32x32.gif"/>
+  <record jsxid="@uxcore10@Welcome ScrollUp" type="jsxsrc" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/welcomeScrollUpBtn.jpg"/>
+  <record jsxid="@uxcore10@Welcome ScrollUp Disabled" type="jsxsrc" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/welcomeScrollUpBtn_disabled.jpg"/>
+  <record jsxid="@uxcore10@Welcome ScrollDown" type="jsxsrc" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/welcomeScrollDownBtn.jpg"/>
+  <record jsxid="@uxcore10@Welcome ScrollDown Disabled" type="jsxsrc" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/welcomeScrollDownBtn_disabled.jpg"/>
+  <record jsxid="@uxcore10@Welcome TextBox Backgroud" type="jsxbg" eval="1" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/welcomeTextBox.jpg') + &quot;);&quot;"/>
+
+  <record jsxid="@uxcore10@MinimizeButton Image" type="jsximage" eval="0" jsxtext="jsx:///images/dialog/min.gif"/>
+  <record jsxid="@uxcore10@MaximizeButton Image" type="jsximage" eval="0" jsxtext="jsx:///images/dialog/max.gif"/>
+  <record jsxid="@uxcore10@CloseButton Image" jsxtext="jsx:///images/dialog/close.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Mapped Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/mapped.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Red LED Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/LED_red.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Yellow LED Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/LED_yellow.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Green LED Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/LED_green.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Off LED Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/LED_off.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Defined Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/defined.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Marked For Install Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/marked_for_install.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Marked For Uninstall Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/marked_for_uninstall.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Marked For Activation Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/marked_for_activation.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Marked For Deactivation Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/marked_for_deactivation.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Installed Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/installed.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Uninstalled Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/uninstalled.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Installed_Stopped Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/stopped.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Install Failed Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/installFailed_16x16.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Unknown Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/unknown.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Installing Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/installing.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Uninstalling Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/uninstalling.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Uninstall Failed Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/uninstallFailed.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Start Failed Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/start_failed.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Stop Failed Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/stop_failed.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Starting Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/starting.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Stopping Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/stopping.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Running Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/started_running.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Delete Failed Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/delete_failed.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Running With Error Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/start_failed.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Deployed With Error Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/installFailed_16x16.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Not Deployed Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/defined.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Deployed Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/installed.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Out Of Sync Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/outOfSync.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Redeployable Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/blank_status.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Error Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/alert.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Blank Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/blank_status.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@ClientSSL Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/SSLsharedResource.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@EMS Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/JMSsharedResource.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@HTTP Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/httpServerSharedResource.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@Identity Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/identity.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@JDBC Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/JDBCsharedResource.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@JNDI Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/JNDIsharedResource.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@RV Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/RVsharedResource.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@ServerSSL Icon" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/SSLsharedResource.gif" eval="0" type="jsximage"/>
+  <record jsxid="@uxcore10@SearchCloseIcon" type="jsximage" eval="0" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/close_search.gif"/>
+  <record jsxid="@uxcore10@ArrowIcon" type="jsximage" eval="0" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/arrow.gif"/>
+  <record jsxid="@uxcore10@ArrowDownIcon" type="jsximage" eval="0" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/arrowDown.gif"/>
+  <record jsxid="@uxcore10@Select an Item Font Name" type="jsxfontname" jsxtext="Arial"/>
+  <record jsxid="@uxcore10@Select an Item Font Size" type="jsxfontsize" jsxtext="16"/>
+  <record jsxid="@uxcore10@Select an Item Font Weight" type="jsxfontweight" jsxtext="bold"/>
+  <record jsxid="@uxcore10@Select an Item Font Color" type="jsxcolor" jsxtext="#A1A1A1"/>
+  <record jsxid="@uxcore10@Link Color" jsxtext="#145692" eval="0" type="jsxcolor"/>
+  <record jsxid="@uxcore10@timeout" jsxtext="600000"  type="jsxtext"/>
+  <record jsxid="@uxcore10@timeoutInterval" jsxtext="8000"  type="jsxtext"/>
+  <record jsxid="@uxcore10@Btn Svars Image" jsxtext="jsxplugin://tibco.uxcore.common/images/matrix/svars.gif" type="jsximage"/>
+
+  <record jsxid="uxcore@formrow@activeBorder" jsxtext="2px solid #5B9BF2"/>
+  <record jsxid="uxcore@formrow@inactiveBorder" jsxtext="1px solid #9F9F9F;1px solid #C7C7C7;1px solid #C7C7C7;1px solid #9F9F9F"/>
+  <record jsxid="uxcore@formrow@defaultBGColor" jsxtext="#FFFFFF"/>
+  <record jsxid="uxcore@formrow@invalidBGColor" jsxtext="#FEFAC0"/>
+
+  <record jsxid="@uxcore10@NormalBtn Height" jsxtext="18" type="jsxheight"/>
+  <record jsxid="@uxcore10@NormalBtn Width" jsxtext="" type="jsxwidth"/>
+  <record jsxid="@uxcore10@NormalBtn Font Name" jsxtext="Arial" type="jsxfontname"/>
+  <record jsxid="@uxcore10@NormalBtn Font Size" jsxtext="11" type="jsxfontsize"/>
+  <record jsxid="@uxcore10@NormalBtn Font Weight" jsxtext="bold" type="jsxfontweight"/>
+  <record jsxid="@uxcore10@NormalBtn Color" jsxtext="#2F475D" type="jsxcolor"/>
+  <record jsxid="@uxcore10@NormalBtn Padding" jsxtext="2 4 1 4" type="jsxpadding"/>
+  <record jsxid="@uxcore10@NormalBtn Margin" jsxtext="2" type="jsxmargin"/>
+  <record jsxid="@uxcore10@NormalBtn Affordance" jsxtext="3 5 3 5" type="jsxaffordance"/>
+
+  <record jsxid="@uxcore10@StackGroup Border H" jsxtext="0px solid #9C9C9C;1px solid #9C9C9C;1px solid #9C9C9C;1px solid #9C9C9C;" type="jsxborder"/>
+  <record jsxid="@uxcore10@StackGroup Border V" jsxtext="1px solid #9C9C9C;1px solid #9C9C9C;1px solid #9C9C9C;0px solid #9C9C9C;" type="jsxborder"/>
+  <record jsxid="@uxcore10@StackGroup Bar Size" jsxtext="27" type="jsxsize"/>
+  <record jsxid="@uxcore10@Stack Label Padding" type="jsxpadding" jsxtext="6 7 7 10"/>
+  <record jsxid="@uxcore10@Stack Padding" type="jsxpadding" jsxtext="20 10 20 10"/>
+  <record jsxid="@uxcore10@Stack Border H" jsxtext="1px solid #9C9C9C;0px;0px;0px;" type="jsxborder"/>
+  <record jsxid="@uxcore10@Stack Border V" jsxtext="0px;0px;0px;1px solid #9C9C9C;" type="jsxborder"/>
+  <record jsxid="@uxcore10@Stack Background Color" jsxtext="transparent" type="jsxbgcolor"/>
+  <record jsxid="@uxcore10@Stack Background Image H" type="jsxbg" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/stack/stackablePanelHeader-h.jpg') + &quot;); &quot;" eval="1"/>
+  <record jsxid="@uxcore10@Stack Background Image V" type="jsxbg" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/stack/stackablePanelHeader-v.jpg') + &quot;); &quot;" eval="1"/>
+
+
+</data>

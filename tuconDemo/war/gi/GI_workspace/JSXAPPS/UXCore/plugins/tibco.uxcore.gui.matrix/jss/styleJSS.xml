@@ -1,0 +1,60 @@
+<data jsxid="jsxroot" jsxns="urn:tibco.com/v3.0/dynamicproperties/1">
+<!-- Begin default matrix setting -->
+<!-- box -->
+<record jsxid="@uxcore10@Matrix BlockBG" jsxtext="#FFFFFF" type="jsxbgcolor"/>
+<record jsxid="@uxcore10@Matrix BG" jsxtext="#F8F8F8" type="jsxbgcolor"/>
+<record jsxid="@uxcore10@Matrix BG Image" jsxtext="background-image:url(JSX/images/matrix/grid.gif);" type="jsxbg"/>
+<record jsxid="@uxcore10@Matrix HeaderHeight" jsxtext="16" type="jsxheaderheight"/>
+<record jsxid="@uxcore10@Matrix RowHeight" jsxtext="20" type="jsxrowheight"/>
+<record jsxid="@uxcore10@Matrix HeaderBorder" jsxtext="0px solid #737373;0px solid #DFDFDF;1px solid #737373;0px solid #737373" type="jsxheaderborder"/>
+<record jsxid="@uxcore10@Matrix BlockBorder" jsxtext="1px solid #737373;" type="jsxbodyborder"/>
+<record jsxid="@uxcore10@Matrix BodyBorder" jsxtext="0px solid #737373;" type="jsxbodyborder"/>
+<record jsxid="@uxcore10@Matrix Border" jsxtext="1px solid #737373" type="jsxborder"/>
+
+<!-- interaction style -->
+<record jsxid="@uxcore10@Matrix Focus Style" jsxtext="font-weight:normal;" type="jsxfocusstyle"/>
+<record jsxid="@uxcore10@Matrix Selection BG" jsxtext="jsxplugin://tibco.uxcore.gui.matrix/images/row_Highlight.jpg" type="jsxselectionbg"/>
+<record jsxid="@uxcore10@Matrix Spy Style" jsxtext="text-docoration:none" type="jsxspystyle"/>
+
+<!-- column Header properties-->
+<record jsxid="@uxcore10@MatrixC Font Name" jsxtext="Arial" type="jsxfontname"/>
+<record jsxid="@uxcore10@MatrixC Font Size" jsxtext="11" type="jsxfontsize"/>
+<record jsxid="@uxcore10@MatrixC Font Weight" jsxtext="bold" type="jsxfontweight"/>
+<record jsxid="@uxcore10@MatrixC Color" jsxtext="#000000" type="jsxcolor"/>
+<record jsxid="@uxcore10@MatrixC BGColor" jsxtext="#c8c8d5" type="jsxbgcolor"/>
+<record jsxid="@uxcore10@MatrixC BackGround" type="jsxbg" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.gui.matrix/images/tableHeaderBkgrd.jpg') + &quot;); background-repeat: repeat-x;&quot;" eval="1"/>
+<record jsxid="@uxcore10@MatrixC BackGround 2 Rows" type="jsxbg" jsxtext="&quot;background-image:url(&quot; + jsx3.resolveURI('jsxplugin://tibco.uxcore.gui.matrix/images/tableHeader2rowsBkgrd.jpg') + &quot;); background-repeat: repeat-x;&quot;" eval="1"/>
+<record jsxid="@uxcore10@MatrixC Padding" jsxtext="0 7 0 7" type="jsxpadding"/>
+<record jsxid="@uxcore10@MatrixC Border" jsxtext="0px solid #555555;1px solid #949494;0px solid #555555;1px solid #E4E4E4" type="jsxborder"/>
+
+<!-- column Deta Cells-->
+<record jsxid="@uxcore10@MatrixCell Font Name" jsxtext="Arial" type="jsxcellfontname"/>
+<record jsxid="@uxcore10@MatrixCell Font Size" jsxtext="11" type="jsxcellfontsize"/>
+<record jsxid="@uxcore10@MatrixCell Font Weight" jsxtext="normal" type="jsxcellfontweight"/>
+<record jsxid="@uxcore10@MatrixCell Color" jsxtext="#424242" type="jsxcellcolor"/>
+<record jsxid="@uxcore10@MatrixCell BGColor" jsxtext="transparent" type="jsxcellbgcolor"/>
+<record jsxid="@uxcore10@MatrixCell Padding" jsxtext="2 0 0 7" type="jsxcellpadding"/>
+<record jsxid="@uxcore10@MatrixCell Border" jsxtext="0px solid #F5F5F5; 1px solid #DEDEDE; 0px solid red; 0px solid #F5F5F5 " type="jsxcellborder"/>
+<record jsxid="@uxcore10@MatrixCell Border Last" jsxtext="0px solid #F5F5F5; 0px solid #F5F5F5; 0px solid #F8F8F8; 0px solid #F5F5F5 " type="jsxcellborder"/>
+
+<!-- column button mask -->
+<record jsxid="@uxcore10@MatrixBTMask Font Name" jsxtext="Arial" type="jsxfontname"/>
+<record jsxid="@uxcore10@MatrixBTMask Font Size" jsxtext="11" type="jsxfontsize"/>
+<record jsxid="@uxcore10@MatrixBTMask Font Weight" jsxtext="normal" type="jsxfontweight"/>
+<record jsxid="@uxcore10@MatrixBTMask Color" jsxtext="#257792" type="jsxcolor"/>
+<record jsxid="@uxcore10@MatrixBTMask Disabled Color" jsxtext="" type="jsxdisabledcolor"/>
+<record jsxid="@uxcore10@MatrixBTMask BGColor" jsxtext="#FFFFFF" type="jsxbgcolor"/>
+<record jsxid="@uxcore10@MatrixBTMask Disabled BGColor" jsxtext="#754E4E" type="jsxdisabledbgcolor"/>
+<record jsxid="@uxcore10@MatrixBTMask Padding" jsxtext="0 0 0 0" type="jsxpadding"/>
+<record jsxid="@uxcore10@MatrixBTMask Border" jsxtext="0px solid ;0px solid ;0px solid ;0px solid" type="jsxborder"/>
+<record jsxid="@uxcore10@MatrixBTMask Css Rule Name" jsxtext="" type="jsxclassname"/>
+<record jsxid="@uxcore10@MatrixBTMask Css Override" jsxtext="text-decoration:underline" type="jsxstyleoverride"/>
+
+<!-- paging tuners -->
+<record jsxid="@uxcore10@Matrix PanelPoolSize" jsxtext="5" type="jsxpanelpoolsize"/>
+<record jsxid="@uxcore10@Matrix RowPerPanel" jsxtext="50" type="jsxrowsperpanel"/>
+<record jsxid="@uxcore10@Matrix PaintQueueSize" jsxtext="3" type="jsxpaintqueuesize"/>
+<record jsxid="@uxcore10@Matrix ScrollInfo" jsxtext="- viewing records {0} to {1} of {2} -" type="jsxscrollinfolabel"/>
+<!-- End default matrix setting -->
+
+</data>

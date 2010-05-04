@@ -1,0 +1,13 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - New</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/add.gif</icon>
+  <description>A tibco.uxcore.gui.ActionButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+            <object type="tibco.uxcore.gui.ActionButton">
+              <variants jsxenabled="1" jsxprefetch="1"/>
+              <strings jsxname="actionButtonNew" jsxoverimage="1" jsxdownimage="1" jsxactionid="New"/>
+              <dynamics jsxtext="@uxcore10@Btn Text New" jsxicon="@uxcore10@Btn Image New"/>
+              <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+            </object>
+</serialization>

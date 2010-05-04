@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<plugin xmlns="http://www.tibco.com/gi/amp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd" id="com.tibco.cmi.newAgreement" name="Business Connect - newAgreement" version="0.1">
+
+  <requires>
+      <plugin id="tibco.uxcore.gui.masterdetail"/>
+      <plugin id="tibco.uxcore.gui.matrix"/>
+		<plugin id="tibco.uxcore.gui.form"/>
+    <plugin id="tibco.uxcore.gui.section"/> 
+  </requires>
+  
+  <resources>
+		<script id="NewAgreement_js" path="NewAgreement.js" eval="true"/>
+    <xml id="NewAgreement_xml" path="ui/NewAgreement.xml">
+			<prereq id="NewAgreement_js"/>
+		</xml>
+  </resources>
+	
+	<extension point="com.tibco.cmi.businessAgreements.newAgreement">
+      <newAgreement uiId="NewAgreement_xml"/>
+  </extension>
+	
+</plugin>

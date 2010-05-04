@@ -1,0 +1,33 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Tabbed Pane</name>
+  <icon>jsxplugin://tibco.uxcore.gui.tabbedpane/images/prototype/tabbedpane.gif</icon>
+  <object type="tibco.uxcore.gui.TabbedPane">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="mainBlock" jsxheight="100%" jsxwidth="100%"/>
+    <object type="jsx3.gui.LayoutGrid">
+      <object type="jsx3.gui.Block">
+
+      </object>
+      <object type="jsx3.gui.TabbedPane">
+        <object type="jsx3.gui.Tab">
+          <strings jsxname="tab1" jsxtext="Tab 1"/>
+          <object type="jsx3.gui.Block">
+            <strings jsxwidth="100%" jsxheight="100%" jsxtext="Tab 1 Content"/>
+          </object>
+        </object>
+        <object type="jsx3.gui.Tab">
+          <strings jsxname="tab2" jsxtext="Tab 2"/>
+          <object type="jsx3.gui.Block">
+            <strings jsxwidth="100%" jsxheight="100%" jsxtext="Tab 2 Content"/>
+          </object>
+        </object>
+        <object type="jsx3.gui.Tab">
+          <strings jsxname="tab3" jsxtext="Tab 3"/>
+          <object type="jsx3.gui.Block">
+            <strings jsxwidth="100%" jsxheight="100%" jsxtext="Tab 3 Content"/>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

@@ -1,0 +1,13 @@
+<plugin xmlns="http://www.tibco.com/gi/amp" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd" 
+		id="com.tibco.cmi.dwr" name="CMI - dwr" version="0.1">
+
+  <requires>
+  </requires>
+  
+  <resources>
+      <script id="DwrEngine_js" path="DwrEngine.js" eval="true" load="early"/>
+  </resources>
+
+</plugin>

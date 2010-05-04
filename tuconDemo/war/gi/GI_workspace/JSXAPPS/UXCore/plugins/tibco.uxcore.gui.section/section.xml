@@ -1,0 +1,39 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <model>
+    </model>
+    <template recalc="true">
+        <inlinebox style="position:{$position};left:{$left};top:{$top};width:{donotsetme|100%};height:{$height};padding:{$padding};margin:{$margin};background:{$bg};background-color:{$bgcolor};display:{$display};overflow:{$overflow};visibility:{$visibility};border:{$border}">
+            <div style="width:100%; height:100%;">
+                <var name="statusDisplay">this.getStatusEnabled()==jsx3.Boolean.TRUE ? 'block' : 'none'</var>
+                <var name="titleBoxDisplay">this.iterTitleBox().hasNext() ? 'block' : 'none'</var>
+                <var name="contentAreaDisplay">this.iterContent().hasNext() ? 'none' : 'block'</var>
+                <var name="contentDisplay">this.getContentDisplay()</var>
+                <var name="strStatusMessage">this.getStatusMessage()</var>
+                <var name="statusMessageHeight">this.getStatusEnabled()==jsx3.Boolean.TRUE ? 25 : 0</var>
+                <var name="titleBoxHeight">this.getTitleBoxHeight()</var>
+                <var name="contentHeight">$$parentheight-titleBoxHeight-statusMessageHeight</var>
+                <var name="contentAreaTop">titleBoxHeight+statusMessageHeight</var>
+                <var name="instruction">this.getInstruction()</var>
+                <var name="childwidth" triggers="jsxwidth">$$parentwidth</var>
+                <div style="display:{statusDisplay}; width:100%; height:{statusMessageHeight}px; padding:5px; text-align:center; font:11px Arial;">
+                    <span><text>{strStatusMessage}</text></span>
+                </div>
+                <div style="width:100%; height:{titleBoxHeight}px; display:{titleBoxDisplay}">
+                    <attach select="this.iterTitleBox()">
+                        <drawspace position="'relative'" width="this.getPaintProfile().childwidth"/>
+                    </attach>
+                </div>
+                <div style="width:100%; height:{contentHeight}px; display:{contentDisplay}">
+                    <attach select="this.iterContent()">
+                        <drawspace position="'relative'" width="this.getPaintProfile().childwidth"/>
+                    </attach>
+                </div>
+                <div style="display:{contentAreaDisplay}; width:100%; height:{contentHeight|100%}; border:1px dashed #BBBBBB; background-color:#EEEEEE;">
+                    <div u:protected="true" style="position:absolute; top:50%; margin-top:-8px; width:100%;text-align:center; font:bold 16px Arial; color:#BBBBBB;">
+                        <span><text>{instruction}</text></span>
+                    </div>
+                </div>
+            </div>
+        </inlinebox>
+    </template>
+</transform>

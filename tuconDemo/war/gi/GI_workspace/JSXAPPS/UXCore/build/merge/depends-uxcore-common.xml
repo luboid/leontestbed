@@ -1,0 +1,72 @@
+<!--
+  ~ Copyright (c) 2001-2009, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+
+<gi-merger>
+    <file path="tibco/uxcore/exception/InvalidFunctionException.js"
+          provides="tibco tibco.uxcore tibco.uxcore.exception.InvalidFunctionException"
+          requires=""/>
+    <file path="tibco/uxcore/exception/InvalidNamespaceException.js"
+          provides="tibco.uxcore.exception.InvalidNamespaceException" requires=""/>
+    <file path="tibco/uxcore/exception/InvalidTargetException.js"
+          provides="tibco.uxcore.exception.InvalidTargetException" requires=""/>
+    <file path="tibco/uxcore/exception/InvalidURIException.js"
+          provides="tibco.uxcore.exception.InvalidURIException" requires=""/>
+    <file path="tibco/uxcore/exception/InvalidXMLDocException.js"
+          provides="tibco.uxcore.exception.InvalidXMLDocException" requires=""/>
+    <file path="tibco/uxcore/exception/LoadClassFailedException.js"
+          provides="tibco.uxcore.exception.LoadClassFailedException" requires=""/>
+    <file path="tibco/uxcore/exception/UnsupportedResourceTypeException.js"
+          provides="tibco.uxcore.exception.UnsupportedResourceTypeException" requires=""/>
+    <file path="tibco/uxcore/System.js" provides="tibco.uxcore.System"
+          requires="tibco.uxcore.exception.InvalidFunctionException
+                    tibco.uxcore.exception.InvalidNamespaceException
+                    tibco.uxcore.exception.InvalidTargetException
+                    tibco.uxcore.exception.InvalidURIException
+                    tibco.uxcore.exception.InvalidXMLDocException
+                    tibco.uxcore.exception.LoadClassFailedException
+                    tibco.uxcore.exception.UnsupportedResourceTypeException"/>
+    <file path="tibco/uxcore/util/DebugUtils.js" provides="tibco.uxcore.util.DebugUtils"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/util/Formatter.js" provides="tibco.uxcore.util.Formatter"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/util/Log.js" provides="tibco.uxcore.util.Log"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/util/MatrixHelper.js" provides="tibco.uxcore.util.MatrixHelper"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/util/PendingOperationsHandler.js" provides="tibco.uxcore.util.PendingOperationsHandler"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/util/Performance.js" provides="tibco.uxcore.util.Performance"
+          requires="tibco.uxcore.System tibco.uxcore.util.Log"/>
+    <file path="tibco/uxcore/util/ServiceHelper.js" provides="tibco.uxcore.util.ServiceHelper"
+          requires="tibco.uxcore.System tibco.uxcore.util.Log"/>
+    <file path="tibco/uxcore/util/Validation.js" provides="tibco.uxcore.util.Validation"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/net/Service.js" provides="tibco.uxcore.net tibco.uxcore.net.Service"
+          requires="tibco.uxcore.System tibco.uxcore.util.Performance tibco.uxcore.util.ServiceHelper tibco.uxcore.util.PendingOperationsHandler"/>
+    <file path="tibco/uxcore/Help.js" provides="tibco.uxcore.Help"
+          requires="tibco.uxcore.util.Log tibco.uxcore.System"/>
+    <file path="tibco/uxcore/PubSub.js" provides="tibco.uxcore.PubSub"
+          requires="tibco.uxcore.Performance tibco.uxcore.System"/>
+    <file path="tibco/uxcore/gui/IActionVeto.js" provides="tibco.uxcore.gui.IActionVeto"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/gui/IActionTrigger.js" provides="tibco.uxcore.gui.IActionTrigger"
+          requires="tibco.uxcore.System tibco.uxcore.gui.IActionVeto"/>
+    <file path="tibco/uxcore/gui/IFocusManager.js" provides="tibco.uxcore.gui.IFocusManager"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/gui/IFocusTarget.js" provides="tibco.uxcore.gui.IFocusTarget"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/gui/Button.js" provides="tibco.uxcore.gui.Button"
+          requires="tibco.uxcore.System tibco.uxcore.gui.IActionTrigger"/>
+    <file path="tibco/uxcore/gui/HelpButton.js" provides="tibco.uxcore.gui.HelpButton"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/gui/Select.js" provides="tibco.uxcore.gui.Select"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/gui/TextBox.js" provides="tibco.uxcore.gui.TextBox"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/gui/Stack.js" provides="tibco.uxcore.gui.Stack"
+          requires="tibco.uxcore.System"/>
+    <file path="tibco/uxcore/gui/StackGroup.js" provides="tibco.uxcore.gui.StackGroup"
+          requires="tibco.uxcore.System"/>
+</gi-merger>

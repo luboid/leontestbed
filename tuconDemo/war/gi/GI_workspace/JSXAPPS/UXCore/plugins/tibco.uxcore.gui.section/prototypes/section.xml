@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Section</name>
+  <icon/>
+  <description/>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Section">
+    <variants/>
+    <strings jsxname="section" jsxwidth="100%" jsxheight="100%"/>
+  </object>
+</serialization>

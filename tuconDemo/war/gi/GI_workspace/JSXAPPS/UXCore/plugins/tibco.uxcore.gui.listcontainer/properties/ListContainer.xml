@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+-->
+<data jsxid="jsxroot">
+
+    <record group="object" include="master.xml"/>
+
+    <record group="1" jsxid="uxcoreFilter" jsxtext="List Container">
+        <record jsxid="jsxview" jsxtext="View" jsxtip="Sets current view of List Container"
+            docsetter="setView" docgetter="getView"
+            eval="0" jsxexecute="objJSX.setView(vntValue);" jsxmask="jsxtext"/>
+        <record jsxid="jsxvisibility" jsxtext="Visibility" jsxtip="Sets visibility of view in List Container"
+            docsetter="setVisibility" docgetter="getVisibility"
+            eval="1" jsxexecute="objJSX.setVisibility(vntValue);" jsxmask="jsxselect" docdefault="&lt;code&gt;true (jsx3.Boolean.TRUE)&lt;/code&gt;">
+                <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+                <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+        <record jsxid="jsxcolumns" jsxtext="Visible Columns" jsxtip="set visible Column of TableListView in ListContainer"
+            docsetter="changeColumns" docgetter="getVisibleColumns"
+            eval="0" jsxexecute="objJSX.changeColumns(vntValue);" jsxmask="jsxtext"/>
+        <record jsxid="jsxcolumnpickertype" jsxtext="Column Setting Type" jsxtip="set column setting type for ColumnPicker"
+            docsetter="setColumnPickerType" docgetter="getColumnPickerType"
+            eval="0" jsxexecute="objJSX.setColumnPickerType(vntValue);" jsxmask="jsxselect" docdefault="jsxpath">
+                <enum jsxid="'jsxpath'" jsxtext="Path"/>
+                <enum jsxid="'jsxname'" jsxtext="Name"/>
+        </record>
+        <record jsxid="jsxhideactionbg" jsxtext="ActionBar BG" jsxtip="hide/show background of action bar"
+            docsetter="setHideActionBarBG" docdefault="&lt;code&gt;tibco.uxcore.gui.ListContainer.ACTIONBAR_BG_SHOW&lt;/code&gt;"
+            eval="1" jsxexecute="objJSX.setHideActionBarBG(vntValue, true);" jsxmask="jsxselect">
+                <enum jsxid="tibco.uxcore.gui.ListContainer.ACTIONBAR_BG_HIDDEN" jsxtext="Hide"/>
+                <enum jsxid="tibco.uxcore.gui.ListContainer.ACTIONBAR_BG_SHOWN" jsxtext="Show"/>
+        </record>
+        <record jsxid="validator"  jsxtext="Validator"
+            docgetter="getValidator"
+            docsetter="setValidator"
+            jsxexecute="objJSX.setValidator(vntValue);"
+            eval="0"
+            jsxmask="jsxtext"
+            jsxtip="Sets the list container's custom validation scriptlet that evaluates to the status of the validation.  'true', true, and jsx3.Boolean.TRUE will all indicate the field validation succeeded. 'false', false, and jsx3.Boolean.FALSE will all indicate the field failed validation.  All other values will indicate a failed validation, and will be used as the error text.  For example:&lt;br/&gt;&lt;br/&gt;var ret = objJSX.getSelectedRecordIds().length == 1; if(!ret) {ret = &quot;One and ONLY one record must be selected&quot;;} ret;&lt;br/&gt;&lt;br/&gt;will evaluate to true if only one record is selected, otherwise it will evaluate to the error text string &quot;One and ONLY one record must be selected&quot;&lt;br/&gt;&lt;br/&gt;The following context variables are available from the scriptlet:&lt;br/&gt;&lt;br/&gt;&lt;b&gt;objJSX&lt;/b&gt;: a reference to the listcontainer object&lt;br/&gt;&lt;b&gt;formfield&lt;/b&gt;: the formfield this listcontainer is a child of, if any&lt;br/&gt;&lt;br/&gt;&lt;b&gt;bRequired&lt;/b&gt;: boolean indicating if the formfield has marked this as a required field or not&lt;br/&gt;&lt;br/&gt;">
+        </record>
+
+
+    </record>
+
+    <record group="css" include="master.xml"/>
+
+</data>

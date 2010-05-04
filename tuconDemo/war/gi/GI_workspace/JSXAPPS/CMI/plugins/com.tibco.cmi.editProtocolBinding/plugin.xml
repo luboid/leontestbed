@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<plugin xmlns="http://www.tibco.com/gi/amp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd" id="com.tibco.cmi.editProtocolBinding" name="Business Connect - editProtocolBinding" version="0.1">
+
+  <requires>
+      <plugin id="tibco.uxcore.gui.masterdetail"/>
+      <plugin id="tibco.uxcore.gui.matrix"/>
+		<plugin id="tibco.uxcore.gui.form"/>
+    <plugin id="tibco.uxcore.gui.section"/> 
+  </requires>
+  
+  <resources>
+		<script id="EditProtocolBinding_js" path="EditProtocolBinding.js" eval="true"/>
+    <xml id="EditProtocolBinding_xml" path="ui/EditProtocolBinding.xml">
+			<prereq id="EditProtocolBinding_js"/>
+		</xml>
+  </resources>
+	
+	<extension point="com.tibco.cmi.editAgreement.editProtocol">
+      <editProtocol uiId="EditProtocolBinding_xml"/>
+  </extension>
+	
+	<extension-point id="newOperation">
+  </extension-point>
+</plugin>

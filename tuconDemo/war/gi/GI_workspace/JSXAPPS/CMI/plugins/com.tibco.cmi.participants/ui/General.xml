@@ -1,0 +1,48 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Block - 100%</name>
+  <icon>images/prototypes/block.gif</icon>
+  <description>Simple block, relatively positioned with overflow=scroll.</description>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxpadding="" jsxheight="100%"/>
+    <object type="jsx3.gui.Block">
+      <variants jsxoverflow="2" jsxheight="30"/>
+      <strings jsxname="pane1" jsxwidth="100%"/>
+      <object type="jsx3.gui.Block">
+        <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="300" jsxfontsize="11"/>
+        <strings jsxname="label" jsxtext="Participant Name" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+      </object>
+      <object type="tibco.uxcore.gui.TextBox">
+        <variants jsxwidth="240"/>
+        <strings jsxname="textbox" jsxvalue=""/>
+        <dynamics/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants jsxoverflow="2" jsxheight="30"/>
+      <strings jsxname="pane1" jsxwidth="100%"/>
+      <object type="jsx3.gui.Block">
+        <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="300" jsxfontsize="11"/>
+        <strings jsxname="label" jsxtext="Active" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+      </object>
+      <object type="jsx3.gui.CheckBox">
+        <variants jsxheight="18" jsxdefaultchecked="0"/>
+        <strings jsxname="checkbox" jsxmargin="0 4 0 0"/>
+        <events jsxexecute="jsx3.log('The jsxexecute method was fired for checkbox ' + this);"/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants jsxoverflow="2" jsxheight="30"/>
+      <strings jsxname="pane1" jsxwidth="100%"/>
+      <object type="jsx3.gui.Block">
+        <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="300" jsxfontsize="11"/>
+        <strings jsxname="label" jsxtext="Participant Type" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+      </object>
+      <object type="tibco.uxcore.gui.Select">
+        <variants jsxwidth="150" jsxxmlasync="1"/>
+        <strings jsxname="select" jsxxmlurl="jsx:///xml/sample.xml"/>
+        <dynamics/>
+      </object>
+    </object>
+  </object>
+</serialization>

@@ -1,0 +1,13 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Install</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/installed.gif</icon>
+  <description>A tibco.uxcore.gui.ActionButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+            <object type="tibco.uxcore.gui.ActionButton">
+              <variants jsxenabled="1" jsxprefetch="1"/>
+              <strings jsxname="actionButtonInstall" jsxoverimage="1" jsxdownimage="1" jsxactionid="Install"/>
+              <dynamics jsxtext="@uxcore10@Btn Text Install" jsxicon="@uxcore10@Btn Image Install"/>
+              <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+            </object>
+</serialization>

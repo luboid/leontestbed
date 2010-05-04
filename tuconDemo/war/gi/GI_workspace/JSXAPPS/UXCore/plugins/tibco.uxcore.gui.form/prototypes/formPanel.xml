@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>2a. Panel (Empty)</name>
+  <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/pane.gif</icon>
+  <description>A UX Core Form Panel object. Can only be added to a Form.</description>
+  <onBeforeDeserialize>undefined</onBeforeDeserialize>
+  <onAfterDeserialize>undefined</onAfterDeserialize>
+  <object type="tibco.uxcore.gui.FormPanel">
+    <variants jsxoverflow="1" cleaned="true" jsxopen="1"/>
+    <strings jsxname="formPanel" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+  </object>
+</serialization>

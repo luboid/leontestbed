@@ -1,0 +1,15 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Select Form Field</name>
+    <icon>jsxplugin://tibco.uxcore.common/images/prototype/select.gif</icon>
+  <description>A UXCore select form field object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.SelectFormField">
+    <variants jsxindex="0"/>
+    <strings fieldtitletext="[Field Title]" jsxname="selectFormField"/>
+      <object type="tibco.uxcore.gui.Select">
+        <variants jsxxmlasync="1"/>
+        <strings jsxname="select" jsxwidth="100%"/>
+      </object>
+  </object>
+</serialization>

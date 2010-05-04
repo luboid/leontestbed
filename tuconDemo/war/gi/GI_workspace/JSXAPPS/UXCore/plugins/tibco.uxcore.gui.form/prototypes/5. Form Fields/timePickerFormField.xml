@@ -1,0 +1,15 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Time Picker Form Field</name>
+    <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/timepicker.gif</icon>
+  <description>A UXCore time picker form field object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.TimePickerFormField">
+    <variants jsxindex="0"/>
+    <strings fieldtitletext="[Field Title]" jsxname="timePickerFormField"/>
+    <object type="jsx3.gui.TimePicker">
+      <variants jsxrelativeposition="1" jsxheight="18" jsxshowsecs="1" jsxshowmillis="1" jsxenabled="1"/>
+      <strings jsxname="timePicker" jsxwidth="100%" jsxborder="1px solid #9F9F9F;1px solid #C7C7C7;1px solid #C7C7C7;1px solid #9F9F9F"/>
+    </object>
+  </object>
+</serialization>

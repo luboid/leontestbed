@@ -1,0 +1,17 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Button Form Field</name>
+  <icon>jsxplugin://tibco.uxcore.common/images/prototype/button.gif</icon>
+  <description>A UXCore form field object with a button.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.ButtonFormField">
+    <variants jsxindex="0"/>
+    <strings jsxname="buttonFormField"/>
+    <events jsxbuttonclicked="alert(&quot;Button Clicked&quot;)"/>
+    <object type="tibco.uxcore.gui.Button">
+      <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
+      <strings jsxname="button" jsxtext="[Button Text]" jsxmargin="2 0 2 0" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxpadding="2 4 2 4" affordance="3 5 3 5"/>
+      <events jsxexecute="this.getParent().onbuttonclick();"/>
+    </object>
+  </object>
+</serialization>

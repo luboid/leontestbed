@@ -1,0 +1,65 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <template recalc="true">
+        <inlinebox class="form" label="{$label}" title="{$tip}"
+                   style="width: {donotsetme|100%}; height: {donotsetme2|100%}; display:{$display}; overflow: hidden;" tabindex="{donotsetme3|-1}">
+            <if test="MODE == 'paintchild'">
+            <var name="jsxdrawspace">{}</var>
+            </if>
+            <!--<var name="temp">jsx3.log('form begin: ' + (new jsx3.lang.Exception('')).printStackTrace())</var>-->
+            <!--<var name="childwidthtest" triggers="jsxwidth">jsx3.log('%%%%%%%%%%%' + this.getChildWidth($$parentwidth ? $$parentwidth : null))</var>-->
+            <var name="alertImage">this.getArgs().errortext ? jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/alert.gif') : ((this.getArgs().successtext != tibco.uxcore.gui.Form.savingText) ? jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/check.gif') : jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/blank_status.gif'))</var>
+            <var name="infoImage">jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/info.gif');</var>
+            <var name="closeImage">jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/closePanel.jpg');</var>
+            <var name="errortext">this.getArgs().errortext ? this.getArgs().errortext : this.getArgs().successtext</var>
+            <var name="errortextcolor">this.getArgs().errortext ? '#B30000' : ((this.getArgs().successtext != tibco.uxcore.gui.Form.savingText) ? '#00B300' : '#000000')</var>
+            <var name="errorbgcolor">this.getArgs().errortext ? '#FEFAC0' : '#EEEEEE'</var>
+            <var name="errorborder">this.getArgs().errortext ? '1px solid #D3D093' : '1px solid #444444'</var>
+            <var name="showTitle">this.titletext ? 'block' : 'none'</var>
+            <var name="showError">(this.getArgs().errortext || this.getArgs().successtext) ? 'block' : 'none'</var>
+            <var name="showInstructions">this.instructionstext ? 'block' : 'none'</var>
+            <var name="showInstructionsArea">((showTitle == 'block') || this.instructionstext) ? 'block' : 'none'</var>
+            <var name="headerHeight">(this.titletext ? 22 : 0) + ((this.getArgs().errortext || this.getArgs().successtext) ? 43 : 0) + ((showInstructionsArea == 'block') ? 31 : 0)</var>
+            <var name="showErrorPad">(this.getArgs().errortext || this.getArgs().successtext)? 'block' : 'none' </var>
+            <!--<var name="showInstructionsPad">(this.getArgs().errortext || this.instructionstext) ? 'block' : 'none'</var>-->
+            <var name="showInstructionsPad">(showInstructionsArea == 'block') ? 'block' : 'none'</var>
+            <var name="showButtons">(this.isEditMode() &amp;&amp; (this.getButtons().length > 0)) ? 'block' : 'none'</var>
+            <var name="panelsPaneHeight">this.getSectionHeight($$parentheight - headerHeight,(this.isEditMode() &amp;&amp; (this.getButtons().length > 0)) ? 53 : 0)</var>
+            <!--<var name="temp">jsx3.log('form begin: ' + this.getDrawspace().width)</var>-->
+            <!--<var name="temp">jsx3.log('form begin 2: ' + this.getDrawspace().jsxwidth)</var>-->
+            <!--<var name="temp">jsx3.log('form begin 3: ' + $$parentwidth)</var>-->
+            <!--<var name="temp">jsx3.log('form begin 4: ' + $$parentheight)</var>-->
+            <var name="childwidth" triggers="jsxwidth">this.getChildWidth($$parentwidth ? $$parentwidth : null)</var>
+            <!--<var name="temp1">jsx3.log('FORM CHILDWIDTH: ' + childwidth)</var>-->
+            <div u:id="titlePane" style="position: relative; top: 0; height: 22px; border: 0px none; margin: 0px 0px 0px 0px; padding: 0px; width: 100%; font-size: 12px; color: #000000; font-family: Arial; font-weight: bold; display: {showTitle};" tabindex="-1"><span tabindex="-1"><text>{titletext}</text></span></div>
+            <div u:id="errorPane" style="background-color: {errorbgcolor}; position: relative; top: 0; height: 38px; border: {errorborder}; margin: 0px 0px 0px 0px; padding: 11px; width: 100%; font-size: 11px; color: {errortextcolor}; font-family: Arial; font-weight: bold; display: {showError};" tabindex="-1"><table u:protected="true" width="100%" cellspacing="0" cellpadding="0" tabindex="-1"><tbody u:protected="true">
+                <tr u:protected="true">
+                    <td u:protected="true" width="16" valign="middle" height="16"><img u:protected="true" width="16" height="16" src="{alertImage}" tabindex="-1"/></td>
+                    <td u:protected="true" valign="middle" height="16"><div u:protected="true" style="height: 16px; width: 100%; overflow: hidden; margin: 0px 0px 0px 5px; font-family: Arial; font-size: 11px; font-weight: bold; color: {errortextcolor};" onmouseover="{onMouseOverError}" onmouseout="{onMouseOut}"  tabindex="-1"><span tabindex="-1"><text>{errortext}</text></span></div></td>
+                    <td u:protected="true" valign="middle" width="9" height="9"><img u:protected="true" style="cursor: pointer" width="9" height="9" src="{closeImage}" tabindex="-1" onclick="{closeError}" onmouseover="{onMouseOverClose}"/></td>
+                </tr>
+            </tbody></table></div>
+            <div u:id="errorPad" u:protected="true" style="position: relative; font-size: 0px; margin: 0px; border: 0px solid black; top: 0; padding: 0px; height: 5px; width: 100%; display: {showErrorPad};" tabindex="-1"><text></text></div>
+            <div u:id="instructionPane" style="display: {showInstructionsArea}; position: relative; top: 0; height: 16px; border: 0px solid #D2D2D2; margin: 0px 0px 0px 0px; padding: 0px; width: 100%; font-size: 11px; color: #7A7A7A; font-family: Arial; font-weight: bold;" tabindex="-1"><table u:protected="true" width="100%" cellspacing="0" cellpadding="0" tabindex="-1"><tbody u:protected="true">
+                <tr u:protected="true">
+                    <td u:protected="true" width="16" valign="middle" height="16"><img u:protected="true" style="display: {showInstructions};" width="16" height="16" src="{infoImage}" tabindex="-1"/></td>
+                    <td u:protected="true" valign="middle" height="16"><div u:protected="true" style="height: 16px; width: 100%; overflow: hidden; margin: 0px 0px 0px 5px; font-family: Arial; font-size: 11px; font-weight: bold; color: #7A7A7A;" onmouseover="{onMouseOverInstructions}" onmouseout="{onMouseOut}" tabindex="-1"><span tabindex="-1"><text>{instructionstext}</text></span></div></td>
+                </tr>
+            </tbody></table></div>
+            <div u:protected="true" style="position: relative; font-size: 0px; margin: 0px; border: 0px solid black; top: 0; padding: 0px; height: 15px; width: 100%; display: {showInstructionsPad};" tabindex="-1"><text></text></div>
+            <div u:id="contentpane" style="border: 0px; margin: 0px; padding: 0px; font-size: 0px; position: relative; height: {panelsPaneHeight}; width: 100%; overflow: auto;" tabindex="-1">
+                <!--<div style="width: {$childwidth}; overflow: visible">-->
+                <attach select="new jsx3.util.List(this.getNonButtonChildren()).iterator()">
+                    <drawspace boxtype="'box'" position="'relative'" top="0" left="0" width="this.getPaintProfile().childwidth"/>
+                </attach>
+                <!--</div>-->
+            </div>
+            <div u:id="buttonspane" style="display: {showButtons}; border: 0px; padding: 25px 0px 0px 0px; margin: 0px; font-size: 0px; position: relative; top: 0px; height: 53px; width: 100%;" tabindex="-1"><span tabindex="-1"><text></text></span>
+                <attach select="new jsx3.util.List(this.getButtons()).iterator()">
+                    <div style="position:relative" tabindex="-1">
+                    <drawspace boxtype="'box'" position="'relative'" top="0" left="0"/>
+                    </div>
+                </attach>
+            </div>
+        </inlinebox>
+    </template>
+</transform>

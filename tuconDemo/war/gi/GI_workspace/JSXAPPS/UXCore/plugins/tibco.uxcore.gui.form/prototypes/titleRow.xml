@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>4c. Title Row</name>
+  <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/row.gif</icon>
+  <description>A UX Core Title Row object. Can only be added to a Column.</description>
+  <onBeforeDeserialize>undefined</onBeforeDeserialize>
+  <onAfterDeserialize>undefined</onAfterDeserialize>
+  <object type="tibco.uxcore.gui.TitleRow">
+    <variants jsxoverflow="1" cleaned="true"/>
+    <strings jsxname="formRow" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" titletext="[Title Row]"/>
+  </object>
+</serialization>

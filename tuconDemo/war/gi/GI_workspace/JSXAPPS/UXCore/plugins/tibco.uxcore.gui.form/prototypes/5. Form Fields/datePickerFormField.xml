@@ -1,0 +1,15 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Date Picker Form Field</name>
+    <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/datepicker.gif</icon>
+  <description>A UXCore date picker form field object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.DatePickerFormField">
+    <variants jsxindex="0"/>
+    <strings fieldtitletext="[Field Title]" jsxname="datePickerFormField"/>
+    <object type="jsx3.gui.DatePicker">
+      <variants jsxrelativeposition="1" jsxheight="18" jsxenabled="1" _uxcoreFocus="false"/>
+      <strings jsxwidth="100%" jsxname="datePicker" jsxformat="MMMM dd, yyyy" jsxborder="1px solid #9F9F9F;1px solid #C7C7C7;1px solid #C7C7C7;1px solid #9F9F9F"/>
+    </object>
+  </object>
+</serialization>

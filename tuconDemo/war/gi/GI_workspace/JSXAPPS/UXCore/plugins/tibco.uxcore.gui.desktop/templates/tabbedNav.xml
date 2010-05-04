@@ -1,0 +1,29 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <model>
+        <var id="NavHeight">return 20</var>
+        <var id="NavBGcolor">return "#163F63"</var>
+        <var id="MainAreaBkgrdTile">return "url(" + this.getUriResolver().resolveURI(tibco.uxcore.gui.Desktop.MainAreaBkgrdTile) + ")";</var>
+    </model>
+    <template>
+        <div style="position:relative;width:100%;height:100%">
+            <div style="position:relative;width:100%;height:100%;hidden;display:block;">
+                <div style="position:absolute;width:100%;height:{NavHeight}px;left:0px;top:0px;overflow:hidden;display:block;background-color:{NavBGcolor}; border\-left:1px solid #338BDA; border\-right:1px solid #338BDA ; -moz-box-sizing:border-box; box-sizing:border-box;">
+                    <div style="position:relative;width:100%;height:100%;padding:0 0 0 0;overflow:hidden;display:block;">
+                        <attach select="this.tabbedNavMenuButtonIterator()">
+                            <drawspace  position="'relative'"  />
+                        </attach>
+                    </div>
+                </div>
+                <div style="position:absolute;width:100%;height:100% - 20px;left:0px;top:20px;overflow:auto;display:block;padding:20px 20px 20px 20px;background-image:{MainAreaBkgrdTile}; background-repeat:repeat-x;background-color:#ececec">
+                    <div style="position:relative;width:100%;height:100%;overflow:auto;display:block;">
+                        <attach select="this.tabbedNavPaneIterator()">
+                            <drawspace boxtype="'box'" position="'relative'" top="0" left="0"/>
+                        </attach>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</transform>
+
+

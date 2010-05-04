@@ -1,0 +1,22 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>View Buttons (PM)</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/button.gif</icon>
+  <description>A set includes a block and several Toggle Icon Buttons</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.LCToggleIconButton">
+    <variants jsxenabled="1" bgpersist="1" focusstyle="0" jsxprefetch="1" jsxtype="1" jsxstate="0" jsxwidth="18" jsxheight="18" disabledynmargin="true"/>
+    <strings jsxname="btnViewTree" affordance="0 0 0 0" jsxgroupname="toggleGroup1" jsxborder="0px;0px;0px;solid 1px #000000;"/>
+    <dynamics jsximage="@uxcore10@Btn View Tree" jsxdownimage="@uxcore10@Btn View Tree Down" jsxonimage="@uxcore10@Btn View Tree Down"/>
+  </object>
+  <object type="tibco.uxcore.gui.LCToggleIconButton">
+    <variants jsxenabled="1" bgpersist="1" focusstyle="0" jsxprefetch="1" jsxtype="1" jsxstate="0" jsxwidth="17" jsxheight="18" disabledynmargin="true"/>
+    <strings jsxname="btnViewFlat" affordance="0 0 0 0" jsxgroupname="toggleGroup1"/>
+    <dynamics jsximage="@uxcore10@Btn View Flat" jsxdownimage="@uxcore10@Btn View Flat Down" jsxonimage="@uxcore10@Btn View Flat Down"/>
+  </object>
+  <object type="tibco.uxcore.gui.LCToggleIconButton">
+    <variants jsxenabled="1" bgpersist="1" focusstyle="0" jsxprefetch="1" jsxtype="1" jsxstate="0" jsxwidth="17" jsxheight="18" disabledynmargin="true"/>
+    <strings jsxname="btnViewDetail" affordance="0 0 0 0" jsxgroupname="toggleGroup1" jsxmargin="0 10 0 0"/>
+    <dynamics jsximage="@uxcore10@Btn View Detail" jsxdownimage="@uxcore10@Btn View Detail Down" jsxonimage="@uxcore10@Btn View Detail Down"/>
+  </object>
+</serialization>

@@ -1,0 +1,39 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>TreeListBuilder - Flat</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/prototype/builder.png</icon>
+  <description>A tibco.uxcore.gui.TreeListBuilder in flat (non-tree) mode</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+    <object type="tibco.uxcore.gui.TreeListBuilder">
+      <variants jsxsloaddefaultproperties="1" jsxpagingmodel="0" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="1" jsxdrop="1" _historyData="['&lt;data jsxid=&quot;jsxroot&quot;&gt;                  &lt;record jsxid=&quot;AZ&quot; jsxtext=&quot;Azerbaijan&quot;/&gt;                                    &lt;record jsxid=&quot;AU&quot; jsxtext=&quot;Anguilla&quot;/&gt;         &lt;record jsxid=&quot;AX&quot; jsxtext=&quot;Antarctica&quot;/&gt;                  &lt;record jsxid=&quot;AE&quot; jsxtext=&quot;Argentina&quot;/&gt;                           &lt;record jsxid=&quot;AA&quot; jsxtext=&quot;Australia&quot;/&gt;       &lt;/data&gt;','&lt;data jsxid=&quot;jsxroot&quot;&gt;                  &lt;record jsxid=&quot;AZ&quot; jsxtext=&quot;Azerbaijan&quot;/&gt;                                    &lt;record jsxid=&quot;AU&quot; jsxtext=&quot;Anguilla&quot;/&gt;         &lt;record jsxid=&quot;AX&quot; jsxtext=&quot;Antarctica&quot;/&gt;                  &lt;record jsxid=&quot;AE&quot; jsxtext=&quot;Argentina&quot;/&gt;                           &lt;record jsxid=&quot;AA&quot; jsxtext=&quot;Australia&quot;/&gt;       &lt;/data&gt;','&lt;data jsxid=&quot;jsxroot&quot;&gt;                  &lt;record jsxid=&quot;AZ&quot; jsxtext=&quot;Azerbaijan&quot;/&gt;                                    &lt;record jsxid=&quot;AU&quot; jsxtext=&quot;Anguilla&quot;/&gt;         &lt;record jsxid=&quot;AX&quot; jsxtext=&quot;Antarctica&quot;/&gt;                  &lt;record jsxid=&quot;AE&quot; jsxtext=&quot;Argentina&quot;/&gt;                           &lt;record jsxid=&quot;AA&quot; jsxtext=&quot;Australia&quot;/&gt;       &lt;/data&gt;','&lt;data jsxid=&quot;jsxroot&quot;&gt;                  &lt;record jsxid=&quot;AZ&quot; jsxtext=&quot;Azerbaijan&quot;/&gt;                                    &lt;record jsxid=&quot;AU&quot; jsxtext=&quot;Anguilla&quot;/&gt;         &lt;record jsxid=&quot;AX&quot; jsxtext=&quot;Antarctica&quot;/&gt;                  &lt;record jsxid=&quot;AE&quot; jsxtext=&quot;Argentina&quot;/&gt;                           &lt;record jsxid=&quot;AA&quot; jsxtext=&quot;Australia&quot;/&gt;       &lt;/data&gt;','&lt;data jsxid=&quot;jsxroot&quot;&gt;                  &lt;record jsxid=&quot;AZ&quot; jsxtext=&quot;Azerbaijan&quot;/&gt;                                    &lt;record jsxid=&quot;AU&quot; jsxtext=&quot;Anguilla&quot;/&gt;         &lt;record jsxid=&quot;AX&quot; jsxtext=&quot;Antarctica&quot;/&gt;                  &lt;record jsxid=&quot;AE&quot; jsxtext=&quot;Argentina&quot;/&gt;                           &lt;record jsxid=&quot;AA&quot; jsxtext=&quot;Australia&quot;/&gt;       &lt;record jsxid=&quot;5&quot; jsxtext=&quot;BB&quot;/&gt;&lt;/data&gt;']" jsxautorow="0" _isDirty="true" _editMode="1" jsxsort="0" jsxselectionmodel="2" ignoreDataChange="true" toggled="true"/>
+      <strings jsxname="matrix1" jsxrenderingmodel="shallow" jsxsorttype="text" jsxsortdirection="descending"/>
+      <dynamics/>
+      <events jsxbeforeadd="" jsxexecute="" jsxbeforedelete="" jsxbeforeedit="this.isInToggle ? false : true"/>
+      <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
+      <object type="jsx3.gui.Matrix.Column">
+        <variants jsxwidth="244"/>
+        <strings jsxname="mc2" jsxtext="Name" jsxpath="jsxtext"/>
+        <dynamics/>
+        <object type="jsx3.gui.TextBox">
+          <variants jsxheight="18" jsxrelativeposition="0" jsxleft="0" jsxtop="180" jsxwidth="244" jsxzindex="10"/>
+          <strings jsxname="textbox" jsxmargin="0 4 0 0" jsxdisplay="none" jsxvalue="Armenia"/>
+          <events jsxkeydown="1;"/>
+        </object>
+      </object>
+      <object type="jsx3.gui.Matrix.Column">
+        <variants/>
+        <strings jsxname="textColumn" jsxwidth="*" jsxtext="Text" jsxpath="jsxtext"/>
+        <dynamics/>
+      </object>
+      <object type="jsx3.gui.Matrix.Column">
+        <variants jsxwidth="36"/>
+        <strings jsxname="imageButtonColumn" jsxvaluetemplate="@empty" jsxformathandler="function(element, cdfkey, matrix, column, rownumber, server) {      matrix.paintButton(element, cdfkey, matrix, column, rownumber, server);                                 }" jsxdisplay=""/>
+        <dynamics/>
+        <object type="jsx3.gui.ImageButton">
+          <variants jsxwidth="16" jsxheight="16" jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+          <strings jsxname="imageButtonMask" jsximage="jsx:///images/list/delete.gif" jsxmargin="0 0 0 3"/>
+          <events jsxexecute="this.getParent().getParent().onClickBuilderButton('delete',this.emGetSession().recordId);"/>
+        </object>
+      </object>
+    </object>
+</serialization>

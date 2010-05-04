@@ -1,0 +1,10 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Hide/Show Button</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/prototype/hideshowbtn.gif</icon>
+  <description>A tibco.uxcore.gui.HideShowButton object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.HideShowButton">
+    <strings jsxname="btnHideShow"/>
+  </object>
+</serialization>

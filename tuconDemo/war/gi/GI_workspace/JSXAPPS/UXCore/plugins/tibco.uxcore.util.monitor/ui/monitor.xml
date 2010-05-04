@@ -1,0 +1,103 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Block - 100%</name>
+  <icon>images/prototypes/block.gif</icon>
+  <description>Simple block, relatively positioned with overflow=scroll.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.util.Monitor">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="pluginMonitor" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+    <dynamics jsxborder="@No jsxborder"/>
+    <object type="jsx3.gui.Splitter">
+      <variants jsxleft="0" jsxtop="0"/>
+      <strings jsxname="splitterV" jsxsubcontainer1pct="200,*"/>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="1"/>
+        <strings jsxname="paneTree" jsxwidth="100%" jsxheight="100%" jsxborder="0px;1px solid #9898a5;1px solid #9898a5;0px"/>
+        <dynamics jsxbgcolor="@Solid Light"/>
+        <object type="jsx3.gui.Tree">
+          <variants jsxxmlasync="1" jsxuseroot="0"/>
+          <strings jsxname="tree" jsxwidth="100%" jsxheight="100%" jsxvalue="1" jsxsortpath="@jsxtext" jsxsortdirection="ascending" jsxicon="" jsxpadding="5"/>
+          <dynamics jsxbgcolor="@Transparent BG"/>
+          <events jsxtoggle="this.toggleHandler(this, strRECORDID, objRECORD, bOPEN);" jsxselect="this.selectHandler(this,strRECORDID);"/>
+          <xslparameters jsxrootid="@folders" jsxsortpath="jsxtext" jsxindent="6"/>
+        </object>
+      </object>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="1"/>
+        <strings jsxname="paneDetail" jsxwidth="100%" jsxheight="100%" jsxborder="0px;1px solid #9898a5;1px solid #9898a5;1px solid #9898a5;"/>
+        <dynamics jsxbgcolor="@Solid Light"/>
+        <object type="jsx3.gui.LayoutGrid">
+          <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+          <strings jsxname="layoutRows" jsxrows="27,*" jsxwidth="100%" jsxheight="100%"/>
+          <object type="jsx3.gui.LayoutGrid">
+            <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+            <strings jsxrows="26,*" jsxwidth="100%" jsxheight="100%"/>
+            <dynamics jsxborder="@Outset Bottom" jsxbgcolor="@Solid Medium"/>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="3" jsxrelativeposition="0"/>
+              <strings/>
+              <dynamics jsxbgcolor="@Solid Medium"/>
+              <object type="jsx3.gui.LayoutGrid">
+                <variants jsxoverflow="2"/>
+                <strings jsxname="search_layout_layout" jsxcols="40,*,106,24"/>
+                <object type="jsx3.gui.Block">
+                  <variants jsxoverflow="2"/>
+                  <strings jsxpadding="6 0 0 6"/>
+                  <object type="jsx3.gui.ImageButton">
+                    <variants jsxheight="15" jsxwidth="14" jsxenabled="0" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+                    <strings jsxname="btnGoBack" jsxmargin="0 6 0 0" jsximage="images/back.gif" jsxdisabledimage="images/back_disabled.gif" jsxkeycode="ctrl+left" jsxtext="Go to previous screen"/>
+                    <events jsxexecute="this.execute();"/>
+                  </object>
+                  <object type="jsx3.gui.ImageButton">
+                    <variants jsxheight="15" jsxwidth="14" jsxenabled="0" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+                    <strings jsxname="btnGoForward" jsximage="images/forward.gif" jsxdisabledimage="images/forward_disabled.gif" jsxkeycode="ctrl+right" jsxtext="Go to next screen"/>
+                    <events jsxexecute="this.execute();"/>
+                  </object>
+                </object>
+                <object type="jsx3.gui.Block">
+                  <variants jsxrelativeposition="1" jsxoverflow="3"/>
+                  <strings jsxname="formLabel" jsxtext="Search:" jsxfor="#input" jsxtextalign="right" jsxpadding="6 0 0 0"/>
+                </object>
+                <object type="jsx3.gui.Block">
+                  <variants jsxoverflow="2"/>
+                  <strings jsxpadding="5"/>
+                  <object type="jsx3.gui.TextBox">
+                    <variants jsxheight="18" jsxwidth="90"/>
+                    <strings jsxname="txtQueryValue" jsxmargin="0 0 0 5" jsxvalue=""/>
+                    <events jsxexecute="this.executeHandler();"/>
+                  </object>
+                </object>
+                <object type="jsx3.gui.Block">
+                  <variants jsxoverflow="2"/>
+                  <strings jsxpadding="6 0 0 2"/>
+                  <object type="jsx3.gui.ImageButton">
+                    <variants jsxheight="16" jsxwidth="16" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+                    <strings jsxname="btnClearSearch" jsximage="jsxplugin://tibco.uxcore.util.monitor/images/delete.gif"/>
+                    <dynamics jsxtip="jsx3.ide.apidoc.clear"/>
+                    <events jsxexecute="pluginMonitor.doClearSearch();"/>
+                  </object>
+                </object>
+              </object>
+            </object>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="1" jsxrelativeposition="0" jsxtop="0" jsxleft="0"/>
+              <strings jsxwidth="100%" jsxheight="100%" jsxborder="dashed 1px #9898a5;0px;dashed 1px #9898a5;0px"/>
+              <dynamics jsxbgcolor="@Solid Light"/>
+              <object type="jsx3.gui.BlockX">
+                <variants jsxrelativeposition="0" jsxtop="0" jsxleft="0" jsxshare="1"/>
+                <strings jsxname="blkSearchResults" jsxwidth="100%" jsxheight="100%" jsxpadding="4 6 4 6"/>
+                <dynamics jsxbgcolor="@Solid Light"/>
+              </object>
+            </object>
+          </object>
+          <object type="jsx3.gui.BlockX">
+            <variants jsxoverflow="1" jsxrelativeposition="1" jsxxmlasync="1" jsxxslasync="1" jsxshare="1"/>
+            <strings jsxwidth="100%" jsxheight="100%" jsxname="content" jsxdisplay="none" jsxxslid="tibco.uxcore.util.mointor.xslPlugin" jsxxml="&lt;plugin&gt;&lt;/plugin&gt;"/>
+            <dynamics jsxbgcolor="@Solid Light"/>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

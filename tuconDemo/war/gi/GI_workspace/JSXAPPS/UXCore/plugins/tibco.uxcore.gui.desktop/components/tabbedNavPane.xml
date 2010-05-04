@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Tabbed Navigation Pane - 100%</name>
+  <icon></icon>
+  <description>Tabbed Pane block, relatively positioned with overflow=scroll.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.TabbedNavPane">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="tabbedNavPane" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+  </object>
+</serialization>

@@ -1,0 +1,14 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.sample-app"
+        name="UXCore Sample Application"
+        version="0.1">
+
+  <extension point="jsx3.ide.project.app.project-template">
+    <template id="empty" label="UXCore Project"
+              description="An empty UXCore project. This project assumes that UXCore is installed in the JSXAPPS folder as a peer of the new project."
+              path="emptyApp"/>
+  </extension>
+
+</plugin>

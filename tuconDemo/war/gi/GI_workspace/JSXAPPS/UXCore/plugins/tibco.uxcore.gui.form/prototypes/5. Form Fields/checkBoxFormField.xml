@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>CheckBox Form Field</name>
+    <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/checkbox.gif</icon>
+  <description>A UXCore text box form field object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.CheckBoxFormField">
+    <variants jsxindex="0"/>
+    <strings jsxname="checkBoxFormField" fieldtitletext="[Field Title]"/>
+  </object>
+</serialization>

@@ -1,0 +1,63 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <template recalc="true">
+        <div u:id="tableContainer" class="tableContainer" index="{$index}" jsxindex="{$jsxindex}" label="{$label}" title="{$tip}"
+                   style="position:{$position}; width:{$width}; height:{$height}; display:{$display}; top: {$top}; left: {$left}; overflow: hidden;">
+            <!--<width>this.getDrawspace().width</width>-->
+            <!--<margin>this.getDrawspace().margin</margin>-->
+            <if test="MODE == 'paintchild'">
+            <var name="jsxdrawspace">{}</var>
+            </if>
+            <div style="width:100%;height:100%">
+
+                <var name="filterHeight">this.getPaneSpace("f", "height");</var>
+                <var name="actionBarHeight">this.getPaneSpace("a", "height");</var>
+                <var name="paginatorHeight">this.getPaneSpace("p", "height");</var>
+                <var name="viewHeight">this.getViewHeight($$parentheight ? $$parentheight : 0);</var>
+
+                <div u:id="filterPane" style="position:relative; top:0; width:{$width}; height:{filterHeight|26}; display:{filter_display|block}; ">
+                    <attach select="this.getIterator(this.getFilterSearch());">
+                        <drawspace boxtype="'box'" position="'relative'" top="0" left="0" height="'100%'"/>
+                    </attach>
+                </div>
+
+                <div u:id="actionBarPane" style="position:relative; top:0; width:{$width}; height:{actionBarHeight|28}; display:{actionbar_display|block};background:{actionbar_bg};border:{actionbar_border};">
+                    <div u:id="leftPane" u:protected="true" style="position:absolute;top:0;left:0;height:100%;padding:3px 0px 0px 3px;">
+                        <attach select="this.getIterator(this.getLeftPaneAccessories());">
+                            <drawspace boxtype="'relativebox'" position="'relative'" top="undefined" left="undefined"/>
+                        </attach>
+                    </div>
+                    <div u:id="rightPane" u:protected="true" style="float:right; height:100%;padding:0px;">
+                        <attach select="this.getIterator(this.getRightPaneAccessories());"/>
+                    </div>
+                </div>
+
+                <div u:id="viewPane" style="position:relative; top:0; width:{$width}; height:{viewHeight|100%}; display:{view_display|block};border:{listview_border};background-color:{listview_color}">
+                    <attach select="this.getIterator(this.getAllViews());">
+                        <drawspace boxtype="'box'" position="'absolute'" top="0" left="0" width="'100%'" height="'100%'"
+                        		   display="($$target.getName() != this.jsxview) ? 'none' : ''"/>
+                    </attach>
+                    <attach select="this.getIterator(this.getMaskBlock());">
+                        <drawspace boxtype="'box'" position="'absolute'" top="0" left="0" width="'100%'" height="'100%'"/>
+                    </attach>
+                </div>
+
+                <div u:id="paginatorPane" style="position:relative; top:0; width:{$width}; height:{paginatorHeight|23}; display:{paginator_display|block}; text-align:center;padding:{paginator_padding}">
+                    <attach select="this.getIterator(this.getListPaginator());">
+                        <drawspace boxtype="'box'" position="'relative'" top="0" left="0" height="18"/>
+                    </attach>
+                </div>
+            </div>
+        </div>
+    </template>
+    <model>
+        <var id="filter_display" triggers="viewChange"> return this.getFilterPaneDisplay() ? "block" : "none"; </var>
+        <var id="actionbar_display" triggers="viewChange"> return this.getActionBarPaneDisplay() ? "block" : "none";  </var>
+        <var id="view_display" triggers="viewChange"> return this.getViewPaneDisplay() ? "block" : "none";  </var>
+        <var id="paginator_display" triggers="viewChange"> return this.getPaginatorPaneDisplay() ? "block" : "none";  </var>
+        <var id="paginator_padding" triggers="viewChange"> return jsx3.CLASS_LOADER.IE? "3 0 0 0": "5 0 0 0";</var>
+        <var id="actionbar_bg" triggers="viewChange">return this.jsxhideactionbg ? "" : "url(" + this.getDynamicURL("@uxcore10@actionbar@background") + ") repeat-x 0 0";</var>
+        <var id="actionbar_border" triggers="viewChange">return this.jsxhideactionbg ? "1px solid transparent" : this.getDynamicValue("@uxcore10@actionbar@border");</var>
+        <var id="listview_border" triggers="viewChange">return this._needBorder() ? (this.getActionBarPaneDisplay() &amp;&amp; !this.jsxhideactionbg ? this.getDynamicValue("@uxcore10@listview@border0") : this.getDynamicValue("@uxcore10@listview@border1")) : "0px solid red";</var>
+        <var id="listview_color" triggers="viewChange">return this._needBorder() ? "#FFFFFF" : "transparent";</var>
+    </model>
+</transform>

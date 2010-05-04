@@ -1,0 +1,68 @@
+<!--
+  ~ Copyright (c) 2001-2009, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+
+<gi-merger>
+    <file path="util/QueryDocument.js" provides="tibco.uxcore.util.QueryDocument" requires=""/>
+    <file path="IListSearch.js" provides="tibco.uxcore.gui.IListSearch" requires=""/>
+    <file path="IListAccessory.js" provides="tibco.uxcore.gui.IListAccessory" requires=""/>
+    <file path="IListView.js" provides="tibco.uxcore.gui.IListView" requires=""/>
+    <file path="AbstractBlock.js" provides="tibco.uxcore.gui.AbstractBlock" requires=""/>
+    <file path="ListPaginator.js" provides="tibco.uxcore.gui.ListPaginator"
+          requires="tibco.uxcore.gui.AbstractBlock tibco.uxcore.gui.IListAccessory"/>
+    <file path="SimpleSearch.js" provides="tibco.uxcore.gui.SimpleSearch"
+          requires="tibco.uxcore.gui.IListSearch tibco.uxcore.gui.IListAccessory"/>
+    <file path="AdvancedSearch.js" provides="tibco.uxcore.gui.AdvancedSearch"
+          requires="tibco.uxcore.gui.AbstractBlock tibco.uxcore.gui.IListAccessory
+                    tibco.uxcore.gui.IListSearch"/>
+    <file path="FilterSearch.js" provides="tibco.uxcore.gui.FilterSearch"
+          requires="tibco.uxcore.gui.IListSearch tibco.uxcore.gui.IListAccessory"/>
+    <file path="ActionButtonList.js" provides="tibco.uxcore.gui.ActionButtonList"
+          requires="tibco.uxcore.gui.IListAccessory"/>
+    <file path="ListContainer.js" provides="tibco.uxcore.gui.ListContainer"
+          requires="tibco.uxcore.gui.AbstractBlock"/>
+    <file path="GenericTableView.js" provides="tibco.uxcore.gui.GenericTableView"
+          requires="tibco.uxcore.gui.IListAccessory tibco.uxcore.gui.IListView"/>
+    <file path="TableListView.js" provides="tibco.uxcore.gui.TableListView"
+          requires="tibco.uxcore.gui.GenericTableView"/>
+    <file path="TableSelector.js" provides="tibco.uxcore.gui.TableSelector"
+          requires="tibco.uxcore.gui.GenericTableView"/>
+    <file path="TableListBuilder.js" provides="tibco.uxcore.gui.TableListBuilder"
+          requires="tibco.uxcore.gui.GenericTableView"/>
+    <file path="TreeListBuilder.js" provides="tibco.uxcore.gui.TreeListBuilder"
+          requires="tibco.uxcore.gui.GenericTableView"/>
+    <file path="BrowseView.js" provides="tibco.uxcore.gui.BrowseView"
+          requires="tibco.uxcore.gui.IListAccessory tibco.uxcore.gui.IListView"/>
+    <file path="ListContainerButton.js" provides="tibco.uxcore.gui.ListContainerButton"
+          requires="tibco.uxcore.gui.IListAccessory"/>
+    <file path="ActionButton.js" provides="tibco.uxcore.gui.ActionButton"
+          requires="tibco.uxcore.gui.ListContainerButton"/>
+    <file path="TreeListBuilderButton.js" provides="tibco.uxcore.gui.TreeListBuilderButton"
+          requires="tibco.uxcore.gui.ActionButton"/>
+    <file path="AddRowButton.js" provides="tibco.uxcore.gui.AddRowButton"
+          requires="tibco.uxcore.gui.TreeListBuilderButton"/>
+    <file path="AddChildButton.js" provides="tibco.uxcore.gui.AddChildButton"
+          requires="tibco.uxcore.gui.TreeListBuilderButton"/>
+    <file path="MoveRecordButton.js" provides="tibco.uxcore.gui.MoveRecordButton"
+          requires="tibco.uxcore.gui.TreeListBuilderButton"/>
+    <file path="DeleteRowsButton.js" provides="tibco.uxcore.gui.DeleteRowsButton"
+          requires="tibco.uxcore.gui.TreeListBuilderButton"/>
+    <file path="IconButton.js" provides="tibco.uxcore.gui.IconButton"
+          requires="tibco.uxcore.gui.ListContainerButton"/>
+    <file path="RefreshButton.js" provides="tibco.uxcore.gui.RefreshButton"
+          requires="tibco.uxcore.gui.IconButton"/>
+    <file path="ToggleIconButton.js" provides="tibco.uxcore.gui.ToggleIconButton"
+          requires="tibco.uxcore.gui.IconButton"/>
+    <file path="ViewButton.js" provides="tibco.uxcore.gui.ViewButton"
+          requires="tibco.uxcore.gui.ToggleIconButton"/>
+    <file path="HideShowButton.js" provides="tibco.uxcore.gui.HideShowButton"
+          requires="tibco.uxcore.gui.ToggleIconButton"/>
+    <file path="ColumnPicker.js" provides="tibco.uxcore.gui.ColumnPicker" requires=""/>
+    <file path="ColumnPickerButton.js" provides="tibco.uxcore.gui.ColumnPickerButton"
+          requires="tibco.uxcore.gui.ToggleIconButton tibco.uxcore.gui.ColumnPicker"/>
+    <file path="AccumulatorView.js" provides="tibco.uxcore.gui.AccumulatorView"
+          requires="tibco.uxcore.gui.IListAccessory tibco.uxcore.gui.IListView"/>
+    <file path="ActionMenuButton.js" provides="tibco.uxcore.gui.ActionMenuButton"
+          requires="tibco.uxcore.gui.ActionButton"/>
+</gi-merger>

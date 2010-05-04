@@ -1,0 +1,107 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.common"
+        name="UX Core Common Assets"
+        version="0.1">
+
+  <requires>
+      <plugin id="jsx3.net.Service"/>
+      <plugin id="jsx3.gui.Block"/>
+      <plugin id="jsx3.gui.Select"/>
+      <plugin id="jsx3.gui.TextBox"/>
+      <plugin id="jsx3.gui.Stack"/>
+      <plugin id="jsx3.gui.StackGroup"/>
+      <plugin id="jsx3.gui.ImageButton"/>
+      <plugin id="jsx3.gui.Template"/>
+      <plugin id="jsx3.gui.Form"/>
+  </requires>
+
+  <resources>
+    <css id="uxcommon_css" path="css/coreCSS.css" load="true"/>
+    <propsbundle id="uxcommon_text_jss" path="jss/core.textJSS.xml" load="true"/>
+    <jss id="uxcommon_style_jss" path="jss/core.styleJSS.xml" load="true">
+        <prereq id="uxcommon_System_js"/>
+    </jss>
+      <jss id="uxcommon_computed_jss" path="jss/core.computedJSS.xml" load="true">
+           <prereq id="uxcommon_style_jss"/>
+           <prereq id="uxcommon_System_js"/>
+       </jss>
+     <script id="JSON_js" path="classes/JSON.js" eval="false"/>
+    <script id="uxcommon_InvalidFunctionException_js" path="classes/tibco/uxcore/exception/InvalidFunctionException.js" eval="false"/>
+    <script id="uxcommon_InvalidNamespaceException_js" path="classes/tibco/uxcore/exception/InvalidNamespaceException.js" eval="false"/>
+    <script id="uxcommon_InvalidTargetException_js" path="classes/tibco/uxcore/exception/InvalidTargetException.js" eval="false"/>
+    <script id="uxcommon_InvalidURIException_js" path="classes/tibco/uxcore/exception/InvalidURIException.js" eval="false"/>
+    <script id="uxcommon_InvalidXMLDocException_js" path="classes/tibco/uxcore/exception/InvalidXMLDocException.js" eval="false"/>
+    <script id="uxcommon_LoadClassFailedException_js" path="classes/tibco/uxcore/exception/LoadClassFailedException.js" eval="false"/>
+    <script id="uxcommon_UnsupportedResourceTypeException_js" path="classes/tibco/uxcore/exception/UnsupportedResourceTypeException.js" eval="false"/>
+    <script id="uxcommon_System_js" path="classes/tibco/uxcore/System.js" eval="true">
+        <prereq id="uxcommon_InvalidFunctionException_js"/>
+        <prereq id="uxcommon_InvalidNamespaceException_js"/>
+        <prereq id="uxcommon_InvalidTargetException_js"/>
+        <prereq id="uxcommon_InvalidURIException_js"/>
+        <prereq id="uxcommon_InvalidXMLDocException_js"/>
+        <prereq id="uxcommon_LoadClassFailedException_js"/>
+        <prereq id="uxcommon_UnsupportedResourceTypeException_js"/>
+    </script>
+    <script id="uxcommon_Help_js" path="classes/tibco/uxcore/Help.js" eval="false">
+        <prereq id="uxcommon_System_js"/>
+        <prereq id="uxcommon_Log_js"/>
+    </script>
+    <script id="uxcommon_PubSub_js" path="classes/tibco/uxcore/PubSub.js" eval="false">
+        <prereq id="uxcommon_System_js"/>
+        <prereq id="uxcommon_Performance_js"/>
+    </script>
+    <script id="uxcommon_Service_js" path="classes/tibco/uxcore/net/Service.js" eval="false">
+        <prereq id="uxcommon_Performance_js"/>
+        <prereq id="uxcommon_PendingOperationsHandler_js"/>
+        <prereq id="uxcommon_ServiceHelper_js"/>
+    </script>
+    <script id="uxcommon_DebugUtils_js" path="classes/tibco/uxcore/util/DebugUtils.js" eval="false">
+        <prereq id="uxcommon_System_js"/>
+    </script>
+    <script id="uxcommon_Formatter_js" path="classes/tibco/uxcore/util/Formatter.js" eval="false">
+        <prereq id="uxcommon_System_js"/>
+    </script>
+    <script id="uxcommon_Log_js" path="classes/tibco/uxcore/util/Log.js" eval="false">
+        <prereq id="uxcommon_System_js"/>
+    </script>
+    <script id="uxcommon_MatrixHelper_js" path="classes/tibco/uxcore/util/MatrixHelper.js" eval="false">
+        <prereq id="uxcommon_System_js"/>
+    </script>
+    <script id="uxcommon_PendingOperationsHandler_js" path="classes/tibco/uxcore/util/PendingOperationsHandler.js" eval="false">
+        <prereq id="uxcommon_System_js"/>
+    </script>
+    <script id="uxcommon_Performance_js" path="classes/tibco/uxcore/util/Performance.js" eval="false">
+        <prereq id="uxcommon_System_js"/>
+        <prereq id="uxcommon_Log_js"/>
+    </script>
+    <script id="uxcommon_ServiceHelper_js" path="classes/tibco/uxcore/util/ServiceHelper.js" eval="false">
+        <prereq id="uxcommon_System_js"/>
+        <prereq id="uxcommon_Log_js"/>
+    </script>
+    <script id="uxcommon_Validation_js" path="classes/tibco/uxcore/util/Validation.js" eval="false">
+        <prereq id="uxcommon_System_js"/>
+    </script>
+    <script id="uxcommon_IActionVeto_js" path="classes/tibco/uxcore/gui/IActionVeto.js" eval="false">
+        <prereq id="uxcommon_System_js"/>
+    </script>
+      <script id="uxcommon_IActionTrigger_js" path="classes/tibco/uxcore/gui/IActionTrigger.js" eval="false">
+          <prereq id="uxcommon_System_js"/>
+          <prereq id="uxcommon_IActionVeto_js"/>
+      </script>
+      <script id="uxcommon_IFocusManager_js" path="classes/tibco/uxcore/gui/IFocusManager.js" eval="false"/>
+      <script id="uxcommon_IFocusTarget_js" path="classes/tibco/uxcore/gui/IFocusTarget.js" eval="false"/>
+    <script id="Button_js" path="classes/tibco/uxcore/gui/Button.js" eval="true">
+      <prereq plugin="jsx3.gui.Template"/>
+      <prereq plugin="jsx3.gui.Form"/>
+      <prereq id="uxcommon_IActionTrigger_js"/>
+    </script>
+    <script id="HelpButton_js" path="classes/tibco/uxcore/gui/HelpButton.js"/>
+    <script id="Select_js" path="classes/tibco/uxcore/gui/Select.js"/>
+    <script id="TextBox_js" path="classes/tibco/uxcore/gui/TextBox.js"/>
+    <script id="Stack_js" path="classes/tibco/uxcore/gui/Stack.js"/>
+    <script id="StackGroup_js" path="classes/tibco/uxcore/gui/StackGroup.js"/>
+  </resources>
+
+</plugin>

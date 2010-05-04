@@ -1,0 +1,9 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Rollover Button</name>
+  <icon>jsxplugin://tibco.uxcore.common/images/prototype/button.gif</icon>
+  <object type="tibco.uxcore.gui.Button">
+    <variants jsxheight="18"/>
+    <strings jsxname="btnRollover" jsxpadding="2 0 0 2" jsxdownimage="1" jsxmargin="2" jsxicon="jsxplugin://tibco.uxcore.common/images/button/icons/uninstall.gif" jsxoverimage="1" jsxtext="Button with Rollover" affordance="3 5 3 5"/>
+    <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+  </object>
+</serialization>

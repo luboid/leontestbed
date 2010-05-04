@@ -1,0 +1,82 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.gui.form"
+        name="UX Core Forms"
+        version="0.1">
+
+  <requires>
+      <plugin id="jsx3.gui.DatePicker"/>
+      <plugin id="jsx3.gui.TimePicker"/>
+      <plugin id="jsx3.gui.TextBox"/>
+      <plugin id="tibco.uxcore.common"/>
+      <!--plugin id="jsx3.gui.Form"/ -->
+  </requires>
+
+  <resources>
+      <propsbundle id="formstext_jss" path="jss/formstextJSS.xml" load="true"/>
+    <script id="uxforms_FormContainer_js" path="classes/tibco/uxcore/gui/FormContainer.js" eval="true"/>
+    <script id="uxforms_GenericFormContainer_js" path="classes/tibco/uxcore/gui/GenericFormContainer.js" eval="false">
+        <prereq id="uxforms_FormContainer_js"/>
+    </script>
+      <script id="uxforms_FormGroup_js" path="classes/tibco/uxcore/gui/FormGroup.js" eval="false">
+          <prereq id="uxforms_GenericFormContainer_js"/>
+      </script>
+      <script id="uxforms_Form_js" path="classes/tibco/uxcore/gui/Form.js" eval="false">
+          <prereq id="uxforms_GenericFormContainer_js"/>
+      </script>
+      <script id="uxforms_FormPanel_js" path="classes/tibco/uxcore/gui/FormPanel.js" eval="false">
+          <prereq id="uxforms_GenericFormContainer_js"/>
+      </script>
+      <script id="uxforms_FormColumn_js" path="classes/tibco/uxcore/gui/FormColumn.js" eval="false">
+          <prereq id="uxforms_GenericFormContainer_js"/>
+      </script>
+      <script id="uxforms_FormRow_js" path="classes/tibco/uxcore/gui/FormRow.js" eval="false">
+          <prereq id="uxforms_GenericFormContainer_js"/>
+      </script>
+      <script id="uxforms_TitleRow_js" path="classes/tibco/uxcore/gui/TitleRow.js" eval="false">
+          <prereq id="uxforms_FormRow_js"/>
+      </script>
+      <script id="uxforms_FormField_js" path="classes/tibco/uxcore/gui/FormField.js" eval="false">
+          <prereq id="uxforms_FormContainer_js"/>
+      </script>
+      <script id="uxforms_TextBoxFormField_js" path="classes/tibco/uxcore/gui/TextBoxFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_TextBoxWithLinkFormField_js" path="classes/tibco/uxcore/gui/TextBoxWithLinkFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_TextBoxWithButtonFormField_js" path="classes/tibco/uxcore/gui/TextBoxWithButtonFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_TextAreaFormField_js" path="classes/tibco/uxcore/gui/TextAreaFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_SelectFormField_js" path="classes/tibco/uxcore/gui/SelectFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_RadioButtonFormField_js" path="classes/tibco/uxcore/gui/RadioButtonFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_CheckboxFormField_js" path="classes/tibco/uxcore/gui/CheckBoxFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_DatePickerFormField_js" path="classes/tibco/uxcore/gui/DatePickerFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_TimePickerFormField_js" path="classes/tibco/uxcore/gui/TimePickerFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_DurationFormField_js" path="classes/tibco/uxcore/gui/DurationFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_ListContainerFormField_js" path="classes/tibco/uxcore/gui/ListContainerFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_ButtonFormField_js" path="classes/tibco/uxcore/gui/ButtonFormField.js" eval="false">
+          <prereq id="uxforms_FormField_js"/>
+      </script>
+      <script id="uxforms_FormButton_js" path="classes/tibco/uxcore/gui/FormButton.js" eval="false"/>
+  </resources>
+
+</plugin>

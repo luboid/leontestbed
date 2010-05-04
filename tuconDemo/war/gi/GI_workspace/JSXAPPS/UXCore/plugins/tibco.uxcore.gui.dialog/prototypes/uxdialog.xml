@@ -1,0 +1,27 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.4">
+  <name>Dialog</name>
+  <icon>jsxplugin://tibco.uxcore.gui.dialog/images/prototype/dialog.gif</icon>
+  <description>Dialog box.  (Set Modal property for a modal dialog).</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Dialog">
+    <variants jsxwidth="500" jsxheight="350" jsxzindex="5000" jsxwindowstate="1" jsxoverflow="2"/>
+    <strings jsxname="dialog"/>
+    <object type="jsx3.gui.WindowBar">
+      <variants jsxheight="30"/>
+      <strings jsxname="windowBar" jsxtext="Dialog"/>
+       <object type="jsx3.gui.ImageButton">
+        <strings jsxname="btnClose" jsxdlgbtntype="CLOSE"/>
+      </object>
+       <object type="jsx3.gui.ImageButton">
+        <strings jsxname="btnMaximize" jsxdlgbtntype="MAX"/>
+      </object>     
+      <object type="jsx3.gui.ImageButton">
+        <strings jsxname="btnMinimize" jsxdlgbtntype="MIN"/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <strings jsxname="content" jsxwidth="100%" jsxheight="100%"/>
+    </object>
+  </object>
+</serialization>

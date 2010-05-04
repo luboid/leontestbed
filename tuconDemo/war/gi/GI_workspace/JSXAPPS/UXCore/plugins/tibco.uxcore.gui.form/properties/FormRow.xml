@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+	<record group="object" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+
+	<record group="1" jsxid="jsx3block" jsxtext="Block">
+
+		<record children="1" group="jsxtagname" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	</record>
+
+    <record group="1" jsxid="uxcoreFormRow" jsxtext="Form Row">
+        <record jsxid="jsxfieldalign" jsxtext="Field Alignment"
+            jsxtip="Sets alignment of children"
+            docgetter="setFieldAlign" docsetter="getFieldAlign"
+            docdefault="Top (&lt;code&gt;tibco.uxcore.gui.FormRow.ALIGNTOP&lt;/code&gt;)"
+            eval="1"
+            jsxexecute="objJSX.setFieldAlign(vntValue, true);"
+            jsxmask="jsxselect">
+              <enum jsxid="tibco.uxcore.gui.FormRow.ALIGNTOP" jsxtext="Top"/>
+              <enum jsxid="tibco.uxcore.gui.FormRow.ALIGNBASELINE" jsxtext="Baseline"/>
+              <enum jsxid="tibco.uxcore.gui.FormRow.ALIGNBOTTOM" jsxtext="Bottom"/>
+        </record>
+    </record>
+
+	<record group="css" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="interaction" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="drag" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="move" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="metadata" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+</data>

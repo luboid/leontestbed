@@ -1,0 +1,9 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Select - Combo</name>
+  <icon>jsxplugin://tibco.uxcore.common/images/prototype/combo.gif</icon>
+  <object type="tibco.uxcore.gui.Select">
+    <variants jsxwidth="150" jsxxmlasync="1" jsxtype="1" _isfocusing="true"/>
+    <strings jsxname="combo" jsxxmlurl="jsx:///xml/sample.xml" jsxvalue=""/>
+    <dynamics jsxheight="@uxcore10@selectBox Height" jsxborder="@uxcore10@selectBox Border" jsxstyleoverride="@uxcore10@selectBox styleoverride" jsxicon="@uxcore10@selectBox Icon"/>
+  </object>
+</serialization>

@@ -1,0 +1,23 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>0. Form Group</name>
+  <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/form.gif</icon>
+  <description>A UX Core Form Group object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.FormGroup">
+    <variants jsxoverflow="1" cleaned="true" showGlobalErrors="1"/>
+      <strings jsxname="formGroup" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text="" titletext="[Form Group Title]" instructionstext="[Form Group Instructions Text]"/>
+    <object type="tibco.uxcore.gui.FormButton">
+      <variants jsxindex="0" jsxprefetch="1" jsxtype="0" jsxstate="0" focusstyle="1" wastab="false" wasshift="false"/>
+      <strings jsxname="saveButton" jsxtext="Save" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+      <dynamics/>
+      <events jsxexecute="this.getParent().doSave();"/>
+    </object>
+    <object type="tibco.uxcore.gui.FormButton">
+      <variants jsxindex="0" jsxprefetch="1" jsxtype="0" jsxstate="0" focusstyle="1" wastab="false" wasshift="false"/>
+      <strings jsxname="revertButton" jsxtext="Revert" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+      <dynamics/>
+      <events jsxexecute="this.getParent().doRevert();"/>
+    </object>
+  </object>
+</serialization>

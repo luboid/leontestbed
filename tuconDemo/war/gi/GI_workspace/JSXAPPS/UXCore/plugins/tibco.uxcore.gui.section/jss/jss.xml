@@ -1,0 +1,11 @@
+<data jsxid="jsxroot" jsxns="urn:tibco.com/v3.0/dynamicproperties/1">
+    <!-- Section -->
+    <record jsxid="@uxcore@section@defaultStatusMessage" jsxtext="Status Message"/>
+    <record jsxid="@uxcore@section@instruction" jsxtext="Drag and drop TitleBox or other components here."/>
+    <record jsxid="@uxcore@section@titleBoxDuplicatedError" jsxtext="Only one TitleBox object is allowed!"/>
+    <!-- TitleBox -->
+    <record jsxid="@uxcore@TitleBox@TitleFontSize@PageTitleSize" type="titleFontSize" jsxtext="16"/>
+    <record jsxid="@uxcore@TitleBox@TitleFontSize@SectionTitleSize" type="titleFontSize" jsxtext="14"/>
+    <record jsxid="@uxcore@TitleBox@TitleFontSize@SectionTitleSmallSize" type="titleFontSize" jsxtext="12"/>
+    <record jsxid="@uxcore@titleBox@defaultTitle" jsxtext="Title"/>
+</data>

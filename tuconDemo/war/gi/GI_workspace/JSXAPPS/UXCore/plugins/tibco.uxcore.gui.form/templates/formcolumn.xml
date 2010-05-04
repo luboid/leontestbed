@@ -1,0 +1,11 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <template recalc="true">
+        <inlinebox class="formcolumn" index="{$index}" jsxindex="{$jsxindex}" label="{$label}" title="{$tip}"
+                   style="display:{$display}; padding: 0px 0px 0px 0px; vertical-align: top; float: left;" tabindex="{donotsetme3|-1}">
+            <width>this.getDrawspace().width</width>
+            <attach select="new jsx3.util.List(this.getFormChildren()).iterator()">
+                <drawspace boxtype="'box'" position="'relative'"/>
+            </attach>
+        </inlinebox>
+    </template>
+</transform>

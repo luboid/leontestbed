@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxnamespace="propsbundle">
+  <locale key="th">
+    <record jsxid="format.number" jsxtext="#,##0.###"/>
+    <record jsxid="format.number.percent" jsxtext="#,##0%"/>
+    <record jsxid="format.datetime" jsxtext="{1}, {0}"/>
+    <record jsxid="format.time.long" jsxtext="H นาฬิกา m นาที ss วินาที z"/>
+    <record jsxid="format.time.short" jsxtext="H:mm"/>
+    <record jsxid="number.grouping" jsxtext=","/>
+    <record jsxid="format.date.medium" jsxtext="d MMM yyyy"/>
+    <record jsxid="format.date.short" jsxtext="d/M/yyyy"/>
+    <record jsxid="number.decimal" jsxtext="."/>
+    <record jsxid="format.date.full" jsxtext="EEEEที่ d MMMM G yyyy"/>
+    <record jsxid="format.time.medium" jsxtext="H:mm:ss"/>
+    <record jsxid="format.date.long" jsxtext="d MMMM yyyy"/>
+    <record jsxid="format.number.currency" jsxtext="¤#,##0.00;¤-#,##0.00"/>
+    <record eval="1" jsxid="date.month.abbrev" jsxtext="['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.']"/>
+    <record eval="1" jsxid="date.month" jsxtext="['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม']"/>
+    <record eval="1" jsxid="date.month.narrow" jsxtext="['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.']"/>
+    <record eval="1" jsxid="date.day.abbrev" jsxtext="['อา.','จ.','อ.','พ.','พฤ.','ศ.','ส.']"/>
+    <record eval="1" jsxid="date.day" jsxtext="['วันอาทิตย์','วันจันทร์','วันอังคาร','วันพุธ','วันพฤหัสบดี','วันศุกร์','วันเสาร์']"/>
+    <record eval="1" jsxid="date.day.narrow" jsxtext="['อ','จ','อ','พ','พ','ศ','ส']"/>
+    <record eval="1" jsxid="date.era.long" jsxtext="['ปีก่อนคริสต์ศักราชที่','คริสต์ศักราช']"/>
+    <record eval="1" jsxid="date.era" jsxtext="['ปีก่อน ค.ศ. ที่','ค.ศ.']"/>
+    <record eval="1" jsxid="time.ampm" jsxtext="['ก่อนเที่ยง','หลังเที่ยง']"/>
+    <record jsxid="string.lang.ar" jsxtext="อาหรับ"/>
+    <record jsxid="string.lang.da" jsxtext="เดนมาร์ก"/>
+    <record jsxid="string.lang.de" jsxtext="เยอรมัน"/>
+    <record jsxid="string.lang.el" jsxtext="กรีก"/>
+    <record jsxid="string.lang.en" jsxtext="อังกฤษ"/>
+    <record jsxid="string.lang.es" jsxtext="สเปน"/>
+    <record jsxid="string.lang.fi" jsxtext="ฟินแลนด์"/>
+    <record jsxid="string.lang.fr" jsxtext="ฝรั่งเศส"/>
+    <record jsxid="string.lang.he" jsxtext="ฮิบรู"/>
+    <record jsxid="string.lang.id" jsxtext="อินโดนีเชีย"/>
+    <record jsxid="string.lang.it" jsxtext="อิตาลี"/>
+    <record jsxid="string.lang.ja" jsxtext="ญี่ปุ่น"/>
+    <record jsxid="string.lang.ko" jsxtext="เกาหลี"/>
+    <record jsxid="string.lang.nl" jsxtext="ดัตช์"/>
+    <record jsxid="string.lang.nn" jsxtext="นอร์เวย์ไนนอรส์ก"/>
+    <record jsxid="string.lang.pl" jsxtext="โปแลนด์"/>
+    <record jsxid="string.lang.pt" jsxtext="โปรตุเกส"/>
+    <record jsxid="string.lang.ru" jsxtext="รัสเซีย"/>
+    <record jsxid="string.lang.sv" jsxtext="สวีเดน"/>
+    <record jsxid="string.lang.th" jsxtext="ไทย"/>
+    <record jsxid="string.lang.tr" jsxtext="ตุรกี"/>
+    <record jsxid="string.lang.vi" jsxtext="เวียดนาม"/>
+    <record jsxid="string.lang.zh" jsxtext="จีน"/>
+    <record jsxid="string.terr.AU" jsxtext="ออสเตรเลีย"/>
+    <record jsxid="string.terr.BE" jsxtext="เบลเยียม"/>
+    <record jsxid="string.terr.BR" jsxtext="บราซิล"/>
+    <record jsxid="string.terr.CA" jsxtext="แคนาดา"/>
+    <record jsxid="string.terr.CN" jsxtext="จีน"/>
+    <record jsxid="string.terr.DE" jsxtext="เยอรมนี"/>
+    <record jsxid="string.terr.DK" jsxtext="เดนมาร์ก"/>
+    <record jsxid="string.terr.ES" jsxtext="สเปน"/>
+    <record jsxid="string.terr.FI" jsxtext="ฟินแลนด์"/>
+    <record jsxid="string.terr.FR" jsxtext="ฝรั่งเศส"/>
+    <record jsxid="string.terr.GB" jsxtext="สหราชอาณาจักร"/>
+    <record jsxid="string.terr.GR" jsxtext="กรีซ"/>
+    <record jsxid="string.terr.HK" jsxtext="ฮ่องกง เขตปกครองพิเศษประเทศจีน"/>
+    <record jsxid="string.terr.ID" jsxtext="อินโดนีเซีย"/>
+    <record jsxid="string.terr.IL" jsxtext="อิสราเอล"/>
+    <record jsxid="string.terr.IT" jsxtext="อิตาลี"/>
+    <record jsxid="string.terr.JP" jsxtext="ญี่ปุ่น"/>
+    <record jsxid="string.terr.KR" jsxtext="เกาหลีใต้"/>
+    <record jsxid="string.terr.MX" jsxtext="เม็กซิโก"/>
+    <record jsxid="string.terr.NL" jsxtext="เนเธอร์แลนด์"/>
+    <record jsxid="string.terr.NO" jsxtext="นอร์เวย์"/>
+    <record jsxid="string.terr.NZ" jsxtext="นิวซีแลนด์"/>
+    <record jsxid="string.terr.PL" jsxtext="โปแลนด์"/>
+    <record jsxid="string.terr.PT" jsxtext="โปรตุเกส"/>
+    <record jsxid="string.terr.RU" jsxtext="รัสเซีย"/>
+    <record jsxid="string.terr.SE" jsxtext="สวีเดน"/>
+    <record jsxid="string.terr.TH" jsxtext="ประเทศไทย"/>
+    <record jsxid="string.terr.TR" jsxtext="ตุรกี"/>
+    <record jsxid="string.terr.TW" jsxtext="ไต้หวัน"/>
+    <record jsxid="string.terr.US" jsxtext="สหรัฐอเมริกา"/>
+    <record jsxid="string.terr.VN" jsxtext="เวียดนาม"/>
+    <record jsxid="string.terr.ZA" jsxtext="แอฟริกาใต้"/>
+    <record eval="1" jsxid="time.24hour" jsxtext="true"/>
+    <record jsxid="format.number.integer" jsxtext="#,##0"/>
+    <record jsxid="time.sep.hour-min" jsxtext=" นาฬิกา "/>
+    <record jsxid="time.sep.min-sec" jsxtext=" นาที "/>
+    <record jsxid="format.time.full" jsxtext="H นาฬิกา m นาที ss วินาที z"/>
+  </locale>
+<locale key="th_TH">
+    <record eval="1" jsxid="date.firstWeekDay" jsxtext="0"/>
+    <record jsxid="currency.code" jsxtext="THB"/>
+  </locale>
+</data>

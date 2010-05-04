@@ -1,0 +1,30 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>BrowseView (as List)</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/prototype/browse.png</icon>
+  <description/>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.BrowseView">
+    <variants panellabels="['Servers','Nodes','Machines']" panelids="['servers','nodes','machines']" labels="['Servers','Nodes','Machines']"/>
+    <strings jsxtext="My Sample Title" jsxname="myBrowseView" _editMode="tibco.uxcore.gui.TableListView.NORMAL_MODE"/>
+    <object type="jsx3.gui.Block">
+      <variants jsxoverflow="2"/>
+      <strings jsxname="panel"/>
+      <object type="jsx3.gui.Matrix">
+        <variants jsxpagingmodel="0" jsxselectionmodel="2" jsxscalewidth="1" jsxjsxxmlasync="1" jsxheaderheight="0" jsxxmlasync="1"/>
+        <strings jsxname="matrix1" jsxselectionbg="jsx:///images/matrix/select.gif"/>
+        <events jsxexecute="1;" jsxselect="1;" jsxchange="1;"/>
+        <object type="jsx3.gui.Matrix.Column">
+          <variants jsxresize="0"/>
+          <strings jsxname="mc1" jsxtext="&amp;#160;" jsxwidth="20" jsxcellpadding="2" jsxpath="jsximg" jsxvaluetemplate="@image"/>
+          <dynamics jsxborder="@Outset" jsxbg="@Bevel TopDown" jsxbgcolor="@Solid Disabled"/>
+        </object>
+        <object type="jsx3.gui.Matrix.Column">
+          <variants/>
+          <strings jsxname="mc2" jsxtext="Name" jsxpadding="2" jsxwidth="*" jsxcellpadding="2" jsxpath="jsxtext"/>
+          <dynamics jsxborder="@Outset" jsxbg="@Bevel TopDown" jsxbgcolor="@Solid Disabled"/>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

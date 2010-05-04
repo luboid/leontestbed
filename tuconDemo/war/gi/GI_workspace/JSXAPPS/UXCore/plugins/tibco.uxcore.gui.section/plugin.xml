@@ -1,0 +1,22 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.gui.section"
+        name="UX Core Section/TitleBox"
+        version="0.1">
+
+  <requires>
+    <plugin id="jsx3.gui.Template"/>
+  </requires>
+
+  <resources>
+    <jss id="jss" path="jss/jss.xml"/>
+    <script id="TitleBox" path="classes/TitleBox.js" eval="true">
+        <prereq id="jss"/>
+    </script>
+    <script id="Section" path="classes/Section.js" eval="true">
+        <prereq id="TitleBox"/>
+    </script>
+  </resources>
+
+</plugin>

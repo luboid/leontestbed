@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.6">
+  <name>Link Button</name>
+  <icon/>
+  <description>A UXCore Link Button object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Linkbutton">
+    <variants jsxoverflow="1" />
+    <strings jsxname="linkbutton"  jsxrelativeposition="1" hookname="Link Button"/>
+  </object>
+</serialization>

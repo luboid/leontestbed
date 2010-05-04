@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxnamespace="propsbundle" locales="">
+  <locale>
+      <!--Pagination, Search-->
+      <record jsxid="@uxcore10@pagenation@fristTip" jsxtext="To the frist page"/>
+      <record jsxid="@uxcore10@pagenation@backTip" jsxtext="To the privious page"/>
+      <record jsxid="@uxcore10@pagenation@nextTip" jsxtext="To the next page"/>
+      <record jsxid="@uxcore10@pagenation@lastTip" jsxtext="To the last page"/>
+      <record jsxid="@uxcore10@pagenation@pageCaption" jsxtext="Page"/>
+      <record jsxid="@uxcore10@pagenation@totalPageCaption" jsxtext="of {0}"/>
+      <record jsxid="@uxcore10@filterSearch@labelText" jsxtext="View"/>
+      <record jsxid="@uxcore10@simpleSearch@title" jsxtext="Search"/>
+      <!--List Container Button-->
+      <!-- added by Amour begin(text), Nov 2008 -->
+      <record jsxid="@uxcore10@Btn Text New" jsxtext="New"/>
+      <record jsxid="@uxcore10@Btn Text Delete" jsxtext="Delete"/>
+      <record jsxid="@uxcore10@Btn Text Install" jsxtext="Install"/>
+      <record jsxid="@uxcore10@Btn Text Uninstall" jsxtext="Uninstall"/>
+      <record jsxid="@uxcore10@Btn Text Undeploy" jsxtext="Undeploy"/>
+      <record jsxid="@uxcore10@Btn Text ClearFilter" jsxtext="Clear Filter"/>
+      <record jsxid="@uxcore10@Btn Text Deploy" jsxtext="Deploy"/>
+      <record jsxid="@uxcore10@Btn Text Discover" jsxtext="Discover"/>
+      <record jsxid="@uxcore10@Btn Text Reprovision" jsxtext="Reprovision"/>
+      <record jsxid="@uxcore10@Btn Text Save" jsxtext="Save"/>
+      <record jsxid="@uxcore10@Btn Text Running" jsxtext="Run"/>
+      <record jsxid="@uxcore10@Btn Text Stopped" jsxtext="Stop"/>
+      <!-- added by Amour end -->
+  </locale>
+</data>

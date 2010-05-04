@@ -1,0 +1,34 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.common"
+        name="UX Core Common Assets"
+        version="0.1">
+
+  <requires>
+      <plugin id="jsx3.net.Service"/>
+      <plugin id="jsx3.gui.Block"/>
+      <plugin id="jsx3.gui.Select"/>
+      <plugin id="jsx3.gui.TextBox"/>
+      <plugin id="jsx3.gui.Stack"/>
+      <plugin id="jsx3.gui.StackGroup"/>
+      <plugin id="jsx3.gui.ImageButton"/>
+      <plugin id="jsx3.gui.Template"/>
+      <plugin id="jsx3.gui.Form"/>
+  </requires>
+
+    <resources>
+      <css id="uxcommon_css" path="css/coreCSS.css" load="true"/>
+      <propsbundle id="uxcommon_text_jss" path="jss/core.textJSS.xml" load="true"/>
+      <jss id="uxcommon_style_jss" path="jss/core.styleJSS.xml" load="true">
+          <prereq id="uxcommon_uxcore-plugin_js"/>
+      </jss>
+        <jss id="uxcommon_computed_jss" path="jss/core.computedJSS.xml" load="true">
+             <prereq id="uxcommon_style_jss"/>
+             <prereq id="uxcommon_uxcore-plugin_js"/>
+         </jss>
+       <script id="JSON_js" path="classes/JSON.js" eval="false"/>
+      <script id="uxcommon_uxcore-plugin_js" path="classes/uxcore-plugin.js" eval="true"/>
+    </resources>
+
+</plugin>

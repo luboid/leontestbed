@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+-->
+<data jsxid="jsxroot">
+
+    <record group="object" include="../../tibco.uxcore.common/properties/Button.xml"/>
+    <record group="actiontrigger" include="jsxplugin://tibco.uxcore.common/properties/Button.xml"/>
+    <record group="1" jsxid="actionButton" jsxtext="Action Button">
+        <record jsxid="jsxactionid" jsxtext="Action ID" jsxtip="Sets action id for action button"
+            docsetter="setActionId" docgetter="getActionId"
+            eval="0" jsxexecute="objJSX.setActionId(vntValue);" jsxmask="jsxtext"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxtext']" include="../../tibco.uxcore.common/properties/Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxicon']" include="../../tibco.uxcore.common/properties/Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxenabled']" include="../../tibco.uxcore.common/properties/Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxrequired']" include="../../tibco.uxcore.common/properties/Button.xml"/>
+    </record>
+    <record group="box_nobg" include="../../tibco.uxcore.common/properties/Button.xml"/>
+    <record group="css_noclass" include="../../tibco.uxcore.common/properties/Button.xml"/>
+    <record group="access" include="../../tibco.uxcore.common/properties/Button.xml"/>
+    <record group="metadata" include="../../tibco.uxcore.common/properties/Button.xml"/>
+</data>

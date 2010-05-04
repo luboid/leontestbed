@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+	<record group="object" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="position" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+
+
+	<record group="1" jsxid="jsx3block" jsxtext="Block">
+
+		<record children="1" group="jsxtext" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+		<record children="1" group="jsxtagname" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	</record>
+
+    <record group="1" jsxid="wizard" jsxtext="Wizard">
+        <record jsxid="buttonStates"  jsxtext="Button States"
+            docgetter="setButtonStates"
+            docsetter="getButtonStates"
+            eval="0"
+            jsxmask="jsxtext"
+            jsxtip="List of button names and their initial state when this panel is shown, all separated by commas.&lt;br /&gt;Buttons may have one of the following states: ENABLED, DISABLED, HIDDEN.  Buttons not listed here will default ot ENABLED.  &lt;br /&gt;&lt;br /&gt;Example: &quot;btnPrev:DISABLED,btnNext:ENABLED,btnFinish:HIDDEN&quot;">
+        </record>
+    </record>
+
+	<record group="font" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="box" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="css" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="interaction" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="drag" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="move" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="access" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="metadata" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+</data>

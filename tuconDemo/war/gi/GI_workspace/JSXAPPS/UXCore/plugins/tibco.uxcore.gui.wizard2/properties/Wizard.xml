@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+	<record group="object" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="position" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+
+
+	<record group="1" jsxid="jsx3block" jsxtext="Block">
+
+		<record children="1" group="jsxtext" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+		<record children="1" group="jsxtagname" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	</record>
+
+    <record group="1" jsxid="wizard" jsxtext="Wizard">
+        <record jsxid="contentPaneName"  jsxtext="Content Pane"
+            docgetter="getContentPaneName"
+            docsetter="setContentPaneName"
+            eval="0"
+            jsxmask="jsxtext"
+            jsxtip="The name of the jsx.gui.Block that is the parent content pane for this wizard's WizardPanels.">
+        </record>
+
+        <record jsxid="initialPanelName"  jsxtext="Initial Panel"
+            docgetter="getInitialPanel"
+            docsetter="setInitialPanel"
+            eval="0"
+            jsxmask="jsxtext"
+            jsxtip="The name of the WizardPanel to be used as the starting panel for this Wizard.">
+        </record>
+
+        <record jsxid="buttonPanelName"  jsxtext="Button Panel"
+            docgetter="getButtonPanel"
+            docsetter="setButtonPanel"
+            eval="0"
+            jsxmask="jsxtext"
+            jsxtip="The name of the jsx3.gui.Block containing the buttons for this Wizard.">
+        </record>
+    </record>
+
+	<record group="font" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="box" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="css" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="interaction" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="drag" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="move" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="access" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="metadata" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+</data>

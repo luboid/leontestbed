@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Duration Form Field</name>
+  <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/duration.gif</icon>
+  <description>A UXCore duration form field object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.DurationFormField">
+    <variants jsxindex="0"/>
+    <strings fieldtitletext="[Field Title]" jsxname="durationFormField"/>
+  </object>
+</serialization>

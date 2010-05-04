@@ -1,0 +1,10 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Tab</name>
+  <icon>jsxplugin://tibco.uxcore.gui.tabbedpane/images/prototype/tab.gif</icon>
+  <object type="jsx3.gui.Tab">
+    <strings jsxname="tab" jsxtext="[Caption]"/>
+    <object type="jsx3.gui.Block">
+      <strings jsxwidth="100%" jsxheight="100%" jsxtext="Tab Content"/>
+    </object>
+  </object>
+</serialization>

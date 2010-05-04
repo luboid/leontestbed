@@ -1,0 +1,148 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Section</name>
+  <icon/>
+  <description/>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Section">
+    <variants bShowContent="true"/>
+    <strings jsxname="section" jsxwidth="100%" jsxheight="100%" jsxpadding="10"/>
+    <object type="tibco.uxcore.gui.TitleBox">
+      <variants/>
+      <strings jsxname="titleBox" jsxwidth="100%" title="UxCore Components"/>
+    </object>
+    <object type="tibco.uxcore.gui.MasterDetail">
+      <variants jsxorientation="1" jsxleft="0" jsxtop="0"/>
+      <strings jsxname="masterDetail" jsxsubcontainer1pct="40%"/>
+      <dynamics/>
+      <object type="jsx3.gui.Block">
+        <variants/>
+        <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+        <dynamics/>
+        <object type="tibco.uxcore.gui.ListContainer">
+          <variants jsxoverflow="1" timer="4118" _masked="false" jsxhideactionbar="0" jsxhideactionbg="0" jsxvisibility="true"/>
+          <strings jsxname="listContainer" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxview="matrix1"/>
+          <events jsxpagechange="if(TestFun) TestFun.pageChange(intNewPage,intTotalPages)" jsxselectionchanged="if(TestFun) TestFun.selectChange(arrRecordIds)"/>
+          <object type="tibco.uxcore.gui.ListPaginator">
+            <variants jsxoverflow="1" intTotalPageNumber="3" currentPageNumber="1" jsxtextwidth="40" jsxcontrolVeto="true"/>
+            <strings jsxname="listPaginator" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+          </object>
+          <object type="tibco.uxcore.gui.TableListView">
+            <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0" _historyData="['&lt;data jsxid=&quot;jsxroot&quot;&gt;&lt;record jsxid=&quot;Simple Search&quot; jsxowner=&quot;Sean&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;yuxwang@tibco-support.com&quot; jsxdocid=&quot;T1&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Paginator &quot; jsxowner=&quot;Sean&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;yuxwang@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Title Box&quot; jsxowner=&quot;Felix&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;fwu@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Page&quot; jsxowner=&quot;Felix&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;fwu@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Section&quot; jsxowner=&quot;Felix&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;fwu@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Dialog&quot; jsxowner=&quot;Hary&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;yuxwang@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Desktop And Global Navigation &quot; jsxowner=&quot;Ramin&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;rborouma@tibco.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Browse&quot; jsxowner=&quot;Alan&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;lliu@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Wizard&quot; jsxowner=&quot;Jesse&quot; jsxwave=&quot;Wave III&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;jcostell@tibco.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;/data&gt;']" jsxeditmode="0"/>
+            <strings jsxname="matrix1" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="descending" _editMode="tibco.uxcore.gui.TableListView.NORMAL_MODE" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;&lt;record jsxid=&quot;Simple Search&quot; jsxowner=&quot;Sean&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;yuxwang@tibco-support.com&quot; jsxdocid=&quot;T1&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Paginator &quot; jsxowner=&quot;Sean&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;yuxwang@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Title Box&quot; jsxowner=&quot;Felix&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;fwu@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Page&quot; jsxowner=&quot;Felix&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;fwu@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Section&quot; jsxowner=&quot;Felix&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;fwu@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Dialog&quot; jsxowner=&quot;Hary&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;yuxwang@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Desktop And Global Navigation &quot; jsxowner=&quot;Ramin&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;rborouma@tibco.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Browse&quot; jsxowner=&quot;Alan&quot; jsxwave=&quot;Wave I&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;lliu@tibco-support.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;record jsxid=&quot;Wizard&quot; jsxowner=&quot;Jesse&quot; jsxwave=&quot;Wave III&quot; jsxtarget=&quot;Dec&quot; jsxmail=&quot;jcostell@tibco.com&quot; jsxdocid=&quot;C2&quot; jsxwavetime=&quot;12/01/2008&quot;/&gt;&lt;/data&gt;"/>
+            <dynamics/>
+            <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
+            <object type="jsx3.gui.Matrix.Column">
+              <variants jsxwidth="165"/>
+              <strings jsxname="Prototype Name" jsxtext="Name" jsxpath="jsxid"/>
+              <dynamics/>
+            </object>
+            <object type="jsx3.gui.Matrix.Column">
+              <variants jsxwidth="141"/>
+              <strings jsxname="Owner" jsxtext="Prototype Owner" jsxpath="jsxowner"/>
+              <dynamics/>
+            </object>
+            <object type="jsx3.gui.Matrix.Column">
+              <variants/>
+              <strings jsxname="Wave" jsxwidth="100" jsxtext="Wave" jsxpath="jsxwave"/>
+              <dynamics/>
+            </object>
+          </object>
+          <object type="tibco.uxcore.gui.SimpleSearch">
+            <variants jsxheight="18" jsxcontrolVeto="true"/>
+            <strings jsxname="simpleSearch" defaultInputText="Enter search string" defaultSelectText="&lt;Select&gt;" title="Search" _NO_KEYWORD="_NO_KEYWORD" _NO_ATTR_SELECTED="_NO_ATTR_SELECTED" jsxpadding="0"/>
+            <dynamics/>
+          </object>
+          <object type="tibco.uxcore.gui.ActionButton">
+            <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+            <strings jsxname="actionButtonRunning"/>
+            <dynamics jsxtext="@uxcore10@Btn Text Running" jsxicon="@uxcore10@Btn Image Running"/>
+            <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+          </object>
+          <object type="tibco.uxcore.gui.ActionButton">
+            <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+            <strings jsxname="actionButtonStopped"/>
+            <dynamics jsxtext="@uxcore10@Btn Text Stopped" jsxicon="@uxcore10@Btn Image Stopped"/>
+            <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+          </object>
+          <object type="tibco.uxcore.gui.ActionButton">
+            <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+            <strings jsxname="actionButtonDeploy"/>
+            <dynamics jsxtext="@uxcore10@Btn Text Deploy" jsxicon="@uxcore10@Btn Image Deploy"/>
+            <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+          </object>
+          <object type="tibco.uxcore.gui.HideShowButton">
+            <variants bgpersist="1" focusstyle="0" jsxprefetch="1" jsxtype="1"/>
+            <strings jsxstate="0" jsxname="iconButton" affordance="0 0 0 0"/>
+            <dynamics/>
+          </object>
+        </object>
+      </object>
+      <object type="jsx3.gui.Block">
+        <variants/>
+        <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+        <dynamics/>
+        <object type="tibco.uxcore.gui.Form">
+          <variants jsxoverflow="1" useControllers="0" enableControllersUsage="false" editMode="false" allowControllers="false" minChildWidth="455"/>
+          <strings jsxname="form" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text="" titletext="Component detail" instructionstext="Show detailed information of every component in UXCore" errortext=""/>
+          <object type="tibco.uxcore.gui.FormPanel">
+            <variants useControllers="0" enableControllersUsage="false" editMode="false" allowControllers="false" _adjustWidth="0" minChildWidth="455"/>
+            <strings jsxname="formPanel" jsxwidth="100%" jsxheight="100%" text=""/>
+            <object type="tibco.uxcore.gui.FormColumn">
+              <variants jsxoverflow="1" enableControllersUsage="false" editMode="false" allowControllers="false" minChildWidth="455"/>
+              <strings jsxname="formColumn" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+              <object type="tibco.uxcore.gui.FormRow">
+                <variants jsxoverflow="1" useControllers="0" enableControllersUsage="false" editMode="false" allowControllers="false" minChildWidth="225" fits="3" childWidth="358"/>
+                <strings jsxname="formRow" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+                <object type="tibco.uxcore.gui.TextBoxFormField">
+                  <variants jsxindex="0" editMode="false" bEditable="true" focusIndex="-1" jsxtype="0" jsxenabled="1"/>
+                  <strings isrequired="1" jsxname="textBoxFormField" originalValue="default text" fieldtitletext="Component ID" cdfattribute="jsxdocid" jsxtitledisplay=""/>
+                </object>
+                <object type="tibco.uxcore.gui.TextBoxFormField">
+                  <variants jsxindex="0" editMode="false" bEditable="true" focusIndex="-1" jsxtype="0" jsxenabled="1"/>
+                  <strings isrequired="1" jsxname="textBoxFormField" originalValue="default text 2" fieldtitletext="Component Name" cdfattribute="jsxid" jsxtitledisplay=""/>
+                </object>
+              </object>
+              <object type="tibco.uxcore.gui.FormRow">
+                <variants jsxoverflow="1" useControllers="0" enableControllersUsage="false" editMode="false" allowControllers="false" minChildWidth="225" fits="3" childWidth="358"/>
+                <strings jsxname="formRow" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+                <object type="tibco.uxcore.gui.TextBoxFormField">
+                  <variants jsxindex="0" editMode="false" bEditable="true" focusIndex="-1" jsxtype="0" jsxenabled="1"/>
+                  <strings isrequired="1" jsxname="textBoxFormField" originalValue="default text" fieldtitletext="Dev Owner" cdfattribute="jsxowner" jsxtitledisplay=""/>
+                </object>
+                <object type="tibco.uxcore.gui.TextBoxFormField">
+                  <variants jsxindex="0" editMode="false" bEditable="true" focusIndex="-1" jsxtype="0" jsxenabled="1"/>
+                  <strings isrequired="1" jsxname="textBoxFormField" originalValue="default text 2" fieldtitletext="Developer Mail" cdfattribute="jsxmail" jsxtitledisplay=""/>
+                </object>
+              </object>
+              <object type="tibco.uxcore.gui.FormRow">
+                <variants jsxoverflow="1" useControllers="0" enableControllersUsage="false" editMode="false" allowControllers="false" minChildWidth="225" fits="3" childWidth="358"/>
+                <strings jsxname="formRow" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+                <object type="tibco.uxcore.gui.TextBoxFormField">
+                  <variants jsxindex="0" editMode="false" bEditable="true" focusIndex="-1" jsxtype="0" jsxenabled="1"/>
+                  <strings isrequired="1" jsxname="textBoxFormField" originalValue="default text" fieldtitletext="Wave" cdfattribute="jsxwave" jsxtitledisplay=""/>
+                </object>
+                <object type="tibco.uxcore.gui.TextBoxFormField">
+                  <variants jsxindex="0" editMode="false" bEditable="true" focusIndex="-1" jsxtype="0" jsxenabled="1"/>
+                  <strings isrequired="1" jsxname="textBoxFormField" originalValue="default text 2" fieldtitletext="Wave Time" cdfattribute="jsxwavetime" jsxtitledisplay=""/>
+                </object>
+              </object>
+            </object>
+          </object>
+          <object type="tibco.uxcore.gui.FormButton">
+            <variants jsxindex="0" jsxprefetch="1" jsxtype="0" jsxstate="0" focusstyle="1" wastab="false" wasshift="false"/>
+            <strings jsxname="saveButton" jsxtext="Save" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+            <dynamics/>
+            <events jsxexecute="this.getParent().doSave();"/>
+          </object>
+          <object type="tibco.uxcore.gui.FormButton">
+            <variants jsxindex="0" jsxprefetch="1" jsxtype="0" jsxstate="0" focusstyle="1" wastab="false" wasshift="false"/>
+            <strings jsxname="revertButton" jsxtext="Revert" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+            <dynamics/>
+            <events jsxexecute="this.getParent().doRevert();"/>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

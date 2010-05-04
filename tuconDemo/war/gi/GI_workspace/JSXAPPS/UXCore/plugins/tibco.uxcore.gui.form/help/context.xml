@@ -1,0 +1,12 @@
+<data jsxid = "jsxroot">
+    <locale key="en_US">
+        <record jsxid="ID_TOP" jsxtext="doc/en/formsdefault.html"/>
+        <record jsxid="formhelp1" jsxtext="doc/en/forms.html"/>
+        <record jsxid="formhelp2" jsxtext="doc/en/forms2.html"/>
+    </locale>
+    <locale key="de_GE">
+        <record jsxid="ID_TOP" jsxtext="doc/de/formsdefault.html"/>
+        <record jsxid="formhelp1" jsxtext="doc/de/forms.html"/>
+        <record jsxid="formhelp2" jsxtext="doc/de/forms2.html"/>
+    </locale>
+</data>

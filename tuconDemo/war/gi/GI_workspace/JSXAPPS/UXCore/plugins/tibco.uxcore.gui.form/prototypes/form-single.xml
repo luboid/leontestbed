@@ -1,0 +1,39 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>1c. Form (Single Field)</name>
+  <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/form.gif</icon>
+  <description>A UX Core Form object with a single Form Field.</description>
+  <onBeforeDeserialize>undefined</onBeforeDeserialize>
+  <onAfterDeserialize>undefined</onAfterDeserialize>
+  <object type="tibco.uxcore.gui.Form">
+    <variants jsxoverflow="1" cleaned="true" showGlobalErrors="1"/>
+    <strings jsxname="form" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text="" titletext="[Form Title]" instructionstext="[Instructions Text]"/>
+    <object type="tibco.uxcore.gui.FormPanel">
+      <variants jsxoverflow="1" cleaned="true" jsxopen="1"/>
+      <strings jsxname="formPanel" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+      <object type="tibco.uxcore.gui.FormColumn">
+        <variants jsxoverflow="1" cleaned="true"/>
+        <strings jsxname="formColumn" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+        <object type="tibco.uxcore.gui.FormRow">
+          <variants jsxoverflow="1" cleaned="true"/>
+          <strings jsxname="formRow" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+          <object type="tibco.uxcore.gui.TextBoxFormField">
+            <variants jsxindex="0" cleaned="true" bEditable="true" jsxtype="0" isrequired="0" hideoptionalstring="0" hiderequiredstring="0" jsxenabled="1"/>
+            <strings fieldtitletext="[Field Title]" jsxname="textBoxFormField" jsxtitledisplay=""/>
+          </object>
+        </object>
+      </object>
+    </object>
+    <object type="tibco.uxcore.gui.FormButton">
+      <variants jsxindex="0" jsxprefetch="1" jsxtype="0" jsxstate="0" focusstyle="1" wastab="false" wasshift="false"/>
+      <strings jsxname="saveButton" jsxtext="Save" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+      <dynamics/>
+      <events jsxexecute="this.getParent().doSave();"/>
+    </object>
+    <object type="tibco.uxcore.gui.FormButton">
+      <variants jsxindex="0" jsxprefetch="1" jsxtype="0" jsxstate="0" focusstyle="1" wastab="false" wasshift="false"/>
+      <strings jsxname="revertButton" jsxtext="Revert" jsximage="1" jsxoverimage="1" jsxdownimage="1" jsxonimage="1"/>
+      <dynamics/>
+      <events jsxexecute="this.getParent().doRevert();"/>
+    </object>
+  </object>
+</serialization>

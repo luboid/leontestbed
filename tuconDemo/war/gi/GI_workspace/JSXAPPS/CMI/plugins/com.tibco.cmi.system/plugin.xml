@@ -1,0 +1,23 @@
+<plugin xmlns="http://www.tibco.com/gi/amp" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd" 
+		id="com.tibco.cmi.system" name="CMI - system" version="0.1">
+
+  <requires>
+	  
+  </requires>
+  
+  <resources>
+	   <jss id="jssStyle_xml" path="jss/jssStyle.xml" load="early"/>
+	  <propsbundle id="locale_xml" path="locale/locale.xml" load="early"/>
+	  <script id="util_js" path="util.js" load="early"/>	
+  </resources>
+  <event id="mftAlert">
+  	<param id="alertType" type="string"/>
+  	<param id="dlgTitle" type="string"/>
+  	<param id="dlgDesc" type="string"/>
+  	<param id="dlgDetail" type="string"/>
+  	<param id="funOk" type="function"/>
+  	<param id="funCancel" type="function"/>
+  </event>
+</plugin>

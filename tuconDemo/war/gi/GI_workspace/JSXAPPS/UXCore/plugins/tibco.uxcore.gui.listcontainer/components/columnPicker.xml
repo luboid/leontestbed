@@ -1,0 +1,19 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.5">
+  <object type="tibco.uxcore.gui.ColumnPicker">
+    <variants jsxwidth="250" jsxheight="1000" jsxrelativeposition="0" jsxoverflow="2" jsxzindex="10000" jsxleft="0" jsxtop="0" jsxindex="1"/>
+    <strings jsxname="blkColumnPicker" jsxdisplay="none" jsxborder="1px solid #737373"/>
+    <object type="jsx3.gui.Matrix">
+      <variants jsxpagingmodel="0" jsxselectionmodel="1" jsxscalewidth="1" jsxjsxxmlasync="1" jsxreorder="0" jsxheaderheight="0" jsxsort="0" jsxdrag="1" jsxdrop="1" jsxsuppresshscroll="1" jsxsuppressvscroll="1" jsxrowheight="20"/>
+      <strings jsxname="mtxColumnPicker" jsxselectionbg="None"/>
+      <xslparameters jsx_rowbg1="#ffffff" jsx_rowbg2="#ffffff"/>
+      <object type="jsx3.gui.Matrix.Column">
+        <variants jsxwidth="20" jsxresize="0"/>
+        <strings jsxname="mc1" jsxcellpadding="5 0 0 8" jsxpath="selected"/>
+      </object>
+      <object type="jsx3.gui.Matrix.Column">
+        <variants/>
+        <strings jsxname="mc2" jsxtext="Name" jsxpadding="2" jsxwidth="*" jsxcellpadding="2" jsxpath="columnName"/>
+      </object>
+    </object>
+  </object>
+</serialization>

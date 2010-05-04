@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<data jsxid="jsxroot">
+
+	<record jsxid="jsxexecute" jsxtext="Execute"
+			jsxtip="Fires after the user clicks this image button or after an equivalent event.">
+		<record jsxid="this" type="$class$" jsxtext="the object that publishes this event."/>
+    <record jsxid="objEVENT" type="jsx3.gui.Event" jsxtext="the browser event that triggers this event."/>
+	</record>
+
+  <record jsxid="jsxtoggle" jsxtext="Toggle"
+      jsxtip="Fires when the user changes the state of this image button. Canceling this event prevents the change of state."
+      vetoable="1">
+    <record jsxid="this" type="$class$" jsxtext="the object that publishes this event."/>
+    <record jsxid="objEVENT" type="jsx3.gui.Event" jsxtext="the browser event that triggers this event."/>
+    <record jsxid="intSTATE" type="int" jsxtext="the new state if not vetoed."/>
+  </record>
+
+
+	<record jsxid="jsxdestroy" jsxtext="Destroy" always="1"
+			jsxtip="Fires after this image button is removed from the DOM.">
+		<record jsxid="this" type="$class$" jsxtext="the object that publishes this event."/>
+		<record jsxid="objPARENT" type="jsx3.app.Model" jsxtext="the parent of this image button before it is removed from the DOM."/>
+	</record>
+
+    <record jsxid="canEnable" jsxtext="Can Enable"
+            jsxtip="Fires when an action triggers this button to re-evaluate whether or not is should be enabled.  Provides the ability to override the default logic for when the button should enable or disable.  The value calculated by the default behavior is provided, along with other parameters needed to determine if the button should enable. Return true to indicate that the button should be allowed to enable.">
+        <record jsxid="this" type="$class$" jsxtext="this button."/>
+        <record jsxid="defaultValue" type="boolean" jsxtext="The default logic's determination of whether the button should be allowed to enable."/>
+        <record jsxid="selectedRecordIds" type="Array" jsxtext="Array of the ids of the currently selected records in the ListView."/>
+        <record jsxid="listContainer" type="tibco.uxcore.gui.ListContainer" jsxtext="The ListContainer parent of this button."/>
+        <record jsxid="editMode" type="boolean" jsxtext="The whether or not the ListContainer is in edit mode."/>
+        <record jsxid="listView" type="tibco.uxcore.gui.IListView" jsxtext="The currently displayed ListView child of the ListContainer."/>
+        <record jsxid="renderingModel" type="int" jsxtext="The rendering model of the ListView, if applicable, else null."/>
+        <record jsxid="actionId" type="string" jsxtext="The action ID of this button."/>
+    </record>
+</data>

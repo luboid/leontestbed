@@ -1,0 +1,9 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Button - Minimize</name>
+  <icon>jsxplugin://tibco.uxcore.gui.dialog/images/prototype/image-button.gif</icon>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="jsx3.gui.ImageButton">
+    <strings jsxname="btnMinimize" jsxdlgbtntype="MIN"/>
+  </object>
+</serialization>

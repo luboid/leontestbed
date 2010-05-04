@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+-->
+<data jsxid="jsxroot">
+
+    <!-- Revert -->
+    <record jsxid="jsxbeforeswap" jsxtext="Before Swap" jsxtip="Fires when the user swap panels" vetoable="1">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>           
+        <record jsxid="intNewIndex" jsxtext="Panel index swap to" type="Integer"/>
+        <record jsxid="intOldIndex" jsxtext="Panel index swap from" type="Integer"/>
+    </record>
+    <record jsxid="jsxafterswap" jsxtext="After Swap" jsxtip="Fires after the user swap panels.">
+        <record jsxid="this" jsxtext="the object that publishes this event." type="$class$"/>           
+        <record jsxid="intNewIndex" jsxtext="Panel index swap to" type="Integer"/>
+        <record jsxid="intOldIndex" jsxtext="Panel index swap from" type="Integer"/>
+    </record>   
+          
+</data>

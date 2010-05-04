@@ -1,0 +1,49 @@
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<serialization xmlns="urn:tibco.com/v3.0">
+  <onAfterDeserialize><![CDATA[
+
+this.setValues = function(strTitle, strInstructions, objContent) {
+
+  if (strTitle)
+    titlePane.setText(strTitle);
+  else
+    titlePane.setDisplay("none");
+
+  if (strInstructions)
+    instructionsPane.setText(strInstructions);
+  else
+    instructionsPane.setDisplay("none");
+
+  contentPane.setChild(objContent);
+};
+
+ ]]></onAfterDeserialize>
+
+  <object type="jsx3.gui.Block" xmlns="urn:tibco.com/v3.0">
+    <variants jsxoverflow="1" jsxindex="1"/>
+    <strings jsxname="contentArea" jsxwidth="100%" jsxheight="100%" jsxpadding="20"/>
+    <object type="jsx3.gui.Block">
+      <variants jsxoverflow="3" jsxindex="1"/>
+      <strings jsxname="titlePane" jsxwidth="100%" jsxfontsize="12" jsxfontweight="bold" jsxmargin="0 0 12 0"/>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants jsxoverflow="3"/>
+      <strings jsxwidth="100%" jsxdisplay="none" jsxmargin="0 0 12 0"/>
+      <object type="jsx3.gui.Image">
+        <variants jsxoverflow="3"/>
+        <strings jsxname="instrImage" jsxsrc="instructions.gif" jsxpadding="0 10 0 0" jsxstyleoverride="vertical-align:top;"/>
+      </object>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="3" jsxindex="1"/>
+        <strings jsxname="instructionsPane" jsxstyleoverride="vertical-align:top;" jsxcolor="#666666"/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants jsxoverflow="3" jsxindex="1"/>
+      <strings jsxname="contentPane" jsxwidth="100%"/>
+    </object>
+  </object>
+</serialization>

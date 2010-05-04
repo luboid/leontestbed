@@ -1,0 +1,21 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.gui.form"
+        name="UX Core Forms"
+        version="0.1">
+
+  <requires>
+      <plugin id="jsx3.gui.DatePicker"/>
+      <plugin id="jsx3.gui.TimePicker"/>
+      <plugin id="jsx3.gui.TextBox"/>
+      <plugin id="tibco.uxcore.common"/>
+      <!--plugin id="jsx3.gui.Form"/ -->
+  </requires>
+
+  <resources>
+      <propsbundle id="formstext_jss" path="jss/formstextJSS.xml" load="true"/>
+      <script id="uxforms_uxcore-plugin_js" path="classes/uxcore-plugin.js" eval="true"/>
+  </resources>
+
+</plugin>

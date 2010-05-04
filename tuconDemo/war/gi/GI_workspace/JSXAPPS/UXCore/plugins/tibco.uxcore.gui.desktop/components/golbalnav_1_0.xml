@@ -1,0 +1,58 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Block - 100%</name>
+  <icon>images/prototypes/block.gif</icon>
+  <description>Simple block, relatively positioned with overflow=scroll.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="20"/>
+    <object type="tibco.uxcore.gui.Section">
+      <variants/>
+      <strings jsxname="section" jsxwidth="100%" jsxheight="100%"/>
+      <object type="tibco.uxcore.gui.TitleBox">
+        <variants/>
+        <strings jsxname="titleBox" jsxwidth="100%" description="titleBox Description" title="titleBoxTitle"/>
+        <dynamics titleFontSize="@uxcore@TitleBox@TitleFontSize@PageTitleSize"/>
+      </object>
+      <object type="tibco.uxcore.gui.Section">
+        <variants/>
+        <strings jsxname="section" jsxwidth="100%" jsxheight="100%"/>
+        <object type="tibco.uxcore.gui.TitleBox">
+          <variants/>
+          <strings jsxname="titleBox" jsxwidth="100%" description="titleBox Description" title="titleBoxTitle"/>
+          <dynamics titleFontSize="@uxcore@TitleBox@TitleFontSize@SectionTitleSize"/>
+        </object>
+        <object type="tibco.uxcore.gui.Section">
+          <variants/>
+          <strings jsxname="section" jsxwidth="100%" jsxheight="100%"/>
+          <object type="tibco.uxcore.gui.TitleBox">
+            <variants/>
+            <strings jsxname="titleBox" jsxwidth="100%" description="titleBox Description" title="titleBoxTitle"/>
+            <dynamics titleFontSize="@uxcore@TitleBox@TitleFontSize@SectionTitleSmallSize"/>
+          </object>
+          <object type="tibco.uxcore.gui.ListContainer">
+            <variants jsxoverflow="1" timer="3437"/>
+            <strings jsxname="listContainer" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxview="matrix1"/>
+            <object type="tibco.uxcore.gui.TableListView">
+              <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0" _historyData="[]"/>
+              <strings jsxname="matrix1" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;         &lt;record jsxid=&quot;AI&quot;  jsxtext=&quot;Austria&quot;/&gt;         &lt;record jsxid=&quot;AZ&quot;  jsxtext=&quot;Azerbaijan&quot;/&gt;         &lt;record jsxid=&quot;AG&quot;  jsxtext=&quot;Afghanistan&quot;&gt;         &lt;record jsxid=&quot;AL&quot;  jsxtext=&quot;Albania&quot;/&gt;         &lt;record jsxid=&quot;AR&quot;  jsxtext=&quot;Algeria&quot;/&gt;         &lt;record jsxid=&quot;AS&quot;  jsxtext=&quot;American Samoa&quot;/&gt;         &lt;/record&gt;         &lt;record jsxid=&quot;AD&quot;  jsxtext=&quot;Andorra&quot;/&gt;         &lt;record jsxid=&quot;AO&quot;  jsxtext=&quot;Angola&quot;/&gt;         &lt;record jsxid=&quot;AU&quot;  jsxtext=&quot;Anguilla&quot;/&gt;         &lt;record jsxid=&quot;AX&quot;  jsxtext=&quot;Antarctica&quot;/&gt;         &lt;record jsxid=&quot;AT&quot;  jsxtext=&quot;Antigua and Barbuda&quot;/&gt;         &lt;record jsxid=&quot;AE&quot;  jsxtext=&quot;Argentina&quot;/&gt;         &lt;record jsxid=&quot;AM&quot;  jsxtext=&quot;Armenia&quot;/&gt;         &lt;record jsxid=&quot;AB&quot;  jsxtext=&quot;Aruba&quot;/&gt;         &lt;record jsxid=&quot;AA&quot;  jsxtext=&quot;Australia&quot;/&gt;       &lt;/data&gt;" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending" _editMode="tibco.uxcore.gui.TableListView.NORMAL_MODE"/>
+              <dynamics/>
+              <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
+              <object type="jsx3.gui.Matrix.Column">
+                <variants jsxwidth="165"/>
+                <strings jsxname="mc2" jsxtext="Name" jsxpath="jsxtext"/>
+                <dynamics/>
+              </object>
+              <object type="jsx3.gui.Matrix.Column">
+                <variants/>
+                <strings jsxname="textColumn" jsxwidth="100" jsxtext="Text" jsxpath="jsxtext"/>
+                <dynamics/>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

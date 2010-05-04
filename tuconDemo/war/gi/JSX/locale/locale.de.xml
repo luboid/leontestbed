@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data jsxnamespace="propsbundle">
+  <locale key="de">
+    <record jsxid="format.number" jsxtext="#,##0.###"/>
+    <record jsxid="format.number.percent" jsxtext="#,##0 %"/>
+    <record jsxid="format.datetime" jsxtext="{1} {0}"/>
+    <record jsxid="format.time.long" jsxtext="HH:mm:ss z"/>
+    <record jsxid="format.time.short" jsxtext="HH:mm"/>
+    <record jsxid="number.grouping" jsxtext="."/>
+    <record jsxid="format.date.medium" jsxtext="dd.MM.yyyy"/>
+    <record jsxid="format.date.short" jsxtext="dd.MM.yy"/>
+    <record jsxid="number.decimal" jsxtext=","/>
+    <record jsxid="format.date.full" jsxtext="EEEE, d. MMMM yyyy"/>
+    <record jsxid="format.time.medium" jsxtext="HH:mm:ss"/>
+    <record jsxid="format.date.long" jsxtext="d. MMMM yyyy"/>
+    <record jsxid="number.minus" jsxtext="−"/>
+    <record jsxid="format.number.currency" jsxtext="#,##0.00 ¤"/>
+    <record eval="1" jsxid="date.month.abbrev" jsxtext="['Jan','Feb','Mrz','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez']"/>
+    <record eval="1" jsxid="date.month" jsxtext="['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']"/>
+    <record eval="1" jsxid="date.month.narrow" jsxtext="['J','F','M','A','M','J','J','A','S','O','N','D']"/>
+    <record eval="1" jsxid="date.day.abbrev" jsxtext="['So','Mo','Di','Mi','Do','Fr','Sa']"/>
+    <record eval="1" jsxid="date.day" jsxtext="['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag']"/>
+    <record eval="1" jsxid="date.day.narrow" jsxtext="['S','M','D','M','D','F','S']"/>
+    <record eval="1" jsxid="date.era.long" jsxtext="['v. Chr.','n. Chr.']"/>
+    <record eval="1" jsxid="date.era" jsxtext="['v. Chr.','n. Chr.']"/>
+    <record eval="1" jsxid="time.ampm" jsxtext="['vorm.','nachm.']"/>
+    <record jsxid="string.lang.ar" jsxtext="Arabisch"/>
+    <record jsxid="string.lang.da" jsxtext="Dänisch"/>
+    <record jsxid="string.lang.de" jsxtext="Deutsch"/>
+    <record jsxid="string.lang.el" jsxtext="Griechisch"/>
+    <record jsxid="string.lang.en" jsxtext="Englisch"/>
+    <record jsxid="string.lang.es" jsxtext="Spanisch"/>
+    <record jsxid="string.lang.fi" jsxtext="Finnisch"/>
+    <record jsxid="string.lang.fr" jsxtext="Französisch"/>
+    <record jsxid="string.lang.he" jsxtext="Hebräisch"/>
+    <record jsxid="string.lang.id" jsxtext="Indonesisch"/>
+    <record jsxid="string.lang.it" jsxtext="Italienisch"/>
+    <record jsxid="string.lang.ja" jsxtext="Japanisch"/>
+    <record jsxid="string.lang.ko" jsxtext="Koreanisch"/>
+    <record jsxid="string.lang.nl" jsxtext="Niederländisch"/>
+    <record jsxid="string.lang.nn" jsxtext="Norwegisch Nynorsk"/>
+    <record jsxid="string.lang.pl" jsxtext="Polnisch"/>
+    <record jsxid="string.lang.pt" jsxtext="Portugiesisch"/>
+    <record jsxid="string.lang.ru" jsxtext="Russisch"/>
+    <record jsxid="string.lang.sv" jsxtext="Schwedisch"/>
+    <record jsxid="string.lang.th" jsxtext="Thai"/>
+    <record jsxid="string.lang.tr" jsxtext="Türkisch"/>
+    <record jsxid="string.lang.vi" jsxtext="Vietnamesisch"/>
+    <record jsxid="string.lang.zh" jsxtext="Chinesisch"/>
+    <record jsxid="string.terr.AU" jsxtext="Australien"/>
+    <record jsxid="string.terr.BE" jsxtext="Belgien"/>
+    <record jsxid="string.terr.BR" jsxtext="Brasilien"/>
+    <record jsxid="string.terr.CA" jsxtext="Kanada"/>
+    <record jsxid="string.terr.CN" jsxtext="China"/>
+    <record jsxid="string.terr.DE" jsxtext="Deutschland"/>
+    <record jsxid="string.terr.DK" jsxtext="Dänemark"/>
+    <record jsxid="string.terr.ES" jsxtext="Spanien"/>
+    <record jsxid="string.terr.FI" jsxtext="Finnland"/>
+    <record jsxid="string.terr.FR" jsxtext="Frankreich"/>
+    <record jsxid="string.terr.GB" jsxtext="Vereinigtes Königreich"/>
+    <record jsxid="string.terr.GR" jsxtext="Griechenland"/>
+    <record jsxid="string.terr.HK" jsxtext="Sonderverwaltungszone Hongkong"/>
+    <record jsxid="string.terr.ID" jsxtext="Indonesien"/>
+    <record jsxid="string.terr.IL" jsxtext="Israel"/>
+    <record jsxid="string.terr.IT" jsxtext="Italien"/>
+    <record jsxid="string.terr.JP" jsxtext="Japan"/>
+    <record jsxid="string.terr.KR" jsxtext="Republik Korea"/>
+    <record jsxid="string.terr.MX" jsxtext="Mexiko"/>
+    <record jsxid="string.terr.NL" jsxtext="Niederlande"/>
+    <record jsxid="string.terr.NO" jsxtext="Norwegen"/>
+    <record jsxid="string.terr.NZ" jsxtext="Neuseeland"/>
+    <record jsxid="string.terr.PL" jsxtext="Polen"/>
+    <record jsxid="string.terr.PT" jsxtext="Portugal"/>
+    <record jsxid="string.terr.RU" jsxtext="Russische Föderation"/>
+    <record jsxid="string.terr.SE" jsxtext="Schweden"/>
+    <record jsxid="string.terr.TH" jsxtext="Thailand"/>
+    <record jsxid="string.terr.TR" jsxtext="Türkei"/>
+    <record jsxid="string.terr.TW" jsxtext="Taiwan"/>
+    <record jsxid="string.terr.US" jsxtext="Vereinigte Staaten"/>
+    <record jsxid="string.terr.VN" jsxtext="Vietnam"/>
+    <record jsxid="string.terr.ZA" jsxtext="Südafrika"/>
+    <record jsxid="jsx3.gui.Select.defaultText" jsxtext="- Auswählen -"/>
+    <record jsxid="jsx3.gui.Select.dataUnavailable" jsxtext="- Daten nicht verfügbar -"/>
+    <record jsxid="jsx3.gui.Select.noMatch" jsxtext="- Keine Übereinstimmung gefunden -"/>
+    <record jsxid="jsx3.gui.Menu.noData" jsxtext="- Keine Daten -"/>
+    <record jsxid="jsx3.gui.Matrix.seek" jsxtext="Anzeigen der Reihen {0} bis {1} von {2}"/>
+    <record jsxid="jsx3.gui.BlockX.loading" jsxtext="XSL wird geladen..."/>
+    <record jsxid="jsx3.gui.BlockX.timeout" jsxtext="XSL Zeitüberschreitung"/>
+    <record jsxid="jsx3.gui.BlockX.error" jsxtext=" XSL Fehler"/>
+    <record jsxid="jsx3.xml.Cacheable.loading" jsxtext="{0} wird geladen..."/>
+    <record jsxid="jsx3.xml.Cacheable.timeout" jsxtext="Zeitüberschreitung beim Laden von {0}"/>
+    <record jsxid="jsx3.xml.Cacheable.error" jsxtext="Fehler beim Laden {0}"/>
+    <record jsxid="jsx3.xml.Cacheable.data" jsxtext="Daten"/>
+    <record jsxid="jsx3.gui.Dialog.close" jsxtext="Schließen"/>
+    <record jsxid="jsx3.gui.Dialog.min" jsxtext="Anzeige umschalten"/>
+    <record jsxid="jsx3.gui.Dialog.max" jsxtext="Vergrößert umschalten"/>
+    <record jsxid="jsx3.gui.Dialog.restore" jsxtext="Verkleinern"/>
+    <record eval="1" jsxid="time.24hour" jsxtext="true"/>
+    <record jsxid="format.number.integer" jsxtext="#,##0"/>
+    <record jsxid="time.sep.hour-min" jsxtext=":"/>
+    <record jsxid="time.sep.min-sec" jsxtext=":"/>
+    <record jsxid="format.time.full" jsxtext="HH:mm:ss z"/>
+  </locale>
+<locale key="de_DE">
+    <record jsxid="currency.code" jsxtext="EUR"/>
+  </locale>
+</data>

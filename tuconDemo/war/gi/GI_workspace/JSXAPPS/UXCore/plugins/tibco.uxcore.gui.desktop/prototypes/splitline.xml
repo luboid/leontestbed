@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.6">
+  <name>Splitline</name>
+  <icon/>
+  <description>A UXCore SplitLine object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Splitline">
+    <variants jsxoverflow="1" />
+    <strings jsxname="splitline" />
+  </object>
+</serialization>

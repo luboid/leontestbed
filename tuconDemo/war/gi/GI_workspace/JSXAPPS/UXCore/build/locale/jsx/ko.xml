@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+
+<data>
+
+  <!-- jsx3.gui.Select -->
+  <record jsxid="jsx3.gui.Select.defaultText" jsxtext=" -\uc120\ud0dd-"/>
+  <record jsxid="jsx3.gui.Select.dataUnavailable" jsxtext="-\uac00\uc6a9 \ub370\uc774\ud130 \uc5c6\uc74c-"/>
+  <record jsxid="jsx3.gui.Select.noMatch" jsxtext="-\uc77c\uce58\ub41c \uacb0\uacfc \uc5c6\uc74c-"/>
+
+  <!-- jsx3.gui.Menu -->
+  <record jsxid="jsx3.gui.Menu.noData" jsxtext="- \ub370\uc774\ud130 \uc5c6\uc74c -"/>
+
+  <!-- jsx3.gui.Matrix -->
+  <record jsxid="jsx3.gui.Matrix.seek" jsxtext="{2}\uc758 {0} \ubd80\ud130 {1} \uae4c\uc9c0\uc758 \ud589\uc744 \ubcf4\ub294 \uc911"/>
+
+  <!-- jsx3.gui.BlockX -->
+  <record jsxid="jsx3.gui.BlockX.loading" jsxtext="XSL \ub85c\ub4dc \uc911 \u2026"/>
+  <record jsxid="jsx3.gui.BlockX.timeout" jsxtext="XSL \ud0c0\uc784\uc544\uc6c3"/>
+  <record jsxid="jsx3.gui.BlockX.error" jsxtext="XSL \uc624\ub958"/>
+
+  <!-- jsx3.xml.Cacheable -->
+  <record jsxid="jsx3.xml.Cacheable.loading" jsxtext="{0} \ub85c\ub4dc \uc911 \u2026"/>
+  <record jsxid="jsx3.xml.Cacheable.timeout" jsxtext="{0} \ub85c\ub4dc \uc911 \ud0c0\uc784 \uc544\uc6c3"/>
+  <record jsxid="jsx3.xml.Cacheable.error" jsxtext="{0} \uc624\ub958 \ub85c\ub4dc \uc911"/>
+  <record jsxid="jsx3.xml.Cacheable.data" jsxtext="\ub370\uc774\ud130"/>
+
+  <!-- jsx3.gui.Dialog -->
+  <record jsxid="jsx3.gui.Dialog.close" jsxtext="\ub2eb\uae30"/>
+  <record jsxid="jsx3.gui.Dialog.min" jsxtext=" \ud1a0\uae00 \ud45c\uc2dc"/>
+  <record jsxid="jsx3.gui.Dialog.max" jsxtext="\ud1a0\uae00 \ucd5c\ub300\ud654"/>
+  <record jsxid="jsx3.gui.Dialog.restore" jsxtext="\uc6d0\ub798 \ud06c\uae30\ub85c \ubcf5\uad6c"/>
+
+</data>

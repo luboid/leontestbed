@@ -1,0 +1,10 @@
+<data jsxnamespace="propsbundle" locales="">
+  <locale>
+    <record jsxid="uxcore@desktophooktitle@defaultTitle" jsxtext="Profile"/>
+    <record jsxid="uxcore@poi@defaultTitle" jsxtext="0"/>
+  </locale>
+  <locale key="de">
+    <record jsxid="uxcore@desktophooktitle@defaultTitle" jsxtext="Profile"/>
+    <record jsxid="uxcore@poi@defaultTitle" jsxtext="0"/>
+  </locale>
+</data>

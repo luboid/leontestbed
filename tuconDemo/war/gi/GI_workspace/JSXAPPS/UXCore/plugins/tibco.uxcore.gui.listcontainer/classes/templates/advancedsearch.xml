@@ -1,0 +1,20 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <template recalc="true">
+        <div u:id="advancedSearch" class="advancedSearch" index="{$index}" jsxindex="{$jsxindex}" label="{$label}" title="{$tip}"
+                   style="position:{$position}; width: 251px; height: 26; display:{$display}; top: {$top}; left: {$left}; overflow: hidden; float:left">
+            <div style="width:100%;height:100%">
+                <img u:id="leftDivider" style="position:relative;width:3px; height:26px;margin:0 10 0 10;" src="{divider_img}"/>
+                <span u:protected="true" style="position:relative;top:4px">
+                  <attach select="this._getIterator(this.getChildren());">
+                      <drawspace boxtype="'relativebox'" position="'relative'" top="undefined" left="undefined"/>
+                  </attach>
+                </span>
+                <img u:id="rightDivider" style="position:relative;width:3px; height:26px;margin:0 10 0 0;" src="{divider_img}"/>
+            </div>
+        </div>
+    </template>
+    <model>
+        <var id="divider_img" triggers="viewChange">return this.getDynamicURL("@uxcore10@actionbar@divider");</var>
+        <var id="divider_img_bg" triggers="viewChange">return "url(" + this.getDynamicURL("@uxcore10@actionbar@divider") + ") no-repeat 0 0";</var>
+    </model>
+</transform>

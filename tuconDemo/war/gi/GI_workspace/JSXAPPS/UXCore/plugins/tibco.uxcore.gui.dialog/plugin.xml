@@ -1,0 +1,21 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.gui.dialog"
+        name="UX Core Dialog"
+        version="0.1">
+
+    <requires>
+      <plugin id="jsx3.gui.Dialog"/>
+      <plugin id="jsx3.gui.ImageButton"/>
+      <plugin id="tibco.uxcore.common"/>
+    </requires>
+
+    <resources>
+      <jss id="dialogJSS" path="jss/dialogJss.xml"/>
+      <script id="js" path="classes/Dialog.js" eval="true">
+        <prereq id="dialogJSS"/>
+      </script>
+    </resources>
+
+</plugin>

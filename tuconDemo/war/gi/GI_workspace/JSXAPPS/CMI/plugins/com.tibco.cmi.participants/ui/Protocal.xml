@@ -1,0 +1,46 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Block - 100%</name>
+  <icon>images/prototypes/block.gif</icon>
+  <description>Simple block, relatively positioned with overflow=scroll.</description>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+    <object type="tibco.uxcore.gui.ListContainer">
+      <variants jsxoverflow="1" timer="723" _masked="false" jsxhideactionbar="0" jsxhideactionbg="0" jsxvisibility="true"/>
+      <strings jsxname="listContainer" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxview="matrix1"/>
+      <events jsxaction=""/>
+      <object type="tibco.uxcore.gui.TableListView">
+        <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0" _historyData="[]"/>
+        <strings jsxname="matrix1" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending" _editMode="tibco.uxcore.gui.TableListView.NORMAL_MODE"/>
+        <dynamics/>
+        <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
+        <object type="jsx3.gui.Matrix.Column">
+          <variants jsxwidth="40"/>
+          <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxvaluetemplate="@empty"/>
+          <dynamics jsxborder="@uxcore10@MatrixC Border" jsxbg="@uxcore10@MatrixC BackGround" jsxbgcolor="@uxcore10@MatrixC BGColor" jsxfontname="@uxcore10@MatrixC Font Name" jsxfontsize="@uxcore10@MatrixC Font Size" jsxfontweight="@uxcore10@MatrixC Font Weight" jsxcolor="@uxcore10@MatrixC Color" jsxpadding="@uxcore10@MatrixC Padding" jsxcellfontname="@uxcore10@MatrixCell Font Name" jsxcellfontsize="@uxcore10@MatrixCell Font Size" jsxcellfontweight="@uxcore10@MatrixCell Font Weight" jsxcellcolor="@uxcore10@MatrixCell Color" jsxcellbgcolor="@uxcore10@MatrixCell BGColor" jsxcellpadding="@uxcore10@MatrixCell Padding" jsxcellborder="@uxcore10@MatrixCell Border"/>
+          <object type="jsx3.gui.CheckBox">
+            <variants jsxchecked="0" jsxenabled="1" jsxdefaultchecked="0"/>
+            <strings jsxname="checkboxMask" jsxtext=""/>
+          </object>
+        </object>
+        <object type="jsx3.gui.Matrix.Column">
+          <variants jsxwidth="40"/>
+          <strings jsxname="colprotocal" jsxtext="Protocal Name" jsxpath="protocal"/>
+          <dynamics/>
+        </object>
+      </object>
+      <object type="tibco.uxcore.gui.ActionButton">
+        <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="actionButtonDeploy" jsxactionid="Deploy" jsxtext="Enable"/>
+        <dynamics jsxicon="@uxcore10@Btn Image Deploy"/>
+        <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+      </object>
+      <object type="tibco.uxcore.gui.ActionButton">
+        <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="actionButtonUndeploy" jsxactionid="Undeploy" jsxtext="Disnable"/>
+        <dynamics jsxicon="@uxcore10@Btn Image Undeploy"/>
+        <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+      </object>
+    </object>
+  </object>
+</serialization>

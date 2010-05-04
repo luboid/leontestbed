@@ -1,0 +1,107 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Accumulator View</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/prototype/accumulator.gif</icon>
+  <description>A UX Core Accumulator View, for use in List Cotnainers</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+    <object type="tibco.uxcore.gui.Accumulator">
+      <variants jsxoverflow="1" _editMode="1" _isDirty="false"/>
+      <strings jsxname="Accumulator" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" matrixRenderModel="deep"/>
+      <object type="jsx3.gui.LayoutGrid">
+        <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+        <strings jsxname="layout ( | )" jsxcols="*,38,*" jsxwidth="100%" jsxheight="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2" jsxleft="0" jsxtop="0"/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxdisplay=""/>
+          <object type="jsx3.gui.LayoutGrid">
+            <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+            <strings jsxname="layout (--)" jsxrows="32,*" jsxwidth="100%" jsxheight="100%"/>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="1"/>
+              <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="10,0,0,0"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxfontsize="12"/>
+                <strings jsxname="leftTitle" jsxtext="Left Title" jsxpadding="0,0,5,0" jsxfontweight="bold" jsxcolor="#000000" jsxmargin="0,0,0,5"/>
+                <dynamics jsxfontname="@uxcore10@txtArea Font Name"/>
+              </object>
+            </object>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="2" jsxrelativeposition="1" _masked="false"/>
+              <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxdisplay="" jsxbgcolor="#FFFFFF"/>
+              <dynamics jsxborder="@uxcore10@Matrix Border"/>
+              <object type="tibco.uxcore.gui.Matrix">
+                <variants jsxpagingmodel="0" jsxselectionmodel="2" jsxjsxxmlasync="1" jsxheaderheight="0" jsxdrag="1" jsxdrop="1" jsxsloaddefaultproperties="0"/>
+                <strings jsxname="leftMatrix" jsxsortpath="jsxtext" jsxsorttype="text" jsxsortdirection="ascending" jsxrenderingmodel="deep" setCanSpy="true"/>
+                <dynamics jsxselectionbg="@uxcore10@Matrix Selection BG"/>
+                <events jsxbeforeedit="" jsxafteredit="" jsxselect="" jsxdrag="" jsxbeforedrop="" jsxdrop="false" jsxadopt="this.getAncestorOfType(&quot;tibco.uxcore.gui.Accumulator&quot;).onAdopt(this,strRECORDID,objTARGET);" jsxspy="this.spyRecord(strRECORDID, objCOLUMN)"/>
+                <object type="jsx3.gui.Matrix.Column">
+                  <variants/>
+                  <strings jsxname="mc1" jsxwidth="*" jsxtext="Name" jsxpath="jsxtext" jsxcellpadding="3 7 0 7"/>
+                  <dynamics/>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+        <object type="jsx3.gui.LayoutGrid">
+          <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+          <strings jsxname="layout (--)" jsxrows="*,66,*" jsxwidth="100%" jsxheight="100%" jsxdisplay=""/>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="1"/>
+            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+          </object>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="1"/>
+            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxtextalign="center"/>
+            <object type="jsx3.gui.ImageButton">
+              <variants jsxwidth="18" jsxheight="18" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+              <strings jsxname="btnMoveRight" jsxtext="[button text]" jsximage="jsxplugin://tibco.uxcore.gui.listcontainer/images/add_btn.gif" jsxoverimage="" jsxdownimage="" jsxonimage="" jsxdisabledimage="" jsxmargin="10"/>
+              <events jsxexecute=""/>
+            </object>
+            <object type="jsx3.gui.ImageButton">
+              <variants jsxwidth="18" jsxheight="18" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+              <strings jsxname="btnMoveLeft" jsxtext="[button text]" jsximage="jsxplugin://tibco.uxcore.gui.listcontainer/images/remove_btn.gif" jsxoverimage="" jsxdownimage="" jsxonimage="" jsxdisabledimage=""/>
+              <events jsxexecute=""/>
+            </object>
+          </object>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="1"/>
+            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+          </object>
+        </object>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2" jsxleft="0" jsxtop="0"/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxdisplay=""/>
+          <object type="jsx3.gui.LayoutGrid">
+            <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+            <strings jsxname="layout (--)" jsxrows="32,*" jsxwidth="100%" jsxheight="100%"/>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="1"/>
+              <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxpadding="10,0,0,0"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxfontsize="12"/>
+                <strings jsxname="rightTitle" jsxtext="Right Title" jsxpadding="0,0,5,0" jsxfontweight="bold" jsxmargin="0,0,0,5" jsxcolor="#000000"/>
+                <dynamics jsxfontname="@uxcore10@txtArea Font Name"/>
+              </object>
+            </object>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="2" jsxleft="0" jsxtop="0" _masked="false"/>
+              <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxdisplay="" jsxbgcolor="#FFFFFF"/>
+              <dynamics jsxborder="@uxcore10@Matrix Border"/>
+              <object type="tibco.uxcore.gui.Matrix">
+                <variants jsxpagingmodel="0" jsxselectionmodel="2" jsxjsxxmlasync="1" jsxheaderheight="0" jsxdrag="1" jsxdrop="1" jsxautorow="0" jsxsloaddefaultproperties="0"/>
+                <strings jsxname="rigthMatrix" jsxrenderingmodel="deep" jsxsortpath="jsxtext" setCanSpy="true"/>
+                <dynamics jsxselectionbg="@uxcore10@Matrix Selection BG"/>
+                <events jsxbeforeedit="" jsxafteredit="" jsxselect="" jsxadopt="this.getAncestorOfType(&quot;tibco.uxcore.gui.Accumulator&quot;).onAdopt(this,strRECORDID,objTARGET);" jsxdrop="false" jsxspy="this.spyRecord(strRECORDID, objCOLUMN)"/>
+                <object type="jsx3.gui.Matrix.Column">
+                  <variants/>
+                  <strings jsxname="mc1" jsxwidth="*" jsxtext="Name" jsxpath="jsxtext" jsxcellpadding="3 7 0 7"/>
+                  <dynamics/>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+</serialization>

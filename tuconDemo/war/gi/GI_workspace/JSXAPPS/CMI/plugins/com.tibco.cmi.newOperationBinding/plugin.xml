@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<plugin xmlns="http://www.tibco.com/gi/amp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd" id="com.tibco.cmi.newOperationBinding" name="Business Connect - NewOperationBinding" version="0.1">
+
+  <requires>
+      <plugin id="tibco.uxcore.gui.masterdetail"/>
+      <plugin id="tibco.uxcore.gui.matrix"/>
+		<plugin id="tibco.uxcore.gui.form"/>
+    <plugin id="tibco.uxcore.gui.section"/> 
+  </requires>
+  
+  <resources>
+		<script id="NewOperationBinding_js" path="NewOperationBinding.js" eval="true"/>
+    <xml id="NewOperationBinding_xml" path="ui/NewOperationBinding.xml">
+			<prereq id="NewOperationBinding_js"/>
+		</xml>
+  </resources>
+	
+	<extension point="com.tibco.cmi.editProtocolBinding.newOperation">
+      <newOperation uiId="NewOperationBinding_xml"/>
+  </extension>
+</plugin>

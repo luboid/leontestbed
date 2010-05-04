@@ -1,0 +1,8 @@
+<data jsxid='jsxroot'>
+  <record jsxid='1' name='aaa' isActive='true' type='host' desc='jalsgjlasdgjl' />
+	<record jsxid='2' name='bbb' isActive='false' type='partner' desc='jalsgjlasdgjl'/>
+	<record jsxid='3' name='ccc' isActive='false' type='host' desc='jalsgjlasdgjl'/>
+	<record jsxid='4' name='ddd' isActive='true' type='host' desc='jalsgjlasdgjl'/>
+	<record jsxid='5' name='eee' isActive='false' type='partner' desc='jalsgjlasdgjl'/>
+	<record jsxid='6' name='fff' isActive='true' type='host' desc='jalsgjlasdgjl'/>
+</data>

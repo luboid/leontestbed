@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+<data jsxid="jsxroot">
+
+    <record jsxid="object" group="1" jsxtext="Object" jsxopen="1" jsxunselectable="1">
+        <record jsxid="jsxinstanceof" jsxtext="Object Type" getter="getClass"
+                jsxtip="The JSX foundation class that this object is an instance of." docnoprop="true" eval="0"
+                uneditable="1"/>
+        <record jsxid="_jsxid" jsxtext="ID" jsxtip="The unique, system-assigned ID for this object." docgetter="getId"
+                docnoprop="true" eval="0" uneditable="1"/>
+        <record jsxid="jsxname" jsxtext="Name" jsxtip="Sets the name assigned by the developer to identify this object."
+                jsxexecute="objJSX.setName(vntValue);" domchanged="true" docgetter="getName" docsetter="setName"
+                eval="0" disallow="[\[\]\u0022\u003C\u003E\u0027\u0026\\]" jsxmask="jsxtext"/>
+    </record>
+
+    <!--record jsxid="jsx3block" group="1" jsxtext="Block">
+        <record jsxid="jsxtext" jsxtext="Text"
+                eval="0"
+                jsxtip="Sets the text content of this object."
+                docgetter="getText" docsetter="setText"
+                docdefault="Empty"
+                jsxexecute="objJSX.setText(vntValue);"
+                jsxmask="jsxtext"/>
+    </record-->
+
+    <record group="1" jsxid="uxcoreDesktopLinkbutton" jsxtext="LinkButton">
+        <record jsxid="hookname" jsxtext="Text"
+                jsxtip="Sets the text content of this object"
+                docgetter="getAPPhook" docsetter="setAPPhook"
+                eval="0"
+                jsxexecute="objJSX.setAPPhook(vntValue);"
+                jsxmask="jsxtext"/>
+    </record>
+
+    <record jsxid="actiontrigger" group="1" jsxtext="Action Trigger" jsxopen="1" jsxunselectable="1">
+        <record jsxid="queueing" jsxtext="Queueing Model" eval="1" jsxtip="Sets the queueing model for this IActionTrigger" docgetter="getQueueingModel" docsetter="setQueueingModel" docdefault="Standard Queueing (&lt;code&gt;tibco.uxcore.gui.IActionTrigger.STANDARD_QUEUEING&lt;/code&gt;)" jsxmask="jsxselect">
+          <enum jsxid="tibco.uxcore.gui.IActionTrigger.STANDARD_QUEUEING" jsxtext="Standard Queueing" jsxvalue="0"/>
+          <enum jsxid="tibco.uxcore.gui.IActionTrigger.FORCE_QUEUEING" jsxtext="Always Queued" jsxvalue="1"/>
+          <enum jsxid="tibco.uxcore.gui.IActionTrigger.FORCE_NO_QUEUEING" jsxtext="No Queueing" jsxvalue="2"/>
+        </record>
+    </record>
+
+
+</data>

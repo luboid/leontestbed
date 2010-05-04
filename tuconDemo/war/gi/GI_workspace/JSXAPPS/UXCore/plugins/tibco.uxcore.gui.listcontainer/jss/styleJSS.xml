@@ -1,0 +1,142 @@
+<data jsxid="jsxroot" jsxns="urn:tibco.com/v3.0/dynamicproperties/1">
+
+  <!-- paginator -->
+  <record jsxid="@uxcore10@pagenation@buttonSytle" jsxtext="float:right;cursor:pointer;margin:0 0 0 0"/>
+  <record jsxid="@uxcore10@paginator@fristImg" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/paginator/page_to_start.jpg" type="jsximage"/>
+  <record jsxid="@uxcore10@paginator@lastImg" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/paginator/page_to_end.jpg" type="jsximage"/>
+  <record jsxid="@uxcore10@paginator@nextImg" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/paginator/page_forward.jpg" type="jsximage"/>
+  <record jsxid="@uxcore10@paginator@backImg" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/paginator/page_back.jpg" type="jsximage"/>
+  <record jsxid="@uxcore10@paginator@fristImgDown" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/paginator/page_to_startDown.jpg" type="jsximage"/>
+  <record jsxid="@uxcore10@paginator@lastImgDown" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/paginator/page_to_endDown.jpg" type="jsximage"/>
+  <record jsxid="@uxcore10@paginator@nextImgDown" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/paginator/page_forwardDown.jpg" type="jsximage"/>
+  <record jsxid="@uxcore10@paginator@backImgDown" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/paginator/page_backDown.jpg" type="jsximage"/>
+
+  <!-- ListContainer -->
+  <record jsxid="@uxcore10@listContainer@labelStyle" type="jsxstyleoverride" jsxtext="font:11px Arial;color:#000000;font-weight:bold;margin:2px 5px 0 0;height:16px;"/>
+  <record jsxid="@uxcore10@listContainer@filedStyle" type="jsxstyleoverride" jsxtext="font:11px Arial;color:#000000;margin:0px 5px 0 0;"/>
+  <record jsxid="@uxcore10@listContainer@selectBorder" type="jsxborder" jsxtext="1px solid #9F9F9F;1px solid #C7C7C7;1px solid #C7C7C7;1px solid #9F9F9F"/>
+  <record jsxid="@uxcore10@listContainer@selectIcon" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/other/dropDownArrow.gif"/>
+
+  <record jsxid="@uxcore10@filterSearch@labelText" type="jsxtext" jsxtext="View"/>
+  <record jsxid="@uxcore10@filterSearch@overflow" type="jsxoverflow" jsxtext="2"/>
+  <record jsxid="@uxcore10@filterSearch@selectWidth" type="jsxwidth" jsxtext="120"/>
+  <record jsxid="@uxcore10@filterSearch@selectHeight" type="jsxheight" jsxtext="18"/>
+  <record jsxid="@uxcore10@simpleSearch@selectWidth" type="jsxwidth" jsxtext="120"/>
+  <record jsxid="@uxcore10@simpleSearch@selectHeight" type="jsxheight" jsxtext="18"/>
+  <record jsxid="@uxcore10@simpleSearch@textboxWidth" type="jsxwidth" jsxtext="120"/>
+  <record jsxid="@uxcore10@simpleSearch@textboxHeight" type="jsxheight" jsxtext="18"/>
+  <record jsxid="@uxcore10@simpleSearch@margin" type="jsxmargin" jsxtext="jsx3.CLASS_LOADER.IE ? '3 0 0 0' : '4 0 0 0'" eval="1"/>
+
+  <record jsxid="@uxcore10@listContainer@filedMargin" type="jsxmargin" jsxtext="0 5 0 0"/>
+  <record jsxid="@uxcore10@listContainer@lastFiledMargin" type="jsxmargin" jsxtext="0 10 0 0"/>
+  <record jsxid="@uxcore10@listContainer@ssfiledMargin" type="jsxmargin" jsxtext="jsx3.CLASS_LOADER.IE ? '1 5 0 0' : '0 5 0 0'" eval="1"/>
+  <record jsxid="@uxcore10@listContainer@sslastFiledMargin" type="jsxmargin" jsxtext="jsx3.CLASS_LOADER.IE ? '1 10 0 0' : '0 10 0 0'" eval="1"/>
+  <record jsxid="@uxcore10@listContainer@labelMargin" type="jsxmargin" jsxtext="2 5 0 0"/>
+  <record jsxid="@uxcore10@listContainer@labelFontcolor" type="jsxcolor" jsxtext="#000000"/>
+  <record jsxid="@uxcore10@listContainer@labelFontname" type="jsxfontname" jsxtext="Arial"/>
+  <record jsxid="@uxcore10@listContainer@labelFontWeight" type="jsxfontweight" jsxtext="bold"/>
+  <record jsxid="@uxcore10@listContainer@labelFontsize" type="jsxfontsize" jsxtext="11"/>
+
+  <record jsxid="@uxcore10@listContainer@searchButton" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/button/search_button.gif"/>
+  <record jsxid="@uxcore10@listContainer@clearButton" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/button/clearButton.gif"/>
+  <record jsxid="@uxcore10@listContainer@searchButtonDown" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/button/searchButtonDown.gif"/>
+  <record jsxid="@uxcore10@listContainer@clearButtonDown" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/button/clearButtonDown.gif"/>
+
+  <record jsxid="@uxcore10@listContainer@saveButton" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/button/SaveButton.gif"/>
+  <record jsxid="@uxcore10@listContainer@saveButtonDown" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/button/SaveButtonDown.gif"/>
+  <record jsxid="@uxcore10@listContainer@saveAsButton" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/button/AsButton.gif"/>
+  <record jsxid="@uxcore10@listContainer@saveAsButtonDown" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/button/AsButtonDown.gif"/>
+
+  <record jsxid="@uxcore10@listContainer@filterBarHeight" type="jsxheight" jsxtext="23"/>
+  <record jsxid="@uxcore10@listContainer@actionBarHeight" type="jsxheight" jsxtext="28"/>
+  <record jsxid="@uxcore10@listContainer@paginatorBarHeight" type="jsxheight" jsxtext="23"/>
+
+  <record jsxid="@uxcore10@listBuilder@addButton" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/views/add.gif"/>
+
+  <record jsxid="@uxcore10@listview@border0" jsxtext="0px solid #737373;1px solid #737373;1px solid #737373;1px solid #737373" type="jsxbodyborder"/>
+  <record jsxid="@uxcore10@listview@border1" jsxtext="1px solid #555555;" type="jsxbodyborder"/>
+  <record jsxid="@uxcore10@actionbar@background" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/actionbar/actionBar_background.jpg"/>
+  <record jsxid="@uxcore10@actionbar@divider" type="jsximage" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/actionbar/actionBarDivider.jpg"/>
+  <record jsxid="@uxcore10@actionbar@border" type="jsxborder" jsxtext="1px solid #9C9C9C"/>
+
+  <record jsxid="@uxcore10@advsearch@contentBG" type="jsxbg" jsxtext="&quot;background-image:url(&quot;+ jsx3.resolveURI('jsxplugin://tibco.uxcore.gui.listcontainer/images/search/contentBackground.gif')+&quot;);background-repeat:repeat;&quot;" eval="1"/>
+  <record jsxid="@uxcore10@advsearch@removeHandler" type="jsxbg" jsxtext="&quot;url(&quot;+ jsx3.resolveURI('jsxplugin://tibco.uxcore.gui.listcontainer/images/search/removeHandle.gif')+&quot;) no-repeat; 0 0&quot;" eval="1"/>
+  <record jsxid="@uxcore10@AdvSearchButton Width" jsxtext="150" type="jsxwidth"/>
+  <record jsxid="@uxcore10@AdvSearchButton Height" jsxtext="23" type="jsxheight"/>
+  <record jsxid="@uxcore10@AdvSearchButton Margin" jsxtext="0 10 5 10" type="jsxmargin"/>
+  <record jsxid="@uxcore10@AdvSearchButton Padding" jsxtext="5 10 5 10" type="jsxpadding"/>
+  <record jsxid="@uxcore10@AdvSearchButton Affordance" jsxtext="10 10 10 10" type="affordance"/>
+  <record jsxid="@uxcore10@AdvSearchButton FocusStyle" jsxtext="0" type="focusstyle"/>
+  <record jsxid="@uxcore10@AdvSearchButton Image" type="jsxicon" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/search/rowBackground.gif"/>
+
+  <!--list container button -->
+  <!-- added by Amour begin, Nov 2008 -->
+  <record jsxid="@uxcore10@Btn Focused Border" jsxtext="1px solid #0000ff;" type="jsxfocusborder"/>
+  <record jsxid="@uxcore10@Btn Image New" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/add.gif" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image New Child" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/add_child.png" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Move Down" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/moveDown.png" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Move Left" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/moveLeft.png" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Move Right" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/moveRight.png" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Move Up" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/moveUp.png" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Delete" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/delete.gif" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Install" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/installed.gif" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Uninstall" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/uninstall.gif" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Undeploy" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/undeploy.gif" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image ClearFilter" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/clear_filter.gif" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Deploy" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/deploy.gif" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Discover" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/discover.gif" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Reprovision" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/reprovision.gif" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Save" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/save.gif" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Running" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/started_running.gif" type="jsxicon"/>
+  <record jsxid="@uxcore10@Btn Image Stopped" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/stopped.gif" type="jsxicon"/>
+
+  <record jsxid="@uxcore10@Btn Image Help" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/help.gif" type="jsxicon"/>
+
+  <record jsxid="@uxcore10@IconBtn Width" jsxtext="16" type="jsxwidth"/>
+  <record jsxid="@uxcore10@IconBtn Height" jsxtext="16" type="jsxheight"/>
+  <record jsxid="@uxcore10@IconBtn Margin" jsxtext="5 10 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@IconBtn Affordance" jsxtext="0 0 0 0" type="affordance"/>
+  <record jsxid="@uxcore10@IconBtn FocusStyle" jsxtext="0" type="focusstyle"/>
+
+  <record jsxid="@uxcore10@ActionBtn Padding" jsxtext="jsx3.CLASS_LOADER.IE ? '3 0 0 2' : '2 0 0 2'" type="jsxpadding" eval="1"/>
+  <record jsxid="@uxcore10@ActionMenuBtn Padding" jsxtext="jsx3.CLASS_LOADER.IE ? '3 2 0 2' : '2 2 0 2'" type="jsxpadding" eval="1"/>
+  <record jsxid="@uxcore10@ActionBtn Margin" jsxtext="jsx3.CLASS_LOADER.IE ? '0 1 0 0' : '1 1 0 0'" type="jsxmargin" eval="1"/>
+  <record jsxid="@uxcore10@ActionBtn OverImg" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/button/bgover.jpg" type="jsxoverimage"/>
+  <record jsxid="@uxcore10@ActionBtn DownImg" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/button/bgdown.jpg" type="jsxdownimage"/>
+
+  <record jsxid="@uxcore10@HideShowButton Width" jsxtext="14" type="jsxwidth"/>
+  <record jsxid="@uxcore10@HideShowButton Height" jsxtext="14" type="jsxheight"/>
+  <record jsxid="@uxcore10@HideShowButton Margin" jsxtext="6 10 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@HideShowButton Image OFF" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/collapsePane.gif" type="jsximage"/>
+  <record jsxid="@uxcore10@HideShowButton Image ON" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/expandPane.gif" type="jsximage"/>
+
+  <record jsxid="@uxcore10@ColumnPickerButton Width" jsxtext="20" type="jsxwidth"/>
+  <record jsxid="@uxcore10@ColumnPickerButton Height" jsxtext="18" type="jsxheight"/>
+  <record jsxid="@uxcore10@ColumnPickerButton Margin" jsxtext="4 10 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@ColumnPickerButton Image OFF" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/collapsePane.gif" type="jsximage"/>
+  <record jsxid="@uxcore10@ColumnPickerButton Image ON" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/expandPane.gif" type="jsximage"/>
+  <record jsxid="@uxcore10@ColumnPickerButton Image OFF" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/columnpicker/columnPickerButton.png" type="jsximage"/>
+  <record jsxid="@uxcore10@ColumnPickerButton Image ON" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/columnpicker/columnPickerButtonDown.png" type="jsximage"/>
+
+  <record jsxid="@uxcore10@ColumnPicker Icon ValueTemplate" jsxtext="&quot;&lt;xsl:template xmlns:xsl=\&quot;http://www.w3.org/1999/XSL/Transform\&quot;&gt;  &lt;xsl:if test=\&quot;@selected='true'\&quot;&gt;&lt;img src=\&quot;&quot;+jsx3.resolveURI('jsxplugin://tibco.uxcore.gui.listcontainer/images/columnpicker/selected.gif')+&quot;\&quot;/&gt;&lt;/xsl:if&gt; &lt;/xsl:template&gt;&quot;" type="jsxvaluetemplate" eval="1"/>
+  <record jsxid="@uxcore10@ColumnPicker Text ValueTemplate" jsxtext="&lt;xsl:template xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt; &lt;div style=&quot;width:100%;height:100%&quot; onclick=&quot;jsx3.html.getJSXParent(this).getAncestorOfName('blkColumnPicker').onSelectList('{@jsxid}');&quot;&gt;&lt;xsl:value-of select=&quot;{0}&quot;/&gt;&lt;/div&gt; &lt;/xsl:template&gt;" type="jsxvaluetemplate"/>
+
+  <record jsxid="@uxcore10@RefreshButton Image" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/refresh.gif" type="jsximage"/>
+
+  <record jsxid="@uxcore10@ToolBtn Margin" jsxtext="0 10 0 0" type="jsxmargin"/>
+  <record jsxid="@uxcore10@ToolBtn Affordance" jsxtext="3 5 3 5" type="affordance"/>
+  <record jsxid="@uxcore10@ToolBtn Padding" jsxtext="2 4 2 4" type="jsxpadding"/>
+
+
+  <record jsxid="@uxcore10@Btn View Tree" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/views/tree_bg.gif" type="jsximage"/>
+  <record jsxid="@uxcore10@Btn View Tree Down" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/views/tree_bgdown.gif" type="jsxdownimage"/>
+  <record jsxid="@uxcore10@Btn View Flat" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/views/list_bg.gif" type="jsximage"/>
+  <record jsxid="@uxcore10@Btn View Flat Down" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/views/list_bgdown.gif" type="jsxdownimage"/>
+  <record jsxid="@uxcore10@Btn View Detail" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/views/md_bg.gif" type="jsximage"/>
+  <record jsxid="@uxcore10@Btn View Detail Down" jsxtext="jsxplugin://tibco.uxcore.gui.listcontainer/images/views/md_bgdown.gif" type="jsxdownimage"/>
+
+
+  <record jsxid="@uxcore10@View Container Border" jsxtext="0;0;0;1px solid #4B4B4B;" type="jsxborder"/>
+  <!-- added by Amour end -->
+
+</data>

@@ -1,0 +1,51 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>Dialog  With Save Cancel Button</name>
+  <icon>jsxplugin://tibco.uxcore.gui.dialog/images/prototype/dialog.gif</icon>
+  <description>Dialog box.  (Set Modal property for a modal dialog with Save and Cancel buttons).</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Dialog">
+	<variants jsxwidth="500" jsxheight="350" jsxzindex="5000" jsxwindowstate="1" jsxoverflow="2"/>
+    <strings jsxname="dialog"/>
+    <object type="jsx3.gui.WindowBar">
+      <variants jsxheight="30"/>
+      <strings jsxname="windowBar" jsxtext="Dialog"/>
+       <object type="jsx3.gui.ImageButton">
+        <strings jsxname="btnClose" jsxdlgbtntype="CLOSE"/>
+      </object>
+       <object type="jsx3.gui.ImageButton">
+        <strings jsxname="btnMaximize" jsxdlgbtntype="MAX"/>
+      </object>
+      <object type="jsx3.gui.ImageButton">
+        <strings jsxname="btnMinimize" jsxdlgbtntype="MIN"/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants/>
+      <strings jsxname="content" jsxwidth="100%" jsxheight="100%"/>
+      <dynamics/>
+      <object type="jsx3.gui.LayoutGrid">
+        <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+        <strings jsxname="layout (--)" jsxrows="*,25" jsxwidth="100%" jsxheight="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2"/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+        </object>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="1"/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+          <object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0" queueing="2"/>
+            <strings jsxname="button" jsxtext="Save" jsxmargin="2" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxpadding="2 4 2 4" affordance="3 5 3 5"/>
+            <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+          </object>
+          <object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0" queueing="2"/>
+            <strings jsxname="button" jsxtext="Cancel" jsxmargin="2" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxpadding="2 4 2 4" affordance="3 5 3 5"/>
+            <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

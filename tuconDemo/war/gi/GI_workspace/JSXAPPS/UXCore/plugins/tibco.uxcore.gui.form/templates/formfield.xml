@@ -1,0 +1,52 @@
+<transform xmlns="http://gi.tibco.com/transform/" xmlns:u="http://gi.tibco.com/transform/user" version="1.0">
+    <template recalc="true" onresize="this.onResize()" onbeforeresizechild="return this.onBeforeResizeChild(arguments[0])">
+        <div class="formfield" jsxindex="{$jsxindex}" label="{$label}" title="{$tip}"
+                   style="position: relative; display:{$display}; float: left; overflow: hidden;" tabindex="{donotsetme3|-1}">
+            <width>this.getDrawspace().width</width>
+            <margin>this.getDrawspace().margin</margin>
+            <if test="MODE == 'paintchild'">
+            <var name="jsxdrawspace">{}</var>
+            </if>
+            <var name="maskdisplay">this.getEnabled() ? 'none' : ''</var>
+            <var name="maskwidth">this.getDrawspace().width</var>
+            <var name="maskheight">(jsx3.CLASS_LOADER.getType().indexOf("ie") >= 0) ? '1000' : '100%'</var>
+            <var name="filter">(jsx3.CLASS_LOADER.getType().indexOf("ie") >= 0) ? 'alpha(opacity=70)' : null</var>
+            <var name="opacity">(jsx3.CLASS_LOADER.getType().indexOf("ie") >= 0) ? '' : '0.7'</var>
+            <var name="fieldvalue">this.getArgs().fieldvalue</var>
+            <var name="formfieldwidth">this.getDrawspace().width</var>
+            <var name="infoImage">jsx3.resolveURI('jsxplugin://tibco.uxcore.common/images/matrix/info.gif');</var>
+            <var name="viewFieldDisplay" triggers="editMode">this.isEditMode() ? 'none' : ''</var>
+            <var name="editFieldDisplay" triggers="editMode">this.isEditMode() ? '' : 'none'</var>
+            <var name="title" triggers="fieldtitletext">this.fieldtitletext</var>
+            <var name="fielderrortext">this.getArgs().fielderrortext</var>
+            <var name="fieldcolor">(this.getArgs().fielderrortext != null) ? tibco.uxcore.getDynamicProperty('uxcore@formrow@invalidBGColor') : tibco.uxcore.getDynamicProperty('uxcore@formrow@defaultBGColor') </var>
+            <var name="showtitle" triggers="jsxtitledisplay">(this.fieldtitletext &amp;&amp; (this.jsxtitledisplay != 'none')) ? '' : 'none'</var>
+            <var name="showinstructions" triggers="fieldinstructionstext">((this.isEditMode() || this.alwaysShowInstructions) &amp;&amp; (this.fieldinstructionstext != null)) ? '' : 'none'</var>
+            <var name="showexample" triggers="fieldexampletext">(this.isEditMode() &amp;&amp; (this.fieldexampletext != null)) ? '' : 'none'</var>
+            <var name="showerror">(this.isEditMode() &amp;&amp; (this.getArgs().fielderrortext != null)) ? '' : 'none'</var>
+            <var name="bordercolor" triggers="focusIndex">(this.getParent().getArgs().focusIndex === this.getChildIndex()) ? tibco.uxcore.getDynamicProperty('uxcore@formrow@activeBorder') : tibco.uxcore.getDynamicProperty('uxcore@formrow@inactiveBorder')</var>
+            <var name="optionalStr" triggers="isrequired">this.getOptionalString()</var>
+            <var name="fieldValueEscaped">this.getValueEscaped()</var>
+            <var name="fieldvalue2">this.getValueOrEmpty()</var>
+            <var name="fieldtextcolor">this._getTextColor()</var>
+            <var name="tabindex">this.getIndex()</var>
+            <var name="color">'#2D2D2D'</var>
+            <!--<var name="test">jsx3.log('formfieldwidth: ' + formfieldwidth)</var>-->
+            <div u:id="displaymask" u:protected="true" style="position: absolute; filter: {filter}; opacity:{opacity}; display:{maskdisplay}; z-index:4999; width:{maskwidth}; height:{maskheight}; background-color: white;"><text></text></div>
+            <div u:id="fieldtitle" u:protected="true" style="border: 0px none; margin: 0px; padding: 0px; position: relative; width: 100%; font-size: 11px; color: #000000; font-family: Arial; font-weight: bold; display: {showtitle};" tabindex="-1"><span u:id="titlelabel" u:protected="true" tabindex="-1"><text>{title}</text></span><span u:id="optionalLabel" style="font-weight: normal; color: #373737;" tabindex="-1"><text>{optionalStr}</text></span></div>
+            <div u:protected="true" style="border: 0px none; margin: 5px 0px 0px 0px; padding: 0px; font-size: 0px; position: relative; width: 100%; display: {showinstructions};" tabindex="-1"><table u:protected="true" width="100%" cellspacing="0" cellpadding="0" style="border: 0px none; margin: 0px 0px 0px 0px; padding: 0px; font-size: 0px;" tabindex="-1"><tbody u:protected="true" style="border: 0px none; margin: 0px 0px 0px 0px; padding: 0px; font-size: 0px;">
+                <tr u:protected="true" style="border: 0px none; margin: 0px 0px 0px 0px; padding: 0px; font-size: 0px;">
+                    <td u:protected="true" valign="top" width="16" height="16" style="border: 0px none; margin: 0px 0px 0px 0px; padding: 0px; font-size: 0px;"><img u:protected="true" width="16" height="16" src="{infoImage}" style="border: 0px none; margin: 0px 0px 0px 0px; padding: 0px; font-size: 0px;" tabindex="-1"/></td>
+                    <td u:protected="true" valign="top" height="16" style="border: 0px none; margin: 0px 0px 0px 0px; padding: 0px 0px 0px 5px; font-size: 0px;"><span style="border: 0px none; margin: 5px 0px 0px 0px; padding: 0px; font-size: 11px; width: 5px;"><text></text></span><span u:protected="true" style="padding: 0px 0px 0px 0px; border: 0px; margin: 3px 0px 0px 0px; font-family: Arial; font-size: 11px; font-weight: normal; color: #7A7A7A;" tabindex="-1"><text>{fieldinstructionstext}</text></span></td>
+                </tr>
+            </tbody></table></div>
+            <div style="height: 1px; width: {formfieldwidth}; overflow: hidden;" tabindex="-1"><text></text></div>
+            REPLACE_FORMFIELD_TEMPLATE
+            <div u:protected="true" style="float: left; margin: 5px 0px 0px 0px; padding: 0px; position: relative; width: 100%; display: {showexample};"><span style="font-family: Arial; font-size: 11px; font-weight: normal; color: #7A7A7A;" tabindex="-1"><text>{fieldexampletext}</text></span></div>
+            <div u:protected="true" u:id="errorblock" style="float: left; margin: 5px 0px 0px 0px; padding: 0px; position: relative; width: 100%; display: {showerror};"><span style="font-family: Arial; font-size: 11px; font-weight: bold; color: #B30000;" tabindex="-1"><span tabindex="-1"><text>{fielderrortext}</text></span><span><text>{Hello}</text></span></span></div>
+        </div>
+    </template>
+    <!--<model>-->
+      <!--<import resolver="$disabled_opacity" set="jsx3.gui.Form"/>-->
+    <!--</model>-->
+</transform>

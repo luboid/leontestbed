@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+-->
+<data jsxid="jsxroot">
+
+    <record group="object" include="Button.xml"/>
+    <record group="position" include="Button.xml"/>
+    <record group="actiontrigger" include="Button.xml"/>
+    <record group="1" jsxid="iconButton" jsxtext="Image Button">
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxtype']" include="Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxstate']" include="Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxenabled']" include="Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxrequired']" include="Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsximage']" include="Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxdownimage']" include="Button.xml"/>
+        <record path="/data/record[@jsxid='jsx3imagebutton']/record[@jsxid='jsxonimage']" include="Button.xml"/>
+    </record>
+    <record group="box_nobg" include="Button.xml"/>
+    <record group="css_noclass" include="Button.xml"/>
+    <record group="access" include="Button.xml"/>
+    <record group="metadata" include="Button.xml"/>
+</data>

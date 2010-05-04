@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Copyright (c) 2001-2008, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  -->
+
+<project name="UXCore" default="dist" basedir=".">
+
+  <property name="project.dir" value=".."/>
+  <property name="build.dir" value="${project.dir}/build"/>
+  <property name="tools.dir" value="${build.dir}/tools"/>
+  <property name="tmp.dir" value="${build.dir}/tmp"/>
+
+  <!-- Selector for text files. Text files can be copied with filtering. -->
+  <selector id="files.text">
+    <or>
+      <filename name="**/*.html"/>
+      <filename name="**/*.htm"/>
+      <filename name="**/*.xhtml"/>
+      <filename name="**/*.hta"/>
+      <filename name="**/*.txt"/>
+      <filename name="**/*.xml"/>
+      <filename name="**/*.css"/>
+      <filename name="**/*.js"/>
+      <filename name="**/*.xsl"/>
+    </or>
+  </selector>
+
+  <!-- Selector for binary files. Binary files can not be copied with filtering. -->
+  <selector id="files.binary">
+    <not>
+      <selector refid="files.text"/>
+    </not>
+  </selector>
+
+  <taskdef resource="net/sf/antcontrib/antlib.xml">
+    <classpath>
+      <pathelement location="${build.dir}/tools/lib/ant-contrib/ant-contrib-1.0b3.jar"/>
+    </classpath>
+  </taskdef>
+
+  <target name="init">
+      <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+          <pathelement location="${build.dir}/tools/lib/ant-contrib/ant-contrib-1.0b3.jar"/>
+        </classpath>
+      </taskdef>
+
+    <!-- Load the application specific settings -->
+    <property file="${build.dir}/build.properties"/>
+
+    <property name="dist.dirbase" value="${project.dir}/${build.loc.dist}"/>
+    <property name="dist.uxcore" value="UXCore"/>
+    <property name="dist.dir" value="${project.dir}/${build.loc.dist}/${dist.uxcore}"/>
+
+      <condition property="build.set.compile.jsx" value="1">
+        <equals arg1="${build.uxcore.compile.jsx}" arg2="true"/>
+      </condition>
+      <condition property="build.set.obfuscate.uxcore" value="1">
+        <equals arg1="${build.uxcore.obfuscate.jsx}" arg2="true"/>
+      </condition>
+      <condition property="build.set.merge.uxcore" value="1">
+        <equals arg1="${build.uxcore.merge.jsx}" arg2="true"/>
+      </condition>
+
+    <!-- Macro that copies a fileset, taking care to only copy text files with filtering. -->
+    <macrodef name="copy-with-filter">
+      <attribute name="todir"/>
+      <attribute name="dir"/>
+      <attribute name="includes" default=""/>
+      <attribute name="failonerror" default="true"/>
+      <element name="copy-filterset" optional="no"/>
+      <element name="copy-fileset" optional="yes"/>
+
+      <sequential>
+        <copy todir="@{todir}" verbose="false" includeemptydirs="false" encoding="${build.encoding}"
+            failonerror="@{failonerror}">
+          <fileset dir="@{dir}" includes="@{includes}">
+            <copy-fileset/>
+            <selector refid="files.text"/>
+          </fileset>
+        </copy>
+        <copy todir="@{todir}" verbose="false" includeemptydirs="false" failonerror="@{failonerror}">
+          <fileset dir="@{dir}" includes="@{includes}">
+            <copy-fileset/>
+            <selector refid="files.binary"/>
+          </fileset>
+        </copy>
+      </sequential>
+    </macrodef>
+  </target>
+
+    <!--<target name="dist"-->
+        <!--depends="init, copy-runtime, compile-js,-->
+            <!--obfuscate, merge-script, compile-locales, dist-compile-doc, dist-compile-doc-html"-->
+        <!--description="Compiles and builds a UXCore distribution."/>-->
+
+    <target name="dist"
+        depends="init, copy-runtime, obfuscate, merge-script"
+        description="Compiles and builds a UXCore distribution."/>
+
+    <target name="merge-script" depends="merge-script-uxcore"/>
+
+    <target name="merge-script-uxcore" depends="init, init-tools" if="build.set.merge.uxcore">
+      <mkdir dir="${tmp.dir}"/>
+      <!--<delete file="${tmp.dir}/merge-uxcore-common.txt"/>-->
+
+      <for list="${build.uxcore.targets}" delimiter="," param="target">
+        <sequential>
+          <delete file="${tmp.dir}/merge-uxcore-@{target}.txt"/>
+                <gi-merge strict="${build.uxcore.strict}"
+                    dir="${dist.dir}/plugins/tibco.uxcore.@{target}/classes"
+                    graph="${build.dir}/merge/depends-uxcore-@{target}.xml"
+                    outfile="${dist.dir}/plugins/tibco.uxcore.@{target}/classes/uxcore-plugin.js"
+                    includes="${build.uxcore.includes.@{target}}"
+                    log="${tmp.dir}/merge-uxcore-@{target}.txt">
+                </gi-merge>
+                <gi-mergeclean dir="${dist.dir}/plugins/tibco.uxcore.@{target}/classes" log="${tmp.dir}/merge-uxcore-@{target}.txt" strict="${build.uxcore.strict}"/>
+                <copy file="${dist.dir}/plugins/tibco.uxcore.@{target}/plugin.xml" tofile="${dist.dir}/plugins/tibco.uxcore.@{target}/plugin-unobf.xml" />
+                <delete file="${dist.dir}/plugins/tibco.uxcore.@{target}/plugin.xml"/>
+                <copy file="${dist.dir}/plugins/tibco.uxcore.@{target}/plugin-obf.xml" tofile="${dist.dir}/plugins/tibco.uxcore.@{target}/plugin.xml" />
+                <delete file="${dist.dir}/plugins/tibco.uxcore.@{target}/plugin-obf.xml"/>
+        </sequential>
+      </for>
+
+      <!-- Change bootstrap script to only request the one merged script file. -->
+      <!--<replaceregexp file="${dist.dir}/JSX/js/JSX30.js"-->
+          <!--match="\.SYSTEM_SCRIPTS\s*=\s*\[([\s\S]*?)\];"-->
+          <!--replace=".SYSTEM_SCRIPTS=[&quot;@path@/jsx.js&quot;];"-->
+          <!--byline="false"/>-->
+
+      <delete dir="${tmp.dir}"/>
+    </target>
+
+  <target name="compile-tools">
+    <ant antfile="${tools.dir}/build.xml"
+        inheritall="false"
+        inheritrefs="false"
+        target="package"/>
+  </target>
+
+  <target name="copy-runtime" depends="init, compile-tools">
+    <mkdir dir="${dist.dir}"/>
+
+    <copy-with-filter todir="${dist.dir}" dir="${project.dir}" includes="${build.source.uxcore.toplevel}">
+        <copy-filterset>
+          <!--<filterset refid="uxcore-filters-text"/>-->
+          <filterset refid="uxcore-filters"/>
+        </copy-filterset>
+    </copy-with-filter>
+  </target>
+
+    <!-- Initializes substitution tokens used in text file copying. -->
+    <target name="init-filters" depends="init">
+      <property file="${build.properties.strings}"/>
+
+      <!--<filterset id="uxcore-filters-text">-->
+      <!--</filterset>-->
+      <filterset id="uxcore-filters">
+        <filtersfile file="${build.dir}/build.properties"/>
+        <!--<filtersfile file="${build.properties.strings}"/>-->
+      </filterset>
+    </target>
+
+  <target name="init-tools" depends="copy-runtime">
+    <property file="${tools.dir}/build.properties"/>
+
+    <mkdir dir="${tmp.dir}"/> <!-- Needs to exist to work on classpath. -->
+    <path id="cp.tools">
+      <path path="${tools.dir}/jsx-tools.jar"/>
+      <path path="${tools.dir}/${lib.jaxen}"/>
+      <path path="${tools.dir}/${lib.rhino}"/>
+      <path path="${tools.dir}/${lib.xalan}"/>
+      <path path="${tools.dir}/${lib.xerces}"/>
+      <path path="${tools.dir}/${lib.jsparser}"/>
+      <path path="${tools.dir}/${lib.saxon}"/>
+      <path path="${tools.dir}/${lib.saxon-dom}"/>
+      <path path="${tmp.dir}"/>
+    </path>
+
+    <taskdef resource="com/tibco/gi/ant/antlib.xml" classpathref="cp.tools"/>
+  </target>
+
+  <target name="obfuscate" depends="obfuscate-setup, obfuscate-uxcore">
+    <delete file="${build.dir}/obfuscate/clobber-map.tmp"/>
+  </target>
+
+  <target name="obfuscate-uxcore" depends="init, init-tools" if="build.set.obfuscate.uxcore">
+    <gi-obfuscate  strict="${build.uxcore.strict}"
+        optliterals="true"
+        vars="true"
+        params="true"
+        blessfile="${build.dir}/obfuscate/jsx-blessed.txt"
+        clobberfile="${build.dir}/obfuscate/jsx-clobber.txt"
+        inmap="${build.dir}/obfuscate/clobber-map.tmp"
+        outmap="${build.dir}/obfuscate/clobber-map.tmp">
+      <fileset dir="${dist.dir}/plugins" includes="${build.source.obf.uxcore-inc}" excludes="${build.source.obf.uxcore-exc}"/>
+    </gi-obfuscate>
+    <delete file="${build.dir}/obfuscate/charting-clobber.txt.tmp"/>
+  </target>
+
+    <target name="obfuscate-setup" depends="init">
+      <property name="build.obf.tmpmapfile" value="${build.dir}/obfuscate/clobber-map.tmp"/>
+      <property name="build.obf.mapfileout" value="${dist.dirbase}/obfuscation-map.txt"/>
+
+      <!-- delete the old temp file in case it exists still -->
+      <delete file="${build.obf.tmpmapfile}"/>
+      <!-- if available, copy the mapping input file to the temp location, where it will be used by each obfuscation -->
+      <if>
+        <available file="${build.dir}/${build.source.obf.name-map}"/>
+        <then>
+          <copy file="${build.dir}/${build.source.obf.name-map}" tofile="${build.obf.tmpmapfile}"/>
+        </then>
+      </if>
+    </target>
+</project>

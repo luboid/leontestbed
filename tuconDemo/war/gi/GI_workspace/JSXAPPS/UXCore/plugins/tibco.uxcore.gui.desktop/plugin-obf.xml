@@ -1,0 +1,31 @@
+<plugin xmlns="http://www.tibco.com/gi/amp"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd"
+        id="tibco.uxcore.gui.desktop"
+        name="UX Core Desktop"
+        version="0.1">
+
+    <requires>
+        <plugin id="jsx3.gui.Template"/>
+        <plugin id="jsx3.gui.Menu"/>
+        <plugin id="jsx3.gui.Form"/>
+        <plugin id="tibco.uxcore.common"/>
+    </requires>
+
+    <resources>
+        <propsbundle id="locales_jss" path="locales.xml" load="normal"/>
+
+        <script id="uxdesktop_uxcore-plugin_js" path="classes/uxcore-plugin.js" eval="true"/>
+
+        <xml id="tabbedNavPan_xml" path="components/tabbedNavPane.xml" />
+        <xml id="golbalnav_0_0_xml" path="components/golbalnav_0_0.xml"/>
+        <xml id="golbalnav_0_1_xml" path="components/golbalnav_0_1.xml"/>
+        <xml id="golbalnav_0_2_xml" path="components/golbalnav_0_2.xml"/>
+        <xml id="golbalnav_1_0_xml" path="components/golbalnav_1_0.xml"/>
+        <xml id="golbalnav_1_1_xml" path="components/golbalnav_1_1.xml"/>
+        <xml id="golbalnav_1_2_xml" path="components/golbalnav_1_2.xml"/>
+
+
+    </resources>
+
+</plugin>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugins xmlns="http://www.tibco.com/gi/amp"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugins.xsd">
+
+  <plugin id="tibco.uxcore.common"/>
+  <plugin id="tibco.uxcore.gui.desktop"/>
+  <plugin id="tibco.uxcore.gui.form"/>
+  <plugin id="tibco.uxcore.gui.expandpanel"/>
+  <plugin id="tibco.uxcore.gui.wizard"/>
+  <plugin id="tibco.uxcore.gui.dialog"/>
+  <plugin id="tibco.uxcore.gui.masterdetail"/>
+  <plugin id="tibco.uxcore.gui.section"/>
+  <plugin id="tibco.uxcore.gui.matrix"/>
+  <plugin id="tibco.uxcore.gui.listcontainer"/>
+  <plugin id="tibco.uxcore.gui.tabbedpane"/>
+  <!--<plugin id="tibco.uxcore.util.monitor"/>-->
+
+</plugins>

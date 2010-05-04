@@ -1,0 +1,32 @@
+<serialization jsxversion="3.2" xmlns="urn:tibco.com/v3.0">
+  <name><![CDATA[Multi-select Matrix]]></name>
+  <icon></icon>
+  <description><![CDATA[a benchmarked multi select]]></description>
+  <onBeforeDeserialize></onBeforeDeserialize>
+  <onAfterDeserialize></onAfterDeserialize>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="2"/>
+    <strings jsxname="matrixBlock" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+    <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"/>
+    <object type="tibco.uxcore.gui.Matrix">
+      <variants jsxsloaddefaultproperties="true" jsxpagingmodel="1" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"></variants>
+      <strings jsxname="matrix1" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;&#xA;        &lt;record jsxid=&quot;AG&quot; jsxtext=&quot;Afghanistan&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AL&quot; jsxtext=&quot;Albania&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AR&quot; jsxtext=&quot;Algeria&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AS&quot; jsxtext=&quot;American Samoa&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AD&quot; jsxtext=&quot;Andorra&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AO&quot; jsxtext=&quot;Angola&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AU&quot; jsxtext=&quot;Anguilla&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AX&quot; jsxtext=&quot;Antarctica&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AT&quot; jsxtext=&quot;Antigua and Barbuda&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AE&quot; jsxtext=&quot;Argentina&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AM&quot; jsxtext=&quot;Armenia&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AB&quot; jsxtext=&quot;Aruba&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AA&quot; jsxtext=&quot;Australia&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AI&quot; jsxtext=&quot;Austria&quot;/&gt;&#xA;        &lt;record jsxid=&quot;AZ&quot; jsxtext=&quot;Azerbaijan&quot;/&gt;&#xA;      &lt;/data&gt;" jsxsortpath="jsxtext" jsxsorttype="text" jsxsortdirection="descending"></strings>
+      <object type="jsx3.gui.Matrix.Column">
+        <variants jsxwidth="165"></variants>
+        <strings jsxname="mc2" jsxtext="Name" jsxpath="jsxtext"></strings>
+      </object>
+      <object type="jsx3.gui.Matrix.Column">
+        <variants></variants>
+        <strings jsxname="textColumn" jsxwidth="100" jsxtext="Text" jsxpath="jsxtext"></strings>
+      </object>
+      <object type="jsx3.gui.Matrix.Column">
+        <variants></variants>
+        <strings jsxname="buttonColumn" jsxwidth="100" jsxtext="Button" jsxvaluetemplate="@empty" jsxcelltextalign="left" jsxdisplay=""></strings>
+        <object type="jsx3.gui.Button">
+          <variants jsxenabled="1"></variants>
+          <strings jsxname="buttonMask" jsxstyleoverride="text-decoration:underline"></strings>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

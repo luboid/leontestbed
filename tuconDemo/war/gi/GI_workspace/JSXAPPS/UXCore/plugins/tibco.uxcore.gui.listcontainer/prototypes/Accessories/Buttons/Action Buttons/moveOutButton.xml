@@ -1,0 +1,12 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Move Out</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/moveLeft.png</icon>
+  <description>A tibco.uxcore.gui.ActionButton object for moving records out in a TreeListBuilder.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+    <object type="tibco.uxcore.gui.MoveRecordButton">
+      <variants jsxenabled="0" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+      <strings jsxname="actionButtonNew" jsxactionid="MoveOut" jsxtext="Move Out"/>
+      <dynamics/>
+    </object>
+</serialization>

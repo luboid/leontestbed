@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+  ~ Copyright (c) 2001-2007, TIBCO Software Inc.
+  ~ Use, modification, and distribution subject to terms of license.
+  --><data jsxid="jsxroot">
+
+	<record group="object" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+
+	<record group="1" jsxid="jsx3block" jsxtext="Block">
+
+		<record children="1" group="jsxtagname" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	</record>
+
+    <record group="1" jsxid="uxcoreFormRow" jsxtext="Form Field">
+        <record jsxid="jsxheight" jsxtext="Field Height"
+            jsxtip="Sets the height of the form field"
+            docgetter="getHeight" docsetter="setHeight"
+            eval="0"
+            docdefault="100"
+            jsxexecute="objJSX.setHeight(vntValue, true);"
+            jsxmask="jsxtext"/>
+        <record jsxid="flexheight" jsxtext="Flexible Height?"
+            jsxtip="Sets whether the height of the ListContainer should be flexible of static.  If flexible size is enabled, the height of the matrix will be determined by the number of rows it contains.  In this case, the Field Height (jsxheight) will be used as the maximum height of the ListContainer"
+            docgetter="getUseFlexHeight" docsetter="setUseFlexHeight"
+            docdefault="jsx3.Boolean.FALSE"
+            eval="1"
+            jsxexecute="objJSX.setUseFlexHeight(vntValue, true);"
+            jsxmask="jsxselect">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+        <record jsxid="fieldtitletext" jsxtext="Title Text"
+            jsxtip="Sets the title label for the form row"
+            docgetter="getTitleText" docsetter="setTitleText"
+            eval="0"
+            jsxexecute="objJSX.setTitleText(vntValue, true);"
+            jsxmask="jsxtext"/>
+      <record jsxid="jsxtitledisplay"  jsxtext="Title Display"
+          docsetter="setTitleDisplay"
+          docgetter="getTitleDisplay"
+          jsxexecute="objJSX.setTitleDisplay(vntValue, true);"
+          docdefault="Block (&lt;code&gt;jsx3.gui.Block.DISPLAYBLOCK&lt;/code&gt;)"
+          eval="0"
+          jsxmask="jsxselect"
+          jsxtip="Sets display of field title, When set to None, title is hidden.">
+        <enum jsxid="jsx3.gui.Block.DISPLAYBLOCK" jsxtext="Block"/>
+        <enum jsxid="jsx3.gui.Block.DISPLAYNONE" jsxtext="None"/>
+      </record>
+
+        <record jsxid="fieldinstructionstext"  jsxtext="Instructions Text"
+            docgetter="getInstructionsText"
+            docsetter="setInstructionsText"
+            jsxexecute="objJSX.setInstructionsText(vntValue, true);"
+            eval="0"
+            jsxmask="jsxtext"
+            jsxtip="Sets the instructions text for the form row">
+        </record>
+        <record jsxid="alwaysShowInstructions"  jsxtext="Always Show Instructions"
+            docsetter="setAlwaysShowInstructions"
+            docgetter="getAlwaysShowInstructions"
+            jsxexecute="objJSX.setAlwaysShowInstructions(vntValue, true);"
+            docdefault="jsx3.Boolean.FALSE"
+            eval="1"
+            jsxmask="jsxselect"
+            jsxtip="Sets whether or not to show the instructions always (even when in view mode).">
+          <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+          <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+        </record>
+        <record jsxid="fieldexampletext"  jsxtext="ExampleText"
+            docgetter="getExampleText"
+            docsetter="setExampleText"
+            jsxexecute="objJSX.setExampleText(vntValue, true);"
+            eval="0"
+            jsxmask="jsxtext"
+            jsxtip="Sets the example text for the form row">
+        </record>
+<!--        <record jsxid="fieldvalue"  jsxtext="Value"
+            docgetter="getValue"
+            docsetter="setValue"
+            jsxexecute="objJSX.setValue(vntValue, true);"
+            eval="0"
+            jsxmask="jsxtext"
+            jsxtip="Sets the value for the text field in the form row">
+        </record> -->
+        <record jsxid="cdfattribute"  jsxtext="CDF Attribute"
+            docgetter="getCDFAttribute"
+            docsetter="setCDFAttribute"
+            jsxexecute="objJSX.setCDFAttribute(vntValue);"
+            eval="0"
+            jsxmask="jsxtext"
+            jsxtip="Sets the CDF attribute this form row is used to edit">
+        </record>
+        <record jsxid="isrequired"  jsxtext="Required?"
+            docgetter="isRequired"
+            docsetter="setRequired"
+            jsxexecute="objJSX.setRequired(vntValue, true);"
+            eval="0"
+            jsxmask="jsxselect"
+            jsxtip="Sets whether or not the form row is required">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+        <record jsxid="hideoptionalstring"  jsxtext="Hide Optional String?"
+            docgetter="isHideOptionalString"
+            docsetter="setHideOptionalString"
+            jsxexecute="objJSX.setHideOptionalString(vntValue, true);"
+            eval="0"
+            jsxmask="jsxselect"
+            jsxtip="Sets whether or not the optional string (if any) after the field title should be displayed">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+        <record jsxid="hiderequiredstring"  jsxtext="Hide Required String?"
+            docgetter="isHideRequiredString"
+            docsetter="setHideRequiredString"
+            jsxexecute="objJSX.setHideRequiredString(vntValue, true);"
+            eval="0"
+            jsxmask="jsxselect"
+            jsxtip="Sets whether or not the rerquired string (if any) after the field title should be displayed">
+            <enum jsxid="jsx3.Boolean.TRUE" jsxtext="True"/>
+            <enum jsxid="jsx3.Boolean.FALSE" jsxtext="False"/>
+        </record>
+        <record jsxid="jsxenabled" jsxtext="Enabled" jsxtip="Sets whether or not the view for this item is enabled and mouse/keyboard events will be listened to." docgetter="getEnabled" docsetter="setEnabled" docdefault="Enabled (&lt;code&gt;tibco.uxcore.gui.FormField.STATEENABLED&lt;/code&gt;)" jsxexecute="objJSX.setEnabled(vntValue,true);" eval="1" jsxmask="jsxselect">
+          <enum jsxid="tibco.uxcore.gui.FormField.STATEENABLED" jsxtext="Enabled" jsxvalue="1"/>
+          <enum jsxid="tibco.uxcore.gui.FormField.STATEDISABLED" jsxtext="Disabled" jsxvalue="0"/>
+        </record>
+    </record>
+
+	<record group="css" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="interaction" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="drag" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="move" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+	<record group="metadata" include="jsxplugin://tibco.uxcore.common/properties/master.xml"/>
+
+</data>

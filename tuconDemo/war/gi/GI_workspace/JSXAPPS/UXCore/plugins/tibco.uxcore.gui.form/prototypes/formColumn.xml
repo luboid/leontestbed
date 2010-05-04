@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>3a. Column (Empty)</name>
+  <icon>jsxplugin://tibco.uxcore.gui.form/images/prototype/column.png</icon>
+  <description>A UX Core Form Column object. Can only be added to a Panel.</description>
+  <onBeforeDeserialize>undefined</onBeforeDeserialize>
+  <onAfterDeserialize>undefined</onAfterDeserialize>
+  <object type="tibco.uxcore.gui.FormColumn">
+    <variants jsxoverflow="1" cleaned="true"/>
+    <strings jsxname="formColumn" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" text=""/>
+  </object>
+</serialization>

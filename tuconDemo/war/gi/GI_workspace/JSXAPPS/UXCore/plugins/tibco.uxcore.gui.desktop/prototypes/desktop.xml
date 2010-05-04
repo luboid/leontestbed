@@ -1,0 +1,68 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.7">
+  <name>UX Core Desktop</name>
+  <icon/>
+  <description>A UXCore prototype that containe a Desktop with Link Buttons, Splitters and Tabbed Navigation.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Desktop">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="desktop" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt; &lt;record jsxid=&quot;1&quot; jsxtext=&quot;Profile&quot;/&gt; &lt;record jsxid=&quot;2&quot; jsxtext=&quot;Message&quot;/&gt; &lt;record jsxid=&quot;3&quot; jsxtext=&quot;Log Out&quot;/&gt;  &lt;record jsxid=&quot;4&quot; jsxtext=&quot;Help&quot;/&gt;&lt;/data&gt;"/>
+    <object type="tibco.uxcore.gui.Linkbutton">
+      <variants jsxoverflow="1"/>
+      <strings jsxname="linkbutton" jsxrelativeposition="1" hookname="Link Button"/>
+    </object>
+    <object type="tibco.uxcore.gui.Splitline">
+      <variants jsxoverflow="1"/>
+      <strings jsxname="splitline"/>
+    </object>
+    <object type="tibco.uxcore.gui.Linkbutton">
+      <variants jsxoverflow="1"/>
+      <strings jsxname="linkbutton" jsxrelativeposition="1" hookname="Link Button"/>
+    </object>
+    <object type="tibco.uxcore.gui.Splitline">
+      <variants jsxoverflow="1"/>
+      <strings jsxname="splitline"/>
+    </object>
+    <object type="tibco.uxcore.gui.Linkbutton">
+      <variants jsxoverflow="1"/>
+      <strings jsxname="linkbutton" jsxrelativeposition="1" hookname="Link Button"/>
+    </object>
+    <object type="tibco.uxcore.gui.TabbedNav">
+      <variants jsxoverflow="1" childMenuIndex="0" childTabIndex="0" jsxrelativeposition="1"/>
+      <strings jsxname="TabbedNav" jsxwidth="100%" jsxheight="100%"/>
+      <object type="tibco.uxcore.gui.TabbedNavMenuButton">
+        <variants jsxrelativeposition="1" jsxoverflow="3" _index="0"/>
+        <strings jsxheight="20" jsxname="Menu" jsxtext="Menu" jsxpadding="2 10 0 10" jsxmargin="0 8 0 8" jsxfontname="Arial" jsxfontsize="11" jsxfontweight="Bold" jsxcursor="pointer" jsxborder="border:1px solid #163F63;border-top-width:0px;border-buttom-width:0px;" jsxcolor="#D1E6F9" />
+        <events jsxclick="this.doPressed(objEVENT)"/>
+        <object type="jsx3.gui.Menu">
+          <variants jsxxmlasync="1" jsxenabled="1"/>
+          <strings jsxtip="menu" jsxtext="menu" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;  &lt;record jsxid=&quot;1&quot; jsxtext=&quot;golbalnav_0_0&quot; strRsrcId=&quot;golbalnav_0_0_xml&quot;  loadRsrc=&quot;true&quot;  /&gt;  &lt;record jsxid=&quot;2&quot; jsxtext=&quot;golbalnav_0_1&quot; strRsrcId = &quot;golbalnav_0_1_xml&quot;  loadRsrc=&quot;true&quot;   /&gt;  &lt;record jsxid=&quot;3&quot; jsxtext=&quot;golbalnav_0_2&quot; strRsrcId=&quot;golbalnav_0_2_xml&quot; loadRsrc=&quot;true&quot;    /&gt;  &lt;/data&gt;" jsxdisplay="none" jsxbg="dummy"/>
+          <events jsxexecute="this.getParent().selected(objEVENT, strRECORDID, objRECORD)"/>
+          <xslparameters jsxleftbuffer="12"/>
+        </object>
+      </object>
+      <object type="tibco.uxcore.gui.TabbedNavMenuButton">
+        <variants jsxrelativeposition="1" jsxoverflow="3" _index="1"/>
+        <strings jsxheight="20" jsxname="Menu" jsxtext="Menu" jsxpadding="2 10 0 10" jsxmargin="0 8 0 8" jsxfontname="Arial" jsxfontsize="11" jsxfontweight="Bold" jsxcursor="pointer" jsxborder="border:1px solid #163F63;border-top-width:0px;border-buttom-width:0px;" jsxcolor="#D1E6F9" />
+        <events jsxclick="this.doPressed(objEVENT)"/>
+        <object type="jsx3.gui.Menu">
+          <variants jsxxmlasync="1" jsxenabled="1"/>
+          <strings jsxtip="menu" jsxtext="menu" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;  &lt;record jsxid=&quot;1&quot; jsxtext=&quot;golbalnav_1_0&quot; strRsrcId=&quot;golbalnav_1_0_xml&quot;  loadRsrc=&quot;true&quot;   /&gt;  &lt;record jsxid=&quot;2&quot; jsxtext=&quot;golbalnav_1_1&quot; strRsrcId=&quot;golbalnav_1_1_xml&quot;  loadRsrc=&quot;true&quot;   /&gt;  &lt;record jsxid=&quot;3&quot; jsxtext=&quot;golbalnav_1_2&quot; strRsrcId = &quot;golbalnav_1_2_xml&quot; loadRsrc=&quot;true&quot;   /&gt;  &lt;/data&gt;" jsxdisplay="none" jsxbg="dummy"/>
+          <events jsxexecute="this.getParent().selected(objEVENT, strRECORDID, objRECORD)"/>
+          <xslparameters jsxleftbuffer="12"/>
+        </object>
+      </object>
+      <object type="tibco.uxcore.gui.TabbedNavMenuButton">
+        <variants jsxrelativeposition="1" jsxoverflow="3" _index="2"/>
+        <strings jsxheight="20" jsxfontsize="11" jsxname="Menu" jsxtext="Menu" jsxfontname="Arial" jsxfontweight="Bold" jsxpadding="2 10 0 10" jsxmargin="0 8 0 8" jsxcursor="pointer" jsxborder="border:1px solid #163F63;border-top-width:0px;border-buttom-width:0px;" jsxcolor="#D1E6F9"  />
+        <events jsxclick="this.doPressed(objEVENT)"/>
+        <object type="jsx3.gui.Menu">
+          <variants jsxxmlasync="1" jsxenabled="1"/>
+          <strings jsxtip="menu" jsxtext="menu" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;  &lt;record jsxid=&quot;1&quot; jsxtext=&quot;golbalnav_1_0&quot; strRsrcId=&quot;golbalnav_1_0_xml&quot;  loadRsrc=&quot;true&quot;   /&gt;  &lt;/data&gt;" jsxdisplay="none" jsxbg="dummy" jsximage=""/>
+          <events jsxexecute="this.getParent().selected(objEVENT, strRECORDID, objRECORD)"/>
+          <xslparameters jsxleftbuffer="12"/>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

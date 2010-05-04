@@ -1,0 +1,11 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Text Area Form Field</name>
+    <icon>jsxplugin://tibco.uxcore.common/images/prototype/textbox-area.gif</icon>
+  <description>A UXCore text area form field object.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.TextAreaFormField">
+    <variants jsxindex="0"/>
+    <strings fieldtitletext="[Field Title]" jsxname="textAreaFormField"/>
+  </object>
+</serialization>

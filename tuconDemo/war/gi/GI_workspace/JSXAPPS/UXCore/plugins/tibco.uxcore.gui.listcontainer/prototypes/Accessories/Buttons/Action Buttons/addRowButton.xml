@@ -1,0 +1,12 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.2">
+  <name>Action Button - Add Row</name>
+  <icon>jsxplugin://tibco.uxcore.gui.listcontainer/images/add.gif</icon>
+  <description>A tibco.uxcore.gui.ActionButton object for adding a new record to a TreeListBuilder.</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+    <object type="tibco.uxcore.gui.AddRowButton">
+      <variants jsxenabled="1" jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+      <strings jsxname="actionButtonNew" jsxactionid="AddRow" jsxtext="Add Row"/>
+      <dynamics jsxicon="@uxcore10@Btn Image New"/>
+    </object>
+</serialization>
