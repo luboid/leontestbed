@@ -35,6 +35,7 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-beanutils-1.8.0.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/dwr.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-fileupload-1.2.jar"/>	
+	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-fileupload-1.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/junit-4.4.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

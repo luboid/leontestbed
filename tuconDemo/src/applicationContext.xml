@@ -15,7 +15,6 @@
         <property name="dataSource"><ref local="dataSource"/></property>
         <property name="mappingResources">
             <list>
-                <value>com/tibco/cmidemo/model/Test.hbm.xml</value>
                 <value>com/tibco/cmidemo/hibernate/GiBizagreement.hbm.xml</value>
 				<value>com/tibco/cmidemo/hibernate/GiContact.hbm.xml</value>                
 				<value>com/tibco/cmidemo/hibernate/GiDomainid.hbm.xml</value>
@@ -43,11 +42,7 @@
  
     
     <!-- Add DAOs here -->
-    <bean id="TestDAO" class="com.tibco.cmidemo.dao.impl.TestDAOImpl">
-		<property name="sessionFactory">
-			<ref local="sessionFactory"/>
-		</property>
-	</bean>
+
     <bean id="DAO" class="com.tibco.cmidemo.dao.impl.DAOImpl">
 		<property name="sessionFactory">
 			<ref local="sessionFactory"/>
