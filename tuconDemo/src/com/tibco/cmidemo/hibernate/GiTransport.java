@@ -11,7 +11,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  *         table="gi_transport"
  *     
 */
-public class GiTransport  extends ModelObject implements Serializable {
+public class GiTransport extends ModelObject implements Serializable {
 
     /** identifier field */
     private Long binindex;
@@ -41,10 +41,16 @@ public class GiTransport  extends ModelObject implements Serializable {
     private int status;
 
     /** nullable persistent field */
+    private String fileprocessing;
+
+    /** nullable persistent field */
+    private String filemask;
+
+    /** nullable persistent field */
     private Date lastmodified;
 
     /** full constructor */
-    public GiTransport(String name, String url, String type, Long EBinindex, Integer retrycount, Integer sockTimeout, Integer retryint, int status, Date lastmodified) {
+    public GiTransport(String name, String url, String type, Long EBinindex, Integer retrycount, Integer sockTimeout, Integer retryint, int status, String fileprocessing, String filemask, Date lastmodified) {
         this.name = name;
         this.url = url;
         this.type = type;
@@ -53,6 +59,8 @@ public class GiTransport  extends ModelObject implements Serializable {
         this.sockTimeout = sockTimeout;
         this.retryint = retryint;
         this.status = status;
+        this.fileprocessing = fileprocessing;
+        this.filemask = filemask;
         this.lastmodified = lastmodified;
     }
 
@@ -194,6 +202,34 @@ public class GiTransport  extends ModelObject implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    /** 
+     *            @hibernate.property
+     *             column="FILEPROCESSING"
+     *             length="60"
+     *         
+     */
+    public String getFileprocessing() {
+        return this.fileprocessing;
+    }
+
+    public void setFileprocessing(String fileprocessing) {
+        this.fileprocessing = fileprocessing;
+    }
+
+    /** 
+     *            @hibernate.property
+     *             column="FILEMASK"
+     *             length="60"
+     *         
+     */
+    public String getFilemask() {
+        return this.filemask;
+    }
+
+    public void setFilemask(String filemask) {
+        this.filemask = filemask;
     }
 
     /** 

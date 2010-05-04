@@ -138,6 +138,30 @@
         </meta>    
     </property>
     <property
+        name="fileprocessing"
+        type="java.lang.String"
+        column="FILEPROCESSING"
+        length="60"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="FILEPROCESSING"
+            length="60"
+        </meta>    
+    </property>
+    <property
+        name="filemask"
+        type="java.lang.String"
+        column="FILEMASK"
+        length="60"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="FILEMASK"
+            length="60"
+        </meta>    
+    </property>
+    <property
         name="lastmodified"
         type="java.sql.Timestamp"
         column="LASTMODIFIED"
