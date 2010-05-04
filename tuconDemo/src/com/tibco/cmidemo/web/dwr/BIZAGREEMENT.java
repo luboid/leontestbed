@@ -1,9 +1,10 @@
 package com.tibco.cmidemo.web.dwr;
 
-import java.util.List;
-
 import com.tibco.cmidemo.hibernate.GiBizagreement;
+import com.tibco.cmidemo.hibernate.GiPartner;
 import com.tibco.cmidemo.web.WebAppException;
+
+import java.util.List;
 
 /**
  * 
@@ -26,6 +27,15 @@ public class BIZAGREEMENT extends DWR {
     }
     
     public static void saveBA (GiBizagreement ba) throws WebAppException {
+//        if(ba.getBinindex()==null) {
+//            // new BA
+//            Long hid = ba.getHBinindex();
+//            Long pid = ba.getTpBinindex();
+//            GiPartner host = PARTNER.getPA(hid);
+//            GiPartner partner = PARTNER.getPA(pid);
+//            String name = host.getName()+"-"+partner.getName()
+//        }
+        
         
         save(ba);
     }

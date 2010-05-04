@@ -84,7 +84,6 @@ public class GiBizagreement extends ModelObject implements Serializable {
      *            @hibernate.property
      *             column="OBJNID"
      *             length="255"
-     *             not-null="true"
      *         
      */
     public String getObjnid() {
