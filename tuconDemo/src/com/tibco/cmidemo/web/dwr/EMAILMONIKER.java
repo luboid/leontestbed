@@ -2,6 +2,7 @@ package com.tibco.cmidemo.web.dwr;
 
 import java.util.List;
 
+import com.tibco.cmidemo.dao.ColumnConst;
 import com.tibco.cmidemo.hibernate.GiEmailmoniker;
 import com.tibco.cmidemo.web.WebAppException;
 
@@ -12,13 +13,15 @@ import com.tibco.cmidemo.web.WebAppException;
  * @author xliu May 4, 2010
  *
  */
-public class MAIL {
+public class EMAILMONIKER extends DWR {
 
     public static List<GiEmailmoniker> getEmailList(String parentId) throws WebAppException {
-        return null;
+        
+        return getList(GiEmailmoniker.class, parentId, ColumnConst.E_BININDEX);
     }
     
-    public static GiEmailmoniker getEmailByID(String id) throws WebAppException {
-        return null;
+    public static GiEmailmoniker getEmailByID(long id) throws WebAppException {
+        
+        return getById(GiEmailmoniker.class, id);
     }
 }

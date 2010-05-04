@@ -2,6 +2,7 @@ package com.tibco.cmidemo.web.dwr;
 
 import java.util.List;
 
+import com.tibco.cmidemo.dao.ColumnConst;
 import com.tibco.cmidemo.hibernate.GiTransport;
 import com.tibco.cmidemo.web.WebAppException;
 
@@ -12,13 +13,15 @@ import com.tibco.cmidemo.web.WebAppException;
  * @author xliu May 4, 2010
  *
  */
-public class TP {
+public class TRANSPORT extends DWR {
 
     public static List<GiTransport> getTransportList(String parentId) throws WebAppException {
-        return null;
+        
+        return getList(GiTransport.class, parentId, ColumnConst.E_BININDEX);
     }
     
-    public static GiTransport getTransportByID(String id)throws WebAppException {
-        return null;
+    public static GiTransport getTransportByID(long id)throws WebAppException {
+        
+        return getById(GiTransport.class, id);
     }
 }
