@@ -69,7 +69,7 @@
 	
 	<welcome-file-list>
 		<!-- Redirects to "welcome.htm" for dispatcher handling -->
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 
 	<error-page>
