@@ -39,6 +39,7 @@ public class UploadServlet extends HttpServlet {
                 ServletFileUpload uploader = new ServletFileUpload();
                 FileItemIterator itr = uploader.getItemIterator(req);
                 String fileName = null, tpBinindex = null;
+                byte[] fileContent = null;
                 while(itr.hasNext()) {
                     FileItemStream item = itr.next();
                     InputStream stream = item.openStream();
@@ -50,15 +51,18 @@ public class UploadServlet extends HttpServlet {
                             tpBinindex = Streams.asString(stream);
                         }
                     } else {
-                        // write to db
-                        if(fileName == null || tpBinindex == null) 
-                            throw new ServletException("required field [fileName] or [tpBinindex] is null");
-                        GiPkistoreitem si = new GiPkistoreitem(fileName, Long.valueOf(tpBinindex));
-                        si.setContent(IOUtils.toByteArray(stream));
-                        si.setUrl(fileName);
-                        PKISTOREITEM.saveCred(si);
+                        fileContent = IOUtils.toByteArray(stream);
                     }
                 }
+                
+                if(fileName == null || tpBinindex == null || fileContent == null) 
+                    throw new ServletException("required field [fileName] or [tpBinindex] or [fileContent] is null") ;
+                
+                GiPkistoreitem si = new GiPkistoreitem(fileName, Long.valueOf(tpBinindex));
+                si.setContent(fileContent);
+                si.setUrl(fileName);
+                PKISTOREITEM.saveCred(si);
+                
             } catch (FileUploadException e) {
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "parse file content error: " + e.getMessage());
             } catch (Exception e) {
