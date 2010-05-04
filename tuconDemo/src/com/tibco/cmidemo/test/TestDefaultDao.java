@@ -4,6 +4,7 @@ import com.tibco.cmidemo.dao.ColumnConst;
 import com.tibco.cmidemo.dao.Condition;
 import com.tibco.cmidemo.dao.Criteria;
 import com.tibco.cmidemo.dao.DAO;
+import com.tibco.cmidemo.dao.Order;
 import com.tibco.cmidemo.hibernate.GiPartner;
 import com.tibco.cmidemo.hibernate.GiPkistoreitem;
 
@@ -64,7 +65,37 @@ public class TestDefaultDao extends BaseDaoTest {
             ex.printStackTrace();
         }
     }
-    
+    public void testGetListPAOrder() {
+        try {
+            
+            GiPartner p = new GiPartner();
+            p.setName("deftestGetListPAOrder1");
+            p.setCategory(ColumnConst.PA_CAT_PARTNER);
+            
+            GiPartner p2 = new GiPartner();
+            p2.setName("abctestGetListPAOrder1");
+            p2.setCategory(ColumnConst.PA_CAT_PARTNER);
+            
+            DAO dao = getDAO();
+            dao.save(p);
+            dao.save(p2);
+            
+            
+            Criteria c = new Criteria(GiPartner.class);
+            c.addOrder(new Order(ColumnConst.PA_NAME, Order.DESCEND));
+            List<GiPartner> list = dao.getList(c);
+            for(GiPartner pp : list) {
+                System.out.println("p.name="+pp.getName());
+            }
+            
+            dao.deleteAll(list);
+            
+            System.out.println("Done");
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     public void testPKI() {
         try {
             GiPkistoreitem pki = new GiPkistoreitem();

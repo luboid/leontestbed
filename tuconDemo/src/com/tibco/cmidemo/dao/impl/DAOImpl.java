@@ -90,7 +90,7 @@ public class DAOImpl extends HibernateDaoSupport implements DAO {
         return true;
     }    
     
-    public void deleteAll(Collection<ModelObject> objs) {
+    public void deleteAll(List objs) {
         if (objs == null) {
             throw new IllegalArgumentException("objs = null");
         }
