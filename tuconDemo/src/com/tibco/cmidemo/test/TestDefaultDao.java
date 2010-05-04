@@ -69,6 +69,7 @@ public class TestDefaultDao extends BaseDaoTest {
         try {
             GiPkistoreitem pki = new GiPkistoreitem();
             pki.setTpBinindex(1000l);
+            pki.setName("xxx");
             pki.setUrl("url");
             pki.setContent("abc".getBytes());
             
