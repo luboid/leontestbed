@@ -38,6 +38,18 @@
     </id>
 
     <property
+        name="type"
+        type="java.lang.String"
+        column="TYPE"
+        length="20"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="TYPE"
+            length="20"
+        </meta>    
+    </property>
+    <property
         name="tpBinindex"
         type="java.lang.Long"
         column="TP_BININDEX"

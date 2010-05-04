@@ -11,10 +11,13 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  *         table="gi_protbindview"
  *     
 */
-public class GiProtbindview  extends ModelObject implements Serializable {
+public class GiProtbindview extends ModelObject implements Serializable {
 
     /** identifier field */
     private Long binindex;
+
+    /** nullable persistent field */
+    private String type;
 
     /** persistent field */
     private Long tpBinindex;
@@ -56,7 +59,8 @@ public class GiProtbindview  extends ModelObject implements Serializable {
     private Date lastmodified;
 
     /** full constructor */
-    public GiProtbindview(Long tpBinindex, Long pbBinindex, Integer overrideEp, Long DBinindex, Long as2Binindex, Long trBinindex, Long bacBinindex, Long errBinindex, Long as2Repbinindex, Long as2Rembinindex, Long pk1Binindex, Long pk2Binindex, Date lastmodified) {
+    public GiProtbindview(String type, Long tpBinindex, Long pbBinindex, Integer overrideEp, Long DBinindex, Long as2Binindex, Long trBinindex, Long bacBinindex, Long errBinindex, Long as2Repbinindex, Long as2Rembinindex, Long pk1Binindex, Long pk2Binindex, Date lastmodified) {
+        this.type = type;
         this.tpBinindex = tpBinindex;
         this.pbBinindex = pbBinindex;
         this.overrideEp = overrideEp;
@@ -97,6 +101,20 @@ public class GiProtbindview  extends ModelObject implements Serializable {
 
     public void setBinindex(Long binindex) {
         this.binindex = binindex;
+    }
+
+    /** 
+     *            @hibernate.property
+     *             column="TYPE"
+     *             length="20"
+     *         
+     */
+    public String getType() {
+        return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     /** 

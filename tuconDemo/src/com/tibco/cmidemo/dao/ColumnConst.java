@@ -18,4 +18,7 @@ public interface ColumnConst {
     public static final String TRANS_TYPE_HTTP = "HTTP";
     public static final String TRANS_TYPE_FILE = "FILE";
     
+    public static final String PBV_TYPE_PARTNER = "PARTNER";
+    public static final String PBV_TYPE_HOST = "HOST";
+    
 }
