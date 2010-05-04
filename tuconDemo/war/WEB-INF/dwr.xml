@@ -3,11 +3,56 @@
 
 <dwr>
 	<allow>
-		<convert converter="null" match="void" />
-		<create creator="new" javascript="__System" scope="application">
-			<!-- ExportUtil.isSystemClass assumes the name __System -->
-			<param name="class" value="org.directwebremoting.export.System" />
-			<param name="hidden" value="true" />
+	
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiBizagreement" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiContact" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiDomainid" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiEmailmoniker" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiLocation" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiOpbinding" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiPartner" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiGiProtocol" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiPkistoreitem" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiProtbinding" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiProtbindview" />
+		<convert converter="bean" match="com.tibco.cmidemo.hibernate.GiTransport" />
+		<convert converter="exception" match="com.tibco.cmidemo.web.WebAppException" />
+		<convert converter="exception" match="java.lang.Exception"/>
+		
+		
+		<create creator="new" javascript="PA" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.PA" />
 		</create>
+		<create creator="new" javascript="BA" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.BA" />
+		</create>
+		<create creator="new" javascript="LOC" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.LOC" />
+		</create>
+		<create creator="new" javascript="CONT" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.CONT" />
+		</create>
+		<create creator="new" javascript="DI" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.DI" />
+		</create>
+		<create creator="new" javascript="MAIL" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.MAIL" />
+		</create>
+		<create creator="new" javascript="PB" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.PB" />
+		</create>
+		<create creator="new" javascript="PBV" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.PBV" />
+		</create>
+		<create creator="new" javascript="PROT" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.PROT" />
+		</create>
+		<create creator="new" javascript="TP" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.TP" />
+		</create>
+		<create creator="new" javascript="KI" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.KI" />
+		</create>
+		
 	</allow>
 </dwr>
