@@ -370,7 +370,6 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.dwr.Service", null, [jsx3.util.EventD
         instance._doCall = function() {
         	  jsx3.log("call the dwr service:"+this._interface+'<<<'+this._method);
 						try{
-						debugger;
 						window[this._interface][this._method].apply(this._interface,this._args);
 						jsx3.log('ok');
 						}catch(e){jsx3.log('dwr _docall exc <<<'+e)}

@@ -23,13 +23,13 @@
               <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
               <strings jsxname="button" jsxtext="Add" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
               <dynamics/>
-              <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').editParticipant(0);"/>
+              <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').editParticipant(1);"/>
             </object>
             <object type="tibco.uxcore.gui.Button">
               <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
               <strings jsxname="button" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
               <dynamics/>
-              <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+              <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').removePA();"/>
             </object>
           </object>
           <object type="jsx3.gui.Block">
@@ -55,12 +55,12 @@
                 </object>
                 <object type="jsx3.gui.Matrix.Column">
                   <variants jsxwidth="200"/>
-                  <strings jsxname="colname" jsxtext="Name" jsxpath="name" jsxformathandler="" jsxvaluetemplate="&lt;xsl:template xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;   &lt;label style=&quot;text-decoration:underline;cursor :pointer;&quot; onclick=&quot;com.tibco.cmi.getJSXByName('blkparticipants').editParticipant(1)&quot;&gt;&lt;xsl:value-of select=&quot;{0}&quot;/&gt;&lt;/label&gt; &lt;/xsl:template&gt;"/>
+                  <strings jsxname="colname" jsxtext="Name" jsxpath="name" jsxformathandler="" jsxvaluetemplate="&lt;xsl:template xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;   &lt;label style=&quot;text-decoration:underline;cursor :pointer;&quot; onclick=&quot;com.tibco.cmi.getJSXByName('blkparticipants').editParticipant(0)&quot;&gt;&lt;xsl:value-of select=&quot;{0}&quot;/&gt;&lt;/label&gt; &lt;/xsl:template&gt;"/>
                   <dynamics/>
                 </object>
                 <object type="jsx3.gui.Matrix.Column">
                   <variants jsxwidth="120"/>
-                  <strings jsxname="coltype" jsxtext="Type" jsxpath="type"/>
+                  <strings jsxname="coltype" jsxtext="Type" jsxpath="category"/>
                   <dynamics/>
                 </object>
                 <object type="jsx3.gui.Matrix.Column">

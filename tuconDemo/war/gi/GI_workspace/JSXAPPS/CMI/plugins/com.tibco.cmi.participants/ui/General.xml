@@ -14,7 +14,7 @@
       </object>
       <object type="tibco.uxcore.gui.TextBox">
         <variants jsxwidth="240"/>
-        <strings jsxname="textbox" jsxvalue=""/>
+        <strings jsxname="txtpaname" jsxvalue=""/>
         <dynamics/>
       </object>
     </object>
@@ -27,7 +27,7 @@
       </object>
       <object type="jsx3.gui.CheckBox">
         <variants jsxheight="18" jsxdefaultchecked="0"/>
-        <strings jsxname="checkbox" jsxmargin="0 4 0 0"/>
+        <strings jsxname="chkpaisactivie" jsxmargin="0 4 0 0"/>
         <events jsxexecute="jsx3.log('The jsxexecute method was fired for checkbox ' + this);"/>
       </object>
     </object>
@@ -39,8 +39,8 @@
         <strings jsxname="label" jsxtext="Participant Type" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
       </object>
       <object type="tibco.uxcore.gui.Select">
-        <variants jsxwidth="150" jsxxmlasync="1"/>
-        <strings jsxname="select" jsxxmlurl="jsx:///xml/sample.xml"/>
+        <variants jsxwidth="150" jsxxmlasync="1" _isfocusing="true"/>
+        <strings jsxname="selpatype" jsxxml="&lt;data jsxid='jsxroot'&gt; &lt;record jsxid='Host' jsxtext='Host'/&gt; &lt;record jsxid='Partner' jsxtext='Partner'/&gt;  &lt;/data&gt;"/>
         <dynamics/>
       </object>
     </object>

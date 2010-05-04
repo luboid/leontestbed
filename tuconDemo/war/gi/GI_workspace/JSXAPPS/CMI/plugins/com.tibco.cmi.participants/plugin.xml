@@ -4,11 +4,14 @@
 		id="com.tibco.cmi.participants" name="CMI - participants" version="0.1">
 
   <requires>
+	  <plugin id='com.tibco.cmi.dwr'/>
 	  <plugin id='tibco.uxcore.gui.listcontainer'/>
 		<plugin id='tibco.uxcore.gui.masterdetail'/>
 		<plugin id='tibco.uxcore.common'/>
 		<plugin id='tibco.uxcore.gui.section'/>
 		<plugin id='tibco.uxcore.gui.tabbedpane'/>
+		<plugin id='tibco.uxcore.gui.dialog'/>
+		
 
   </requires>
   

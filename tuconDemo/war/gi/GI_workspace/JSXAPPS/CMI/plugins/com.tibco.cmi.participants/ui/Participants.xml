@@ -21,7 +21,7 @@
           <variants focusstyle="1" jsxtype="0" jsxstate="0"/>
           <strings jsxname="button" jsxtext="Cancel" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1"/>
           <dynamics/>
-          <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').save();"/>
+          <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').cancel();"/>
         </object>
       </object>
       <object type="tibco.uxcore.gui.TabbedPane">
@@ -42,16 +42,17 @@
               <strings jsxname="tab1" jsxtext="General"/>
               <object type="jsx3.gui.Block">
                 <variants jsxoverflow="1"/>
-                <strings jsxwidth="100%" jsxheight="100%" jsxtext="" jsxvisibility="" jsxpadding="20" jsxdisplay="" jsxbg="background-image:url(../GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA"/>
+                <strings jsxwidth="100%" jsxheight="100%" jsxtext="" jsxvisibility="" jsxpadding="20" jsxdisplay="" jsxbg="background-image:url(../eclipse-jee-galileo-SR1-win32/eclipse/workspace/tuconDemo/war/gi/GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA" jsxname="blkgeneral"/>
                 <include src="jsxplugin://com.tibco.cmi.participants/ui/General.xml" async="true"/>
               </object>
             </object>
             <object type="jsx3.gui.Tab">
               <variants patchedSetText="true"/>
               <strings jsxname="tab2" jsxtext="Business Location"/>
+              <events jsxexecute="" jsxshow="this.getAncestorOfType('com.tibco.cmi.participants.Participant').getLocationList();"/>
               <object type="jsx3.gui.Block">
                 <variants jsxoverflow="1"/>
-                <strings jsxwidth="100%" jsxheight="100%" jsxvisibility="" jsxpadding="20" jsxdisplay="none" jsxbg="background-image:url(../GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA"/>
+                <strings jsxwidth="100%" jsxheight="100%" jsxvisibility="" jsxpadding="20" jsxdisplay="none" jsxbg="background-image:url(../eclipse-jee-galileo-SR1-win32/eclipse/workspace/tuconDemo/war/gi/GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA" jsxname="blklocation"/>
                 <include src="jsxplugin://com.tibco.cmi.participants/ui/LocationList.xml" async="true"/>
               </object>
             </object>
@@ -60,15 +61,16 @@
               <strings jsxname="tab" jsxtext="Credentials"/>
               <object type="jsx3.gui.Block">
                 <variants/>
-                <strings jsxwidth="100%" jsxheight="100%" jsxtext="Tab Content" jsxvisibility="" jsxpadding="20" jsxbg="background-image:url(../GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA" jsxdisplay="none"/>
+                <strings jsxwidth="100%" jsxheight="100%" jsxtext="Tab Content" jsxvisibility="" jsxpadding="20" jsxbg="background-image:url(../eclipse-jee-galileo-SR1-win32/eclipse/workspace/tuconDemo/war/gi/GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA" jsxdisplay="none" jsxname="blkcredentials"/>
               </object>
             </object>
             <object type="jsx3.gui.Tab">
               <variants patchedSetText="true"/>
               <strings jsxname="tab3" jsxtext="Protocal"/>
+              <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').getProtocal();"/>
               <object type="jsx3.gui.Block">
                 <variants/>
-                <strings jsxwidth="100%" jsxheight="100%" jsxvisibility="" jsxpadding="20" jsxdisplay="none" jsxbg="background-image:url(../GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA"/>
+                <strings jsxwidth="100%" jsxheight="100%" jsxvisibility="" jsxpadding="20" jsxdisplay="none" jsxbg="background-image:url(../eclipse-jee-galileo-SR1-win32/eclipse/workspace/tuconDemo/war/gi/GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA" jsxname="blkprotocal"/>
                 <include src="jsxplugin://com.tibco.cmi.participants/ui/Protocal.xml" async="true"/>
               </object>
             </object>
