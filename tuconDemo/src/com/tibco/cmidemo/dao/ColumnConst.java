@@ -3,8 +3,8 @@ package com.tibco.cmidemo.dao;
 public interface ColumnConst {
     
     public static final String PA_NAME = "name";
-    public static final String PA_CAT_HOST = "host";
-    public static final String PA_CAT_PARTNER = "partner";
+    public static final String PA_CAT_HOST = "Host";
+    public static final String PA_CAT_PARTNER = "Partner";
     // db column names
     public static final String PBV_BININDEX = "pbvBinindex";
     public static final String PB_BININDEX = "pbBinindex";

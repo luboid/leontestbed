@@ -64,7 +64,8 @@ public class PROTOCOL extends DWR {
     public static void enableProtocols(Long partnerId, List<String> protNames) throws WebAppException {
         
         for(String protName : protNames) {
-            GiProtocol prot = new GiProtocol(protName, partnerId, 0);
+            // leon: default to be 1 which is same as in bc
+            GiProtocol prot = new GiProtocol(protName, partnerId, 1);
             save(prot);
         }
     }
