@@ -1,6 +1,3 @@
-/**
- * Author: Bob Chen
- */
 
 package com.tibco.cmidemo.dao;
 
@@ -11,8 +8,7 @@ public class Order {
     String field;
     boolean ascend;
 
-    public Order() {
-    }
+
 
     public Order(String field, boolean ascend) {
         this.field = field;

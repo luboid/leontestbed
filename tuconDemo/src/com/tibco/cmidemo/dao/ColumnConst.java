@@ -6,6 +6,7 @@ public interface ColumnConst {
     public static final String PA_CAT_HOST = "Host";
     public static final String PA_CAT_PARTNER = "Partner";
     // db column names
+    
     public static final String PBV_BININDEX = "pbvBinindex";
     public static final String PB_BININDEX = "pbBinindex";
     public static final String TP_BININDEX = "tpBinindex";

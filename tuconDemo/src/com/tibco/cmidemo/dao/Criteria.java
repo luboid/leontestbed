@@ -1,6 +1,4 @@
-/**
-* Author: Bob Chen
-*/
+
 
 package com.tibco.cmidemo.dao;
 
