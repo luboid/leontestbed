@@ -18,8 +18,8 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.dwr.Engine", null, null,
     function(KLASS, instance) {
     	  //alert(CONTEXT_PATH);
         //if(!CONTEXT_PATH) {var CONTEXT_PATH="";}
-				CONTEXT_PATH = '';
-        KLASS._DWR_PATH = CONTEXT_PATH + "/dwr/";
+				//CONTEXT_PATH = '';
+        KLASS._DWR_PATH = "/war/dwr/";
         KLASS._ENGINE_FILES = ['engine.js', 'util.js'];
         KLASS._isEngineLoaded = false;
 
@@ -370,6 +370,7 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.dwr.Service", null, [jsx3.util.EventD
         instance._doCall = function() {
         	  jsx3.log("call the dwr service:"+this._interface+'<<<'+this._method);
 						try{
+						debugger;
 						window[this._interface][this._method].apply(this._interface,this._args);
 						jsx3.log('ok');
 						}catch(e){jsx3.log('dwr _docall exc <<<'+e)}
