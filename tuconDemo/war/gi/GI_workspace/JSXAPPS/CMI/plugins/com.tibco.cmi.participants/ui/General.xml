@@ -5,43 +5,47 @@
   <object type="jsx3.gui.Block">
     <variants jsxoverflow="1"/>
     <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxpadding="" jsxheight="100%"/>
-    <object type="jsx3.gui.Block">
-      <variants jsxoverflow="2" jsxheight="30"/>
-      <strings jsxname="pane1" jsxwidth="100%"/>
+    <object type="jsx3.gui.CDF">
+      <variants/>
+      <strings jsxname="cdfgeneral" jsxwidth="100%" jsxheight="100%" jsxcdfid="1" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;   &lt;record jsxid=&quot;1&quot; first=&quot;john&quot; last=&quot;public&quot; middle=&quot;q&quot;/&gt; &lt;/data&gt;"/>
       <object type="jsx3.gui.Block">
-        <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="300" jsxfontsize="11"/>
-        <strings jsxname="label" jsxtext="Participant Name" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+        <variants jsxoverflow="2" jsxheight="30"/>
+        <strings jsxname="pane1" jsxwidth="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="300" jsxfontsize="11"/>
+          <strings jsxname="label" jsxtext="Participant Name" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+        </object>
+        <object type="tibco.uxcore.gui.TextBox">
+          <variants jsxwidth="240"/>
+          <strings jsxname="txtpaname" jsxcdfid="general" jsxcdfattribute="name"/>
+          <dynamics/>
+        </object>
       </object>
-      <object type="tibco.uxcore.gui.TextBox">
-        <variants jsxwidth="240"/>
-        <strings jsxname="txtpaname" jsxvalue=""/>
-        <dynamics/>
-      </object>
-    </object>
-    <object type="jsx3.gui.Block">
-      <variants jsxoverflow="2" jsxheight="30"/>
-      <strings jsxname="pane1" jsxwidth="100%"/>
       <object type="jsx3.gui.Block">
-        <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="300" jsxfontsize="11"/>
-        <strings jsxname="label" jsxtext="Active" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+        <variants jsxoverflow="2" jsxheight="30"/>
+        <strings jsxname="pane1" jsxwidth="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="300" jsxfontsize="11"/>
+          <strings jsxname="label" jsxtext="Active" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+        </object>
+        <object type="jsx3.gui.CheckBox">
+          <variants jsxheight="18" jsxdefaultchecked="0" jsxchecked="0"/>
+          <strings jsxname="chkpaisactivie" jsxmargin="0 4 0 0" jsxcdfattribute="isActive" jsxcdfid="general"/>
+          <events jsxexecute="jsx3.log('The jsxexecute method was fired for checkbox ' + this);"/>
+        </object>
       </object>
-      <object type="jsx3.gui.CheckBox">
-        <variants jsxheight="18" jsxdefaultchecked="0"/>
-        <strings jsxname="chkpaisactivie" jsxmargin="0 4 0 0"/>
-        <events jsxexecute="jsx3.log('The jsxexecute method was fired for checkbox ' + this);"/>
-      </object>
-    </object>
-    <object type="jsx3.gui.Block">
-      <variants jsxoverflow="2" jsxheight="30"/>
-      <strings jsxname="pane1" jsxwidth="100%"/>
       <object type="jsx3.gui.Block">
-        <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="300" jsxfontsize="11"/>
-        <strings jsxname="label" jsxtext="Participant Type" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
-      </object>
-      <object type="tibco.uxcore.gui.Select">
-        <variants jsxwidth="150" jsxxmlasync="1" _isfocusing="true"/>
-        <strings jsxname="selpatype" jsxxml="&lt;data jsxid='jsxroot'&gt; &lt;record jsxid='Host' jsxtext='Host'/&gt; &lt;record jsxid='Partner' jsxtext='Partner'/&gt;  &lt;/data&gt;"/>
-        <dynamics/>
+        <variants jsxoverflow="2" jsxheight="30"/>
+        <strings jsxname="pane1" jsxwidth="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="300" jsxfontsize="11"/>
+          <strings jsxname="label" jsxtext="Participant Type" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+        </object>
+        <object type="tibco.uxcore.gui.Select">
+          <variants jsxwidth="150" jsxxmlasync="1" _isfocusing="true"/>
+          <strings jsxname="selpatype" jsxxml="&lt;data jsxid='jsxroot'&gt; &lt;record jsxid='Host' jsxtext='Host'/&gt; &lt;record jsxid='Partner' jsxtext='Partner'/&gt;  &lt;/data&gt;" jsxcdfid="general" jsxcdfattribute="category"/>
+          <dynamics/>
+        </object>
       </object>
     </object>
   </object>

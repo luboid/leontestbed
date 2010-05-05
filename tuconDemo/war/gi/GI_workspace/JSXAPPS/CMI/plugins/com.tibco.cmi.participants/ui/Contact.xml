@@ -5,7 +5,7 @@
   <onBeforeDeserialize/>
   <onAfterDeserialize/>
   <object type="tibco.uxcore.gui.Dialog">
-    <variants jsxwidth="500" jsxheight="310" jsxzindex="5000" jsxwindowstate="1" jsxoverflow="2"/>
+    <variants jsxwidth="500" jsxheight="310" jsxzindex="5000" jsxwindowstate="1" jsxoverflow="2" jsxmodal="1"/>
     <strings jsxname="dialog"/>
     <dynamics/>
     <object type="jsx3.gui.WindowBar">
@@ -38,95 +38,99 @@
         <object type="jsx3.gui.Block">
           <variants jsxoverflow="2"/>
           <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
-          <object type="jsx3.gui.Block">
-            <variants jsxoverflow="2" jsxheight="30"/>
-            <strings jsxname="pane1" jsxwidth="100%"/>
+          <object type="jsx3.gui.CDF">
+            <variants/>
+            <strings jsxname="cdfcontact" jsxwidth="100%" jsxheight="100%" jsxcdfid="1"/>
             <object type="jsx3.gui.Block">
-              <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
-              <strings jsxname="label" jsxtext="First Name" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              <variants jsxoverflow="2" jsxheight="30"/>
+              <strings jsxname="pane1" jsxwidth="100%"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="First Name" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              </object>
+              <object type="tibco.uxcore.gui.TextBox">
+                <variants jsxwidth="180"/>
+                <strings jsxname="txtfname" jsxcdfid="contact" jsxcdfattribute="FName"/>
+                <dynamics/>
+              </object>
             </object>
-            <object type="tibco.uxcore.gui.TextBox">
-              <variants jsxwidth="180"/>
-              <strings jsxname="textbox" jsxvalue=""/>
-              <dynamics/>
-            </object>
-          </object>
-          <object type="jsx3.gui.Block">
-            <variants jsxoverflow="2" jsxheight="30"/>
-            <strings jsxname="pane1" jsxwidth="100%"/>
             <object type="jsx3.gui.Block">
-              <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
-              <strings jsxname="label" jsxtext="Last Name" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              <variants jsxoverflow="2" jsxheight="30"/>
+              <strings jsxname="pane1" jsxwidth="100%"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="Last Name" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              </object>
+              <object type="tibco.uxcore.gui.TextBox">
+                <variants jsxwidth="180"/>
+                <strings jsxname="txtlname" jsxcdfid="contact" jsxcdfattribute="LName"/>
+                <dynamics/>
+              </object>
             </object>
-            <object type="tibco.uxcore.gui.TextBox">
-              <variants jsxwidth="180"/>
-              <strings jsxname="textbox" jsxvalue=""/>
-              <dynamics/>
-            </object>
-          </object>
-          <object type="jsx3.gui.Block">
-            <variants jsxoverflow="2" jsxheight="30"/>
-            <strings jsxname="pane1" jsxwidth="100%"/>
             <object type="jsx3.gui.Block">
-              <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
-              <strings jsxname="label" jsxtext="Contact Type" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              <variants jsxoverflow="2" jsxheight="30"/>
+              <strings jsxname="pane1" jsxwidth="100%"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="Contact Type" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              </object>
+              <object type="tibco.uxcore.gui.Select">
+                <variants jsxwidth="120" jsxxmlasync="0" _isfocusing="true"/>
+                <strings jsxname="seltype" jsxxml="&lt;data jsxid='jsxroot'&gt; &lt;record jsxid='Admin' jsxtext='Admin'/&gt; &lt;record jsxid='Business' jsxtext='Business'/&gt; &lt;record jsxid='Legal' jsxtext='Legal'/&gt; &lt;record jsxid='Support' jsxtext='Support'/&gt; &lt;record jsxid='General' jsxtext='General'/&gt; &lt;/data&gt;" jsxcdfid="contact" jsxcdfattribute="category" jsxdefaulttext="General"/>
+                <dynamics/>
+              </object>
             </object>
-            <object type="tibco.uxcore.gui.Select">
-              <variants jsxwidth="120" jsxxmlasync="1"/>
-              <strings jsxname="select" jsxxmlurl="jsx:///xml/sample.xml"/>
-              <dynamics/>
-            </object>
-          </object>
-          <object type="jsx3.gui.Block">
-            <variants jsxoverflow="2" jsxheight="30"/>
-            <strings jsxname="pane1" jsxwidth="100%"/>
             <object type="jsx3.gui.Block">
-              <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
-              <strings jsxname="label" jsxtext="Email" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              <variants jsxoverflow="2" jsxheight="30"/>
+              <strings jsxname="pane1" jsxwidth="100%"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="Email" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              </object>
+              <object type="tibco.uxcore.gui.TextBox">
+                <variants jsxwidth="180"/>
+                <strings jsxname="txtemail" jsxcdfid="contact" jsxcdfattribute="email"/>
+                <dynamics/>
+              </object>
             </object>
-            <object type="tibco.uxcore.gui.TextBox">
-              <variants jsxwidth="180"/>
-              <strings jsxname="textbox" jsxvalue=""/>
-              <dynamics/>
-            </object>
-          </object>
-          <object type="jsx3.gui.Block">
-            <variants jsxoverflow="2" jsxheight="30"/>
-            <strings jsxname="pane1" jsxwidth="100%"/>
             <object type="jsx3.gui.Block">
-              <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
-              <strings jsxname="label" jsxtext="Phone" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              <variants jsxoverflow="2" jsxheight="30"/>
+              <strings jsxname="pane1" jsxwidth="100%"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="Phone" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              </object>
+              <object type="tibco.uxcore.gui.TextBox">
+                <variants jsxwidth="180"/>
+                <strings jsxname="txtphone" jsxcdfid="contact" jsxcdfattribute="phone"/>
+                <dynamics/>
+              </object>
             </object>
-            <object type="tibco.uxcore.gui.TextBox">
-              <variants jsxwidth="180"/>
-              <strings jsxname="textbox" jsxvalue=""/>
-              <dynamics/>
-            </object>
-          </object>
-          <object type="jsx3.gui.Block">
-            <variants jsxoverflow="2" jsxheight="30"/>
-            <strings jsxname="pane1" jsxwidth="100%"/>
             <object type="jsx3.gui.Block">
-              <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
-              <strings jsxname="label" jsxtext="Fax" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              <variants jsxoverflow="2" jsxheight="30"/>
+              <strings jsxname="pane1" jsxwidth="100%"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="Fax" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              </object>
+              <object type="tibco.uxcore.gui.TextBox">
+                <variants jsxwidth="180"/>
+                <strings jsxname="txtfax" jsxcdfid="contact" jsxcdfattribute="fax"/>
+                <dynamics/>
+              </object>
             </object>
-            <object type="tibco.uxcore.gui.TextBox">
-              <variants jsxwidth="180"/>
-              <strings jsxname="textbox" jsxvalue=""/>
-              <dynamics/>
-            </object>
-          </object>
-          <object type="jsx3.gui.Block">
-            <variants jsxoverflow="2" jsxheight="30"/>
-            <strings jsxname="pane1" jsxwidth="100%"/>
             <object type="jsx3.gui.Block">
-              <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
-              <strings jsxname="label" jsxtext="Pager" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
-            </object>
-            <object type="tibco.uxcore.gui.TextBox">
-              <variants jsxwidth="180"/>
-              <strings jsxname="textbox" jsxvalue=""/>
-              <dynamics/>
+              <variants jsxoverflow="2" jsxheight="30"/>
+              <strings jsxname="pane1" jsxwidth="100%"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="150" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="Pager" jsxheight="100%" jsxtextalign="right" jsxpadding="2 8 2 0" jsxfontname="arial" jsxfontweight="normal"/>
+              </object>
+              <object type="tibco.uxcore.gui.TextBox">
+                <variants jsxwidth="180"/>
+                <strings jsxname="txtpager" jsxcdfattribute="pager" jsxcdfid="contact"/>
+                <dynamics/>
+              </object>
             </object>
           </object>
         </object>
@@ -137,13 +141,13 @@
             <variants focusstyle="1" jsxtype="0" jsxstate="0" queueing="2"/>
             <strings jsxname="button" jsxtext="Save" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
             <dynamics/>
-            <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+            <events jsxexecute="this.getServer().getBodyBlock().getDescendantsOfType('com.tibco.cmi.participants.Participant')[0].saveContact(this.getAncestorOfType('tibco.uxcore.gui.Dialog'));"/>
           </object>
           <object type="tibco.uxcore.gui.Button">
             <variants focusstyle="1" jsxtype="0" jsxstate="0" queueing="2"/>
             <strings jsxname="button" jsxtext="Cancel" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
             <dynamics/>
-            <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+            <events jsxexecute="this.getAncestorOfType('tibco.uxcore.gui.Dialog')"/>
           </object>
         </object>
       </object>

@@ -37,6 +37,15 @@
             <dynamics/>
             <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
             <object type="jsx3.gui.Matrix.Column">
+              <variants jsxwidth="40"/>
+              <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxvaluetemplate="@empty"/>
+              <dynamics jsxborder="@uxcore10@MatrixC Border" jsxbg="@uxcore10@MatrixC BackGround" jsxbgcolor="@uxcore10@MatrixC BGColor" jsxfontname="@uxcore10@MatrixC Font Name" jsxfontsize="@uxcore10@MatrixC Font Size" jsxfontweight="@uxcore10@MatrixC Font Weight" jsxcolor="@uxcore10@MatrixC Color" jsxpadding="@uxcore10@MatrixC Padding" jsxcellfontname="@uxcore10@MatrixCell Font Name" jsxcellfontsize="@uxcore10@MatrixCell Font Size" jsxcellfontweight="@uxcore10@MatrixCell Font Weight" jsxcellcolor="@uxcore10@MatrixCell Color" jsxcellbgcolor="@uxcore10@MatrixCell BGColor" jsxcellpadding="@uxcore10@MatrixCell Padding" jsxcellborder="@uxcore10@MatrixCell Border"/>
+              <object type="jsx3.gui.CheckBox">
+                <variants jsxchecked="0" jsxenabled="1" jsxdefaultchecked="0"/>
+                <strings jsxname="checkboxMask" jsxtext=""/>
+              </object>
+            </object>
+            <object type="jsx3.gui.Matrix.Column">
               <variants/>
               <strings jsxwidth="*" jsxname="colname" jsxtext="Name" jsxpath="name"/>
               <dynamics/>
@@ -52,8 +61,8 @@
               <dynamics/>
             </object>
             <object type="jsx3.gui.Matrix.Column">
-              <variants/>
-              <strings jsxname="colaction" jsxwidth="100" jsxtext="Action" jsxpath="action"/>
+              <variants jsxwidth="200"/>
+              <strings jsxname="colaction" jsxtext="Action" jsxpath="action" jsxvaluetemplate="&lt;xsl:template xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;&lt;xsl:if test=&quot;@locationorcontact='location'&quot;&gt; &lt;label style=&quot;text-decoration:underline;cursor:Pointer;padding:0px 2px 0px 2px;&quot; onclick=&quot;com.tibco.cmi.getJSXByName('blkparticipants').editLocation()&quot;&gt;Edit&lt;/label&gt;&lt;label style=&quot;text-decoration:underline;cursor:Pointer;padding:0px 2px 0px 2px;&quot; onclick=&quot;com.tibco.cmi.getJSXByName('blkparticipants').getContact()&quot;&gt;View Contact&lt;/label&gt;&lt;label style=&quot;text-decoration:underline;cursor:Pointer;padding:0px 2px 0px 2px;&quot; onclick=&quot;com.tibco.cmi.getJSXByName('blkparticipants').addContact()&quot;&gt;Add Contact&lt;/label&gt;  &lt;/xsl:if&gt; &lt;xsl:if test=&quot;@locationorcontact='contact'&quot;&gt; &lt;label style=&quot;text-decoration:underline;cursor:Pointer;padding:0px 2px 0px 2px;&quot; onclick=&quot;com.tibco.cmi.getJSXByName('blkparticipants').editContact()&quot;&gt;Edit&lt;/label&gt;&lt;label style=&quot;text-decoration:underline;cursor:Pointer;padding:0px 2px 0px 2px;&quot; onclick=&quot;com.tibco.cmi.getJSXByName('blkparticipants').removeContact()&quot;&gt;Remove&lt;/label&gt; &lt;/xsl:if&gt; &lt;/xsl:template&gt;"/>
               <dynamics/>
             </object>
           </object>

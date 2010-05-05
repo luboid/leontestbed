@@ -1,0 +1,94 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Dialog  With Save Cancel Button</name>
+  <icon>jsxplugin://tibco.uxcore.gui.dialog/images/prototype/dialog.gif</icon>
+  <description>Dialog box.  (Set Modal property for a modal dialog with Save and Cancel buttons).</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Dialog">
+    <variants jsxwidth="360" jsxheight="200" jsxzindex="5000" jsxwindowstate="1" jsxoverflow="2" jsxmodal="1"/>
+    <strings jsxname="dialog"/>
+    <dynamics/>
+    <object type="jsx3.gui.WindowBar">
+      <variants jsxheight="30"/>
+      <strings jsxname="windowBar" jsxtext="Upload Credential File"/>
+      <dynamics/>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnClose" jsxdlgbtntype="btnClose"/>
+        <dynamics/>
+      </object>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnMaximize" jsxdlgbtntype="btnMaximize"/>
+        <dynamics/>
+      </object>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnMinimize" jsxdlgbtntype="btnMinimize"/>
+        <dynamics/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants/>
+      <strings jsxname="content" jsxwidth="100%" jsxheight="100%"/>
+      <dynamics/>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="2"/>
+        <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+        <object type="jsx3.gui.LayoutGrid">
+          <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+          <strings jsxname="layoutRows" jsxrows="30,*,40" jsxwidth="100%" jsxheight="100%"/>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="2"/>
+            <strings jsxname="pane1" jsxwidth="100%" jsxheight="100%"/>
+            <object type="jsx3.gui.Block">
+              <variants jsxrelativeposition="1" jsxoverflow="3" jsxfontsize="11" jsxwidth="80"/>
+              <strings jsxname="label" jsxtext="Alias" jsxfontname="arial" jsxfontweight="normal" jsxtextalign="right" jsxpadding="1 4 0 0"/>
+            </object>
+            <object type="tibco.uxcore.gui.TextBox">
+              <variants/>
+              <strings jsxname="txtalias" jsxvalue=""/>
+              <dynamics/>
+            </object>
+          </object>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="2"/>
+            <strings jsxname="pane2" jsxwidth="100%" jsxheight="100%" jsxtext="" jsxdisplay=""/>
+            <object type="jsx3.gui.LayoutGrid">
+              <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+              <strings jsxname="layoutCols" jsxcols="80,*" jsxwidth="100%" jsxheight="100%"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="2" jsxwidth="80"/>
+                <strings jsxname="pane1" jsxheight="100%"/>
+                <object type="jsx3.gui.Block">
+                  <variants jsxrelativeposition="1" jsxoverflow="3" jsxfontsize="11" jsxwidth="80"/>
+                  <strings jsxname="label" jsxtext="Upload File" jsxfontname="arial" jsxfontweight="normal" jsxtextalign="right" jsxpadding="2 4 0 0"/>
+                </object>
+              </object>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="1"/>
+                <strings jsxname="block" jsxrelativeposition="1" jsxtext="&lt;form id='certform' method='post' target='iframe_upload' name = 'certuploadfile' enctype= 'multipart/form-data'&gt; &lt;input name='certfile' id='certfile'   type = 'file'&gt; &lt;/input&gt;&lt;/form&gt; &lt;iframe id='iframe_upload' style='display:none'&gt;&lt;/iframe&gt;" jsxheight="100%" jsxwidth="100%"/>
+              </object>
+            </object>
+          </object>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="2"/>
+            <strings jsxname="pane2" jsxwidth="100%" jsxheight="100%" jsxtext="" jsxdisplay="" jsxtextalign="center"/>
+            <object type="tibco.uxcore.gui.Button">
+              <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
+              <strings jsxname="button" jsxtext="Upload" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
+              <dynamics/>
+              <events jsxexecute="this.getServer().getBodyBlock().getDescendantsOfType('com.tibco.cmi.participants.Participant')[0].uploadCertFile(this.getAncestorOfType(tibco.uxcore.gui.Dialog));"/>
+            </object>
+            <object type="tibco.uxcore.gui.Button">
+              <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
+              <strings jsxname="button" jsxtext="Cancel" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
+              <dynamics/>
+              <events jsxexecute="this.getAncestorOfType(tibco.uxcore.gui.Dialog).doClose();"/>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

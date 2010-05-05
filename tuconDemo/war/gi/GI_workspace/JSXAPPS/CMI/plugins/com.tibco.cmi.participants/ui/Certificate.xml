@@ -13,15 +13,15 @@
         <strings jsxname="pane1" jsxwidth="100%" jsxheight="100%"/>
         <object type="tibco.uxcore.gui.Button">
           <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
-          <strings jsxname="button" jsxtext="Enable" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
+          <strings jsxname="button" jsxtext="New Credential" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
           <dynamics/>
-          <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+          <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').newCertFile();"/>
         </object>
         <object type="tibco.uxcore.gui.Button">
           <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
-          <strings jsxname="button" jsxtext="Disable" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
+          <strings jsxname="button" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
           <dynamics/>
-          <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+          <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').removeCredentials();"/>
         </object>
       </object>
       <object type="jsx3.gui.Block">
@@ -32,8 +32,8 @@
           <strings jsxname="matrixBlock" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
           <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"/>
           <object type="tibco.uxcore.gui.Matrix">
-            <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"/>
-            <strings jsxname="matrix1" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending"/>
+            <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="1" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"/>
+            <strings jsxname="mtxcert" jsxrenderingmodel="deep" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending"/>
             <dynamics/>
             <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
             <object type="jsx3.gui.Matrix.Column">
@@ -46,8 +46,13 @@
               </object>
             </object>
             <object type="jsx3.gui.Matrix.Column">
-              <variants jsxwidth="40"/>
-              <strings jsxname="colprotocal" jsxtext="Protocal Name" jsxpath="protocal"/>
+              <variants jsxwidth="300"/>
+              <strings jsxname="colname" jsxtext="Name" jsxpath="name"/>
+              <dynamics/>
+            </object>
+            <object type="jsx3.gui.Matrix.Column">
+              <variants jsxwidth="165"/>
+              <strings jsxname="colurl" jsxtext="URL" jsxpath="url"/>
               <dynamics/>
             </object>
           </object>

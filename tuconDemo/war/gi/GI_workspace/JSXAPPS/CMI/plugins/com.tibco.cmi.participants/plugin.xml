@@ -19,6 +19,9 @@
 	   <script id='Participant_js' path='Participant.js'/>
 		 <xml id='General_xml' path='ui/General.xml'/>
 		 <xml id='Location_xml' path='ui/Location.xml'/>
+		 <xml id='Contact_xml' path='ui/Contact.xml'/>
+		 <xml id='Certificate_xml' path='ui/Certificate.xml'/>
+		 <xml id='certUploadDlg_xml' path='ui/certUploadDlg.xml'/>
 		 <xml id='LocationList_xml' path='ui/LocationList.xml'/>
 		 <xml id='Protocal_xml' path='ui/Protocal.xml'/>
 		 <xml id='Participants_xml' path='ui/Participants.xml'>
