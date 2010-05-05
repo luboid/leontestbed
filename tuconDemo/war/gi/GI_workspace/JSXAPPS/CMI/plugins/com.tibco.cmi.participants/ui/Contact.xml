@@ -40,7 +40,7 @@
           <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
           <object type="jsx3.gui.CDF">
             <variants/>
-            <strings jsxname="cdfcontact" jsxwidth="100%" jsxheight="100%" jsxcdfid="1"/>
+            <strings jsxname="cdfcontact" jsxwidth="100%" jsxheight="100%" jsxcdfid="1" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;   &lt;record jsxid=&quot;1&quot; first=&quot;john&quot; last=&quot;public&quot; middle=&quot;q&quot;/&gt; &lt;/data&gt;"/>
             <object type="jsx3.gui.Block">
               <variants jsxoverflow="2" jsxheight="30"/>
               <strings jsxname="pane1" jsxwidth="100%"/>
