@@ -18,7 +18,7 @@
           <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"></strings>
           <object type="jsx3.gui.Block">
             <variants jsxoverflow="2" jsxheight="30" jsxfontsize="13"></variants>
-            <strings jsxname="blkEditProtocolTitle" jsxwidth="100%" jsxrelativeposition="1" jsxborder="" jsxfontname="arial" jsxfontweight="bold" jsxtext="Edit Protocol Binding: EDI-EDIFACT" jsxpadding="5"></strings>
+            <strings jsxname="blkEditProtocolTitle" jsxwidth="100%" jsxrelativeposition="1" jsxborder="" jsxfontname="arial" jsxfontweight="bold" jsxtext="Edit Protocol Binding: " jsxpadding="5"></strings>
           </object>
           <object type="jsx3.gui.Block">
             <variants jsxoverflow="2"></variants>

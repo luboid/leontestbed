@@ -15,6 +15,9 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
 			
 			instance.getBAid = function(objEvent){
 				EditAgreement.BAID = objEvent.BAid;
+				var baName = objEvent.name;
+				server.getJSXByName("blkEditAgreementTitle").setText("Edit Agreement: " + baName);
+				server.getJSXByName("blkEditAgreementTitle").repaint();
 				this.getBAInfo();
 				EditAgreement.interval = setInterval(this.getProtocolBinding,5000);
 				this.getProtocolBinding();	

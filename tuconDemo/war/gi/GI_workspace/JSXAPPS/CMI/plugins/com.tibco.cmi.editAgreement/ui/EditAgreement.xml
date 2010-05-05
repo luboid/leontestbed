@@ -18,7 +18,7 @@
           <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"></strings>
           <object type="jsx3.gui.Block">
             <variants jsxoverflow="1" jsxheight="30" jsxfontsize="13"></variants>
-            <strings jsxname="blkEditAgreementTitle" jsxwidth="100%" jsxrelativeposition="1" jsxtext="Edit Agreement: host-partner" jsxfontname="arial" jsxfontweight="bold" jsxpadding="5"></strings>
+            <strings jsxname="blkEditAgreementTitle" jsxwidth="100%" jsxrelativeposition="1" jsxtext="Edit Agreement: " jsxfontname="arial" jsxfontweight="bold" jsxpadding="5"></strings>
           </object>
           <object type="jsx3.gui.Block">
             <variants jsxoverflow="2"></variants>
