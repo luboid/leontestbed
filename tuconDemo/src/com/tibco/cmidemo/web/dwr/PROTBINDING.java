@@ -38,12 +38,12 @@ public class PROTBINDING extends DWR {
             GiProtbindview hostView = new GiProtbindview();
             hostView.setPbBinindex(pb.getBinindex());
             hostView.setType(ColumnConst.PA_CAT_HOST);
-            save(hostView);
+            PROTBINDVIEW.saveProtBindingView(hostView);
             
             GiProtbindview partnerView = new GiProtbindview();
             partnerView.setPbBinindex(pb.getBinindex());
             partnerView.setType(ColumnConst.PA_CAT_PARTNER);
-            save(partnerView);
+            PROTBINDVIEW.saveProtBindingView(partnerView);
         }
         
     }
