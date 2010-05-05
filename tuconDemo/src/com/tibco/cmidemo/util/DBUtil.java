@@ -19,7 +19,7 @@ public class DBUtil {
         return c;
     }
     
-    public static <T> Criteria createCriteria(String paCat) {
+    public static Criteria createCriteria(String paCat) {
         
         Criteria c = new Criteria(GiPartner.class);
         c.addCondition(new Condition(ColumnConst.CATEGORY, Condition.EQUALS, paCat));
