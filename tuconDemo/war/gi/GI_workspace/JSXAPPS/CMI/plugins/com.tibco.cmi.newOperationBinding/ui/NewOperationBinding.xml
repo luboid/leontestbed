@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<serialization jsxversion="3.8" xmlns="urn:tibco.com/v3.0">
+﻿<serialization jsxversion="3.8" xmlns="urn:tibco.com/v3.0">
   <name><![CDATA[Block - 100%]]></name>
   <icon><![CDATA[images/prototypes/block.gif]]></icon>
   <description><![CDATA[Simple block, relatively positioned with overflow=scroll.]]></description>
@@ -47,17 +46,17 @@
               <dynamics></dynamics>
               <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""></xslparameters>
               <object type="jsx3.gui.Matrix.Column">
-                <variants jsxwidth="25"></variants>
-                <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxpadding="3" jsxcellpadding="1" jsxvaluetemplate="@empty"></strings>
-                <dynamics jsxborder="@Outset" jsxbg="@Bevel TopDown" jsxbgcolor="@Solid Disabled"></dynamics>
+                <variants jsxwidth="100"></variants>
+                <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxvaluetemplate="@empty"></strings>
+                <dynamics></dynamics>
                 <object type="jsx3.gui.CheckBox">
                   <variants jsxdefaultchecked="0" jsxchecked="0" jsxenabled="1"></variants>
                   <strings jsxname="checkboxMask" jsxtext=""></strings>
                 </object>
               </object>
               <object type="jsx3.gui.Matrix.Column">
-                <variants jsxwidth="165"></variants>
-                <strings jsxname="colOPName" jsxpath="opName"></strings>
+                <variants></variants>
+                <strings jsxwidth="*" jsxname="colOPName" jsxpath="opName"></strings>
                 <dynamics></dynamics>
               </object>
             </object>

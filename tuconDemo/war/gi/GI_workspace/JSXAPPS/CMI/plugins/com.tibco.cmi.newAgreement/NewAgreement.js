@@ -9,8 +9,13 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.newAgreement.NewAgreement",
 			
 			instance.onRsrcLoad = function(){
 				NewAgreement.block = server.getJSXByName("blkNewAgreement");
+				this.getServer().subscribe("newAgreement.getBALIST",this, this.getBAList);
 				this.getPartnerList();
 			};
+			
+			instance.getBAList = function(objEvent) {
+				NewAgreement.BALIST = objEvent.BALIST;
+			}
 			
 			instance.getPartnerList = function() {
 				var me = this;
@@ -147,10 +152,24 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.newAgreement.NewAgreement",
 					BA.HBinindex = hostPartyId;
 					BA.tpBinindex = partnerPartyId;
 					
-					var service = dwrEngine.loadService('BIZAGREEMENT','saveBA',[BA]);
-					service.subscribe(dwrService.ON_SUCCESS, function(){server.publish({subject:"showAgreementsList"});	});
-					service.doCall();
+					var isExist = 0;
+					var baList = NewAgreement.BALIST;
+					for(var i = 0; i < baList.length; i++) {
+						var ba = baList[i];
+						if(hostPartyId == ba.HBinindex && partnerPartyId == ba.tpBinindex) {
+							isExist = 1;
+							break;
+						}
+					}
 					
+					if(isExist)
+						alert("Failed to create new Agreement: . Agreement already exisits between participants :host and partner ");
+					
+					else {
+						var service = dwrEngine.loadService('BIZAGREEMENT','saveBA',[BA]);
+						service.subscribe(dwrService.ON_SUCCESS, function(){server.publish({subject:"showAgreementsList"});	});
+						service.doCall();		
+					}					
 					
 				} else {
 					alert("Host or Partner party is not selected")

@@ -11,6 +11,7 @@
 			instance.onRsrcLoad = function(){				
 				this.getServer().subscribe("showAgreementsList", this, this.showAgreementsList);
 				this.getAgreementList();
+				BusinessAgreements.BALIST;
 			};
 		
 			instance.getAgreementList = function(){
@@ -22,6 +23,7 @@
 			
 			instance._callback_getBAList_onSuccess = function(objEvent) {
 				var agreementList = objEvent.data;
+				BusinessAgreements.BALIST = agreementList;
 				var agreementcdf = new jsx3.xml.Document();
 				var root = agreementcdf.createDocumentElement("data");
 				root.setAttribute("jsxid", "jsxroot");
@@ -61,6 +63,7 @@
             var extPlugIn = ext.getPlugIn();
             extPlugIn.load().when(function(){
                 extPlugIn.loadRsrcComponent(uiId,objContainer)});
+								setTimeout(function(){server.publish({subject:"newAgreement.getBALIST", BALIST:BusinessAgreements.BALIST});},500);
             }).bind(this)); 
       }
 			
