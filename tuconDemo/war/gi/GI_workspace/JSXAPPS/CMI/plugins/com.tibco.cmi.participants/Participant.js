@@ -195,6 +195,7 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		instance.getContact = function(){
 		   var locId = PARTICIPANT.location.getDescendantOfName('mtxlocation').getSelectedNodes().get(0).getAttribute('binindex');
 			 var jsxid = PARTICIPANT.location.getDescendantOfName('mtxlocation').getSelectedNodes().get(0).getAttribute('jsxid');
+			 //window.alert('getContact: locId='+locId);
 		   var service = dwrEngine.loadService('CONTACT','getContListByLoc',[locId]);
 			 service.subscribe(dwrService.ON_SUCCESS,function(objEvent){PARTICIPANT.me._callback_getContact_onSuccess(objEvent,jsxid)});
 			 service.doCall();
@@ -203,13 +204,43 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		instance._callback_getContact_onSuccess = function(objEvent,locRecordId){
 		debugger;
 		   var mtx = PARTICIPANT.location.getDescendantOfName('mtxlocation');
+		   
+		   //window.alert('_callback_getContact_onSuccess: locRecordId='+locRecordId);
+		   var locRec = mtx.getRecord(locRecordId);
+		   // remove existing
+		   var existlist = mtx.getRecordIds();
+		   var found = false;
+		   for(var j=0;j<existlist.length;j++){
+		   	  var rec = mtx.getRecord(existlist[j]);
+		   	  
+		   	  //alert('rec.locationorcontact='+rec.locationorcontact+', jsxid='+rec.jsxid);
+		   	  if(rec.jsxid == locRecordId) {
+		   	  	// hit the target location, mark start
+		   	  	found = true;
+		   	  	continue;
+		   	  }
+		   	  if(found && rec.locationorcontact == 'contact') {
+		   	  	// delete contacts under target location
+		   	  	mtx.deleteRecord(existlist[j], true);	
+		   	  	continue;
+		   	  }
+		   	  if(found && rec.locationorcontact != 'contact') {
+		   	  	// hit next location, break;
+		   	  	break;
+		   	  }
+		   		
+		   }
+		   
+		   //window.alert('matrix size:'+mtx.getRecordIds().length);
 		   var list = objEvent.data;
 			 if(list&&list.length>0){
 			     for(var i=0;i<list.length;i++){
 					    list[i].jsxid=jsx3.xml.CDF.getKey();
 							list[i].locationorcontact = 'contact';
 							mtx.insertRecord(list[i],locRecordId);
+							
 					 }
+					 //window.alert('matrix size:'+mtx.getRecordIds().length);
 					 mtx.repaintData();
 			 }
 		};
@@ -218,12 +249,19 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		debugger;
 		    PARTICIPANT.CONTACT_EDIT_OR_ADD = PARTICIPANT.ADD;
 				var container = this.getServer().getBodyBlock();
+				var mtx = PARTICIPANT.location.getDescendantOfName('mtxlocation');
+				var locId = mtx.getSelectedNodes().get(0).getAttribute('binindex');
+				
 				var cdf = jsx3.xml.CDF.Document.newDocument();
-				cdf.insertRecord({jsxid:'contact'});
+				var contact = {jsxid:'contact', LBinindex:locId};
+				cdf.insertRecord(contact);
+				
 				var dlg = this.getPlugIn().loadRsrcComponent('Contact_xml',container);
 				
 				dlg.getDescendantOfName('cdfcontact').setSourceXML(cdf);
 				dlg.getDescendantOfName('cdfcontact').read();
+				
+				
 		   return dlg;
 		}
 		
@@ -231,10 +269,11 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		    var dlg = this.addContact();
 				PARTICIPANT.CONTACT_EDIT_OR_ADD = PARTICIPANT.EDIT;
 				var mtx = PARTICIPANT.location.getDescendantOfName('mtxlocation');
-				var locId = mtx.getSelectedNodes().get(0).getAttribute('binindex');
-		    var locRecordId = mtx.getSelectedNodes().get(0).getAttribute('jsxid');
+				//var locId = mtx.getSelectedNodes().get(0).getAttribute('LBinindex');
+				var locRecordId = mtx.getSelectedNodes().get(0).getAttribute('jsxid');
 				var contact = mtx.getRecord(locRecordId);
 				contact.jsxid='contact';
+				//contact['LBinindex'] = locId;
 				dlg.getDescendantOfName('cdfcontact').getXML().insertRecord(contact,'jsxroot');
 				dlg.getDescendantOfName('cdfcontact').read();
 				
@@ -244,7 +283,7 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		    debugger;
 		    dlg.getDescendantOfName('cdfcontact').write();
 				var contact = dlg.getDescendantOfName('cdfcontact').getXML().getRecord('contact');
-				if(ARTICIPANT.CONTACT_EDIT_OR_ADD == PARTICIPANT.ADD){
+				if(PARTICIPANT.CONTACT_EDIT_OR_ADD == PARTICIPANT.ADD){
 				   contact['binindex'] = '';
 				}
 				delete contact['jsxid'];
@@ -254,6 +293,7 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 				var service = dwrEngine.loadService('CONTACT','saveCont',[contact]);
 				service.subscribe(dwrService.ON_SUCCESS,PARTICIPANT.me,PARTICIPANT.me._callback_saveContact_onSuccess);
 				service.doCall();
+				dlg.doClose();
 		   
 		};
 		
@@ -278,9 +318,17 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		};
 		
 		instance._callback_getCertList_onSuccess = function(objEvent){
-		   var list = objEvent.data;
-			 var cdf = jsx3.xml.CDF.Document.newDocument();
+		   
+		   
+		   //delete existing:
+		   var mtx = PARTICIPANT.credential.getDescendantOfName('mtxcert');
+			 var existlist = mtx.getRecordIds();
+			 for(var j=0;j<existlist.length;j++) {
+			 		mtx.deleteRecord(existlist[j], true);
+			 }
 			 
+			 var list = objEvent.data;
+			 var cdf = jsx3.xml.CDF.Document.newDocument();
 			 if(list&&list.length>0){
 			    for(var i=0;i<list.length;i++){
 					   list[i].jsxid = jsx3.xml.CDF.getKey();
@@ -319,7 +367,7 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		
 		instance.uploadCertFile = function(dlg){
 		   var form = document.getElementById('certform');
-       form.action = '/war/upload';
+		   	form.action = '/war/upload';
 			 var file = document.getElementById('certfile');
 			 var url = document.createElement('input');
 			 url.name = 'url';
@@ -339,7 +387,13 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 			 form.appendChild(alias);
 			 form.submit();
 			 dlg.doClose();
+			 	this.getCertList();
+
 		};
+		
+
+    		
+
 		
 		instance.getProtocal = function(){
 		   debugger;

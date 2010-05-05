@@ -42,7 +42,9 @@ public class CONTACT extends DWR {
     }
     
     public static void saveCont(GiContact cont) throws WebAppException {
-        
+        String f = cont.getFName();
+        String l = cont.getLName();
+        cont.setName(f+" "+l);
         save(cont);
     }
     
