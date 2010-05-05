@@ -29,17 +29,22 @@ public class PROTBINDING extends DWR {
     
     public static void saveProtBinding(GiProtbinding pb) throws WebAppException {
         
+        boolean insert = pb.getBinindex() == null;
+        
         save(pb);
         
-        GiProtbindview hostView = new GiProtbindview();
-        hostView.setPbBinindex(pb.getBinindex());
-        hostView.setType(ColumnConst.PA_CAT_HOST);
-        save(hostView);
-        
-        GiProtbindview partnerView = new GiProtbindview();
-        partnerView.setPbBinindex(pb.getBinindex());
-        partnerView.setType(ColumnConst.PA_CAT_PARTNER);
-        save(partnerView);
+        if (insert) {
+            
+            GiProtbindview hostView = new GiProtbindview();
+            hostView.setPbBinindex(pb.getBinindex());
+            hostView.setType(ColumnConst.PA_CAT_HOST);
+            save(hostView);
+            
+            GiProtbindview partnerView = new GiProtbindview();
+            partnerView.setPbBinindex(pb.getBinindex());
+            partnerView.setType(ColumnConst.PA_CAT_PARTNER);
+            save(partnerView);
+        }
         
     }
     
