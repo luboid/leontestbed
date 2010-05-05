@@ -11,7 +11,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  *         table="gi_protocol"
  *     
 */
-public class GiProtocol  extends ModelObject implements Serializable {
+public class GiProtocol extends ModelObject implements Serializable {
 
     /** identifier field */
     private Long binindex;
@@ -108,7 +108,7 @@ public class GiProtocol  extends ModelObject implements Serializable {
     /** 
      *            @hibernate.property
      *             column="D_BININDEX"
-     *             length="255"
+     *             length="18"
      *         
      */
     public Long getDBinindex() {
@@ -122,7 +122,7 @@ public class GiProtocol  extends ModelObject implements Serializable {
     /** 
      *            @hibernate.property
      *             column="AS2_BININDEX"
-     *             length="255"
+     *             length="18"
      *         
      */
     public Long getAs2Binindex() {

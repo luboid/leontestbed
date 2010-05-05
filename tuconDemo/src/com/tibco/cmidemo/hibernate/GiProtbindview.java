@@ -19,22 +19,13 @@ public class GiProtbindview extends ModelObject implements Serializable {
     /** nullable persistent field */
     private String type;
 
-    /** persistent field */
+    /** nullable persistent field */
     private Long tpBinindex;
 
     /** persistent field */
     private Long pbBinindex;
 
     /** nullable persistent field */
-    private Integer overrideEp;
-
-    /** nullable persistent field */
-    private Long DBinindex;
-
-    /** nullable persistent field */
-    private Long as2Binindex;
-
-    /** persistent field */
     private Long trBinindex;
 
     /** nullable persistent field */
@@ -50,29 +41,18 @@ public class GiProtbindview extends ModelObject implements Serializable {
     private Long as2Rembinindex;
 
     /** nullable persistent field */
-    private Long pk1Binindex;
-
-    /** nullable persistent field */
-    private Long pk2Binindex;
-
-    /** nullable persistent field */
     private Date lastmodified;
 
     /** full constructor */
-    public GiProtbindview(String type, Long tpBinindex, Long pbBinindex, Integer overrideEp, Long DBinindex, Long as2Binindex, Long trBinindex, Long bacBinindex, Long errBinindex, Long as2Repbinindex, Long as2Rembinindex, Long pk1Binindex, Long pk2Binindex, Date lastmodified) {
+    public GiProtbindview(String type, Long tpBinindex, Long pbBinindex, Long trBinindex, Long bacBinindex, Long errBinindex, Long as2Repbinindex, Long as2Rembinindex, Date lastmodified) {
         this.type = type;
         this.tpBinindex = tpBinindex;
         this.pbBinindex = pbBinindex;
-        this.overrideEp = overrideEp;
-        this.DBinindex = DBinindex;
-        this.as2Binindex = as2Binindex;
         this.trBinindex = trBinindex;
         this.bacBinindex = bacBinindex;
         this.errBinindex = errBinindex;
         this.as2Repbinindex = as2Repbinindex;
         this.as2Rembinindex = as2Rembinindex;
-        this.pk1Binindex = pk1Binindex;
-        this.pk2Binindex = pk2Binindex;
         this.lastmodified = lastmodified;
     }
 
@@ -81,10 +61,8 @@ public class GiProtbindview extends ModelObject implements Serializable {
     }
 
     /** minimal constructor */
-    public GiProtbindview(Long tpBinindex, Long pbBinindex, Long trBinindex) {
-        this.tpBinindex = tpBinindex;
+    public GiProtbindview(Long pbBinindex) {
         this.pbBinindex = pbBinindex;
-        this.trBinindex = trBinindex;
     }
 
     /** 
@@ -121,7 +99,6 @@ public class GiProtbindview extends ModelObject implements Serializable {
      *            @hibernate.property
      *             column="TP_BININDEX"
      *             length="18"
-     *             not-null="false"
      *         
      */
     public Long getTpBinindex() {
@@ -149,51 +126,8 @@ public class GiProtbindview extends ModelObject implements Serializable {
 
     /** 
      *            @hibernate.property
-     *             column="OVERRIDE_EP"
-     *             length="18"
-     *         
-     */
-    public Integer getOverrideEp() {
-        return this.overrideEp;
-    }
-
-    public void setOverrideEp(Integer overrideEp) {
-        this.overrideEp = overrideEp;
-    }
-
-    /** 
-     *            @hibernate.property
-     *             column="D_BININDEX"
-     *             length="18"
-     *         
-     */
-    public Long getDBinindex() {
-        return this.DBinindex;
-    }
-
-    public void setDBinindex(Long DBinindex) {
-        this.DBinindex = DBinindex;
-    }
-
-    /** 
-     *            @hibernate.property
-     *             column="AS2_BININDEX"
-     *             length="18"
-     *         
-     */
-    public Long getAs2Binindex() {
-        return this.as2Binindex;
-    }
-
-    public void setAs2Binindex(Long as2Binindex) {
-        this.as2Binindex = as2Binindex;
-    }
-
-    /** 
-     *            @hibernate.property
      *             column="TR_BININDEX"
      *             length="18"
-     *             not-null="false"
      *         
      */
     public Long getTrBinindex() {
@@ -258,34 +192,6 @@ public class GiProtbindview extends ModelObject implements Serializable {
 
     public void setAs2Rembinindex(Long as2Rembinindex) {
         this.as2Rembinindex = as2Rembinindex;
-    }
-
-    /** 
-     *            @hibernate.property
-     *             column="PK1_BININDEX"
-     *             length="18"
-     *         
-     */
-    public Long getPk1Binindex() {
-        return this.pk1Binindex;
-    }
-
-    public void setPk1Binindex(Long pk1Binindex) {
-        this.pk1Binindex = pk1Binindex;
-    }
-
-    /** 
-     *            @hibernate.property
-     *             column="PK2_BININDEX"
-     *             length="18"
-     *         
-     */
-    public Long getPk2Binindex() {
-        return this.pk2Binindex;
-    }
-
-    public void setPk2Binindex(Long pk2Binindex) {
-        this.pk2Binindex = pk2Binindex;
     }
 
     /** 

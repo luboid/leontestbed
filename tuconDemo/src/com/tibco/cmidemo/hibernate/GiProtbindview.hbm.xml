@@ -53,14 +53,12 @@
         name="tpBinindex"
         type="java.lang.Long"
         column="TP_BININDEX"
-        not-null="false"
         length="18"
     >
         <meta attribute="field-description">
            @hibernate.property
             column="TP_BININDEX"
             length="18"
-            not-null="false"
         </meta>    
     </property>
     <property
@@ -78,53 +76,15 @@
         </meta>    
     </property>
     <property
-        name="overrideEp"
-        type="java.lang.Integer"
-        column="OVERRIDE_EP"
-        length="18"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="OVERRIDE_EP"
-            length="18"
-        </meta>    
-    </property>
-    <property
-        name="DBinindex"
-        type="java.lang.Long"
-        column="D_BININDEX"
-        length="18"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="D_BININDEX"
-            length="18"
-        </meta>    
-    </property>
-    <property
-        name="as2Binindex"
-        type="java.lang.Long"
-        column="AS2_BININDEX"
-        length="18"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="AS2_BININDEX"
-            length="18"
-        </meta>    
-    </property>
-    <property
         name="trBinindex"
         type="java.lang.Long"
         column="TR_BININDEX"
-        not-null="false"
         length="18"
     >
         <meta attribute="field-description">
            @hibernate.property
             column="TR_BININDEX"
             length="18"
-            not-null="false"
         </meta>    
     </property>
     <property
@@ -172,30 +132,6 @@
         <meta attribute="field-description">
            @hibernate.property
             column="AS2_REMBININDEX"
-            length="18"
-        </meta>    
-    </property>
-    <property
-        name="pk1Binindex"
-        type="java.lang.Long"
-        column="PK1_BININDEX"
-        length="18"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="PK1_BININDEX"
-            length="18"
-        </meta>    
-    </property>
-    <property
-        name="pk2Binindex"
-        type="java.lang.Long"
-        column="PK2_BININDEX"
-        length="18"
-    >
-        <meta attribute="field-description">
-           @hibernate.property
-            column="PK2_BININDEX"
             length="18"
         </meta>    
     </property>

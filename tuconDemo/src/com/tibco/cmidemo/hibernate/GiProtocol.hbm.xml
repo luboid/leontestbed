@@ -69,24 +69,24 @@
         name="DBinindex"
         type="java.lang.Long"
         column="D_BININDEX"
-        length="255"
+        length="18"
     >
         <meta attribute="field-description">
            @hibernate.property
             column="D_BININDEX"
-            length="255"
+            length="18"
         </meta>    
     </property>
     <property
         name="as2Binindex"
         type="java.lang.Long"
         column="AS2_BININDEX"
-        length="255"
+        length="18"
     >
         <meta attribute="field-description">
            @hibernate.property
             column="AS2_BININDEX"
-            length="255"
+            length="18"
         </meta>    
     </property>
     <property
