@@ -24,6 +24,7 @@
 		 <xml id='certUploadDlg_xml' path='ui/certUploadDlg.xml'/>
 		 <xml id='LocationList_xml' path='ui/LocationList.xml'/>
 		 <xml id='Protocal_xml' path='ui/Protocal.xml'/>
+		 <xml id='DisabledProtocalDlg_xml' path='ui/DisabeldProtocalDlg.xml'/>
 		 <xml id='Participants_xml' path='ui/Participants.xml'>
 		   <prereq id='General_xml'/>
 			 <prereq id='LocationList_xml'/>

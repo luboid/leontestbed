@@ -69,7 +69,7 @@
             <object type="jsx3.gui.Tab">
               <variants patchedSetText="true"/>
               <strings jsxname="tab3" jsxtext="Protocal"/>
-              <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').getProtocal();"/>
+              <events jsxexecute="" jsxshow="this.getAncestorOfType('com.tibco.cmi.participants.Participant').getProtocal();"/>
               <object type="jsx3.gui.Block">
                 <variants/>
                 <strings jsxwidth="100%" jsxheight="100%" jsxvisibility="" jsxpadding="20" jsxdisplay="none" jsxbg="background-image:url(../eclipse-jee-galileo-SR1-win32/eclipse/workspace/tuconDemo/war/gi/GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA" jsxname="blkprotocal"/>

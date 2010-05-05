@@ -1,0 +1,135 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Block - 100%</name>
+  <icon>images/prototypes/block.gif</icon>
+  <description>Simple block, relatively positioned with overflow=scroll.</description>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="1"/>
+    <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+    <object type="tibco.uxcore.gui.TabbedPane">
+      <variants jsxoverflow="1" tabStyle="0"/>
+      <strings jsxname="mainBlock" jsxheight="100%" jsxwidth="100%"/>
+      <object type="jsx3.gui.LayoutGrid">
+        <variants jsxrows="[22,'*']" jsxoverflow="2"/>
+        <strings/>
+        <object type="jsx3.gui.Block">
+          <variants jsxideinvisible="1"/>
+          <strings jsxborder="0px;0px;1px solid #555555;0px"/>
+        </object>
+        <object type="jsx3.gui.TabbedPane">
+          <variants jsxselectedindex="0" jsxshowtabs="0"/>
+          <strings jsxborder="0px;1px solid #555555;1px solid #555555;1px solid #555555"/>
+          <object type="jsx3.gui.Tab">
+            <variants patchedSetText="true"/>
+            <strings jsxname="tab1" jsxtext="General"/>
+            <object type="jsx3.gui.Block">
+              <variants/>
+              <strings jsxwidth="100%" jsxheight="100%" jsxvisibility="" jsxpadding="20" jsxbg="background-image:url(../eclipse-jee-galileo-SR1-win32/eclipse/workspace/tuconDemo/war/gi/GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA" jsxdisplay="" jsxname="general"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="2" jsxheight="30"/>
+                <strings jsxname="pane1" jsxwidth="100%"/>
+                <object type="jsx3.gui.Block">
+                  <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="200" jsxfontsize="11"/>
+                  <strings jsxname="label" jsxtext="Identifier" jsxtextalign="right" jsxpadding="1 4 0 0" jsxfontname="arial"/>
+                </object>
+                <object type="tibco.uxcore.gui.Select">
+                  <variants jsxwidth="150" jsxxmlasync="1"/>
+                  <strings jsxname="select" jsxxmlurl="jsx:///xml/sample.xml"/>
+                  <dynamics/>
+                </object>
+              </object>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="1" jsxheight="80"/>
+                <strings jsxname="pane2" jsxwidth="100%"/>
+                <object type="jsx3.gui.Block">
+                  <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="200" jsxfontsize="11"/>
+                  <strings jsxname="label" jsxtext="Valid Email Address List" jsxtextalign="right" jsxpadding="1 4 0 0" jsxfontname="arial"/>
+                </object>
+                <object type="tibco.uxcore.gui.TextBox">
+                  <variants jsxheight="72" jsxtype="1" jsxwidth="200"/>
+                  <strings jsxname="textArea" jsxvalue=""/>
+                  <dynamics/>
+                </object>
+              </object>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="1" jsxheight="30"/>
+                <strings jsxname="pane2" jsxwidth="100%" jsxtextalign="right"/>
+                <object type="tibco.uxcore.gui.Button">
+                  <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
+                  <strings jsxname="button" jsxtext="Save" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
+                  <dynamics/>
+                  <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+                </object>
+                <object type="tibco.uxcore.gui.Button">
+                  <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
+                  <strings jsxname="button" jsxtext="Cancel" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
+                  <dynamics/>
+                  <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+                </object>
+              </object>
+            </object>
+          </object>
+          <object type="jsx3.gui.Tab">
+            <variants patchedSetText="true"/>
+            <strings jsxname="tab2" jsxtext="Transport"/>
+            <object type="jsx3.gui.Block">
+              <variants/>
+              <strings jsxwidth="100%" jsxheight="100%" jsxvisibility="" jsxpadding="20" jsxbg="background-image:url(../eclipse-jee-galileo-SR1-win32/eclipse/workspace/tuconDemo/war/gi/GI_workspace/JSXAPPS/UXCore/plugins/tibco.uxcore.gui.tabbedpane/images/tab_backgroundTile_V2.jpg);background-repeat:repeat-x;" jsxbgcolor="#FAFAFA" jsxdisplay="none" jsxname="transport"/>
+              <object type="jsx3.gui.LayoutGrid">
+                <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+                <strings jsxname="layoutRows" jsxrows="26,*" jsxwidth="100%" jsxheight="100%"/>
+                <object type="jsx3.gui.Block">
+                  <variants jsxoverflow="2"/>
+                  <strings jsxname="pane1" jsxwidth="100%" jsxheight="100%"/>
+                  <object type="tibco.uxcore.gui.Button">
+                    <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
+                    <strings jsxname="button" jsxtext="Add" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
+                    <dynamics/>
+                    <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+                  </object>
+                  <object type="tibco.uxcore.gui.Button">
+                    <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"/>
+                    <strings jsxname="button" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"/>
+                    <dynamics/>
+                    <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+                  </object>
+                </object>
+                <object type="jsx3.gui.Block">
+                  <variants jsxoverflow="1"/>
+                  <strings jsxname="pane2" jsxwidth="100%" jsxheight="100%"/>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxoverflow="2"/>
+                    <strings jsxname="matrixBlock" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+                    <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"/>
+                    <object type="tibco.uxcore.gui.Matrix">
+                      <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"/>
+                      <strings jsxname="matrix1" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;         &lt;record jsxid=&quot;AI&quot;  jsxtext=&quot;Austria&quot;/&gt;         &lt;record jsxid=&quot;AZ&quot;  jsxtext=&quot;Azerbaijan&quot;/&gt;         &lt;record jsxid=&quot;AG&quot;  jsxtext=&quot;Afghanistan&quot;&gt;         &lt;record jsxid=&quot;AL&quot;  jsxtext=&quot;Albania&quot;/&gt;         &lt;record jsxid=&quot;AR&quot;  jsxtext=&quot;Algeria&quot;/&gt;         &lt;record jsxid=&quot;AS&quot;  jsxtext=&quot;American Samoa&quot;/&gt;         &lt;/record&gt;         &lt;record jsxid=&quot;AD&quot;  jsxtext=&quot;Andorra&quot;/&gt;         &lt;record jsxid=&quot;AO&quot;  jsxtext=&quot;Angola&quot;/&gt;         &lt;record jsxid=&quot;AU&quot;  jsxtext=&quot;Anguilla&quot;/&gt;         &lt;record jsxid=&quot;AX&quot;  jsxtext=&quot;Antarctica&quot;/&gt;         &lt;record jsxid=&quot;AT&quot;  jsxtext=&quot;Antigua and Barbuda&quot;/&gt;         &lt;record jsxid=&quot;AE&quot;  jsxtext=&quot;Argentina&quot;/&gt;         &lt;record jsxid=&quot;AM&quot;  jsxtext=&quot;Armenia&quot;/&gt;         &lt;record jsxid=&quot;AB&quot;  jsxtext=&quot;Aruba&quot;/&gt;         &lt;record jsxid=&quot;AA&quot;  jsxtext=&quot;Australia&quot;/&gt;       &lt;/data&gt;" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending"/>
+                      <dynamics/>
+                      <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
+                      <object type="jsx3.gui.Matrix.Column">
+                        <variants jsxwidth="40"/>
+                        <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxvaluetemplate="@empty"/>
+                        <object type="jsx3.gui.CheckBox">
+                          <variants jsxchecked="0" jsxenabled="1" jsxdefaultchecked="0"/>
+                          <strings jsxname="checkboxMask" jsxtext=""/>
+                        </object>
+                      </object>
+                      <object type="jsx3.gui.Matrix.Column">
+                        <variants/>
+                        <strings jsxname="colalias" jsxwidth="100" jsxtext="Text" jsxpath="name"/>
+                        <dynamics/>
+                      </object>
+                      <object type="jsx3.gui.Matrix.Column">
+                        <variants/>
+                        <strings jsxname="coltype" jsxwidth="100" jsxtext="Text" jsxpath="type"/>
+                      </object>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>
