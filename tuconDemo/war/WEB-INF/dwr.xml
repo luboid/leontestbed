@@ -44,6 +44,9 @@
 		<create creator="new" javascript="PROTBINDVIEW" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.PROTBINDVIEW" />
 		</create>
+		<create creator="new" javascript="OPBINDING" scope="application">
+			<param name="class" value="com.tibco.cmidemo.web.dwr.OPBINDING" />
+		</create>
 		<create creator="new" javascript="PROTOCOL" scope="application">
 			<param name="class" value="com.tibco.cmidemo.web.dwr.PROTOCOL" />
 		</create>
