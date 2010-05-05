@@ -3,6 +3,9 @@
  */
 package com.tibco.cmidemo.web.servlet;
 
+import com.tibco.cmidemo.hibernate.GiPkistoreitem;
+import com.tibco.cmidemo.web.dwr.PKISTOREITEM;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -17,9 +20,6 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.io.IOUtils;
-
-import com.tibco.cmidemo.hibernate.GiPkistoreitem;
-import com.tibco.cmidemo.web.dwr.PKISTOREITEM;
 
 /**
  * @author xliu
@@ -65,6 +65,8 @@ public class UploadServlet extends HttpServlet {
                 si.setContent(fileContent);
                 si.setUrl(url);
                 PKISTOREITEM.saveCred(si);
+                
+                resp.getOutputStream().write("OK".getBytes());
                 
             } catch (FileUploadException e) {
                 resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "parse file content error: " + e.getMessage());
