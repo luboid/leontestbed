@@ -80,7 +80,7 @@
                       <strings jsxname="mtxHost" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending"></strings>
                       <dynamics></dynamics>
                       <object type="jsx3.gui.Matrix.Column">
-                        <variants jsxwidth="20"></variants>
+                        <variants jsxwidth="25"></variants>
                         <strings jsxname="radioColumn" jsxpath="radioed" jsxcelltextalign="center" jsxvaluetemplate="@empty"></strings>
                         <dynamics></dynamics>
                         <object type="jsx3.gui.RadioButton">
@@ -130,7 +130,7 @@
                       <strings jsxname="mtxPartner" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending"></strings>
                       <dynamics></dynamics>
                       <object type="jsx3.gui.Matrix.Column">
-                        <variants jsxwidth="20"></variants>
+                        <variants jsxwidth="25"></variants>
                         <strings jsxname="radioColumn" jsxpath="radioed" jsxcelltextalign="center" jsxvaluetemplate="@empty"></strings>
                         <dynamics></dynamics>
                         <object type="jsx3.gui.RadioButton">

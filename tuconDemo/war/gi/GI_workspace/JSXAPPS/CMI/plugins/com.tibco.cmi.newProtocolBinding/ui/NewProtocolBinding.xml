@@ -1,10 +1,9 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<serialization jsxversion="3.8" xmlns="urn:tibco.com/v3.0">
+﻿<serialization jsxversion="3.8" xmlns="urn:tibco.com/v3.0">
   <name><![CDATA[Block - 100%]]></name>
   <icon><![CDATA[images/prototypes/block.gif]]></icon>
   <description><![CDATA[Simple block, relatively positioned with overflow=scroll.]]></description>
   <object type="com.tibco.cmi.newProtocolBinding.NewProtocolBinding">
-    <variants jsxoverflow="2" jsxheight="200"></variants>
+    <variants jsxoverflow="2" jsxheight="300"></variants>
     <strings jsxname="blkNewProtocolBinding" jsxwidth="100%" jsxrelativeposition="1"></strings>
     <object type="jsx3.gui.Block">
       <variants jsxoverflow="1" jsxheight="30" jsxfontsize="13"></variants>
@@ -12,7 +11,7 @@
     </object>
     <object type="jsx3.gui.Block">
       <variants jsxoverflow="1"></variants>
-      <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"></strings>
+      <strings jsxname="block" jsxwidth="100%" jsxheight="90%" jsxrelativeposition="1"></strings>
       <object type="tibco.uxcore.gui.MasterDetail">
         <variants jsxorientation="1" jsxenabled="0"></variants>
         <strings jsxname="masterDetail" jsxvsplitimage="" jsxhsplitimage="" jsxsubcontainer1pct="25,*"></strings>
@@ -47,16 +46,16 @@
               <dynamics></dynamics>
               <object type="jsx3.gui.Matrix.Column">
                 <variants jsxwidth="25"></variants>
-                <strings jsxname="radioColumn" jsxpath="radioed" jsxcelltextalign="center" jsxvaluetemplate="@empty"></strings>
-                <dynamics></dynamics>
-                <object type="jsx3.gui.RadioButton">
-                  <variants jsxselected="0" jsxenabled="1"></variants>
-                  <strings jsxname="radioMask" jsxtext=""></strings>
+                <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxpadding="3" jsxcellpadding="1" jsxvaluetemplate="@empty"></strings>
+                <dynamics jsxborder="@Outset" jsxbg="@Bevel TopDown" jsxbgcolor="@Solid Disabled"></dynamics>
+                <object type="jsx3.gui.CheckBox">
+                  <variants jsxdefaultchecked="0" jsxchecked="0" jsxenabled="1"></variants>
+                  <strings jsxname="checkboxMask" jsxtext=""></strings>
                 </object>
               </object>
               <object type="jsx3.gui.Matrix.Column">
                 <variants></variants>
-                <strings jsxwidth="*" jsxname="colProtocol" jsxtext="Available Protocols" jsxpath="pcotocolName"></strings>
+                <strings jsxwidth="*" jsxname="colProtocol" jsxtext="Available Protocols" jsxpath="protocolName"></strings>
                 <dynamics></dynamics>
               </object>
             </object>

@@ -107,10 +107,10 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.newAgreement.NewAgreement",
 			
 			instance.setProtocol = function(protocolList, cdf, mtx) {
 			  var partnerId;
-				var displayProtocol;
+				var displayProtocol="";
 				for(var i = 0; i < protocolList.length; i++) {
 					var protocol = protocolList[i];
-					partnerId = procotol.tpBinindex;
+					partnerId = protocol.tpBinindex;
 					var name = protocol.name;
 					displayProtocol += name;
 					

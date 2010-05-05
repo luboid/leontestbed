@@ -145,11 +145,12 @@
                               <object type="jsx3.gui.CheckBox">
                                 <variants jsxdefaultchecked="0" jsxchecked="0" jsxenabled="1"></variants>
                                 <strings jsxname="checkboxMask" jsxtext=""></strings>
+                                <events jsxtoggle="this.getAncestorOfName(&quot;blkEditProtocolBinding&quot;).changeState(com.tibco.cmi.getJSXByName(&quot;btnRemoveHostOperation&quot;),this.getAncestorOfName(&quot;mtxHostOperation&quot;));"></events>
                               </object>
                             </object>
                             <object type="jsx3.gui.Matrix.Column">
                               <variants jsxwidth="300"></variants>
-                              <strings jsxname="colOperationName" jsxtext="Operation Name" jsxpath="operationName" jsxvaluetemplate="&lt;xsl:template xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;&#xA;  &lt;label style=&quot;text-decoration:underline;cursor:pointer;&quot; onclick=&quot;&quot;&gt;&lt;xsl:value-of select=&quot;@operationName&quot;/&gt;&lt;/label&gt;&#xA;&lt;/xsl:template&gt;"></strings>
+                              <strings jsxname="colOperationName" jsxtext="Operation Name" jsxpath="operationName"></strings>
                               <dynamics></dynamics>
                             </object>
                             <object type="jsx3.gui.Matrix.Column">
@@ -183,13 +184,13 @@
                         <dynamics></dynamics>
                         <object type="tibco.uxcore.gui.Button">
                           <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
-                          <strings jsxname="btnAddHostOperation" jsxtext="Add Operation Binding" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+                          <strings jsxname="btnAddPartnerOperation" jsxtext="Add Operation Binding" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
                           <dynamics></dynamics>
-                          <events jsxexecute="this.getAncestorOfName(&quot;blkEditProtocol&quot;).newOperation();"></events>
+                          <events jsxexecute="this.getAncestorOfName(&quot;blkEditProtocolBinding&quot;).newOperation();"></events>
                         </object>
                         <object type="tibco.uxcore.gui.Button">
                           <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0" jsxenabled="0"></variants>
-                          <strings jsxname="btnRemoveHostOperation" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+                          <strings jsxname="btnRemovePartnerOperation" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
                           <dynamics></dynamics>
                           <events jsxexecute="jsx3.log(this + ' was executed.');"></events>
                         </object>
@@ -203,7 +204,7 @@
                           <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"></dynamics>
                           <object type="tibco.uxcore.gui.Matrix">
                             <variants jsxsloaddefaultproperties="true" jsxpagingmodel="1" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"></variants>
-                            <strings jsxname="mtxHostOperation" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;&#xA;   &lt;record jsxid=&quot;AI&quot;  operationName=&quot;EDI-EDI/Outbound/Interchange &quot; operationType=&quot;&#xA;	Notification&quot;/&gt;&#xA;&lt;/data&gt;"></strings>
+                            <strings jsxname="mtxPartnerOperation" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;&#xA;   &lt;record jsxid=&quot;AI&quot;  operationName=&quot;EDI-EDI/Outbound/Interchange &quot; operationType=&quot;&#xA;	Notification&quot;/&gt;&#xA;&lt;/data&gt;"></strings>
                             <dynamics></dynamics>
                             <object type="jsx3.gui.Matrix.Column">
                               <variants jsxwidth="25"></variants>
@@ -212,11 +213,12 @@
                               <object type="jsx3.gui.CheckBox">
                                 <variants jsxdefaultchecked="0" jsxchecked="0" jsxenabled="1"></variants>
                                 <strings jsxname="checkboxMask" jsxtext=""></strings>
+                                <events jsxtoggle="this.getAncestorOfName(&quot;blkEditProtocolBinding&quot;).changeState(com.tibco.cmi.getJSXByName(&quot;btnRemovePartnerOperation&quot;),this.getAncestorOfName(&quot;mtxPartnerOperation&quot;));"></events>
                               </object>
                             </object>
                             <object type="jsx3.gui.Matrix.Column">
                               <variants jsxwidth="300"></variants>
-                              <strings jsxname="colOperationName" jsxtext="Operation Name" jsxpath="operationName" jsxvaluetemplate="&lt;xsl:template xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;&#xA;  &lt;label style=&quot;text-decoration:underline;cursor:pointer;&quot; onclick=&quot&quot;&gt;&lt;xsl:value-of select=&quot;@operationName&quot;/&gt;&lt;/label&gt;&#xA;&lt;/xsl:template&gt;"></strings>
+                              <strings jsxname="colOperationName" jsxtext="Operation Name" jsxpath="operationName"></strings>
                               <dynamics></dynamics>
                             </object>
                             <object type="jsx3.gui.Matrix.Column">

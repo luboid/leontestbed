@@ -77,7 +77,7 @@
                 extPlugIn.loadRsrcComponent(uiId,objContainer)});
 								var mtx = server.getJSXByName("mtxAgreements");
 								var baid = mtx.getSelectedIds()[0];
-								setTimeout(function(){server.publish({subject:"getBAid", BAid:baid});},500);
+								setTimeout(function(){server.publish({subject:"editAgreement.getBAid", BAid:baid});},500);
             }).bind(this)); 
       }
 			
