@@ -50,6 +50,9 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
 			}
 			
 			instance._callback_getProtBindingList_onSuccess = function(objEvent) {
+				var mtx = server.getJSXByName("mtxProtocolBinding");
+				var selectId = mtx.getSelectedIds()[0];
+				
 				var protocolBindingList = objEvent.data;
 				EditAgreement.protocolBinding = protocolBindingList;
 				var protocolBindingcdf = new jsx3.xml.Document();
@@ -68,8 +71,12 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
 					
 					root.appendChild(record);
 				}
-				server.getJSXByName("mtxProtocolBinding").setSourceXML(protocolBindingcdf);
-			  server.getJSXByName("mtxProtocolBinding").repaint();
+				mtx.setSourceXML(protocolBindingcdf);
+			  mtx.repaint();
+				
+				if(selectId && mtx.getRecord(selectId))	{
+				  mtx.selectRecord(selectId);
+				}
 			}
 			
 			instance.remove = function() {
@@ -99,7 +106,11 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
             var extPlugIn = ext.getPlugIn();
             extPlugIn.load().when(function(){
                 extPlugIn.loadRsrcComponent(uiId,objContainer)});
-								
+								var mtx = server.getJSXByName("mtxProtocolBinding");
+								var protBindingId = mtx.getSelectedIds()[0];
+								var a = mtx.getSelectedNodes()
+								var protName = (mtx.getSelectedNodes().get(0)).getAttribute("protocolName");
+								setTimeout(function(){server.publish({subject:"editProtocolBinding.getProtBindingid", protBindingId:protBindingId, protName:protName});},500);
             }).bind(this)); 
       }
 			
@@ -127,7 +138,7 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
 					EditAgreement.BA.isValid = "true";
 				else
 					EditAgreement.BA.isValid = "false";
-					
+				
 				var service = dwrEngine.loadService('BIZAGREEMENT','saveBA',[EditAgreement.BA]);
 				service.subscribe(dwrService.ON_SUCCESS, function(){server.publish({subject:"showAgreementsList"});	});
 				service.doCall();

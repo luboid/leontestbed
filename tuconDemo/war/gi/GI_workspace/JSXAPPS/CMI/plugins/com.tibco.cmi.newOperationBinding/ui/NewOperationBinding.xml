@@ -4,7 +4,7 @@
   <icon><![CDATA[images/prototypes/block.gif]]></icon>
   <description><![CDATA[Simple block, relatively positioned with overflow=scroll.]]></description>
   <object type="com.tibco.cmi.newOperationBinding.NewOperationBinding">
-    <variants jsxoverflow="2" jsxheight="200"></variants>
+    <variants jsxoverflow="2" jsxheight="300"></variants>
     <strings jsxname="blkNewOperationBinding" jsxwidth="100%" jsxrelativeposition="1"></strings>
     <object type="jsx3.gui.Block">
       <variants jsxoverflow="1" jsxheight="30" jsxfontsize="13"></variants>
@@ -12,7 +12,7 @@
     </object>
     <object type="jsx3.gui.Block">
       <variants jsxoverflow="1"></variants>
-      <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"></strings>
+      <strings jsxname="block" jsxwidth="100%" jsxheight="90%" jsxrelativeposition="1"></strings>
       <object type="tibco.uxcore.gui.MasterDetail">
         <variants jsxorientation="1" jsxenabled="0"></variants>
         <strings jsxname="masterDetail" jsxvsplitimage="" jsxhsplitimage="" jsxsubcontainer1pct="25,*"></strings>
@@ -38,7 +38,7 @@
           <variants></variants>
           <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"></strings>
           <object type="jsx3.gui.Block">
-            <variants jsxoverflow="2"></variants>
+            <variants jsxoverflow="2" _masked="false"></variants>
             <strings jsxname="matrixBlock" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"></strings>
             <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"></dynamics>
             <object type="tibco.uxcore.gui.Matrix">
@@ -47,8 +47,17 @@
               <dynamics></dynamics>
               <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""></xslparameters>
               <object type="jsx3.gui.Matrix.Column">
+                <variants jsxwidth="25"></variants>
+                <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxpadding="3" jsxcellpadding="1" jsxvaluetemplate="@empty"></strings>
+                <dynamics jsxborder="@Outset" jsxbg="@Bevel TopDown" jsxbgcolor="@Solid Disabled"></dynamics>
+                <object type="jsx3.gui.CheckBox">
+                  <variants jsxdefaultchecked="0" jsxchecked="0" jsxenabled="1"></variants>
+                  <strings jsxname="checkboxMask" jsxtext=""></strings>
+                </object>
+              </object>
+              <object type="jsx3.gui.Matrix.Column">
                 <variants jsxwidth="165"></variants>
-                <strings jsxname="mc2" jsxpath="jsxtext"></strings>
+                <strings jsxname="colOPName" jsxpath="opName"></strings>
                 <dynamics></dynamics>
               </object>
             </object>
