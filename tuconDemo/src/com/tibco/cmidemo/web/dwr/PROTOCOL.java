@@ -31,7 +31,7 @@ public class PROTOCOL extends DWR {
     public static List<String> getDisabledProtocolList(String parentId) throws WebAppException {
         
         if(installed_protocols == null) {
-            InputStream inStream = PROTOCOL.class.getResourceAsStream("/com/tibco/cmidemo/web/dwr/installed_protocols.properties");
+            InputStream inStream = PROTOCOL.class.getResourceAsStream("/com/tibco/cmidemo/web/dwr/installed_operations.properties");
             installed_protocols = new Properties();
             try {
                 installed_protocols.load(new InputStreamReader(inStream));
