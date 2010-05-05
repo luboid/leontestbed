@@ -38,29 +38,32 @@ public class UploadServlet extends HttpServlet {
             try {
                 ServletFileUpload uploader = new ServletFileUpload();
                 FileItemIterator itr = uploader.getItemIterator(req);
-                String fileName = null, tpBinindex = null;
+                String name = null, tpBinindex = null, url=null;
                 byte[] fileContent = null;
                 while(itr.hasNext()) {
                     FileItemStream item = itr.next();
                     InputStream stream = item.openStream();
                     if(item.isFormField()) {
                         // process form fields
-                        if(item.getFieldName().equalsIgnoreCase("fileName")) {
-                            fileName = Streams.asString(stream);
+                        if(item.getFieldName().equalsIgnoreCase("name")) {
+                            name = Streams.asString(stream);
                         } else if(item.getFieldName().equalsIgnoreCase("tpBinindex")) {
                             tpBinindex = Streams.asString(stream);
+                        } else if(item.getFieldName().equalsIgnoreCase("url")) {
+                            url = Streams.asString(stream);
                         }
                     } else {
                         fileContent = IOUtils.toByteArray(stream);
                     }
                 }
                 
-                if(fileName == null || tpBinindex == null || fileContent == null) 
-                    throw new ServletException("required field [fileName] or [tpBinindex] or [fileContent] is null") ;
+                if(name == null || tpBinindex == null 
+                        || fileContent == null || url == null) 
+                    throw new ServletException("required field [name]/[tpBinindex]/[url]/[fileContent] is null") ;
                 
-                GiPkistoreitem si = new GiPkistoreitem(fileName, Long.valueOf(tpBinindex));
+                GiPkistoreitem si = new GiPkistoreitem(name, Long.valueOf(tpBinindex));
                 si.setContent(fileContent);
-                si.setUrl(fileName);
+                si.setUrl(url);
                 PKISTOREITEM.saveCred(si);
                 
             } catch (FileUploadException e) {
