@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<serialization jsxversion="3.8" xmlns="urn:tibco.com/v3.0">
+﻿<serialization jsxversion="3.8" xmlns="urn:tibco.com/v3.0">
   <name><![CDATA[Block - 100%]]></name>
   <icon><![CDATA[images/prototypes/block.gif]]></icon>
   <description><![CDATA[Simple block, relatively positioned with overflow=scroll.]]></description>
@@ -43,12 +42,6 @@
                   <strings jsxname="btnCancel" jsxtext="Cancel" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
                   <dynamics></dynamics>
                   <events jsxexecute="this.getAncestorOfName(&quot;blkEditAgreement&quot;).cancel();"></events>
-                </object>
-                <object type="tibco.uxcore.gui.Button">
-                  <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
-                  <strings jsxname="btnApply" jsxtext="Apply" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1" jsxmargin="2 5 2 2"></strings>
-                  <dynamics></dynamics>
-                  <events jsxexecute="jsx3.log(this + ' was executed.');"></events>
                 </object>
               </object>
               <object type="jsx3.gui.Block">
@@ -118,7 +111,7 @@
                             <strings jsxname="blk" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
                             <object type="jsx3.gui.CheckBox">
                               <variants jsxheight="18" jsxdefaultchecked="0"></variants>
-                              <strings jsxname="checkbox" jsxmargin="0 4 0 0"></strings>
+                              <strings jsxname="isValid" jsxmargin="0 4 0 0"></strings>
                               <events jsxexecute="jsx3.log('The jsxexecute method was fired for checkbox ' + this);"></events>
                             </object>
                           </object>
@@ -194,9 +187,9 @@
                           </object>
                           <object type="tibco.uxcore.gui.Button">
                             <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0" jsxenabled="0"></variants>
-                            <strings jsxname="btnRemove" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+                            <strings jsxname="btnRemoveProtBinding" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
                             <dynamics></dynamics>
-                            <events jsxexecute="jsx3.log(this + ' was executed.');"></events>
+                            <events jsxexecute="this.getAncestorOfName(&quot;blkEditAgreement&quot;).remove();"></events>
                           </object>
                         </object>
                         <object type="jsx3.gui.Block">
@@ -208,7 +201,7 @@
                             <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"></dynamics>
                             <object type="tibco.uxcore.gui.Matrix">
                               <variants jsxsloaddefaultproperties="true" jsxpagingmodel="1" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"></variants>
-                              <strings jsxname="mtxProtocolBinding" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;&#xA;   &lt;record jsxid=&quot;AI&quot;  protocolName=&quot;EDI-EDIFACT &quot;/&gt;&#xA;&lt;/data&gt;"></strings>
+                              <strings jsxname="mtxProtocolBinding" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending"></strings>
                               <dynamics></dynamics>
                               <object type="jsx3.gui.Matrix.Column">
                                 <variants jsxwidth="25"></variants>
@@ -217,6 +210,7 @@
                                 <object type="jsx3.gui.CheckBox">
                                   <variants jsxdefaultchecked="0" jsxchecked="0" jsxenabled="1"></variants>
                                   <strings jsxname="checkboxMask" jsxtext=""></strings>
+                                  <events jsxtoggle="this.getAncestorOfName(&quot;blkEditAgreement&quot;).changeState(com.tibco.cmi.getJSXByName(&quot;btnRemoveProtBinding&quot;));"></events>
                                 </object>
                               </object>
                               <object type="jsx3.gui.Matrix.Column">

@@ -2,10 +2,86 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
     jsx3.gui.Block,
     null,
     function(EditAgreement,instance){
-		
+			var systemUtil = com.tibco.cmi.system.util;
+      var server = systemUtil.getServer();
+			var dwrEngine = com.tibco.cmi.dwr.Engine;
+			var dwrService = com.tibco.cmi.dwr.Service;
+			var interval;
+			
 			instance.onRsrcLoad = function(){
 				this.getServer().subscribe("showEditAgreement", this, this.showEditAgreement);
+				this.getServer().subscribe("getBAid",this, this.getBAid);
 			};
+			
+			instance.getBAid = function(objEvent){
+				EditAgreement.BAID = objEvent.BAid;
+				this.getBAInfo();
+				this.getProtocolBinding();	
+			}
+			
+			instance.getBAInfo = function() {
+				var me = this;
+				var service = dwrEngine.loadService('BIZAGREEMENT','getBAByID',[EditAgreement.BAID]);
+				service.subscribe(dwrService.ON_SUCCESS, me, me._callback_getBAByID_onSuccess);
+				service.doCall();
+			}
+			
+			instance._callback_getBAByID_onSuccess = function(objEvent) {
+				var baInfo = objEvent.data;
+				EditAgreement.BA = baInfo;
+				var isValid = baInfo.isValid;
+				var validStart = baInfo.validStart;
+				var validEnd = baInfo.validEnd;
+				
+				server.getJSXByName("startDate").setDate(validStart);
+				server.getJSXByName("endDate").setDate(validEnd);
+				if(isValid)
+					server.getJSXByName("isValid").setChecked(1);
+				else
+					server.getJSXByName("isValid").setChecked(0);
+			}
+			
+			instance.getProtocolBinding = function() {
+				var me = this;
+				var service = dwrEngine.loadService('PROTBINDING','getProtBindingList',[EditAgreement.BAID]);
+				service.subscribe(dwrService.ON_SUCCESS, me, me._callback_getProtBindingList_onSuccess);
+				service.doCall();
+			}
+			
+			instance._callback_getProtBindingList_onSuccess = function(objEvent) {
+				var protocolBindingList = objEvent.data;
+				var protocolBindingcdf = new jsx3.xml.Document();
+				var root = protocolBindingcdf.createDocumentElement("data");
+				root.setAttribute("jsxid", "jsxroot");
+				
+				for(var i = 0;i < protocolBindingList.length;i++) {	
+					var record = root.createNode(jsx3.xml.Entity.TYPEELEMENT, "record");
+					var item = protocolBindingList[i];
+					var protocolBindingId = item.binindex;
+					var name = item.protName;
+					
+					record.setAttribute("jsxid", jsx3.xml.CDF.getKey());
+					record.setAttribute("checked",0);
+					record.setAttribute("protocolBindingId", protocolBindingId);
+					record.setAttribute("name", name);
+					
+					root.appendChild(record);
+				}
+				server.getJSXByName("mtxProtocolBinding").setSourceXML(protocolBindingcdf);
+			  server.getJSXByName("mtxProtocolBinding").repaint();
+			}
+			
+			instance.remove = function() {
+				var selectItems = this.getSelectedItem();
+				var pbs = [];
+				for(var i = 0; i < itemList.size(); i++) {
+					item = itemList.get(i);
+					pbs.push(item.getAttribute("protocolBindingId"));
+				}
+				
+				var service = dwrEngine.loadService('PROTBINDING','removeProtBinding',[pbs]);
+				service.doCall();
+			}
 			
 			instance.editProtocol = function() {
         var server = com.tibco.cmi;
@@ -38,7 +114,17 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
       }
 			
 			instance.saveAgreement = function(){
-				this.getServer().publish({subject:"showAgreementsList"});				
+				EditAgreement.BA.validStart = server.getJSXByName("startDate").getDate();
+				EditAgreement.BA.validEnd = server.getJSXByName("endDate").getDate();
+				if(server.getJSXByName("isValid").getChecked())
+					EditAgreement.BA.isValid = "true";
+				else
+					EditAgreement.BA.isValid = "false";
+					
+				var service = dwrEngine.loadService('BIZAGREEMENT','saveBA',[EditAgreement.BA]);
+				service.subscribe(dwrService.ON_SUCCESS, function(){server.publish({subject:"showAgreementsList"});	});
+				service.doCall();
+								
 			}
 			
 			instance.cancel = function() {
@@ -46,8 +132,51 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
 			}
 			
 			instance.showEditAgreement = function() {
-				this.getDescendantOfName("blkEditContainer").removeChildren();
+				server.getJSXByName("blkEditContainer").removeChildren();
 				var masterDetail = com.tibco.cmi.getJSXByName("editAgreementLayout");
         masterDetail.setSubcontainer1Pct("100%",true);
+			}
+			
+			instance.setEnabled = function(btnEnable, btnRemove) { 
+				var mtx = com.tibco.cmi.getJSXByName("mtxProtocolBinding");
+				var idList = mtx.getSortedIds();
+				var enabled = 0;
+				for(var j=0;j<idList.length;j++){
+					var recordID = idList[j];
+					var item = mtx.getRecordNode(recordID);
+					if(item.getAttribute("checked") == 0) {
+						enabled = 1;				
+						break;
+					}					
+				}
+				
+				for(var i = 0; i < idList.length;i++) {
+					var recordID = idList[i];
+					var item = mtx.getRecordNode(recordID);
+					item.setAttribute("checked",enabled);
+					mtx.redrawRecord(recordID, jsx3.xml.CDF.UPDATE);	
+				}		
+					
+				btnRemove.setEnabled(enabled);
+				if(enabled) { 					
+					btnEnable.setText("Disable All");	
+				}
+				else {
+					btnEnable.setText("Enable All");
+				}	
+			}
+			
+			instance.changeState = function(btn) {
+				if(this.getSelectedItem().size() == 0)
+					btn.setEnabled(0);
+				else
+				  btn.setEnabled(1);
+			}
+			
+			instance.getSelectedItem = function() {
+				var mtx = com.tibco.cmi.getJSXByName("mtxProtocolBinding");
+				var xml = mtx.getXML();
+				var itemList = xml.selectNodes("//record[@checked='1']");
+				return itemList;
 			}
     })

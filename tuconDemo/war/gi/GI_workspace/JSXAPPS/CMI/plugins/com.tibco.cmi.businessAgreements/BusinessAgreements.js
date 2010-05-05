@@ -38,9 +38,8 @@
 					else
 						status = "Inactive";
 					
-					record.setAttribute("jsxid", jsx3.xml.CDF.getKey());
+					record.setAttribute("jsxid", agreementId);
 					record.setAttribute("checked",0);
-					record.setAttribute("agreementId", agreementId);
 					record.setAttribute("name", displayName);
 					record.setAttribute("status", status);
 					
@@ -66,8 +65,7 @@
       }
 			
 			instance.editAgreements = function() {
-        var server = com.tibco.cmi;
-        var masterDetail = com.tibco.cmi.getJSXByName("mainLayout");
+        var masterDetail = server.getJSXByName("mainLayout");
         masterDetail.setSubcontainer1Pct("0",true);
 				
 				var objContainer = this.getDescendantOfName("blkAddEdit");
@@ -77,6 +75,9 @@
             var extPlugIn = ext.getPlugIn();
             extPlugIn.load().when(function(){
                 extPlugIn.loadRsrcComponent(uiId,objContainer)});
+								var mtx = server.getJSXByName("mtxAgreements");
+								var baid = mtx.getSelectedIds()[0];
+								setTimeout(function(){server.publish({subject:"getBAid", BAid:baid});},500);
             }).bind(this)); 
       }
 			
@@ -92,11 +93,14 @@
 				var BAs = [];
 				for(var i = 0; i < itemList.size(); i++) {
 					var item = itemList.get(i);
-					BAs.push(item.getAttribute("agreementId"));
+					BAs.push(item.getAttribute("jsxid"));
 				}
 				
 				var service = dwrEngine.loadService('BIZAGREEMENT','removeBA',[BAs]);
-				service.subscribe(dwrService.ON_SUCCESS, function(){server.getJSXByName("blkBusinessAgreements").getAgreementList()});
+				service.subscribe(dwrService.ON_SUCCESS, function(){
+																									server.getJSXByName("blkBusinessAgreements").getAgreementList();
+																									server.getJSXByName("blkBusinessAgreements").changeState(server.getJSXByName("btnRemove"));																				
+																								});
 				service.doCall();
 			}
 			
