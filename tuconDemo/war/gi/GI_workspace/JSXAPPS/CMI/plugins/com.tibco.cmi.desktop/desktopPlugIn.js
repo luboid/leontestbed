@@ -1,7 +1,7 @@
 (function(plugIn){
 	plugIn.paint = function(objContainer){
-	  // var Engine = tibco.mft.xconsole.dwr.Engine;
-	  // Engine.setErrorHandler(plugIn.dwrErrorHandler);
+	  var Engine = com.tibco.cmi.dwr.Engine;
+	  Engine.setErrorHandler(plugIn.dwrErrorHandler);
 	  this.loadRsrcComponent("Desktop_xml", objContainer);
 	};
 	//overwrite the select function
@@ -36,15 +36,15 @@
 		tabnav.activeMenu = this;
 		var selectedTab = this.getText();
 	};
-	// plugIn.dwrErrorHandler = function(msg,exception){
-		// jsx3.amp.Engine.getEngine(plugIn.getServer()).getPlugIn("tibco.mft.xconsole.system").publish({
-       	 	     // subject:"mftAlert",
-       	 	     // alertType:tibco.mft.deploy.system.util.DLG_TYPE_ALERT,
-       	 	     // dlgTitle:tibco.mft.deploy.system.util.getDynProp("@tibco_mftalert_caption_error"),
-       	 	     // dlgDesc:tibco.mft.deploy.system.util.getExceptionMsg(msg,exception),
-       	 	     // dlgDetail:exception.detailErrMsg,
-       	 	     // funOk:null,
-       	 	     // funCancel:null
-       	 // });
-	// };
+	plugIn.dwrErrorHandler = function(msg,exception){ 
+		jsx3.amp.Engine.getEngine(plugIn.getServer()).getPlugIn("com.tibco.cmi.system").publish({
+       	 	     subject:"mftAlert",
+       	 	     alertType:com.tibco.cmi.system.util.DLG_TYPE_ALERT,
+       	 	     dlgTitle:"Error",
+       	 	     dlgDesc:com.tibco.cmi.system.util.getExceptionMsg(msg,exception),
+       	 	     dlgDetail:exception.detailErrMsg,
+       	 	     funOk:null,
+       	 	     funCancel:null
+       	 });
+	};
 })(this)

@@ -1,0 +1,31 @@
+<plugin xmlns="http://www.tibco.com/gi/amp" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xsi:schemaLocation="http://www.tibco.com/gi/amp http://gi.tibco.com/xsd/plugin.xsd" 
+		id="com.tibco.cmi.dlgAlert" name="CMI - Alert" version="0.1">
+
+  <requires>
+  	<plugin id="com.tibco.cmi.system"/>
+	  <plugin id="tibco.uxcore.gui.dialog"/>
+  </requires>
+  
+  <resources>
+  	<script id="MftAlertPlugIn_js" path="MftAlertPlugIn.js" eval="true"/>
+  	<script id="MftAlert_js" path="MftAlert.js"/>
+
+  	<xml id="MftAlertDlg_xml" path="ui/MftAlertDlg.xml">
+  		<prereq id="MftAlert_js"/>
+  	</xml>
+  </resources>
+  <subscribe event="com.tibco.cmi.system.mftAlert">
+  	var type = evt.alertType;
+  	var title = evt.dlgTitle;
+  	var desc = evt.dlgDesc;
+  	var detail = evt.dlgDetail;
+  	var funOK = evt.funOk;
+  	var funCancel = evt.funCancel;
+  	var plugin = this;
+  	plugin.load().when(function(){
+  	   plugin.initializeDlg(type,title,desc,detail,funOK,funCancel);
+  	});
+  </subscribe>
+</plugin>

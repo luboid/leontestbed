@@ -27,19 +27,8 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.system.util",
 			});
 		}
 		
-		KLASS.getExceptionMsg = function(message,exception){
+		KLASS.getExceptionMsg = function(message,exception){debugger;
 			var msg;    
-/* 		  if(exception && exception.javaClassName  == 'com.tibco.ax.tcm.messenger.runtime.webengine.gui.servlet.DwrSessionTimeoutException'){
-			  document.location.reload();
-		  }
-			if (message && message != "Error" && message != "Timeout")
-				  msg = message;
-			else if(message == "Timeout"){
-				  msg = this.getDynProp("@tibco_mftalert_dwr_timeout");
-			}
-			else{
-				  msg = this.getDynProp("@tibco_mftalert_dwr_error");
-			} */
 			msg = message;
 			return msg;
 		}

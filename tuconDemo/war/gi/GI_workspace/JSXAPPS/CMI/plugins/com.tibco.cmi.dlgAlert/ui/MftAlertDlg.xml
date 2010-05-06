@@ -1,0 +1,64 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Dialog  With Save Cancel Button</name>
+  <icon>jsxplugin://tibco.uxcore.gui.dialog/images/prototype/dialog.gif</icon>
+  <description>Dialog box.  (Set Modal property for a modal dialog with Save and Cancel buttons).</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.mft.xconsole.dlgAlert.MftAlert">
+    <variants jsxwidth="400" jsxheight="160" jsxzindex="5000" jsxwindowstate="1" jsxoverflow="2" jsxmodal="1" jsxresize="0"/>
+    <strings jsxname="DlgAlert"/>
+    <dynamics/>
+    <object type="jsx3.gui.WindowBar">
+      <variants jsxheight="30"/>
+      <strings jsxname="winBarTitle" jsxtext="Dialog"/>
+      <dynamics/>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnClose" jsxdlgbtntype="btnClose"/>
+        <dynamics/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants/>
+      <strings jsxname="content" jsxwidth="100%" jsxheight="100%"/>
+      <dynamics/>
+      <object type="jsx3.gui.LayoutGrid">
+        <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+        <strings jsxname="layout (--)" jsxrows="*,30" jsxwidth="100%" jsxheight="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2"/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="2" jsxheight="60"/>
+            <strings jsxname="blkdesc" jsxwidth="100%" jsxrelativeposition="1"/>
+            <object type="jsx3.gui.Block">
+              <variants jsxrelativeposition="0" jsxoverflow="3" jsxleft="325" jsxtop="42" jsxfontsize="11"/>
+              <strings jsxname="lbldetails" jsxtext="Detail" jsxdisplay="none" jsxfontname="arial" jsxcolor="#2F475D"/>
+              <events jsxclick="this.getAncestorOfType(&quot;tibco.mft.deploy.dlgAlert.MftAlert&quot;).showDetails();"/>
+            </object>
+          </object>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="1" jsxheight="100"/>
+            <strings jsxname="blkdetails" jsxwidth="100%" jsxrelativeposition="1" jsxborder="1px solid gray;"/>
+          </object>
+        </object>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2"/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxtextalign="center" jsxpadding="5 0 0 0"/>
+          <object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" jsxtype="0" jsxstate="0" jsxwidth="56"/>
+            <strings jsxname="btnok" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
+            <dynamics jsxtext="@mftAlert.btnok"/>
+            <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+          </object>
+          <object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" jsxtype="0" jsxstate="0"/>
+            <strings jsxname="btncancel" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
+            <dynamics jsxtext="@mftAlert.btncancel"/>
+            <events jsxexecute="jsx3.log(this + ' was executed.');"/>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

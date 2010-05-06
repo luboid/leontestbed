@@ -12,10 +12,12 @@
 				this.getServer().subscribe("showAgreementsList", this, this.showAgreementsList);
 				this.getAgreementList();
 				BusinessAgreements.BALIST;
+				
+				BusinessAgreements.interval = setInterval(this.getAgreementList,5000);
 			};
 		
 			instance.getAgreementList = function(){
-				var me = this;
+				var me = server.getJSXByName("blkBusinessAgreements");
 				var service = dwrEngine.loadService('BIZAGREEMENT','getBAList',[]);
 				service.subscribe(dwrService.ON_SUCCESS, me, me._callback_getBAList_onSuccess);
 				service.doCall();
@@ -52,6 +54,7 @@
 			}
 		
       instance.newAgreements = function() {
+				clearInterval(BusinessAgreements.interval);
         var server = com.tibco.cmi;
         var masterDetail = com.tibco.cmi.getJSXByName("mainLayout");
         masterDetail.setSubcontainer1Pct("0",true);
@@ -68,6 +71,7 @@
       }
 			
 			instance.editAgreements = function() {
+				clearInterval(BusinessAgreements.interval);
         var masterDetail = server.getJSXByName("mainLayout");
         masterDetail.setSubcontainer1Pct("0",true);
 				
@@ -90,6 +94,7 @@
 				server.getJSXByName("blkAddEdit").removeChildren();
 				var masterDetail = com.tibco.cmi.getJSXByName("mainLayout");
         masterDetail.setSubcontainer1Pct("100%",true);
+				BusinessAgreements.interval = setInterval(this.getAgreementList,5000);
 			}
 			
 			instance.deleteBA = function() {

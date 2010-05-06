@@ -167,7 +167,8 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.newAgreement.NewAgreement",
 					checkService.subscribe(dwrService.ON_SUCCESS, 
 																	function(objEvent){
 																		if(objEvent.data) {
-																			alert("Failed to create new Agreement: . Agreement already exisits between participants :host and partner ");
+																			var msg = "Failed to create new Agreement: . Agreement already exisits between participants :host and partner ";
+																			systemUtil.promote(systemUtil.DLG_TYPE_ALERT,"Warning",msg,null,null,null);
 																		}
 																		else {
 																			var service = dwrEngine.loadService('BIZAGREEMENT','saveBA',[BA]);
@@ -184,7 +185,8 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.newAgreement.NewAgreement",
 					// }					
 					
 				} else {
-					alert("Host or Partner party is not selected")
+					var msg = "Host or Partner party is not selected";
+					systemUtil.promote(systemUtil.DLG_TYPE_ALERT,"Warning",msg,null,null,null);
 				}
 							
 			}

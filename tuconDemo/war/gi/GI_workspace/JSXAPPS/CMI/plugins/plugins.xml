@@ -15,5 +15,6 @@
 	<plugin id="com.tibco.cmi.editProtocolBinding"/>
 	<plugin id="com.tibco.cmi.newProtocolBinding"/>
 	<plugin id="com.tibco.cmi.newOperationBinding"/>
+	<plugin id="com.tibco.cmi.dlgAlert"/>
 
 </plugins>
