@@ -26,7 +26,7 @@
       <record jsxid="jsx_ide_splitter2" type="string">0%</record>
       <record jsxid="jsx_ide_splitter3" type="string">100%</record>
       <record jsxid="jsx_ide_splitter4" type="string">72.69866247049566%</record>
-      <record jsxid="jsx_ide_splitter5" type="string">38.51851851851852%</record>
+      <record jsxid="jsx_ide_splitter5" type="string">52.03703703703704%</record>
     </record>
   </record>
   <record jsxid="lastProject" type="string">JSXAPPS/CMI/</record>
@@ -39,19 +39,21 @@
       <record jsxid="float" type="boolean">true</record>
       <record jsxid="quadrant" type="string">q3</record>
       <record jsxid="dialog" type="map">
-        <record jsxid="left" type="number">85</record>
-        <record jsxid="top" type="number">112</record>
+        <record jsxid="left" type="number">206</record>
+        <record jsxid="top" type="number">116</record>
         <record jsxid="width" type="number">515</record>
         <record jsxid="height" type="number">372</record>
       </record>
       <record jsxid="closed" type="boolean">false</record>
     </record>
-    <record jsxid="jsx3.ide.editor.component.attr.palette" type="map"/>
+    <record jsxid="jsx3.ide.editor.component.attr.palette" type="map">
+      <record jsxid="closed" type="boolean">false</record>
+    </record>
     <record jsxid="jsx3.ide.palette.properties.props.palette" type="map">
       <record jsxid="float" type="boolean">true</record>
       <record jsxid="dialog" type="map">
-        <record jsxid="left" type="number">614</record>
-        <record jsxid="top" type="number">116</record>
+        <record jsxid="left" type="number">802</record>
+        <record jsxid="top" type="number">155</record>
         <record jsxid="width" type="number">300</record>
         <record jsxid="height" type="number">300</record>
       </record>
@@ -90,32 +92,39 @@
         <record jsxid="2" type="string">plugins/com.tibco.cmi.participants/ui/Location.xml</record>
         <record jsxid="3" type="string">plugins/com.tibco.cmi.participants/ui/Contact.xml</record>
         <record jsxid="4" type="string">plugins/com.tibco.cmi.participants/ui/Protocal.xml</record>
-        <record jsxid="5" type="string">plugins/com.tibco.cmi.participants/ui/Participants.xml</record>
-        <record jsxid="6" type="string">plugins/com.tibco.cmi.system/jss/jssStyle.xml</record>
+        <record jsxid="5" type="string">plugins/com.tibco.cmi.system/jss/jssStyle.xml</record>
+        <record jsxid="6" type="string">plugins/com.tibco.cmi.participants/ui/LocationList.xml</record>
         <record jsxid="7" type="string">plugins/com.tibco.cmi.participants/ui/ParticipantsList.xml</record>
+        <record jsxid="8" type="string">plugins/com.tibco.cmi.participants/ui/Certificate.xml</record>
+        <record jsxid="9" type="string">plugins/com.tibco.cmi.participants/ui/Participants.xml</record>
+        <record jsxid="10" type="string">plugins/com.tibco.cmi.participants/ui/certUploadDlg.xml</record>
+        <record jsxid="11" type="string">plugins/com.tibco.cmi.participants/ui/ProtocalEdit.xml</record>
+        <record jsxid="12" type="string">plugins/com.tibco.cmi.participants/ui/DisabeldProtocalDlg.xml</record>
+        <record jsxid="13" type="string">plugins/com.tibco.cmi.participants/ui/IdentifierList.xml</record>
       </record>
       <record jsxid="recentFiles" type="array">
-        <record jsxid="0" type="string">plugins/com.tibco.cmi.participants/ui/ParticipantsList.xml</record>
-        <record jsxid="1" type="string">plugins/com.tibco.cmi.system/jss/jssStyle.xml</record>
-        <record jsxid="2" type="string">plugins/com.tibco.cmi.participants/ui/Participants.xml</record>
-        <record jsxid="3" type="string">plugins/com.tibco.cmi.participants/ui/Protocal.xml</record>
-        <record jsxid="4" type="string">plugins/com.tibco.cmi.participants/ui/Contact.xml</record>
-        <record jsxid="5" type="string">plugins/com.tibco.cmi.participants/ui/Location.xml</record>
-        <record jsxid="6" type="string">plugins/com.tibco.cmi.desktop/ui/Desktop.xml</record>
-        <record jsxid="7" type="string">plugins/com.tibco.cmi.participants/ui/General.xml</record>
-        <record jsxid="8" type="string">plugins/com.tibco.cmi.participants/ui/LocationList.xml</record>
-        <record jsxid="9" type="string">plugins/com.tibco.cmi.desktop/ui/BLocation.xml</record>
-        <record jsxid="10" type="string">plugins/com.tibco.cmi.desktop/ui/General.xml</record>
-        <record jsxid="11" type="string">plugins/com.tibco.cmi.desktop/ui/Participants.xml</record>
-        <record jsxid="12" type="string">plugins/com.tibco.cmi.desktop/ui/ParticipantsList.xml</record>
+        <record jsxid="0" type="string">plugins/com.tibco.cmi.participants/ui/IdentifierList.xml</record>
+        <record jsxid="1" type="string">plugins/com.tibco.cmi.participants/ui/Participants.xml</record>
+        <record jsxid="2" type="string">plugins/com.tibco.cmi.participants/ui/ParticipantsList.xml</record>
+        <record jsxid="3" type="string">plugins/com.tibco.cmi.participants/ui/LocationList.xml</record>
+        <record jsxid="4" type="string">plugins/com.tibco.cmi.system/jss/jssStyle.xml</record>
+        <record jsxid="5" type="string">plugins/com.tibco.cmi.participants/ui/Protocal.xml</record>
+        <record jsxid="6" type="string">plugins/com.tibco.cmi.participants/ui/Contact.xml</record>
+        <record jsxid="7" type="string">plugins/com.tibco.cmi.participants/ui/Location.xml</record>
+        <record jsxid="8" type="string">plugins/com.tibco.cmi.desktop/ui/Desktop.xml</record>
+        <record jsxid="9" type="string">plugins/com.tibco.cmi.participants/ui/General.xml</record>
+        <record jsxid="10" type="string">plugins/com.tibco.cmi.desktop/ui/BLocation.xml</record>
+        <record jsxid="11" type="string">plugins/com.tibco.cmi.desktop/ui/General.xml</record>
+        <record jsxid="12" type="string">plugins/com.tibco.cmi.desktop/ui/Participants.xml</record>
+        <record jsxid="13" type="string">plugins/com.tibco.cmi.desktop/ui/ParticipantsList.xml</record>
       </record>
     </record>
   </record>
   <record jsxid="systemout" type="map">
     <record jsxid="location" type="string">dialog</record>
     <record jsxid="dialog" type="map">
-      <record jsxid="left" type="number">186</record>
-      <record jsxid="top" type="number">65</record>
+      <record jsxid="left" type="number">196</record>
+      <record jsxid="top" type="number">145</record>
       <record jsxid="width" type="number">656</record>
       <record jsxid="height" type="number">401</record>
     </record>

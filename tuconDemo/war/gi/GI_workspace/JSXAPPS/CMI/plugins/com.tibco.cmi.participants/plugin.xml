@@ -24,8 +24,15 @@
 		 <xml id='certUploadDlg_xml' path='ui/certUploadDlg.xml'/>
 		 <xml id='LocationList_xml' path='ui/LocationList.xml'/>
 		 <xml id='Protocal_xml' path='ui/Protocal.xml'/>
+		 <xml id='ProtocalEdit_xml' path='ui/ProtocalEdit.xml'/>
+		 <xml id='Transport_xml' path='ui/Transport.xml'/>
+		 <xml id='IdentifierList_xml' path='ui/IdentifierList.xml'/>
+		 
 		 <xml id='DisabledProtocalDlg_xml' path='ui/DisabeldProtocalDlg.xml'/>
+		 <xml id='IdentityDlg_xml' path='ui/IdentityDlg.xml'/>
+		 <xml id='TransportEdit_xml' path='ui/TransportEdit.xml'/>
 		 <xml id='Participants_xml' path='ui/Participants.xml'>
+		 
 		   <prereq id='General_xml'/>
 			 <prereq id='LocationList_xml'/>
 			 <prereq id='Protocal_xml'/>
