@@ -15,6 +15,7 @@ public interface ColumnConst {
     public static final String P_BININDEX = "PBinindex";
     public static final String CATEGORY = "category";
     public static final String HBinindex = "HBinindex";
+    public static final String DOMAIN_TYPE = "domaintype";
     
     public static final String TRANS_TYPE_HTTP = "HTTP";
     public static final String TRANS_TYPE_FILE = "FILE";

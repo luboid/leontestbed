@@ -178,9 +178,10 @@ public class DAOImpl extends HibernateDaoSupport implements DAO {
         } else if (op == Condition.LESSTHAN) {
             hql.append(objName).append("."+cond.getField());
             hql.append(" <= ").append(cond.getValue());
-        } else if (op == Condition.EQUALS) {
+        } else if (op == Condition.EQUALS || op == Condition.NOT_EQUALS) {
             hql.append(objName).append("."+cond.getField());
-            hql.append(" = ");
+            String operator = op == Condition.EQUALS ? " = " : " != ";
+            hql.append(operator);
             Field fld = null;
             try {
                 fld = modelClazz.getDeclaredField(cond.getField());
