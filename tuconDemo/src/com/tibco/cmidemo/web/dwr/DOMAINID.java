@@ -19,12 +19,12 @@ import com.tibco.cmidemo.web.WebAppException;
  */
 public class DOMAINID extends DWR {
 
-    public static List<GiDomainid> getDomainIdList(String parentId) throws WebAppException {
+    public static List<GiDomainid> getDomainIdListByParentID(String parentId) throws WebAppException {
         
         return getList(GiDomainid.class, parentId, ColumnConst.P_BININDEX);
     }
     
-    public static List<GiDomainid> getDomainIdList(boolean isAS2) throws WebAppException {
+    public static List<GiDomainid> getDomainIdListByAS2Flag(boolean isAS2) throws WebAppException {
         
         try {
             Criteria c = new Criteria(GiDomainid.class);
@@ -36,7 +36,7 @@ public class DOMAINID extends DWR {
         
     }
 
-    public static GiDomainid getDomainId(long id) throws WebAppException {
+    public static GiDomainid getDomainIdByID(long id) throws WebAppException {
         
         return getById(GiDomainid.class, id);
     }
