@@ -1,0 +1,86 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Dialog  With Save Cancel Button</name>
+  <icon>jsxplugin://tibco.uxcore.gui.dialog/images/prototype/dialog.gif</icon>
+  <description>Dialog box.  (Set Modal property for a modal dialog with Save and Cancel buttons).</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Dialog">
+    <variants jsxwidth="500" jsxheight="350" jsxzindex="5000" jsxwindowstate="1" jsxoverflow="2" jsxmodal="1"/>
+    <strings jsxname="dialog"/>
+    <dynamics/>
+    <object type="jsx3.gui.WindowBar">
+      <variants jsxheight="30"/>
+      <strings jsxname="windowBar" jsxtext="Dialog"/>
+      <dynamics/>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnClose" jsxdlgbtntype="btnClose"/>
+        <dynamics/>
+      </object>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnMaximize" jsxdlgbtntype="btnMaximize"/>
+        <dynamics/>
+      </object>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnMinimize" jsxdlgbtntype="btnMinimize"/>
+        <dynamics/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants/>
+      <strings jsxname="content" jsxwidth="100%" jsxheight="100%"/>
+      <dynamics/>
+      <object type="jsx3.gui.LayoutGrid">
+        <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+        <strings jsxname="layout (--)" jsxrows="*,25" jsxwidth="100%" jsxheight="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2"/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+          <object type="jsx3.gui.Block">
+            <variants jsxoverflow="2" _masked="false"/>
+            <strings jsxname="matrixBlock" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
+            <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"/>
+            <object type="tibco.uxcore.gui.Matrix">
+              <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"/>
+              <strings jsxname="mtxdisprotocal" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending"/>
+              <dynamics/>
+              <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
+              <object type="jsx3.gui.Matrix.Column">
+                <variants jsxwidth="40"/>
+                <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxvaluetemplate="@empty"/>
+                <dynamics/>
+                <object type="jsx3.gui.CheckBox">
+                  <variants jsxchecked="0" jsxenabled="1" jsxdefaultchecked="0"/>
+                  <strings jsxname="checkboxMask" jsxtext=""/>
+                </object>
+              </object>
+              <object type="jsx3.gui.Matrix.Column">
+                <variants jsxwidth="40"/>
+                <strings jsxname="colprotocal" jsxtext="Protocal Name" jsxpath="name"/>
+                <dynamics/>
+              </object>
+            </object>
+          </object>
+        </object>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="1"/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+          <object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" jsxtype="0" jsxstate="0" queueing="2"/>
+            <strings jsxname="btnchoose" jsxtext="Choose" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
+            <dynamics/>
+            <events jsxexecute="this.getServer().getBodyBlock().getDescendantsOfType('com.tibco.cmi.participants.Participant')[0].chooseProtocal(this.getAncestorOfType(tibco.uxcore.gui.Dialog));"/>
+          </object>
+          <object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" jsxtype="0" jsxstate="0" queueing="2"/>
+            <strings jsxname="button" jsxtext="Cancel" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
+            <dynamics/>
+            <events jsxexecute="this.getAncestorOfType(tibco.uxcore.gui.Dialog).doClose();"/>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<serialization jsxversion="3.8" xmlns="urn:tibco.com/v3.0">
+  <name><![CDATA[Dialog  With Save Cancel Button]]></name>
+  <icon><![CDATA[jsxplugin://tibco.uxcore.gui.dialog/images/prototype/dialog.gif]]></icon>
+  <description><![CDATA[Dialog box.  (Set Modal property for a modal dialog with Save and Cancel buttons).]]></description>
+  <onBeforeDeserialize></onBeforeDeserialize>
+  <onAfterDeserialize></onAfterDeserialize>
+  <object type="tibco.uxcore.gui.Dialog">
+    <variants jsxwidth="600" jsxheight="380" jsxzindex="5005" jsxwindowstate="1" jsxoverflow="2" jsxmodal="1" jsxleft="75" jsxtop="149"></variants>
+    <strings jsxname="dialog"></strings>
+    <dynamics></dynamics>
+    <object type="jsx3.gui.WindowBar">
+      <variants jsxheight="30"></variants>
+      <strings jsxname="windowBar" jsxtext="Domain"></strings>
+      <dynamics></dynamics>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"></variants>
+        <strings jsxname="btnClose" jsxdlgbtntype="btnClose"></strings>
+        <dynamics></dynamics>
+      </object>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"></variants>
+        <strings jsxname="btnMaximize" jsxdlgbtntype="btnMaximize"></strings>
+        <dynamics></dynamics>
+      </object>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"></variants>
+        <strings jsxname="btnMinimize" jsxdlgbtntype="btnMinimize"></strings>
+        <dynamics></dynamics>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants></variants>
+      <strings jsxname="content" jsxwidth="100%" jsxheight="100%"></strings>
+      <dynamics></dynamics>
+      <object type="jsx3.gui.LayoutGrid">
+        <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"></variants>
+        <strings jsxname="layout (--)" jsxrows="*,30" jsxwidth="100%" jsxheight="100%"></strings>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2"></variants>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"></strings>
+          <object type="jsx3.gui.LayoutGrid">
+            <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"></variants>
+            <strings jsxname="layoutRows" jsxrows="100,*,100" jsxwidth="100%" jsxheight="100%"></strings>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="2"></variants>
+              <strings jsxname="pane1" jsxwidth="100%" jsxheight="100%"></strings>
+            </object>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="2"></variants>
+              <strings jsxname="pane2" jsxwidth="100%" jsxheight="100%"></strings>
+              <dynamics jsxborder="@No jsxborder"></dynamics>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="1"></variants>
+                <strings jsxname="block" jsxwidth="100%" jsxheight="45%" jsxrelativeposition="1" jsxmargin="0 0 1 0"></strings>
+                <object type="tibco.uxcore.gui.MasterDetail">
+                  <variants jsxorientation="0" jsxenabled="0"></variants>
+                  <strings jsxname="masterDetail" jsxvsplitimage="" jsxhsplitimage="" jsxsubcontainer1pct="40%"></strings>
+                  <dynamics></dynamics>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxfontsize="13"></variants>
+                    <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxtext="AS2 Domain" jsxfontname="arial" jsxtextalign="right"></strings>
+                    <dynamics></dynamics>
+                  </object>
+                  <object type="jsx3.gui.Block">
+                    <variants></variants>
+                    <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"></strings>
+                    <object type="jsx3.gui.Select">
+                      <variants jsxwidth="150" jsxheight="18" jsxxmlasync="1"></variants>
+                      <strings jsxname="selDomain" jsxmargin="0 4 0 0"></strings>
+                    </object>
+                  </object>
+                </object>
+              </object>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="1"></variants>
+                <strings jsxname="block" jsxwidth="100%" jsxheight="45%" jsxrelativeposition="1" jsxmargin="0 0 1 0"></strings>
+                <object type="tibco.uxcore.gui.MasterDetail">
+                  <variants jsxorientation="0" jsxenabled="0"></variants>
+                  <strings jsxname="masterDetail" jsxvsplitimage="" jsxhsplitimage="" jsxsubcontainer1pct="40%"></strings>
+                  <dynamics></dynamics>
+                  <object type="jsx3.gui.Block">
+                    <variants jsxfontsize="13"></variants>
+                    <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxtext="AS2 Identity" jsxfontname="arial" jsxtextalign="right"></strings>
+                    <dynamics></dynamics>
+                  </object>
+                  <object type="jsx3.gui.Block">
+                    <variants></variants>
+                    <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"></strings>
+                    <object type="tibco.uxcore.gui.TextBox">
+                      <variants jsxmaxlength="30"></variants>
+                      <strings jsxname="txtIdentity" jsxvalue=""></strings>
+                      <dynamics></dynamics>
+                    </object>
+                  </object>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="1"></variants>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="5 0 0 0" jsxtextalign="right"></strings>
+          <object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" jsxtype="0" jsxstate="0" queueing="2"></variants>
+            <strings jsxname="button" jsxtext="Save" jsximage="1" jsxdownimage="1" jsxonimage="1"></strings>
+            <dynamics></dynamics>
+            <events jsxexecute="this.getServer().getBodyBlock().getDescendantsOfType('com.tibco.cmi.participants.Participant')[0].saveDomainId();"></events>
+          </object>
+          <object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" jsxtype="0" jsxstate="0" queueing="2"></variants>
+            <strings jsxname="button" jsxtext="Cancel" jsximage="1" jsxdownimage="1" jsxonimage="1"></strings>
+            <dynamics></dynamics>
+            <events jsxexecute="jsx3.log(this + ' was executed.');"></events>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>

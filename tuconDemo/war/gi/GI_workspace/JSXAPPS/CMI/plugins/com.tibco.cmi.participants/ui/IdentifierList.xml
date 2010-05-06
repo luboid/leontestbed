@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<serialization jsxversion="3.8" xmlns="urn:tibco.com/v3.0">
+  <name><![CDATA[Block - 100%]]></name>
+  <icon><![CDATA[images/prototypes/block.gif]]></icon>
+  <description><![CDATA[Simple block, relatively positioned with overflow=scroll.]]></description>
+  <object type="jsx3.gui.Block">
+    <variants jsxoverflow="1"></variants>
+    <strings jsxname="block" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"></strings>
+    <object type="jsx3.gui.LayoutGrid">
+      <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"></variants>
+      <strings jsxname="layoutRows" jsxrows="26,*" jsxwidth="100%" jsxheight="100%"></strings>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="2"></variants>
+        <strings jsxname="pane1" jsxwidth="100%" jsxheight="100%"></strings>
+        <object type="tibco.uxcore.gui.Button">
+          <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
+          <strings jsxname="button" jsxtext="Add" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+          <dynamics></dynamics>
+          <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').loadIdentityDlg();"></events>
+        </object>
+        <object type="tibco.uxcore.gui.Button">
+          <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
+          <strings jsxname="button" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+          <dynamics></dynamics>
+          <events jsxexecute="this.getAncestorOfType('com.tibco.cmi.participants.Participant').removeDomainId();"></events>
+        </object>
+      </object>
+      <object type="jsx3.gui.Block">
+        <variants jsxoverflow="1"></variants>
+        <strings jsxname="pane2" jsxwidth="100%" jsxheight="100%"></strings>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2" _masked="false"></variants>
+          <strings jsxname="matrixBlock" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"></strings>
+          <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"></dynamics>
+          <object type="tibco.uxcore.gui.Matrix">
+            <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"></variants>
+            <strings jsxname="mtxidentifierlist" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending"></strings>
+            <dynamics></dynamics>
+            <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""></xslparameters>
+            <object type="jsx3.gui.Matrix.Column">
+              <variants jsxwidth="30"></variants>
+              <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxvaluetemplate="@empty"></strings>
+              <dynamics></dynamics>
+              <object type="jsx3.gui.CheckBox">
+                <variants jsxdefaultchecked="0" jsxchecked="0" jsxenabled="1"></variants>
+                <strings jsxname="checkboxMask" jsxtext=""></strings>
+              </object>
+            </object>
+            <object type="jsx3.gui.Matrix.Column">
+              <variants jsxwidth="300"></variants>
+              <strings jsxname="coldomain" jsxtext="AS2 Domain" jsxpath="domain"></strings>
+              <dynamics></dynamics>
+            </object>
+            <object type="jsx3.gui.Matrix.Column">
+              <variants></variants>
+              <strings jsxname="colidentity" jsxwidth="*" jsxtext="AS2 Identity" jsxpath="identity"></strings>
+              <dynamics></dynamics>
+            </object>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>
