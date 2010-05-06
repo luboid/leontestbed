@@ -49,11 +49,11 @@ public class PROTOCOL extends DWR {
         return getById(GiProtocol.class, id);
     }
 
-    public static void enableProtocols(Long partnerId, List<String> protNames) throws WebAppException {
+    public static void enableProtocols(List<GiProtocol> protocols) throws WebAppException {
 
-        for (String protName : protNames) {
+        for (GiProtocol prot : protocols) {
             // leon: default to be 1 which is same as in bc
-            GiProtocol prot = new GiProtocol(protName, partnerId, 1);
+            prot.setStatus(1);
             save(prot);
         }
     }
@@ -62,4 +62,6 @@ public class PROTOCOL extends DWR {
 
         remove(prots, GiProtocol.class);
     }
+    
+    
 }
