@@ -1,0 +1,178 @@
+<serialization xmlns="urn:tibco.com/v3.0" jsxversion="3.8">
+  <name>Dialog  With Save Cancel Button</name>
+  <icon>jsxplugin://tibco.uxcore.gui.dialog/images/prototype/dialog.gif</icon>
+  <description>Dialog box.  (Set Modal property for a modal dialog with Save and Cancel buttons).</description>
+  <onBeforeDeserialize/>
+  <onAfterDeserialize/>
+  <object type="tibco.uxcore.gui.Dialog">
+    <variants jsxwidth="460" jsxheight="340" jsxzindex="5000" jsxwindowstate="1" jsxoverflow="2" jsxmodal="1"/>
+    <strings jsxname="dlgtransport"/>
+    <dynamics/>
+    <object type="jsx3.gui.WindowBar">
+      <variants jsxheight="30"/>
+      <strings jsxname="windowBar" jsxtext="Transport"/>
+      <dynamics/>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnClose" jsxdlgbtntype="btnClose"/>
+        <dynamics/>
+      </object>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnMaximize" jsxdlgbtntype="btnMaximize"/>
+        <dynamics/>
+      </object>
+      <object type="jsx3.gui.ImageButton">
+        <variants jsxprefetch="1" jsxtype="0" jsxstate="0"/>
+        <strings jsxname="btnMinimize" jsxdlgbtntype="btnMinimize"/>
+        <dynamics/>
+      </object>
+    </object>
+    <object type="jsx3.gui.Block">
+      <variants/>
+      <strings jsxname="content" jsxwidth="100%" jsxheight="100%"/>
+      <dynamics/>
+      <object type="jsx3.gui.LayoutGrid">
+        <variants jsxrelativeposition="0" jsxleft="0" jsxtop="0" jsxoverflow="2"/>
+        <strings jsxname="layout (--)" jsxrows="*,25" jsxwidth="100%" jsxheight="100%"/>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="2"/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"/>
+          <object type="jsx3.gui.CDF">
+            <variants/>
+            <strings jsxname="cdftransport" jsxwidth="100%" jsxheight="100%" jsxcdfid="1" jsxxml="&lt;data jsxid=&quot;jsxroot&quot;&gt;   &lt;record jsxid=&quot;1&quot; first=&quot;john&quot; last=&quot;public&quot; middle=&quot;q&quot;/&gt; &lt;/data&gt;"/>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="1" jsxheight="30"/>
+              <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="160" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="Transport Name" jsxfontname="arial" jsxpadding="1 4 0 0" jsxtextalign="right"/>
+              </object>
+              <object type="tibco.uxcore.gui.TextBox">
+                <variants/>
+                <strings jsxname="txtname" jsxcdfid="transport" jsxcdfattribute="name"/>
+                <dynamics/>
+              </object>
+            </object>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="1" jsxheight="30"/>
+              <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="160" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="Transport Type" jsxfontname="arial" jsxpadding="1 4 0 0" jsxtextalign="right"/>
+              </object>
+              <object type="tibco.uxcore.gui.Select">
+                <variants jsxwidth="130" jsxxmlasync="1" _isfocusing="true"/>
+                <strings jsxname="seltype" jsxxml="&lt;data jsxid='jsxroot'&gt; &lt;record jsxid='HTTP' jsxtext='HTTP'/&gt; &lt;record jsxid='FILE' jsxtext='FILE'/&gt; &lt;/data&gt;" jsxcdfid="transport" jsxcdfattribute="type"/>
+                <dynamics/>
+                <events jsxselect="this.getServer().getBodyBlock().getDescendantsOfType('com.tibco.cmi.participants.Participant')[0].selectTranportType(strRECORDID)"/>
+              </object>
+            </object>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="1" jsxheight="30"/>
+              <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="160" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="File Processing" jsxfontname="arial" jsxpadding="1 4 0 0" jsxtextalign="right"/>
+              </object>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="file://" jsxfontname="arial" jsxpadding="1 2 0 0"/>
+              </object>
+              <object type="tibco.uxcore.gui.TextBox">
+                <variants jsxwidth="160"/>
+                <strings jsxname="txtname" jsxcdfid="transport" jsxcdfattribute="url"/>
+                <dynamics/>
+              </object>
+            </object>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="1" jsxheight="30"/>
+              <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="160" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="File Processing" jsxfontname="arial" jsxpadding="1 4 0 0" jsxtextalign="right"/>
+              </object>
+              <object type="tibco.uxcore.gui.Select">
+                <variants jsxwidth="130" jsxxmlasync="1" _isfocusing="true"/>
+                <strings jsxname="selfileproc" jsxxml="&lt;data jsxid='jsxroot'&gt; &lt;record jsxid='File Mask' jsxtext='File Mask'/&gt; &lt;record jsxid='Script' jsxtext='Script'/&gt; &lt;/data&gt;" jsxcdfattribute="fileprocessing" jsxcdfid="transport"/>
+                <dynamics/>
+              </object>
+            </object>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="1" jsxheight="30"/>
+              <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="160" jsxfontsize="11"/>
+                <strings jsxname="label" jsxtext="Output File Mask" jsxfontname="arial" jsxpadding="1 4 0 0" jsxtextalign="right"/>
+              </object>
+              <object type="tibco.uxcore.gui.TextBox">
+                <variants/>
+                <strings jsxname="txtputmask" jsxcdfid="transport" jsxcdfattribute="filemask"/>
+                <dynamics/>
+              </object>
+            </object>
+            <object type="jsx3.gui.Block">
+              <variants jsxoverflow="1" jsxheight="90"/>
+              <strings jsxname="httpPane" jsxwidth="100%" jsxdisplay="none"/>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="1" jsxheight="30"/>
+                <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"/>
+                <object type="jsx3.gui.Block">
+                  <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="160" jsxfontsize="11"/>
+                  <strings jsxname="label" jsxtext="Retry Count" jsxfontname="arial" jsxpadding="1 4 0 0" jsxtextalign="right"/>
+                </object>
+                <object type="tibco.uxcore.gui.TextBox">
+                  <variants/>
+                  <strings jsxname="txtretrycount" jsxcdfid="transport" jsxcdfattribute="retrycount"/>
+                  <dynamics/>
+                </object>
+              </object>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="1" jsxheight="30"/>
+                <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"/>
+                <object type="jsx3.gui.Block">
+                  <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="160" jsxfontsize="11"/>
+                  <strings jsxname="label" jsxtext="Retry Interval" jsxfontname="arial" jsxpadding="1 4 0 0" jsxtextalign="right"/>
+                </object>
+                <object type="tibco.uxcore.gui.TextBox">
+                  <variants/>
+                  <strings jsxname="txtinterval" jsxcdfid="transport" jsxcdfattribute="retryint"/>
+                  <dynamics/>
+                </object>
+              </object>
+              <object type="jsx3.gui.Block">
+                <variants jsxoverflow="1" jsxheight="30"/>
+                <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"/>
+                <object type="jsx3.gui.Block">
+                  <variants jsxrelativeposition="1" jsxoverflow="3" jsxwidth="160" jsxfontsize="11"/>
+                  <strings jsxname="label" jsxtext="Socket Timeout (seconds)" jsxfontname="arial" jsxpadding="1 4 0 0" jsxtextalign="right"/>
+                </object>
+                <object type="tibco.uxcore.gui.TextBox">
+                  <variants/>
+                  <strings jsxname="txttimeout" jsxcdfid="transport" jsxcdfattribute="sockTimeout"/>
+                  <dynamics/>
+                </object>
+              </object>
+            </object>
+          </object>
+        </object>
+        <object type="jsx3.gui.Block">
+          <variants jsxoverflow="1"/>
+          <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxtextalign="center"/>
+          <object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" jsxtype="0" jsxstate="0" queueing="2"/>
+            <strings jsxname="button" jsxtext="Save" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
+            <dynamics/>
+            <events jsxexecute="this.getServer().getBodyBlock().getDescendantsOfType('com.tibco.cmi.participants.Participant')[0].saveTransport();"/>
+          </object>
+          <object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" jsxtype="0" jsxstate="0" queueing="2"/>
+            <strings jsxname="button" jsxtext="Cancel" jsximage="1" jsxdownimage="1" jsxonimage="1"/>
+            <dynamics/>
+            <events jsxexecute="this.getAncestorOfType('tibco.uxcore.gui.Dialog').doClose();"/>
+          </object>
+        </object>
+      </object>
+    </object>
+  </object>
+</serialization>
