@@ -152,24 +152,35 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.newAgreement.NewAgreement",
 					BA.HBinindex = hostPartyId;
 					BA.tpBinindex = partnerPartyId;
 					
-					var isExist = 0;
-					var baList = NewAgreement.BALIST;
-					for(var i = 0; i < baList.length; i++) {
-						var ba = baList[i];
-						if(hostPartyId == ba.HBinindex && partnerPartyId == ba.tpBinindex) {
-							isExist = 1;
-							break;
-						}
-					}
+					// var isExist = 0;
+					// var baList = NewAgreement.BALIST;
+					// for(var i = 0; i < baList.length; i++) {
+						// var ba = baList[i];
+						// if(hostPartyId == ba.HBinindex && partnerPartyId == ba.tpBinindex) {
+							// isExist = 1;
+							// break;
+						// }
+					// }
 					
-					if(isExist)
-						alert("Failed to create new Agreement: . Agreement already exisits between participants :host and partner ");
+					var checkService = dwrEngine.loadService('BIZAGREEMENT','exists',[hostPartyId, partnerPartyId]);
+					checkService.subscribe(dwrService.ON_SUCCESS, 
+																	function(objEvent){
+																		if(objEvent.data) {
+																			alert("Failed to create new Agreement: . Agreement already exisits between participants :host and partner ");
+																		}
+																		else {
+																			var service = dwrEngine.loadService('BIZAGREEMENT','saveBA',[BA]);
+																			service.subscribe(dwrService.ON_SUCCESS, function(){server.publish({subject:"showAgreementsList"});	});
+																			service.doCall();	
+																		}
+																	});
+					checkService.doCall();	
 					
-					else {
-						var service = dwrEngine.loadService('BIZAGREEMENT','saveBA',[BA]);
-						service.subscribe(dwrService.ON_SUCCESS, function(){server.publish({subject:"showAgreementsList"});	});
-						service.doCall();		
-					}					
+					// else {
+						// var service = dwrEngine.loadService('BIZAGREEMENT','saveBA',[BA]);
+						// service.subscribe(dwrService.ON_SUCCESS, function(){server.publish({subject:"showAgreementsList"});	});
+						// service.doCall();		
+					// }					
 					
 				} else {
 					alert("Host or Partner party is not selected")

@@ -74,7 +74,7 @@
                           </object>
                           <object type="jsx3.gui.Block">
                             <variants jsxfontsize="11"></variants>
-                            <strings jsxname="blk" jsxwidth="100%" jsxheight="100%" jsxtext="host" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
+                            <strings jsxname="blkHostName" jsxwidth="100%" jsxheight="100%" jsxtext="" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
                           </object>
                         </object>
                       </object>
@@ -91,7 +91,7 @@
                           </object>
                           <object type="jsx3.gui.Block">
                             <variants jsxfontsize="11"></variants>
-                            <strings jsxname="blk" jsxwidth="100%" jsxheight="100%" jsxtext="partner" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
+                            <strings jsxname="blkPartnerName" jsxwidth="100%" jsxheight="100%" jsxtext="" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
                           </object>
                         </object>
                       </object>
@@ -113,48 +113,6 @@
                               <variants jsxheight="18" jsxdefaultchecked="0"></variants>
                               <strings jsxname="isValid" jsxmargin="0 4 0 0"></strings>
                               <events jsxexecute="jsx3.log('The jsxexecute method was fired for checkbox ' + this);"></events>
-                            </object>
-                          </object>
-                        </object>
-                      </object>
-                      <object type="jsx3.gui.Block">
-                        <variants jsxoverflow="1" jsxheight="20"></variants>
-                        <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxbgcolor="#BBBBBB" jsxmargin="0 0 1 0"></strings>
-                        <object type="tibco.uxcore.gui.MasterDetail">
-                          <variants jsxorientation="0" jsxenabled="0"></variants>
-                          <strings jsxname="masterDetail" jsxsubcontainer1pct="30%" jsxvsplitimage="" jsxhsplitimage=""></strings>
-                          <dynamics></dynamics>
-                          <object type="jsx3.gui.Block">
-                            <variants jsxfontsize="11"></variants>
-                            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtext="Start Date" jsxtextalign="right" jsxbgcolor="#BBBBBB"></strings>
-                          </object>
-                          <object type="jsx3.gui.Block">
-                            <variants jsxfontsize="11"></variants>
-                            <strings jsxname="blk" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
-                            <object type="jsx3.gui.DatePicker">
-                              <variants jsxwidth="100" jsxrelativeposition="1" jsxheight="18"></variants>
-                              <strings jsxname="startDate" jsxmargin="0 4 0 0"></strings>
-                            </object>
-                          </object>
-                        </object>
-                      </object>
-                      <object type="jsx3.gui.Block">
-                        <variants jsxoverflow="1" jsxheight="20"></variants>
-                        <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxbgcolor="#BBBBBB"></strings>
-                        <object type="tibco.uxcore.gui.MasterDetail">
-                          <variants jsxorientation="0" jsxenabled="0"></variants>
-                          <strings jsxname="masterDetail" jsxsubcontainer1pct="30%" jsxvsplitimage="" jsxhsplitimage=""></strings>
-                          <dynamics></dynamics>
-                          <object type="jsx3.gui.Block">
-                            <variants jsxfontsize="11"></variants>
-                            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtext="End Date" jsxtextalign="right" jsxbgcolor="#BBBBBB"></strings>
-                          </object>
-                          <object type="jsx3.gui.Block">
-                            <variants jsxfontsize="11"></variants>
-                            <strings jsxname="blk" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
-                            <object type="jsx3.gui.DatePicker">
-                              <variants jsxwidth="100" jsxrelativeposition="1" jsxheight="18"></variants>
-                              <strings jsxname="endDate" jsxmargin="0 4 0 0"></strings>
                             </object>
                           </object>
                         </object>

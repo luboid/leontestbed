@@ -6,7 +6,7 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
       var server = systemUtil.getServer();
 			var dwrEngine = com.tibco.cmi.dwr.Engine;
 			var dwrService = com.tibco.cmi.dwr.Service;
-			var interval;
+			//var interval;
 			
 			instance.onRsrcLoad = function(){
 				this.getServer().subscribe("showEditAgreement", this, this.showEditAgreement);
@@ -16,10 +16,16 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
 			instance.getBAid = function(objEvent){
 				EditAgreement.BAID = objEvent.BAid;
 				var baName = objEvent.name;
-				server.getJSXByName("blkEditAgreementTitle").setText("Edit Agreement: " + baName);
-				server.getJSXByName("blkEditAgreementTitle").repaint();
+				server.getJSXByName("blkEditAgreementTitle").setText("Edit Agreement: " + baName, true);
+				
+				var names = baName.split("-");
+				var hostName = names[1];
+				var partnerName = names[0];
+				server.getJSXByName("blkHostName").setText(hostName, true);
+				server.getJSXByName("blkPartnerName").setText(partnerName, true);
+				
 				this.getBAInfo();
-				EditAgreement.interval = setInterval(this.getProtocolBinding,5000);
+				//EditAgreement.interval = setInterval(this.getProtocolBinding,5000);
 				this.getProtocolBinding();	
 			}
 			
@@ -34,11 +40,7 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
 				var baInfo = objEvent.data;
 				EditAgreement.BA = baInfo;
 				var isValid = baInfo.isValid;
-				var validStart = baInfo.validStart;
-				var validEnd = baInfo.validEnd;
 				
-				server.getJSXByName("startDate").setDate(validStart);
-				server.getJSXByName("endDate").setDate(validEnd);
 				if(isValid)
 					server.getJSXByName("isValid").setChecked(1);
 				else
@@ -98,7 +100,7 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
 			}
 			
 			instance.editProtocol = function() {
-				clearInterval(EditAgreement.interval);
+				//clearInterval(EditAgreement.interval);
         var masterDetail = server.getJSXByName("editAgreementLayout");
         masterDetail.setSubcontainer1Pct("0",true);
 				
@@ -118,7 +120,7 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
       }
 			
 			instance.newProtocol = function() {
-				clearInterval(EditAgreement.interval);
+				//clearInterval(EditAgreement.interval);
         var masterDetail =server.getJSXByName("editAgreementLayout");
         masterDetail.setSubcontainer1Pct("0",true);
 				
@@ -134,13 +136,11 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
       }
 			
 			instance.saveAgreement = function(){
-				clearInterval(EditAgreement.interval);
-				EditAgreement.BA.validStart = server.getJSXByName("startDate").getDate();
-				EditAgreement.BA.validEnd = server.getJSXByName("endDate").getDate();
 				if(server.getJSXByName("isValid").getChecked())
 					EditAgreement.BA.isValid = "true";
 				else
 					EditAgreement.BA.isValid = "false";
+				delete EditAgreement.BA.lastmodified;				
 				
 				var service = dwrEngine.loadService('BIZAGREEMENT','saveBA',[EditAgreement.BA]);
 				service.subscribe(dwrService.ON_SUCCESS, function(){server.publish({subject:"showAgreementsList"});	});
@@ -149,15 +149,16 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
 			}
 			
 			instance.cancel = function() {
-				clearInterval(EditAgreement.interval);
+				//clearInterval(EditAgreement.interval);
 				this.getServer().publish({subject:"showAgreementsList"});	
 			}
 			
 			instance.showEditAgreement = function() {
-				EditAgreement.interval = setInterval(this.getProtocolBinding,5000);
 				server.getJSXByName("blkEditContainer").removeChildren();
 				var masterDetail = com.tibco.cmi.getJSXByName("editAgreementLayout");
         masterDetail.setSubcontainer1Pct("100%",true);
+				//EditAgreement.interval = setInterval(this.getProtocolBinding,5000);
+				setTimeout(function(){server.getJSXByName("blkEditAgreement").getProtocolBinding();},1000);
 			}
 			
 			instance.setEnabled = function(btnEnable, btnRemove) { 

@@ -85,7 +85,7 @@
                         <dynamics></dynamics>
                         <object type="jsx3.gui.RadioButton">
                           <variants jsxselected="0" jsxenabled="1"></variants>
-                          <strings jsxname="radioMask" jsxtext=""></strings>
+                          <strings jsxname="radioMask" jsxtext="" jsxgroupname="host"></strings>
                         </object>
                       </object>
                       <object type="jsx3.gui.Matrix.Column">
@@ -135,7 +135,7 @@
                         <dynamics></dynamics>
                         <object type="jsx3.gui.RadioButton">
                           <variants jsxselected="0" jsxenabled="1"></variants>
-                          <strings jsxname="radioMask" jsxtext=""></strings>
+                          <strings jsxname="radioMask" jsxtext="" jsxgroupname="partner"></strings>
                         </object>
                       </object>
                       <object type="jsx3.gui.Matrix.Column">
