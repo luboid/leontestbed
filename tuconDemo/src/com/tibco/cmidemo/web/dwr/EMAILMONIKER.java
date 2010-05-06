@@ -25,9 +25,11 @@ public class EMAILMONIKER extends DWR {
         return getById(GiEmailmoniker.class, id);
     }
     
-    public static void saveEmail(GiEmailmoniker email) throws WebAppException {
+    public static GiEmailmoniker saveEmail(GiEmailmoniker email) throws WebAppException {
         
         save(email);
+        
+        return email;
     }
     
     public static void removeEmail(List<Long> emails) throws WebAppException {
