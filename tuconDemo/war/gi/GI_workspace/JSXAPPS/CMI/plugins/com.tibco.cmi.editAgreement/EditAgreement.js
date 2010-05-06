@@ -40,6 +40,11 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
 				var baInfo = objEvent.data;
 				EditAgreement.BA = baInfo;
 				var isValid = baInfo.isValid;
+				var validStart = baInfo.validStart;
+				var validEnd = baInfo.validEnd;
+				
+				server.getJSXByName("startDate").setDate(validStart);
+				server.getJSXByName("endDate").setDate(validEnd);
 				
 				if(isValid)
 					server.getJSXByName("isValid").setChecked(1);
@@ -136,6 +141,8 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.editAgreement.EditAgreement",
       }
 			
 			instance.saveAgreement = function(){
+				EditAgreement.BA.validStart = server.getJSXByName("startDate").getDate();
+				EditAgreement.BA.validEnd = server.getJSXByName("endDate").getDate();
 				if(server.getJSXByName("isValid").getChecked())
 					EditAgreement.BA.isValid = "true";
 				else

@@ -104,6 +104,48 @@
                           <dynamics></dynamics>
                           <object type="jsx3.gui.Block">
                             <variants jsxfontsize="11"></variants>
+                            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtext="Start Date" jsxtextalign="right" jsxbgcolor="#BBBBBB"></strings>
+                          </object>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="blkStart" jsxwidth="100%" jsxheight="100%" jsxtext="" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
+                            <object type="jsx3.gui.DatePicker">
+                              <variants jsxwidth="100" jsxrelativeposition="1" jsxheight="18"></variants>
+                              <strings jsxname="startDate" jsxmargin="0 4 0 0"></strings>
+                            </object>
+                          </object>
+                        </object>
+                      </object>
+                      <object type="jsx3.gui.Block">
+                        <variants jsxoverflow="1" jsxheight="20"></variants>
+                        <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxbgcolor="#BBBBBB" jsxmargin="0 0 1 0"></strings>
+                        <object type="tibco.uxcore.gui.MasterDetail">
+                          <variants jsxorientation="0" jsxenabled="0"></variants>
+                          <strings jsxname="masterDetail" jsxsubcontainer1pct="30%" jsxvsplitimage="" jsxhsplitimage=""></strings>
+                          <dynamics></dynamics>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtext="End Date" jsxtextalign="right" jsxbgcolor="#BBBBBB"></strings>
+                          </object>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
+                            <strings jsxname="blkEnd" jsxwidth="100%" jsxheight="100%" jsxtext="" jsxpadding="3" jsxtextalign="left" jsxbgcolor="#EEEEEE"></strings>
+                            <object type="jsx3.gui.DatePicker">
+                              <variants jsxwidth="100" jsxrelativeposition="1" jsxheight="18"></variants>
+                              <strings jsxname="endDate" jsxmargin="0 4 0 0"></strings>
+                            </object>
+                          </object>
+                        </object>
+                      </object>
+                      <object type="jsx3.gui.Block">
+                        <variants jsxoverflow="1" jsxheight="20"></variants>
+                        <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxbgcolor="#BBBBBB" jsxmargin="0 0 1 0"></strings>
+                        <object type="tibco.uxcore.gui.MasterDetail">
+                          <variants jsxorientation="0" jsxenabled="0"></variants>
+                          <strings jsxname="masterDetail" jsxsubcontainer1pct="30%" jsxvsplitimage="" jsxhsplitimage=""></strings>
+                          <dynamics></dynamics>
+                          <object type="jsx3.gui.Block">
+                            <variants jsxfontsize="11"></variants>
                             <strings jsxname="pane" jsxwidth="100%" jsxheight="100%" jsxpadding="3" jsxtext="Valid" jsxtextalign="right" jsxbgcolor="#BBBBBB"></strings>
                           </object>
                           <object type="jsx3.gui.Block">
@@ -149,12 +191,12 @@
                             <dynamics></dynamics>
                             <events jsxexecute="this.getAncestorOfName(&quot;blkEditAgreement&quot;).remove();"></events>
                           </object>
-													<object type="tibco.uxcore.gui.Button">
-														<variants focusstyle="1" jsxheight="18" jsxenabled="1" jsxtype="0" jsxstate="0"></variants>
-														<strings jsxname="btnEnableAll" jsxtext="Enable All" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
-														<dynamics></dynamics>
-														<events jsxexecute="this.getAncestorOfName(&quot;blkEditAgreement&quot;).setEnabled(this,this.getPreviousSibling());"></events>
-													</object>
+                          <object type="tibco.uxcore.gui.Button">
+                            <variants focusstyle="1" jsxheight="18" jsxenabled="1" jsxtype="0" jsxstate="0"></variants>
+                            <strings jsxname="btnEnableAll" jsxtext="Enable All" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+                            <dynamics></dynamics>
+                            <events jsxexecute="this.getAncestorOfName(&quot;blkEditAgreement&quot;).setEnabled(this,this.getPreviousSibling());"></events>
+                          </object>
                         </object>
                         <object type="jsx3.gui.Block">
                           <variants></variants>

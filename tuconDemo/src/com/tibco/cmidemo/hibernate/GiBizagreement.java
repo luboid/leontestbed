@@ -172,6 +172,7 @@ public class GiBizagreement extends ModelObject implements Serializable {
      *             length="11"
      *             not-null="true"
      *         
+>>>>>>> .r84
      */
     public boolean isIsValid() {
         return this.isValid;

@@ -151,6 +151,7 @@ jsx3.lang.Class.defineClass("com.tibco.cmi.newAgreement.NewAgreement",
 					var BA = new Object;
 					BA.HBinindex = hostPartyId;
 					BA.tpBinindex = partnerPartyId;
+					BA.isValid = false;
 					
 					// var isExist = 0;
 					// var baList = NewAgreement.BALIST;
