@@ -24,11 +24,12 @@ public class DOMAINID extends DWR {
         return getList(GiDomainid.class, parentId, ColumnConst.P_BININDEX);
     }
     
-    public static List<GiDomainid> getDomainIdListByAS2Flag(boolean isAS2) throws WebAppException {
+    public static List<GiDomainid> getDomainIdListByAS2Flag(String parentId, boolean isAS2) throws WebAppException {
         
         try {
             Criteria c = new Criteria(GiDomainid.class);
             c.addCondition(new Condition(ColumnConst.DOMAIN_TYPE, (isAS2 ? Condition.EQUALS : Condition.NOT_EQUALS), "AS2_ID"));
+            c.addCondition(new Condition(ColumnConst.P_BININDEX, Condition.EQUALS, parentId));
             return DAO().getList(c);
         } catch (DataAccessException de) {
             throw new WebAppException(de);
