@@ -7,7 +7,10 @@ import com.tibco.cmidemo.hibernate.GiBizagreement;
 import com.tibco.cmidemo.hibernate.GiPartner;
 import com.tibco.cmidemo.web.WebAppException;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.dao.DataAccessException;
 
 /**
  * 
@@ -31,12 +34,17 @@ public class BIZAGREEMENT extends DWR {
     
     public static boolean exists(long hostId, long partnerId) throws WebAppException {
         
-        Criteria c = new Criteria(GiBizagreement.class);
-        c.addCondition(new Condition(ColumnConst.HBinindex, Condition.EQUALS, String.valueOf(hostId)));
-        c.addCondition(new Condition(ColumnConst.TP_BININDEX, Condition.EQUALS, String.valueOf(partnerId)));
-        List result = DAO().getList(c);
+        List result = null;
+        try {
+            Criteria c = new Criteria(GiBizagreement.class);
+            c.addCondition(new Condition(ColumnConst.HBinindex, Condition.EQUALS, String.valueOf(hostId)));
+            c.addCondition(new Condition(ColumnConst.TP_BININDEX, Condition.EQUALS, String.valueOf(partnerId)));
+            result = DAO().getList(c);
+        } catch (DataAccessException de) {
+            throw new WebAppException(de);
+        }
         
-        return result.size() > 0;
+        return (result != null && result.size() > 0);
     }
     
     public static void saveBA (GiBizagreement ba) throws WebAppException {
