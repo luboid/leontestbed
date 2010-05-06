@@ -7,7 +7,6 @@ import com.tibco.cmidemo.hibernate.GiBizagreement;
 import com.tibco.cmidemo.hibernate.GiPartner;
 import com.tibco.cmidemo.web.WebAppException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
