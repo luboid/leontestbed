@@ -39,6 +39,12 @@
                 <dynamics></dynamics>
                 <events jsxexecute="this.getAncestorOfName(&quot;blkBusinessAgreements&quot;).deleteBA();"></events>
               </object>
+							<object type="tibco.uxcore.gui.Button">
+                <variants focusstyle="1" jsxheight="18" jsxenabled="1" jsxtype="0" jsxstate="0"></variants>
+                <strings jsxname="btnEnable" jsxtext="Enable All" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+                <dynamics></dynamics>
+                <events jsxexecute="this.getAncestorOfName(&quot;blkBusinessAgreements&quot;).setEnabled(this,this.getPreviousSibling());"></events>
+              </object>
             </object>
             <object type="jsx3.gui.Block">
               <variants jsxoverflow="1" _masked="false"></variants>

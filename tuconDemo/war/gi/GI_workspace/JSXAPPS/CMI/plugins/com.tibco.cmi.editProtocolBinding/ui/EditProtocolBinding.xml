@@ -14,7 +14,7 @@
         <strings jsxname="pane" jsxwidth="100%" jsxheight="100%"></strings>
         <dynamics></dynamics>
         <object type="jsx3.gui.Block">
-          <variants jsxoverflow="2" jsxheight="500"></variants>
+          <variants jsxoverflow="2" jsxheight="700"></variants>
           <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1"></strings>
           <object type="jsx3.gui.Block">
             <variants jsxoverflow="2" jsxheight="30" jsxfontsize="13"></variants>
@@ -96,7 +96,7 @@
                   </object>
                 </object>
                 <object type="jsx3.gui.Block">
-                  <variants jsxoverflow="2" jsxheight="150"></variants>
+                  <variants jsxoverflow="2" jsxheight="250"></variants>
                   <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxpadding="5" jsxmargin="10 0 10 0"></strings>
                   <object type="tibco.uxcore.gui.Section">
                     <variants></variants>
@@ -124,6 +124,12 @@
                           <strings jsxname="btnRemoveHostOperation" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
                           <dynamics></dynamics>
                           <events jsxexecute="this.getAncestorOfName(&quot;blkEditProtocolBinding&quot;).removeHost();"></events>
+                        </object>
+                        <object type="tibco.uxcore.gui.Button">
+                          <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
+                          <strings jsxname="btnEnable" jsxtext="Enable All" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+                          <dynamics></dynamics>
+                          <events jsxexecute="this.getAncestorOfName(&quot;blkEditProtocolBinding&quot;).setEnabled(this,this.getPreviousSibling(),&quot;host&quot;)"></events>
                         </object>
                       </object>
                       <object type="jsx3.gui.Block">
@@ -159,7 +165,7 @@
                   </object>
                 </object>
                 <object type="jsx3.gui.Block">
-                  <variants jsxoverflow="2" jsxheight="150"></variants>
+                  <variants jsxoverflow="2" jsxheight="250"></variants>
                   <strings jsxname="block" jsxwidth="100%" jsxrelativeposition="1" jsxpadding="5" jsxmargin="10 0 10 0"></strings>
                   <object type="tibco.uxcore.gui.Section">
                     <variants></variants>
@@ -187,6 +193,12 @@
                           <strings jsxname="btnRemovePartnerOperation" jsxtext="Remove" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
                           <dynamics></dynamics>
                           <events jsxexecute="this.getAncestorOfName(&quot;blkEditProtocolBinding&quot;).removePartner();"></events>
+                        </object>
+                        <object type="tibco.uxcore.gui.Button">
+                          <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
+                          <strings jsxname="btnEnable" jsxtext="Enable All" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+                          <dynamics></dynamics>
+                          <events jsxexecute="this.getAncestorOfName(&quot;blkEditProtocolBinding&quot;).setEnabled(this,this.getPreviousSibling(),&quot;partner&quot;)"></events>
                         </object>
                       </object>
                       <object type="jsx3.gui.Block">

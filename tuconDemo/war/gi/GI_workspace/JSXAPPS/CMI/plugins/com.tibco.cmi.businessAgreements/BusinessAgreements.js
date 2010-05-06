@@ -110,31 +110,27 @@
 			
 			instance.setEnabled = function(btnEnable, btnRemove) { 
 				var mtx = com.tibco.cmi.getJSXByName("mtxAgreements");
-				var idList = mtx.getSortedIds();
-				var enabled = 0;
-				for(var j=0;j<idList.length;j++){
-					var recordID = idList[j];
-					var item = mtx.getRecordNode(recordID);
-					if(item.getAttribute("checked") == 0) {
-						enabled = 1;				
-						break;
-					}					
+				if(btnEnable.getText() == "Enable All") {
+					for(var i = 0; i < mtx.getSortedIds().length; i++){
+						var recordId = mtx.getSortedIds()[i];
+						var record = mtx.getRecordNode(recordId);
+						record.setAttribute("checked",1);
+						mtx.redrawRecord(recordId, jsx3.xml.CDF.UPDATE);
+					}
+					btnEnable.setText("Disable All",true);
+					btnRemove.setEnabled(1);
 				}
 				
-				for(var i = 0; i < idList.length;i++) {
-					var recordID = idList[i];
-					var item = mtx.getRecordNode(recordID);
-					item.setAttribute("checked",enabled);
-					mtx.redrawRecord(recordID, jsx3.xml.CDF.UPDATE);	
-				}		
-					
-				btnRemove.setEnabled(enabled);
-				if(enabled) { 					
-					btnEnable.setText("Disable All");	
-				}
 				else {
-					btnEnable.setText("Enable All");
-				}					
+					for(var i = 0; i < mtx.getSortedIds().length; i++){
+						var recordId = mtx.getSortedIds()[i];
+						var record = mtx.getRecordNode(recordId);
+						record.setAttribute("checked",0);
+						mtx.redrawRecord(recordId, jsx3.xml.CDF.UPDATE);
+					}
+					btnEnable.setText("Enable All",true);
+					btnRemove.setEnabled(0);
+				}		
 			}
 			
 			instance.changeState = function(btn) {

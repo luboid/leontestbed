@@ -149,6 +149,12 @@
                             <dynamics></dynamics>
                             <events jsxexecute="this.getAncestorOfName(&quot;blkEditAgreement&quot;).remove();"></events>
                           </object>
+													<object type="tibco.uxcore.gui.Button">
+														<variants focusstyle="1" jsxheight="18" jsxenabled="1" jsxtype="0" jsxstate="0"></variants>
+														<strings jsxname="btnEnableAll" jsxtext="Enable All" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+														<dynamics></dynamics>
+														<events jsxexecute="this.getAncestorOfName(&quot;blkEditAgreement&quot;).setEnabled(this,this.getPreviousSibling());"></events>
+													</object>
                         </object>
                         <object type="jsx3.gui.Block">
                           <variants></variants>

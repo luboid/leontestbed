@@ -26,6 +26,12 @@
             <dynamics></dynamics>
             <events jsxexecute="this.getAncestorOfName(&quot;blkNewProtocolBinding&quot;).save();"></events>
           </object>
+					<object type="tibco.uxcore.gui.Button">
+            <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
+            <strings jsxname="btnEnable" jsxtext="Enable All" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
+            <dynamics></dynamics>
+            <events jsxexecute="this.getAncestorOfName(&quot;blkNewProtocolBinding&quot;).setEnabled(this);"></events>
+          </object>
           <object type="tibco.uxcore.gui.Button">
             <variants focusstyle="1" jsxheight="18" jsxtype="0" jsxstate="0"></variants>
             <strings jsxname="btnCancel" jsxtext="Cancel" jsximage="1" jsxdownimage="1" jsxonimage="1" jsxindex="1" jsxownstyle="1"></strings>
