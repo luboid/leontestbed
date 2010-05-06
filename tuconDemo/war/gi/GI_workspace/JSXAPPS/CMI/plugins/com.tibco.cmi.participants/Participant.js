@@ -202,7 +202,6 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		};
 		
 		instance._callback_getContact_onSuccess = function(objEvent,locRecordId){
-		debugger;
 		   var mtx = PARTICIPANT.location.getDescendantOfName('mtxlocation');
 		   
 		   //window.alert('_callback_getContact_onSuccess: locRecordId='+locRecordId);
@@ -246,7 +245,6 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		};
 		
 		instance.addContact = function(){
-		debugger;
 		    PARTICIPANT.CONTACT_EDIT_OR_ADD = PARTICIPANT.ADD;
 				var container = this.getServer().getBodyBlock();
 				var mtx = PARTICIPANT.location.getDescendantOfName('mtxlocation');
@@ -269,23 +267,23 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		    var dlg = this.addContact();
 				PARTICIPANT.CONTACT_EDIT_OR_ADD = PARTICIPANT.EDIT;
 				var mtx = PARTICIPANT.location.getDescendantOfName('mtxlocation');
-				//var locId = mtx.getSelectedNodes().get(0).getAttribute('LBinindex');
-				var locRecordId = mtx.getSelectedNodes().get(0).getAttribute('jsxid');
+				var locId = mtx.getRecord(mtx.getSelectedNodes().get(0).getAttribute('jsxid')).binindex;
+		    var locRecordId = mtx.getSelectedNodes().get(0).getAttribute('jsxid');
 				var contact = mtx.getRecord(locRecordId);
 				contact.jsxid='contact';
-				//contact['LBinindex'] = locId;
+				contact.LBinindex = locId;
 				dlg.getDescendantOfName('cdfcontact').getXML().insertRecord(contact,'jsxroot');
 				dlg.getDescendantOfName('cdfcontact').read();
 				
 		};
 		
 		instance.saveContact = function(dlg){
-		    debugger;
 		    dlg.getDescendantOfName('cdfcontact').write();
 				var contact = dlg.getDescendantOfName('cdfcontact').getXML().getRecord('contact');
 				if(PARTICIPANT.CONTACT_EDIT_OR_ADD == PARTICIPANT.ADD){
 				   contact['binindex'] = '';
 				}
+				contact['name'] = contact['FNale']+contact['LName'];
 				delete contact['jsxid'];
 			  delete contact['locationorcontact'];
 			  delete contact['jsxselected'];
@@ -298,7 +296,6 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		};
 		
 		instance._callback_saveContact_onSuccess = function(objEvent){
-		debugger;
 		    this.getContact();
 		   
 		}
@@ -396,7 +393,6 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 
 		
 		instance.getProtocal = function(){
-		   debugger;
 		   var service = dwrEngine.loadService('PROTOCOL','getEnabledProtocolList',[PARTICIPANT.currentPaId]);
 			 service.subscribe(dwrService.ON_SUCCESS,PARTICIPANT.me,PARTICIPANT.me._callback_getProtocal_onSuccess);
 			 service.doCall();
@@ -518,6 +514,37 @@ jsx3.lang.Class.defineClass('com.tibco.cmi.participants.Participant',
 		
 		instance.cancel = function(){
 		   PARTICIPANT.layout.setSubcontainer1Pct('*,0',true);
+		};
+		
+		instance.getIdentityList = function(){
+			var service = dwrEngine.loadService('DOMAINID','getDomainIdList',[PARTICIPANT.currentPaId]);
+			service.subscribe(dwrService.ON_SUCCESS,PARTICIPANT.me,PARTICIPANT.me._callback_getDomainIdList_onSuccess);
+			service.doCall();
+		}
+		
+		instance._callback_getDomainIdList_onSuccess = function(objEvent){
+			var list = objEvent.data;
+			
+			var cdf = new jsx3.xml.Document();
+			var root = cdf.createDocumentElement("data");
+			root.setAttribute("jsxid", "jsxroot");
+			for(var i = 0; i < list.length; i++) {
+				var domainId = list[i];
+				var record = root.createNode(jsx3.xml.Entity.TYPEELEMENT, "record");
+				var domain = domainId.domaintype;
+				var identity = domainId.CDomid;
+				var id = domainId.binindex;
+				
+				record.setAttribute("jsxid", jsx3.xml.CDF.getKey());
+				record.setAttribute("domainId",id);
+				record.setAttribute("domain", domain);
+				record.setAttribute("identity", identity);
+				record.setAttribute("checked",0);
+					
+				root.appendChild(record);
+			}
+			this.getDescendantOfName('mtxidentifierlist').setSourceXML(cdf);
+			this.getDescendantOfName('mtxidentifierlist').repaintData();
 		}
 		
 		

@@ -32,14 +32,14 @@
           <strings jsxname="matrixBlock" jsxwidth="100%" jsxheight="100%" jsxrelativeposition="1"/>
           <dynamics jsxborder="@uxcore10@Matrix Border" jsxbgcolor="@uxcore10@Matrix BlockBG"/>
           <object type="tibco.uxcore.gui.Matrix">
-            <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="2" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"/>
+            <variants jsxsloaddefaultproperties="true" jsxpagingmodel="4" jsxselectionmodel="1" jsxscalewidth="1" jsxspy="1" jsxrendernavigators="1" jsxreorder="0" jsxdrag="0" jsxdrop="0"/>
             <strings jsxname="mtxlocation" jsxrenderingmodel="hierarchical" jsxsortpath="jsxid" jsxsorttype="text" jsxsortdirection="ascending"/>
             <dynamics/>
             <xslparameters jsx_treehead_bgcolor="" jsx_treehead_fontweight="normal" jsx_icon=""/>
             <object type="jsx3.gui.Matrix.Column">
               <variants jsxwidth="40"/>
               <strings jsxname="checkboxColumn" jsxpath="checked" jsxcelltextalign="center" jsxvaluetemplate="@empty"/>
-              <dynamics jsxborder="@uxcore10@MatrixC Border" jsxbg="@uxcore10@MatrixC BackGround" jsxbgcolor="@uxcore10@MatrixC BGColor" jsxfontname="@uxcore10@MatrixC Font Name" jsxfontsize="@uxcore10@MatrixC Font Size" jsxfontweight="@uxcore10@MatrixC Font Weight" jsxcolor="@uxcore10@MatrixC Color" jsxpadding="@uxcore10@MatrixC Padding" jsxcellfontname="@uxcore10@MatrixCell Font Name" jsxcellfontsize="@uxcore10@MatrixCell Font Size" jsxcellfontweight="@uxcore10@MatrixCell Font Weight" jsxcellcolor="@uxcore10@MatrixCell Color" jsxcellbgcolor="@uxcore10@MatrixCell BGColor" jsxcellpadding="@uxcore10@MatrixCell Padding" jsxcellborder="@uxcore10@MatrixCell Border"/>
+              <dynamics/>
               <object type="jsx3.gui.CheckBox">
                 <variants jsxchecked="0" jsxenabled="1" jsxdefaultchecked="0"/>
                 <strings jsxname="checkboxMask" jsxtext=""/>
