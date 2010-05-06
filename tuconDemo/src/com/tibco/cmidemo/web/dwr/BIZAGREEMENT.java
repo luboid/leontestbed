@@ -1,5 +1,8 @@
 package com.tibco.cmidemo.web.dwr;
 
+import com.tibco.cmidemo.dao.ColumnConst;
+import com.tibco.cmidemo.dao.Condition;
+import com.tibco.cmidemo.dao.Criteria;
 import com.tibco.cmidemo.hibernate.GiBizagreement;
 import com.tibco.cmidemo.hibernate.GiPartner;
 import com.tibco.cmidemo.web.WebAppException;
@@ -24,6 +27,16 @@ public class BIZAGREEMENT extends DWR {
     public static GiBizagreement getBAByID(long id) throws WebAppException {
         
         return getById(GiBizagreement.class, id);
+    }
+    
+    public static boolean exists(long hostId, long partnerId) throws WebAppException {
+        
+        Criteria c = new Criteria(GiBizagreement.class);
+        c.addCondition(new Condition(ColumnConst.HBinindex, Condition.EQUALS, String.valueOf(hostId)));
+        c.addCondition(new Condition(ColumnConst.TP_BININDEX, Condition.EQUALS, String.valueOf(partnerId)));
+        List result = DAO().getList(c);
+        
+        return result.size() > 0;
     }
     
     public static void saveBA (GiBizagreement ba) throws WebAppException {
