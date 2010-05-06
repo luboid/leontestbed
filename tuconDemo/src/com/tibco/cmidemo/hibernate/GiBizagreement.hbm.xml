@@ -89,7 +89,30 @@
             not-null="true"
         </meta>    
     </property>
-    
+    <property
+        name="validStart"
+        type="java.sql.Timestamp"
+        column="VALID_START"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="VALID_START"
+            length="19"
+        </meta>    
+    </property>
+    <property
+        name="validEnd"
+        type="java.sql.Timestamp"
+        column="VALID_END"
+        length="19"
+    >
+        <meta attribute="field-description">
+           @hibernate.property
+            column="VALID_END"
+            length="19"
+        </meta>    
+    </property>
     <property
         name="isValid"
         type="boolean"

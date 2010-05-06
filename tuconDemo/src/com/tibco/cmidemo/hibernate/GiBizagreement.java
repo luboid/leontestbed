@@ -28,6 +28,12 @@ public class GiBizagreement extends ModelObject implements Serializable {
     /** persistent field */
     private Long tpBinindex;
 
+    /** nullable persistent field */
+    private Date validStart;
+
+    /** nullable persistent field */
+    private Date validEnd;
+
     /** persistent field */
     private boolean isValid;
 
@@ -35,11 +41,13 @@ public class GiBizagreement extends ModelObject implements Serializable {
     private Date lastmodified;
 
     /** full constructor */
-    public GiBizagreement(String objnid, String displayName, Long HBinindex, Long tpBinindex, boolean isValid, Date lastmodified) {
+    public GiBizagreement(String objnid, String displayName, Long HBinindex, Long tpBinindex, Date validStart, Date validEnd, boolean isValid, Date lastmodified) {
         this.objnid = objnid;
         this.displayName = displayName;
         this.HBinindex = HBinindex;
         this.tpBinindex = tpBinindex;
+        this.validStart = validStart;
+        this.validEnd = validEnd;
         this.isValid = isValid;
         this.lastmodified = lastmodified;
     }
@@ -128,6 +136,34 @@ public class GiBizagreement extends ModelObject implements Serializable {
 
     public void setTpBinindex(Long tpBinindex) {
         this.tpBinindex = tpBinindex;
+    }
+
+    /** 
+     *            @hibernate.property
+     *             column="VALID_START"
+     *             length="19"
+     *         
+     */
+    public Date getValidStart() {
+        return this.validStart;
+    }
+
+    public void setValidStart(Date validStart) {
+        this.validStart = validStart;
+    }
+
+    /** 
+     *            @hibernate.property
+     *             column="VALID_END"
+     *             length="19"
+     *         
+     */
+    public Date getValidEnd() {
+        return this.validEnd;
+    }
+
+    public void setValidEnd(Date validEnd) {
+        this.validEnd = validEnd;
     }
 
     /** 
