@@ -33,6 +33,7 @@ public class UploadServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
+        String respStatus = null;
         boolean isMultipart = ServletFileUpload.isMultipartContent(req); 
         if(isMultipart) {
             try {
@@ -66,16 +67,19 @@ public class UploadServlet extends HttpServlet {
                 si.setUrl(url);
                 PKISTOREITEM.saveCred(si);
                 
-                resp.getOutputStream().write("OK".getBytes());
+                respStatus = "\"OK\"";
                 
             } catch (FileUploadException e) {
-                resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "parse file content error: " + e.getMessage());
+                respStatus = "\"" + e.getMessage() + "\""; 
             } catch (Exception e) {
-                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "internal server error: " + e.getMessage());
+                respStatus = "\"" + e.getMessage() + "\"";
             }
         } else {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "request content should be multipart");
+            respStatus = "\"request content should be multipart\"";
         }
+        
+        String respHTML = "<script language=javascript> var status=" + respStatus + ";</script>";
+        resp.getWriter().write(respHTML);
     }
     
     
