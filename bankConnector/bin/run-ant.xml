@@ -1,0 +1,75 @@
+<project name="bankconnector" default="usage" basedir=".">
+
+	<path id="bc.class.path">
+		<pathelement location="../target/classes" />
+		<fileset dir="../lib" includes="**/*.jar" />
+	</path>
+
+	<target name="usage">
+		<echo message="" />
+		<echo message="bankconnector run script" />
+		<echo message="-----------------------------------------" />
+		<echo message="" />
+		<echo message="Among the available targets are:" />
+		<echo message="" />
+		<echo message="runBC-A    --> run BC instance for initator side" />
+		<echo message="" />
+		<echo message="" />
+		<echo message="runBC-B    --> run BC instance for responder side" />
+		<echo message="" />		
+		<echo message="" />
+	</target>
+	<target name="runPP-A" description="">
+		<echo message="start PP-A instance for initiator side..." />
+		<java failonerror="true" fork="true" classname="com.topfinance.stubs.internal.PPInitiator">
+			<classpath>
+				<path refid="bc.class.path" />
+			</classpath>
+			<jvmarg value="-Xmx512M" />
+			<arg line="-cfg runBC-A-config.xml" />
+		</java>
+	</target>
+	<target name="runBC-A" description="">
+		<echo message="start BC-A instance for initiator side..." />
+		<java failonerror="true" fork="true" classname="com.topfinance.runtime.Main">
+			<classpath>
+				<path refid="bc.class.path" />
+			</classpath>
+			<jvmarg value="-Xmx512M" />
+			<arg line="-spring runBC-A-spring.xml -cfg runBC-A-config.xml" />
+		</java>
+	</target>
+
+	<target name="runBC-B" description="">
+		<echo message="start BC-B instance for responder side..." />
+		<java failonerror="true" fork="true" classname="com.topfinance.runtime.Main">
+			<classpath>
+				<path refid="bc.class.path" />
+			</classpath>
+			<jvmarg value="-Xmx512M" />
+			<arg line="-spring runBC-B-spring.xml -cfg runBC-B-config.xml" />
+		</java>
+	</target>
+	<target name="runPP-B" description="">
+		<echo message="start PP-B instance for responder side..." />
+		<java failonerror="true" fork="true" classname="com.topfinance.stubs.internal.PPResponder">
+			<classpath>
+				<path refid="bc.class.path" />
+			</classpath>
+			<jvmarg value="-Xmx512M" />
+			<arg line="-cfg runBC-B-config.xml" />
+		</java>
+	</target>
+	
+	
+	<target name="runBroker" description="">
+		<echo message="start Broker instance ..." />
+		<java failonerror="true" fork="true" classname="com.topfinance.stubs.external.Broker">
+			<classpath>
+				<path refid="bc.class.path" />
+			</classpath>
+			<jvmarg value="-Xmx512M" />
+			<arg line="-spring runBroker-C-spring.xml -cfgA runBC-A-config.xml -cfgB runBC-B-config.xml" />
+		</java>
+	</target>
+</project>
