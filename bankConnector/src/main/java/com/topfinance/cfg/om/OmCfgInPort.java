@@ -1,10 +1,11 @@
 package com.topfinance.cfg.om;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
 import com.topfinance.cfg.ICfgInPort;
+import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgTransportInfo;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
 
 public class OmCfgInPort implements ICfgInPort {
     @Attribute(required=false)
@@ -20,6 +21,8 @@ public class OmCfgInPort implements ICfgInPort {
     @Attribute(required=false)
     private String url;
     
+    @Element(required=false)
+    private ICfgOutPort ackPort;
 
     public String getOid() {
         return oid;
@@ -70,6 +73,16 @@ public class OmCfgInPort implements ICfgInPort {
     public void setTransportInfo(ICfgTransportInfo transportInfo) {
         this.transportInfo = transportInfo;
     }
+
+    public ICfgOutPort getAckPort() {
+        return ackPort;
+    }
+
+    public void setAckPort(ICfgOutPort ackPort) {
+        this.ackPort = ackPort;
+    }
+
+
     
     
 

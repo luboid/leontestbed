@@ -103,6 +103,18 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
 
         return listInPort;
     }
+    
+    public ICfgInPort getInportByName(String name) {
+        ICfgInPort res = null;
+        for(ICfgInPort inp : listInPort) {
+            if(inp.getName().equals(name)) {
+                res = inp;
+            }
+        }
+        return res;
+        
+    }
+    
     public List<ICfgOutPort> getListOfEnabledOutport() {
         return listOutPort;
     }

@@ -16,6 +16,10 @@ public interface CfgConstants {
     public final static String OP_REPLY_TYPE_SYNC = "S";
     public final static String OP_REPLY_TYPE_ASYNC = "A";
 
+    public final static String OP_ACK_TYPE_SYNC = "SYNC";
+    public final static String OP_ACK_TYPE_ASYNC = "ASYNC";
+    public final static String OP_ACK_TYPE_NONE = "NONE";
+    
     public final static String BOOLEAN_TRUE = "T";
     public final static String BOOLEAN_FALSE = "F";
 }

@@ -92,7 +92,8 @@ public class Main {
                 }
             }
             
-            ServerRoutes routes = new ServerRoutes(camel);
+            ServerRoutes.init(camel);
+            ServerRoutes routes = ServerRoutes.getInstance();
             camel.addRoutes(routes);
             camel.start();
             

@@ -8,6 +8,7 @@ public interface ICfgReader extends CfgConstants{
 //    public ICfgTransportInfo getTransportInfoByName(String name);
     public List<ICfgNode> getListOfNodes();
     public List<ICfgInPort> getListOfEnabledInport();
+    public ICfgInPort getInportByName(String name);
     public List<ICfgOutPort> getListOfEnabledOutport();
     public List<ICfgTransportInfo> getListOfTransportInfo();
     

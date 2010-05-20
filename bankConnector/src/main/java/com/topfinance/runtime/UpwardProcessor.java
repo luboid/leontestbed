@@ -10,11 +10,14 @@ import com.topfinance.cfg.ICfgProtocolBinding;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.db.HiberEntry;
+import com.topfinance.db.ResendEntry;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.DocRoot;
 import com.topfinance.plugin.cnaps2.MsgHeader;
+import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
+import com.topfinance.util.ResendUtil;
 
 import java.util.List;
 
@@ -32,26 +35,31 @@ public class UpwardProcessor extends AbstractProcessor{
         System.out.println("in UpwardProcessor: "+msg);
     }
     
-    public UpwardProcessor(UWMessageContext messageContext, CamelContext camel) {
-        this.msgContext = messageContext;
+    public UpwardProcessor(CamelContext camel) {
         this.camel = camel;
     }
     
     
 
-    
-    public void process() throws Exception {
+    public void preprocess() throws Exception {
+        log("preprocess() in "+Thread.currentThread().getName());
 
-
-        // load the plugin impl class
-        // by the bizProtocol attribute of the CfgInport, and then the plugin attribute
-//        ICfgProtocol cfgProt = cfgIP.getProtocol();
-//        String pluginName = cfgProt.getPluginName();
-//        String direction = cfgIP.getDirection();
-
+        getMsgContext().setUserTxId("xxxx");
+        
         logReceiveMsg();
         
-        parseMessage();
+        parseMessage();        
+        
+    }
+    
+    
+    public void process() throws Exception {
+        log("process() in "+Thread.currentThread().getName());
+
+        String utx = getMsgContext().getUserTxId();
+        log("utx="+utx);
+        
+
         
         // save or resurrect hibernate
         loadTxContext();
@@ -89,8 +97,7 @@ public class UpwardProcessor extends AbstractProcessor{
                 HiberEntry hiber = HiberUtil.retrieveHiber(origDocId);
                 String auditId = hiber.getAuditId();
                 // TODO to update the orig audit entry, about receiving reply? 
-                auditLog(auditId, STATE_RECEIVED_RESP, "received async reply", STATUS_COMPLETED);
-                
+                AuditUtil.updateAuditLogStatus(auditId, STATE_RECEIVED_RESP, "received async reply", STATUS_COMPLETED);
                 
                 getMsgContext().setTxId(hiber.getTxId());
                 
@@ -100,24 +107,8 @@ public class UpwardProcessor extends AbstractProcessor{
             auditLog(STATE_INITIALISE_CONTEXT, "created transactionID[" + getMsgContext().getTxId() + "]", STATUS_PENDING);
         }
         
-        // go this even if the up request itself is a reply
-        if (OP_REPLY_TYPE_NOTIFY.equals(cfgOpn.getUpReplyType())) {
-            // nothing
-        } else if (OP_REPLY_TYPE_SYNC.equals(cfgOpn.getUpReplyType())) {
+        
 
-        } else {
-            // async
-            // TODO save the hibernation
-            String hiberkey = getMsgContext().getDocId();
-            String txId = getMsgContext().getTxId();
-            String auditId = getMsgContext().getAuditTx().getAuditId();
-            HiberUtil.saveHiber(hiberkey, txId, auditId);
-
-        }
-            
-        
-        
-        
     }
     
     private void sendErrMsg() {
@@ -221,20 +212,47 @@ public class UpwardProcessor extends AbstractProcessor{
     private String send() throws Exception {
         ICfgOutPort cfgOP = getMsgContext().getCfgOutPort();
 
-        String url = BCUtils.getFullUrlFromPort(cfgOP);
+        ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
+        String opName = getMsgContext().getOperationName();
+        ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), opName);
+        String ackType = cfgOpn.getUpAckType();
         
+        String resendStatus = OP_ACK_TYPE_ASYNC.equals(ackType)? ResendEntry.STATUS_ACTIVE : ResendEntry.STATUS_INACTIVE; 
+            // save resend
+            String docRoot = getMsgContext().getPackagedMsg();
+            // TODO serialize
+            byte[] bin = docRoot.getBytes();
+            ICfgOutPort ackPort = getMsgContext().getCfgInPort().getAckPort();
+            String ackPortName = ackPort==null? "": ackPort.getName();
+            ResendUtil.saveResend(getMsgContext().getMesgId(), 
+                                  getMsgContext().getAuditTx().getAuditId(),
+                                  resendStatus,                                  
+                                  bin,
+                                  ackPortName
+                                  );
+        
+        
+        
+        // go this even if the up request itself is a reply
+        if(OP_REPLY_TYPE_ASYNC.equals(cfgOpn.getUpReplyType())){
+            String hiberkey = getMsgContext().getDocId();
+            String txId = getMsgContext().getTxId();
+            String auditId = getMsgContext().getAuditTx().getAuditId();
+            HiberUtil.saveHiber(hiberkey, txId, auditId);
+        }
+        
+        
+        
+        String url = BCUtils.getFullUrlFromPort(cfgOP);
         String syncReply = null;
         
-//        Component outComponent = camel.getComponent(prefix);
-//        log("outComponent="+outComponent);
-//        Endpoint outEp = outComponent.createEndpoint(url);
         Endpoint outEp = camel.getEndpoint(url);
         Producer producer = outEp.createProducer();
         
-
         // exchangepattern always inout, either resp or ack
         // send
-        Exchange destExchange = producer.createExchange(ExchangePattern.InOut);
+        ExchangePattern exPatn = OP_ACK_TYPE_SYNC.equals(ackType) ?  ExchangePattern.InOut : ExchangePattern.InOnly;
+        Exchange destExchange = producer.createExchange(exPatn);
         getMsgContext().setDestExchange(destExchange);
         destExchange.getIn().setBody(getMsgContext().getPackagedMsg());
         
@@ -243,6 +261,7 @@ public class UpwardProcessor extends AbstractProcessor{
         
         syncReply = destExchange.getOut().getBody(String.class);
         
+        auditLog(STATE_SEND_OUT_MSG, "sending msg to TP", STATUS_PENDING);     
 
         return syncReply;
     }
@@ -285,9 +304,14 @@ public class UpwardProcessor extends AbstractProcessor{
             // send back to pp
             log("send tp syncReply to pp");
             getMsgContext().getSrcExchange().getOut().setBody(syncReply);
-            auditLog(STATE_SENT_OUT_MSG, "Sync Reply sent to PP", STATUS_COMPLETED);            
+            auditLog(STATE_SENT_OUT_MSG, "received sync ack from tp and send to pp", STATUS_COMPLETED);            
         } else {
             // async or notify
+            
+            if(!OP_ACK_TYPE_SYNC.equals(cfgOpn.getUpAckType())) {
+                return;
+            }
+            
             String ack = syncReply;
             log("received tp ack="+ack);
             

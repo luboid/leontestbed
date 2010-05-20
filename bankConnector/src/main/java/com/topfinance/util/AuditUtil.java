@@ -36,7 +36,26 @@ public class AuditUtil {
         detail.setAuditId(audit.getAuditId());
         insertAuditDetailLog(detail);
 
-}
+    }
+    
+    public static void updateAuditLogStatus(String auditId, String state, String desc, String status) {
+        try {
+            AuditTransaction auditTx = new AuditTransaction();
+            auditTx.setAuditId(auditId);
+            auditTx.setStatus(status);
+
+            AuditTransactionDetail detail = new AuditTransactionDetail();
+            detail.setStatus(status);
+            detail.setState(state);
+            detail.setDesc(desc);
+            
+            AuditUtil.updateAuditLogStatus(auditTx, detail);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     private static void insertAuditLog(AuditTransaction audit) throws Exception{
         
         Map<String, Object> fields = audit.getFields();

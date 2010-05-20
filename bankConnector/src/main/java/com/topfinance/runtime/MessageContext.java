@@ -4,6 +4,7 @@ import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgProtocol;
+import com.topfinance.cfg.dummy.TestDummy;
 import com.topfinance.db.AuditTransaction;
 import com.topfinance.util.BCUtils;
 import org.apache.camel.Exchange;
@@ -33,7 +34,7 @@ public abstract class MessageContext {
     // the identities contains in communication header
     private String origSender;
     private String origReceiver;
-    
+
     
     // business layer id, extract from TP or PP request
     private String docId;
@@ -96,6 +97,10 @@ public abstract class MessageContext {
         this.txId = BCUtils.getUniqueTxId();
     }
     
+    // TODO moved to plugin implementation?
+    public boolean isAck() {
+        return TestDummy.OPERATION_900.equals(getOperationName());
+    }
     public String getDirection() {
         return direction;
     }

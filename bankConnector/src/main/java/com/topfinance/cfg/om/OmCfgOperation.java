@@ -26,6 +26,9 @@ public class OmCfgOperation implements ICfgOperation {
     private String upIsReply;
     
     @Attribute(required=false)
+    private String upAckType;
+    
+    @Attribute(required=false)
     private String downIsEnabled;
     
     @Attribute(required=false)
@@ -33,6 +36,9 @@ public class OmCfgOperation implements ICfgOperation {
     
     @Attribute(required=false)
     private String downIsReply;
+    
+    @Attribute(required=false)
+    private String downAckType;
     
     public ICfgProtocol getProtocol() {
         return protocol;
@@ -106,6 +112,22 @@ public class OmCfgOperation implements ICfgOperation {
 
     public void setDownIsReply(String downIsReply) {
         this.downIsReply = downIsReply;
+    }
+
+    public String getUpAckType() {
+        return upAckType;
+    }
+
+    public void setUpAckType(String upAckType) {
+        this.upAckType = upAckType;
+    }
+
+    public String getDownAckType() {
+        return downAckType;
+    }
+
+    public void setDownAckType(String downAckType) {
+        this.downAckType = downAckType;
     }
 
 

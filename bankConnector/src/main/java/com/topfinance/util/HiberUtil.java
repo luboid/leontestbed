@@ -67,26 +67,10 @@ public class HiberUtil {
         
         
         Map<String, Object> fields = hiber.getFields();
-        StringBuffer buf = new StringBuffer("insert into ").append(TBL_NAME).append("(");
-        StringBuffer buf2 = new StringBuffer(" values (");
-        int i=0;
+        StringBuffer buf = new StringBuffer();
         List<Object> params = new ArrayList<Object>();
-        for(String key: fields.keySet()) {
-            Object val = fields.get(key);
-            if(val==null) {
-                continue;
-            }
-            if(i==0) {
-                buf.append(key).append("");
-                buf2.append("?");
-            }else {
-                buf.append(", ").append(key);
-                buf2.append(", ").append("?");
-            }
-            i++;
-            params.add(fields.get(key));
-        }
-        buf.append(")").append(buf2.append(")"));
+        
+        DbUtils.buildInsertSql(TBL_NAME, fields, buf, params);
         
         String sql = buf.toString();
         
@@ -94,4 +78,6 @@ public class HiberUtil {
         DbUtils.executeUpdate(sql, params.toArray());       
 
     }
+
+
 }

@@ -1,15 +1,25 @@
 package com.topfinance.plugin;
 
-import org.apache.camel.CamelContext;
-import org.apache.camel.Exchange;
+import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgInPort;
+import com.topfinance.cfg.ICfgOutPort;
+import com.topfinance.cfg.ICfgReader;
+import com.topfinance.db.ResendEntry;
 import com.topfinance.plugin.cnaps2.Cnaps2Plugin;
+import com.topfinance.runtime.BcConstants;
 import com.topfinance.runtime.DWMessageContext;
 import com.topfinance.runtime.DownwardProcessor;
+import com.topfinance.runtime.ServerRoutes;
 import com.topfinance.runtime.UWMessageContext;
 import com.topfinance.runtime.UpwardProcessor;
+import com.topfinance.util.AuditUtil;
+import com.topfinance.util.BCUtils;
+import com.topfinance.util.ResendUtil;
+import org.apache.camel.CamelContext;
+import org.apache.camel.Exchange;
+import org.apache.commons.lang.StringUtils;
 
-public class BasePlugin {
+public class BasePlugin implements BcConstants{
     
     public static BasePlugin loadPlugin(String name) {
         return new Cnaps2Plugin();
@@ -18,16 +28,47 @@ public class BasePlugin {
         return new DWMessageContext(cfgInPort, exchange);
     }
 
-    public DownwardProcessor createDownwardProcessor(DWMessageContext msgContext, CamelContext camel) {
-        return new DownwardProcessor(msgContext,camel);
+    public DownwardProcessor createDownwardProcessor(CamelContext camel) {
+        return new DownwardProcessor(camel);
     }
 
     public UWMessageContext createUWMessageContext(ICfgInPort cfgInPort, Exchange exchange) {
         return new UWMessageContext(cfgInPort, exchange);
     }
 
-    public UpwardProcessor createUpwardProcessor(UWMessageContext msgContext, CamelContext camel) {
-        return new UpwardProcessor(msgContext,camel);
+    public UpwardProcessor createUpwardProcessor(CamelContext camel) {
+        return new UpwardProcessor(camel);
+    }
+    
+    public void processResendAlertMessage(String resendkey) {
+        try {
+            ResendEntry resend = ResendUtil.resurrectResend(resendkey);
+            String inPortName = resend.getInPortName();
+            String auditId = resend.getAuditId();
+            
+            if(StringUtils.isEmpty(inPortName)) {
+                // for upward. need send back error to pp
+                ICfgReader reader = CfgImplFactory.loadCfgReader();
+                ICfgInPort inPort = reader.getInportByName(inPortName);
+                ICfgOutPort outPort = inPort.getAckPort();
+                String url = BCUtils.getFullUrlFromPort(outPort);
+                
+                String errorText = "ERROR!!";
+                ServerRoutes.getInstance().produce(url, errorText, true);
+                AuditUtil.updateAuditLogStatus(auditId, STATE_SENT_OUT_MSG, "tp ack not received before timeout", STATUS_ERROR);
+            }
+            else {
+                // for downward, 
+                // TODO need alert by email
+                AuditUtil.updateAuditLogStatus(auditId, STATE_SENT_OUT_MSG, "failed to send to pp before timeout", STATUS_ERROR);
+                
+            }
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            // todo: do nothing? 
+           
+        }
     }
     
 //    public AuditTransactionContext createAuditTransactionContext(MessageContext msgContext) {
