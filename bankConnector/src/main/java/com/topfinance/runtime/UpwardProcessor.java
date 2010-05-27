@@ -21,12 +21,9 @@ import com.topfinance.util.ResendUtil;
 
 import java.util.List;
 
-import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
-import org.apache.camel.ExchangePattern;
 import org.apache.camel.Message;
-import org.apache.camel.Producer;
 import org.apache.commons.lang.StringUtils;
 
 public class UpwardProcessor extends AbstractProcessor{
@@ -35,8 +32,8 @@ public class UpwardProcessor extends AbstractProcessor{
         System.out.println("in UpwardProcessor: "+msg);
     }
     
-    public UpwardProcessor(CamelContext camel) {
-        this.camel = camel;
+    public UpwardProcessor() {
+        
     }
     
     
@@ -55,7 +52,7 @@ public class UpwardProcessor extends AbstractProcessor{
     
     public void process() throws Exception {
         log("process() in "+Thread.currentThread().getName());
-
+        try {
         String utx = getMsgContext().getUserTxId();
         log("utx="+utx);
         
@@ -73,7 +70,10 @@ public class UpwardProcessor extends AbstractProcessor{
         String syncReply = send();
         
         handleTPSyncResponse(syncReply);
-        
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            sendErrMsg();
+        }
     }
 
     private void loadTxContext() {
@@ -82,7 +82,7 @@ public class UpwardProcessor extends AbstractProcessor{
         ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), opName);
         
         if(BOOLEAN_FALSE.equals(cfgOpn.getUpIsEnabled())) {
-            sendErrMsg();
+            
             throw new RuntimeException("up is not enabled on the op");
         }
         
@@ -94,10 +94,13 @@ public class UpwardProcessor extends AbstractProcessor{
             else {
                 // TODO resurrect hibernation and set the txID
                 // origDocId is the hiberKey used
-                HiberEntry hiber = HiberUtil.retrieveHiber(origDocId);
+                HiberEntry hiber = HiberUtil.resurrectHiber(origDocId);
+                if(hiber==null) {
+                    // TODO hiber is null
+                }
                 String auditId = hiber.getAuditId();
                 // TODO to update the orig audit entry, about receiving reply? 
-                AuditUtil.updateAuditLogStatus(auditId, STATE_RECEIVED_RESP, "received async reply", STATUS_COMPLETED);
+                AuditUtil.updateOtherAuditLogStatus(auditId, STATE_RECEIVED_RESP, "received async reply", STATUS_COMPLETED);
                 
                 getMsgContext().setTxId(hiber.getTxId());
                 
@@ -112,7 +115,19 @@ public class UpwardProcessor extends AbstractProcessor{
     }
     
     private void sendErrMsg() {
+        // for upward. need send back error to pp
+        try {
+        ICfgInPort inPort = getMsgContext().getCfgInPort();
+        ICfgOutPort outPort = inPort.getAckPort();
+        String url = BCUtils.getFullUrlFromPort(outPort);
+        
+        String errorText = BcConstants.MSG_PP_ERROR;
         log("sendErrMsg!!!!");
+        ServerRoutes.getInstance().produce(url, errorText, true);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
     }
     
     private String logReceiveMsg() {
@@ -222,13 +237,14 @@ public class UpwardProcessor extends AbstractProcessor{
             String docRoot = getMsgContext().getPackagedMsg();
             // TODO serialize
             byte[] bin = docRoot.getBytes();
-            ICfgOutPort ackPort = getMsgContext().getCfgInPort().getAckPort();
-            String ackPortName = ackPort==null? "": ackPort.getName();
+            String inPortName = getMsgContext().getCfgInPort().getName();
+            
             ResendUtil.saveResend(getMsgContext().getMesgId(), 
+                                  DIRECTION_UP,
                                   getMsgContext().getAuditTx().getAuditId(),
                                   resendStatus,                                  
                                   bin,
-                                  ackPortName
+                                  inPortName
                                   );
         
         
@@ -238,7 +254,7 @@ public class UpwardProcessor extends AbstractProcessor{
             String hiberkey = getMsgContext().getDocId();
             String txId = getMsgContext().getTxId();
             String auditId = getMsgContext().getAuditTx().getAuditId();
-            HiberUtil.saveHiber(hiberkey, txId, auditId);
+            HiberUtil.saveHiber(hiberkey, DIRECTION_UP, txId, auditId);
         }
         
         
@@ -246,21 +262,13 @@ public class UpwardProcessor extends AbstractProcessor{
         String url = BCUtils.getFullUrlFromPort(cfgOP);
         String syncReply = null;
         
-        Endpoint outEp = camel.getEndpoint(url);
-        Producer producer = outEp.createProducer();
-        
         // exchangepattern always inout, either resp or ack
         // send
-        ExchangePattern exPatn = OP_ACK_TYPE_SYNC.equals(ackType) ?  ExchangePattern.InOut : ExchangePattern.InOnly;
-        Exchange destExchange = producer.createExchange(exPatn);
-        getMsgContext().setDestExchange(destExchange);
-        destExchange.getIn().setBody(getMsgContext().getPackagedMsg());
+        boolean isInOnly = OP_ACK_TYPE_SYNC.equals(ackType) ?  false : true;
         
         log("directly dispatching to outport: "+cfgOP.getName());
-        producer.process(destExchange);
-        
-        syncReply = destExchange.getOut().getBody(String.class);
-        
+        syncReply = ServerRoutes.getInstance().produce(url, getMsgContext().getPackagedMsg(), isInOnly);
+
         auditLog(STATE_SEND_OUT_MSG, "sending msg to TP", STATUS_PENDING);     
 
         return syncReply;

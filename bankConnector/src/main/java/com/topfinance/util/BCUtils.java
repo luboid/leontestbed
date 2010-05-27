@@ -10,8 +10,17 @@ public class BCUtils {
         return getUniqueId("uid-");
         
     }
+    
+    public static String getUniqueId(String prefix, int maxLength) {
+        String id = prefix+System.nanoTime()+"-"+Math.random()*1000000l;
+        if(id.length()>maxLength) {
+            id = id.substring(0, maxLength);
+        }
+        return id;
+    }
+    
     public static String getUniqueId(String prefix) {
-        return prefix+System.nanoTime()+"-"+Math.random()*1000000l;
+        return getUniqueId(prefix, 100);
     }
     public static String getUniqueDocId() {
         return getUniqueId("docid-");
@@ -20,14 +29,14 @@ public class BCUtils {
         return getUniqueId("txid-");
     }
     public static String getUniqueMesgId() {
-        return getUniqueId("mgid-");
+        return getUniqueId("m-", 20);
     }    
     public static String getFullUrlFromPort(ICfgPort port) {
         String url = port.getUrl();
         // handle URL prefix
         ICfgTransportInfo ti = port.getTransportInfo();
         String prefix = ti.getPrefix();
-        url = prefix+":"+url;
+        url = prefix+"://"+url;
         return url;
     }
 }

@@ -1,9 +1,12 @@
 package com.topfinance.util;
 
 import com.topfinance.db.HiberEntry;
+import com.topfinance.db.ResendEntry;
+import com.topfinance.runtime.BcConstants;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -11,10 +14,37 @@ public class HiberUtil {
     
     public static final String TBL_NAME = "TBL_HIBERENTRY";
     
+    public static final String SQL_GET_ALERT = "select hiberkey from "+TBL_NAME +" where status=? and EXPIRATION<?";
     public static final String SQL_GET = "select * from "+TBL_NAME +" where hiberkey=?"; 
+    public static final String SQL_UPDATE = "update "+TBL_NAME +" set status=? where hiberkey=? and status=? ";
     public static final String SQL_DELETE = "delete from "+TBL_NAME +" where hiberkey=?";
     
-    public static HiberEntry retrieveHiber(String hiberkey) {
+
+    public static boolean resetHiber(String hiberkey) {
+        String[] params = new String[]{ResendEntry.STATUS_INACTIVE, hiberkey, ResendEntry.STATUS_ACTIVE};
+        int res = DbUtils.executeUpdate(SQL_UPDATE, params);
+        // success where one and only one row updated
+        return res==1;
+    }
+    
+    // for poll
+    public static List<String> getHiberAlerts() {
+        Long expiry = new Date().getTime();
+        Object[] params = new Object[]{HiberEntry.STATUS_ACTIVE, expiry};
+        List<String> res = DbUtils.executeQueryForList(SQL_GET_ALERT, params, String.class);
+        return res;
+    }
+    
+    
+    // see ResendUtil
+    // for async reply or poll process
+    // get and delete
+    public static HiberEntry resurrectHiber(String hiberkey) {
+        boolean suc = resetHiber(hiberkey);
+        if(!suc) {
+            // no active record matched. possibly reset by another thread 
+            return null;
+        }
         
         
         String[] params = new String[]{hiberkey};
@@ -36,34 +66,29 @@ public class HiberUtil {
             hiber.setField(key, val);
        }
         
-//        HiberEntry hiber = (HiberEntry)DbUtils.executeQuery(SQL_GET, params, HiberEntry.class);
-//        if (hiber == null) {
-//            throw new HiberException("hibernation field with key{" + hiberkey + "} not found");
-//        } else {
-//            DbUtils.executeUpdate(SQL_DELETE, params);
+
+//        Long expi = hiber.getExpiration();
+//        String status = hiber.getStatus();
+//        if(expi < System.currentTimeMillis()) {
+//            throw new HiberException("hibernation entry with key{"+hiberkey+"} is invalid");
 //        }
-        Long expi = hiber.getExpiration();
-        String status = hiber.getStatus();
-        if(expi < System.currentTimeMillis() || !status.equals(HiberEntry.STATUS_CREATED)) {
-            throw new HiberException("hibernation entry with key{"+hiberkey+"} is invalid");
-        }
         
         
         return hiber;
     }
     
-    public static void saveHiber(String hiberkey, String txId, String auditId) {
+    public static void saveHiber(String hiberkey, String direction, String txId, String auditId) {
         
         HiberEntry hiber = new HiberEntry();
         
         hiber.setHiberkey(hiberkey);
         hiber.setTxId(txId);
         hiber.setAuditId(auditId);
+        hiber.setDirection(direction);
         
-        // TODO 1min, moved to configuration
-        Long expiry = 1000l*60;
-        hiber.setExpiration(expiry+System.currentTimeMillis());
-        hiber.setStatus(HiberEntry.STATUS_CREATED);
+        // TODO 5min, moved to configuration
+        hiber.setExpiration(BcConstants.EXPIRY_HIBER+System.currentTimeMillis());
+        hiber.setStatus(HiberEntry.STATUS_ACTIVE);
         
         
         Map<String, Object> fields = hiber.getFields();

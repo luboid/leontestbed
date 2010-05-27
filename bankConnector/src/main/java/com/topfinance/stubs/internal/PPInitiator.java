@@ -10,6 +10,7 @@ import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.om.OmCfgAMQInfo;
 import com.topfinance.cfg.om.OmCfgJettyInfo;
 import com.topfinance.plugin.cnaps2.DocRoot;
+import com.topfinance.runtime.BcConstants;
 import com.topfinance.stubs.internal.PPResponder.MyRoute;
 import com.topfinance.util.BCUtils;
 
@@ -206,9 +207,17 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
 
     
     public void process(Exchange exchange) throws Exception {
+ 
         // process async response
         String msg = exchange.getIn().getBody(String.class);
-        log("received tp msg: "+msg);
+        log("received message=" + msg+", from url="+exchange.getFromEndpoint().getEndpointUri());
+        
+        // TODO handle error msg
+        if(msg.equals(BcConstants.MSG_PP_ERROR)) {
+            log("received error msg!!!!!!!");
+            return;
+        }
+        
         DocRoot asyncresp = DocRoot.loadFromString(msg);
         String opName = asyncresp.getOpName();
         String docId = asyncresp.getDocId();

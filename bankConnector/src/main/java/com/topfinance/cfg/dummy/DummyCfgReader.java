@@ -10,16 +10,7 @@ import com.topfinance.cfg.ICfgProtocolBinding;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
-import com.topfinance.cfg.om.OmCfgAMQInPort;
-import com.topfinance.cfg.om.OmCfgAMQInfo;
-import com.topfinance.cfg.om.OmCfgAMQOutPort;
-import com.topfinance.cfg.om.OmCfgJettyInfo;
-import com.topfinance.cfg.om.OmCfgNode;
-import com.topfinance.cfg.om.OmCfgOperation;
-import com.topfinance.cfg.om.OmCfgPassway;
-import com.topfinance.cfg.om.OmCfgProtocol;
-import com.topfinance.cfg.om.OmCfgProtocolBinding;
-import com.topfinance.cfg.om.OmCfgRouteRule;
+import com.topfinance.util.BCUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -193,5 +184,19 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
             }
         }
         return result;
-    }    
+    } 
+    
+    
+    public ICfgInPort getInPortByUri(String uri) {
+        ICfgInPort res = null;
+        for(ICfgInPort ip : listInPort) {
+            System.out.println("in getInPortByUri: "+BCUtils.getFullUrlFromPort(ip));
+            if(uri.equals(BCUtils.getFullUrlFromPort(ip))) {
+                res = ip;
+                break;
+            }
+        }
+        return res;
+    }
+    
 }

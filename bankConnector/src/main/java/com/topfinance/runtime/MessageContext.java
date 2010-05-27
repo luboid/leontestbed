@@ -15,7 +15,7 @@ public abstract class MessageContext {
     
     private String direction;
     private ICfgProtocol protocol;
-    private String pluginName;
+//    private String pluginName;
     private ICfgInPort cfgInPort;
     private ICfgOutPort cfgOutPort;
     
@@ -89,11 +89,10 @@ public abstract class MessageContext {
 //        }
 //    }    
     
-    public MessageContext(ICfgInPort cfgInPort, Exchange exchange) {
+    public MessageContext(Exchange exchange) {
         this.srcExchange = exchange;
-        this.cfgInPort = cfgInPort;
-        this.protocol = cfgInPort.getProtocol();
-        this.pluginName = cfgInPort.getProtocol().getPluginName();
+//        this.protocol = cfgInPort.getProtocol();
+//        this.pluginName = cfgInPort.getProtocol().getPluginName();
         this.txId = BCUtils.getUniqueTxId();
     }
     
@@ -111,13 +110,13 @@ public abstract class MessageContext {
 
 
 
-    public String getPluginName() {
-        return pluginName;
-    }
-
-    public void setPluginName(String pluginName) {
-        this.pluginName = pluginName;
-    }
+//    public String getPluginName() {
+//        return pluginName;
+//    }
+//
+//    public void setPluginName(String pluginName) {
+//        this.pluginName = pluginName;
+//    }
 
 
 

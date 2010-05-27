@@ -17,7 +17,7 @@ public abstract class AbstractProcessor implements CfgConstants, BcConstants {
     protected abstract void process() throws Exception;
 
     protected MessageContext msgContext;
-    protected CamelContext camel;
+//    protected CamelContext camel;
 
     public void auditLog(String state, String desc, String status) {
         try {
@@ -50,13 +50,13 @@ public abstract class AbstractProcessor implements CfgConstants, BcConstants {
         return cfgOpn;
     }
     
-    public CamelContext getCamel() {
-        return camel;
-    }
-
-    public void setCamel(CamelContext camel) {
-        this.camel = camel;
-    }
+//    public CamelContext getCamel() {
+//        return camel;
+//    }
+//
+//    public void setCamel(CamelContext camel) {
+//        this.camel = camel;
+//    }
     public MessageContext getMsgContext() {
         return msgContext;
     }

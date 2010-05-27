@@ -23,9 +23,6 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-
 import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
@@ -40,6 +37,8 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.PosixParser;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 public class Broker implements Processor, CfgConstants{
     public static void log(String msg) {
@@ -126,6 +125,10 @@ public class Broker implements Processor, CfgConstants{
 //                amq.setConnectionFactory(jmsInfo.getConnectionFactory());
                 OmCfgAMQInfo amqji = (OmCfgAMQInfo)ti;
                 amq.setBrokerURL(amqji.getBrokerUrl());
+                if(camel.getComponent(ti.getPrefix())!=null) {
+                    log("skip adding existed component: "+ti.getPrefix());
+                    continue;
+                }
                 camel.addComponent(ti.getPrefix(), amq);
                 log("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
             }
@@ -171,7 +174,7 @@ public class Broker implements Processor, CfgConstants{
         
         // parse header and doc
         String message = exchange.getIn().getBody(String.class);
-        log("received request=" + message);
+        log("received message=" + message+", from url="+exchange.getFromEndpoint().getEndpointUri());
         
         String headerText = message.substring(0, MsgHeader.TOTAL_LENGTH);
         String bodyText = message.substring(MsgHeader.TOTAL_LENGTH);
@@ -190,11 +193,37 @@ public class Broker implements Processor, CfgConstants{
         String origSender = header.getOrigSender();
         String origReceiver = header.getOrigReceiver();
         
+        
+        if(mesgType.equals(TestDummy.OPERATION_900)) {
+            // received ack
+            AckRoot ackRoot = null;
+            try {
+                ackRoot = AckRoot.loadFromString(bodyText);
+                String code = ackRoot.getMsgProCd();
+                String ackMesgId = ackRoot.getMsgId();
+                if(AckRoot.MSG_PRO_CD_SUCCESS.equals(code)) {
+                    log("received good ack for message: "+ackMesgId);
+                }
+                else {
+                    log("received bad ack for message: "+ackMesgId);
+                }
+            } catch (BcException ex) {
+                ex.printStackTrace();
+            }
+            return;
+        }
+        
+        
         String validateStatus = AckRoot.MSG_PRO_CD_SUCCESS;
         
+        String ackUrl = routing.get(origSender);
         String outUrl = routing.get(origReceiver);
+        if(ackUrl==null) {
+            log("!!!!cannot find ackUrl--downurl for parter with id{"+origSender+"}");
+            validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
+        }
         if(outUrl==null) {
-            log("cannot find parter with id{"+origReceiver+"}");
+            log("!!!!cannot find outUrl--downurl for parter with id{"+origReceiver+"}");
             validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
         }
         DocRoot body = null;
@@ -220,22 +249,27 @@ public class Broker implements Processor, CfgConstants{
         
         // package ack
         MsgHeader msgHeader = new MsgHeader(
-           origSender,
+           // swap sender and receiver                                 
            origReceiver,
+           origSender,
            TestDummy.OPERATION_900,
            // ??
-           mesgId,
+           BCUtils.getUniqueMesgId(),
            mesgRefId
         ); 
         String ackText = msgHeader.toText()+ack.dumpToString();
-        log("send ack="+ackText);
-        // send 
-        exchange.getOut().setBody(ackText);
+        log("sending ack="+ackText);
+        // send sync ack
+//        exchange.getOut().setBody(ackText);
+        
+        // send async ack
+        new SendJob(ackText, ackUrl, camel).run();
+        
         
         // prepare and send response, hardcoded
         DocRoot outBody = null;
         String newdocId = null;
-        String url = null;
+        
         String outText = null;
         MsgHeader outHeader = null;
         if(mesgType.equals(TestDummy.OPERATION_101)){
@@ -256,8 +290,8 @@ public class Broker implements Processor, CfgConstants{
             outBody.setPartnerIdentity(body.getPartnerIdentity());
             
             outText = outHeader.toText()+outBody.toText();
-            url = routing.get(origReceiver);
-            executor.execute(new SendJob(outText, url, camel));
+
+            executor.execute(new SendJob(outText, outUrl, camel));
             
         } else if(mesgType.equals(TestDummy.OPERATION_102)) {
             
@@ -281,8 +315,7 @@ public class Broker implements Processor, CfgConstants{
 
             outText = outHeader.toText()+outBody.toText();
             //
-            url = routing.get(origReceiver);
-            executor.execute(new SendJob(outText, url, camel));
+            executor.execute(new SendJob(outText, outUrl, camel));
             
             log("======================================================");
             // send to B
@@ -307,8 +340,7 @@ public class Broker implements Processor, CfgConstants{
 
             outText = outHeader.toText()+outBody.toText();
             //
-            url = routing.get(origSender);
-            executor.execute(new SendJob(outText, url, camel));
+            executor.execute(new SendJob(outText, outUrl, camel));
             
             
         }
@@ -321,6 +353,7 @@ public class Broker implements Processor, CfgConstants{
     public static class SendJob implements Runnable{
         private String text;
         private String url;
+
         CamelContext camel;
         public SendJob(String text, String url, CamelContext camel) {
             this.text = text;
@@ -337,7 +370,8 @@ public class Broker implements Processor, CfgConstants{
                 // create the exchange used for the communication
                 // we use the in out pattern for a synchronized exchange
                 // where we expect a response
-                Exchange exchange = endpoint.createExchange(ExchangePattern.InOut);
+                Exchange exchange = endpoint.createExchange(ExchangePattern.InOnly);
+                
                 // set the input on the in body
                 // must you correct type to match the expected type of an
                 // Integer object
@@ -352,8 +386,10 @@ public class Broker implements Processor, CfgConstants{
                 producer.process(exchange);
 
                 // sync pp ack
-                String ack = exchange.getOut().getBody(String.class);
-                System.out.println("... received ack: " + ack);
+//                String ack = exchange.getOut().getBody(String.class);
+//                System.out.println("... received ack: " + ack);
+                
+                
 
                 // stop and exit the client
                 producer.stop();

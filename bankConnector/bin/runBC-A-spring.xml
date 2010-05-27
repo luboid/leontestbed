@@ -48,14 +48,12 @@
          <property name = "dataSource" ref="dataSource"/>   
     </bean>
       
-    <!-- START SNIPPET: e4 -->
-    <!-- lets configure the ActiveMQ JMS broker server to listen on TCP 61610 -->
     <broker:broker useJmx="false" persistent="false" brokerName="localhost">
         <broker:transportConnectors>
             <broker:transportConnector name="CompanyA" uri="tcp://localhost:62000"/>
         </broker:transportConnectors>
     </broker:broker>
-    <!-- END SNIPPET: e4 -->
+    
 
 
 

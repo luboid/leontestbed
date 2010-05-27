@@ -22,6 +22,8 @@ public interface ICfgReader extends CfgConstants{
     
     public List<ICfgRouteRule> getListUpRoute(ICfgProtocolBinding cfgPB);
     public List<ICfgRouteRule> getListDownRoute(ICfgProtocolBinding cfgPB);
+    
+    public ICfgInPort getInPortByUri(String uri);
 }
 
 

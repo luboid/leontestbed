@@ -1,6 +1,6 @@
 <dummyCfgReader id="0">
    <listTransportInfo class="java.util.ArrayList" id="1">
-      <ICfgTransportInfo class="com.topfinance.cfg.om.OmCfgAMQInfo" id="2" name="PREFIX_PP_AMQ" provider="AMQ" prefix="amqB" brokerUrl="tcp://localhost:52000"/>
+      <ICfgTransportInfo class="com.topfinance.cfg.om.OmCfgAMQInfo" id="2" name="PREFIX_PP_AMQ" provider="AMQ" prefix="interQueue" brokerUrl="tcp://localhost:52000"/>
       <ICfgTransportInfo class="com.topfinance.cfg.om.OmCfgAMQInfo" id="3" name="PREFIX_PUBLIC_AMQ" provider="AMQ" prefix="amqC-B" brokerUrl="tcp://localhost:40000"/>
       <ICfgTransportInfo class="com.topfinance.cfg.om.OmCfgJettyInfo" id="4" name="PREFIX_PP_JETTY" provider="JETTY" prefix="jettyB"/>
    </listTransportInfo>
@@ -8,18 +8,27 @@
       <ICfgProtocol class="com.topfinance.cfg.om.OmCfgProtocol" id="6" name="PROTOCOL_CNAPS2" pluginName="CNAPS2" upSendAckToPP="F" downRecievePPAck="F"/>
    </listProtocol>
    <listOperation class="java.util.ArrayList" id="7">
-      <ICfgOperation class="com.topfinance.cfg.om.OmCfgOperation" id="8" name="ibps.101.001.01" upIsEnabled="T" upReplyType="A" upIsReply="F" downIsEnabled="T" downReplyType="A" downIsReply="F">
+      <ICfgOperation class="com.topfinance.cfg.om.OmCfgOperation" id="8" name="ibps.101.001.01" upIsEnabled="T" upReplyType="A" upIsReply="F" upAckType="ASYNC" downIsEnabled="T" downReplyType="A" downIsReply="F" downAckType="ASYNC">
          <protocol class="com.topfinance.cfg.om.OmCfgProtocol" ref="6"/>
       </ICfgOperation>
-      <ICfgOperation class="com.topfinance.cfg.om.OmCfgOperation" id="9" name="ibps.101.001.02" upIsEnabled="T" upReplyType="A" upIsReply="T" downIsEnabled="F">
+      <ICfgOperation class="com.topfinance.cfg.om.OmCfgOperation" id="9" name="ibps.101.001.02" upIsEnabled="T" upReplyType="A" upIsReply="T" upAckType="ASYNC" downIsEnabled="F">
          <protocol class="com.topfinance.cfg.om.OmCfgProtocol" ref="6"/>
       </ICfgOperation>
-      <ICfgOperation class="com.topfinance.cfg.om.OmCfgOperation" id="10" name="saps.601.001.01" upIsEnabled="F" downIsEnabled="T" downReplyType="N" downIsReply="T">
+      <ICfgOperation class="com.topfinance.cfg.om.OmCfgOperation" id="10" name="saps.601.001.01" upIsEnabled="F" downIsEnabled="T" downReplyType="N" downIsReply="T" downAckType="ASYNC">
          <protocol class="com.topfinance.cfg.om.OmCfgProtocol" ref="6"/>
       </ICfgOperation>
    </listOperation>
+   <listOutPort class="java.util.ArrayList" id="14">
+      <ICfgOutPort class="com.topfinance.cfg.om.OmCfgAMQOutPort" id="15" name="QUEUE_UP_OUT_TP" direction="U" url="queue:public_qBOut">
+         <transportInfo class="com.topfinance.cfg.om.OmCfgAMQInfo" ref="3"/>
+      </ICfgOutPort>
+      <ICfgOutPort class="com.topfinance.cfg.om.OmCfgAMQOutPort" id="OP1" name="QUEUE_DOWN_OUT_PP" direction="D" url="queue:down_out_pp">
+         <transportInfo class="com.topfinance.cfg.om.OmCfgAMQInfo" ref="2"/>
+      </ICfgOutPort>      
+   </listOutPort>   
    <listInPort class="java.util.ArrayList" id="11">
       <ICfgInPort class="com.topfinance.cfg.om.OmCfgAMQInPort" id="12" name="QUEUE_UP_IN_PP" direction="U" url="queue:up_in_pp">
+      	 <ackPort class="com.topfinance.cfg.om.OmCfgOutPort" ref="OP1"/>
          <protocol class="com.topfinance.cfg.om.OmCfgProtocol" ref="6"/>
          <transportInfo class="com.topfinance.cfg.om.OmCfgAMQInfo" ref="2"/>
       </ICfgInPort>
@@ -28,18 +37,12 @@
          <transportInfo class="com.topfinance.cfg.om.OmCfgJettyInfo" ref="4"/>
       </ICfgInPort>
       <ICfgInPort class="com.topfinance.cfg.om.OmCfgAMQInPort" id="IP1" name="QUEUE_DOWN_IN_TP" direction="D" url="queue:public_qBIn">
+      		<ackPort class="com.topfinance.cfg.om.OmCfgOutPort" ref="15"/>
          <protocol class="com.topfinance.cfg.om.OmCfgProtocol" ref="6"/>
          <transportInfo class="com.topfinance.cfg.om.OmCfgAMQInfo" ref="3"/>
       </ICfgInPort>      
    </listInPort>
-   <listOutPort class="java.util.ArrayList" id="14">
-      <ICfgOutPort class="com.topfinance.cfg.om.OmCfgAMQOutPort" id="15" name="QUEUE_UP_OUT_TP" direction="U" url="queue:public_qBOut">
-         <transportInfo class="com.topfinance.cfg.om.OmCfgAMQInfo" ref="3"/>
-      </ICfgOutPort>
-      <ICfgOutPort class="com.topfinance.cfg.om.OmCfgAMQOutPort" id="OP1" name="QUEUE_DOWN_OUT_PP" direction="D" url="queue:down_out_pp">
-         <transportInfo class="com.topfinance.cfg.om.OmCfgAMQInfo" ref="2"/>
-      </ICfgOutPort>      
-   </listOutPort>
+
    <listNode class="java.util.ArrayList" id="16">
       <ICfgNode class="com.topfinance.cfg.om.OmCfgNode" id="17" name="CompanyA" type="P" identity="CompanyA"/>
       <ICfgNode class="com.topfinance.cfg.om.OmCfgNode" id="19" name="CompanyB" type="H" identity="CompanyB"/>

@@ -33,10 +33,11 @@ public class DbUtils {
         }
         buf.append(")").append(buf2.append(")"));
     }
-    public static void executeUpdate(String sql, Object[] params) {
+    public static int executeUpdate(String sql, Object[] params) {
         System.out.println("sql="+sql);
         int res = getJdbcTemplate().update(sql, params);
         System.out.println("res="+res);
+        return res;
     }
     
     public static Map executeQuery(String sql, Object[] params) {

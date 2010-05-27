@@ -16,9 +16,10 @@ public class AuditUtil {
     private final static String SQL_UPDATE_AUDIT = "update TBL_TRANSACTION set first_name = ?, last_name = ? where id =?";
     
         
-    public static void saveAuditLog(AuditTransaction audit, AuditTransactionDetail detail) throws Exception{
+    public static void saveAuditLog(AuditTransaction audit, AuditTransactionDetail detail){
             // TODO introduce transaction
-        
+            try {
+                // to avoid doing an additional query
             if(AuditTransaction.STATE_CREATE==audit.getMState()) {
                 insertAuditLog(audit);
             }else {
@@ -26,19 +27,35 @@ public class AuditUtil {
             }
             detail.setAuditId(audit.getAuditId());
             insertAuditDetailLog(detail);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
 
     }
-    public static void updateAuditLogStatus(AuditTransaction audit, AuditTransactionDetail detail) throws Exception{
+//    public static void updateAuditLogStatus(AuditTransaction audit, AuditTransactionDetail detail){
+//        // TODO introduce transaction
+//        try {
+//        updateAuditLogStatus(audit);
+//        
+//        detail.setAuditId(audit.getAuditId());
+//        insertAuditDetailLog(detail);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
+//
+//    }
+    public static void updateAuditLogStatus(AuditTransaction audit, String state, String desc, String status){
         // TODO introduce transaction
-    
-        updateAuditLogStatus(audit);
+        audit.setStatus(status);
         
-        detail.setAuditId(audit.getAuditId());
-        insertAuditDetailLog(detail);
-
+        AuditTransactionDetail detail = new AuditTransactionDetail();
+        detail.setStatus(status);
+        detail.setState(state);
+        detail.setDesc(desc);
+        
+        AuditUtil.saveAuditLog(audit, detail);
     }
-    
-    public static void updateAuditLogStatus(String auditId, String state, String desc, String status) {
+    public static void updateOtherAuditLogStatus(String auditId, String state, String desc, String status) {
         try {
             AuditTransaction auditTx = new AuditTransaction();
             auditTx.setAuditId(auditId);
@@ -48,8 +65,12 @@ public class AuditUtil {
             detail.setStatus(status);
             detail.setState(state);
             detail.setDesc(desc);
-            
-            AuditUtil.updateAuditLogStatus(auditTx, detail);
+
+            // assume the auditId exist
+            // TODO handle exception
+            updateAuditLogStatus(auditTx);
+            detail.setAuditId(auditTx.getAuditId());
+            insertAuditDetailLog(detail);
             
         } catch (Exception ex) {
             ex.printStackTrace();

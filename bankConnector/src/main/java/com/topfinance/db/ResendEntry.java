@@ -16,6 +16,7 @@ public class ResendEntry {
     public static final String COL_INPORT_NAME = "INPORT_NAME";
     public static final String COL_BIN = "BIN";
     public static final String COL_RETRY_COUNT = "RETRY_COUNT";
+    public static final String COL_DIRECTION = "DIRECTION";
     
     private Map<String, Object> fields = new HashMap<String, Object>();
     
@@ -84,5 +85,11 @@ public class ResendEntry {
     }
     public void setRetryCount(int retryCount) {
         setField(COL_RETRY_COUNT, retryCount);
+    }
+    public String getDirection() {
+        return (String)getField(COL_DIRECTION);
+    }
+    public void setDirection(String direction) {
+        setField(COL_DIRECTION, direction);
     }
 }

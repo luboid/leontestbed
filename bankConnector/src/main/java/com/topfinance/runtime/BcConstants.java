@@ -18,4 +18,12 @@ public interface BcConstants {
     public static final String STATUS_PENDING = "PENDING";
     public static final String STATUS_COMPLETED = "COMPLETED";
     public static final String STATUS_ERROR = "ERROR";
+    
+    public static final Long EXPIRY_RESEND = 1000l*60*3;
+    public static final Long EXPIRY_HIBER = 1000l*60*3;
+
+    public static final Long INTERVAL_POLLER = 1000l*30;
+    
+    public static final String MSG_PP_ERROR = "ERROR!!"; 
+    
 }

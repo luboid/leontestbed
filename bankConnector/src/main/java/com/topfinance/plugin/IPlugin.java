@@ -10,10 +10,10 @@ import org.apache.camel.Exchange;
 
 public interface IPlugin {
     
-    public DWMessageContext createDWMessageContext(ICfgInPort cfgInPort, Exchange exchange);
-    public UWMessageContext createUWMessageContext(ICfgInPort cfgInPort, Exchange exchange);
+    public DWMessageContext createDWMessageContext(Exchange exchange);
+    public UWMessageContext createUWMessageContext(Exchange exchange);
     
-    public UpwardProcessor createUpwardProcessor(CamelContext camel);
-    public DownwardProcessor createDownwardProcessor(CamelContext camel);
+    public UpwardProcessor createUpwardProcessor();
+    public DownwardProcessor createDownwardProcessor();
     
 }

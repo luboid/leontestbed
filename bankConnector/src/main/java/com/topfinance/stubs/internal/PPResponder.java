@@ -117,14 +117,19 @@ public class PPResponder implements Processor, CfgConstants{
     public void process(Exchange exchange) throws Exception {
 
         String msg = exchange.getIn().getBody(String.class);
-        log("received msg: "+msg);
+        log("received message=" + msg+", from url="+exchange.getFromEndpoint().getEndpointUri());
+        
         DocRoot request = DocRoot.loadFromString(msg);
         String opName = request.getOpName();
         String docId = request.getDocId();
         String hostIdentity = request.getHostIdentity();
         String partnerIdentity = request.getPartnerIdentity();
-        // send sync pp ack
-        exchange.getOut().setBody("OK");
+        
+        // TODO send sync pp ack
+//        exchange.getOut().setBody("OK");
+        
+        // send async pp ack;
+//        new SendJob(url, camel, respText)
         
         
         if(!TestDummy.OPERATION_101.equals(opName)) {
@@ -140,50 +145,61 @@ public class PPResponder implements Processor, CfgConstants{
         asyncResp.setPartnerIdentity(hostIdentity);
         asyncResp.setOpName(TestDummy.OPERATION_102);
         final String respText = asyncResp.toText();
+        
+        
+        List<ICfgInPort> inPorts = reader.getListOfEnabledInport();
 
+        String url = null;
+        // server's up in port is pp's up out port 
+        for(ICfgInPort inPort : inPorts) {
+            if(DIRECTION_DOWN.equals(inPort.getDirection())) {
+                continue;
+            }
+            // send to first port found
+            url = BCUtils.getFullUrlFromPort(inPort);
+            break;
+        }
+        System.out.println("url="+url);
+        
         // send async pp resp in separate thread
-        executor.execute(new Runnable() {
+        executor.execute(new SendJob(url, camel, respText));
+        
+    }
+    
+    public static class SendJob implements Runnable{
+        String url;
+        CamelContext camel;
+        String text;
+        public SendJob(String url, CamelContext camel, String text) {
+            this.url = url;
+            this.camel = camel;
+            this.text = text;
+        }
             public void run() {
                 try {
-
-                    List<ICfgInPort> inPorts = reader.getListOfEnabledInport();
-
-                    String url = null;
-                    // server's up in port is pp's up out port 
-                    for(ICfgInPort inPort : inPorts) {
-                        if(DIRECTION_DOWN.equals(inPort.getDirection())) {
-                            continue;
-                        }
-                        // send to first port found
-                        url = BCUtils.getFullUrlFromPort(inPort);
-                        break;
-                    }
-                    System.out.println("url="+url);
-
-                    
                     // get the endpoint from the camel context
                     Endpoint endpoint = camel.getEndpoint(url);
 
                     // create the exchange used for the communication
                     // we use the in out pattern for a synchronized exchange
                     // where we expect a response
-                    Exchange exchange = endpoint.createExchange(ExchangePattern.InOut);
+                    Exchange exchange = endpoint.createExchange(ExchangePattern.InOnly);
                     // set the input on the in body
                     // must you correct type to match the expected type of an
                     // Integer object
-                    exchange.getIn().setBody(respText);
+                    exchange.getIn().setBody(text);
 
                     // to send the exchange we need an producer to do it for us
                     Producer producer = endpoint.createProducer();
                     // start the producer so it can operate
                     producer.start();
 
-                    System.out.println("sending resp {"+respText+"} to url: "+url);
+                    System.out.println("sending resp {"+text+"} to url: "+url);
                     producer.process(exchange);
 
                     // sync pp ack
-                    String ack = exchange.getOut().getBody(String.class);
-                    System.out.println("... received ack: " + ack);
+//                    String ack = exchange.getOut().getBody(String.class);
+//                    System.out.println("... received ack: " + ack);
 
                     // stop and exit the client
                     producer.stop();
@@ -191,7 +207,7 @@ public class PPResponder implements Processor, CfgConstants{
                     ex.printStackTrace();
                 }
             }
-        });
-        
+    
     }
+    
 }

@@ -7,8 +7,8 @@ import org.apache.camel.Exchange;
 
 public class UWMessageContext extends MessageContext implements CfgConstants{
     
-    public UWMessageContext(ICfgInPort cfgInPort, Exchange exchange) {
-        super(cfgInPort, exchange);
+    public UWMessageContext(Exchange exchange) {
+        super(exchange);
         setDirection(DIRECTION_UP);
         
     }

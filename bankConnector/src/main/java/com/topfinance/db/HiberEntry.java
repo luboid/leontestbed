@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class HiberEntry {
     
-    public static final String STATUS_CREATED = "created";
+    public static final String STATUS_ACTIVE = "active";
     // TODO this is to mark the expiration alert has been triggered but not yet deleted?
-    public static final String STATUS_EXPIRED = "expired";
+    public static final String STATUS_INACTIVE = "inactive";
     
     public static final String COL_HIBER_KEY = "HIBERKEY";
     public static final String COL_TX_ID = "TX_ID";
@@ -15,6 +15,7 @@ public class HiberEntry {
     public static final String COL_STATUS = "STATUS";
     public static final String COL_TS = "TS";
     public static final String COL_EXPIRATION = "EXPIRATION";
+    public static final String COL_DIRECTION = "DIRECTION";
     
     private Map<String, Object> fields = new HashMap<String, Object>();
 
@@ -66,6 +67,12 @@ public class HiberEntry {
     }
     public void setExpiration(Long expiration) {
         setField(COL_EXPIRATION, expiration);
+    }
+    public String getDirection() {
+        return (String)getField(COL_DIRECTION);
+    }
+    public void setDirection(String direction) {
+        setField(COL_DIRECTION, direction);
     }
     
 }

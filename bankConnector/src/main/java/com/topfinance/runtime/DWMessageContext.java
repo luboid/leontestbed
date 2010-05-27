@@ -5,8 +5,8 @@ import org.apache.camel.Exchange;
 
 public class DWMessageContext extends MessageContext {
     
-    public DWMessageContext(ICfgInPort cfgInPort, Exchange exchange) {
-        super(cfgInPort, exchange);
+    public DWMessageContext(Exchange exchange) {
+        super(exchange);
     }
     
 }
