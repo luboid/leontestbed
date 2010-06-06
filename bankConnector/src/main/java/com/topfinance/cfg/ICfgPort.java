@@ -9,4 +9,7 @@ public interface ICfgPort extends ICfgItem{
     
     public String getUrl();
     public void setUrl(String url);
+    
+    public ICfgNode getNode();
+    public void setNode(ICfgNode node);
 }

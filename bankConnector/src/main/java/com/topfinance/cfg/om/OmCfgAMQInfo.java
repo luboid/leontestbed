@@ -4,9 +4,8 @@ import com.topfinance.cfg.ICfgTransportInfo;
 
 import javax.jms.ConnectionFactory;
 
-import org.simpleframework.xml.Attribute;
-
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.simpleframework.xml.Attribute;
 
 public class OmCfgAMQInfo extends OmCfgTransportInfo implements ICfgTransportInfo {
     

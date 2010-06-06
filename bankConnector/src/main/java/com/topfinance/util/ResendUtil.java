@@ -1,6 +1,5 @@
 package com.topfinance.util;
 
-import com.topfinance.db.HiberEntry;
 import com.topfinance.db.ResendEntry;
 import com.topfinance.runtime.BcConstants;
 

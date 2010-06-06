@@ -17,6 +17,5 @@ public interface ICfgRouteRule extends ICfgItem{
     public String getOperationMask();
     public void setOperationMask(String operationMask);
     
-    public ICfgProtocolBinding getProtocolBinding();
-    public void setProtocolBinding(ICfgProtocolBinding protocolBinding);
+
 }

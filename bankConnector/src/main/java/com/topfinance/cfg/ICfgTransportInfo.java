@@ -1,6 +1,5 @@
 package com.topfinance.cfg;
 
-import javax.jms.ConnectionFactory;
 
 public interface ICfgTransportInfo extends ICfgItem {
     

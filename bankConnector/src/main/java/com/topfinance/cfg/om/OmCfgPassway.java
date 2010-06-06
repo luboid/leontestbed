@@ -3,7 +3,6 @@ package com.topfinance.cfg.om;
 import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgPassway;
 import com.topfinance.cfg.ICfgProtocolBinding;
-import com.topfinance.cfg.ICfgRouteRule;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,10 +5,9 @@ import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgOutPort;
-import com.topfinance.cfg.ICfgPassway;
-import com.topfinance.cfg.ICfgProtocolBinding;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
+import com.topfinance.components.tcp8583.ISO8583BjobPackager;
 import com.topfinance.db.HiberEntry;
 import com.topfinance.db.ResendEntry;
 import com.topfinance.plugin.cnaps2.AckRoot;
@@ -25,6 +24,8 @@ import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.commons.lang.StringUtils;
+import org.jpos.iso.ISOMsg;
+import org.jpos.iso.ISOPackager;
 
 public class UpwardProcessor extends AbstractProcessor{
     
@@ -64,8 +65,6 @@ public class UpwardProcessor extends AbstractProcessor{
         // transform and package
         packageReq();
         
-        // find outPort
-        findRoute();
 
         String syncReply = send();
         
@@ -150,12 +149,50 @@ public class UpwardProcessor extends AbstractProcessor{
         // 2. can be know from operation's upFormat
         // or we can do verification of 8583 matching here
      
-        
+        // TODO get the type based on another cfg on InPort
+        // could have:
+        // CMT on HTTP
+        // CMT on TCP (need define own codec impl)
+        // CMT on 8583 (possible? use the 8583 codec but different body)        
+        // 8583 on HTTP (possible?)
+        // 8583 on 8583 (this is the default case we handling here)
+        String hIdentity = null;
+        String pIdentity = null;
+        String opName = null;
+        String docId = null;
+        String origDocId = null;
         
         // calling the parser...
         // possibly be isoMessage or cmtMessage
 //        IsoMessage isoMsg = new IsoMessage();
 //        int type = isoMsg.getType();
+        if(TCP_PROVIDER_8583.equals(getMsgContext().getCfgInPort().getTransportInfo().getProvider())) {
+            ISOMsg msg = new ISOMsg();
+            try {
+                String req = (String)getMsgContext().getSrcExchange().getIn().getBody();
+                log("req="+req);
+                byte[] bytes = req.getBytes(BcConstants.ENCODING);
+                ISOPackager packager = new ISO8583BjobPackager();
+                msg.setPackager (packager);                
+                msg.unpack (bytes);
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+            getMsgContext().setParsedMsg(msg);
+            
+            opName = msg.getString(BcConstants.ISO8583_OP_NAME);
+            docId = msg.getString(BcConstants.ISO8583_DOC_ID);
+            origDocId = msg.getString(BcConstants.ISO8583_ORIG_DOC_ID);
+            hIdentity = msg.getString(BcConstants.ISO8583_HOST_ID);
+            pIdentity = msg.getString(BcConstants.ISO8583_PARTNER_ID);
+            
+            log("opName="+opName+", docId="+docId);
+            
+        }
+ 
+        else {
+
         
         // TODO This docRoot is in fact like a header.
         // here we just use this as both header and body.
@@ -171,15 +208,19 @@ public class UpwardProcessor extends AbstractProcessor{
                 
         // now we have no PP msg header,
         // so just extract these fields from payload
-        String hIdentity = msg.getHostIdentity();
-        String pIdentity = msg.getPartnerIdentity();
-        String opName = msg.getOpName();
-        String docId = msg.getDocId();
-        String origDocId = msg.getOrigDocId();
+        hIdentity = msg.getHostIdentity();
+        pIdentity = msg.getPartnerIdentity();
+        opName = msg.getOpName();
+        docId = msg.getDocId();
+        origDocId = msg.getOrigDocId();
+        }
+        
         
         getMsgContext().setDocId(docId);
         getMsgContext().setOrigDocId(origDocId);
         getMsgContext().setOperationName(opName);
+        getMsgContext().setOrigSender(hIdentity);
+        getMsgContext().setOrigReceiver(pIdentity);
         
         // todo: verify the pp msg
         
@@ -188,8 +229,13 @@ public class UpwardProcessor extends AbstractProcessor{
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
         ICfgOperation cfgOp = cfgReader.getOperation(getMsgContext().getProtocol(), getMsgContext().getOperationName());
         log("cfgOp="+(cfgOp==null? "null":cfgOp.getName()));
-        ICfgNode cfgHN = cfgReader.getNodeByIdentity(hIdentity);
-        ICfgNode cfgPN = cfgReader.getNodeByIdentity(pIdentity);
+        
+        // find outPort
+        ICfgOutPort outPort = findRoute();
+        getMsgContext().setCfgOutPort(outPort);
+        
+        ICfgNode cfgHN = getMsgContext().getCfgInPort().getNode();
+        ICfgNode cfgPN = getMsgContext().getCfgOutPort().getNode();
         // todo: verify the cfg existed
         
         String hName = cfgHN.getName();
@@ -212,8 +258,8 @@ public class UpwardProcessor extends AbstractProcessor{
         String mesgType = getMsgContext().getOperationName();
         // TODO need mesgRefId be filled in an async msg, rather than in ack? 
         String mesgRefId = ""; 
-        String origSender = getMsgContext().getCfgHN().getIdentity();
-        String origReceiver = getMsgContext().getCfgPN().getIdentity();
+        String origSender = getMsgContext().getOrigSender();
+        String origReceiver = getMsgContext().getOrigReceiver();
         
         MsgHeader header = new MsgHeader(origSender, origReceiver, mesgType, mesgId, mesgRefId);
         String body = this.getMsgContext().getSrcExchange().getIn().getBody(String.class);
@@ -274,16 +320,12 @@ public class UpwardProcessor extends AbstractProcessor{
         return syncReply;
     }
     
-    protected void findRoute() {
+    protected ICfgOutPort findRoute() {
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
         // filling in some info of CfgOutPort( which is known) for the next step routing
         // the info can be carried either in a header or property of exchange
-        ICfgPassway cfgPassway = cfgReader.getPassway(getMsgContext().getCfgHN(), getMsgContext().getCfgPN());
         ICfgOperation cfgOp = cfgReader.getOperation(getMsgContext().getProtocol(), getMsgContext().getOperationName());
-        ICfgProtocolBinding cfgPB = cfgReader.getProtocolBindingByProtocol(cfgPassway, getMsgContext().getProtocol());
-        log("cfgPB="+cfgPB);
-        
-        List<ICfgRouteRule> listRouteRule = cfgReader.getListUpRoute(cfgPB);    
+        List<ICfgRouteRule> listRouteRule = cfgReader.getListUpRoute();    
         ICfgRouteRule result = null;
         for(ICfgRouteRule rr : listRouteRule) {
             String operationMask = rr.getOperationMask();
@@ -297,7 +339,8 @@ public class UpwardProcessor extends AbstractProcessor{
             }
         }
         
-        getMsgContext().setCfgOutPort(result.getOutPort());
+        return result.getOutPort();
+        
         
     }
     

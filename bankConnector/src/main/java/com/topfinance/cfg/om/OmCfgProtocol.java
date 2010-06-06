@@ -1,7 +1,7 @@
 package com.topfinance.cfg.om;
 
-import org.simpleframework.xml.Attribute;
 import com.topfinance.cfg.ICfgProtocol;
+import org.simpleframework.xml.Attribute;
 
 public class OmCfgProtocol implements ICfgProtocol{
     @Attribute(required=false)

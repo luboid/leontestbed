@@ -7,7 +7,6 @@ import com.topfinance.cfg.ICfgReader;
 import com.topfinance.db.AuditTransaction;
 import com.topfinance.db.AuditTransactionDetail;
 import com.topfinance.util.AuditUtil;
-import org.apache.camel.CamelContext;
 
 public abstract class AbstractProcessor implements CfgConstants, BcConstants {
     

@@ -1,17 +1,17 @@
-DROP TABLE IF EXISTS TBL_TRANSACTION;
+DROP TABLE IF EXISTS TBL_AUDIT;
 --:
 
-DROP TABLE IF EXISTS TBL_TRANSACTION_DETAIL;
+DROP TABLE IF EXISTS TBL_AUDIT_DETAIL;
 --:
 
-DROP TABLE IF EXISTS TBL_HIBERENTRY;
+DROP TABLE IF EXISTS TBL_HIBER;
 --:
 
 DROP TABLE IF EXISTS TBL_RESEND;
 --:
 
 
-CREATE TABLE TBL_TRANSACTION (        
+CREATE TABLE TBL_AUDIT (        
         AUDIT_ID          VARCHAR(255)    PRIMARY KEY,
         DOC_ID           VARCHAR(255)    NULL,
         TX_ID        VARCHAR(255)    NULL,
@@ -21,24 +21,26 @@ CREATE TABLE TBL_TRANSACTION (
         STATUS             VARCHAR(64)     NULL,
         DIRECTION      VARCHAR(5)      null,        
         DESCRIPTION    VARCHAR(1024)     NULL,
+        INPORT					VARCHAR(255),
+        OUTPORT					VARCHAR(255),
         TS                 TIMESTAMP	not null, 
         STARTDATE          TIMESTAMP    not null,
-    INDEX TBL_TRANSACTION_AUDITID (AUDIT_ID)
+    INDEX TBL_AUDIT_AUDITID (AUDIT_ID)
 ) Type=InnoDB;
 --:
 
-CREATE TABLE TBL_TRANSACTION_DETAIL (        
+CREATE TABLE TBL_AUDIT_DETAIL (        
         U_ID          VARCHAR(255)    PRIMARY KEY,
         AUDIT_ID          VARCHAR(255) not null,
         STATUS             VARCHAR(64)     NULL,
         STATE             VARCHAR(64)     NULL,        
         DESCRIPTION    VARCHAR(1024)     NULL,
         TS                 TIMESTAMP	not null,
-    INDEX TBL_TRANSACTION_DETAIL_U_ID (U_ID)
+    INDEX TBL_AUDIT_DETAIL_U_ID (U_ID)
 ) Type=InnoDB;
 --:
 
-CREATE TABLE TBL_HIBERENTRY (        
+CREATE TABLE TBL_HIBER (        
         HIBERKEY          VARCHAR(255)    PRIMARY KEY,
         TX_ID        			VARCHAR(255)    NULL,
         AUDIT_ID        	VARCHAR(512)    NULL,
@@ -46,7 +48,7 @@ CREATE TABLE TBL_HIBERENTRY (
         TS                 TIMESTAMP	not null,
         EXPIRATION         bigint(20) unsigned  not null,
         DIRECTION          VARCHAR(5)    ,
-    INDEX TBL_HIBERENTRY_HIBERKEY (HIBERKEY)
+    INDEX TBL_HIBER_HIBERKEY (HIBERKEY)
 ) Type=InnoDB;
 --:
 

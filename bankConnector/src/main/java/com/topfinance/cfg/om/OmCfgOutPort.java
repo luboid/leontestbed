@@ -1,10 +1,10 @@
 package com.topfinance.cfg.om;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
 import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgTransportInfo;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
 
 public class OmCfgOutPort implements ICfgOutPort{
     @Attribute(required=false)

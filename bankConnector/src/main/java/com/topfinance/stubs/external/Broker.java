@@ -3,7 +3,6 @@ package com.topfinance.stubs.external;
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgInPort;
-import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
@@ -17,9 +16,7 @@ import com.topfinance.runtime.BcException;
 import com.topfinance.util.BCUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
@@ -51,7 +48,11 @@ public class Broker implements Processor, CfgConstants{
             this.processor = processor;
         }
         public void configure() throws Exception {
-            for (String inUrl : inUrls) {
+            for (String inUrl : inUrlsA) {
+                log("listening on url: "+inUrl);
+                from(inUrl).process(processor);
+            }
+            for (String inUrl : inUrlsB) {
                 log("listening on url: "+inUrl);
                 from(inUrl).process(processor);
             }
@@ -64,9 +65,16 @@ public class Broker implements Processor, CfgConstants{
     private final ExecutorService executor = new ScheduledThreadPoolExecutor(5);
     
     // maps of hostIds->outportUrl
-    static Map<String, String> routing = new HashMap<String, String>();
+//    static Map<String, String> routing = new HashMap<String, String>();
+//    static List<String> inUrls = new ArrayList<String>();
     
-    static List<String> inUrls = new ArrayList<String>();
+    
+    static List<String> inUrlsA = new ArrayList<String>();
+    static List<String> outUrlsA = new ArrayList<String>();
+    static List<String> inUrlsB = new ArrayList<String>();
+    static List<String> outUrlsB = new ArrayList<String>();    
+    
+    
     
     public static void main(String[] args) throws Exception{
         System.out.println("starting Broker...");
@@ -106,8 +114,8 @@ public class Broker implements Processor, CfgConstants{
     public void start() throws Exception{
         camel = new DefaultCamelContext();
         
-        loadPortConfig(readerA);
-        loadPortConfig(readerB);
+        loadPortConfig(readerA, inUrlsA, outUrlsA);
+        loadPortConfig(readerB, inUrlsB, outUrlsB);
         
 //         add route/listen
         camel.addRoutes(new MyRoute(this));
@@ -115,7 +123,29 @@ public class Broker implements Processor, CfgConstants{
 
     }
 
-    private void loadPortConfig(ICfgReader reader) {
+    private String findForwardUrl(String inUrl) {
+        
+        if(inUrlsA.contains(inUrl)) {
+            return outUrlsB.get(0);  
+        } else if(inUrlsB.contains(inUrl)){
+            return outUrlsA.get(0);
+        } else {
+            throw new RuntimeException("cannot find forward url for inurl="+inUrl);
+        }
+        
+    }
+    
+    private String findAckUrl(String inUrl) {
+        if(inUrlsA.contains(inUrl)) {
+            return outUrlsA.get(0);  
+        } else if(inUrlsB.contains(inUrl)){
+            return outUrlsB.get(0);
+        } else {
+            throw new RuntimeException("cannot find ack url for inurl="+inUrl);
+        }
+    }
+    
+    private void loadPortConfig(ICfgReader reader, List<String> inUrls, List<String> outUrls) {
         List<ICfgTransportInfo> listTi = reader.getListOfTransportInfo();
         for(ICfgTransportInfo ti : listTi) {
             String provider = ti.getProvider();
@@ -141,13 +171,7 @@ public class Broker implements Processor, CfgConstants{
             }
         }
         
-        List<ICfgNode> nodes = reader.getListOfNodes();
-        List<String> hostIds = new ArrayList<String>();
-        for(ICfgNode node : nodes) {
-            if(NODETYPE_HOST.equals(node.getType())) {
-                hostIds.add(node.getIdentity());
-            }
-        }
+
         
         // bc's down in port is broker's out port
         // TODO consider multiple Down in port? 
@@ -155,9 +179,7 @@ public class Broker implements Processor, CfgConstants{
         for(ICfgInPort ip : ips) {
             if(DIRECTION_DOWN.equals(ip.getDirection())) {
                 String url = BCUtils.getFullUrlFromPort(ip);
-                for(String hostId : hostIds) {
-                    routing.put(hostId, url);
-                }
+                outUrls.add(url);
             }
         }
         
@@ -173,8 +195,9 @@ public class Broker implements Processor, CfgConstants{
     public void process(Exchange exchange) throws Exception {
         
         // parse header and doc
+        String inUrl = exchange.getFromEndpoint().getEndpointUri();
         String message = exchange.getIn().getBody(String.class);
-        log("received message=" + message+", from url="+exchange.getFromEndpoint().getEndpointUri());
+        log("received message=" + message+", from url="+inUrl);
         
         String headerText = message.substring(0, MsgHeader.TOTAL_LENGTH);
         String bodyText = message.substring(MsgHeader.TOTAL_LENGTH);
@@ -216,8 +239,8 @@ public class Broker implements Processor, CfgConstants{
         
         String validateStatus = AckRoot.MSG_PRO_CD_SUCCESS;
         
-        String ackUrl = routing.get(origSender);
-        String outUrl = routing.get(origReceiver);
+        String ackUrl = findAckUrl(inUrl);
+        String outUrl = findForwardUrl(inUrl);
         if(ackUrl==null) {
             log("!!!!cannot find ackUrl--downurl for parter with id{"+origSender+"}");
             validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;

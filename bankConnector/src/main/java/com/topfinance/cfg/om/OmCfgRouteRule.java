@@ -2,7 +2,6 @@ package com.topfinance.cfg.om;
 
 import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgOutPort;
-import com.topfinance.cfg.ICfgProtocolBinding;
 import com.topfinance.cfg.ICfgRouteRule;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -21,8 +20,8 @@ public class OmCfgRouteRule implements ICfgRouteRule{
     @Attribute(required=false)
     private int sequence;
     
-    @Element(required=false)
-    private ICfgProtocolBinding protocolBinding;
+//    @Element(required=false)
+//    private ICfgProtocolBinding protocolBinding;
     
     @Attribute(required=false)
     private String direction;
@@ -63,12 +62,7 @@ public class OmCfgRouteRule implements ICfgRouteRule{
     public void setInPort(ICfgInPort inPort) {
         this.inPort = inPort;
     }
-    public ICfgProtocolBinding getProtocolBinding() {
-        return protocolBinding;
-    }
-    public void setProtocolBinding(ICfgProtocolBinding protocolBinding) {
-        this.protocolBinding = protocolBinding;
-    }
+
     public String getDirection() {
         return direction;
     }

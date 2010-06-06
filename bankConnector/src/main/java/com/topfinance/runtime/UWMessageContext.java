@@ -1,7 +1,6 @@
 package com.topfinance.runtime;
 
 import com.topfinance.cfg.CfgConstants;
-import com.topfinance.cfg.ICfgInPort;
 import org.apache.camel.Exchange;
 
 

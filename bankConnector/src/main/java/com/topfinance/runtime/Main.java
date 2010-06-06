@@ -1,17 +1,13 @@
 package com.topfinance.runtime;
 
-import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
-import com.topfinance.cfg.om.OmCfgAMQInfo;
-import com.topfinance.cfg.om.OmCfgJettyInfo;
+import com.topfinance.util.BCUtils;
 
 import java.util.List;
 
-import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.CamelContext;
-import org.apache.camel.component.jetty.JettyHttpComponent;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.spring.spi.ApplicationContextRegistry;
 import org.apache.commons.cli.CommandLine;
@@ -73,23 +69,7 @@ public class Main {
 
             List<ICfgTransportInfo> listTi = reader.getListOfTransportInfo();
             for(ICfgTransportInfo ti : listTi) {
-                String provider = ti.getProvider();
-                if(CfgConstants.JMS_PROVIDER_AMQ.equals(provider)) {
-                    ActiveMQComponent amq = new ActiveMQComponent();
-                    // ?? won't work unless define as normal JMSComponent
-//                    amq.setConnectionFactory(jmsInfo.getConnectionFactory());
-                    OmCfgAMQInfo amqji = (OmCfgAMQInfo)ti;
-                    amq.setBrokerURL(amqji.getBrokerUrl());
-                    camel.addComponent(ti.getPrefix(), amq);
-                    log("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
-                }
-                else if(CfgConstants.HTTP_PROVIDER_JETTY.equals(provider)) {
-                    JettyHttpComponent jetty = new JettyHttpComponent();
-                    OmCfgJettyInfo jettyti = (OmCfgJettyInfo)ti;
-                    // TODO setting up JettyHttpComponent with jettyti
-                    camel.addComponent(ti.getPrefix(), jetty);
-                    log("adding component: "+ti.getPrefix());
-                }
+                BCUtils.initCamelComponent(camel, ti);
             }
             
             ServerRoutes.init(camel);

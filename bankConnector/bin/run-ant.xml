@@ -26,7 +26,7 @@
 				<path refid="bc.class.path" />
 			</classpath>
 			<jvmarg value="-Xmx512M" />
-			<arg line="-cfg runBC-A-config.xml" />
+			<arg line="-cfg runBC-A-config.xml -outPortName 8583URL_UP_IN_PP" />
 		</java>
 	</target>
 	<target name="runBC-A" description="">
@@ -36,7 +36,7 @@
 				<path refid="bc.class.path" />
 			</classpath>
 			<jvmarg value="-Xmx512M" />
-			<arg line="-spring runBC-A-spring.xml -cfg runBC-A-config.xml" />
+			<arg line="-spring runBC-A-spring.xml -cfg runBC-A-config.xml " />
 		</java>
 	</target>
 

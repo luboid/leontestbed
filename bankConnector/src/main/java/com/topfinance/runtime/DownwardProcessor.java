@@ -5,8 +5,6 @@ import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgOutPort;
-import com.topfinance.cfg.ICfgPassway;
-import com.topfinance.cfg.ICfgProtocolBinding;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.dummy.TestDummy;
@@ -68,8 +66,7 @@ public class DownwardProcessor extends AbstractProcessor{
             // transform and package
             packageReq();
 
-            // find outPort
-            findRoute();
+
         } catch (Exception ex) {
             ex.printStackTrace();
             validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
@@ -155,26 +152,37 @@ public class DownwardProcessor extends AbstractProcessor{
 //        String hIdentity = origSender;
 //        String pIdentity = origReceiver;
 
-        ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
 
+        // find outPort
+        ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
+        List<ICfgRouteRule> listRouteRule = cfgReader.getListDownRoute();  
         
-        ICfgNode cfgHN = cfgReader.getNodeByIdentity(hIdentity);
-        ICfgNode cfgPN = cfgReader.getNodeByIdentity(pIdentity);   
-        if( cfgHN==null || cfgPN==null ) {
-            log("cannot find host with id{"+hIdentity+"} or partner with id{"+pIdentity+"}");
-            validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
-        } else if(!NODETYPE_HOST.equals(cfgHN.getType()) || !NODETYPE_PARTNER.equals(cfgPN.getType()) ) {
-            log("must swap host with id{"+hIdentity+"} and partner with id{"+pIdentity+"}");
-            validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
-        }
-        else {
-            String hName = cfgHN.getName();
-            String pName = cfgPN.getName();
-            getMsgContext().setHnName(hName);
-            getMsgContext().setPnName(pName);
-            getMsgContext().setCfgHN(cfgHN);
-            getMsgContext().setCfgPN(cfgPN);
-        }
+        ICfgOutPort outPort = BCUtils.findRoute(listRouteRule, getMsgContext().getOperationName());
+        
+        
+//        ICfgNode cfgHN = cfgReader.getNodeByIdentity(hIdentity);
+//        ICfgNode cfgPN = cfgReader.getNodeByIdentity(pIdentity);   
+//        if( cfgHN==null || cfgPN==null ) {
+//            log("cannot find host with id{"+hIdentity+"} or partner with id{"+pIdentity+"}");
+//            validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
+//        } else if(!NODETYPE_HOST.equals(cfgHN.getType()) || !NODETYPE_PARTNER.equals(cfgPN.getType()) ) {
+//            log("must swap host with id{"+hIdentity+"} and partner with id{"+pIdentity+"}");
+//            validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
+//        }
+         if(outPort ==null) {
+             log("cannot find route rule matching");
+             validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;             
+         } else {
+             getMsgContext().setCfgOutPort(outPort);
+             ICfgNode cfgHN = getMsgContext().getCfgInPort().getNode();
+             ICfgNode cfgPN = outPort.getNode();  
+             String hName = cfgHN.getName();
+             String pName = cfgPN.getName();
+             getMsgContext().setHnName(hName);
+             getMsgContext().setPnName(pName);
+             getMsgContext().setCfgHN(cfgHN);
+             getMsgContext().setCfgPN(cfgPN);
+          }
              
         // todo: check duplication
         // checkDuplicate();
@@ -411,36 +419,7 @@ public class DownwardProcessor extends AbstractProcessor{
     }
     
     
-    protected void findRoute() {
-        ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
-        // filling in some info of CfgOutPort( which is known) for the next step routing
-        // the info can be carried either in a header or property of exchange
-        ICfgPassway cfgPassway = cfgReader.getPassway(getMsgContext().getCfgHN(), getMsgContext().getCfgPN());
-        ICfgOperation cfgOp = cfgReader.getOperation(getMsgContext().getProtocol(), getMsgContext().getOperationName());
-        ICfgProtocolBinding cfgPB = cfgReader.getProtocolBindingByProtocol(cfgPassway, getMsgContext().getProtocol());
-        log("cfgPB="+cfgPB);
-        
-        List<ICfgRouteRule> listRouteRule = cfgReader.getListDownRoute(cfgPB);    
-        ICfgRouteRule result = null;
-        for(ICfgRouteRule rr : listRouteRule) {
-            String operationMask = rr.getOperationMask();
-            ICfgInPort ip = rr.getInPort();
-            if( cfgOp.getName().startsWith(operationMask)
-                // TODO need match Inport ?
-                // && ip.getName().equals(inPort.getName())
-                ) {
-                result = rr;
-                break;
-            }
-        }
-        
-        if(result==null) {
-            throw new RuntimeException("cannot found matching route for operation: "+cfgOp.getName());
-        }
-        
-        getMsgContext().setCfgOutPort(result.getOutPort());
-        
-    }
+
     
     private void sendAsyncAck(String ackText) throws Exception {
         

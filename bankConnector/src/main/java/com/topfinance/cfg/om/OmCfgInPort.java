@@ -1,6 +1,7 @@
 package com.topfinance.cfg.om;
 
 import com.topfinance.cfg.ICfgInPort;
+import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgTransportInfo;
@@ -20,7 +21,8 @@ public class OmCfgInPort implements ICfgInPort {
     private ICfgTransportInfo transportInfo;
     @Attribute(required=false)
     private String url;
-    
+    @Element(required=false)
+    private ICfgNode node;
     @Element(required=false)
     private ICfgOutPort ackPort;
 
@@ -80,6 +82,14 @@ public class OmCfgInPort implements ICfgInPort {
 
     public void setAckPort(ICfgOutPort ackPort) {
         this.ackPort = ackPort;
+    }
+
+    public ICfgNode getNode() {
+        return node;
+    }
+
+    public void setNode(ICfgNode node) {
+        this.node = node;
     }
 
 

@@ -1,6 +1,5 @@
 package com.topfinance.cfg;
 
-import java.util.List;
 
 public interface ICfgPassway extends ICfgItem{
     

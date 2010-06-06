@@ -3,9 +3,7 @@ package com.topfinance.cfg.dummy;
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOperation;
-import com.topfinance.cfg.ICfgPassway;
 import com.topfinance.cfg.ICfgProtocol;
-import com.topfinance.cfg.ICfgProtocolBinding;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.om.OmCfgAMQInPort;
 import com.topfinance.cfg.om.OmCfgAMQInfo;
@@ -13,9 +11,7 @@ import com.topfinance.cfg.om.OmCfgAMQOutPort;
 import com.topfinance.cfg.om.OmCfgJettyInfo;
 import com.topfinance.cfg.om.OmCfgNode;
 import com.topfinance.cfg.om.OmCfgOperation;
-import com.topfinance.cfg.om.OmCfgPassway;
 import com.topfinance.cfg.om.OmCfgProtocol;
-import com.topfinance.cfg.om.OmCfgProtocolBinding;
 import com.topfinance.cfg.om.OmCfgRouteRule;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.DocRoot;
@@ -62,11 +58,7 @@ public class TestDummy extends TestCase implements CfgConstants{
             System.out.println("protocol belong to peration: "+
                                (instance.listOperation.get(0).getProtocol()==instance.listProtocol.get(0)));
             
-            System.out.println("protocolbinding belong to passway: "+
-                               (instance.listProtocolBinding.get(0).getPassway()==instance.listPassway.get(0)));
-            
-            System.out.println("routingRule belong to pb: "+
-                               (instance.listProtocolBinding.get(0)==instance.listRouteRule.get(0).getProtocolBinding()));
+
             
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -170,37 +162,23 @@ public class TestDummy extends TestCase implements CfgConstants{
         ICfgNode host1 = new OmCfgNode();
         host1.setName("host1");
         host1.setType(NODETYPE_HOST);
-        host1.setIdentity("host1");
+//        host1.setIdentity("host1");
         instance.listNode.add(host1);
         
         ICfgNode host2 = new OmCfgNode();
         host2.setName("host2");
         host2.setType(NODETYPE_HOST);
-        host2.setIdentity("host2");
+//        host2.setIdentity("host2");
         instance.listNode.add(host2);
         
         ICfgNode partner1 = new OmCfgNode();
         partner1.setName("partner1");
         partner1.setType(NODETYPE_PARTNER);
-        partner1.setIdentity("partner1");
+//        partner1.setIdentity("partner1");
         instance.listNode.add(partner1);
         
         
-        ICfgPassway pw1 = new OmCfgPassway();
-        pw1.setHostNode(host1);
-        pw1.setPartnerNode(partner1);
-        pw1.setName("host1-partner1");
-        instance.listPassway.add(pw1);
-        
-        ICfgProtocolBinding pb = new OmCfgProtocolBinding();
-        pb.setName("PROTOCOL_CNAPS2");
-        pb.setPassway(pw1);
-        pb.setProtocol(protocol);        
-//        pw1.getListProtocolBinding().add(pb);
-        instance.listProtocolBinding.add(pb);
-        
         ICfgRouteRule rr1 = new OmCfgRouteRule();
-        rr1.setProtocolBinding(pb);
         rr1.setName("rr1");
         rr1.setOperationMask("ibps.");
         rr1.setOutPort(op1);

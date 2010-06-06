@@ -4,9 +4,7 @@ import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgOutPort;
-import com.topfinance.cfg.ICfgPassway;
 import com.topfinance.cfg.ICfgProtocol;
-import com.topfinance.cfg.ICfgProtocolBinding;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
@@ -79,10 +77,11 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
     @ElementList
     public List<ICfgNode> listNode = new ArrayList<ICfgNode>();
     
-    @ElementList
-    public List<ICfgPassway> listPassway = new ArrayList<ICfgPassway>();
-    @ElementList
-    public List<ICfgProtocolBinding> listProtocolBinding = new ArrayList<ICfgProtocolBinding>();
+//    @ElementList
+//    public List<ICfgPassway> listPassway = new ArrayList<ICfgPassway>();
+//    @ElementList
+//    public List<ICfgProtocolBinding> listProtocolBinding = new ArrayList<ICfgProtocolBinding>();
+    
     @ElementList
     public List<ICfgRouteRule> listRouteRule = new ArrayList<ICfgRouteRule>();
     
@@ -118,41 +117,41 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
     }
 
     
-    public ICfgNode getNodeByIdentity(String identity) {
-        ICfgNode result = null;
-        for(ICfgNode node:listNode) {
-            if(node.getIdentity().equals(identity)) {
-                result = node;
-                break;
-            }
-        }
-        return result;
-    }
+//    public ICfgNode getNodeByIdentity(String identity) {
+//        ICfgNode result = null;
+//        for(ICfgNode node:listNode) {
+//            if(node.getIdentity().equals(identity)) {
+//                result = node;
+//                break;
+//            }
+//        }
+//        return result;
+//    }
 
-    public ICfgPassway getPassway(ICfgNode host, ICfgNode partner) {
-        ICfgPassway result = null;
-        for(ICfgPassway passway : listPassway) {
-            if(passway.getHostNode().getIdentity().equals(host.getIdentity()) && 
-                passway.getPartnerNode().getIdentity().equals(partner.getIdentity())) {
-                result = passway;
-                break;
-            }
-        }
-        return result;
-    }
+//    public ICfgPassway getPassway(ICfgNode host, ICfgNode partner) {
+//        ICfgPassway result = null;
+//        for(ICfgPassway passway : listPassway) {
+//            if(passway.getHostNode().getIdentity().equals(host.getIdentity()) && 
+//                passway.getPartnerNode().getIdentity().equals(partner.getIdentity())) {
+//                result = passway;
+//                break;
+//            }
+//        }
+//        return result;
+//    }
     
-    public ICfgProtocolBinding getProtocolBindingByProtocol(ICfgPassway passway, ICfgProtocol protocol) {
-        ICfgProtocolBinding result = null;
-        for(ICfgProtocolBinding pb : listProtocolBinding) {
-            if(pb.getPassway().getName().equals(passway.getName()) &&
-                pb.getProtocol().getName().equals(protocol.getName()) ) {
-                result = pb;
-                break;
-            }
-        }
-        
-        return result;
-    }
+//    public ICfgProtocolBinding getProtocolBindingByProtocol(ICfgPassway passway, ICfgProtocol protocol) {
+//        ICfgProtocolBinding result = null;
+//        for(ICfgProtocolBinding pb : listProtocolBinding) {
+//            if(pb.getPassway().getName().equals(passway.getName()) &&
+//                pb.getProtocol().getName().equals(protocol.getName()) ) {
+//                result = pb;
+//                break;
+//            }
+//        }
+//        
+//        return result;
+//    }
     
     public ICfgOperation getOperation(ICfgProtocol protocol, String name) {
         ICfgOperation result = null;
@@ -165,20 +164,20 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
         return result;
     }
     
-    public List<ICfgRouteRule> getListUpRoute(ICfgProtocolBinding cfgPB) {
+    public List<ICfgRouteRule> getListUpRoute() {
         List<ICfgRouteRule> result = new ArrayList<ICfgRouteRule>();
         for(ICfgRouteRule rr : listRouteRule) {
-            if(rr.getProtocolBinding().getName().equals(cfgPB.getName()) && 
+            if( 
                 DIRECTION_UP.equals(rr.getDirection())) {
                 result.add(rr);
             }
         }
         return result;
     }
-    public List<ICfgRouteRule> getListDownRoute(ICfgProtocolBinding cfgPB) {
+    public List<ICfgRouteRule> getListDownRoute() {
         List<ICfgRouteRule> result = new ArrayList<ICfgRouteRule>();
         for(ICfgRouteRule rr : listRouteRule) {
-            if(rr.getProtocolBinding().getName().equals(cfgPB.getName()) && 
+            if( 
                 DIRECTION_DOWN.equals(rr.getDirection())) {
                 result.add(rr);
             }

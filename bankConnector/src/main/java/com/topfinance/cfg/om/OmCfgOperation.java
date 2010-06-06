@@ -1,9 +1,9 @@
 package com.topfinance.cfg.om;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
 import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgProtocol;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
 
 public class OmCfgOperation implements ICfgOperation {
     

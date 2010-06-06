@@ -1,6 +1,5 @@
 package com.topfinance.cfg;
 
-import java.util.List;
 
 public interface ICfgRoute extends ICfgItem{
     

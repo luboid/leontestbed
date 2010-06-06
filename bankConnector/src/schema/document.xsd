@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">  
+<xs:element name="Document" type="Document"/>  
+<xs:complexType name="Document">  
+   <xs:sequence>  
+                    <xs:element name="docId" type="xs:string"/>
+                    <xs:element name="origDocId" type="xs:string"/>
+                    <xs:element name="opName" type="xs:string"/>
+                    <xs:element name="hostIdentity" type="xs:string"/>
+                    <xs:element name="partnerIdentity" type="xs:string"/> 
+    </xs:sequence>  
+</xs:complexType>
+</xs:schema>

@@ -1,10 +1,7 @@
 package com.topfinance.cfg.om;
 
-import javax.jms.ConnectionFactory;
-
-import org.simpleframework.xml.Attribute;
-
 import com.topfinance.cfg.ICfgTransportInfo;
+import org.simpleframework.xml.Attribute;
 
 public abstract class OmCfgTransportInfo implements ICfgTransportInfo {
     @Attribute(required=false)
