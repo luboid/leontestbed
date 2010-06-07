@@ -1,17 +1,5 @@
 package com.topfinance.stubs.internal;
 
-import com.topfinance.cfg.CfgConstants;
-import com.topfinance.cfg.CfgImplFactory;
-import com.topfinance.cfg.ICfgInPort;
-import com.topfinance.cfg.ICfgOutPort;
-import com.topfinance.cfg.ICfgReader;
-import com.topfinance.cfg.ICfgTransportInfo;
-import com.topfinance.cfg.dummy.TestDummy;
-import com.topfinance.cfg.om.OmCfgAMQInfo;
-import com.topfinance.cfg.om.OmCfgJettyInfo;
-import com.topfinance.plugin.cnaps2.DocRoot;
-import com.topfinance.util.BCUtils;
-
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -30,6 +18,22 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.PosixParser;
+import org.jpos.iso.ISOField;
+import org.jpos.iso.ISOMsg;
+import org.jpos.iso.ISOPackager;
+
+import com.topfinance.cfg.CfgConstants;
+import com.topfinance.cfg.CfgImplFactory;
+import com.topfinance.cfg.ICfgInPort;
+import com.topfinance.cfg.ICfgOutPort;
+import com.topfinance.cfg.ICfgReader;
+import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.cfg.om.OmCfgAMQInfo;
+import com.topfinance.cfg.om.OmCfgJettyInfo;
+import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
+import com.topfinance.runtime.BcConstants;
+import com.topfinance.util.BCUtils;
 
 public class PPResponder implements Processor, CfgConstants{
     public static class MyRoute extends RouteBuilder{
@@ -119,46 +123,62 @@ public class PPResponder implements Processor, CfgConstants{
         String msg = exchange.getIn().getBody(String.class);
         log("received message=" + msg+", from url="+exchange.getFromEndpoint().getEndpointUri());
         
-        DocRoot request = DocRoot.loadFromString(msg);
-        String opName = request.getOpName();
-        String docId = request.getDocId();
-        String hostIdentity = request.getHostIdentity();
-        String partnerIdentity = request.getPartnerIdentity();
+		ISOMsg m = new ISOMsg();
+		m.setPackager(new ISOIBPSPackager());
+		m.unpack(msg.getBytes(BcConstants.ENCODING));
+		String docId = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
         
-        // TODO send sync pp ack
-//        exchange.getOut().setBody("OK");
-        
-        // send async pp ack;
-//        new SendJob(url, camel, respText)
-        
-        
-        if(!TestDummy.OPERATION_101.equals(opName)) {
-            return;
-        }
-        
-        // prepare async pp resp
-        DocRoot asyncResp = new DocRoot();
-        asyncResp.setDocId(BCUtils.getUniqueDocId());
-        asyncResp.setOrigDocId(docId);
-        // swap host/partner
-        asyncResp.setHostIdentity(partnerIdentity);
-        asyncResp.setPartnerIdentity(hostIdentity);
-        asyncResp.setOpName(TestDummy.OPERATION_102);
-        final String respText = asyncResp.toText();
-        
+//        DocRoot request = DocRoot.loadFromString(msg);
+//        String opName = request.getOpName();
+//        String docId = request.getDocId();
+//        String hostIdentity = request.getHostIdentity();
+//        String partnerIdentity = request.getPartnerIdentity();
+//        
+//        
+//        if(!TestDummy.OPERATION_101.equals(opName)) {
+//            return;
+//        }
+//        
+//        // prepare async pp resp
+//        DocRoot asyncResp = new DocRoot();
+//        asyncResp.setDocId(BCUtils.getUniqueDocId());
+//        asyncResp.setOrigDocId(docId);
+//        // swap host/partner
+//        asyncResp.setHostIdentity(partnerIdentity);
+//        asyncResp.setPartnerIdentity(hostIdentity);
+//        asyncResp.setOpName(TestDummy.OPERATION_102);
+//        final String respText = asyncResp.toText();
         
         List<ICfgInPort> inPorts = reader.getListOfEnabledInport();
 
         String url = null;
+        ICfgInPort chosenInPort = null;
         // server's up in port is pp's up out port 
         for(ICfgInPort inPort : inPorts) {
             if(DIRECTION_DOWN.equals(inPort.getDirection())) {
                 continue;
             }
-            // send to first port found
-            url = BCUtils.getFullUrlFromPort(inPort);
+         // send to first port found
+            chosenInPort = inPort;
             break;
         }
+        
+        url = BCUtils.getFullUrlFromPort(chosenInPort);
+        String respText = "";
+        if(TCP_PROVIDER_8583.equals(chosenInPort.getTransportInfo().getProvider())) {
+            ISOMsg m1 = new ISOMsg();
+            ISOPackager packager = new ISOIBPSPackager();
+            m1.setPackager (packager);
+            
+            m1.set (new ISOField (BcConstants.ISO8583_START,  BcConstants.ISO8583_START_VALUE));
+            m1.set (new ISOField (BcConstants.ISO8583_OP_NAME,  TestDummy.OPERATION_102));
+            m1.set (new ISOField (BcConstants.ISO8583_DOC_ID,  BCUtils.getUniqueDocId()));
+            m1.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  docId));
+
+            respText = new String(m1.pack(), BcConstants.ENCODING);
+        }
+        
+
         System.out.println("url="+url);
         
         // send async pp resp in separate thread

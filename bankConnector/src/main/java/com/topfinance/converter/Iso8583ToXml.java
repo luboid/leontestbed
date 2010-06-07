@@ -1,7 +1,5 @@
 package com.topfinance.converter;
 
-import com.topfinance.cfg.dummy.TestDummy;
-
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -21,7 +19,12 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
+
+import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.runtime.BcConstants;
+
 
 public class Iso8583ToXml {
     
@@ -75,6 +78,28 @@ public class Iso8583ToXml {
 
         return jaxbObj;
     }
+    
+    
+    public ISOMsg objectToIso8583(Object jaxbObj, Map<String, String> mappings) {
+    	ISOMsg res = new ISOMsg();
+    	try {
+    		for(String key: mappings.keySet()) {
+    			String oPath = mappings.get(key);
+    			Object value = PropertyUtils.getProperty(jaxbObj, oPath); 
+    			debug("oPath="+oPath+", value="+value);
+    			Integer fldPos = Integer.valueOf(key);
+    			res.set(new ISOField(fldPos, value==null? "" : value.toString())); 
+    		}
+    		res.set(new ISOField(BcConstants.ISO8583_START, BcConstants.ISO8583_START_VALUE));
+
+    	} catch (Exception ex) {
+    		ex.printStackTrace();
+    		throw new RuntimeException(ex);
+    	}
+    	
+    	return res;
+    }
+    
     public Object iso8583ToObject(ISOMsg msg, Map<String, String> mappings) {
         Object res = null;
         try {
@@ -88,27 +113,29 @@ public class Iso8583ToXml {
                 
                 
                 String mapto = mappings.get(key);
+                Object value = null;
                 if (!mapto.contains("ISO[")) {
                     // not a ISO mapping
-                    BeanUtils.setProperty(obj, att, mapto);
+                    value=mapto;
                 } else {
                     Integer fldno = Integer.valueOf(StringUtils.substringBetween(mapto, "ISO[", "]"));
-
-                    Field field = obj.getClass().getDeclaredField(att);
-                    Class type = field.getType();
-                    debug("type=" + type);
-
-                    if (type.isEnum()) {
-                        Object[] values = type.getEnumConstants();
-
-                        Method m = type.getDeclaredMethod("fromValue", String.class);
-                        Object enumValue = m.invoke(obj, (String)msg.getValue(fldno));
-
-                        BeanUtils.setProperty(obj, att, enumValue);
-                    } else {
-                        BeanUtils.setProperty(obj, att, msg.getValue(fldno));
-                    }
+                    value = msg.getValue(fldno);
                 }
+                
+                
+                Field field = obj.getClass().getDeclaredField(att);
+                Class type = field.getType();
+                debug("type=" + type);
+
+                if (type.isEnum()) {
+                    Object[] values = type.getEnumConstants();
+                    Method m = type.getDeclaredMethod("fromValue", String.class);
+                    Object enumValue = m.invoke(obj, (String)value);
+
+                    BeanUtils.setProperty(obj, att, enumValue);
+                } else {
+                    BeanUtils.setProperty(obj, att, value);
+                }                
             }
             
             res = pool.get(rootName);

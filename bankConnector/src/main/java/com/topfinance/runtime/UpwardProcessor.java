@@ -1,5 +1,16 @@
 package com.topfinance.runtime;
 
+import java.io.InputStream;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.camel.Endpoint;
+import org.apache.camel.Exchange;
+import org.apache.camel.Message;
+import org.apache.commons.lang.StringUtils;
+import org.jpos.iso.ISOMsg;
+import org.jpos.iso.ISOPackager;
+
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgNode;
@@ -17,17 +28,6 @@ import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
 import com.topfinance.util.ResendUtil;
-
-import java.io.InputStream;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.camel.Endpoint;
-import org.apache.camel.Exchange;
-import org.apache.camel.Message;
-import org.apache.commons.lang.StringUtils;
-import org.jpos.iso.ISOMsg;
-import org.jpos.iso.ISOPackager;
 
 public class UpwardProcessor extends AbstractProcessor{
     
@@ -271,7 +271,7 @@ public class UpwardProcessor extends AbstractProcessor{
         if (TCP_PROVIDER_8583.equals(getMsgContext().getCfgInPort().getTransportInfo().getProvider())) {
             // TODO retrieve mapFile and pkgName based on opName, could be a db column
 
-            InputStream mapFile = cfgReader.getMappingRule(mesgType); 
+            InputStream mapFile = cfgReader.getMappingRule(mesgType, DIRECTION_UP); 
             String pkgName = Iso8583ToXml.getPackageName(mesgType);
 
             Map<String, String> mappings = Iso8583ToXml.loadMappings(mapFile);

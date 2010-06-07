@@ -1,5 +1,14 @@
 package com.topfinance.runtime;
 
+import java.io.InputStream;
+import java.util.List;
+
+import org.apache.camel.Endpoint;
+import org.apache.camel.Exchange;
+import org.apache.camel.ExchangePattern;
+import org.apache.camel.Message;
+import org.apache.commons.lang.StringUtils;
+
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgNode;
@@ -17,14 +26,6 @@ import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
 import com.topfinance.util.ResendUtil;
-
-import java.util.List;
-
-import org.apache.camel.Endpoint;
-import org.apache.camel.Exchange;
-import org.apache.camel.ExchangePattern;
-import org.apache.camel.Message;
-import org.apache.commons.lang.StringUtils;
 
 public class DownwardProcessor extends AbstractProcessor{
     public void log(String msg) {
@@ -428,6 +429,12 @@ public class DownwardProcessor extends AbstractProcessor{
 //        // simply do nothing
 //        String request = ppReq;
 //        getMsgContext().setPackagedMsg(request);
+    	
+    	String opName = getMsgContext().getOperationName();
+    	ICfgReader reader = CfgImplFactory.loadCfgReader();
+    	InputStream mapFile = reader.getMappingRule(opName, DIRECTION_DOWN);
+    	
+    	
         
         auditLog(STATE_PKG_OUT_MSG, "packaged message to PP", STATUS_PENDING);
     }
@@ -460,10 +467,12 @@ public class DownwardProcessor extends AbstractProcessor{
         String resendStatus = ResendEntry.STATUS_ACTIVE;
         
         // save resend
-        Object obj = getMsgContext().getParsedMsg();
-        // TODO serialize
-        DocRoot doc = (DocRoot)obj;
-        byte[] bin = doc.toText().getBytes();
+        String msg = (String)getMsgContext().getPackagedMsg();
+        
+        // TODO serialize in other way
+        // Java serialization has version problem
+        byte[] bin = msg.getBytes(BcConstants.ENCODING);
+        
         // 990 is sent before here. so ackPort is useless
         String inPortName = "";
         ResendUtil.saveResend(getMsgContext().getMesgId(), 

@@ -144,7 +144,7 @@ public class ISOIBPSPackager extends ISOBasePackager {
     /*117*/ new IFA_LLLCHAR (  1, ""),
     /*118*/ new IFA_LLLCHAR (  1, ""),
     /*119*/ new IFA_LLLCHAR (  1, ""),
-    /*120*/ new IFA_LLLCHAR (  1, ""),
+    /*120*/ new IFA_LLLCHAR (  50, ""),
     /*121*/ new IFA_LLLCHAR (  50, ""),
     /*122*/ new IFA_LLLCHAR (  50, ""),
     /*123*/ new IFA_LLLCHAR (  50, ""),

@@ -1,6 +1,7 @@
 # mapping rule for iso->xml conversion
 
-Document.fiToFICstmrCdtTrf.grpHdr.msgId=ISO[121]
+Document.fiToFICstmrCdtTrf.grpHdr.msgId=ISO[122]
+
 #btchBookg is a field with fixed value "false"
 Document.fiToFICstmrCdtTrf.grpHdr.btchBookg=ISO[100]
 # cdtTrfTxInf is a list

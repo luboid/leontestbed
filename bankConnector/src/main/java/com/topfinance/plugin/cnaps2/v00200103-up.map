@@ -1,9 +1,5 @@
-# mapping rule for iso->xml conversion
+# mapping rule for iso->xml conversion for 102
 
-Document.fiToFICstmrCdtTrf.grpHdr.msgId=121
-#btchBookg is a field with fixed value "false"
-Document.fiToFICstmrCdtTrf.grpHdr.btchBookg=100
-# cdtTrfTxInf is a list
-Document.fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId=101
-# cd is an enumeration
-Document.fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.tp.cd=102
+Document.fiToFIPmtStsRpt.grpHdr.msgId=ISO[122]
+Document.fiToFIPmtStsRpt.orgnlGrpInfAndSts.orgnlMsgId=ISO[123]
+

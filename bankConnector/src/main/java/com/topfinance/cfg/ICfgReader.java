@@ -30,7 +30,7 @@ public interface ICfgReader extends CfgConstants{
     public ICfgInPort getInPortByUri(String uri);
     
     
-    public InputStream getMappingRule(String mesgType);
+    public InputStream getMappingRule(String mesgType, String direction);
 }
 
 

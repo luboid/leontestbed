@@ -118,43 +118,6 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
         return listNode;
     }
 
-    
-//    public ICfgNode getNodeByIdentity(String identity) {
-//        ICfgNode result = null;
-//        for(ICfgNode node:listNode) {
-//            if(node.getIdentity().equals(identity)) {
-//                result = node;
-//                break;
-//            }
-//        }
-//        return result;
-//    }
-
-//    public ICfgPassway getPassway(ICfgNode host, ICfgNode partner) {
-//        ICfgPassway result = null;
-//        for(ICfgPassway passway : listPassway) {
-//            if(passway.getHostNode().getIdentity().equals(host.getIdentity()) && 
-//                passway.getPartnerNode().getIdentity().equals(partner.getIdentity())) {
-//                result = passway;
-//                break;
-//            }
-//        }
-//        return result;
-//    }
-    
-//    public ICfgProtocolBinding getProtocolBindingByProtocol(ICfgPassway passway, ICfgProtocol protocol) {
-//        ICfgProtocolBinding result = null;
-//        for(ICfgProtocolBinding pb : listProtocolBinding) {
-//            if(pb.getPassway().getName().equals(passway.getName()) &&
-//                pb.getProtocol().getName().equals(protocol.getName()) ) {
-//                result = pb;
-//                break;
-//            }
-//        }
-//        
-//        return result;
-//    }
-    
     public ICfgOperation getOperation(ICfgProtocol protocol, String name) {
         ICfgOperation result = null;
         for(ICfgOperation op : listOperation) {
@@ -202,14 +165,27 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
     
 
     
-    public InputStream getMappingRule(String mesgType) {
+    public InputStream getMappingRule(String mesgType, String direction) {
         String mapFileName = "";
         if (mesgType.equals(TestDummy.OPERATION_101)) {
-            mapFileName = "/com/topfinance/plugin/cnaps2/v00800102-up.map";
+        	if(DIRECTION_UP.equals(direction)) {
+        		mapFileName = "/com/topfinance/plugin/cnaps2/v00800102-up.map";
+        	}
+        	else {
+        		mapFileName = "/com/topfinance/plugin/cnaps2/v00800102-down.map";
+        	}
         } else if(mesgType.equals(TestDummy.OPERATION_102)) {
-            mapFileName = "/com/topfinance/plugin/cnaps2/v00200103-up.map";
+        	if(DIRECTION_UP.equals(direction)) {
+        		mapFileName = "/com/topfinance/plugin/cnaps2/v00200103-up.map";
+        	}else {
+        		mapFileName = "/com/topfinance/plugin/cnaps2/v00200103-down.map";
+        	}
         } else if(mesgType.equals(TestDummy.OPERATION_601)) {
-            mapFileName = "/com/topfinance/plugin/cnaps2/v05400102-up.map";
+        	if(DIRECTION_UP.equals(direction)) {
+        		mapFileName = "/com/topfinance/plugin/cnaps2/v05400102-up.map";
+        	}else {
+        		mapFileName = "/com/topfinance/plugin/cnaps2/v05400102-down.map";
+        	}
         }        
         InputStream mapFile = Iso8583ToXml.class.getResourceAsStream(mapFileName);
         System.out.println("mapFile=" + mapFile);
