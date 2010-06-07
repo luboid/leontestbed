@@ -9,14 +9,16 @@ import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.dummy.TestDummy;
 import com.topfinance.cfg.om.OmCfgAMQInfo;
 import com.topfinance.cfg.om.OmCfgJettyInfo;
+import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.AckRoot;
-import com.topfinance.plugin.cnaps2.DocRoot;
 import com.topfinance.plugin.cnaps2.MsgHeader;
 import com.topfinance.runtime.BcException;
 import com.topfinance.util.BCUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
@@ -249,14 +251,20 @@ public class Broker implements Processor, CfgConstants{
             log("!!!!cannot find outUrl--downurl for parter with id{"+origReceiver+"}");
             validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
         }
-        DocRoot body = null;
+        
+        String pkgName = Iso8583ToXml.getPackageName(mesgType);
+        Object jaxbObj = null;
         try {
-            body = DocRoot.loadFromString(bodyText);
-        } catch (BcException ex) {
+            jaxbObj = new Iso8583ToXml(pkgName).xmlToObject(bodyText);
+        } catch (Exception ex) {
+            ex.printStackTrace();
             validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
         }
-        String docId = body.getDocId();
-        String origDocId = body.getOrigDocId();
+        
+        String docId = null;
+        if(jaxbObj!=null) {
+            docId = BCUtils.extractMsgId(jaxbObj);
+        }
         
         
         
@@ -290,12 +298,14 @@ public class Broker implements Processor, CfgConstants{
         
         
         // prepare and send response, hardcoded
-        DocRoot outBody = null;
-        String newdocId = null;
         
         String outText = null;
         MsgHeader outHeader = null;
         if(mesgType.equals(TestDummy.OPERATION_101)){
+            
+            // forward 101 to B
+            
+            // header contains new unique mesgId??
             outHeader = new MsgHeader(
                                                 origSender,
                                                 origReceiver,
@@ -304,21 +314,15 @@ public class Broker implements Processor, CfgConstants{
                                                 BCUtils.getUniqueMesgId(), 
                                                 mesgRefId
                                              );   
-            newdocId = docId;
-            outBody = new DocRoot();
-            outBody.setDocId(newdocId);
-            outBody.setOrigDocId(null);
-            outBody.setOpName(body.getOpName());
-            outBody.setHostIdentity(body.getHostIdentity());
-            outBody.setPartnerIdentity(body.getPartnerIdentity());
-            
-            outText = outHeader.toText()+outBody.toText();
+            // body no change
+            outText = outHeader.toText()+bodyText;
 
             executor.execute(new SendJob(outText, outUrl, camel));
-            
+  
+                
         } else if(mesgType.equals(TestDummy.OPERATION_102)) {
             
-            // send to A
+            // send 601 to A
             outHeader = new MsgHeader(
                                                 origSender,
                                                 origReceiver,
@@ -327,21 +331,23 @@ public class Broker implements Processor, CfgConstants{
                                                 BCUtils.getUniqueId(), 
                                                 mesgRefId
                                              );             
-            newdocId = BCUtils.getUniqueDocId();
-            outBody = new DocRoot();
-            outBody.setDocId(newdocId);
-            //
-            outBody.setOrigDocId(origDocId);
-            outBody.setOpName(TestDummy.OPERATION_601);
-            outBody.setHostIdentity(body.getHostIdentity());
-            outBody.setPartnerIdentity(body.getPartnerIdentity());
 
-            outText = outHeader.toText()+outBody.toText();
+            // todo use a more generic way to generate jaxb obj
+            
+            Map<String, String> mapping = new HashMap<String, String>();
+            mapping.put("Document.bkToCstmrDbtCdtNtfctn.grpHdr.msgId", BCUtils.getUniqueDocId());
+            // just some biz level data
+            mapping.put("Document.bkToCstmrDbtCdtNtfctn.ntfctn[0].addtlNtfctnInf", BCUtils.getUniqueId("addinfo-"));
+            
+            String pkg = Iso8583ToXml.getPackageName(TestDummy.OPERATION_601);
+            Iso8583ToXml converter = new Iso8583ToXml(pkg);
+            Object outBody = converter.iso8583ToObject(null, mapping);
+            outText = outHeader.toText()+converter.objectToXml(outBody);
             //
             executor.execute(new SendJob(outText, outUrl, camel));
             
             log("======================================================");
-            // send to B
+            // send 601 to B
             outHeader = new MsgHeader(
                                       // swap sender and receiver
                                                 origReceiver,
@@ -351,17 +357,14 @@ public class Broker implements Processor, CfgConstants{
                                                 BCUtils.getUniqueId(), 
                                                 mesgRefId
                                              );             
-            newdocId = BCUtils.getUniqueId("docid-");
-            outBody = new DocRoot();
-            outBody.setDocId(newdocId);
-            //
-            outBody.setOrigDocId(docId);
-            outBody.setOpName(TestDummy.OPERATION_601);
-            // swap
-            outBody.setHostIdentity(body.getPartnerIdentity());
-            outBody.setPartnerIdentity(body.getHostIdentity());
-
-            outText = outHeader.toText()+outBody.toText();
+            mapping.put("Document.bkToCstmrDbtCdtNtfctn.grpHdr.msgId", BCUtils.getUniqueDocId());
+            // just some biz level data
+            mapping.put("Document.bkToCstmrDbtCdtNtfctn.ntfctn[0].addtlNtfctnInf", BCUtils.getUniqueId("addinfo-"));
+            
+            converter = new Iso8583ToXml(pkg);
+            outBody = converter.iso8583ToObject(null, mapping);
+            outText = outHeader.toText()+converter.objectToXml(outBody);
+            
             //
             executor.execute(new SendJob(outText, outUrl, camel));
             

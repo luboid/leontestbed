@@ -8,9 +8,11 @@ import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.util.BCUtils;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -197,5 +199,21 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
         }
         return res;
     }
+    
+
+    
+    public InputStream getMappingRule(String mesgType) {
+        String mapFileName = "";
+        if (mesgType.equals(TestDummy.OPERATION_101)) {
+            mapFileName = "/com/topfinance/plugin/cnaps2/v00800102-up.map";
+        } else if(mesgType.equals(TestDummy.OPERATION_102)) {
+            mapFileName = "/com/topfinance/plugin/cnaps2/v00200103-up.map";
+        } else if(mesgType.equals(TestDummy.OPERATION_601)) {
+            mapFileName = "/com/topfinance/plugin/cnaps2/v05400102-up.map";
+        }        
+        InputStream mapFile = Iso8583ToXml.class.getResourceAsStream(mapFileName);
+        System.out.println("mapFile=" + mapFile);
+        return mapFile;
+    }    
     
 }

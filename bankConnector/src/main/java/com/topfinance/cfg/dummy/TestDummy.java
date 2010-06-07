@@ -14,7 +14,6 @@ import com.topfinance.cfg.om.OmCfgOperation;
 import com.topfinance.cfg.om.OmCfgProtocol;
 import com.topfinance.cfg.om.OmCfgRouteRule;
 import com.topfinance.plugin.cnaps2.AckRoot;
-import com.topfinance.plugin.cnaps2.DocRoot;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -201,14 +200,14 @@ public class TestDummy extends TestCase implements CfgConstants{
     public void testDumpDoc() {
         try {
             System.out.println("serialize sample document...");
-            DocRoot docRoot = new DocRoot();
-            docRoot.setDocId("123");
-            docRoot.setHostIdentity("1234");
-            docRoot.setPartnerIdentity("5678");
-            docRoot.setOpName("ibps.102.001.01");
-            docRoot.setOrigDocId("");
-            String res = docRoot.toText();
-            IOUtils.write(res, new FileWriter(new File(DummyCfgReader.SAMPLEDOC)));           
+//            DocRoot docRoot = new DocRoot();
+//            docRoot.setDocId("123");
+//            docRoot.setHostIdentity("1234");
+//            docRoot.setPartnerIdentity("5678");
+//            docRoot.setOpName("ibps.102.001.01");
+//            docRoot.setOrigDocId("");
+//            String res = docRoot.toText();
+//            IOUtils.write(res, new FileWriter(new File(DummyCfgReader.SAMPLEDOC)));           
 
             System.out.println("Done");
         } catch (Exception ex) {

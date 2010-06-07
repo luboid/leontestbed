@@ -3,13 +3,11 @@ package com.topfinance.stubs.internal;
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgInPort;
-import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.dummy.TestDummy;
-import com.topfinance.components.tcp8583.ISO8583BjobPackager;
-import com.topfinance.plugin.cnaps2.DocRoot;
+import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;
 
@@ -155,7 +153,7 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         // package request
         if(TCP_PROVIDER_8583.equals(chosenInPort.getTransportInfo().getProvider())) {
             ISOMsg m1 = new ISOMsg();
-            ISOPackager packager = new ISO8583BjobPackager();
+            ISOPackager packager = new ISOIBPSPackager();
             m1.setPackager (packager);
             
             m1.set (new ISOField (BcConstants.ISO8583_START,  BcConstants.ISO8583_START_VALUE));
@@ -164,16 +162,20 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
             m1.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  ""));
             m1.set (new ISOField (BcConstants.ISO8583_HOST_ID,  hostIdentity));
             m1.set (new ISOField (BcConstants.ISO8583_PARTNER_ID,  partnerIdentity));
+            m1.set (new ISOField (100,  "100"));
+            m1.set (new ISOField (101,  "101"));
+            m1.set (new ISOField (102,  "102"));
+            
             requestText = new String(m1.pack(), BcConstants.ENCODING);
             
         } else {
-            DocRoot request = new DocRoot();
-
-            request.setDocId(BCUtils.getUniqueDocId());
-            request.setHostIdentity(hostIdentity);
-            request.setPartnerIdentity(partnerIdentity);
-            request.setOpName(TestDummy.OPERATION_101);
-            requestText = request.toText();
+//            DocRoot request = new DocRoot();
+//
+//            request.setDocId(BCUtils.getUniqueDocId());
+//            request.setHostIdentity(hostIdentity);
+//            request.setPartnerIdentity(partnerIdentity);
+//            request.setOpName(TestDummy.OPERATION_101);
+//            requestText = request.toText();
         }
         
         log("requestText="+requestText);
@@ -228,15 +230,15 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         ICfgInPort cfgIP = reader.getInPortByUri(inUri);
         // TODO try to unpack the msg and verify
         try {
-            
-        DocRoot asyncresp = DocRoot.loadFromString(msg);
-        String opName = asyncresp.getOpName();
-        String docId = asyncresp.getDocId();
-        String hostIdentity = asyncresp.getHostIdentity();
-        String partnerIdentity = asyncresp.getPartnerIdentity();
-        
+
+//            DocRoot asyncresp = DocRoot.loadFromString(msg);
+//            String opName = asyncresp.getOpName();
+//            String docId = asyncresp.getDocId();
+//            String hostIdentity = asyncresp.getHostIdentity();
+//            String partnerIdentity = asyncresp.getPartnerIdentity();
+
         } catch (Exception ex) {
-            
+
         }
         
         // send sync pp ack

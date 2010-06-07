@@ -1,14 +1,13 @@
 package com.topfinance.converter;
 
 import com.topfinance.cfg.dummy.TestDummy;
-import com.topfinance.plugin.cnaps2.dummy.Document;
-import com.topfinance.runtime.BcConstants;
-import com.topfinance.util.BCUtils;
 
-import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.io.StringWriter;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,56 +15,67 @@ import java.util.Map;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
-import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 
 public class Iso8583ToXml {
     
+    private String pkgName = "com.topfinance.plugin.cnaps2.dummy";
     
     
-    static String pkgName = "com.topfinance.plugin.cnaps2.dummy";
     Map<String, Object> pool = new HashMap<String, Object>();
     String rootName;
     
-    public static String buildXml(Object webFlow) {
+    public Iso8583ToXml(String pkgName) {
+        this.pkgName = pkgName;
+    }
+    
+    private static void debug(String msg) {
+        System.out.println(msg);
+    }
+    
+    public String objectToXml(Object object) {
         String rtnStr = "";
         try {
                 JAXBContext jaxbContext = JAXBContext.newInstance(pkgName);
                 Marshaller marshaller = jaxbContext.createMarshaller();
                 // marshaller.setProperty(Marshaller.JAXB_ENCODING,Constants.ENCODING_GBK);
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+                marshaller.setProperty(Marshaller.JAXB_FRAGMENT, false);
                 
                 Class docClazz = Class.forName(pkgName+".Document");
                 Class ofClazz = Class.forName(pkgName+".ObjectFactory");
                 Object factory = ofClazz.newInstance();
                 Method method = ofClazz.getDeclaredMethod("createDocument", docClazz);
-                JAXBElement webFlowElement = (JAXBElement)method.invoke(factory, docClazz.cast(webFlow));
+                JAXBElement webFlowElement = (JAXBElement)method.invoke(factory, docClazz.cast(object));
                 
-//                JAXBElement webFlowElement = factory.createDocument(webFlow);
-//                ObjectFactory factory = new ObjectFactory();
-//                JAXBElement<Document> webFlowElement = factory.createDocument(webFlow);
                 StringWriter sw = new StringWriter();
                 marshaller.marshal(webFlowElement, sw);
                 rtnStr = sw.toString();
+                
+                // TODO remove the header in a better way: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                rtnStr = StringUtils.substringAfter(rtnStr, "?>").trim();
         } catch (Exception e) {
                 e.printStackTrace();
-                // log.error("Generating xml file failed.",e);
         }
         return rtnStr;
     }
-    
-    public void objectToXml(Object object) {
-        
-        String s = buildXml((Document)object);
-        System.out.println("xml="+s);
+    public Object xmlToObject(String xml) throws Exception {
+        Object jaxbObj = null;
+
+        JAXBContext jaxbContext = JAXBContext.newInstance(pkgName);
+        Unmarshaller unMarshaller = jaxbContext.createUnmarshaller();
+        JAXBElement jaxbElement = (JAXBElement)unMarshaller.unmarshal(new StringReader(xml));
+        jaxbObj = jaxbElement.getValue();
+
+        return jaxbObj;
     }
-    
-    public Object iso8583ToObject(ISOMsg msg, Map<String, Integer> mappings) {
+    public Object iso8583ToObject(ISOMsg msg, Map<String, String> mappings) {
         Object res = null;
         try {
             for(String key: mappings.keySet()) {
@@ -75,8 +85,30 @@ public class Iso8583ToXml {
                 System.out.println("oPath="+oPath+", att="+att);
                 
                 Object obj = findObject(oPath);
-                Integer fldno = mappings.get(key);
-                BeanUtils.setProperty(obj, att, msg.getValue(fldno));
+                
+                
+                String mapto = mappings.get(key);
+                if (!mapto.contains("ISO[")) {
+                    // not a ISO mapping
+                    BeanUtils.setProperty(obj, att, mapto);
+                } else {
+                    Integer fldno = Integer.valueOf(StringUtils.substringBetween(mapto, "ISO[", "]"));
+
+                    Field field = obj.getClass().getDeclaredField(att);
+                    Class type = field.getType();
+                    debug("type=" + type);
+
+                    if (type.isEnum()) {
+                        Object[] values = type.getEnumConstants();
+
+                        Method m = type.getDeclaredMethod("fromValue", String.class);
+                        Object enumValue = m.invoke(obj, (String)msg.getValue(fldno));
+
+                        BeanUtils.setProperty(obj, att, enumValue);
+                    } else {
+                        BeanUtils.setProperty(obj, att, msg.getValue(fldno));
+                    }
+                }
             }
             
             res = pool.get(rootName);
@@ -130,79 +162,134 @@ public class Iso8583ToXml {
             if(StringUtils.isNotEmpty(parentPath)) {
                 thisPath = parentPath + "." + thisName;
             }
-            System.out.println("thisName="+thisName+", thisPath="+thisPath);
+            debug("parent="+parent+", thisName="+thisName+", thisPath="+thisPath);
             // check cache
             res = pool.get(thisPath);
             if (res == null) {
-                Class thisClass = null; 
+                Class thisClass = null;
+                Object thisObj = null;
                 if(parent==null) {
                     // first level
                     thisClass = Class.forName(pkgName+"."+thisName);
+                    thisObj = thisClass.newInstance();
                 } else {
                     thisClass = PropertyUtils.getPropertyType(parent, thisName);
+                    debug("thisClass="+thisClass);    
+                    if(Collection.class.isAssignableFrom(thisClass)) {
+                        if(!thisName.contains("[")) {
+                            // sth wrong. 
+                            throw new RuntimeException("mismatch collection types");
+                        }
+                        else {
+                            String fName = StringUtils.substringBefore(thisName, "[");
+                            debug("fName="+fName);
+                            thisClass = getCollectionGenericType(parent, fName);
+                            thisObj = thisClass.newInstance();
+                            Collection collection = (Collection)PropertyUtils.getProperty(parent, fName);
+                            collection.add(thisObj);
+                        }
+                    }else {
+                        thisObj = thisClass.newInstance();
+                        PropertyUtils.setProperty(parent, thisName, thisObj);
+                    }
                 }
-                Object thisObj = thisClass.newInstance();
-                if(parent!=null) {
-                    PropertyUtils.setProperty(parent, thisName, thisObj);
-                }
-                System.out.println("thisObj="+thisObj);
+                
+                debug("thisObj="+thisObj);
                 pool.put(thisPath, thisObj);
                 res = thisObj;
             }
             
         } catch (Exception ex) {
+            ex.printStackTrace();
             throw new RuntimeException(ex);
         }
 
         return res;
     }
     
-    
-    public static void main(String[] args) throws Exception{
-        
-        ISOMsg m = new ISOMsg();
-        m.set (new ISOField (BcConstants.ISO8583_OP_NAME,  TestDummy.OPERATION_101));
-        m.set (new ISOField (BcConstants.ISO8583_DOC_ID,  BCUtils.getUniqueDocId()));
-        m.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  ""));
-        m.set (new ISOField (BcConstants.ISO8583_HOST_ID,  "xxxx"));
-        m.set (new ISOField (BcConstants.ISO8583_PARTNER_ID,  "yyyy"));
-        
-//        Map<String, Integer> mappings = new HashMap<String, Integer>();
-//        mappings.put("Document.opName", 121);
-//        mappings.put("Document.docId", 122);
-//        mappings.put("Document.origDocId", 123);
-//        mappings.put("Document.hostIdentity", 124);
-//        mappings.put("Document.partnerIdentity", 125);
-        
-        Map<String, Integer> mappings = loadMappings();
-        
-        Iso8583ToXml main = new Iso8583ToXml();
-        Object obj = main.iso8583ToObject(m, mappings);
-        
-        System.out.println("obj="+obj);
-        main.objectToXml(obj);
-        
-        
+    private static Class getCollectionGenericType(Object bean, String fName) throws Exception{
+        Field field = bean.getClass().getDeclaredField(fName);
+        String type = field.getGenericType().toString();
+        String paraType = type.substring(type.indexOf('<')+1, type.indexOf('>'));
+        debug("paraType="+paraType);
+        Class res = Class.forName(paraType);
+        return res;
+                
     }
-
-    private static Map<String, Integer> loadMappings() throws IOException {
-        Map<String, Integer> res = new HashMap<String, Integer>();
+    
+    public static Map<String, String> loadMappings(InputStream input)  {
+ 
+        Map<String, String> res = new HashMap<String, String>();
         // load the mapping rule
-        InputStream mapFile = Iso8583ToXml.class.getResourceAsStream("/com/topfinance/plugin/cnaps2/dummy/dummy-up.map");
-        System.out.println("mapFile="+mapFile);
-        List<String> maps = IOUtils.readLines(mapFile);
+        try {
+        List<String> maps = IOUtils.readLines(input);
         for(String map:maps) {
+            if(StringUtils.isBlank(map)) {
+                continue;
+            }
+            
+            if(map.trim().startsWith("#")) {
+                continue;
+            }
+            
             String[] ss = StringUtils.split(map, "=");
             if(ss.length==2) {
-                Integer val = Integer.valueOf(ss[1]);
-                res.put(ss[0], val);
+                res.put(ss[0], ss[1]);
                 
             }
             else {
                 System.out.println("skipping map="+map);
             }
         }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
         
         return res;
     }
+    
+    public static void main(String[] args) throws Exception{
+        
+//        ISOMsg m = new ISOMsg();
+//        m.set (new ISOField (BcConstants.ISO8583_OP_NAME,  TestDummy.OPERATION_101));
+//        m.set (new ISOField (BcConstants.ISO8583_DOC_ID,  BCUtils.getUniqueDocId()));
+//        m.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  ""));
+//        m.set (new ISOField (BcConstants.ISO8583_HOST_ID,  "xxxx"));
+//        m.set (new ISOField (BcConstants.ISO8583_PARTNER_ID,  "yyyy"));
+//        
+//        InputStream mapFile = Iso8583ToXml.class.getResourceAsStream("/com/topfinance/plugin/cnaps2/dummy/dummy-up.map");
+//        System.out.println("mapFile="+mapFile);
+//        Map<String, Integer> mappings = Iso8583ToXml.loadMappings(mapFile);
+//        
+//        Iso8583ToXml main = new Iso8583ToXml();
+//        Object obj = main.iso8583ToObject(m, mappings);
+//        System.out.println("obj="+obj);
+//        
+//        String xml = main.objectToXml(obj);
+//        System.out.println("xml="+xml);
+        
+    }
+
+    public static String getPackageName(String mesgType) {
+        // this is a fixed rule
+        
+        // TODO mesgType is name of operation, could change. 
+        // it should be sth like "type" of operation which is enumeration value
+        
+        String pkgName = "";
+        if (mesgType.equals(TestDummy.OPERATION_101)) {
+            pkgName = "com.topfinance.plugin.cnaps2.v00800102";
+        } else if(mesgType.equals(TestDummy.OPERATION_102)) {
+            pkgName = "com.topfinance.plugin.cnaps2.v00200103";                
+        } else if(mesgType.equals(TestDummy.OPERATION_601)) {
+            pkgName = "com.topfinance.plugin.cnaps2.v05400102";                
+        }        
+        return pkgName;
+    }
+    
+
+    
+    
+    
 }

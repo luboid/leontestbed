@@ -79,11 +79,11 @@
          <protocolBinding class="com.topfinance.cfg.om.OmCfgProtocolBinding" ref="23"/>
       </ICfgRouteRule>
       <ICfgRouteRule class="com.topfinance.cfg.om.OmCfgRouteRule" id="RRD1" name="RRD1" operationMask="ibps." sequence="1" direction="D">
-         <outPort class="com.topfinance.cfg.om.OmCfgAMQOutPort" ref="OP1"/>
+         <outPort class="com.topfinance.cfg.om.OmCfgAMQOutPort" ref="8583Out"/>
          <protocolBinding class="com.topfinance.cfg.om.OmCfgProtocolBinding" ref="23"/>
       </ICfgRouteRule>      
       <ICfgRouteRule class="com.topfinance.cfg.om.OmCfgRouteRule" id="RRD2" name="RRD2" operationMask="saps." sequence="2" direction="D">
-         <outPort class="com.topfinance.cfg.om.OmCfgAMQOutPort" ref="OP1"/>
+         <outPort class="com.topfinance.cfg.om.OmCfgAMQOutPort" ref="8583Out"/>
       </ICfgRouteRule>      
    </listRouteRule>
 </dummyCfgReader>

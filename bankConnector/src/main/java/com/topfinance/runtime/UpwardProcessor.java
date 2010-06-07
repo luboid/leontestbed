@@ -7,18 +7,20 @@ import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
-import com.topfinance.components.tcp8583.ISO8583BjobPackager;
+import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.db.HiberEntry;
 import com.topfinance.db.ResendEntry;
 import com.topfinance.plugin.cnaps2.AckRoot;
-import com.topfinance.plugin.cnaps2.DocRoot;
 import com.topfinance.plugin.cnaps2.MsgHeader;
+import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
 import com.topfinance.util.ResendUtil;
 
+import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
@@ -172,7 +174,7 @@ public class UpwardProcessor extends AbstractProcessor{
                 String req = (String)getMsgContext().getSrcExchange().getIn().getBody();
                 log("req="+req);
                 byte[] bytes = req.getBytes(BcConstants.ENCODING);
-                ISOPackager packager = new ISO8583BjobPackager();
+                ISOPackager packager = new ISOIBPSPackager();
                 msg.setPackager (packager);                
                 msg.unpack (bytes);
             } catch (Exception e) {
@@ -194,25 +196,25 @@ public class UpwardProcessor extends AbstractProcessor{
         else {
 
         
-        // TODO This docRoot is in fact like a header.
-        // here we just use this as both header and body.
-        DocRoot msg = null;
-        try {
-            msg = DocRoot.loadFromString(getMsgContext().getSrcExchange().getIn().getBody(String.class));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            throw new RuntimeException(ex);
-        }
-        getMsgContext().setParsedMsg(msg);
-        
-                
-        // now we have no PP msg header,
-        // so just extract these fields from payload
-        hIdentity = msg.getHostIdentity();
-        pIdentity = msg.getPartnerIdentity();
-        opName = msg.getOpName();
-        docId = msg.getDocId();
-        origDocId = msg.getOrigDocId();
+//        // TODO This docRoot is in fact like a header.
+//        // here we just use this as both header and body.
+//        DocRoot msg = null;
+//        try {
+//            msg = DocRoot.loadFromString(getMsgContext().getSrcExchange().getIn().getBody(String.class));
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            throw new RuntimeException(ex);
+//        }
+//        getMsgContext().setParsedMsg(msg);
+//        
+//                
+//        // now we have no PP msg header,
+//        // so just extract these fields from payload
+//        hIdentity = msg.getHostIdentity();
+//        pIdentity = msg.getPartnerIdentity();
+//        opName = msg.getOpName();
+//        docId = msg.getDocId();
+//        origDocId = msg.getOrigDocId();
         }
         
         
@@ -262,8 +264,28 @@ public class UpwardProcessor extends AbstractProcessor{
         String origReceiver = getMsgContext().getOrigReceiver();
         
         MsgHeader header = new MsgHeader(origSender, origReceiver, mesgType, mesgId, mesgRefId);
-        String body = this.getMsgContext().getSrcExchange().getIn().getBody(String.class);
-        // simply do nothing to body
+        
+        ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
+        String body = "";
+        
+        if (TCP_PROVIDER_8583.equals(getMsgContext().getCfgInPort().getTransportInfo().getProvider())) {
+            // TODO retrieve mapFile and pkgName based on opName, could be a db column
+
+            InputStream mapFile = cfgReader.getMappingRule(mesgType); 
+            String pkgName = Iso8583ToXml.getPackageName(mesgType);
+
+            Map<String, String> mappings = Iso8583ToXml.loadMappings(mapFile);
+            ISOMsg msg = (ISOMsg)getMsgContext().getParsedMsg();
+            Iso8583ToXml converter = new Iso8583ToXml(pkgName);
+            Object jaxbObj = converter.iso8583ToObject(msg, mappings);
+            // TODO use object to do biz level auditing
+            
+            body = converter.objectToXml(jaxbObj);
+        } else {
+            // simply do nothing to body
+            body = this.getMsgContext().getSrcExchange().getIn().getBody(String.class);
+        }
+        
         String request = header.toText()+body;
         getMsgContext().setPackagedMsg(request);
         

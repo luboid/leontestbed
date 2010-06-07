@@ -11,6 +11,7 @@ import com.topfinance.cfg.om.OmCfgAMQInfo;
 import com.topfinance.cfg.om.OmCfgJettyInfo;
 import com.topfinance.components.tcp8583.Iso8583Codec;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.apache.activemq.camel.component.ActiveMQComponent;
@@ -18,6 +19,7 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.component.jetty.JettyHttpComponent;
 import org.apache.camel.component.mina.MinaComponent;
 import org.apache.camel.component.mina.MinaConfiguration;
+import org.apache.commons.beanutils.PropertyUtils;
 
 
 public class BCUtils {
@@ -25,6 +27,19 @@ public class BCUtils {
     public static String getUniqueId() {
         return getUniqueId("uid-");
         
+    }
+    
+    public static String extractMsgId(Object jaxbObj) {
+        // suppose .grpHdr.msgId is common place to store msgID
+        String res = null;
+        Field[] fields = jaxbObj.getClass().getDeclaredFields();
+        String fn = fields[0].getName();
+        try {
+            res = (String)PropertyUtils.getProperty(jaxbObj, fn+".grpHdr.msgId");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return res;
     }
     
     public static ICfgOutPort findRoute(List<ICfgRouteRule> listRouteRule, String operationName) {

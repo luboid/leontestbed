@@ -52,7 +52,7 @@
 package test;
 
 import com.topfinance.cfg.dummy.TestDummy;
-import com.topfinance.components.tcp8583.ISO8583BjobPackager;
+import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;
 
@@ -77,7 +77,7 @@ public class Test8583 extends SimpleLogSource {
         LogEvent evt = new LogEvent (this, "SimpleMessage");
         Date d = new Date();
 
-        ISOPackager packager = new ISO8583BjobPackager();  // 1) Create packager
+        ISOPackager packager = new ISOIBPSPackager();  // 1) Create packager
         // comment the following line if you don't want to debug packager
 //        packager.setLogger (getLogger(), "Packager");
 

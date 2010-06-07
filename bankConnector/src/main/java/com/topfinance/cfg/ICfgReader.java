@@ -1,5 +1,6 @@
 package com.topfinance.cfg;
 
+import java.io.InputStream;
 import java.util.List;
 
 public interface ICfgReader extends CfgConstants{
@@ -27,6 +28,9 @@ public interface ICfgReader extends CfgConstants{
     public List<ICfgRouteRule> getListDownRoute();    
     
     public ICfgInPort getInPortByUri(String uri);
+    
+    
+    public InputStream getMappingRule(String mesgType);
 }
 
 

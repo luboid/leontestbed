@@ -8,10 +8,10 @@ import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.db.HiberEntry;
 import com.topfinance.db.ResendEntry;
 import com.topfinance.plugin.cnaps2.AckRoot;
-import com.topfinance.plugin.cnaps2.DocRoot;
 import com.topfinance.plugin.cnaps2.MsgHeader;
 import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
@@ -201,17 +201,34 @@ public class DownwardProcessor extends AbstractProcessor{
                 getMsgContext().setParsedMsg(ack);
             }            
         } else {
-            DocRoot body = null;
+            
+            // Parse xml body
+            String pkgName = Iso8583ToXml.getPackageName(mesgType);
+
+            Object jaxbObj = null;
             try {
-                body = DocRoot.loadFromString(bodyText);
-            } catch (BcException ex) {
+                jaxbObj = new Iso8583ToXml(pkgName).xmlToObject(bodyText);
+            } catch (Exception ex) {
+                ex.printStackTrace();
                 validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
             }
-            if (body != null) {
-                getMsgContext().setDocId(body.getDocId());
-                getMsgContext().setOrigDocId(body.getOrigDocId());
-                getMsgContext().setParsedMsg(body);
+            if(jaxbObj!=null) {
+                getMsgContext().setParsedMsg(jaxbObj);
+                String msgId = BCUtils.extractMsgId(jaxbObj);
+                getMsgContext().setDocId(msgId);
             }
+ 
+//            DocRoot body = null;
+//            try {
+//                body = DocRoot.loadFromString(bodyText);
+//            } catch (BcException ex) {
+//                validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
+//            }
+//            if (body != null) {
+//                getMsgContext().setDocId(body.getDocId());
+//                getMsgContext().setOrigDocId(body.getOrigDocId());
+//                getMsgContext().setParsedMsg(body);
+//            }
         }
         
         // save or resurrect hibernate
@@ -399,9 +416,6 @@ public class DownwardProcessor extends AbstractProcessor{
         }
         
         
-
-
-        
     }    
     private void sendErrMsg() {
         log("sendErrMsg!!!!");
@@ -409,11 +423,11 @@ public class DownwardProcessor extends AbstractProcessor{
     protected void packageReq() {
         // plugin impl need compose the output msg format
         // either from the input msg body, or from config 
-
-        String ppReq = ((DocRoot)getMsgContext().getParsedMsg()).toText();
-        // simply do nothing
-        String request = ppReq;
-        getMsgContext().setPackagedMsg(request);
+//        String ppReq = ((DocRoot)getMsgContext().getParsedMsg()).toText();
+//        
+//        // simply do nothing
+//        String request = ppReq;
+//        getMsgContext().setPackagedMsg(request);
         
         auditLog(STATE_PKG_OUT_MSG, "packaged message to PP", STATUS_PENDING);
     }
