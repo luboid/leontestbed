@@ -81,6 +81,6 @@
 	<classpathentry kind="lib" path="lib/camel-mina-2.2.0.jar" sourcepath="/camel-mina"/>
 	<classpathentry kind="lib" path="lib/mina-core-1.1.7.jar"/>
 	<classpathentry kind="lib" path="lib/jpos.jar"/>
-	<classpathentry kind="lib" path="lib/commons-beanutils-1.8.0.jar" sourcepath="D:/resource/commons-beanutils-1.8.0-src/src/java"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.8.3.jar" sourcepath="D:/resource/commons-beanutils-1.8.3-src/src/main/java"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
