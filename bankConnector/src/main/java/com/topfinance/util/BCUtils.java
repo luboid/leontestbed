@@ -6,13 +6,16 @@ import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgPort;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.cfg.dummy.TestDummy;
 import com.topfinance.cfg.om.OmCfg8583Info;
 import com.topfinance.cfg.om.OmCfgAMQInfo;
 import com.topfinance.cfg.om.OmCfgJettyInfo;
 import com.topfinance.components.tcp8583.Iso8583Codec;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.CamelContext;
@@ -29,6 +32,30 @@ public class BCUtils {
         
     }
     
+    private static Map<String, String> origMsgIdPaths = new HashMap<String, String>();
+    static {
+        // TODO this is a static list according to spec
+        origMsgIdPaths.put(TestDummy.OPERATION_601, "bkToCstmrDbtCdtNtfctn.ntfctn[0].id");
+        origMsgIdPaths.put(TestDummy.OPERATION_102, "fiToFIPmtStsRpt.orgnlGrpInfAndSts.orgnlMsgId");
+    }
+    
+    public static String extractOrigMsgId(Object jaxbObj, String opName) {
+        String oPath = origMsgIdPaths.get(opName);
+        if(oPath==null) {
+            return null;
+        }
+        return extractByPath(jaxbObj, oPath);
+    }
+    public static String extractByPath(Object jaxbObj, String oPath) {
+        // TODO generic objectPath solution
+        String res = null;
+        try {
+            res = (String)PropertyUtils.getProperty(jaxbObj, oPath);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return res;
+    }
     public static String extractMsgId(Object jaxbObj) {
         // suppose .grpHdr.msgId is common place to store msgID
         String res = null;
@@ -127,6 +154,15 @@ public class BCUtils {
         ICfgTransportInfo ti = port.getTransportInfo();
         String prefix = ti.getPrefix();
         url = prefix+"://"+url;
+        
+        if(CfgConstants.TCP_PROVIDER_8583.equals(port.getTransportInfo().getProvider())) {
+            
+            // TODO more mina configuration
+            
+            // see mina doc on http://camel.apache.org/mina.html
+            url+="?sync=false";
+        }
+        
         return url;
     }
 }

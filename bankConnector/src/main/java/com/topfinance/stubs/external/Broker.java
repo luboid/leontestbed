@@ -261,12 +261,6 @@ public class Broker implements Processor, CfgConstants{
             validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
         }
         
-        String docId = null;
-        if(jaxbObj!=null) {
-            docId = BCUtils.extractMsgId(jaxbObj);
-        }
-        
-        
         
         AckRoot ack = null;
         // TODO handle sync-req-reply and notify
@@ -321,6 +315,14 @@ public class Broker implements Processor, CfgConstants{
   
                 
         } else if(mesgType.equals(TestDummy.OPERATION_102)) {
+            String docId_102 = null, docId_101=null;
+            
+            if(jaxbObj!=null) {
+                docId_102 = BCUtils.extractMsgId(jaxbObj);
+                docId_101 = BCUtils.extractOrigMsgId(jaxbObj, mesgType);
+                
+            }
+            
             
             // send 601 to A
             outHeader = new MsgHeader(
@@ -338,6 +340,7 @@ public class Broker implements Processor, CfgConstants{
             mapping.put("Document.bkToCstmrDbtCdtNtfctn.grpHdr.msgId", BCUtils.getUniqueDocId());
             // just some biz level data
             mapping.put("Document.bkToCstmrDbtCdtNtfctn.ntfctn[0].addtlNtfctnInf", BCUtils.getUniqueId("addinfo-"));
+            mapping.put("Document.bkToCstmrDbtCdtNtfctn.ntfctn[0].id", docId_101);
             
             String pkg = Iso8583ToXml.getPackageName(TestDummy.OPERATION_601);
             Iso8583ToXml converter = new Iso8583ToXml(pkg);
@@ -360,13 +363,14 @@ public class Broker implements Processor, CfgConstants{
             mapping.put("Document.bkToCstmrDbtCdtNtfctn.grpHdr.msgId", BCUtils.getUniqueDocId());
             // just some biz level data
             mapping.put("Document.bkToCstmrDbtCdtNtfctn.ntfctn[0].addtlNtfctnInf", BCUtils.getUniqueId("addinfo-"));
+            mapping.put("Document.bkToCstmrDbtCdtNtfctn.ntfctn[0].id", docId_102);
             
             converter = new Iso8583ToXml(pkg);
             outBody = converter.iso8583ToObject(null, mapping);
             outText = outHeader.toText()+converter.objectToXml(outBody);
             
             //
-            executor.execute(new SendJob(outText, outUrl, camel));
+            executor.execute(new SendJob(outText, ackUrl, camel));
             
             
         }

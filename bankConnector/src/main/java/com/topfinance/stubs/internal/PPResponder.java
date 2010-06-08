@@ -1,10 +1,20 @@
 package com.topfinance.stubs.internal;
 
+import com.topfinance.cfg.CfgConstants;
+import com.topfinance.cfg.CfgImplFactory;
+import com.topfinance.cfg.ICfgInPort;
+import com.topfinance.cfg.ICfgOutPort;
+import com.topfinance.cfg.ICfgReader;
+import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
+import com.topfinance.runtime.BcConstants;
+import com.topfinance.util.BCUtils;
+
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
-import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
@@ -12,7 +22,6 @@ import org.apache.camel.ExchangePattern;
 import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.jetty.JettyHttpComponent;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -21,19 +30,6 @@ import org.apache.commons.cli.PosixParser;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
-
-import com.topfinance.cfg.CfgConstants;
-import com.topfinance.cfg.CfgImplFactory;
-import com.topfinance.cfg.ICfgInPort;
-import com.topfinance.cfg.ICfgOutPort;
-import com.topfinance.cfg.ICfgReader;
-import com.topfinance.cfg.ICfgTransportInfo;
-import com.topfinance.cfg.dummy.TestDummy;
-import com.topfinance.cfg.om.OmCfgAMQInfo;
-import com.topfinance.cfg.om.OmCfgJettyInfo;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
-import com.topfinance.runtime.BcConstants;
-import com.topfinance.util.BCUtils;
 
 public class PPResponder implements Processor, CfgConstants{
     public static class MyRoute extends RouteBuilder{
@@ -49,12 +45,8 @@ public class PPResponder implements Processor, CfgConstants{
                 if (DIRECTION_UP.equals(outPort.getDirection())) {
                     continue;
                 }
-                String url = outPort.getUrl();
-                // handle URL prefix
-                ICfgTransportInfo ti = outPort.getTransportInfo();
-                String prefix = ti.getPrefix();
-                url = prefix + ":" + url;
-                System.out.println("url=" + url);
+                String url = BCUtils.getFullUrlFromPort(outPort);
+                System.out.println("listenning on url=" + url);
                 from(url).process(processor);
             }
         }        
@@ -92,23 +84,7 @@ public class PPResponder implements Processor, CfgConstants{
 
         List<ICfgTransportInfo> listTi = reader.getListOfTransportInfo();
         for(ICfgTransportInfo ti : listTi) {
-            String provider = ti.getProvider();
-            if(CfgConstants.JMS_PROVIDER_AMQ.equals(provider)) {
-                ActiveMQComponent amq = new ActiveMQComponent();
-                // ?? won't work unless define as normal JMSComponent
-//                amq.setConnectionFactory(jmsInfo.getConnectionFactory());
-                OmCfgAMQInfo amqji = (OmCfgAMQInfo)ti;
-                amq.setBrokerURL(amqji.getBrokerUrl());
-                camel.addComponent(ti.getPrefix(), amq);
-                log("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
-            }
-            else if(CfgConstants.HTTP_PROVIDER_JETTY.equals(provider)) {
-                JettyHttpComponent jetty = new JettyHttpComponent();
-                OmCfgJettyInfo jettyti = (OmCfgJettyInfo)ti;
-                // TODO setting up JettyHttpComponent with jettyti
-                camel.addComponent(ti.getPrefix(), jetty);
-                log("adding component: "+ti.getPrefix());
-            }
+            BCUtils.initCamelComponent(camel, ti);
         }
         
         // add route/listen
@@ -121,34 +97,21 @@ public class PPResponder implements Processor, CfgConstants{
     public void process(Exchange exchange) throws Exception {
 
         String msg = exchange.getIn().getBody(String.class);
-        log("received message=" + msg+", from url="+exchange.getFromEndpoint().getEndpointUri());
+        log("received message=" + msg + ", from url=" + exchange.getFromEndpoint().getEndpointUri());
+
+        ISOMsg m = new ISOMsg();
+        m.setPackager(new ISOIBPSPackager());
+        m.unpack(msg.getBytes(BcConstants.ENCODING));
+        String docId_101 = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
         
-		ISOMsg m = new ISOMsg();
-		m.setPackager(new ISOIBPSPackager());
-		m.unpack(msg.getBytes(BcConstants.ENCODING));
-		String docId = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
+        String opName = m.getString(BcConstants.ISO8583_OP_NAME);
+        log("received opName="+opName);
         
-//        DocRoot request = DocRoot.loadFromString(msg);
-//        String opName = request.getOpName();
-//        String docId = request.getDocId();
-//        String hostIdentity = request.getHostIdentity();
-//        String partnerIdentity = request.getPartnerIdentity();
-//        
-//        
-//        if(!TestDummy.OPERATION_101.equals(opName)) {
-//            return;
-//        }
-//        
-//        // prepare async pp resp
-//        DocRoot asyncResp = new DocRoot();
-//        asyncResp.setDocId(BCUtils.getUniqueDocId());
-//        asyncResp.setOrigDocId(docId);
-//        // swap host/partner
-//        asyncResp.setHostIdentity(partnerIdentity);
-//        asyncResp.setPartnerIdentity(hostIdentity);
-//        asyncResp.setOpName(TestDummy.OPERATION_102);
-//        final String respText = asyncResp.toText();
-        
+        if(!TestDummy.OPERATION_101.equals(opName)) {
+            // only handle 101
+            return;
+        }
+
         List<ICfgInPort> inPorts = reader.getListOfEnabledInport();
 
         String url = null;
@@ -158,9 +121,12 @@ public class PPResponder implements Processor, CfgConstants{
             if(DIRECTION_DOWN.equals(inPort.getDirection())) {
                 continue;
             }
-         // send to first port found
-            chosenInPort = inPort;
-            break;
+            
+            // send to first 8583 port found
+            if(TCP_PROVIDER_8583.equals(inPort.getTransportInfo().getProvider())) {
+                chosenInPort = inPort;
+                break;                
+            }
         }
         
         url = BCUtils.getFullUrlFromPort(chosenInPort);
@@ -169,13 +135,15 @@ public class PPResponder implements Processor, CfgConstants{
             ISOMsg m1 = new ISOMsg();
             ISOPackager packager = new ISOIBPSPackager();
             m1.setPackager (packager);
-            
+            // prepare 102
             m1.set (new ISOField (BcConstants.ISO8583_START,  BcConstants.ISO8583_START_VALUE));
             m1.set (new ISOField (BcConstants.ISO8583_OP_NAME,  TestDummy.OPERATION_102));
             m1.set (new ISOField (BcConstants.ISO8583_DOC_ID,  BCUtils.getUniqueDocId()));
-            m1.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  docId));
+            m1.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  docId_101));
 
             respText = new String(m1.pack(), BcConstants.ENCODING);
+        } else {
+            throw new RuntimeException("should go thru 8583");
         }
         
 

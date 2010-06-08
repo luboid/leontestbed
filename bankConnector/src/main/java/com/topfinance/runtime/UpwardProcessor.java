@@ -1,16 +1,5 @@
 package com.topfinance.runtime;
 
-import java.io.InputStream;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.camel.Endpoint;
-import org.apache.camel.Exchange;
-import org.apache.camel.Message;
-import org.apache.commons.lang.StringUtils;
-import org.jpos.iso.ISOMsg;
-import org.jpos.iso.ISOPackager;
-
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgNode;
@@ -28,6 +17,17 @@ import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
 import com.topfinance.util.ResendUtil;
+
+import java.io.InputStream;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.camel.Endpoint;
+import org.apache.camel.Exchange;
+import org.apache.camel.Message;
+import org.apache.commons.lang.StringUtils;
+import org.jpos.iso.ISOMsg;
+import org.jpos.iso.ISOPackager;
 
 public class UpwardProcessor extends AbstractProcessor{
     
@@ -195,7 +195,7 @@ public class UpwardProcessor extends AbstractProcessor{
  
         else {
 
-        
+            throw new RuntimeException("should go thru 8583");
 //        // TODO This docRoot is in fact like a header.
 //        // here we just use this as both header and body.
 //        DocRoot msg = null;
@@ -283,7 +283,8 @@ public class UpwardProcessor extends AbstractProcessor{
             body = converter.objectToXml(jaxbObj);
         } else {
             // simply do nothing to body
-            body = this.getMsgContext().getSrcExchange().getIn().getBody(String.class);
+//            body = this.getMsgContext().getSrcExchange().getIn().getBody(String.class);
+            throw new RuntimeException("should go thru 8583");
         }
         
         String request = header.toText()+body;

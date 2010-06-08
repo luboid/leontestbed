@@ -50,7 +50,7 @@ public class Document {
      *     {@link FIToFIPaymentStatusReportV03 }
      *     
      */
-    public FIToFIPaymentStatusReportV03 getFIToFIPmtStsRpt() {
+    public FIToFIPaymentStatusReportV03 getFiToFIPmtStsRpt() {
         return fiToFIPmtStsRpt;
     }
 
@@ -62,7 +62,7 @@ public class Document {
      *     {@link FIToFIPaymentStatusReportV03 }
      *     
      */
-    public void setFIToFIPmtStsRpt(FIToFIPaymentStatusReportV03 value) {
+    public void setFiToFIPmtStsRpt(FIToFIPaymentStatusReportV03 value) {
         this.fiToFIPmtStsRpt = value;
     }
 

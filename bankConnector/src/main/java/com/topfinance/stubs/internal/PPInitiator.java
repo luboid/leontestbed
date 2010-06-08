@@ -47,7 +47,7 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
                     continue;
                 }
                 String url = BCUtils.getFullUrlFromPort(outPort);
-                
+                System.out.println("listenning on url=" + url);
                 from(url).process(processor);
             }
         } 
@@ -164,11 +164,12 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
             m1.set (new ISOField (BcConstants.ISO8583_PARTNER_ID,  partnerIdentity));
             m1.set (new ISOField (100,  "100"));
             m1.set (new ISOField (101,  "101"));
-            m1.set (new ISOField (102,  "102"));
+            m1.set (new ISOField (102,  "COMM"));
             
             requestText = new String(m1.pack(), BcConstants.ENCODING);
             
         } else {
+            throw new RuntimeException("should go thru 8583");
 //            DocRoot request = new DocRoot();
 //
 //            request.setDocId(BCUtils.getUniqueDocId());

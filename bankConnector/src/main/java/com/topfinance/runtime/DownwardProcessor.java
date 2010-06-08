@@ -1,14 +1,5 @@
 package com.topfinance.runtime;
 
-import java.io.InputStream;
-import java.util.List;
-
-import org.apache.camel.Endpoint;
-import org.apache.camel.Exchange;
-import org.apache.camel.ExchangePattern;
-import org.apache.camel.Message;
-import org.apache.commons.lang.StringUtils;
-
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgNode;
@@ -22,10 +13,23 @@ import com.topfinance.db.HiberEntry;
 import com.topfinance.db.ResendEntry;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.MsgHeader;
+import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
 import com.topfinance.util.ResendUtil;
+
+import java.io.InputStream;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.camel.Endpoint;
+import org.apache.camel.Exchange;
+import org.apache.camel.Message;
+import org.apache.commons.lang.StringUtils;
+import org.jpos.iso.ISOField;
+import org.jpos.iso.ISOMsg;
+import org.jpos.iso.ISOPackager;
 
 public class DownwardProcessor extends AbstractProcessor{
     public void log(String msg) {
@@ -145,46 +149,27 @@ public class DownwardProcessor extends AbstractProcessor{
         if(!getMsgContext().isAck()) {
             // TODO auditlog should be done after parsing and know whether it's ack or not
             auditLog(STATE_RECEIVED_REQ, "Received Message over transport: ", STATUS_PENDING);
+            // find outPort
+            ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
+            List<ICfgRouteRule> listRouteRule = cfgReader.getListDownRoute();  
+            
+            ICfgOutPort outPort = BCUtils.findRoute(listRouteRule, getMsgContext().getOperationName());
+
+             if(outPort ==null) {
+                 log("cannot find route rule matching");
+                 validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;             
+             } else {
+                 getMsgContext().setCfgOutPort(outPort);
+                 ICfgNode cfgHN = getMsgContext().getCfgInPort().getNode();
+                 ICfgNode cfgPN = outPort.getNode();  
+                 String hName = cfgHN.getName();
+                 String pName = cfgPN.getName();
+                 getMsgContext().setHnName(hName);
+                 getMsgContext().setPnName(pName);
+                 getMsgContext().setCfgHN(cfgHN);
+                 getMsgContext().setCfgPN(cfgPN);
+              }            
         }
-        
-        // TODO swap host and parter when testing on two machines
-        String hIdentity = origReceiver;
-        String pIdentity = origSender; 
-//        String hIdentity = origSender;
-//        String pIdentity = origReceiver;
-
-
-        // find outPort
-        ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
-        List<ICfgRouteRule> listRouteRule = cfgReader.getListDownRoute();  
-        
-        ICfgOutPort outPort = BCUtils.findRoute(listRouteRule, getMsgContext().getOperationName());
-        
-        
-//        ICfgNode cfgHN = cfgReader.getNodeByIdentity(hIdentity);
-//        ICfgNode cfgPN = cfgReader.getNodeByIdentity(pIdentity);   
-//        if( cfgHN==null || cfgPN==null ) {
-//            log("cannot find host with id{"+hIdentity+"} or partner with id{"+pIdentity+"}");
-//            validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
-//        } else if(!NODETYPE_HOST.equals(cfgHN.getType()) || !NODETYPE_PARTNER.equals(cfgPN.getType()) ) {
-//            log("must swap host with id{"+hIdentity+"} and partner with id{"+pIdentity+"}");
-//            validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
-//        }
-         if(outPort ==null) {
-             log("cannot find route rule matching");
-             validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;             
-         } else {
-             getMsgContext().setCfgOutPort(outPort);
-             ICfgNode cfgHN = getMsgContext().getCfgInPort().getNode();
-             ICfgNode cfgPN = outPort.getNode();  
-             String hName = cfgHN.getName();
-             String pName = cfgPN.getName();
-             getMsgContext().setHnName(hName);
-             getMsgContext().setPnName(pName);
-             getMsgContext().setCfgHN(cfgHN);
-             getMsgContext().setCfgPN(cfgPN);
-          }
-             
         // todo: check duplication
         // checkDuplicate();
         
@@ -217,6 +202,10 @@ public class DownwardProcessor extends AbstractProcessor{
                 getMsgContext().setParsedMsg(jaxbObj);
                 String msgId = BCUtils.extractMsgId(jaxbObj);
                 getMsgContext().setDocId(msgId);
+                String origMsgId = BCUtils.extractOrigMsgId(jaxbObj, mesgType);
+                getMsgContext().setOrigDocId(origMsgId);
+                log("==========msgId = "+msgId+", origMsgId="+origMsgId);
+                
             }
  
 //            DocRoot body = null;
@@ -433,9 +422,38 @@ public class DownwardProcessor extends AbstractProcessor{
     	String opName = getMsgContext().getOperationName();
     	ICfgReader reader = CfgImplFactory.loadCfgReader();
     	InputStream mapFile = reader.getMappingRule(opName, DIRECTION_DOWN);
-    	
-    	
+    	Map<String, String> mappings = Iso8583ToXml.loadMappings(mapFile);
+
+    	Object jaxbObj = getMsgContext().getParsedMsg();
+        Iso8583ToXml main = new Iso8583ToXml("com.topfinance.plugin.cnaps2.v00800102");
+        ISOMsg isoMsg = main.objectToIso8583(jaxbObj, mappings);
+        try {
+            isoMsg.set (new ISOField (BcConstants.ISO8583_OP_NAME, opName));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
         
+        System.out.println("obj="+isoMsg);
+        
+        try {
+            ISOPackager packager = new ISOIBPSPackager();
+            isoMsg.setPackager(packager);
+            byte[] b = isoMsg.pack();
+            System.out.println("packed="+new String(b));
+            getMsgContext().setPackagedMsg(new String(b, BcConstants.ENCODING));
+            
+            
+            ISOMsg m = new ISOMsg();
+            m.setPackager(new ISOIBPSPackager());
+            m.unpack(b);
+            String docId = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
+            System.out.println("=========docId="+docId);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
         auditLog(STATE_PKG_OUT_MSG, "packaged message to PP", STATUS_PENDING);
     }
     
@@ -498,15 +516,13 @@ public class DownwardProcessor extends AbstractProcessor{
 
         // send
         boolean isInOnly = true;
-        ExchangePattern expatn = ExchangePattern.InOnly;
         if(OP_REPLY_TYPE_SYNC.equals(cfgOpn.getDownReplyType())) {
             isInOnly = false;
-            expatn = ExchangePattern.InOut;
         }
         
 
         
-        log("directly dispatching to outport: "+cfgOP.getName());
+        log("directly dispatching to outport: "+cfgOP.getName()+", isInOnly="+isInOnly);
         try {
             syncReply = ServerRoutes.getInstance().produce(url, getMsgContext().getPackagedMsg(), isInOnly);
             

@@ -123,7 +123,7 @@ public class ISOIBPSPackager extends ISOBasePackager {
     /*096*/ new IFA_LLLCHAR (  1, ""),
     /*097*/ new IFA_LLLCHAR (  1, ""),
     /*098*/ new IFA_LLLCHAR (  1, ""),
-    /*099*/ new IFA_LLLCHAR (  1, ""),
+    /*099*/ new IFA_LLLCHAR (  50, ""),
     /*100*/ new IFA_LLLCHAR (  50, ""),
     /*101*/ new IFA_LLLCHAR (  50, ""),
     /*102*/ new IFA_LLLCHAR (  50, ""),
