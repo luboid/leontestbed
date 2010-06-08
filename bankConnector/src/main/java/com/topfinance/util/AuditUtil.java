@@ -9,11 +9,11 @@ import java.util.Map;
 
 public class AuditUtil {
     
-    private final static String TBL_NAME_AUDIT = "TBL_TRANSACTION";
-    private final static String TBL_NAME_DETAIL = "TBL_TRANSACTION_DETAIL";
+    private final static String TBL_NAME_AUDIT = "TBL_AUDIT";
+    private final static String TBL_NAME_DETAIL = "TBL_AUDIT_DETAIL";
     
-    private final static String SQL_INSERT_AUDIT = "insert into TBL_TRANSACTION (first_name,last_name) values(?,?);";
-    private final static String SQL_UPDATE_AUDIT = "update TBL_TRANSACTION set first_name = ?, last_name = ? where id =?";
+    private final static String SQL_INSERT_AUDIT = "insert into TBL_AUDIT (first_name,last_name) values(?,?);";
+    private final static String SQL_UPDATE_AUDIT = "update TBL_AUDIT set first_name = ?, last_name = ? where id =?";
     
         
     public static void saveAuditLog(AuditTransaction audit, AuditTransactionDetail detail){

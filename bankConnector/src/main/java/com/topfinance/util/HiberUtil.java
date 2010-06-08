@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class HiberUtil {
     
-    public static final String TBL_NAME = "TBL_HIBERENTRY";
+    public static final String TBL_NAME = "TBL_HIBER";
     
     public static final String SQL_GET_ALERT = "select hiberkey from "+TBL_NAME +" where status=? and EXPIRATION<?";
     public static final String SQL_GET = "select * from "+TBL_NAME +" where hiberkey=?"; 
