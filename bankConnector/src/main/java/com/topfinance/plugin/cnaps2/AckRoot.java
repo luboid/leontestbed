@@ -2,11 +2,13 @@ package com.topfinance.plugin.cnaps2;
 
 import com.topfinance.runtime.BcException;
 import com.topfinance.runtime.BcRuntimeException;
+import com.topfinance.util.BCUtils;
 
 import java.io.File;
 import java.io.StringReader;
 import java.io.StringWriter;
 
+import org.apache.log4j.Logger;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Serializer;
@@ -16,6 +18,7 @@ import org.simpleframework.xml.core.Persister;
 @Root
 public class AckRoot {
     
+    private static Logger logger = Logger.getLogger(AckRoot.class);
 //    0000报文接收成功
 //    0001报文重复，本报文被丢弃
 //    0002报文核验校验失败
@@ -63,11 +66,11 @@ public class AckRoot {
     public static AckRoot loadFromString(String str) throws BcException{
         AckRoot instance = null;
         try {
-            System.out.println("load ack from string: "+str);
+            logger.debug("load ack from string: "+str);
             Serializer serializer = new Persister();
             instance = serializer.read(AckRoot.class, new StringReader(str));
 
-            System.out.println("Done");
+            logger.debug("Done");
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new BcException(ex);
@@ -78,12 +81,12 @@ public class AckRoot {
     public static AckRoot loadFromFile(String path) {
         AckRoot instance = null;
         try {
-            System.out.println("load ack from path: "+path);
+            logger.debug("load ack from path: "+path);
             Serializer serializer = new Persister();
             File result = new File(path);    
             instance = serializer.read(AckRoot.class, result);
 
-            System.out.println("Done");
+            logger.debug("Done");
         } catch (Exception ex) {
             ex.printStackTrace();
         }

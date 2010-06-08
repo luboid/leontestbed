@@ -1,12 +1,15 @@
 package com.topfinance.plugin.cnaps2;
 
+import com.topfinance.util.ResendUtil;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.util.StringUtils;
 
 public class MsgHeader {
-    
+    private static Logger logger = Logger.getLogger(MsgHeader.class);
     private static final MsgField[] metas = new MsgField[] {
        MsgField.BEGIN_FLAG,
        MsgField.VERSION_ID,
@@ -117,7 +120,7 @@ public class MsgHeader {
         
     }
     public static MsgHeader fromText(String text) {
-        System.out.println("text="+text);
+        logger.debug("recovering MsgHeader from text="+text);
         MsgHeader res = new MsgHeader();
         for(MsgField meta : metas) {
             String name = meta.getName();

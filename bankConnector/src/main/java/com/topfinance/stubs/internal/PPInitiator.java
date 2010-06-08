@@ -9,6 +9,7 @@ import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.dummy.TestDummy;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
+import com.topfinance.runtime.UpwardProcessor;
 import com.topfinance.util.BCUtils;
 
 import java.util.List;
@@ -26,11 +27,14 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.PosixParser;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
 
 public class PPInitiator implements Runnable, Processor, CfgConstants{
+    private static Logger logger = Logger.getLogger(PPInitiator.class.getName());
+    
     
     public static class MyRoute extends RouteBuilder{
         Processor processor;
@@ -148,7 +152,7 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         String hostIdentity = "BankA";
         String partnerIdentity = "BankB";
 
-        
+        String docId = BCUtils.getUniqueDocId();
         String requestText = "";
         // package request
         if(TCP_PROVIDER_8583.equals(chosenInPort.getTransportInfo().getProvider())) {
@@ -158,7 +162,7 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
             
             m1.set (new ISOField (BcConstants.ISO8583_START,  BcConstants.ISO8583_START_VALUE));
             m1.set (new ISOField (BcConstants.ISO8583_OP_NAME,  TestDummy.OPERATION_101));
-            m1.set (new ISOField (BcConstants.ISO8583_DOC_ID,  BCUtils.getUniqueDocId()));
+            m1.set (new ISOField (BcConstants.ISO8583_DOC_ID, docId ));
             m1.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  ""));
             m1.set (new ISOField (BcConstants.ISO8583_HOST_ID,  hostIdentity));
             m1.set (new ISOField (BcConstants.ISO8583_PARTNER_ID,  partnerIdentity));
@@ -179,7 +183,6 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
 //            requestText = request.toText();
         }
         
-        log("requestText="+requestText);
         
         // send reques
         String url = BCUtils.getFullUrlFromPort(chosenInPort);
@@ -204,7 +207,9 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         // start the producer so it can operate
         producer.start();
 
-        log("sending pp request {"+requestText+"} to url: "+url);
+        logger.info("sending pp request docId="+docId+", to url: "+url);
+        logger.debug("rawMsg="+requestText);
+        
         producer.process(exchange);
 
 
@@ -220,11 +225,12 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         // process async response or ack
         String inUri = exchange.getFromEndpoint().getEndpointUri();
         String msg = exchange.getIn().getBody(String.class);
-        log("received message=" + msg+", from url="+exchange.getFromEndpoint().getEndpointUri());
+        logger.info("received message from url="+exchange.getFromEndpoint().getEndpointUri());
+        logger.debug("rawMsg="+msg);
         
         // TODO handle error msg
         if(msg.equals(BcConstants.MSG_PP_ERROR)) {
-            log("received error msg!!!!!!!");
+            logger.warn("received error msg!!!!!!!");
             return;
         }
         

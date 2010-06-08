@@ -98,7 +98,7 @@ public abstract class MessageContext {
     
     // TODO moved to plugin implementation?
     public boolean isAck() {
-        return TestDummy.OPERATION_900.equals(getOperationName());
+        return TestDummy.OPERATION_990.equals(getOperationName());
     }
     public String getDirection() {
         return direction;

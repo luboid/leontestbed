@@ -23,16 +23,17 @@ import org.apache.camel.component.jetty.JettyHttpComponent;
 import org.apache.camel.component.mina.MinaComponent;
 import org.apache.camel.component.mina.MinaConfiguration;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.log4j.Logger;
 
 
 public class BCUtils {
+    
+    private static Logger logger = Logger.getLogger(BCUtils.class);
     
     public static String getUniqueId() {
         return getUniqueId("uid-");
         
     }
-    
-
     
     public static String extractOrigMsgId(Object jaxbObj, String opName, Map<String, String> origMsgIdPaths) {
         String oPath = origMsgIdPaths.get(opName);
@@ -100,14 +101,14 @@ public class BCUtils {
             OmCfgAMQInfo amqji = (OmCfgAMQInfo)ti;
             amq.setBrokerURL(amqji.getBrokerUrl());
             camel.addComponent(ti.getPrefix(), amq);
-            System.out.println("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
+            logger.info("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
         }
         else if(CfgConstants.HTTP_PROVIDER_JETTY.equals(provider)) {
             JettyHttpComponent jetty = new JettyHttpComponent();
             OmCfgJettyInfo jettyti = (OmCfgJettyInfo)ti;
             // TODO setting up JettyHttpComponent with jettyti
             camel.addComponent(ti.getPrefix(), jetty);
-            System.out.println("adding component: "+ti.getPrefix());
+            logger.info("adding component: "+ti.getPrefix());
         }
         else if(CfgConstants.TCP_PROVIDER_8583.equals(provider)) {
             MinaComponent mina = new MinaComponent();
@@ -117,7 +118,7 @@ public class BCUtils {
             OmCfg8583Info iso8583ti = (OmCfg8583Info)ti;
             // TODO setting up MinaComponent with iso8583ti
             camel.addComponent(ti.getPrefix(), mina);
-            System.out.println("adding component: "+ti.getPrefix());
+            logger.info("adding component: "+ti.getPrefix());
         }
     
     }

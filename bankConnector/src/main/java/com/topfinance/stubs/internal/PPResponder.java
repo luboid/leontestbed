@@ -27,11 +27,15 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.PosixParser;
+import org.apache.log4j.Logger;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
 
 public class PPResponder implements Processor, CfgConstants{
+    
+    private static Logger logger = Logger.getLogger(PPResponder.class.getName());
+    
     public static class MyRoute extends RouteBuilder{
         Processor processor;
         public MyRoute(Processor processor) {
@@ -46,13 +50,13 @@ public class PPResponder implements Processor, CfgConstants{
                     continue;
                 }
                 String url = BCUtils.getFullUrlFromPort(outPort);
-                System.out.println("listenning on url=" + url);
+                logger.info("listenning on url=" + url);
                 from(url).process(processor);
             }
         }        
     }        
     public static void log(String msg) {
-        System.out.println("in PPResponder: "+msg);
+        logger.debug(msg);
     }
     CamelContext camel;
     ICfgReader reader;
@@ -97,7 +101,8 @@ public class PPResponder implements Processor, CfgConstants{
     public void process(Exchange exchange) throws Exception {
 
         String msg = exchange.getIn().getBody(String.class);
-        log("received message=" + msg + ", from url=" + exchange.getFromEndpoint().getEndpointUri());
+        logger.info("received message from url=" + exchange.getFromEndpoint().getEndpointUri());
+        logger.debug("rawMsg="+msg);
 
         ISOMsg m = new ISOMsg();
         m.setPackager(new ISOIBPSPackager());
@@ -105,7 +110,7 @@ public class PPResponder implements Processor, CfgConstants{
         String docId_101 = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
         
         String opName = m.getString(BcConstants.ISO8583_OP_NAME);
-        log("received opName="+opName);
+        logger.info("received opName="+opName+", docId="+docId_101);
         
         if(!TestDummy.OPERATION_101.equals(opName)) {
             // only handle 101
@@ -130,6 +135,8 @@ public class PPResponder implements Processor, CfgConstants{
         }
         
         url = BCUtils.getFullUrlFromPort(chosenInPort);
+        
+        String docId_102 = BCUtils.getUniqueDocId();
         String respText = "";
         if(TCP_PROVIDER_8583.equals(chosenInPort.getTransportInfo().getProvider())) {
             ISOMsg m1 = new ISOMsg();
@@ -138,7 +145,7 @@ public class PPResponder implements Processor, CfgConstants{
             // prepare 102
             m1.set (new ISOField (BcConstants.ISO8583_START,  BcConstants.ISO8583_START_VALUE));
             m1.set (new ISOField (BcConstants.ISO8583_OP_NAME,  TestDummy.OPERATION_102));
-            m1.set (new ISOField (BcConstants.ISO8583_DOC_ID,  BCUtils.getUniqueDocId()));
+            m1.set (new ISOField (BcConstants.ISO8583_DOC_ID, docId_102));
             m1.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  docId_101));
 
             respText = new String(m1.pack(), BcConstants.ENCODING);
@@ -147,8 +154,9 @@ public class PPResponder implements Processor, CfgConstants{
         }
         
 
-        System.out.println("url="+url);
-        
+
+        logger.info("dispatching 102 docId="+docId_102+", to url="+url);
+        logger.debug("rawMsg="+respText);
         // send async pp resp in separate thread
         executor.execute(new SendJob(url, camel, respText));
         
@@ -181,10 +189,7 @@ public class PPResponder implements Processor, CfgConstants{
                     Producer producer = endpoint.createProducer();
                     // start the producer so it can operate
                     producer.start();
-
-                    System.out.println("sending resp {"+text+"} to url: "+url);
                     producer.process(exchange);
-
                     // sync pp ack
 //                    String ack = exchange.getOut().getBody(String.class);
 //                    System.out.println("... received ack: " + ack);

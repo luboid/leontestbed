@@ -28,13 +28,17 @@ import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
 
 public class DownwardProcessor extends AbstractProcessor{
+    
+    private static Logger logger = Logger.getLogger(DownwardProcessor.class.getName());
+    
     public void log(String msg) {
-        System.out.println("in DownwardProcessor: "+msg);
+        logger.debug("in DownwardProcessor: "+msg);
     }
     public DownwardProcessor() {
         
@@ -97,7 +101,8 @@ public class DownwardProcessor extends AbstractProcessor{
         
         Message min = exchange.getIn();
         String tpreq = min.getBody(String.class);
-        log("inport=" + inEp + ", inport-type=" + inEp.getClass() + ", uri=" + uri+", tpreq=" + tpreq);
+        logger.info("received msg on uri=" + uri);
+        logger.debug("rawMsg=[" + tpreq+"]");
 
         return tpreq;
     }
@@ -157,7 +162,7 @@ public class DownwardProcessor extends AbstractProcessor{
             ICfgOutPort outPort = BCUtils.findRoute(listRouteRule, getMsgContext().getOperationName());
 
              if(outPort ==null) {
-                 log("cannot find route rule matching");
+                 logger.warn("cannot find route rule matching");
                  validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;             
              } else {
                  getMsgContext().setCfgOutPort(outPort);
@@ -284,7 +289,7 @@ public class DownwardProcessor extends AbstractProcessor{
         } else {
             // not matched, this ack is just discarded
             // do nothing
-            log("received ack which the original message is not found: "+origMesgId);
+            logger.warn("received ack which the original message is not found: "+origMesgId);
         }
     }
     
@@ -316,7 +321,7 @@ public class DownwardProcessor extends AbstractProcessor{
         MsgHeader msgHeader = new MsgHeader(
            getMsgContext().getOrigSender(),
            getMsgContext().getOrigReceiver(),
-           TestDummy.OPERATION_900,
+           TestDummy.OPERATION_990,
            getMsgContext().getMesgId(),
            getMsgContext().getOrigMesgId()
         ); 
@@ -409,7 +414,7 @@ public class DownwardProcessor extends AbstractProcessor{
         
     }    
     private void sendErrMsg() {
-        log("sendErrMsg!!!!");
+        logger.warn("sendErrMsg!!!!");
     }
     protected void packageReq() {
         // plugin impl need compose the output msg format
@@ -435,21 +440,21 @@ public class DownwardProcessor extends AbstractProcessor{
             throw new RuntimeException(ex);
         }
         
-        System.out.println("obj="+isoMsg);
+        logger.debug("obj="+isoMsg);
         
         try {
             ISOPackager packager = new ISOIBPSPackager();
             isoMsg.setPackager(packager);
             byte[] b = isoMsg.pack();
-            System.out.println("packed="+new String(b));
+            logger.debug("packed="+new String(b));
             getMsgContext().setPackagedMsg(new String(b, BcConstants.ENCODING));
             
             
-            ISOMsg m = new ISOMsg();
-            m.setPackager(new ISOIBPSPackager());
-            m.unpack(b);
-            String docId = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
-            System.out.println("=========docId="+docId);
+//            ISOMsg m = new ISOMsg();
+//            m.setPackager(new ISOIBPSPackager());
+//            m.unpack(b);
+//            String docId = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
+//            logger.debug("=========docId="+docId);
             
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -471,7 +476,7 @@ public class DownwardProcessor extends AbstractProcessor{
         // always InOnly
         // send
         
-        log("dispatching async ack {"+ackText+"} to outport: "+ackPort.getName());
+        logger.info("dispatching async ack {"+ackText+"} to outport: "+ackPort.getName()+", on url="+url);
         ServerRoutes.getInstance().produce(url, ackText, true);
         
         return;
@@ -523,7 +528,7 @@ public class DownwardProcessor extends AbstractProcessor{
         
 
         
-        log("directly dispatching to outport: "+cfgOP.getName()+", isInOnly="+isInOnly);
+        logger.info("directly dispatching to outport: "+cfgOP.getName()+", url="+url+", isInOnly="+isInOnly);
         try {
             syncReply = ServerRoutes.getInstance().produce(url, getMsgContext().getPackagedMsg(), isInOnly);
             

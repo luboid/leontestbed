@@ -10,8 +10,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 public class HiberUtil {
-    
+    private static Logger logger = Logger.getLogger(HiberUtil.class);
     public static final String TBL_NAME = "TBL_HIBER";
     
     public static final String SQL_GET_ALERT = "select hiberkey from "+TBL_NAME +" where status=? and EXPIRATION<?";
@@ -59,7 +61,7 @@ public class HiberUtil {
         HiberEntry hiber = new HiberEntry();
         for(String key:fields.keySet()) {
             Object val = fields.get(key);
-            System.out.println("key="+key+", val="+val+", val.type="+val.getClass().getName());
+            logger.trace("key="+key+", val="+val+", val.type="+val.getClass().getName());
             if(val instanceof BigInteger) {
                 val = ((BigInteger)val).longValue();
             }

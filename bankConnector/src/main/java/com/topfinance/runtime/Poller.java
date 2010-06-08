@@ -10,11 +10,11 @@ import org.apache.log4j.Logger;
 
 public class Poller {
     
-    Logger logger = Logger.getLogger(Poller.class.getName());
+    private static Logger logger = Logger.getLogger(Poller.class);
     
     public void onPoll(Exchange exchange) {
         
-        System.out.println("onPoll!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        logger.info("onPoll......................");
         List<String> resendList = ResendUtil.getResendAlerts();
         for(String resendkey : resendList) {
             try {

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.TestCase;
+import org.apache.log4j.Logger;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Serializer;
@@ -26,6 +27,8 @@ import org.simpleframework.xml.strategy.Strategy;
 
 @Root
 public class DummyCfgReader extends TestCase implements ICfgReader {
+    private static Logger logger = Logger.getLogger(DummyCfgReader.class);
+    
     
     public final static String FILESTORE = "D:/bankConnector/dummyConfig.xml";
     public final static String SAMPLEDOC = "D:/bankConnector/dummyDoc.xml";
@@ -49,12 +52,12 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
     }
     public static void init(String fileName) {
         try {
-            System.out.println("Deserialize configuration from " + fileName + "...");
+            logger.info("Deserialize configuration from " + fileName + "...");
             Strategy strategy = new CycleStrategy("id", "ref");
             Serializer serializer = new Persister(strategy);
             File result = new File(fileName);
             instance = serializer.read(DummyCfgReader.class, result);
-            System.out.println("Done");
+            logger.info("Done");
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
@@ -154,7 +157,7 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
     public ICfgInPort getInPortByUri(String uri) {
         ICfgInPort res = null;
         for(ICfgInPort ip : listInPort) {
-            System.out.println("in getInPortByUri: "+BCUtils.getFullUrlFromPort(ip));
+            logger.debug("in getInPortByUri: "+BCUtils.getFullUrlFromPort(ip));
             if(uri.equals(BCUtils.getFullUrlFromPort(ip))) {
                 res = ip;
                 break;
@@ -188,7 +191,6 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
         	}
         }        
         InputStream mapFile = Iso8583ToXml.class.getResourceAsStream(mapFileName);
-        System.out.println("mapFile=" + mapFile);
         return mapFile;
     }    
     

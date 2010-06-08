@@ -22,24 +22,25 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 
 
 public class Iso8583ToXml {
     
+    private static Logger logger = Logger.getLogger(Iso8583ToXml.class);
+    
     private String pkgName = "com.topfinance.plugin.cnaps2.dummy";
-    
-    
-    Map<String, Object> pool = new HashMap<String, Object>();
-    String rootName;
+    private Map<String, Object> pool = new HashMap<String, Object>();
+    private String rootName;
     
     public Iso8583ToXml(String pkgName) {
         this.pkgName = pkgName;
     }
     
     private static void debug(String msg) {
-        System.out.println("DEBUG in [Iso8583ToXml]: " +msg);
+        logger.debug("DEBUG in [Iso8583ToXml]: " +msg);
     }
     
     public String objectToXml(Object object) {
@@ -285,23 +286,7 @@ public class Iso8583ToXml {
     
     public static void main(String[] args) throws Exception{
         
-//        ISOMsg m = new ISOMsg();
-//        m.set (new ISOField (BcConstants.ISO8583_OP_NAME,  TestDummy.OPERATION_101));
-//        m.set (new ISOField (BcConstants.ISO8583_DOC_ID,  BCUtils.getUniqueDocId()));
-//        m.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  ""));
-//        m.set (new ISOField (BcConstants.ISO8583_HOST_ID,  "xxxx"));
-//        m.set (new ISOField (BcConstants.ISO8583_PARTNER_ID,  "yyyy"));
-//        
-//        InputStream mapFile = Iso8583ToXml.class.getResourceAsStream("/com/topfinance/plugin/cnaps2/dummy/dummy-up.map");
-//        System.out.println("mapFile="+mapFile);
-//        Map<String, Integer> mappings = Iso8583ToXml.loadMappings(mapFile);
-//        
-//        Iso8583ToXml main = new Iso8583ToXml();
-//        Object obj = main.iso8583ToObject(m, mappings);
-//        System.out.println("obj="+obj);
-//        
-//        String xml = main.objectToXml(obj);
-//        System.out.println("xml="+xml);
+        // for unit test, see test.TestIsoConverter
         
     }
 

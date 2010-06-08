@@ -26,13 +26,16 @@ import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
 
 public class UpwardProcessor extends AbstractProcessor{
     
+    private static Logger logger = Logger.getLogger(UpwardProcessor.class);
+    
     public void log(String msg) {
-        System.out.println("in UpwardProcessor: "+msg);
+        logger.debug(msg);
     }
     
     public UpwardProcessor() {
@@ -66,7 +69,6 @@ public class UpwardProcessor extends AbstractProcessor{
         
         // transform and package
         packageReq();
-        
 
         String syncReply = send();
         
@@ -118,13 +120,13 @@ public class UpwardProcessor extends AbstractProcessor{
     private void sendErrMsg() {
         // for upward. need send back error to pp
         try {
-        ICfgInPort inPort = getMsgContext().getCfgInPort();
-        ICfgOutPort outPort = inPort.getAckPort();
-        String url = BCUtils.getFullUrlFromPort(outPort);
-        
-        String errorText = BcConstants.MSG_PP_ERROR;
-        log("sendErrMsg!!!!");
-        ServerRoutes.getInstance().produce(url, errorText, true);
+            ICfgInPort inPort = getMsgContext().getCfgInPort();
+            ICfgOutPort outPort = inPort.getAckPort();
+            String url = BCUtils.getFullUrlFromPort(outPort);
+
+            String errorText = BcConstants.MSG_PP_ERROR;
+            logger.info("sendErrMsg!!!!");
+            ServerRoutes.getInstance().produce(url, errorText, true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -135,10 +137,10 @@ public class UpwardProcessor extends AbstractProcessor{
         Exchange exchange = getMsgContext().getSrcExchange();
         Endpoint inEp = exchange.getFromEndpoint();
         String uri = inEp.getEndpointUri();
-        log("inport=" + inEp + ", inport-type=" + inEp.getClass() + ", uri=" + uri);
         Message min = exchange.getIn();
         String ppreq = min.getBody(String.class);
-        log("ppreq=" + ppreq);
+        logger.info("received msg on uri=" + uri);
+        logger.debug("rawMsg=["+ppreq+"]");
 
         auditLog(STATE_RECEIVED_REQ, "Received Message", STATUS_PENDING);
         return ppreq;
@@ -189,7 +191,7 @@ public class UpwardProcessor extends AbstractProcessor{
             hIdentity = msg.getString(BcConstants.ISO8583_HOST_ID);
             pIdentity = msg.getString(BcConstants.ISO8583_PARTNER_ID);
             
-            log("opName="+opName+", docId="+docId);
+            logger.info("opName="+opName+", docId="+docId+", origDocId="+origDocId);
             
         }
  
@@ -335,7 +337,9 @@ public class UpwardProcessor extends AbstractProcessor{
         // send
         boolean isInOnly = OP_ACK_TYPE_SYNC.equals(ackType) ?  false : true;
         
-        log("directly dispatching to outport: "+cfgOP.getName());
+        logger.info("dispatching to outport: "+cfgOP.getName()+", url="+url);
+        logger.debug("rawMsg=["+getMsgContext().getPackagedMsg()+"]");
+        
         syncReply = ServerRoutes.getInstance().produce(url, getMsgContext().getPackagedMsg(), isInOnly);
 
         auditLog(STATE_SEND_OUT_MSG, "sending msg to TP", STATUS_PENDING);     
@@ -387,7 +391,7 @@ public class UpwardProcessor extends AbstractProcessor{
             }
             
             String ack = syncReply;
-            log("received tp ack="+ack);
+            logger.info("received 990 ack="+ack);
             
             String headerText = ack.substring(0, MsgHeader.TOTAL_LENGTH);
             String bodyText = ack.substring(MsgHeader.TOTAL_LENGTH);

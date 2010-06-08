@@ -9,8 +9,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 public class ResendUtil {
-    
+    private static Logger logger = Logger.getLogger(ResendUtil.class);
     public static final String TBL_NAME = "TBL_RESEND";
     
     
@@ -58,7 +60,7 @@ public class ResendUtil {
         ResendEntry hiber = new ResendEntry();
         for(String key:fields.keySet()) {
             Object val = fields.get(key);
-            System.out.println("key="+key+", val="+val+", val.type="+val.getClass().getName());
+            logger.trace("key="+key+", val="+val+", val.type="+val.getClass().getName());
             if(val instanceof BigInteger) {
                 val = ((BigInteger)val).longValue();
             }

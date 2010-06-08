@@ -8,6 +8,7 @@ import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.plugin.BasePlugin;
 import com.topfinance.util.BCUtils;
+import com.topfinance.util.DbUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +19,11 @@ import org.apache.camel.Exchange;
 import org.apache.camel.ExchangePattern;
 import org.apache.camel.Producer;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.log4j.Logger;
 
 public class ServerRoutes extends RouteBuilder implements CfgConstants{
+    private static Logger logger = Logger.getLogger(ServerRoutes.class);
+    
     
     private ServerRoutes() {
     }
@@ -83,7 +87,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         for(ICfgInPort inPort : inPorts) {
             i++;
             String url = BCUtils.getFullUrlFromPort(inPort);
-            System.out.println("url="+url);
+            logger.info("listening on url="+url);
             inUrls.add(url);
         }
 
@@ -111,7 +115,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         
         public void preprocess(Exchange exchange) throws Exception {
             String inUri = exchange.getFromEndpoint().getEndpointUri();
-            System.out.println("inUri="+inUri);
+            logger.debug("inUri="+inUri);
             ICfgReader reader = CfgImplFactory.loadCfgReader();
             ICfgInPort cfgIP = reader.getInPortByUri(inUri);
             String direction = cfgIP.getDirection();
@@ -157,7 +161,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         }       
         
         public void processResendAlertMessage(Exchange exchange) throws Exception {
-            System.out.println("processResendAlertMessage!!!!!!!!!!!");
+            logger.info("processResendAlertMessage......");
             // TODO get protocol from msg header
             String pluginName = "";
             BasePlugin plugin = BasePlugin.loadPlugin(pluginName);
@@ -166,7 +170,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         }
         
         public void processHiberAlertMessage(Exchange exchange) throws Exception {
-            System.out.println("processHiberAlertMessage!!!!!!!!!!!");
+            logger.info("processHiberAlertMessage......");
             // TODO get protocol from msg header
             String pluginName = "";
             BasePlugin plugin = BasePlugin.loadPlugin(pluginName);

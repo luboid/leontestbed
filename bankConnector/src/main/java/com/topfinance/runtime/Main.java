@@ -4,6 +4,7 @@ import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.util.BCUtils;
+import com.topfinance.util.DbUtils;
 
 import java.util.List;
 
@@ -14,13 +15,15 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.PosixParser;
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 public class Main {
+    private static Logger logger = Logger.getLogger(Main.class);
     
     public static void log(String msg) {
-        System.out.println(msg);
+        logger.debug(msg);
     }
     private static ApplicationContext ctx;
     
@@ -46,7 +49,7 @@ public class Main {
             if(cmd.hasOption("cfg")) {
                 cfg = cmd.getOptionValue("cfg");
             }
-            log("spring="+spring +", cfg="+cfg);
+            logger.info("spring="+spring +", cfg="+cfg);
             ctx = new FileSystemXmlApplicationContext(spring);
             // load configurations
             CfgImplFactory.init(cfg);
