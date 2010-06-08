@@ -1,5 +1,8 @@
 package com.topfinance.converter;
 
+import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.runtime.BcConstants;
+
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -22,9 +25,6 @@ import org.apache.commons.lang.StringUtils;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 
-import com.topfinance.cfg.dummy.TestDummy;
-import com.topfinance.runtime.BcConstants;
-
 
 public class Iso8583ToXml {
     
@@ -39,7 +39,7 @@ public class Iso8583ToXml {
     }
     
     private static void debug(String msg) {
-        System.out.println(msg);
+        System.out.println("DEBUG in [Iso8583ToXml]: " +msg);
     }
     
     public String objectToXml(Object object) {
@@ -47,7 +47,7 @@ public class Iso8583ToXml {
         try {
                 JAXBContext jaxbContext = JAXBContext.newInstance(pkgName);
                 Marshaller marshaller = jaxbContext.createMarshaller();
-                // marshaller.setProperty(Marshaller.JAXB_ENCODING,Constants.ENCODING_GBK);
+                marshaller.setProperty(Marshaller.JAXB_ENCODING, BcConstants.ENCODING);
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
                 marshaller.setProperty(Marshaller.JAXB_FRAGMENT, false);
                 
@@ -55,27 +55,30 @@ public class Iso8583ToXml {
                 Class ofClazz = Class.forName(pkgName+".ObjectFactory");
                 Object factory = ofClazz.newInstance();
                 Method method = ofClazz.getDeclaredMethod("createDocument", docClazz);
-                JAXBElement webFlowElement = (JAXBElement)method.invoke(factory, docClazz.cast(object));
+                JAXBElement jaxbElement = (JAXBElement)method.invoke(factory, docClazz.cast(object));
                 
                 StringWriter sw = new StringWriter();
-                marshaller.marshal(webFlowElement, sw);
+                marshaller.marshal(jaxbElement, sw);
                 rtnStr = sw.toString();
                 
                 // TODO remove the header in a better way: <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                 rtnStr = StringUtils.substringAfter(rtnStr, "?>").trim();
         } catch (Exception e) {
                 e.printStackTrace();
+                throw new RuntimeException(e);
         }
         return rtnStr;
     }
-    public Object xmlToObject(String xml) throws Exception {
+    public Object xmlToObject(String xml) {
         Object jaxbObj = null;
-
-        JAXBContext jaxbContext = JAXBContext.newInstance(pkgName);
-        Unmarshaller unMarshaller = jaxbContext.createUnmarshaller();
-        JAXBElement jaxbElement = (JAXBElement)unMarshaller.unmarshal(new StringReader(xml));
-        jaxbObj = jaxbElement.getValue();
-
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(pkgName);
+            Unmarshaller unMarshaller = jaxbContext.createUnmarshaller();
+            JAXBElement jaxbElement = (JAXBElement)unMarshaller.unmarshal(new StringReader(xml));
+            jaxbObj = jaxbElement.getValue();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
         return jaxbObj;
     }
     
@@ -107,9 +110,12 @@ public class Iso8583ToXml {
                 String[] paths = parseObjPath(key);
                 String oPath = paths[0];
                 String att = paths[1];
-                System.out.println("oPath="+oPath+", att="+att);
                 
-                Object obj = findObject(oPath);
+                debug("================oPath="+oPath+", att="+att);
+                
+                // this is to save the "Document." from mapping rule
+                // todo is there a better way?
+                Object obj = findObject("Document."+oPath);
                 
                 
                 String mapto = mappings.get(key);
@@ -149,10 +155,11 @@ public class Iso8583ToXml {
     
     private String[] parseObjPath(String key) {
         if(rootName==null) {
-            rootName = StringUtils.substringBefore(key, ".");
-            if(StringUtils.isEmpty(rootName)) {
-                throw new RuntimeException("rootName not found for key="+key);
-            }
+//            rootName = StringUtils.substringBefore(key, ".");
+//            if(StringUtils.isEmpty(rootName)) {
+//                throw new RuntimeException("rootName not found for key="+key);
+//            }
+            rootName="Document";
         }
 
         int index = key.lastIndexOf('.');
@@ -171,7 +178,7 @@ public class Iso8583ToXml {
         String parentPath = "";
         for(int i=0;i<levels.length;i++) {
             String level = levels[i];
-            System.out.println("i="+i+", level="+level+", parentPath="+parentPath+", parent="+parent);
+            debug("i="+i+", level="+level+", parentPath="+parentPath+", parent="+parent);
             Object thisObj = findObject(parent, parentPath, level);
             res = thisObj;
             
@@ -265,7 +272,7 @@ public class Iso8583ToXml {
                 
             }
             else {
-                System.out.println("skipping map="+map);
+                debug("skipping map="+map);
             }
         }
         } catch (Exception ex) {

@@ -1,10 +1,12 @@
 # mapping rule for iso->xml conversion
 
-Document.fiToFICstmrCdtTrf.grpHdr.msgId=ISO[122]
+fiToFICstmrCdtTrf.grpHdr.msgId=ISO[122]
 
 #btchBookg is a field with fixed value "false"
-Document.fiToFICstmrCdtTrf.grpHdr.btchBookg=ISO[100]
+fiToFICstmrCdtTrf.grpHdr.btchBookg=ISO[100]
+
 # cdtTrfTxInf is a list
-Document.fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId=ISO[101]
+fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId=ISO[101]
+
 # cd is an enumeration
-Document.fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.tp.cd=ISO[102]
+fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.tp.cd=ISO[102]

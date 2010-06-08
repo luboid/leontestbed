@@ -1,5 +1,7 @@
 # mapping rule for iso->xml conversion for 102
 
-Document.fiToFIPmtStsRpt.grpHdr.msgId=ISO[122]
-Document.fiToFIPmtStsRpt.orgnlGrpInfAndSts.orgnlMsgId=ISO[123]
+
+fiToFIPmtStsRpt.grpHdr.msgId=ISO[122]
+
+fiToFIPmtStsRpt.orgnlGrpInfAndSts.orgnlMsgId=ISO[123]
 

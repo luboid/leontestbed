@@ -32,14 +32,9 @@ public class BCUtils {
         
     }
     
-    private static Map<String, String> origMsgIdPaths = new HashMap<String, String>();
-    static {
-        // TODO this is a static list according to spec
-        origMsgIdPaths.put(TestDummy.OPERATION_601, "bkToCstmrDbtCdtNtfctn.ntfctn[0].id");
-        origMsgIdPaths.put(TestDummy.OPERATION_102, "fiToFIPmtStsRpt.orgnlGrpInfAndSts.orgnlMsgId");
-    }
+
     
-    public static String extractOrigMsgId(Object jaxbObj, String opName) {
+    public static String extractOrigMsgId(Object jaxbObj, String opName, Map<String, String> origMsgIdPaths) {
         String oPath = origMsgIdPaths.get(opName);
         if(oPath==null) {
             return null;

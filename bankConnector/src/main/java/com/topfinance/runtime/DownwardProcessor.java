@@ -12,6 +12,7 @@ import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.db.HiberEntry;
 import com.topfinance.db.ResendEntry;
 import com.topfinance.plugin.cnaps2.AckRoot;
+import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.util.AuditUtil;
@@ -202,7 +203,7 @@ public class DownwardProcessor extends AbstractProcessor{
                 getMsgContext().setParsedMsg(jaxbObj);
                 String msgId = BCUtils.extractMsgId(jaxbObj);
                 getMsgContext().setDocId(msgId);
-                String origMsgId = BCUtils.extractOrigMsgId(jaxbObj, mesgType);
+                String origMsgId = BCUtils.extractOrigMsgId(jaxbObj, mesgType, Cnaps2Constants.OPATHS_ORIG_MSG_ID);
                 getMsgContext().setOrigDocId(origMsgId);
                 log("==========msgId = "+msgId+", origMsgId="+origMsgId);
                 

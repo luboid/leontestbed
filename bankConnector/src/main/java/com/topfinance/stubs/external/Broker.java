@@ -11,6 +11,7 @@ import com.topfinance.cfg.om.OmCfgAMQInfo;
 import com.topfinance.cfg.om.OmCfgJettyInfo;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.AckRoot;
+import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
 import com.topfinance.runtime.BcException;
 import com.topfinance.util.BCUtils;
@@ -319,7 +320,7 @@ public class Broker implements Processor, CfgConstants{
             
             if(jaxbObj!=null) {
                 docId_102 = BCUtils.extractMsgId(jaxbObj);
-                docId_101 = BCUtils.extractOrigMsgId(jaxbObj, mesgType);
+                docId_101 = BCUtils.extractOrigMsgId(jaxbObj, mesgType, Cnaps2Constants.OPATHS_ORIG_MSG_ID);
                 
             }
             
@@ -337,10 +338,11 @@ public class Broker implements Processor, CfgConstants{
             // todo use a more generic way to generate jaxb obj
             
             Map<String, String> mapping = new HashMap<String, String>();
-            mapping.put("Document.bkToCstmrDbtCdtNtfctn.grpHdr.msgId", BCUtils.getUniqueDocId());
+            mapping.put(Cnaps2Constants.MSG_ID_601, BCUtils.getUniqueDocId());
+            mapping.put(Cnaps2Constants.ORIG_MSG_ID_601, docId_101);            
             // just some biz level data
-            mapping.put("Document.bkToCstmrDbtCdtNtfctn.ntfctn[0].addtlNtfctnInf", BCUtils.getUniqueId("addinfo-"));
-            mapping.put("Document.bkToCstmrDbtCdtNtfctn.ntfctn[0].id", docId_101);
+            mapping.put(Cnaps2Constants.TEST_DATA_601_1, BCUtils.getUniqueId("addinfo-"));
+
             
             String pkg = Iso8583ToXml.getPackageName(TestDummy.OPERATION_601);
             Iso8583ToXml converter = new Iso8583ToXml(pkg);
@@ -360,10 +362,11 @@ public class Broker implements Processor, CfgConstants{
                                                 BCUtils.getUniqueId(), 
                                                 mesgRefId
                                              );             
-            mapping.put("Document.bkToCstmrDbtCdtNtfctn.grpHdr.msgId", BCUtils.getUniqueDocId());
+            mapping.put(Cnaps2Constants.MSG_ID_601, BCUtils.getUniqueDocId());
+            mapping.put(Cnaps2Constants.ORIG_MSG_ID_601, docId_102);  
             // just some biz level data
-            mapping.put("Document.bkToCstmrDbtCdtNtfctn.ntfctn[0].addtlNtfctnInf", BCUtils.getUniqueId("addinfo-"));
-            mapping.put("Document.bkToCstmrDbtCdtNtfctn.ntfctn[0].id", docId_102);
+            mapping.put(Cnaps2Constants.TEST_DATA_601_1, BCUtils.getUniqueId("addinfo-"));
+
             
             converter = new Iso8583ToXml(pkg);
             outBody = converter.iso8583ToObject(null, mapping);
