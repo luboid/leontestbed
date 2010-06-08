@@ -62,7 +62,7 @@ CREATE TABLE TBL_RESEND (
         RESENDKEY          VARCHAR2(255)    PRIMARY KEY,
         AUDIT_ID        	VARCHAR2(512)    NULL,
         STATUS             VARCHAR2(64)     NULL,
-        TS                 TIMESTAMP	not null,
+        TS                 TIMESTAMP			DEFAULT SYSTIMESTAMP,
         EXPIRATION         NUMBER(18)  not null,
         INPORT_NAME        VARCHAR2(64)     NULL,
         BIN                BLOB          NULL,
