@@ -120,8 +120,11 @@ public class UpwardProcessor extends AbstractProcessor{
     private void sendErrMsg() {
         // for upward. need send back error to pp
         try {
+            ICfgReader reader = CfgImplFactory.loadCfgReader();
+            
             ICfgInPort inPort = getMsgContext().getCfgInPort();
-            ICfgOutPort outPort = inPort.getAckPort();
+            ICfgOutPort outPort = reader.getAckPortByIP(inPort);
+            
             String url = BCUtils.getFullUrlFromPort(outPort);
 
             String errorText = BcConstants.MSG_PP_ERROR;
@@ -170,7 +173,8 @@ public class UpwardProcessor extends AbstractProcessor{
         // possibly be isoMessage or cmtMessage
 //        IsoMessage isoMsg = new IsoMessage();
 //        int type = isoMsg.getType();
-        if(TCP_PROVIDER_8583.equals(getMsgContext().getCfgInPort().getTransportInfo().getProvider())) {
+        ICfgReader reader = CfgImplFactory.loadCfgReader();
+        if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(getMsgContext().getCfgInPort()).getProvider())) {
             ISOMsg msg = new ISOMsg();
             try {
                 String req = (String)getMsgContext().getSrcExchange().getIn().getBody();
@@ -238,8 +242,8 @@ public class UpwardProcessor extends AbstractProcessor{
         ICfgOutPort outPort = findRoute();
         getMsgContext().setCfgOutPort(outPort);
         
-        ICfgNode cfgHN = getMsgContext().getCfgInPort().getNode();
-        ICfgNode cfgPN = getMsgContext().getCfgOutPort().getNode();
+        ICfgNode cfgHN = cfgReader.getNodeByPort(getMsgContext().getCfgInPort());
+        ICfgNode cfgPN = cfgReader.getNodeByPort(getMsgContext().getCfgOutPort());
         // todo: verify the cfg existed
         
         String hName = cfgHN.getName();
@@ -270,7 +274,7 @@ public class UpwardProcessor extends AbstractProcessor{
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
         String body = "";
         
-        if (TCP_PROVIDER_8583.equals(getMsgContext().getCfgInPort().getTransportInfo().getProvider())) {
+        if (TCP_PROVIDER_8583.equals(cfgReader.getTransInfoByPort(getMsgContext().getCfgInPort()).getProvider())) {
             // TODO retrieve mapFile and pkgName based on opName, could be a db column
 
             InputStream mapFile = cfgReader.getMappingRule(mesgType, DIRECTION_UP); 
@@ -352,23 +356,9 @@ public class UpwardProcessor extends AbstractProcessor{
         // filling in some info of CfgOutPort( which is known) for the next step routing
         // the info can be carried either in a header or property of exchange
         ICfgOperation cfgOp = cfgReader.getOperation(getMsgContext().getProtocol(), getMsgContext().getOperationName());
-        List<ICfgRouteRule> listRouteRule = cfgReader.getListUpRoute();    
-        ICfgRouteRule result = null;
-        for(ICfgRouteRule rr : listRouteRule) {
-            String operationMask = rr.getOperationMask();
-            ICfgInPort ip = rr.getInPort();
-            if( cfgOp.getName().startsWith(operationMask)
-                // TODO need match Inport ?
-                // && ip.getName().equals(inPort.getName())
-                ) {
-                result = rr;
-                break;
-            }
-        }
+        List<ICfgRouteRule> listRouteRule = cfgReader.getListUpRoute();  
         
-        return result.getOutPort();
-        
-        
+        return BCUtils.findRoute(listRouteRule, cfgOp.getName());
     }
     
     

@@ -155,7 +155,7 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         String docId = BCUtils.getUniqueDocId();
         String requestText = "";
         // package request
-        if(TCP_PROVIDER_8583.equals(chosenInPort.getTransportInfo().getProvider())) {
+        if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(chosenInPort).getProvider())) {
             ISOMsg m1 = new ISOMsg();
             ISOPackager packager = new ISOIBPSPackager();
             m1.setPackager (packager);

@@ -8,11 +8,11 @@ public interface ICfgRouteRule extends ICfgItem{
     public int getSequence();
     public void setSequence(int sequence);
     
-    public ICfgOutPort getOutPort();
-    public void setOutPort(ICfgOutPort outPort);
-    
-    public ICfgInPort getInPort();
-    public void setInPort(ICfgInPort inPort);
+//    public ICfgOutPort getOutPort();
+//    public void setOutPort(ICfgOutPort outPort);
+//    
+//    public ICfgInPort getInPort();
+//    public void setInPort(ICfgInPort inPort);
     
     public String getOperationMask();
     public void setOperationMask(String operationMask);

@@ -1,13 +1,13 @@
 package com.topfinance.cfg.om;
 
-import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.cfg.ICfgJettyInfo;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.simpleframework.xml.Attribute;
 
-public class OmCfgJettyInfo extends OmCfgTransportInfo implements ICfgTransportInfo {
+public class OmCfgJettyInfo extends OmCfgTransportInfo implements ICfgJettyInfo {
     
     // TODO wrapping all configuration into an XML using SimpleXml?? 
     

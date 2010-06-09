@@ -4,10 +4,15 @@ import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgOutPort;
+import com.topfinance.cfg.ICfgPort;
 import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.cfg.om.OmCfgInPort;
+import com.topfinance.cfg.om.OmCfgOperation;
+import com.topfinance.cfg.om.OmCfgPort;
+import com.topfinance.cfg.om.OmCfgRouteRule;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.util.BCUtils;
 
@@ -33,8 +38,6 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
     public final static String FILESTORE = "D:/bankConnector/dummyConfig.xml";
     public final static String SAMPLEDOC = "D:/bankConnector/dummyDoc.xml";
     public final static String SAMPLEACK = "D:/bankConnector/dummyAck.xml";
-    
-
     
     
     private static DummyCfgReader instance;
@@ -81,23 +84,54 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
     
     @ElementList
     public List<ICfgNode> listNode = new ArrayList<ICfgNode>();
-    
-//    @ElementList
-//    public List<ICfgPassway> listPassway = new ArrayList<ICfgPassway>();
-//    @ElementList
-//    public List<ICfgProtocolBinding> listProtocolBinding = new ArrayList<ICfgProtocolBinding>();
-    
     @ElementList
     public List<ICfgRouteRule> listRouteRule = new ArrayList<ICfgRouteRule>();
     
-
     
 
-
     public List<ICfgInPort> getListOfEnabledInport() {
-
         return listInPort;
     }
+    public List<ICfgOutPort> getListOfEnabledOutport() {
+        return listOutPort;
+    }
+    public List<ICfgTransportInfo> getListOfTransportInfo() {
+        return listTransportInfo;
+    }
+    
+//    public List<ICfgNode> getListOfNodes() {
+//        return listNode;
+//    }
+    
+    
+
+    public ICfgProtocol getProtByOpn(ICfgOperation opn) {
+        return ((OmCfgOperation)opn).getProtocol();
+    }
+    public ICfgOutPort getAckPortByIP(ICfgInPort ip) {
+        
+        return ((OmCfgInPort)ip).getAckPort();
+    }
+    public ICfgNode getNodeByPort(ICfgPort port) {
+        
+        return ((OmCfgPort)port).getNode();
+    }
+    public ICfgOutPort getOutPortByRR(ICfgRouteRule rr) {
+        return ((OmCfgRouteRule)rr).getOutPort();
+    }
+    public ICfgProtocol getProtByInPort(ICfgInPort ip) {
+
+        return ((OmCfgInPort)ip).getProtocol();
+    }
+    public ICfgTransportInfo getTransInfoByPort(ICfgPort port) {
+        return ((OmCfgPort)port).getTransportInfo();
+    }    
+    
+    
+    
+    
+    
+    
     
     public ICfgInPort getInportByName(String name) {
         ICfgInPort res = null;
@@ -109,22 +143,10 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
         return res;
         
     }
-    
-    public List<ICfgOutPort> getListOfEnabledOutport() {
-        return listOutPort;
-    }
-    
-    public List<ICfgTransportInfo> getListOfTransportInfo() {
-        return listTransportInfo;
-    }
-    public List<ICfgNode> getListOfNodes() {
-        return listNode;
-    }
-
     public ICfgOperation getOperation(ICfgProtocol protocol, String name) {
         ICfgOperation result = null;
         for(ICfgOperation op : listOperation) {
-            if(op.getProtocol().getName().equals(protocol.getName()) && op.getName().equals(name)) {
+            if(getProtByOpn(op).getName().equals(protocol.getName()) && op.getName().equals(name)) {
                 result = op;
                 break;
             }
@@ -192,6 +214,7 @@ public class DummyCfgReader extends TestCase implements ICfgReader {
         }        
         InputStream mapFile = Iso8583ToXml.class.getResourceAsStream(mapFileName);
         return mapFile;
-    }    
+    }
+
     
 }

@@ -1,13 +1,13 @@
 package com.topfinance.cfg.om;
 
-import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.cfg.ICfgAMQInfo;
 
 import javax.jms.ConnectionFactory;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.simpleframework.xml.Attribute;
 
-public class OmCfgAMQInfo extends OmCfgTransportInfo implements ICfgTransportInfo {
+public class OmCfgAMQInfo extends OmCfgTransportInfo implements ICfgAMQInfo {
     
     @Attribute(required=false)
     private String brokerUrl;

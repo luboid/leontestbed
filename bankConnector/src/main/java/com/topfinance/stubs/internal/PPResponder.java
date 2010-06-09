@@ -128,7 +128,7 @@ public class PPResponder implements Processor, CfgConstants{
             }
             
             // send to first 8583 port found
-            if(TCP_PROVIDER_8583.equals(inPort.getTransportInfo().getProvider())) {
+            if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(inPort).getProvider())) {
                 chosenInPort = inPort;
                 break;                
             }
@@ -138,7 +138,7 @@ public class PPResponder implements Processor, CfgConstants{
         
         String docId_102 = BCUtils.getUniqueDocId();
         String respText = "";
-        if(TCP_PROVIDER_8583.equals(chosenInPort.getTransportInfo().getProvider())) {
+        if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(chosenInPort).getProvider())) {
             ISOMsg m1 = new ISOMsg();
             ISOPackager packager = new ISOIBPSPackager();
             m1.setPackager (packager);

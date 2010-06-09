@@ -1,19 +1,19 @@
 package com.topfinance.util;
 
 import com.topfinance.cfg.CfgConstants;
+import com.topfinance.cfg.CfgImplFactory;
+import com.topfinance.cfg.ICfg8583Info;
+import com.topfinance.cfg.ICfgAMQInfo;
 import com.topfinance.cfg.ICfgInPort;
+import com.topfinance.cfg.ICfgJettyInfo;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgPort;
+import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
-import com.topfinance.cfg.dummy.TestDummy;
-import com.topfinance.cfg.om.OmCfg8583Info;
-import com.topfinance.cfg.om.OmCfgAMQInfo;
-import com.topfinance.cfg.om.OmCfgJettyInfo;
 import com.topfinance.components.tcp8583.Iso8583Codec;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -74,7 +74,7 @@ public class BCUtils {
         ICfgRouteRule result = null;
         for(ICfgRouteRule rr : listRouteRule) {
             String operationMask = rr.getOperationMask();
-            ICfgInPort ip = rr.getInPort();
+//            ICfgInPort ip = rr.getInPort();
             if( operationName.startsWith(operationMask)
                 // TODO need match Inport ?
                 // && ip.getName().equals(inPort.getName())
@@ -86,8 +86,8 @@ public class BCUtils {
         if(result==null) {
             throw new RuntimeException("cannot found matching route for operation: "+operationName);
         }
-        
-        return result.getOutPort();
+        ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
+        return cfgReader.getOutPortByRR(result);
         
     }
     
@@ -98,14 +98,14 @@ public class BCUtils {
             ActiveMQComponent amq = new ActiveMQComponent();
             // ?? won't work unless define as normal JMSComponent
 //            amq.setConnectionFactory(jmsInfo.getConnectionFactory());
-            OmCfgAMQInfo amqji = (OmCfgAMQInfo)ti;
+            ICfgAMQInfo amqji = (ICfgAMQInfo)ti;
             amq.setBrokerURL(amqji.getBrokerUrl());
             camel.addComponent(ti.getPrefix(), amq);
             logger.info("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
         }
         else if(CfgConstants.HTTP_PROVIDER_JETTY.equals(provider)) {
             JettyHttpComponent jetty = new JettyHttpComponent();
-            OmCfgJettyInfo jettyti = (OmCfgJettyInfo)ti;
+            ICfgJettyInfo jettyti = (ICfgJettyInfo)ti;
             // TODO setting up JettyHttpComponent with jettyti
             camel.addComponent(ti.getPrefix(), jetty);
             logger.info("adding component: "+ti.getPrefix());
@@ -115,7 +115,7 @@ public class BCUtils {
             MinaConfiguration conf = new MinaConfiguration();
             conf.setCodec(new Iso8583Codec());
             mina.setConfiguration(conf);
-            OmCfg8583Info iso8583ti = (OmCfg8583Info)ti;
+            ICfg8583Info iso8583ti = (ICfg8583Info)ti;
             // TODO setting up MinaComponent with iso8583ti
             camel.addComponent(ti.getPrefix(), mina);
             logger.info("adding component: "+ti.getPrefix());
@@ -147,11 +147,13 @@ public class BCUtils {
     public static String getFullUrlFromPort(ICfgPort port) {
         String url = port.getUrl();
         // handle URL prefix
-        ICfgTransportInfo ti = port.getTransportInfo();
+        
+        ICfgReader reader = CfgImplFactory.loadCfgReader();
+        ICfgTransportInfo ti = reader.getTransInfoByPort(port);
         String prefix = ti.getPrefix();
         url = prefix+"://"+url;
         
-        if(CfgConstants.TCP_PROVIDER_8583.equals(port.getTransportInfo().getProvider())) {
+        if(CfgConstants.TCP_PROVIDER_8583.equals(ti.getProvider())) {
             
             // TODO more mina configuration
             

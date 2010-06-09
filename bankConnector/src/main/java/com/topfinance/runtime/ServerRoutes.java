@@ -119,7 +119,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
             ICfgReader reader = CfgImplFactory.loadCfgReader();
             ICfgInPort cfgIP = reader.getInPortByUri(inUri);
             String direction = cfgIP.getDirection();
-            ICfgProtocol protocol = cfgIP.getProtocol();
+            ICfgProtocol protocol = reader.getProtByInPort(cfgIP);
             String pluginName = protocol.getPluginName();
             BasePlugin plugin = BasePlugin.loadPlugin(pluginName);
              
@@ -142,10 +142,12 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         }
         
         public void process(Exchange exchange) throws Exception {
+            
+            ICfgReader reader = CfgImplFactory.loadCfgReader();
             MessageContext ctx = (MessageContext)exchange.getIn().getHeader("ctx");
             ICfgInPort cfgIP = ctx.getCfgInPort();    
             String direction = cfgIP.getDirection();
-            ICfgProtocol protocol = cfgIP.getProtocol();
+            ICfgProtocol protocol = reader.getProtByInPort(cfgIP);
             String pluginName = protocol.getPluginName();
             BasePlugin plugin = BasePlugin.loadPlugin(pluginName);
              

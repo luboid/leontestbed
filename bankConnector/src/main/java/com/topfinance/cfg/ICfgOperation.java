@@ -1,8 +1,8 @@
 package com.topfinance.cfg;
 
 public interface ICfgOperation extends ICfgItem {
-    public ICfgProtocol getProtocol();
-    public void setProtocol(ICfgProtocol protocol);
+//    public ICfgProtocol getProtocol();
+//    public void setProtocol(ICfgProtocol protocol);
     
     public String getUpIsEnabled();
     public void setUpIsEnabled(String upIsEnabled);

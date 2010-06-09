@@ -2,13 +2,13 @@ package com.topfinance.stubs.external;
 
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
+import com.topfinance.cfg.ICfgAMQInfo;
 import com.topfinance.cfg.ICfgInPort;
+import com.topfinance.cfg.ICfgJettyInfo;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.dummy.TestDummy;
-import com.topfinance.cfg.om.OmCfgAMQInfo;
-import com.topfinance.cfg.om.OmCfgJettyInfo;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
@@ -160,7 +160,7 @@ public class Broker implements Processor, CfgConstants{
                 ActiveMQComponent amq = new ActiveMQComponent();
                 // ?? won't work unless define as normal JMSComponent
 //                amq.setConnectionFactory(jmsInfo.getConnectionFactory());
-                OmCfgAMQInfo amqji = (OmCfgAMQInfo)ti;
+                ICfgAMQInfo amqji = (ICfgAMQInfo)ti;
                 amq.setBrokerURL(amqji.getBrokerUrl());
                 if(camel.getComponent(ti.getPrefix())!=null) {
                     log("skip adding existed component: "+ti.getPrefix());
@@ -171,7 +171,7 @@ public class Broker implements Processor, CfgConstants{
             }
             else if(CfgConstants.HTTP_PROVIDER_JETTY.equals(provider)) {
                 JettyHttpComponent jetty = new JettyHttpComponent();
-                OmCfgJettyInfo jettyti = (OmCfgJettyInfo)ti;
+                ICfgJettyInfo jettyti = (ICfgJettyInfo)ti;
                 // TODO setting up JettyHttpComponent with jettyti
                 camel.addComponent(ti.getPrefix(), jetty);
                 log("adding component: "+ti.getPrefix());

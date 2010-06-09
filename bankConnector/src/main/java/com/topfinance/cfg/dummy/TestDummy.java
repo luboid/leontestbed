@@ -54,9 +54,9 @@ public class TestDummy extends TestCase implements CfgConstants{
             
             System.out.println("size of protocols: "+instance.listProtocol.size());
             System.out.println("size of operations: "+instance.listOperation.size());
-            System.out.println("protocol belong to peration: "+
-                               (instance.listOperation.get(0).getProtocol()==instance.listProtocol.get(0)));
-            
+//            System.out.println("protocol belong to peration: "+
+//                               (instance.listOperation.get(0).getProtocol()==instance.listProtocol.get(0)));
+//            
 
             
         } catch (Exception ex) {
@@ -103,7 +103,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         
         // operation
         
-        ICfgOperation opn1 = new OmCfgOperation();
+        OmCfgOperation opn1 = new OmCfgOperation();
         opn1.setName(OPERATION_101);
         opn1.setProtocol(protocol);
         opn1.setUpIsEnabled(BOOLEAN_TRUE);
@@ -114,7 +114,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         opn1.setDownIsReply(BOOLEAN_FALSE);
         instance.listOperation.add(opn1);
         
-        ICfgOperation opn2 = new OmCfgOperation();
+        OmCfgOperation opn2 = new OmCfgOperation();
         opn2.setName(OPERATION_102);
         opn2.setProtocol(protocol);
         opn2.setUpIsEnabled(BOOLEAN_TRUE);
@@ -123,7 +123,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         opn2.setDownIsEnabled(BOOLEAN_FALSE);
         instance.listOperation.add(opn2);
         
-        ICfgOperation opn3 = new OmCfgOperation();
+        OmCfgOperation opn3 = new OmCfgOperation();
         opn3.setName(OPERATION_601);
         opn3.setProtocol(protocol);
         opn3.setUpIsEnabled(BOOLEAN_FALSE);
@@ -177,7 +177,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         instance.listNode.add(partner1);
         
         
-        ICfgRouteRule rr1 = new OmCfgRouteRule();
+        OmCfgRouteRule rr1 = new OmCfgRouteRule();
         rr1.setName("rr1");
         rr1.setOperationMask("ibps.");
         rr1.setOutPort(op1);

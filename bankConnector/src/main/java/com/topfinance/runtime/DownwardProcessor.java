@@ -166,8 +166,8 @@ public class DownwardProcessor extends AbstractProcessor{
                  validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;             
              } else {
                  getMsgContext().setCfgOutPort(outPort);
-                 ICfgNode cfgHN = getMsgContext().getCfgInPort().getNode();
-                 ICfgNode cfgPN = outPort.getNode();  
+                 ICfgNode cfgHN = cfgReader.getNodeByPort(getMsgContext().getCfgInPort());
+                 ICfgNode cfgPN = cfgReader.getNodeByPort(outPort);  
                  String hName = cfgHN.getName();
                  String pName = cfgPN.getName();
                  getMsgContext().setHnName(hName);
@@ -467,9 +467,10 @@ public class DownwardProcessor extends AbstractProcessor{
 
     
     private void sendAsyncAck(String ackText) throws Exception {
+        ICfgReader reader = CfgImplFactory.loadCfgReader();
         
         ICfgInPort inPort = getMsgContext().getCfgInPort();
-        ICfgOutPort ackPort = inPort.getAckPort();
+        ICfgOutPort ackPort = reader.getAckPortByIP(inPort);
         
         String url = BCUtils.getFullUrlFromPort(ackPort);
 

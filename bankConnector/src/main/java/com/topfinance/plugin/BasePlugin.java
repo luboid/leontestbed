@@ -58,7 +58,7 @@ public class BasePlugin implements BcConstants, CfgConstants{
                     // for upward. need send back error to pp
                     ICfgReader reader = CfgImplFactory.loadCfgReader();
                     ICfgInPort inPort = reader.getInportByName(inPortName);
-                    ICfgOutPort outPort = inPort.getAckPort();
+                    ICfgOutPort outPort = reader.getAckPortByIP(inPort);
                     String url = BCUtils.getFullUrlFromPort(outPort);
                     
                     String errorText = BcConstants.MSG_PP_ERROR;
@@ -99,7 +99,7 @@ public class BasePlugin implements BcConstants, CfgConstants{
                     // TODO for upward. need send back error to pp
                     ICfgReader reader = CfgImplFactory.loadCfgReader();
                     ICfgInPort inPort = reader.getInportByName(inPortName);
-                    ICfgOutPort outPort = inPort.getAckPort();
+                    ICfgOutPort outPort = reader.getAckPortByIP(inPort);
                     String url = BCUtils.getFullUrlFromPort(outPort);
                     
                     String errorText = "ERROR!!";

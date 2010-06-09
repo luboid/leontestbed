@@ -82,5 +82,6 @@
 	<classpathentry kind="lib" path="lib/mina-core-1.1.7.jar"/>
 	<classpathentry kind="lib" path="lib/jpos.jar"/>
 	<classpathentry kind="lib" path="lib/commons-beanutils-1.8.3.jar" sourcepath="D:/resource/commons-beanutils-1.8.3-src/src/main/java"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SwitchGW"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
