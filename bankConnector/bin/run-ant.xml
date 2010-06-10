@@ -1,8 +1,8 @@
 <project name="bankconnector" default="usage" basedir=".">
 	
 	<!--switch FILE and DB -->
-	<!--property name="CFGTYPE" value="FILE" /-->
-	<property name="CFGTYPE" value="DB" />
+	<property name="CFGTYPE" value="FILE" />
+	<!--property name="CFGTYPE" value="DB" /-->
 	
 	<path id="bc.class.path">
 		<pathelement location="." />
