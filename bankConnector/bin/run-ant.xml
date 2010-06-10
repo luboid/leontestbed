@@ -1,8 +1,11 @@
 <project name="bankconnector" default="usage" basedir=".">
 	
-	<property name="CFGTYPE" value="FILE" />
+	<!--switch FILE and DB -->
+	<!--property name="CFGTYPE" value="FILE" /-->
+	<property name="CFGTYPE" value="DB" />
 	
 	<path id="bc.class.path">
+		<pathelement location="." />
 		<pathelement location="../target/classes" />
 		<fileset dir="../lib" includes="**/*.jar" />
 	</path>
@@ -28,7 +31,7 @@
 				<path refid="bc.class.path" />
 			</classpath>
 			<jvmarg value="-Xmx512M" />
-			<arg line="-cfg runBC-A-config.xml -cfgType ${CFGTYPE} -outPortName 8583URL_UP_IN_PP" />
+			<arg line="-cfg runBC-A-config-${CFGTYPE}.xml -cfgType ${CFGTYPE} -outPortName 8583URL_UP_IN_PP" />
 		</java>
 	</target>
 	<target name="runBC-A" description="">
@@ -38,7 +41,7 @@
 				<path refid="bc.class.path" />
 			</classpath>
 			<jvmarg value="-Xmx512M" />
-			<arg line="-spring runBC-A-spring.xml -cfgType ${CFGTYPE} -cfg runBC-A-config.xml " />
+			<arg line="-spring runBC-A-spring.xml -cfgType ${CFGTYPE} -cfg runBC-A-config-${CFGTYPE}.xml " />
 		</java>
 	</target>
 
@@ -49,7 +52,7 @@
 				<path refid="bc.class.path" />
 			</classpath>
 			<jvmarg value="-Xmx512M" />
-			<arg line="-spring runBC-B-spring.xml -cfgType ${CFGTYPE} -cfg runBC-B-config.xml" />
+			<arg line="-spring runBC-B-spring.xml -cfgType ${CFGTYPE} -cfg runBC-B-config-${CFGTYPE}.xml" />
 		</java>
 	</target>
 	<target name="runPP-B" description="">
@@ -59,7 +62,7 @@
 				<path refid="bc.class.path" />
 			</classpath>
 			<jvmarg value="-Xmx512M" />
-			<arg line="-cfg runBC-B-config.xml -cfgType ${CFGTYPE}" />
+			<arg line="-cfg runBC-B-config-${CFGTYPE}.xml -cfgType ${CFGTYPE}" />
 		</java>
 	</target>
 	
@@ -71,7 +74,7 @@
 				<path refid="bc.class.path" />
 			</classpath>
 			<jvmarg value="-Xmx512M" />
-			<arg line="-spring runBroker-C-spring.xml -cfgType ${CFGTYPE} -cfgA runBC-A-config.xml -cfgB runBC-B-config.xml" />
+			<arg line="-spring runBroker-C-spring.xml -cfgType ${CFGTYPE} -cfgA runBC-A-config-${CFGTYPE}.xml -cfgB runBC-B-config-${CFGTYPE}.xml" />
 		</java>
 	</target>
 </project>
