@@ -1,4 +1,4 @@
-package com.topfinance.cfg.om;
+package com.topfinance.cfg.xml;
 
 import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgOutPort;

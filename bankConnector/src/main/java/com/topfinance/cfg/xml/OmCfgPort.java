@@ -1,4 +1,4 @@
-package com.topfinance.cfg.om;
+package com.topfinance.cfg.xml;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
