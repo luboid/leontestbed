@@ -10,6 +10,10 @@ public class DbCfgOperation implements ICfgOperation {
         this.ebo = ebo;
     }
     
+    public Integer getProtId() {
+        return ebo.getPrtclEbo().getUid();
+    }
+    
     public String getDownAckType() {
         return ebo.getAckMsgDw();
     }

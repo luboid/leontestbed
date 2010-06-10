@@ -1,6 +1,6 @@
 package com.topfinance.plugin.cnaps2;
 
-import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.cfg.TestDummy;
 
 import java.util.HashMap;
 import java.util.Map;

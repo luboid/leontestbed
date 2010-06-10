@@ -51,7 +51,7 @@
 
 package test;
 
-import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.cfg.TestDummy;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;

@@ -1,6 +1,6 @@
 package test;
 
-import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.cfg.TestDummy;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;

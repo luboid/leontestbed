@@ -5,6 +5,8 @@ import java.util.List;
 
 public interface ICfgReader extends CfgConstants{
     
+    public void init(String config);
+    
     // remove explicit relation
     public ICfgProtocol getProtByOpn(ICfgOperation opn);
     public ICfgProtocol getProtByInPort(ICfgInPort ip);

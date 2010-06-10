@@ -3,6 +3,7 @@ package test;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.cfg.db.DbCfgReader;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class TestDbCfgReader extends TestCase {
     public void testGetListTransport() {
         System.out.println("start");
         ICfgReader reader = CfgImplFactory.loadCfgReader(CfgImplFactory.TYPE_DB);
+        reader.init(DbCfgReader.DBSTORE);
         
         List<ICfgTransportInfo> res = reader.getListOfTransportInfo();
         for(ICfgTransportInfo ti : res) {

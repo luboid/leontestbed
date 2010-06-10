@@ -1,18 +1,14 @@
-package com.topfinance.cfg.dummy;
+package com.topfinance.cfg;
 
-import com.topfinance.cfg.CfgConstants;
-import com.topfinance.cfg.ICfgNode;
-import com.topfinance.cfg.ICfgOperation;
-import com.topfinance.cfg.ICfgProtocol;
-import com.topfinance.cfg.ICfgRouteRule;
-import com.topfinance.cfg.om.OmCfgAMQInPort;
-import com.topfinance.cfg.om.OmCfgAMQInfo;
-import com.topfinance.cfg.om.OmCfgAMQOutPort;
-import com.topfinance.cfg.om.OmCfgJettyInfo;
-import com.topfinance.cfg.om.OmCfgNode;
-import com.topfinance.cfg.om.OmCfgOperation;
-import com.topfinance.cfg.om.OmCfgProtocol;
-import com.topfinance.cfg.om.OmCfgRouteRule;
+import com.topfinance.cfg.xml.OmCfgAMQInPort;
+import com.topfinance.cfg.xml.OmCfgAMQInfo;
+import com.topfinance.cfg.xml.OmCfgAMQOutPort;
+import com.topfinance.cfg.xml.OmCfgJettyInfo;
+import com.topfinance.cfg.xml.OmCfgNode;
+import com.topfinance.cfg.xml.OmCfgOperation;
+import com.topfinance.cfg.xml.OmCfgProtocol;
+import com.topfinance.cfg.xml.OmCfgRouteRule;
+import com.topfinance.cfg.xml.XmlCfgReader;
 import com.topfinance.plugin.cnaps2.AckRoot;
 
 import java.io.File;
@@ -50,10 +46,10 @@ public class TestDummy extends TestCase implements CfgConstants{
         try {
             System.out.println("testLoadConfigure...");
 
-            DummyCfgReader instance = DummyCfgReader.getInstance();
+            XmlCfgReader instance = XmlCfgReader.getInstance(XmlCfgReader.FILESTORE);
             
-            System.out.println("size of protocols: "+instance.listProtocol.size());
-            System.out.println("size of operations: "+instance.listOperation.size());
+            System.out.println("size of protocols: "+instance.getDataHolder().listProtocol.size());
+            System.out.println("size of operations: "+instance.getDataHolder().listOperation.size());
 //            System.out.println("protocol belong to peration: "+
 //                               (instance.listOperation.get(0).getProtocol()==instance.listProtocol.get(0)));
 //            
@@ -68,7 +64,7 @@ public class TestDummy extends TestCase implements CfgConstants{
     public void testDumpConfigure() {
         try {
         System.out.println("serialize configuration...");
-        DummyCfgReader instance = new DummyCfgReader();
+        XmlCfgReader instance = new XmlCfgReader(XmlCfgReader.FILESTORE);
         // build the dummy data for testing
 
         // transportInfo
@@ -77,20 +73,20 @@ public class TestDummy extends TestCase implements CfgConstants{
         ti1.setProvider(JMS_PROVIDER_AMQ);
         ti1.setPrefix(PREFIX_HOST_AMQ);
         ti1.setBrokerUrl(BROKER_URL_HOST);
-        instance.listTransportInfo.add(ti1);
+        instance.getDataHolder().listTransportInfo.add(ti1);
         
         OmCfgAMQInfo ti2 = new OmCfgAMQInfo();
         ti2.setName("PREFIX_PARTNER_AMQ");
         ti2.setProvider(JMS_PROVIDER_AMQ);
         ti2.setPrefix(PREFIX_PARTNER_AMQ);
         ti2.setBrokerUrl(BROKER_URL_PARTNER);
-        instance.listTransportInfo.add(ti2);
+        instance.getDataHolder().listTransportInfo.add(ti2);
         
         OmCfgJettyInfo ti3 = new OmCfgJettyInfo();
         ti3.setName("PREFIX_HOST_JETTY");
         ti3.setProvider(HTTP_PROVIDER_JETTY);
         ti3.setPrefix(PREFIX_HOST_JETTY);
-        instance.listTransportInfo.add(ti3);
+        instance.getDataHolder().listTransportInfo.add(ti3);
         
         
         // protocol
@@ -99,7 +95,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         protocol.setPluginName(PROTOCOL_CNAPS2);
         protocol.setUpSendAckToPP(BOOLEAN_FALSE);
         protocol.setDownRecievePPAck(BOOLEAN_FALSE);
-        instance.listProtocol.add(protocol);
+        instance.getDataHolder().listProtocol.add(protocol);
         
         // operation
         
@@ -112,7 +108,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         opn1.setDownIsEnabled(BOOLEAN_TRUE);
         opn1.setDownReplyType(OP_REPLY_TYPE_ASYNC);
         opn1.setDownIsReply(BOOLEAN_FALSE);
-        instance.listOperation.add(opn1);
+        instance.getDataHolder().listOperation.add(opn1);
         
         OmCfgOperation opn2 = new OmCfgOperation();
         opn2.setName(OPERATION_102);
@@ -121,7 +117,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         opn2.setUpReplyType(OP_REPLY_TYPE_NOTIFY);
         opn1.setUpIsReply(BOOLEAN_TRUE);
         opn2.setDownIsEnabled(BOOLEAN_FALSE);
-        instance.listOperation.add(opn2);
+        instance.getDataHolder().listOperation.add(opn2);
         
         OmCfgOperation opn3 = new OmCfgOperation();
         opn3.setName(OPERATION_601);
@@ -130,7 +126,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         opn3.setDownIsEnabled(BOOLEAN_TRUE);
         opn3.setDownReplyType(OP_REPLY_TYPE_NOTIFY);
         opn1.setDownIsReply(BOOLEAN_TRUE);
-        instance.listOperation.add(opn3);
+        instance.getDataHolder().listOperation.add(opn3);
         
         // Inport
         OmCfgAMQInPort ip1 = new OmCfgAMQInPort();
@@ -139,7 +135,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         ip1.setUrl(QUEUE_UP_IN_ECHO);
         ip1.setDirection(DIRECTION_UP);
         ip1.setProtocol(protocol);
-        instance.listInPort.add(ip1);
+        instance.getDataHolder().listInPort.add(ip1);
         
         OmCfgAMQInPort ip2 = new OmCfgAMQInPort();
         ip2.setName("HTTPURL_UP_IN_ECHO");
@@ -147,7 +143,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         ip2.setUrl(HTTPURL_UP_IN_ECHO);
         ip2.setDirection(DIRECTION_UP);
         ip2.setProtocol(protocol);
-        instance.listInPort.add(ip2);
+        instance.getDataHolder().listInPort.add(ip2);
         
         // OutPort
         OmCfgAMQOutPort op1 = new OmCfgAMQOutPort();
@@ -155,26 +151,26 @@ public class TestDummy extends TestCase implements CfgConstants{
         op1.setUrl(QUEUE_UP_OUT_ECHO);
         op1.setName("QUEUE_UP_OUT_ECHO");
         op1.setDirection(DIRECTION_UP);
-        instance.listOutPort.add(op1);
+        instance.getDataHolder().listOutPort.add(op1);
         
         // nodes
         ICfgNode host1 = new OmCfgNode();
         host1.setName("host1");
         host1.setType(NODETYPE_HOST);
 //        host1.setIdentity("host1");
-        instance.listNode.add(host1);
+        instance.getDataHolder().listNode.add(host1);
         
         ICfgNode host2 = new OmCfgNode();
         host2.setName("host2");
         host2.setType(NODETYPE_HOST);
 //        host2.setIdentity("host2");
-        instance.listNode.add(host2);
+        instance.getDataHolder().listNode.add(host2);
         
         ICfgNode partner1 = new OmCfgNode();
         partner1.setName("partner1");
         partner1.setType(NODETYPE_PARTNER);
 //        partner1.setIdentity("partner1");
-        instance.listNode.add(partner1);
+        instance.getDataHolder().listNode.add(partner1);
         
         
         OmCfgRouteRule rr1 = new OmCfgRouteRule();
@@ -184,11 +180,11 @@ public class TestDummy extends TestCase implements CfgConstants{
         rr1.setSequence(1);
 //        rr1.setInPort(ip1);
         rr1.setDirection(DIRECTION_UP);
-        instance.listRouteRule.add(rr1);
+        instance.getDataHolder().listRouteRule.add(rr1);
         Strategy strategy = new CycleStrategy("id", "ref");
         Serializer serializer = new Persister(strategy);
         
-        File result = new File(DummyCfgReader.FILESTORE);
+        File result = new File(XmlCfgReader.FILESTORE);
 
         serializer.write(instance, result);
         System.out.println("Done");
@@ -223,7 +219,7 @@ public class TestDummy extends TestCase implements CfgConstants{
             ackRoot.setMsgProCd(AckRoot.MSG_PRO_CD_SUCCESS);
             
             String res = ackRoot.dumpToString();
-            IOUtils.write(res, new FileWriter(new File(DummyCfgReader.SAMPLEACK)));
+            IOUtils.write(res, new FileWriter(new File(XmlCfgReader.SAMPLEACK)));
             System.out.println("Done");
         } catch (Exception ex) {
             ex.printStackTrace();

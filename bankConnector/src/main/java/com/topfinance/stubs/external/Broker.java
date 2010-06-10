@@ -8,7 +8,9 @@ import com.topfinance.cfg.ICfgJettyInfo;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
-import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.cfg.TestDummy;
+import com.topfinance.cfg.db.DbCfgReader;
+import com.topfinance.cfg.xml.XmlCfgReader;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
@@ -87,18 +89,26 @@ public class Broker implements Processor, CfgConstants{
         System.out.println("starting Broker...");
         Options options = new Options();
         options.addOption("spring", true, "spring configuration file");
+        options.addOption("cfgType", true, "configuration type");
         options.addOption("cfgA", true, "configuration file");
         options.addOption("cfgB", true, "configuration file");
         
         CommandLineParser parser = new PosixParser();
         CommandLine cmd = parser.parse( options, args);
-        String spring=null, cfgA=null, cfgB=null;
+        String spring=null, cfgA=null, cfgB=null, cfgType=null;
         
         if( cmd.hasOption( "spring" ) ) {
             spring = cmd.getOptionValue( "spring" );
         }
         log("spring="+spring);
         ctx = new FileSystemXmlApplicationContext(spring);
+        
+        if(cmd.hasOption("cfgType")) {
+            cfgType = cmd.getOptionValue("cfgType");
+            if(!CfgImplFactory.getSupportedTypes().contains(cfgType)) {
+                throw new RuntimeException("cfgType ["+cfgType+"] not supported");
+            }
+        }
         
         if(cmd.hasOption("cfgA")) {
             cfgA = cmd.getOptionValue("cfgA");
@@ -110,10 +120,16 @@ public class Broker implements Processor, CfgConstants{
         }
         log("cfgB="+cfgB);
         
-        CfgImplFactory.init(cfgA);
-        readerA = CfgImplFactory.loadCfgReader();
-        CfgImplFactory.init(cfgB);
-        readerB = CfgImplFactory.loadCfgReader();
+        
+        // hardcode
+        if(CfgImplFactory.TYPE_DB.equals(cfgType)) {
+            readerA = new DbCfgReader(cfgA);
+            readerB = new DbCfgReader(cfgB);
+        }
+        else {
+            readerA = new XmlCfgReader(cfgA);
+            readerB = new XmlCfgReader(cfgB);
+        }
         
         new Broker().start();
     }
@@ -185,7 +201,7 @@ public class Broker implements Processor, CfgConstants{
         List<ICfgInPort> ips = reader.getListOfEnabledInport();
         for(ICfgInPort ip : ips) {
             if(DIRECTION_DOWN.equals(ip.getDirection())) {
-                String url = BCUtils.getFullUrlFromPort(ip);
+                String url = BCUtils.getFullUrlFromPort(ip, reader);
                 outUrls.add(url);
             }
         }
@@ -194,7 +210,7 @@ public class Broker implements Processor, CfgConstants{
         List<ICfgOutPort> ops = reader.getListOfEnabledOutport();
         for(ICfgOutPort op : ops) {
             if(DIRECTION_UP.equals(op.getDirection())) {
-                inUrls.add(BCUtils.getFullUrlFromPort(op));
+                inUrls.add(BCUtils.getFullUrlFromPort(op, reader));
             }
         }
     }

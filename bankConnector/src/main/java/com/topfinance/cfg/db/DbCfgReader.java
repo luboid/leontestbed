@@ -2,13 +2,17 @@ package com.topfinance.cfg.db;
 
 import com.cnaps2.cncc.ebo.ConfInPortEbo;
 import com.cnaps2.cncc.ebo.ConfNodeEbo;
+import com.cnaps2.cncc.ebo.ConfOperationEbo;
 import com.cnaps2.cncc.ebo.ConfOutPortEbo;
 import com.cnaps2.cncc.ebo.ConfProtocolEbo;
+import com.cnaps2.cncc.ebo.ConfRouteRuleEbo;
 import com.cnaps2.cncc.ebo.ConfTransportEbo;
 import com.cnaps2.cncc.service.IInPortManager;
 import com.cnaps2.cncc.service.INodeManager;
+import com.cnaps2.cncc.service.IOperationManager;
 import com.cnaps2.cncc.service.IOutPortManager;
 import com.cnaps2.cncc.service.IProtocolManager;
+import com.cnaps2.cncc.service.IRouteRuleManager;
 import com.cnaps2.cncc.service.ITransportManager;
 import com.topfinance.cfg.ConfigAccessException;
 import com.topfinance.cfg.ICfgInPort;
@@ -20,49 +24,91 @@ import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.util.BCUtils;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class DbCfgReader implements ICfgReader {
+    private static Logger logger = Logger.getLogger(DbCfgReader.class);
+    
     private ApplicationContext ctx;
     
-    private DbCfgReader() {
-        ctx = new ClassPathXmlApplicationContext("/test/applicationContext.xml");
+    public final static String DBSTORE = "/test/applicationContext.xml";
+    
+    public void init(String config) {
+        logger.info("initializing DbCfgReader with spring: " + config + "...");
+        ctx = new ClassPathXmlApplicationContext(config);
+        logger.info("Done");
     }
+    
+    // not strict singleton, allow new instance for Broker 
+    public DbCfgReader(String config) {
+        init(config);
+    }
+    
     private static DbCfgReader instance;
-    public static DbCfgReader getInstance() {
+    public static DbCfgReader getInstance(String config) {
         if(instance == null) {
-            instance = new DbCfgReader();
+            instance = new DbCfgReader(config);
         }
         return instance;
     }
     
     
     public ICfgInPort getInPortByUri(String uri) {
-        // TODO Auto-generated method stub
-        return null;
+        ICfgInPort res = null;
+        
+        try {
+            IInPortManager mgr = (IInPortManager)getCtx().getBean("inPortManager");
+            List list = mgr.getAllInPortList();
+            for(int i=0;i<list.size();i++) {
+                ConfInPortEbo ebo = (ConfInPortEbo)list.get(i);
+                ICfgInPort ip = new DbCfgInPort(ebo); 
+                if(uri.equals(BCUtils.getFullUrlFromPort(ip))) {
+                    res = ip;
+                    break;
+                }
+
+            }
+        } catch (Exception ex) {
+            throw new ConfigAccessException(ex);
+        }
+        
+        return res;
     }
 
     public ICfgInPort getInportByName(String name) {
-        // TODO Auto-generated method stub
-        return null;
+        ICfgInPort res = null;
+        
+        try {
+            IInPortManager mgr = (IInPortManager)getCtx().getBean("inPortManager");
+            List list = mgr.getAllInPortList();
+            for(int i=0;i<list.size();i++) {
+                ConfInPortEbo ebo = (ConfInPortEbo)list.get(i);
+                if(ebo.getName().equals(name)) {
+                    res = new DbCfgInPort(ebo);
+                }
+            }
+        } catch (Exception ex) {
+            throw new ConfigAccessException(ex);
+        }
+        
+        return res;
     }
 
-    public List<ICfgRouteRule> getListDownRoute() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
 
     public List<ICfgInPort> getListOfEnabledInport() {
         List<ICfgInPort> res = new ArrayList<ICfgInPort>();
         
         try {
-            IInPortManager mgr = (IInPortManager)ctx.getBean("inPortManager");
+            IInPortManager mgr = (IInPortManager)getCtx().getBean("inPortManager");
             List list = mgr.getAllInPortList();
             for(int i=0;i<list.size();i++) {
                 ConfInPortEbo ebo = (ConfInPortEbo)list.get(i);
@@ -76,20 +122,29 @@ public class DbCfgReader implements ICfgReader {
     }
 
     public List<ICfgOutPort> getListOfEnabledOutport() {
-        // TODO Auto-generated method stub
-        return null;
+        List<ICfgOutPort> res = new ArrayList<ICfgOutPort>();
+        
+        try {
+            IOutPortManager mgr = (IOutPortManager)getCtx().getBean("outPortManager");
+            List list = mgr.getAllOutPortList();
+            for(int i=0;i<list.size();i++) {
+                ConfOutPortEbo ebo = (ConfOutPortEbo)list.get(i);
+                res.add(new DbCfgOutPort(ebo));
+            }
+        } catch (Exception ex) {
+            throw new ConfigAccessException(ex);
+        }
+        
+        return res;
     }
 
-    public List<ICfgNode> getListOfNodes() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
 
     public List<ICfgTransportInfo> getListOfTransportInfo() {
         List<ICfgTransportInfo> res = new ArrayList<ICfgTransportInfo>();
         
         try {
-            ITransportManager mgr = (ITransportManager)ctx.getBean("transportManager");
+            ITransportManager mgr = (ITransportManager)getCtx().getBean("transportManager");
             List list = mgr.getAllTransList();
             for(int i=0;i<list.size();i++) {
                 ConfTransportEbo ebo = (ConfTransportEbo)list.get(i);
@@ -103,18 +158,68 @@ public class DbCfgReader implements ICfgReader {
     }
 
     public List<ICfgRouteRule> getListUpRoute() {
-        // TODO Auto-generated method stub
-        return null;
+        List<ICfgRouteRule> res = new ArrayList<ICfgRouteRule>();
+        
+        try {
+            IRouteRuleManager mgr = (IRouteRuleManager)getCtx().getBean("routeManager");
+            List list = mgr.getAllRouteList();
+            for(int i=0;i<list.size();i++) {
+                ConfRouteRuleEbo ebo = (ConfRouteRuleEbo)list.get(i);
+                if(DIRECTION_UP.equals(ebo.getDirection())) {
+                    res.add(new DbCfgRouteRule(ebo));
+                }
+            }
+        } catch (Exception ex) {
+            throw new ConfigAccessException(ex);
+        }
+        
+        return res;
     }
-
+    public List<ICfgRouteRule> getListDownRoute() {
+        List<ICfgRouteRule> res = new ArrayList<ICfgRouteRule>();
+        
+        try {
+            IRouteRuleManager mgr = (IRouteRuleManager)getCtx().getBean("routeManager");
+            List list = mgr.getAllRouteList();
+            for(int i=0;i<list.size();i++) {
+                ConfRouteRuleEbo ebo = (ConfRouteRuleEbo)list.get(i);
+                if(DIRECTION_DOWN.equals(ebo.getDirection())) {
+                    res.add(new DbCfgRouteRule(ebo));
+                }
+            }
+        } catch (Exception ex) {
+            throw new ConfigAccessException(ex);
+        }
+        
+        return res;
+    }
+    
+    
     public InputStream getMappingRule(String mesgType, String direction) {
         // TODO Auto-generated method stub
         return null;
     }
 
     public ICfgOperation getOperation(ICfgProtocol protocol, String name) {
-        // TODO Auto-generated method stub
-        return null;
+        ICfgOperation res = null;
+        
+        DbCfgProtocol db = (DbCfgProtocol)protocol;
+        Integer protId = db.getUid();
+        
+        try {
+            IOperationManager mgr = (IOperationManager)getCtx().getBean("operManager");
+            List list = mgr.getAllOperList();
+            for(int i=0;i<list.size();i++) {
+                ConfOperationEbo ebo = (ConfOperationEbo)list.get(i);
+                if(ebo.getPrtclEbo().getUid().equals(protId) || ebo.getName().equals(name)) {
+                    res = new DbCfgOperation(ebo);
+                    break;
+                }
+            }
+        } catch (Exception ex) {
+            throw new ConfigAccessException(ex);
+        }
+        return res;
     }
 
     
@@ -126,9 +231,19 @@ public class DbCfgReader implements ICfgReader {
     
     
     public ICfgProtocol getProtByOpn(ICfgOperation opn) {
-        DbCfgOperation ebo = (DbCfgOperation)opn;
+        ICfgProtocol res = null;
         
-        return null;
+        DbCfgOperation db = (DbCfgOperation)opn;
+        Integer nid = db.getProtId();
+        try {
+            IProtocolManager mgr = (IProtocolManager)getCtx().getBean("protocolManager");
+            ConfProtocolEbo ebo = mgr.getProtocol(nid);
+            res = new DbCfgProtocol(ebo);
+        } catch (Exception ex) {
+            throw new ConfigAccessException(ex);
+        }
+        return res;
+        
     }
 
 
@@ -138,24 +253,23 @@ public class DbCfgReader implements ICfgReader {
         DbCfgInPort db = (DbCfgInPort)ip;
         Integer nid = db.getAckPortId();
         try {
-            IOutPortManager mgr = (IOutPortManager)ctx.getBean("outPortManager");
+            IOutPortManager mgr = (IOutPortManager)getCtx().getBean("outPortManager");
             ConfOutPortEbo ebo = mgr.getOutPort(nid);
             res = new DbCfgOutPort(ebo);
         } catch (Exception ex) {
             throw new ConfigAccessException(ex);
         }
-        
         return res;
     }
 
+    
 
     public ICfgNode getNodeByPort(ICfgPort port) {
         ICfgNode res = null;
-        
         DbCfgPort db = (DbCfgPort)port;
         Integer nid = db.getNodeId();
         try {
-            INodeManager mgr = (INodeManager)ctx.getBean("nodeManager");
+            INodeManager mgr = (INodeManager)getCtx().getBean("nodeManager");
             ConfNodeEbo ebo = mgr.getNode(nid);
             res = new DbCfgNode(ebo);
         } catch (Exception ex) {
@@ -167,8 +281,19 @@ public class DbCfgReader implements ICfgReader {
 
 
     public ICfgOutPort getOutPortByRR(ICfgRouteRule rr) {
-        // TODO Auto-generated method stub
-        return null;
+        ICfgOutPort res = null;
+        
+        DbCfgRouteRule db = (DbCfgRouteRule)rr;
+        Integer id = db.getOutPortId();
+        try {
+            IOutPortManager mgr = (IOutPortManager)getCtx().getBean("outPortManager");
+            ConfOutPortEbo ebo = mgr.getOutPort(id);
+            res = new DbCfgOutPort(ebo);
+        } catch (Exception ex) {
+            throw new ConfigAccessException(ex);
+        }
+        
+        return res;
     }
 
 
@@ -178,7 +303,7 @@ public class DbCfgReader implements ICfgReader {
         DbCfgInPort db = (DbCfgInPort)ip;
         Integer pid = db.getProtocolId();
         try {
-            IProtocolManager mgr = (IProtocolManager)ctx.getBean("protocolManager");
+            IProtocolManager mgr = (IProtocolManager)getCtx().getBean("protocolManager");
             ConfProtocolEbo ebo = mgr.getProtocol(pid);
             res = new DbCfgProtocol(ebo);
         } catch (Exception ex) {
@@ -195,7 +320,7 @@ public class DbCfgReader implements ICfgReader {
         DbCfgPort db = (DbCfgPort)port;
         Integer tid = db.getTransportId();
         try {
-            ITransportManager mgr = (ITransportManager)ctx.getBean("transportManager");
+            ITransportManager mgr = (ITransportManager)getCtx().getBean("transportManager");
             ConfTransportEbo ebo = mgr.getTrans(tid);
             res = new DbCfgTransportInfo(ebo);
         } catch (Exception ex) {
@@ -203,6 +328,17 @@ public class DbCfgReader implements ICfgReader {
         }
         
         return res;
+    }
+
+    public ApplicationContext getCtx() {
+        if(ctx==null) {
+            throw new RuntimeException("DbCfgReader not initialized...");
+        }
+        return ctx;
+    }
+
+    public void setCtx(ApplicationContext ctx) {
+        this.ctx = ctx;
     }
 
 }

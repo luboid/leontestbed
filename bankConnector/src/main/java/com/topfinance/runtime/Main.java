@@ -4,7 +4,6 @@ import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.util.BCUtils;
-import com.topfinance.util.DbUtils;
 
 import java.util.List;
 
@@ -38,33 +37,33 @@ public class Main {
         try {
             Options options = new Options();
             options.addOption("spring", true, "spring configuration file");
-            options.addOption("cfg", true, "configuration file");
+            options.addOption("cfgType", true, "configuration type");
+            options.addOption("cfg", true, "configuration info");
             
             CommandLineParser parser = new PosixParser();
             CommandLine cmd = parser.parse( options, args);
-            String spring = null, cfg=null;
+            String spring = null, cfg=null, cfgType=null;
             if( cmd.hasOption( "spring" ) ) {
                 spring = cmd.getOptionValue( "spring" );
             }
             if(cmd.hasOption("cfg")) {
                 cfg = cmd.getOptionValue("cfg");
             }
-            logger.info("spring="+spring +", cfg="+cfg);
+            if(cmd.hasOption("cfgType")) {
+                cfgType = cmd.getOptionValue("cfgType");
+                if(!CfgImplFactory.getSupportedTypes().contains(cfgType)) {
+                    throw new RuntimeException("cfgType ["+cfgType+"] not supported");
+                }
+            }            
+            logger.info("spring="+spring +", cfgType="+cfgType+", cfg="+cfg);
             ctx = new FileSystemXmlApplicationContext(spring);
-            // load configurations
-            CfgImplFactory.init(cfg);
 
-//            if(true) {
-//                log("Done");
-//                return;
-//            }
-            
             CamelContext camel = new DefaultCamelContext();
             ApplicationContextRegistry registory = new ApplicationContextRegistry(ctx);
             ((DefaultCamelContext)camel).setRegistry(registory);
             
-            
-            
+            CfgImplFactory.setType(cfgType);
+            CfgImplFactory.setConfig(cfg);
             ICfgReader reader = CfgImplFactory.loadCfgReader();
             
             // init Camel Components

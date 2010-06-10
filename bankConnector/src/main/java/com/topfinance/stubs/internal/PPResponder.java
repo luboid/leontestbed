@@ -6,7 +6,7 @@ import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
-import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.cfg.TestDummy;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;
@@ -66,15 +66,26 @@ public class PPResponder implements Processor, CfgConstants{
         System.out.println("starting PPResponder...");
         Options options = new Options();
         options.addOption("cfg", true, "configuration file");
+        options.addOption("cfgType", true, "configuration type");
         CommandLineParser parser = new PosixParser();
         CommandLine cmd = parser.parse( options, args);
-        String cfg=null;
+        String cfg=null, cfgType=null;
 
         if(cmd.hasOption("cfg")) {
             cfg = cmd.getOptionValue("cfg");
         }
-        log("cfg="+cfg);        
-        CfgImplFactory.init(cfg);        
+        if(cmd.hasOption("cfgType")) {
+            cfgType = cmd.getOptionValue("cfgType");
+            if(!CfgImplFactory.getSupportedTypes().contains(cfgType)) {
+                throw new RuntimeException("cfgType ["+cfgType+"] not supported");
+            }
+        }
+        
+        log("cfg="+cfg+", cfgType="+cfgType);
+        
+        CfgImplFactory.setConfig(cfg);
+        CfgImplFactory.setType(cfgType);
+        
         new PPResponder().start();
     }
     

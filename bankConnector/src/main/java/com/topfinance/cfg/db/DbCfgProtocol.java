@@ -10,6 +10,11 @@ public class DbCfgProtocol implements ICfgProtocol {
         this.ebo = ebo;
     }
     
+    public Integer getUid() {
+        return ebo.getUid();
+    }
+    
+    
     public String getDownRecievePPAck() {
         // TODO Auto-generated method stub
         return null;

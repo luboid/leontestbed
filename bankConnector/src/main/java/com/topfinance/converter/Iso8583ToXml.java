@@ -1,6 +1,6 @@
 package com.topfinance.converter;
 
-import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.cfg.TestDummy;
 import com.topfinance.runtime.BcConstants;
 
 import java.io.InputStream;

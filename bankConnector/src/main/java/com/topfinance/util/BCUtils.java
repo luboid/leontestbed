@@ -4,7 +4,6 @@ import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfg8583Info;
 import com.topfinance.cfg.ICfgAMQInfo;
-import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgJettyInfo;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgPort;
@@ -143,12 +142,12 @@ public class BCUtils {
     }
     public static String getUniqueMesgId() {
         return getUniqueId("m-", 20);
-    }    
-    public static String getFullUrlFromPort(ICfgPort port) {
+    }   
+    
+    public static String getFullUrlFromPort(ICfgPort port, ICfgReader reader) {
         String url = port.getUrl();
         // handle URL prefix
         
-        ICfgReader reader = CfgImplFactory.loadCfgReader();
         ICfgTransportInfo ti = reader.getTransInfoByPort(port);
         String prefix = ti.getPrefix();
         url = prefix+"://"+url;
@@ -162,5 +161,10 @@ public class BCUtils {
         }
         
         return url;
+    }
+    
+    public static String getFullUrlFromPort(ICfgPort port) {
+        ICfgReader reader = CfgImplFactory.loadCfgReader();
+        return getFullUrlFromPort(port, reader);
     }
 }

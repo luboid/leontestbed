@@ -4,7 +4,7 @@ import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgProtocol;
-import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.cfg.TestDummy;
 import com.topfinance.db.AuditTransaction;
 import com.topfinance.util.BCUtils;
 import org.apache.camel.Exchange;

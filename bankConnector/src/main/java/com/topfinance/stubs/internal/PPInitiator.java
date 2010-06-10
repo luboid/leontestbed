@@ -6,10 +6,9 @@ import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
-import com.topfinance.cfg.dummy.TestDummy;
+import com.topfinance.cfg.TestDummy;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
-import com.topfinance.runtime.UpwardProcessor;
 import com.topfinance.util.BCUtils;
 
 import java.util.List;
@@ -68,24 +67,32 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         System.out.println("starting PPInitiator...");
         Options options = new Options();
         options.addOption("cfg", true, "configuration file");
+        options.addOption("cfgType", true, "configuration type");
         options.addOption("outPortName", true, "outPort name");
         
         CommandLineParser parser = new PosixParser();
         CommandLine cmd = parser.parse( options, args);
-        String cfg=null;
+        String cfg=null, cfgType=null;
 
         if(cmd.hasOption("cfg")) {
             cfg = cmd.getOptionValue("cfg");
         }
-        log("cfg="+cfg);        
-        CfgImplFactory.init(cfg);
-        
+        if(cmd.hasOption("cfgType")) {
+            cfgType = cmd.getOptionValue("cfgType");
+            if(!CfgImplFactory.getSupportedTypes().contains(cfgType)) {
+                throw new RuntimeException("cfgType ["+cfgType+"] not supported");
+            }
+        }
         String op = "";
         if(cmd.hasOption("outPortName")) {
             op = cmd.getOptionValue("outPortName");
         }
         
-        log("op="+op);
+        log("cfg="+cfg+", cfgType="+cfgType+", op="+op);
+        
+        CfgImplFactory.setType(cfgType);
+        CfgImplFactory.setConfig(cfg);
+        
         
         PPInitiator pp = new PPInitiator();
         pp.setOutPortName(op);
