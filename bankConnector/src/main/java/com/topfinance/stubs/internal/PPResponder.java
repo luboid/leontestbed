@@ -166,6 +166,9 @@ public class PPResponder implements Processor, CfgConstants{
         
 
 
+        System.out.println("Press any key to trigger sending of 102 message (asynchronous reply)...");
+        System.in.read();
+        
         logger.info("dispatching 102 docId="+docId_102+", to url="+url);
         logger.debug("rawMsg="+respText);
         // send async pp resp in separate thread

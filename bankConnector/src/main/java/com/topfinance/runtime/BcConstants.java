@@ -29,8 +29,8 @@ public interface BcConstants {
     public static final String STATUS_COMPLETED = "COMPLETED";
     public static final String STATUS_ERROR = "ERROR";
     
-    public static final Long EXPIRY_RESEND = 1000l*60*10;
-    public static final Long EXPIRY_HIBER = 1000l*60*10;
+    public static final Long EXPIRY_RESEND = 1000l*60*30;
+    public static final Long EXPIRY_HIBER = 1000l*60*30;
 
     public static final Long INTERVAL_POLLER = 1000l*60*5;
     
