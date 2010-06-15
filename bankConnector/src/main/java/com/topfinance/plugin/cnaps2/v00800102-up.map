@@ -10,3 +10,10 @@ fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId=ISO[101]
 
 # cd is an enumeration
 fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.tp.cd=ISO[102]
+
+
+# intrBkSttlmDt is a date
+fiToFICstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmDt=ISO[103]
+
+# intrBkSttlmAmt.value is a BigDecimal
+fiToFICstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmAmt.value=ISO[104]

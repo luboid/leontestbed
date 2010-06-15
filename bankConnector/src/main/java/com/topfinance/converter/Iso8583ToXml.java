@@ -134,15 +134,18 @@ public class Iso8583ToXml {
                 Class type = field.getType();
                 debug("type=" + type);
 
-                if (type.isEnum()) {
+                if(value==null) {
+                    // ISO msg does not contain the mapping field
+                    // TODO what to do?
+                    // now just neglect
+                }
+                else if (type.isEnum()) {
                     Object[] values = type.getEnumConstants();
                     Method m = type.getDeclaredMethod("fromValue", String.class);
-                    Object enumValue = m.invoke(obj, (String)value);
-
-                    BeanUtils.setProperty(obj, att, enumValue);
-                } else {
-                    BeanUtils.setProperty(obj, att, value);
-                }                
+                    value = m.invoke(obj, (String)value);
+                } 
+                
+                BeanUtils.setProperty(obj, att, value);
             }
             
             res = pool.get(rootName);
