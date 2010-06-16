@@ -221,7 +221,8 @@ public class Iso8583ToXml {
                         else {
                             String fName = StringUtils.substringBefore(thisName, "[");
                             debug("fName="+fName);
-                            thisClass = getCollectionGenericType(parent, fName);
+                            Field field = parent.getClass().getDeclaredField(fName);
+                            thisClass = getCollectionGenericType(field);
                             thisObj = thisClass.newInstance();
                             Collection collection = (Collection)PropertyUtils.getProperty(parent, fName);
                             collection.add(thisObj);
@@ -245,8 +246,8 @@ public class Iso8583ToXml {
         return res;
     }
     
-    private static Class getCollectionGenericType(Object bean, String fName) throws Exception{
-        Field field = bean.getClass().getDeclaredField(fName);
+    public static Class getCollectionGenericType(Field field) throws Exception{
+//        Field field = bean.getClass().getDeclaredField(fName);
         String type = field.getGenericType().toString();
         String paraType = type.substring(type.indexOf('<')+1, type.indexOf('>'));
         debug("paraType="+paraType);
