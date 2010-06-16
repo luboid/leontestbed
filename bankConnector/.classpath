@@ -85,5 +85,6 @@
 	<classpathentry kind="lib" path="lib/switchGW/hibernate-3.2.0.ga.jar"/>
 	<classpathentry kind="lib" path="lib/switchGW/hibernate-annotations-3.2.0.ga.jar"/>
 	<classpathentry kind="lib" path="lib/switchGW/switchGWcore.jar"/>
+	<classpathentry kind="lib" path="lib/jdom.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
