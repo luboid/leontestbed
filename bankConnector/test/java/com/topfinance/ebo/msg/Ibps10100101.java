@@ -15,665 +15,697 @@ import javax.persistence.Table;
 @Table(name = "T_MSG_IBPS_101_001_01")
 public class Ibps10100101  implements java.io.Serializable {
 
-	// Fields 
-	private String uuid;
-	private String grpHdrMsgId;
-	private java.util.Date creDtTm;
-	private Boolean btchBookg;
-	private String nbOfTxs;
-	private Double ctrlSum;
-	private java.util.Date intrBkSttlmDt;
-	private String sttlmMtd;
-	private String endToEndId;
-	private String pmtIdTxId;
-	private String instrPrty;
-	private String ctgyPurpPrtry;
-	private Double intrBkSttlmAmtValue;
-	private String intrBkSttlmAmtCcy;
-	private java.util.Date accptncDtTm;
-	private String chrgBr;
-	private String dbtrNm;
-	private String emailAdr;
-	private String dbtrAcctIdOthrId;
-	private String dbtrAcctIdOthrIssr;
-	private String tpPrtry;
-	private String clrSysMmbIdMmbId;
-	private String brnchIdId;
-	private String ctrySubDvsn;
-	private String clrSysMmbIdMmbId1;
-	private String brnchIdId1;
-	private String cdtrNm;
-	private String cdtrAcctIdOthrId;
-	private String purpPrtry;
-	private String rmtInfUstrd;
-	private java.util.Date ts;
+    // Fields 
+    @JaxbMapping(objPath="")
+    private String uuid;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.grpHdr.msgId")
+    private String grpHdrMsgId;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.grpHdr.creDtTm")
+    private java.util.Date creDtTm;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.grpHdr.btchBookg")
+    private Boolean btchBookg;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.grpHdr.nbOfTxs")
+    private String nbOfTxs;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.grpHdr.ctrlSum")
+    private Double ctrlSum;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.grpHdr.intrBkSttlmDt")
+    private java.util.Date intrBkSttlmDt;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.grpHdr.sttlmInf.sttlmMtd")
+    private String sttlmMtd;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId")
+    private String endToEndId;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtId.txId")
+    private String pmtIdTxId;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.instrPrty")
+    private String instrPrty;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.ctgyPurp.prtry")
+    private String ctgyPurpPrtry;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmAmt.value")
+    private Double intrBkSttlmAmtValue;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmAmt.ccy")
+    private String intrBkSttlmAmtCcy;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].accptncDtTm")
+    private java.util.Date accptncDtTm;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].chrgBr")
+    private String chrgBr;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtr.nm")
+    private String dbtrNm;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtr.ctctDtls.emailAdr")
+    private String emailAdr;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.id.othr.id")
+    private String dbtrAcctIdOthrId;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.id.othr.issr")
+    private String dbtrAcctIdOthrIssr;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.tp.prtry")
+    private String tpPrtry;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAgt.finInstnId.clrSysMmbId.mmbId")
+    private String clrSysMmbIdMmbId;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAgt.brnchId.id")
+    private String brnchIdId;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAgt.brnchId.pstlAdr.ctrySubDvsn")
+    private String ctrySubDvsn;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtrAgt.finInstnId.clrSysMmbId.mmbId")
+    private String clrSysMmbIdMmbId1;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtrAgt.brnchId.id")
+    private String brnchIdId1;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtr.nm")
+    private String cdtrNm;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtrAcct.id.othr.id")
+    private String cdtrAcctIdOthrId;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].purp.prtry")
+    private String purpPrtry;
+    
+    @JaxbMapping(objPath="fiToFICstmrCdtTrf.cdtTrfTxInf[0].rmtInf.ustrd[0]")
+    private String rmtInfUstrd;
+    
+    @JaxbMapping(objPath="")
+    private java.util.Date ts;
+    
     
 	
-	/** default constructor */
-	public Ibps10100101() {
-	}
+    /** default constructor */
+    public Ibps10100101() {
+    }
 	
 	
-
   /**
    * Returns the uuid
    * 
    * @return the uuid
    */
-	@Column(name = "UUID")
-  public String getUuid() {
-    return uuid;
-  }	 
+  @Id
+    @Column(name = "UUID")
+    public String getUuid() {
+        return uuid;
+    }	 
      
   /**
    * Sets the uuid
    *
    * @param newUuid the new uuid
    */
-	@Column(name = "UUID")
-  public void  setUuid(String newUuid) {
-    uuid = newUuid;
-  }	  
 
+    public void  setUuid(String newUuid) {
+        uuid = newUuid;
+    }	  
   /**
    * Returns the grpHdrMsgId
-   * fiToFICstmrCdtTrf.grpHdr.msgId
+   * 
    * @return the grpHdrMsgId
    */
-	@Column(name = "GRPHDR_MSGID")
-  public String getGrpHdrMsgId() {
-    return grpHdrMsgId;
-  }	 
+    @Column(name = "GRPHDR_MSGID")
+    public String getGrpHdrMsgId() {
+        return grpHdrMsgId;
+    }	 
      
   /**
    * Sets the grpHdrMsgId
    *
    * @param newGrpHdrMsgId the new grpHdrMsgId
    */
-	@Column(name = "GRPHDR_MSGID")
-  public void  setGrpHdrMsgId(String newGrpHdrMsgId) {
-    grpHdrMsgId = newGrpHdrMsgId;
-  }	  
 
+    public void  setGrpHdrMsgId(String newGrpHdrMsgId) {
+        grpHdrMsgId = newGrpHdrMsgId;
+    }	  
   /**
    * Returns the creDtTm
-   * fiToFICstmrCdtTrf.grpHdr.creDtTm
+   * 
    * @return the creDtTm
    */
-	@Column(name = "CREDTTM")
-  public java.util.Date getCreDtTm() {
-    return creDtTm;
-  }	 
+    @Column(name = "CREDTTM")
+    public java.util.Date getCreDtTm() {
+        return creDtTm;
+    }	 
      
   /**
    * Sets the creDtTm
    *
    * @param newCreDtTm the new creDtTm
    */
-	@Column(name = "CREDTTM")
-  public void  setCreDtTm(java.util.Date newCreDtTm) {
-    creDtTm = newCreDtTm;
-  }	  
 
+    public void  setCreDtTm(java.util.Date newCreDtTm) {
+        creDtTm = newCreDtTm;
+    }	  
   /**
    * Returns the btchBookg
-   * fiToFICstmrCdtTrf.grpHdr.btchBookg
+   * 
    * @return the btchBookg
    */
-	@Column(name = "BTCHBOOKG")
-  public Boolean getBtchBookg() {
-    return btchBookg;
-  }	 
+    @Column(name = "BTCHBOOKG")
+    public Boolean getBtchBookg() {
+        return btchBookg;
+    }	 
      
   /**
    * Sets the btchBookg
    *
    * @param newBtchBookg the new btchBookg
    */
-	@Column(name = "BTCHBOOKG")
-  public void  setBtchBookg(Boolean newBtchBookg) {
-    btchBookg = newBtchBookg;
-  }	  
 
+    public void  setBtchBookg(Boolean newBtchBookg) {
+        btchBookg = newBtchBookg;
+    }	  
   /**
    * Returns the nbOfTxs
-   * fiToFICstmrCdtTrf.grpHdr.nbOfTxs
+   * 
    * @return the nbOfTxs
    */
-	@Column(name = "NBOFTXS")
-  public String getNbOfTxs() {
-    return nbOfTxs;
-  }	 
+    @Column(name = "NBOFTXS")
+    public String getNbOfTxs() {
+        return nbOfTxs;
+    }	 
      
   /**
    * Sets the nbOfTxs
    *
    * @param newNbOfTxs the new nbOfTxs
    */
-	@Column(name = "NBOFTXS")
-  public void  setNbOfTxs(String newNbOfTxs) {
-    nbOfTxs = newNbOfTxs;
-  }	  
 
+    public void  setNbOfTxs(String newNbOfTxs) {
+        nbOfTxs = newNbOfTxs;
+    }	  
   /**
    * Returns the ctrlSum
-   * fiToFICstmrCdtTrf.grpHdr.ctrlSum
+   * 
    * @return the ctrlSum
    */
-	@Column(name = "CTRLSUM")
-  public Double getCtrlSum() {
-    return ctrlSum;
-  }	 
+    @Column(name = "CTRLSUM")
+    public Double getCtrlSum() {
+        return ctrlSum;
+    }	 
      
   /**
    * Sets the ctrlSum
    *
    * @param newCtrlSum the new ctrlSum
    */
-	@Column(name = "CTRLSUM")
-  public void  setCtrlSum(Double newCtrlSum) {
-    ctrlSum = newCtrlSum;
-  }	  
 
+    public void  setCtrlSum(Double newCtrlSum) {
+        ctrlSum = newCtrlSum;
+    }	  
   /**
    * Returns the intrBkSttlmDt
-   * fiToFICstmrCdtTrf.grpHdr.intrBkSttlmDt
+   * 
    * @return the intrBkSttlmDt
    */
-	@Column(name = "INTRBKSTTLMDT")
-  public java.util.Date getIntrBkSttlmDt() {
-    return intrBkSttlmDt;
-  }	 
+    @Column(name = "INTRBKSTTLMDT")
+    public java.util.Date getIntrBkSttlmDt() {
+        return intrBkSttlmDt;
+    }	 
      
   /**
    * Sets the intrBkSttlmDt
    *
    * @param newIntrBkSttlmDt the new intrBkSttlmDt
    */
-	@Column(name = "INTRBKSTTLMDT")
-  public void  setIntrBkSttlmDt(java.util.Date newIntrBkSttlmDt) {
-    intrBkSttlmDt = newIntrBkSttlmDt;
-  }	  
 
+    public void  setIntrBkSttlmDt(java.util.Date newIntrBkSttlmDt) {
+        intrBkSttlmDt = newIntrBkSttlmDt;
+    }	  
   /**
    * Returns the sttlmMtd
-   * fiToFICstmrCdtTrf.grpHdr.sttlmInf.sttlmMtd
+   * 
    * @return the sttlmMtd
    */
-	@Column(name = "STTLMMTD")
-  public String getSttlmMtd() {
-    return sttlmMtd;
-  }	 
+    @Column(name = "STTLMMTD")
+    public String getSttlmMtd() {
+        return sttlmMtd;
+    }	 
      
   /**
    * Sets the sttlmMtd
    *
    * @param newSttlmMtd the new sttlmMtd
    */
-	@Column(name = "STTLMMTD")
-  public void  setSttlmMtd(String newSttlmMtd) {
-    sttlmMtd = newSttlmMtd;
-  }	  
 
+    public void  setSttlmMtd(String newSttlmMtd) {
+        sttlmMtd = newSttlmMtd;
+    }	  
   /**
    * Returns the endToEndId
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId
+   * 
    * @return the endToEndId
    */
-	@Column(name = "ENDTOENDID")
-  public String getEndToEndId() {
-    return endToEndId;
-  }	 
+    @Column(name = "ENDTOENDID")
+    public String getEndToEndId() {
+        return endToEndId;
+    }	 
      
   /**
    * Sets the endToEndId
    *
    * @param newEndToEndId the new endToEndId
    */
-	@Column(name = "ENDTOENDID")
-  public void  setEndToEndId(String newEndToEndId) {
-    endToEndId = newEndToEndId;
-  }	  
 
+    public void  setEndToEndId(String newEndToEndId) {
+        endToEndId = newEndToEndId;
+    }	  
   /**
    * Returns the pmtIdTxId
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtId.txId
+   * 
    * @return the pmtIdTxId
    */
-	@Column(name = "PMTID_TXID")
-  public String getPmtIdTxId() {
-    return pmtIdTxId;
-  }	 
+    @Column(name = "PMTID_TXID")
+    public String getPmtIdTxId() {
+        return pmtIdTxId;
+    }	 
      
   /**
    * Sets the pmtIdTxId
    *
    * @param newPmtIdTxId the new pmtIdTxId
    */
-	@Column(name = "PMTID_TXID")
-  public void  setPmtIdTxId(String newPmtIdTxId) {
-    pmtIdTxId = newPmtIdTxId;
-  }	  
 
+    public void  setPmtIdTxId(String newPmtIdTxId) {
+        pmtIdTxId = newPmtIdTxId;
+    }	  
   /**
    * Returns the instrPrty
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.instrPrty
+   * 
    * @return the instrPrty
    */
-	@Column(name = "INSTRPRTY")
-  public String getInstrPrty() {
-    return instrPrty;
-  }	 
+    @Column(name = "INSTRPRTY")
+    public String getInstrPrty() {
+        return instrPrty;
+    }	 
      
   /**
    * Sets the instrPrty
    *
    * @param newInstrPrty the new instrPrty
    */
-	@Column(name = "INSTRPRTY")
-  public void  setInstrPrty(String newInstrPrty) {
-    instrPrty = newInstrPrty;
-  }	  
 
+    public void  setInstrPrty(String newInstrPrty) {
+        instrPrty = newInstrPrty;
+    }	  
   /**
    * Returns the ctgyPurpPrtry
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.ctgyPurp.prtry
+   * 
    * @return the ctgyPurpPrtry
    */
-	@Column(name = "CTGYPURP_PRTRY")
-  public String getCtgyPurpPrtry() {
-    return ctgyPurpPrtry;
-  }	 
+    @Column(name = "CTGYPURP_PRTRY")
+    public String getCtgyPurpPrtry() {
+        return ctgyPurpPrtry;
+    }	 
      
   /**
    * Sets the ctgyPurpPrtry
    *
    * @param newCtgyPurpPrtry the new ctgyPurpPrtry
    */
-	@Column(name = "CTGYPURP_PRTRY")
-  public void  setCtgyPurpPrtry(String newCtgyPurpPrtry) {
-    ctgyPurpPrtry = newCtgyPurpPrtry;
-  }	  
 
+    public void  setCtgyPurpPrtry(String newCtgyPurpPrtry) {
+        ctgyPurpPrtry = newCtgyPurpPrtry;
+    }	  
   /**
    * Returns the intrBkSttlmAmtValue
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmAmt.value
+   * 
    * @return the intrBkSttlmAmtValue
    */
-	@Column(name = "INTRBKSTTLMAMT_VALUE")
-  public Double getIntrBkSttlmAmtValue() {
-    return intrBkSttlmAmtValue;
-  }	 
+    @Column(name = "INTRBKSTTLMAMT_VALUE")
+    public Double getIntrBkSttlmAmtValue() {
+        return intrBkSttlmAmtValue;
+    }	 
      
   /**
    * Sets the intrBkSttlmAmtValue
    *
    * @param newIntrBkSttlmAmtValue the new intrBkSttlmAmtValue
    */
-	@Column(name = "INTRBKSTTLMAMT_VALUE")
-  public void  setIntrBkSttlmAmtValue(Double newIntrBkSttlmAmtValue) {
-    intrBkSttlmAmtValue = newIntrBkSttlmAmtValue;
-  }	  
 
+    public void  setIntrBkSttlmAmtValue(Double newIntrBkSttlmAmtValue) {
+        intrBkSttlmAmtValue = newIntrBkSttlmAmtValue;
+    }	  
   /**
    * Returns the intrBkSttlmAmtCcy
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmAmt.ccy
+   * 
    * @return the intrBkSttlmAmtCcy
    */
-	@Column(name = "INTRBKSTTLMAMT_CCY")
-  public String getIntrBkSttlmAmtCcy() {
-    return intrBkSttlmAmtCcy;
-  }	 
+    @Column(name = "INTRBKSTTLMAMT_CCY")
+    public String getIntrBkSttlmAmtCcy() {
+        return intrBkSttlmAmtCcy;
+    }	 
      
   /**
    * Sets the intrBkSttlmAmtCcy
    *
    * @param newIntrBkSttlmAmtCcy the new intrBkSttlmAmtCcy
    */
-	@Column(name = "INTRBKSTTLMAMT_CCY")
-  public void  setIntrBkSttlmAmtCcy(String newIntrBkSttlmAmtCcy) {
-    intrBkSttlmAmtCcy = newIntrBkSttlmAmtCcy;
-  }	  
 
+    public void  setIntrBkSttlmAmtCcy(String newIntrBkSttlmAmtCcy) {
+        intrBkSttlmAmtCcy = newIntrBkSttlmAmtCcy;
+    }	  
   /**
    * Returns the accptncDtTm
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].accptncDtTm
+   * 
    * @return the accptncDtTm
    */
-	@Column(name = "ACCPTNCDTTM")
-  public java.util.Date getAccptncDtTm() {
-    return accptncDtTm;
-  }	 
+    @Column(name = "ACCPTNCDTTM")
+    public java.util.Date getAccptncDtTm() {
+        return accptncDtTm;
+    }	 
      
   /**
    * Sets the accptncDtTm
    *
    * @param newAccptncDtTm the new accptncDtTm
    */
-	@Column(name = "ACCPTNCDTTM")
-  public void  setAccptncDtTm(java.util.Date newAccptncDtTm) {
-    accptncDtTm = newAccptncDtTm;
-  }	  
 
+    public void  setAccptncDtTm(java.util.Date newAccptncDtTm) {
+        accptncDtTm = newAccptncDtTm;
+    }	  
   /**
    * Returns the chrgBr
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].chrgBr
+   * 
    * @return the chrgBr
    */
-	@Column(name = "CHRGBR")
-  public String getChrgBr() {
-    return chrgBr;
-  }	 
+    @Column(name = "CHRGBR")
+    public String getChrgBr() {
+        return chrgBr;
+    }	 
      
   /**
    * Sets the chrgBr
    *
    * @param newChrgBr the new chrgBr
    */
-	@Column(name = "CHRGBR")
-  public void  setChrgBr(String newChrgBr) {
-    chrgBr = newChrgBr;
-  }	  
 
+    public void  setChrgBr(String newChrgBr) {
+        chrgBr = newChrgBr;
+    }	  
   /**
    * Returns the dbtrNm
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtr.nm
+   * 
    * @return the dbtrNm
    */
-	@Column(name = "DBTR_NM")
-  public String getDbtrNm() {
-    return dbtrNm;
-  }	 
+    @Column(name = "DBTR_NM")
+    public String getDbtrNm() {
+        return dbtrNm;
+    }	 
      
   /**
    * Sets the dbtrNm
    *
    * @param newDbtrNm the new dbtrNm
    */
-	@Column(name = "DBTR_NM")
-  public void  setDbtrNm(String newDbtrNm) {
-    dbtrNm = newDbtrNm;
-  }	  
 
+    public void  setDbtrNm(String newDbtrNm) {
+        dbtrNm = newDbtrNm;
+    }	  
   /**
    * Returns the emailAdr
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtr.ctctDtls.emailAdr
+   * 
    * @return the emailAdr
    */
-	@Column(name = "EMAILADR")
-  public String getEmailAdr() {
-    return emailAdr;
-  }	 
+    @Column(name = "EMAILADR")
+    public String getEmailAdr() {
+        return emailAdr;
+    }	 
      
   /**
    * Sets the emailAdr
    *
    * @param newEmailAdr the new emailAdr
    */
-	@Column(name = "EMAILADR")
-  public void  setEmailAdr(String newEmailAdr) {
-    emailAdr = newEmailAdr;
-  }	  
 
+    public void  setEmailAdr(String newEmailAdr) {
+        emailAdr = newEmailAdr;
+    }	  
   /**
    * Returns the dbtrAcctIdOthrId
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.id.othr.id
+   * 
    * @return the dbtrAcctIdOthrId
    */
-	@Column(name = "DBTRACCT_ID_OTHR_ID")
-  public String getDbtrAcctIdOthrId() {
-    return dbtrAcctIdOthrId;
-  }	 
+    @Column(name = "DBTRACCT_ID_OTHR_ID")
+    public String getDbtrAcctIdOthrId() {
+        return dbtrAcctIdOthrId;
+    }	 
      
   /**
    * Sets the dbtrAcctIdOthrId
    *
    * @param newDbtrAcctIdOthrId the new dbtrAcctIdOthrId
    */
-	@Column(name = "DBTRACCT_ID_OTHR_ID")
-  public void  setDbtrAcctIdOthrId(String newDbtrAcctIdOthrId) {
-    dbtrAcctIdOthrId = newDbtrAcctIdOthrId;
-  }	  
 
+    public void  setDbtrAcctIdOthrId(String newDbtrAcctIdOthrId) {
+        dbtrAcctIdOthrId = newDbtrAcctIdOthrId;
+    }	  
   /**
    * Returns the dbtrAcctIdOthrIssr
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.id.othr.issr
+   * 
    * @return the dbtrAcctIdOthrIssr
    */
-	@Column(name = "DBTRACCT_ID_OTHR_ISSR")
-  public String getDbtrAcctIdOthrIssr() {
-    return dbtrAcctIdOthrIssr;
-  }	 
+    @Column(name = "DBTRACCT_ID_OTHR_ISSR")
+    public String getDbtrAcctIdOthrIssr() {
+        return dbtrAcctIdOthrIssr;
+    }	 
      
   /**
    * Sets the dbtrAcctIdOthrIssr
    *
    * @param newDbtrAcctIdOthrIssr the new dbtrAcctIdOthrIssr
    */
-	@Column(name = "DBTRACCT_ID_OTHR_ISSR")
-  public void  setDbtrAcctIdOthrIssr(String newDbtrAcctIdOthrIssr) {
-    dbtrAcctIdOthrIssr = newDbtrAcctIdOthrIssr;
-  }	  
 
+    public void  setDbtrAcctIdOthrIssr(String newDbtrAcctIdOthrIssr) {
+        dbtrAcctIdOthrIssr = newDbtrAcctIdOthrIssr;
+    }	  
   /**
    * Returns the tpPrtry
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.tp.prtry
+   * 
    * @return the tpPrtry
    */
-	@Column(name = "TP_PRTRY")
-  public String getTpPrtry() {
-    return tpPrtry;
-  }	 
+    @Column(name = "TP_PRTRY")
+    public String getTpPrtry() {
+        return tpPrtry;
+    }	 
      
   /**
    * Sets the tpPrtry
    *
    * @param newTpPrtry the new tpPrtry
    */
-	@Column(name = "TP_PRTRY")
-  public void  setTpPrtry(String newTpPrtry) {
-    tpPrtry = newTpPrtry;
-  }	  
 
+    public void  setTpPrtry(String newTpPrtry) {
+        tpPrtry = newTpPrtry;
+    }	  
   /**
    * Returns the clrSysMmbIdMmbId
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAgt.finInstnId.clrSysMmbId.mmbId
+   * 
    * @return the clrSysMmbIdMmbId
    */
-	@Column(name = "CLRSYSMMBID_MMBID")
-  public String getClrSysMmbIdMmbId() {
-    return clrSysMmbIdMmbId;
-  }	 
+    @Column(name = "CLRSYSMMBID_MMBID")
+    public String getClrSysMmbIdMmbId() {
+        return clrSysMmbIdMmbId;
+    }	 
      
   /**
    * Sets the clrSysMmbIdMmbId
    *
    * @param newClrSysMmbIdMmbId the new clrSysMmbIdMmbId
    */
-	@Column(name = "CLRSYSMMBID_MMBID")
-  public void  setClrSysMmbIdMmbId(String newClrSysMmbIdMmbId) {
-    clrSysMmbIdMmbId = newClrSysMmbIdMmbId;
-  }	  
 
+    public void  setClrSysMmbIdMmbId(String newClrSysMmbIdMmbId) {
+        clrSysMmbIdMmbId = newClrSysMmbIdMmbId;
+    }	  
   /**
    * Returns the brnchIdId
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAgt.brnchId.id
+   * 
    * @return the brnchIdId
    */
-	@Column(name = "BRNCHID_ID")
-  public String getBrnchIdId() {
-    return brnchIdId;
-  }	 
+    @Column(name = "BRNCHID_ID")
+    public String getBrnchIdId() {
+        return brnchIdId;
+    }	 
      
   /**
    * Sets the brnchIdId
    *
    * @param newBrnchIdId the new brnchIdId
    */
-	@Column(name = "BRNCHID_ID")
-  public void  setBrnchIdId(String newBrnchIdId) {
-    brnchIdId = newBrnchIdId;
-  }	  
 
+    public void  setBrnchIdId(String newBrnchIdId) {
+        brnchIdId = newBrnchIdId;
+    }	  
   /**
    * Returns the ctrySubDvsn
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAgt.brnchId.pstlAdr.ctrySubDvsn
+   * 
    * @return the ctrySubDvsn
    */
-	@Column(name = "CTRYSUBDVSN")
-  public String getCtrySubDvsn() {
-    return ctrySubDvsn;
-  }	 
+    @Column(name = "CTRYSUBDVSN")
+    public String getCtrySubDvsn() {
+        return ctrySubDvsn;
+    }	 
      
   /**
    * Sets the ctrySubDvsn
    *
    * @param newCtrySubDvsn the new ctrySubDvsn
    */
-	@Column(name = "CTRYSUBDVSN")
-  public void  setCtrySubDvsn(String newCtrySubDvsn) {
-    ctrySubDvsn = newCtrySubDvsn;
-  }	  
 
+    public void  setCtrySubDvsn(String newCtrySubDvsn) {
+        ctrySubDvsn = newCtrySubDvsn;
+    }	  
   /**
    * Returns the clrSysMmbIdMmbId1
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtrAgt.finInstnId.clrSysMmbId.mmbId
+   * 
    * @return the clrSysMmbIdMmbId1
    */
-	@Column(name = "CLRSYSMMBID_MMBID1")
-  public String getClrSysMmbIdMmbId1() {
-    return clrSysMmbIdMmbId1;
-  }	 
+    @Column(name = "CLRSYSMMBID_MMBID1")
+    public String getClrSysMmbIdMmbId1() {
+        return clrSysMmbIdMmbId1;
+    }	 
      
   /**
    * Sets the clrSysMmbIdMmbId1
    *
    * @param newClrSysMmbIdMmbId1 the new clrSysMmbIdMmbId1
    */
-	@Column(name = "CLRSYSMMBID_MMBID1")
-  public void  setClrSysMmbIdMmbId1(String newClrSysMmbIdMmbId1) {
-    clrSysMmbIdMmbId1 = newClrSysMmbIdMmbId1;
-  }	  
 
+    public void  setClrSysMmbIdMmbId1(String newClrSysMmbIdMmbId1) {
+        clrSysMmbIdMmbId1 = newClrSysMmbIdMmbId1;
+    }	  
   /**
    * Returns the brnchIdId1
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtrAgt.brnchId.id
+   * 
    * @return the brnchIdId1
    */
-	@Column(name = "BRNCHID_ID1")
-  public String getBrnchIdId1() {
-    return brnchIdId1;
-  }	 
+    @Column(name = "BRNCHID_ID1")
+    public String getBrnchIdId1() {
+        return brnchIdId1;
+    }	 
      
   /**
    * Sets the brnchIdId1
    *
    * @param newBrnchIdId1 the new brnchIdId1
    */
-	@Column(name = "BRNCHID_ID1")
-  public void  setBrnchIdId1(String newBrnchIdId1) {
-    brnchIdId1 = newBrnchIdId1;
-  }	  
 
+    public void  setBrnchIdId1(String newBrnchIdId1) {
+        brnchIdId1 = newBrnchIdId1;
+    }	  
   /**
    * Returns the cdtrNm
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtr.nm
+   * 
    * @return the cdtrNm
    */
-	@Column(name = "CDTR_NM")
-  public String getCdtrNm() {
-    return cdtrNm;
-  }	 
+    @Column(name = "CDTR_NM")
+    public String getCdtrNm() {
+        return cdtrNm;
+    }	 
      
   /**
    * Sets the cdtrNm
    *
    * @param newCdtrNm the new cdtrNm
    */
-	@Column(name = "CDTR_NM")
-  public void  setCdtrNm(String newCdtrNm) {
-    cdtrNm = newCdtrNm;
-  }	  
 
+    public void  setCdtrNm(String newCdtrNm) {
+        cdtrNm = newCdtrNm;
+    }	  
   /**
    * Returns the cdtrAcctIdOthrId
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtrAcct.id.othr.id
+   * 
    * @return the cdtrAcctIdOthrId
    */
-	@Column(name = "CDTRACCT_ID_OTHR_ID")
-  public String getCdtrAcctIdOthrId() {
-    return cdtrAcctIdOthrId;
-  }	 
+    @Column(name = "CDTRACCT_ID_OTHR_ID")
+    public String getCdtrAcctIdOthrId() {
+        return cdtrAcctIdOthrId;
+    }	 
      
   /**
    * Sets the cdtrAcctIdOthrId
    *
    * @param newCdtrAcctIdOthrId the new cdtrAcctIdOthrId
    */
-	@Column(name = "CDTRACCT_ID_OTHR_ID")
-  public void  setCdtrAcctIdOthrId(String newCdtrAcctIdOthrId) {
-    cdtrAcctIdOthrId = newCdtrAcctIdOthrId;
-  }	  
 
+    public void  setCdtrAcctIdOthrId(String newCdtrAcctIdOthrId) {
+        cdtrAcctIdOthrId = newCdtrAcctIdOthrId;
+    }	  
   /**
    * Returns the purpPrtry
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].purp.prtry
+   * 
    * @return the purpPrtry
    */
-	@Column(name = "PURP_PRTRY")
-  public String getPurpPrtry() {
-    return purpPrtry;
-  }	 
+    @Column(name = "PURP_PRTRY")
+    public String getPurpPrtry() {
+        return purpPrtry;
+    }	 
      
   /**
    * Sets the purpPrtry
    *
    * @param newPurpPrtry the new purpPrtry
    */
-	@Column(name = "PURP_PRTRY")
-  public void  setPurpPrtry(String newPurpPrtry) {
-    purpPrtry = newPurpPrtry;
-  }	  
 
+    public void  setPurpPrtry(String newPurpPrtry) {
+        purpPrtry = newPurpPrtry;
+    }	  
   /**
    * Returns the rmtInfUstrd
-   * fiToFICstmrCdtTrf.cdtTrfTxInf[0].rmtInf.ustrd[0]
+   * 
    * @return the rmtInfUstrd
    */
-	@Column(name = "RMTINF_USTRD")
-  public String getRmtInfUstrd() {
-    return rmtInfUstrd;
-  }	 
+    @Column(name = "RMTINF_USTRD")
+    public String getRmtInfUstrd() {
+        return rmtInfUstrd;
+    }	 
      
   /**
    * Sets the rmtInfUstrd
    *
    * @param newRmtInfUstrd the new rmtInfUstrd
    */
-	@Column(name = "RMTINF_USTRD")
-  public void  setRmtInfUstrd(String newRmtInfUstrd) {
-    rmtInfUstrd = newRmtInfUstrd;
-  }	  
 
+    public void  setRmtInfUstrd(String newRmtInfUstrd) {
+        rmtInfUstrd = newRmtInfUstrd;
+    }	  
   /**
    * Returns the ts
    * 
    * @return the ts
    */
-	@Column(name = "TS")
-  public java.util.Date getTs() {
-    return ts;
-  }	 
+    @Column(name = "TS")
+    public java.util.Date getTs() {
+        return ts;
+    }	 
      
   /**
    * Sets the ts
    *
    * @param newTs the new ts
    */
-	@Column(name = "TS")
-  public void  setTs(java.util.Date newTs) {
-    ts = newTs;
-  }	  
+
+    public void  setTs(java.util.Date newTs) {
+        ts = newTs;
+    }	  
     
     
 }    

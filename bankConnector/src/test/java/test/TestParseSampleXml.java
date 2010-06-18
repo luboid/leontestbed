@@ -1,8 +1,11 @@
 package test;
 
+import com.cnaps2.cncc.service.IIBPSManager;
 import com.topfinance.cfg.TestDummy;
 import com.topfinance.converter.Iso8583ToXml;
+import com.topfinance.converter.JaxbMapping;
 import com.topfinance.converter.XMLGregorianCalendarConverter;
+import com.topfinance.ebo.msg.Ibps10100101;
 import freemarker.template.Configuration;
 import freemarker.template.ObjectWrapper;
 import freemarker.template.Template;
@@ -30,7 +33,9 @@ import java.util.Stack;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.jdom.Attribute;
@@ -39,6 +44,8 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.jpos.iso.ISODate;
 import org.jpos.iso.ISOMsg;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -606,13 +613,13 @@ public class TestParseSampleXml extends DefaultHandler{
                 outEboDir.mkdirs();
             }
             Writer eboOut = new OutputStreamWriter(new FileOutputStream(new File(outEboDir, eboClassName+".java")), ENCODING);
-            String eboContent = getTemplateContent(eboInfo, TEMPLATE_NAME_EBO);
+            String eboContent = renderTemplate(eboInfo, TEMPLATE_NAME_EBO);
             eboOut.write(eboContent);
             eboOut.flush();
             System.out.println("generated ebo at " + outEboPath);
             
             Writer ddlOut = new OutputStreamWriter(new FileOutputStream(new File(outDdlFile)), ENCODING);
-            String ddlContent = getTemplateContent(eboInfo, TEMPLATE_NAME_DDL);
+            String ddlContent = renderTemplate(eboInfo, TEMPLATE_NAME_DDL);
             ddlOut.write(ddlContent);
             ddlOut.flush();
             System.out.println("generated ddl at " + outDdlFile);
@@ -623,11 +630,11 @@ public class TestParseSampleXml extends DefaultHandler{
         }
     }
     
-    public String getTemplateContent(Object data, String templateName) throws IOException,
+    private String renderTemplate(Object data, String templateName) throws IOException,
         TemplateException {
         Configuration cfg = new Configuration();
 
-        // TODO:
+        // TODO: initialize freemarker only once
         // as shown in TestFreeMarker, it's not perfect that the ?keys will
         // return method names also, need refer to how spring freemarker plugin
         // do the render
@@ -648,30 +655,93 @@ public class TestParseSampleXml extends DefaultHandler{
         return stringWriter.toString();
     }
     
+    public void testGeneratedEbo() {
+        String config = "/test/applicationContext.xml";
+
+        info("start of testGeneratedEbo..." );
+        try {
+            
+            // construct jaxbObj using the generated .map 
+            ISOMsg m = new ISOMsg();
+
+            Map<String, String> mappings = Iso8583ToXml.loadMappings(new FileInputStream(outMapFile));
+            Iso8583ToXml main = new Iso8583ToXml(jaxbPkgName);
+            Object jaxbObj = main.iso8583ToObject(m, mappings);
+            debug("obj=" + jaxbObj);
+            
+            
+            // convert jaxbObj -> ebo
+            // TODO 
+            String eboClassName = "com.topfinance.ebo.msg.Ibps10100101";
+            Class eboClass = Class.forName(eboClassName);
+            Object ebo = eboClass.newInstance();
+            Field[] fields = eboClass.getDeclaredFields();
+            for(Field field : fields) {
+                String fName = field.getName();
+                Class fType = field.getType();
+                
+                if(Date.class.isAssignableFrom(fType)) {
+                    // TODO skip date type... XMLGregorianCalendarconversion is trouble
+                    continue;
+                }
+                if(Boolean.class.isAssignableFrom(fType)) {
+                    // TODO skip boolean type...  public Boolean isBtchBookg() is not a valid getter method
+                    continue;
+                }
+                JaxbMapping mapping = field.getAnnotation(JaxbMapping.class);
+                if(mapping!=null) {
+                    String objPath = mapping.objPath();
+                    if(StringUtils.isEmpty(objPath)) {
+                        // added columns, not mapped with jaxbObj
+                        continue;
+                    }
+                    debug("fName="+fName+", objPath="+objPath+", fType="+fType);
+                    
+                    Object value = PropertyUtils.getProperty(jaxbObj, objPath);
+                    debug("fName="+fName+", value="+value);
+                    BeanUtils.setProperty(ebo, fName, value);
+                }
+            }
+            
+            
+            // store the ebo
+            Ibps10100101 ibps101 = (Ibps10100101)ebo;
+            ibps101.setUuid(String.valueOf(new Date().getTime()));
+            
+            info("initializing DB Connection with spring: " + config + "...");
+            ApplicationContext ctx = new ClassPathXmlApplicationContext(config);
+            IIBPSManager mgr = (IIBPSManager)ctx.getBean("ibpsManager");
+            mgr.save(ebo);
+            
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        info("done testGeneratedEbo");
+
+    }
+    
+    
     public static void main(String[] args) {
         // only 101, 102 and 601
         String op = TestDummy.OPERATION_101;
-        
         String basePath = "D:/bankConnector/source/test";
+        ConvertUtils.register(new XMLGregorianCalendarConverter(), XMLGregorianCalendar.class);
         
         
-//        boolean b = isClassWithValue(String.class);
-//        System.out.println("b="+b);
-//        b = isClassWithValue(Boolean.class);
-//        System.out.println("b="+b);
-//        b = isClassWithValue(ActiveCurrencyAndAmount.class);
-//        System.out.println("b="+b);
         
         TestParseSampleXml main = new TestParseSampleXml(basePath, op);
+        
+        // could comment out and skip the steps you don't want 
         main.parseXml();
 
-        
-        ConvertUtils.register(new XMLGregorianCalendarConverter(), XMLGregorianCalendar.class);
         main.generateMap();
         main.testGeneratedMap();
         
         main.generateDdlAndEbo();
+
         
+        main.testGeneratedEbo();
         
     }
     

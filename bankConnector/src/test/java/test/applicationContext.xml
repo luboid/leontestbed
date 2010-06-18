@@ -38,8 +38,7 @@
     			<value>com.cnaps2.cncc.ebo.SysUserEbo</value>
     			<value>com.cnaps2.cncc.ebo.SysFuncsEbo</value>
     			<value>com.cnaps2.cncc.ebo.SysOperEbo</value>
-    			<value>com.cnaps2.cncc.ebo.msg.MsgListEbo</value>
-    			<value>com.cnaps2.cncc.ebo.msg.MsgPairEbo</value>
+    			<value>com.topfinance.ebo.msg.Ibps10100101</value>
 
 			</list>
 		</property>

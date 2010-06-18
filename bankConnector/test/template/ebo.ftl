@@ -1,5 +1,6 @@
 package ${table.pkgName};
 
+import com.topfinance.converter.JaxbMapping;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,38 +16,43 @@ import javax.persistence.Table;
 @Table(name = "${table.tableName}")
 public class ${table.destinationClassName}  implements java.io.Serializable {
 
-	// Fields 
+    // Fields 
 <#list table.basicColumns as column>    
-	private ${column.javaType} ${column.variableName};
+    @JaxbMapping(objPath="${column.objPath}")
+    private ${column.javaType} ${column.variableName};
+    
 </#list>    
     
 	
-	/** default constructor */
-	public ${table.destinationClassName}() {
-	}
+    /** default constructor */
+    public ${table.destinationClassName}() {
+    }
 	
 	
 <#list table.basicColumns as column >
-
+	<#assign key = column_index>
   /**
    * Returns the ${column.variableName}
-   * ${column.objPath}
+   * 
    * @return the ${column.variableName}
    */
-	@Column(name = "${column.dbName}")
-  public ${column.javaType} get${column.capitalisedVariableName}() {
-    return ${column.variableName};
-  }	 
+  <#if (key == 0) > 
+  @Id
+  </#if>
+    @Column(name = "${column.dbName}")
+    public ${column.javaType} get${column.capitalisedVariableName}() {
+        return ${column.variableName};
+    }	 
      
   /**
    * Sets the ${column.variableName}
    *
    * @param new${column.capitalisedVariableName} the new ${column.variableName}
    */
-	@Column(name = "${column.dbName}")
-  public void  set${column.capitalisedVariableName}(${column.javaType} new${column.capitalisedVariableName}) {
-    ${column.variableName} = new${column.capitalisedVariableName};
-  }	  
+
+    public void  set${column.capitalisedVariableName}(${column.javaType} new${column.capitalisedVariableName}) {
+        ${column.variableName} = new${column.capitalisedVariableName};
+    }	  
 </#list>  
     
     
