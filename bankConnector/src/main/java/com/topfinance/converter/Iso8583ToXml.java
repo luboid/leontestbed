@@ -110,9 +110,9 @@ public class Iso8583ToXml {
             for(String key: mappings.keySet()) {
                 String[] paths = parseObjPath(key);
                 String oPath = paths[0];
-                String att = paths[1];
+                String thisName = paths[1];
                 
-                debug("================oPath="+oPath+", att="+att);
+                debug("================oPath="+oPath+", att="+thisName);
                 
                 // this is to save the "Document." from mapping rule
                 // todo is there a better way?
@@ -130,22 +130,34 @@ public class Iso8583ToXml {
                 }
                 
                 
-                Field field = obj.getClass().getDeclaredField(att);
-                Class type = field.getType();
-                debug("type=" + type);
+                // the leaf node itself is a List (of Strings?) see 101 RemittanceInformation5.ustrd                
+                if(thisName.contains("[")) {
+                    if(value==null) {
+                        // ISO msg does not contain the mapping field
+                        // TODO what to do?
+                        // now just neglect
+                    } else {
+                        String fName = StringUtils.substringBefore(thisName, "[");
+                        Collection collection = (Collection)PropertyUtils.getProperty(obj, fName);
+                        collection.add(value);
+                    }
+                } else {
+                    Field field = obj.getClass().getDeclaredField(thisName);
+                    Class type = field.getType();
+                    debug("type=" + type);
 
-                if(value==null) {
-                    // ISO msg does not contain the mapping field
-                    // TODO what to do?
-                    // now just neglect
+                    if (value == null) {
+                        // ISO msg does not contain the mapping field
+                        // TODO what to do?
+                        // now just neglect
+                    } else if (type.isEnum()) {
+                        Object[] values = type.getEnumConstants();
+                        Method m = type.getDeclaredMethod("fromValue", String.class);
+                        value = m.invoke(obj, (String)value);
+                    }
+
+                    BeanUtils.setProperty(obj, thisName, value);
                 }
-                else if (type.isEnum()) {
-                    Object[] values = type.getEnumConstants();
-                    Method m = type.getDeclaredMethod("fromValue", String.class);
-                    value = m.invoke(obj, (String)value);
-                } 
-                
-                BeanUtils.setProperty(obj, att, value);
             }
             
             res = pool.get(rootName);
@@ -302,7 +314,8 @@ public class Iso8583ToXml {
         
         String pkgName = "";
         if (mesgType.equals(TestDummy.OPERATION_101)) {
-            pkgName = "com.topfinance.plugin.cnaps2.v00800102";
+//            pkgName = "com.topfinance.plugin.cnaps2.v00800102";
+            pkgName = "com.cnaps2.xml.iso20022.pacs.v00800102";
         } else if(mesgType.equals(TestDummy.OPERATION_102)) {
             pkgName = "com.topfinance.plugin.cnaps2.v00200103";                
         } else if(mesgType.equals(TestDummy.OPERATION_601)) {
