@@ -28,7 +28,7 @@ public class TestIBPSMsg {
 		// 4) populate ISOMsg 0-单笔,400-中间业务，3-中间业务平台
 		msg.set(new ISOField(0, "04003"));
 		msg.set(new ISOField(20, ISODate.getDate(d)));// 1.委托日期 [1..1] DATE WT01 PP019
-		msg.set(new ISOField(14, "1234567890123456789012345678"));// 2.支付交易序号 [1..1] ID TX01 PP013
+		msg.set(new ISOField(14, "1021000999962010100113000423"));// 2.支付交易序号 [1..1] ID TX01 PP013
 		msg.set(new ISOField(6, "123456789012"));// 3.付款清算行行号 [1..1] BANKCODE DBClrBkCd01 PP005
 		msg.set(new ISOField(2, "123456789012"));// 4.付款行行号 [1..1] BANKCODE DBBkCd01 PP001
 		msg.set(new ISOField(15, "123456789012"));// 5.付款人开户行行号 [1..1] BANKCODE DBOpBk01 PP014
@@ -79,7 +79,28 @@ public class TestIBPSMsg {
 		}
 		return hash;
 	}
-	
+
+	public static ISOMsg unpackMessage(String msg) throws Exception {		
+		ISOMsg m = new ISOMsg();
+		m.setPackager(TestIBPSMsg.packager);
+		m.unpack(ISOUtil.hex2byte(msg));
+        //解析报文,返回结果
+
+		Map map = m.getChildren();
+		Object obj[] = map.keySet().toArray();
+		for (int i = 0; i < obj.length; i++) {
+			Integer pos = Integer.parseInt(obj[i].toString());
+			if (pos > 0) {
+				ISOField f = (ISOField) map.get(pos);
+				if(pos == 7||pos == 10||pos == 11||pos == 25||pos == 63)
+					m.set(pos, ISO8859ToGBK(f.getValue().toString()).trim());
+				else
+					m.set(pos,f.getValue().toString().trim());
+			}
+		}		
+		return m;
+	}
+
 	public static void main(String args[]) {
 		try {
 			String msg = TestIBPSMsg.simIBPS101Msg();

@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -48,6 +49,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import org.xml.sax.helpers.DefaultHandler;
+
+import test.tcp8583.TestIBPSMsg;
 
 public class TestParseSampleXml extends DefaultHandler {
 
@@ -400,15 +403,12 @@ public class TestParseSampleXml extends DefaultHandler {
 		}
 	}
 
-	public void testGeneratedMap() {
+	public void testGeneratedMap(ISOMsg msg) {
 
 		try {
-			// just an empty 8583
-			ISOMsg m = new ISOMsg();
-
 			Map<String, String> mappings = Iso8583ToXml.loadMappings(new FileInputStream(outMapFile));
 			Iso8583ToXml main = new Iso8583ToXml(jaxbPkgName);
-			Object obj = main.iso8583ToObject(m, mappings);
+			Object obj = main.iso8583ToObject(msg, mappings);
 			System.out.println("obj=" + obj);
 
 			String xml = main.objectToXml(obj);
@@ -595,7 +595,8 @@ public class TestParseSampleXml extends DefaultHandler {
 			if (!outEboDir.exists()) {
 				outEboDir.mkdirs();
 			}
-			Writer eboOut = new OutputStreamWriter(new FileOutputStream(new File(outEboDir, eboClassName + ".java")),ENCODING);
+			Writer eboOut = new OutputStreamWriter(new FileOutputStream(new File(outEboDir, eboClassName + ".java")),
+					ENCODING);
 			String eboContent = renderTemplate(eboInfo, TEMPLATE_NAME_EBO);
 			eboOut.write(eboContent);
 			eboOut.flush();
@@ -700,28 +701,36 @@ public class TestParseSampleXml extends DefaultHandler {
 		info("done testGeneratedEbo");
 	}
 
-	public void testParseAndGen() {
-		//parse the source xml
+	public void testParseAndGen(ISOMsg msg) {
+		// parse the source xml
 		parseXml();
-		//generate merger map file
+		// generate merger map file
 		generateMap();
-		//test map file
-		testGeneratedMap();
-		//generate dll file and ebo object
+		// test map file
+		// just an empty 8583
+		// ISOMsg msg = new ISOMsg();
+		testGeneratedMap(msg);
+		// generate dll file and ebo object
 		generateDdlAndEbo();
-		//test ebo to insert data into table
-		testGeneratedEbo();		
+		// test ebo to insert data into table
+		testGeneratedEbo();
 	}
-	
+
 	public static void main(String[] args) {
 		// Test 101,102,601,603,900 and 990
-		String op = TestDummy.OPERATION_102;
+		String op = TestDummy.OPERATION_101;
 		String basePath = "D:/bankConnector/test";
 		ConvertUtils.register(new XMLGregorianCalendarConverter(), XMLGregorianCalendar.class);
-
-		TestParseSampleXml main = new TestParseSampleXml(basePath, op);
-		main.testParseAndGen();
-
+		try {
+			TestParseSampleXml main = new TestParseSampleXml(basePath, op);
+			// ISOMsg msg = new ISOMsg();
+			String msg = TestIBPSMsg.simIBPS101Msg();
+			// System.out.println("[101Msg]" + msg);
+			ISOMsg m = TestIBPSMsg.unpackMessage(msg);
+			main.testGeneratedMap(m);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		// could comment out and skip the steps you don't want
 	}
 
