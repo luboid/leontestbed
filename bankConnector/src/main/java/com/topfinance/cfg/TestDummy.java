@@ -38,9 +38,10 @@ public class TestDummy extends TestCase implements CfgConstants{
     public static String QUEUE_UP_OUT_ECHO = "queue:up_out_echo";
     
     public static String OPERATION_101 = "ibps.101.001.01";
-    public static String OPERATION_102 = "ibps.101.001.02";
+    public static String OPERATION_102 = "ibps.102.001.01";
     public static String OPERATION_601 = "saps.601.001.01";
-    public static String OPERATION_990 = "ccms.990.001.01";
+    public static String OPERATION_603 = "saps.603.001.01";
+    public static String OPERATION_990 = "ccms.900.001.01";
     
     public void testLoadConfigure() {
         try {

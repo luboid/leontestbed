@@ -314,18 +314,17 @@ public class Iso8583ToXml {
         
         String pkgName = "";
         if (mesgType.equals(TestDummy.OPERATION_101)) {
-//            pkgName = "com.topfinance.plugin.cnaps2.v00800102";
             pkgName = "com.cnaps2.xml.iso20022.pacs.v00800102";
         } else if(mesgType.equals(TestDummy.OPERATION_102)) {
-            pkgName = "com.topfinance.plugin.cnaps2.v00200103";                
+            pkgName = "com.cnaps2.xml.iso20022.pacs.v00200103";                
         } else if(mesgType.equals(TestDummy.OPERATION_601)) {
-            pkgName = "com.topfinance.plugin.cnaps2.v05400102";                
+            pkgName = "com.cnaps2.xml.iso20022.camt.v05400102";                
+        } else if(mesgType.equals(TestDummy.OPERATION_603)) {
+            pkgName = "com.cnaps2.xml.iso20022.camt.v05300102";                
+        } else if(mesgType.equals(TestDummy.OPERATION_990)) {
+            pkgName = "com.cnaps2.xml.ccms.v99000101";                
         }        
         return pkgName;
     }
-    
-
-    
-    
-    
+     
 }
