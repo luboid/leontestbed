@@ -7,7 +7,7 @@ import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.TestDummy;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
+import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;
 
@@ -29,7 +29,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
-import org.jpos.iso.ISOPackager;
+import org.jpos.iso.ISOUtil;
 
 public class PPInitiator implements Runnable, Processor, CfgConstants{
     private static Logger logger = Logger.getLogger(PPInitiator.class.getName());
@@ -58,10 +58,14 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
     public static void log(String msg) {
         System.out.println("in PPInitator: "+msg);
     }
+    public static void info(String msg) {
+        System.out.println("[INFO] "+msg);
+    }
     CamelContext camel;
     ICfgReader reader;
 
     String outPortName;
+    
     
     public static void main(String[] args) throws Exception{
         System.out.println("starting PPInitiator...");
@@ -74,6 +78,11 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         CommandLine cmd = parser.parse( options, args);
         String cfg=null, cfgType=null;
 
+        // make sure it is there
+        BCUtils.getHomeDir();
+
+        
+        
         if(cmd.hasOption("cfg")) {
             cfg = cmd.getOptionValue("cfg");
         }
@@ -161,23 +170,19 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
 
         String docId = BCUtils.getUniqueDocId();
         String requestText = "";
+        String op = TestDummy.OPERATION_101;
         // package request
         if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(chosenInPort).getProvider())) {
-            ISOMsg m1 = new ISOMsg();
-            ISOPackager packager = new ISOIBPSPackager();
-            m1.setPackager (packager);
             
-            m1.set (new ISOField (BcConstants.ISO8583_START,  BcConstants.ISO8583_START_VALUE));
-            m1.set (new ISOField (BcConstants.ISO8583_OP_NAME,  TestDummy.OPERATION_101));
+            ISOMsg m1 = Iso8583ToXml.createDummyISOMsg(BCUtils.getHomeDir()+"/sample/8583/"+op+".8583");
+            
+            m1.set (new ISOField (BcConstants.ISO8583_OP_NAME, op));
             m1.set (new ISOField (BcConstants.ISO8583_DOC_ID, docId ));
             m1.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  ""));
             m1.set (new ISOField (BcConstants.ISO8583_HOST_ID,  hostIdentity));
             m1.set (new ISOField (BcConstants.ISO8583_PARTNER_ID,  partnerIdentity));
-            m1.set (new ISOField (100,  "100"));
-            m1.set (new ISOField (101,  "101"));
-            m1.set (new ISOField (102,  "COMM"));
             
-            requestText = new String(m1.pack(), BcConstants.ENCODING);
+            requestText = ISOUtil.hexString(m1.pack());
             
         } else {
             throw new RuntimeException("should go thru 8583");

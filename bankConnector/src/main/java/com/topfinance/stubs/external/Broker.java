@@ -12,18 +12,25 @@ import com.topfinance.cfg.TestDummy;
 import com.topfinance.cfg.db.DbCfgReader;
 import com.topfinance.cfg.xml.XmlCfgReader;
 import com.topfinance.converter.Iso8583ToXml;
+import com.topfinance.converter.XMLGregorianCalendarConverter;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
+import com.topfinance.runtime.BcConstants;
 import com.topfinance.runtime.BcException;
 import com.topfinance.util.BCUtils;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
+
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.CamelContext;
@@ -35,11 +42,13 @@ import org.apache.camel.Producer;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jetty.JettyHttpComponent;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
+import org.jpos.iso.ISOMsg;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -86,7 +95,11 @@ public class Broker implements Processor, CfgConstants{
     
     
     public static void main(String[] args) throws Exception{
+        
+        
         System.out.println("starting Broker...");
+        ConvertUtils.register(new XMLGregorianCalendarConverter(), XMLGregorianCalendar.class);
+        
         Options options = new Options();
         options.addOption("spring", true, "spring configuration file");
         options.addOption("cfgType", true, "configuration type");
@@ -96,7 +109,10 @@ public class Broker implements Processor, CfgConstants{
         CommandLineParser parser = new PosixParser();
         CommandLine cmd = parser.parse( options, args);
         String spring=null, cfgA=null, cfgB=null, cfgType=null;
-        
+
+        // make sure it is there
+        BCUtils.getHomeDir();
+
         if( cmd.hasOption( "spring" ) ) {
             spring = cmd.getOptionValue( "spring" );
         }
@@ -241,6 +257,11 @@ public class Broker implements Processor, CfgConstants{
         String origReceiver = header.getOrigReceiver();
         
         logger.info("mesgId="+mesgId+", mesgType="+mesgType+", sender="+origSender+", receiver="+origReceiver);
+//        Writer w = new OutputStreamWriter(new FileOutputStream(BCUtils.getHomeDir()+"/bin/brokerlogs/"+mesgId+".log"), BcConstants.ENCODING);
+//        w.write(bodyText);
+//        w.flush();
+//        w.close();
+        
         
         if(mesgType.equals(TestDummy.OPERATION_990)) {
             // received ack
@@ -346,6 +367,7 @@ public class Broker implements Processor, CfgConstants{
             }
             
             
+            
             // send 601 to A
             outHeader = new MsgHeader(
                                                 origSender,
@@ -357,17 +379,24 @@ public class Broker implements Processor, CfgConstants{
                                              );             
 
             // todo use a more generic way to generate jaxb obj
+            String op = TestDummy.OPERATION_601;
+            String iso8583601Sample = BCUtils.getHomeDir()+"/sample/8583/"+op+".8583";
             
-            Map<String, String> mapping = new HashMap<String, String>();
+            //load other data from sample
+            ISOMsg iso601 = Iso8583ToXml.createDummyISOMsg(iso8583601Sample);
+            
+            // TODO 
+            InputStream mrStream = XmlCfgReader.getMappingRuleFromFS(op, DIRECTION_UP);
+            Map<String, String> mapping = Iso8583ToXml.loadMappings(mrStream);
+            
+            // however control the msgid fields with real data
             mapping.put(Cnaps2Constants.MSG_ID_601, BCUtils.getUniqueDocId());
             mapping.put(Cnaps2Constants.ORIG_MSG_ID_601, docId_101);            
-            // just some biz level data
-            mapping.put(Cnaps2Constants.TEST_DATA_601_1, BCUtils.getUniqueId("addinfo-"));
 
             
             String pkg = Iso8583ToXml.getPackageName(TestDummy.OPERATION_601);
             Iso8583ToXml converter = new Iso8583ToXml(pkg);
-            Object outBody = converter.iso8583ToObject(null, mapping);
+            Object outBody = converter.iso8583ToObject(iso601, mapping);
             outText = outHeader.toText()+converter.objectToXml(outBody);
             
             logger.info("forwarding 601 to BankA on url="+outUrl);
@@ -384,14 +413,12 @@ public class Broker implements Processor, CfgConstants{
                                                 BCUtils.getUniqueId(), 
                                                 mesgRefId
                                              );             
+            
             mapping.put(Cnaps2Constants.MSG_ID_601, BCUtils.getUniqueDocId());
             mapping.put(Cnaps2Constants.ORIG_MSG_ID_601, docId_102);  
-            // just some biz level data
-            mapping.put(Cnaps2Constants.TEST_DATA_601_1, BCUtils.getUniqueId("addinfo-"));
-
             
             converter = new Iso8583ToXml(pkg);
-            outBody = converter.iso8583ToObject(null, mapping);
+            outBody = converter.iso8583ToObject(iso601, mapping);
             outText = outHeader.toText()+converter.objectToXml(outBody);
             
             logger.info("forwarding 601 to BankB on url="+ackUrl);

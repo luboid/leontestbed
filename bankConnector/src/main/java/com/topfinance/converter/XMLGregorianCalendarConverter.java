@@ -12,7 +12,10 @@ import org.apache.commons.beanutils.Converter;
 import org.jpos.iso.ISODate;
 
 public class XMLGregorianCalendarConverter implements Converter {
-
+    
+    private void info(String msg) {
+        System.out.println(msg);
+    }
     public Object convert(Class type, Object value) {
         if (value == null) {
             return null;
@@ -24,7 +27,16 @@ public class XMLGregorianCalendarConverter implements Converter {
 
         XMLGregorianCalendar res = null;
         if(value instanceof String) {
-            Date dd = ISODate.parseISODate((String)value);
+            
+            Date dd = null;
+            try {
+                // TODO
+                dd = ISODate.parseISODate((String)value);
+            } catch (Exception ex) {
+                info("in[XMLGregorianCalendarConverter] failed to convert to ISODate from a value="+value);
+                dd = new Date();
+            }
+            
             GregorianCalendar calendar = new GregorianCalendar();
             calendar.setTime(dd);
             

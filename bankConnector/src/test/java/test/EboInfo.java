@@ -21,9 +21,11 @@ public class EboInfo {
         String javaType;
         
         String dbName;
-        String dbType;
+        String dbTypeOracle;
+        String dbTypeMysql;
         
-        String dbExtra="";
+        String dbExtraOracle="";
+        String dbExtraMysql="";
         
         String objPath="";
         
@@ -55,13 +57,6 @@ public class EboInfo {
 
 
 
-        public String getDbType() {
-            return dbType;
-        }
-
-        public void setDbType(String dbType) {
-            this.dbType = dbType;
-        }
 
         public String getDbName() {
             return dbName;
@@ -71,13 +66,7 @@ public class EboInfo {
             this.dbName = dbName;
         }
 
-        public String getDbExtra() {
-            return dbExtra;
-        }
 
-        public void setDbExtra(String dbExtra) {
-            this.dbExtra = dbExtra;
-        }
 
         public String getObjPath() {
             return objPath;
@@ -85,6 +74,38 @@ public class EboInfo {
 
         public void setObjPath(String objPath) {
             this.objPath = objPath;
+        }
+
+        public String getDbTypeOracle() {
+            return dbTypeOracle;
+        }
+
+        public void setDbTypeOracle(String dbTypeOracle) {
+            this.dbTypeOracle = dbTypeOracle;
+        }
+
+        public String getDbTypeMysql() {
+            return dbTypeMysql;
+        }
+
+        public void setDbTypeMysql(String dbTypeMysql) {
+            this.dbTypeMysql = dbTypeMysql;
+        }
+
+        public String getDbExtraOracle() {
+            return dbExtraOracle;
+        }
+
+        public void setDbExtraOracle(String dbExtraOracle) {
+            this.dbExtraOracle = dbExtraOracle;
+        }
+
+        public String getDbExtraMysql() {
+            return dbExtraMysql;
+        }
+
+        public void setDbExtraMysql(String dbExtraMysql) {
+            this.dbExtraMysql = dbExtraMysql;
         }
 
 

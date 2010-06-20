@@ -1,14 +1,19 @@
 package com.topfinance.converter;
 
 import com.topfinance.cfg.TestDummy;
+import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
+import com.topfinance.util.BCUtils;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +28,10 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.jpos.iso.ISODate;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
+import test.tcp8583.TestIBPSMsg;
 
 
 public class Iso8583ToXml {
@@ -35,14 +42,19 @@ public class Iso8583ToXml {
     private Map<String, Object> pool = new HashMap<String, Object>();
     private String rootName;
     
+    public static final String MAP_ISO_PREFIX = "ISO[";
+    public static final String MAP_ISO_SURFIX = "]";
+    
     public Iso8583ToXml(String pkgName) {
         this.pkgName = pkgName;
     }
     
     private static void debug(String msg) {
-        logger.debug("DEBUG in [Iso8583ToXml]: " +msg);
+        logger.debug(msg);
     }
-    
+    private static void info(String msg) {
+        logger.info(msg);
+    }
     public String objectToXml(Object object) {
         String rtnStr = "";
         try {
@@ -89,10 +101,20 @@ public class Iso8583ToXml {
     	try {
     		for(String key: mappings.keySet()) {
     			String oPath = mappings.get(key);
-    			Object value = PropertyUtils.getProperty(jaxbObj, oPath); 
+    			
+    			Object value = BCUtils.extractFromJaxbObjByOPath(jaxbObj, oPath); 
     			debug("oPath="+oPath+", value="+value);
+    			String strVal = "";
+    			if(value==null) {
+    			    strVal="";
+    			}
+    			else if(value instanceof Date) {
+    			    strVal = ISODate.getDateTime((Date)value);
+    			}else {
+    			    strVal = value.toString();
+    			}
     			Integer fldPos = Integer.valueOf(key);
-    			res.set(new ISOField(fldPos, value==null? "" : value.toString())); 
+    			res.set(new ISOField(fldPos, strVal)); 
     		}
     		res.set(new ISOField(BcConstants.ISO8583_START, BcConstants.ISO8583_START_VALUE));
 
@@ -121,12 +143,14 @@ public class Iso8583ToXml {
                 
                 String mapto = mappings.get(key);
                 Object value = null;
-                if (!mapto.contains("ISO[")) {
+                if (!mapto.contains(MAP_ISO_PREFIX)) {
                     // not a ISO mapping
                     value=mapto;
                 } else {
-                    Integer fldno = Integer.valueOf(StringUtils.substringBetween(mapto, "ISO[", "]"));
-                    value = msg.getValue(fldno);
+                    Integer fldno = Integer.valueOf(StringUtils.substringBetween(mapto, MAP_ISO_PREFIX, MAP_ISO_SURFIX));
+                    
+                    
+                    value = TestIBPSMsg.ISO8859ToGBK((String)msg.getValue(fldno));
                 }
                 
                 
@@ -177,7 +201,6 @@ public class Iso8583ToXml {
 //            }
             rootName="Document";
         }
-
         int index = key.lastIndexOf('.');
         String oPath = key.substring(0, index);
         String att = key.substring(index+1);
@@ -268,6 +291,45 @@ public class Iso8583ToXml {
                 
     }
     
+    public static ISOMsg createDummyISOMsg(String sample8583FileName) {
+        
+        // construct a dummy ISOMsg from the generated sample 8583 file,
+        // which could be changed manually (by default it contains value extracted from sample xml)
+        
+        ISOMsg msg = new ISOMsg();
+        
+        List<String> lines = null;
+        try {
+            msg.setPackager(new ISOIBPSPackager());
+            msg.set (new ISOField (BcConstants.ISO8583_START,  BcConstants.ISO8583_START_VALUE));
+            lines = IOUtils.readLines(new InputStreamReader(new FileInputStream(sample8583FileName),
+                                                            BcConstants.ENCODING));
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+        
+        for (String line : lines) {
+            try {
+                if(StringUtils.isBlank(line)) {
+                    continue;
+                }
+                String[] arr = StringUtils.split(line, "=");
+                int pos = Integer.valueOf(arr[0]);
+                String val = arr[1];
+                msg.set(new ISOField(pos, TestIBPSMsg.GBKToISO8859(val)));
+                
+            } catch (Exception ex) {
+                info("error in line"+line);
+                throw new RuntimeException("error in line: " + line, ex);
+            }
+
+        }
+
+        return msg;
+
+    }
+    
+    
     public static Map<String, String> loadMappings(InputStream input)  {
  
         Map<String, String> res = new HashMap<String, String>();
@@ -314,17 +376,18 @@ public class Iso8583ToXml {
         
         String pkgName = "";
         if (mesgType.equals(TestDummy.OPERATION_101)) {
+//            pkgName = "com.topfinance.plugin.cnaps2.v00800102";
             pkgName = "com.cnaps2.xml.iso20022.pacs.v00800102";
         } else if(mesgType.equals(TestDummy.OPERATION_102)) {
             pkgName = "com.cnaps2.xml.iso20022.pacs.v00200103";                
         } else if(mesgType.equals(TestDummy.OPERATION_601)) {
             pkgName = "com.cnaps2.xml.iso20022.camt.v05400102";                
-        } else if(mesgType.equals(TestDummy.OPERATION_603)) {
-            pkgName = "com.cnaps2.xml.iso20022.camt.v05300102";                
-        } else if(mesgType.equals(TestDummy.OPERATION_990)) {
-            pkgName = "com.cnaps2.xml.ccms.v99000101";                
         }        
         return pkgName;
     }
-     
+    
+
+    
+    
+    
 }

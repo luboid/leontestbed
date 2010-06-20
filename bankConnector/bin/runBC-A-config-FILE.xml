@@ -17,7 +17,7 @@
       <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation" id="8" name="ibps.101.001.01" upIsEnabled="T" upReplyType="A" upIsReply="F" upAckType="ASYNC" downIsEnabled="T" downReplyType="A" downIsReply="F" downAckType="ASYNC">
          <protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6"/>
       </ICfgOperation>
-      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation" id="9" name="ibps.101.001.02" upIsEnabled="T" upReplyType="A" upIsReply="T" upAckType="ASYNC" downIsEnabled="F" downReplyType="N" downIsReply="T">
+      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation" id="9" name="ibps.102.001.01" upIsEnabled="T" upReplyType="A" upIsReply="T" upAckType="ASYNC" downIsEnabled="F" downReplyType="N" downIsReply="T">
          <protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6"/>
       </ICfgOperation>
       <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation" id="10" name="saps.601.001.01" upIsEnabled="F" downIsEnabled="T" downReplyType="N" downIsReply="T">

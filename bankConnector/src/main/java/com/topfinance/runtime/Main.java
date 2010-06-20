@@ -3,13 +3,17 @@ package com.topfinance.runtime;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.converter.XMLGregorianCalendarConverter;
 import com.topfinance.util.BCUtils;
 
 import java.util.List;
 
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.spring.spi.ApplicationContextRegistry;
+import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
@@ -30,11 +34,15 @@ public class Main {
         return ctx.getBean(name);
     }
     
+    
     /**
      * @param args
      */
     public static void main(String[] args) {
         try {
+            // register converters used in jaxb-ebo conversion
+            ConvertUtils.register(new XMLGregorianCalendarConverter(), XMLGregorianCalendar.class);
+            
             Options options = new Options();
             options.addOption("spring", true, "spring configuration file");
             options.addOption("cfgType", true, "configuration type");
@@ -43,6 +51,11 @@ public class Main {
             CommandLineParser parser = new PosixParser();
             CommandLine cmd = parser.parse( options, args);
             String spring = null, cfg=null, cfgType=null;
+            
+            // make sure it is there
+            BCUtils.getHomeDir();
+
+            
             if( cmd.hasOption( "spring" ) ) {
                 spring = cmd.getOptionValue( "spring" );
             }

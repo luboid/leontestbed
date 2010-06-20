@@ -9,11 +9,10 @@ import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
-import com.topfinance.cfg.TestDummy;
-import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.util.BCUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -192,32 +191,27 @@ public class XmlCfgReader extends TestCase implements ICfgReader {
         return res;
     }
     
-
     
     public InputStream getMappingRule(String mesgType, String direction) {
-        String mapFileName = "";
-        if (mesgType.equals(TestDummy.OPERATION_101)) {
-        	if(DIRECTION_UP.equals(direction)) {
-        		mapFileName = "/com/topfinance/plugin/cnaps2/v00800102-up.map";
-        	}
-        	else {
-        		mapFileName = "/com/topfinance/plugin/cnaps2/v00800102-down.map";
-        	}
-        } else if(mesgType.equals(TestDummy.OPERATION_102)) {
-        	if(DIRECTION_UP.equals(direction)) {
-        		mapFileName = "/com/topfinance/plugin/cnaps2/v00200103-up.map";
-        	}else {
-        		mapFileName = "/com/topfinance/plugin/cnaps2/v00200103-down.map";
-        	}
-        } else if(mesgType.equals(TestDummy.OPERATION_601)) {
-        	if(DIRECTION_UP.equals(direction)) {
-        		mapFileName = "/com/topfinance/plugin/cnaps2/v05400102-up.map";
-        	}else {
-        		mapFileName = "/com/topfinance/plugin/cnaps2/v05400102-down.map";
-        	}
-        }        
-        InputStream mapFile = Iso8583ToXml.class.getResourceAsStream(mapFileName);
-        return mapFile;
+        return getMappingRuleFromFS(mesgType, direction);
+    }
+    
+    
+    public static InputStream getMappingRuleFromFS(String mesgType, String direction) {
+        String surfix = "";
+        if(DIRECTION_UP.equals(direction)) {
+            surfix="-up";
+        }else {
+            surfix="-down";
+        }
+        String mapFileName = BCUtils.getHomeDir()+"/sample/map/"+mesgType+surfix+".map";
+        BCUtils.testFileExist(mapFileName, false);
+        try {
+            InputStream mapFile = new FileInputStream(mapFileName);
+            return mapFile;
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
     
     

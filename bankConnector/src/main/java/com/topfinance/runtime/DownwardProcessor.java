@@ -15,6 +15,7 @@ import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
+import com.topfinance.util.AuditMsgUtil;
 import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
@@ -32,6 +33,7 @@ import org.apache.log4j.Logger;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
+import org.jpos.iso.ISOUtil;
 
 public class DownwardProcessor extends AbstractProcessor{
     
@@ -213,7 +215,10 @@ public class DownwardProcessor extends AbstractProcessor{
                 log("==========msgId = "+msgId+", origMsgId="+origMsgId);
                 
             }
- 
+            
+            // TODO use object to do biz level auditing 
+            AuditMsgUtil.saveMsg(jaxbObj, mesgType);
+            
 //            DocRoot body = null;
 //            try {
 //                body = DocRoot.loadFromString(bodyText);
@@ -446,8 +451,8 @@ public class DownwardProcessor extends AbstractProcessor{
             ISOPackager packager = new ISOIBPSPackager();
             isoMsg.setPackager(packager);
             byte[] b = isoMsg.pack();
-            logger.debug("packed="+new String(b));
-            getMsgContext().setPackagedMsg(new String(b, BcConstants.ENCODING));
+            logger.debug("packed="+ISOUtil.hexString(b));
+            getMsgContext().setPackagedMsg(ISOUtil.hexString(b));
             
             
 //            ISOMsg m = new ISOMsg();

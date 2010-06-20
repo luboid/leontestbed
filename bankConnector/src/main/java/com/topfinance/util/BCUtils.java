@@ -11,17 +11,25 @@ import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.components.tcp8583.Iso8583Codec;
+import com.topfinance.runtime.BcConstants;
 
+import java.beans.PropertyDescriptor;
+import java.io.File;
 import java.lang.reflect.Field;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.CamelContext;
 import org.apache.camel.component.jetty.JettyHttpComponent;
 import org.apache.camel.component.mina.MinaComponent;
 import org.apache.camel.component.mina.MinaConfiguration;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 
@@ -34,18 +42,57 @@ public class BCUtils {
         
     }
     
+    public static String getHomeDir() {
+        String homeDir = System.getenv().get(BcConstants.ENV_HOME);
+        if(StringUtils.isEmpty(homeDir)) {
+            String msg = "Please make sure environment variable "+BcConstants.ENV_HOME+" is set correctly according to your local folder structure.";
+            throw new RuntimeException(msg);
+        }
+        try {
+            BCUtils.testFileExist(homeDir, true);
+        } catch (Exception ex) {
+            String msg="Please make sure environment variable "+BcConstants.ENV_HOME+" is set correctly according to your local folder structure. cause: " + ex.getMessage();
+            throw new RuntimeException(msg);
+        }
+        return homeDir;
+    }
+    
+    public static void testFileExist(String path, boolean expectDir) {
+        File file = new File(path);
+        if(!file.exists()) {
+            throw new RuntimeException("file path: "+path +" does not exist"); 
+        }else if(expectDir && !file.isDirectory()){
+            throw new RuntimeException("expect dir but found file for path: "+path);
+        }else if(!expectDir && file.isDirectory()){
+            throw new RuntimeException("expect file but found dir for path: "+path);
+        }
+    }
+    
     public static String extractOrigMsgId(Object jaxbObj, String opName, Map<String, String> origMsgIdPaths) {
         String oPath = origMsgIdPaths.get(opName);
         if(oPath==null) {
             return null;
         }
-        return extractByPath(jaxbObj, oPath);
+        return (String)extractFromJaxbObjByOPath(jaxbObj, oPath);
     }
-    public static String extractByPath(Object jaxbObj, String oPath) {
+    public static Object extractFromJaxbObjByOPath(Object jaxbObj, String oPath) {
         // TODO generic objectPath solution
-        String res = null;
+        Object res = null;
         try {
-            res = (String)PropertyUtils.getProperty(jaxbObj, oPath);
+            PropertyDescriptor pd = PropertyUtils.getPropertyDescriptor(jaxbObj, oPath);
+            Class clazz = pd.getPropertyType();
+            if (XMLGregorianCalendar.class.isAssignableFrom(clazz)) {
+                // TODO skip date type... XMLGregorianCalendarconversion is trouble
+                res = new Date(); 
+            }
+            else if (Boolean.class.isAssignableFrom(clazz)) {
+                // TODO skip boolean type... public Boolean isBtchBookg() is
+                // not a valid getter method
+                res = Boolean.FALSE;
+            }
+            else {
+                res = (String)BeanUtils.getProperty(jaxbObj, oPath);    
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }

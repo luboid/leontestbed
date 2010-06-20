@@ -7,12 +7,15 @@ import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
+import com.topfinance.cfg.TestDummy;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.db.HiberEntry;
 import com.topfinance.db.ResendEntry;
 import com.topfinance.plugin.cnaps2.AckRoot;
+import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
+import com.topfinance.util.AuditMsgUtil;
 import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
@@ -29,6 +32,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
+import org.jpos.iso.ISOUtil;
 
 public class UpwardProcessor extends AbstractProcessor{
     
@@ -179,7 +183,7 @@ public class UpwardProcessor extends AbstractProcessor{
             try {
                 String req = (String)getMsgContext().getSrcExchange().getIn().getBody();
                 log("req="+req);
-                byte[] bytes = req.getBytes(BcConstants.ENCODING);
+                byte[] bytes = ISOUtil.hex2byte(req);
                 ISOPackager packager = new ISOIBPSPackager();
                 msg.setPackager (packager);                
                 msg.unpack (bytes);
@@ -281,12 +285,22 @@ public class UpwardProcessor extends AbstractProcessor{
             String pkgName = Iso8583ToXml.getPackageName(mesgType);
 
             Map<String, String> mappings = Iso8583ToXml.loadMappings(mapFile);
+            if(TestDummy.OPERATION_102.equals(mesgType)){
+                // upward 102
+                // NOTE this is not necessary if generated mapping rule was modified to take care of orig_msg_id
+                mappings.put(Cnaps2Constants.ORIG_MSG_ID_102, getMsgContext().getOrigDocId());
+            }
+            
             ISOMsg msg = (ISOMsg)getMsgContext().getParsedMsg();
             Iso8583ToXml converter = new Iso8583ToXml(pkgName);
             Object jaxbObj = converter.iso8583ToObject(msg, mappings);
+            body = converter.objectToXml(jaxbObj);
             // TODO use object to do biz level auditing
             
-            body = converter.objectToXml(jaxbObj);
+            AuditMsgUtil.saveMsg(jaxbObj, mesgType);
+            
+            
+            
         } else {
             // simply do nothing to body
 //            body = this.getMsgContext().getSrcExchange().getIn().getBody(String.class);

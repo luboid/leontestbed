@@ -7,7 +7,7 @@ DROP TABLE ${table.tableName} CASCADE CONSTRAINTS;
 /*==============================================================*/
 CREATE TABLE ${table.tableName}  (
 <#list table.basicColumns as column>    
-   ${column.dbName}			${column.dbType}		${column.dbExtra},
+   ${column.dbName}			${column.dbTypeOracle}		${column.dbExtraOracle},
 </#list>    
    CONSTRAINT PK_${table.tableName} PRIMARY KEY (UUID)
 );
@@ -15,4 +15,5 @@ CREATE TABLE ${table.tableName}  (
 <#list table.basicColumns as column>    
 COMMENT ON COLUMN ${table.tableName}.${column.dbName} IS 
 '${column.objPath}';
+
 </#list>

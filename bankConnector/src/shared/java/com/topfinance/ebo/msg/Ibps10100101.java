@@ -1,6 +1,7 @@
 package com.topfinance.ebo.msg;
 
 import com.topfinance.converter.JaxbMapping;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

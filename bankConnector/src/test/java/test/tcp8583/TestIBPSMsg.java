@@ -48,13 +48,15 @@ public class TestIBPSMsg {
 		return ISOUtil.hexString(b);
 	}
 	
-	private static String GBKToISO8859(String str) throws Exception{
+	public static String GBKToISO8859(String str) throws Exception{
 		return new String(str.getBytes("GBK"),"ISO-8859-1");
 	}
 	
-	private static String ISO8859ToGBK(String str) throws Exception{
+	public static String ISO8859ToGBK(String str) throws Exception{
 		return new String(str.getBytes("ISO-8859-1"),"GBK");
 	}
+	
+
 	
 	public static Hashtable fetchMessage(String msg) throws Exception {
 		//返回Hashtable

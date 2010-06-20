@@ -24,8 +24,10 @@ import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.util.BCUtils;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -194,10 +196,26 @@ public class DbCfgReader implements ICfgReader {
         return res;
     }
     
-    
     public InputStream getMappingRule(String mesgType, String direction) {
-        // TODO Auto-generated method stub
-        return null;
+        return getMappingRuleFromFS(mesgType, direction);
+    }
+    public static InputStream getMappingRuleFromFS(String mesgType, String direction) {
+        
+        // TODO now load mapfile from filesystem
+        String surfix = "";
+        if(DIRECTION_UP.equals(direction)) {
+            surfix="-up";
+        }else {
+            surfix="-down";
+        }
+        String mapFileName = BCUtils.getHomeDir()+"/sample/map/"+mesgType+surfix+".map";
+        BCUtils.testFileExist(mapFileName, false);
+        try {
+            InputStream mapFile = new FileInputStream(mapFileName);
+            return mapFile;
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     public ICfgOperation getOperation(ICfgProtocol protocol, String name) {

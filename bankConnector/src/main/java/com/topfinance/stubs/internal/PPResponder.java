@@ -7,6 +7,7 @@ import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.TestDummy;
+import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;
@@ -31,6 +32,7 @@ import org.apache.log4j.Logger;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
+import org.jpos.iso.ISOUtil;
 
 public class PPResponder implements Processor, CfgConstants{
     
@@ -71,6 +73,10 @@ public class PPResponder implements Processor, CfgConstants{
         CommandLine cmd = parser.parse( options, args);
         String cfg=null, cfgType=null;
 
+        // make sure it is there
+        BCUtils.getHomeDir();
+
+        
         if(cmd.hasOption("cfg")) {
             cfg = cmd.getOptionValue("cfg");
         }
@@ -117,7 +123,7 @@ public class PPResponder implements Processor, CfgConstants{
 
         ISOMsg m = new ISOMsg();
         m.setPackager(new ISOIBPSPackager());
-        m.unpack(msg.getBytes(BcConstants.ENCODING));
+        m.unpack(ISOUtil.hex2byte(msg));
         String docId_101 = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
         
         String opName = m.getString(BcConstants.ISO8583_OP_NAME);
@@ -150,16 +156,15 @@ public class PPResponder implements Processor, CfgConstants{
         String docId_102 = BCUtils.getUniqueDocId();
         String respText = "";
         if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(chosenInPort).getProvider())) {
-            ISOMsg m1 = new ISOMsg();
-            ISOPackager packager = new ISOIBPSPackager();
-            m1.setPackager (packager);
+            String op = TestDummy.OPERATION_102;
+            ISOMsg m1 = Iso8583ToXml.createDummyISOMsg(BCUtils.getHomeDir()+"/sample/8583/"+op+".8583");
             // prepare 102
-            m1.set (new ISOField (BcConstants.ISO8583_START,  BcConstants.ISO8583_START_VALUE));
-            m1.set (new ISOField (BcConstants.ISO8583_OP_NAME,  TestDummy.OPERATION_102));
+            m1.set (new ISOField (BcConstants.ISO8583_OP_NAME,  op));
             m1.set (new ISOField (BcConstants.ISO8583_DOC_ID, docId_102));
+            
             m1.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  docId_101));
 
-            respText = new String(m1.pack(), BcConstants.ENCODING);
+            respText = ISOUtil.hexString(m1.pack());
         } else {
             throw new RuntimeException("should go thru 8583");
         }
