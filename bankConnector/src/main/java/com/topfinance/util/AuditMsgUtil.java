@@ -34,11 +34,11 @@ public class AuditMsgUtil {
                         // added columns, not mapped with jaxbObj
                         continue;
                     }
-                    logger.info("fName=" + fName + ", objPath=" + objPath + ", fType=" + fType);
+                    logger.debug("fName=" + fName + ", objPath=" + objPath + ", fType=" + fType);
 
                     Object value = BCUtils.extractFromJaxbObjByOPath(jaxbObj, objPath);
                     
-                    logger.info("fName=" + fName + ", value=" + value);
+                    logger.debug("fName=" + fName + ", value=" + value);
                     BeanUtils.setProperty(ebo, fName, value);
                 }
             }
