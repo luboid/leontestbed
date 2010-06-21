@@ -194,7 +194,7 @@ public class BCUtils {
         return getUniqueId("m-", 20);
     }   
     
-    public static String getFullUrlFromPort(ICfgPort port, ICfgReader reader) {
+    public static String getFullUrlFromPort(ICfgPort port, ICfgReader reader, boolean isConsumer) {
         String url = port.getUrl();
         // handle URL prefix
         
@@ -217,14 +217,20 @@ public class BCUtils {
             url+= CfgConstants.BOOLEAN_TRUE.equals(isSync)? "?sync=true" : "?sync=false";
             
             url+=("&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT);
-//            url+=("&disconnect=true");
+            if(!isConsumer) {
+                url+=("&disconnect=true");
+            }
         }
         
         return url;
     }
     
+    public static String getFullUrlFromPort(ICfgPort port, boolean isConsumer) {
+        ICfgReader reader = CfgImplFactory.loadCfgReader();
+        return getFullUrlFromPort(port, reader, isConsumer);
+    }
     public static String getFullUrlFromPort(ICfgPort port) {
         ICfgReader reader = CfgImplFactory.loadCfgReader();
-        return getFullUrlFromPort(port, reader);
+        return getFullUrlFromPort(port, reader, false);
     }
 }

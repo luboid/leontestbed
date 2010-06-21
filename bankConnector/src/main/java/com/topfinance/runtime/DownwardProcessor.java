@@ -137,7 +137,7 @@ public class DownwardProcessor extends AbstractProcessor{
                 throw new RuntimeException("configuration error: sync mode in more than 2 level is not allowed");
             }
         }        
-        logger.info("needConvertToSyncPpReply() res="+res);
+        logger.debug("needConvertToSyncPpReply() res="+res);
         return res;
     }
     

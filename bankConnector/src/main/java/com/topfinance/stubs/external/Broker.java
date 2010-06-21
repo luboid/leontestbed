@@ -214,7 +214,7 @@ public class Broker implements Processor, CfgConstants{
         List<ICfgInPort> ips = reader.getListOfEnabledInport();
         for(ICfgInPort ip : ips) {
             if(DIRECTION_DOWN.equals(ip.getDirection())) {
-                String url = BCUtils.getFullUrlFromPort(ip, reader);
+                String url = BCUtils.getFullUrlFromPort(ip, reader, false);
                 outUrls.add(url);
             }
         }
@@ -223,7 +223,7 @@ public class Broker implements Processor, CfgConstants{
         List<ICfgOutPort> ops = reader.getListOfEnabledOutport();
         for(ICfgOutPort op : ops) {
             if(DIRECTION_UP.equals(op.getDirection())) {
-                inUrls.add(BCUtils.getFullUrlFromPort(op, reader));
+                inUrls.add(BCUtils.getFullUrlFromPort(op, reader, true));
             }
         }
     }

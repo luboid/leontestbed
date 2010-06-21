@@ -183,7 +183,9 @@ public class XmlCfgReader extends TestCase implements ICfgReader {
         ICfgInPort res = null;
         for(ICfgInPort ip : getDataHolder().listInPort) {
             logger.debug("in getInPortByUri: "+BCUtils.getFullUrlFromPort(ip));
-            if(uri.equals(BCUtils.getFullUrlFromPort(ip))) {
+            // todo this is tricky
+            boolean isConsumer = true;
+            if(uri.equals(BCUtils.getFullUrlFromPort(ip, isConsumer))) {
                 res = ip;
                 break;
             }

@@ -38,7 +38,7 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
     
     
     public void onMessage(MessageEvent event) {
-        logger.info("onMessage.............");
+        logger.debug("onMessage.............");
         boolean accepted = false;
         if(event instanceof MessageAckEvent) {
             if(getMsgContext().getMesgId().equals(event.getOrigMsgId())) {
@@ -438,7 +438,7 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
                 try {
                 // poll and wait
                 while(true) {
-                    logger.info("poll after 2 seconds...");
+                    logger.debug("poll after 2 seconds...");
                     if(!getMsgContext().isAsyncMsgReceived()) {
                         try {
                             Thread.sleep(2000);

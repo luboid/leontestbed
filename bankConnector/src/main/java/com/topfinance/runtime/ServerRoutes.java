@@ -86,7 +86,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         List<String> inUrls = new ArrayList<String>();
         for(ICfgInPort inPort : inPorts) {
             i++;
-            String url = BCUtils.getFullUrlFromPort(inPort);
+            String url = BCUtils.getFullUrlFromPort(inPort, true);
             logger.info("listening on url="+url);
             inUrls.add(url);
         }

@@ -8,11 +8,12 @@ import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.TestDummy;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.Iso8583Util;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -29,12 +30,8 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.PosixParser;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
-import org.jpos.iso.ISOUtil;
 
 public class PPResponder implements Processor, CfgConstants{
     
@@ -170,9 +167,10 @@ public class PPResponder implements Processor, CfgConstants{
         }
         
 
-
+        System.out.println();
         System.out.println("Press [enter] to trigger sending of 102 message (asynchronous reply)...");
-        System.in.read();
+        BufferedReader stdIn=new BufferedReader(new InputStreamReader(System.in));
+        String s = stdIn.readLine();
         
         logger.info("dispatching 102 docId="+docId_102+", to url="+url);
         logger.debug("rawMsg="+respText);
