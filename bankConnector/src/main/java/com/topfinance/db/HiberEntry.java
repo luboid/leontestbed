@@ -16,6 +16,7 @@ public class HiberEntry {
     public static final String COL_TS = "TS";
     public static final String COL_EXPIRATION = "EXPIRATION";
     public static final String COL_DIRECTION = "DIRECTION";
+    public static final String COL_OPERATION = "OPERATION";
     
     private Map<String, Object> fields = new HashMap<String, Object>();
 
@@ -74,5 +75,10 @@ public class HiberEntry {
     public void setDirection(String direction) {
         setField(COL_DIRECTION, direction);
     }
-    
+    public String getOperation() {
+        return (String)getField(COL_OPERATION);
+    }
+    public void setOperation(String operation) {
+        setField(COL_OPERATION, operation);
+    }
 }

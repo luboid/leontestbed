@@ -26,6 +26,9 @@ public class AuditTransaction {
     private static final String STARTDATE = "STARTDATE";
     private static final String ORIDOC_ID = "ORIDOC_ID";
     private static final String REPLYDOC_ID = "REPLYDOC_ID";
+    
+    private static final String INPORT = "INPORT";
+    private static final String OUTPORT = "OUTPORT";    
 
     protected int mState;
     
@@ -38,7 +41,19 @@ public class AuditTransaction {
     
     
     
+    public void setHost(String host) {
+        setField(HOST, host);
+    }
 
+    public void setPartner(String partner) {
+        setField(PARTNER, partner);
+    }
+    public void setInPort(String inPort) {
+        setField(INPORT, inPort);
+    }
+    public void setOutPort(String outPort) {
+        setField(OUTPORT, outPort);
+    }
     public void setAuditId(String auditId) {
         setField(AUDIT_ID, auditId);
     }

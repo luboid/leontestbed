@@ -14,13 +14,13 @@
       <ICfgProtocol class="com.topfinance.cfg.xml.OmCfgProtocol" id="6" name="PROTOCOL_CNAPS2" pluginName="CNAPS2" upSendAckToPP="F" downRecievePPAck="F"/>
    </listProtocol>
    <listOperation class="java.util.ArrayList" id="7">
-      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation" id="8" name="ibps.101.001.01" upIsEnabled="T" upReplyType="A" upIsReply="F" upAckType="ASYNC" downIsEnabled="T" downReplyType="A" downIsReply="F" downAckType="ASYNC">
+      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation" id="8" name="ibps.101.001.01" upIsEnabled="T" upPpReplyType="S" upReplyType="A" upIsReply="F" upAckType="ASYNC" downIsEnabled="T" downPpReplyType="A" downReplyType="A" downIsReply="F" downAckType="ASYNC">
          <protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6"/>
       </ICfgOperation>
-      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation" id="9" name="ibps.102.001.01" upIsEnabled="T" upReplyType="A" upIsReply="T" upAckType="ASYNC" downIsEnabled="F" downReplyType="N" downIsReply="T">
+      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation" id="9" name="ibps.102.001.01" upIsEnabled="T" upPpReplyType="S" upReplyType="A" upIsReply="T" upAckType="ASYNC" downIsEnabled="F" downReplyType="N" downIsReply="T">
          <protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6"/>
       </ICfgOperation>
-      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation" id="10" name="saps.601.001.01" upIsEnabled="F" downIsEnabled="T" downReplyType="N" downIsReply="T">
+      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation" id="10" name="saps.601.001.01" upIsEnabled="F" downIsEnabled="T" downPpReplyType="A" downReplyType="N" downIsReply="T">
          <protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6"/>
       </ICfgOperation>
    </listOperation>
@@ -34,7 +34,7 @@
       	 <node class="com.topfinance.cfg.xml.OmCfgNode" ref="HOST"/>
          <transportInfo class="com.topfinance.cfg.xml.OmCfgAMQInfo" ref="2"/>
       </ICfgOutPort> 
-			<ICfgOutPort class="com.topfinance.cfg.xml.OmCfg8583OutPort" id="8583Out" name="8583_DOWN_OUT_PP" direction="D" url="tcp://localhost:20001">
+			<ICfgOutPort class="com.topfinance.cfg.xml.OmCfg8583OutPort" id="8583Out" name="8583_DOWN_OUT_PP" direction="D" url="tcp://localhost:20001" isSync="F">
 			   <node class="com.topfinance.cfg.xml.OmCfgNode" ref="HOST"/>
          <transportInfo class="com.topfinance.cfg.xml.OmCfg8583Info" ref="8583"/>
       </ICfgOutPort>            
@@ -51,7 +51,7 @@
          <protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6"/>
          <transportInfo class="com.topfinance.cfg.xml.OmCfgJettyInfo" ref="4"/>
       </ICfgInPort>
-			<ICfgInPort class="com.topfinance.cfg.xml.OmCfg8583InPort" id="8583In" name="8583URL_UP_IN_PP" direction="U" url="tcp://localhost:20000">
+			<ICfgInPort class="com.topfinance.cfg.xml.OmCfg8583InPort" id="8583In" name="8583URL_UP_IN_PP" direction="U" url="tcp://localhost:20000" isSync="T">
 				 <node class="com.topfinance.cfg.xml.OmCfgNode" ref="HOST"/>
 				 <ackPort class="com.topfinance.cfg.xml.OmCfgOutPort" ref="8583Out"/>
          <protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6"/>

@@ -6,6 +6,7 @@ import com.topfinance.converter.XMLGregorianCalendarConverter;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.util.BCUtils;
+import com.topfinance.util.Iso8583Util;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -94,15 +95,11 @@ public class TestIsoConverter extends TestCase {
         System.out.println("obj="+isoMsg);
         
         // iso->bytes
-        ISOPackager packager = new ISOIBPSPackager();
-        isoMsg.setPackager(packager);
-        byte[] b = isoMsg.pack();
-        System.out.println("packed="+new String(b));
+        String msg = Iso8583Util.packMsg(isoMsg);
+        System.out.println("packed="+msg);
         
         // bytes->iso
-		ISOMsg m1 = new ISOMsg();
-		m1.setPackager(new ISOIBPSPackager());
-		m1.unpack(b);
+        ISOMsg m1 = Iso8583Util.unpackMsg(msg);
 		
         Object msgId = m1.getValue(122);
         System.out.println("msgId="+msgId);

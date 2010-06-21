@@ -25,8 +25,12 @@ public abstract class AbstractProcessor implements CfgConstants, BcConstants {
             auditTx.setTxId(msgContext.getTxId());
             auditTx.setOpName(msgContext.getOperationName());
             auditTx.setStatus(status);
-//            auditTx.setDesc(desc);
             auditTx.setDirection(msgContext.getDirection());
+            
+            auditTx.setHost(msgContext.getHnName());
+            auditTx.setPartner(msgContext.getPnName());
+            auditTx.setInPort(msgContext.getCfgInPort() == null? "" : msgContext.getCfgInPort().getName());
+            auditTx.setOutPort(msgContext.getCfgOutPort() == null? "" : msgContext.getCfgOutPort().getName());
             
             AuditTransactionDetail detail = new AuditTransactionDetail();
             detail.setStatus(status);

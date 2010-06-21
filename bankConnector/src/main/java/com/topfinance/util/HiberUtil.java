@@ -79,7 +79,7 @@ public class HiberUtil {
         return hiber;
     }
     
-    public static void saveHiber(String hiberkey, String direction, String txId, String auditId) {
+    public static void saveHiber(String hiberkey, String direction, String txId, String auditId, String operation) {
         
         HiberEntry hiber = new HiberEntry();
         
@@ -87,6 +87,7 @@ public class HiberUtil {
         hiber.setTxId(txId);
         hiber.setAuditId(auditId);
         hiber.setDirection(direction);
+        hiber.setOperation(operation);
         
         // TODO 5min, moved to configuration
         hiber.setExpiration(BcConstants.EXPIRY_HIBER+System.currentTimeMillis());

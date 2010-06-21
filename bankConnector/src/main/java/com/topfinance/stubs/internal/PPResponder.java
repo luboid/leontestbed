@@ -3,14 +3,15 @@ package com.topfinance.stubs.internal;
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgInPort;
+import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.TestDummy;
-import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;
+import com.topfinance.util.Iso8583Util;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -28,10 +29,11 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.PosixParser;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
-import org.jpos.iso.ISOPackager;
 import org.jpos.iso.ISOUtil;
 
 public class PPResponder implements Processor, CfgConstants{
@@ -118,13 +120,12 @@ public class PPResponder implements Processor, CfgConstants{
     public void process(Exchange exchange) throws Exception {
 
         String msg = exchange.getIn().getBody(String.class);
-        logger.info("received message from url=" + exchange.getFromEndpoint().getEndpointUri());
+        logger.info("received async message from url=" + exchange.getFromEndpoint().getEndpointUri());
         logger.debug("rawMsg="+msg);
 
-        ISOMsg m = new ISOMsg();
-        m.setPackager(new ISOIBPSPackager());
-        m.unpack(ISOUtil.hex2byte(msg));
-        String docId_101 = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
+        ISOMsg m = Iso8583Util.unpackMsg(msg);
+        
+        String docId_101 = Iso8583Util.getField(m, BcConstants.ISO8583_DOC_ID);
         
         String opName = m.getString(BcConstants.ISO8583_OP_NAME);
         logger.info("received opName="+opName+", docId="+docId_101);
@@ -157,27 +158,30 @@ public class PPResponder implements Processor, CfgConstants{
         String respText = "";
         if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(chosenInPort).getProvider())) {
             String op = TestDummy.OPERATION_102;
-            ISOMsg m1 = Iso8583ToXml.createDummyISOMsg(BCUtils.getHomeDir()+"/sample/8583/"+op+".8583");
+            ISOMsg m1 = Iso8583Util.createDummyISOMsg(BCUtils.getHomeDir()+"/sample/8583/"+op+".8583");
             // prepare 102
-            m1.set (new ISOField (BcConstants.ISO8583_OP_NAME,  op));
-            m1.set (new ISOField (BcConstants.ISO8583_DOC_ID, docId_102));
-            
-            m1.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  docId_101));
+            Iso8583Util.setField(m1, BcConstants.ISO8583_OP_NAME, op);
+            Iso8583Util.setField(m1, BcConstants.ISO8583_DOC_ID, docId_102);
+            Iso8583Util.setField(m1, BcConstants.ISO8583_ORIG_DOC_ID, docId_101);   
 
-            respText = ISOUtil.hexString(m1.pack());
+            respText = Iso8583Util.packMsg(m1);
         } else {
             throw new RuntimeException("should go thru 8583");
         }
         
 
 
-        System.out.println("Press any key to trigger sending of 102 message (asynchronous reply)...");
+        System.out.println("Press [enter] to trigger sending of 102 message (asynchronous reply)...");
         System.in.read();
         
         logger.info("dispatching 102 docId="+docId_102+", to url="+url);
         logger.debug("rawMsg="+respText);
         // send async pp resp in separate thread
-        executor.execute(new SendJob(url, camel, respText));
+        String op = TestDummy.OPERATION_102;
+        ICfgOperation cfgOpn= reader.getOperation(reader.getProtByInPort(chosenInPort), op);
+        boolean wantSyncReply = CfgConstants.OP_REPLY_TYPE_SYNC.equals(cfgOpn.getUpPpReplyType()); 
+        
+        executor.execute(new SendJob(url, camel, respText, wantSyncReply));
         
     }
     
@@ -185,10 +189,12 @@ public class PPResponder implements Processor, CfgConstants{
         String url;
         CamelContext camel;
         String text;
-        public SendJob(String url, CamelContext camel, String text) {
+        boolean wantSyncReply;
+        public SendJob(String url, CamelContext camel, String text, boolean wantSyncReply) {
             this.url = url;
             this.camel = camel;
             this.text = text;
+            this.wantSyncReply = wantSyncReply;
         }
             public void run() {
                 try {
@@ -198,7 +204,9 @@ public class PPResponder implements Processor, CfgConstants{
                     // create the exchange used for the communication
                     // we use the in out pattern for a synchronized exchange
                     // where we expect a response
-                    Exchange exchange = endpoint.createExchange(ExchangePattern.InOnly);
+
+                    
+                    Exchange exchange = endpoint.createExchange(wantSyncReply? ExchangePattern.InOut : ExchangePattern.InOnly);
                     // set the input on the in body
                     // must you correct type to match the expected type of an
                     // Integer object
@@ -209,6 +217,23 @@ public class PPResponder implements Processor, CfgConstants{
                     // start the producer so it can operate
                     producer.start();
                     producer.process(exchange);
+                    if(wantSyncReply) {
+                        logger.info("waiting for sync reply...");
+                    }else {
+                        logger.info("waiting for async reply...");
+                    }
+                    
+                    if(wantSyncReply) {
+                        String syncResp = exchange.getOut().getBody(String.class);
+                        if(syncResp.equals(BcConstants.MSG_PP_ERROR)) {
+                            logger.warn("received error msg!!!!!!!");    
+                        } else {
+                            ISOMsg iso = Iso8583Util.unpackMsg(syncResp);
+                            String iso601Id = Iso8583Util.getField(iso, BcConstants.ISO8583_DOC_ID);
+                            logger.info("received sync reply: docId="+iso601Id);
+                        }
+                    }
+                    
                     // sync pp ack
 //                    String ack = exchange.getOut().getBody(String.class);
 //                    System.out.println("... received ack: " + ack);

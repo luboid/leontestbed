@@ -7,6 +7,7 @@ import com.topfinance.converter.XMLGregorianCalendarConverter;
 import com.topfinance.ebo.msg.Ibps10100101;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
+import com.topfinance.util.Iso8583Util;
 import freemarker.template.Configuration;
 import freemarker.template.ObjectWrapper;
 import freemarker.template.Template;
@@ -51,8 +52,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import org.xml.sax.helpers.DefaultHandler;
-
-import test.tcp8583.TestIBPSMsg;
 
 public class TestParseSampleXml extends DefaultHandler{
     
@@ -484,16 +483,12 @@ public class TestParseSampleXml extends DefaultHandler{
     public void testGeneratedMap() {
 
         try {
-            ISOMsg m = Iso8583ToXml.createDummyISOMsg(outSample8583File);
-            byte[] bytes = m.pack();
-            String s = ISOUtil.hexString(bytes);
+            ISOMsg m = Iso8583Util.createDummyISOMsg(outSample8583File);
             
-            ISOMsg m1 = new ISOMsg();
-            ISOPackager packager = new ISOIBPSPackager();
-            m1.setPackager (packager);
-            m1.unpack(ISOUtil.hex2byte(s));
+            String s = Iso8583Util.packMsg(m);
             
-            
+            ISOMsg m1 = Iso8583Util.unpackMsg(s);
+                        
             Map<String, String> mappings = Iso8583ToXml.loadMappings(new FileInputStream(outMapFile));
             Iso8583ToXml main = new Iso8583ToXml(jaxbPkgName);
             Object obj = main.iso8583ToObject(m, mappings);

@@ -16,14 +16,11 @@ import com.topfinance.converter.XMLGregorianCalendarConverter;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
-import com.topfinance.runtime.BcConstants;
 import com.topfinance.runtime.BcException;
 import com.topfinance.util.BCUtils;
+import com.topfinance.util.Iso8583Util;
 
-import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -383,7 +380,7 @@ public class Broker implements Processor, CfgConstants{
             String iso8583601Sample = BCUtils.getHomeDir()+"/sample/8583/"+op+".8583";
             
             //load other data from sample
-            ISOMsg iso601 = Iso8583ToXml.createDummyISOMsg(iso8583601Sample);
+            ISOMsg iso601 = Iso8583Util.createDummyISOMsg(iso8583601Sample);
             
             // TODO 
             InputStream mrStream = XmlCfgReader.getMappingRuleFromFS(op, DIRECTION_UP);

@@ -2,8 +2,11 @@ package com.topfinance.util;
 
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
+import com.topfinance.cfg.ICfg8583InPort;
 import com.topfinance.cfg.ICfg8583Info;
+import com.topfinance.cfg.ICfg8583OutPort;
 import com.topfinance.cfg.ICfgAMQInfo;
+import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgJettyInfo;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgPort;
@@ -201,10 +204,20 @@ public class BCUtils {
         
         if(CfgConstants.TCP_PROVIDER_8583.equals(ti.getProvider())) {
             
+            // decide sync parameter: see mina doc on http://camel.apache.org/mina.html
+            String isSync = "";
+            if(port instanceof ICfgInPort) {
             // TODO more mina configuration
+                ICfg8583InPort in8583 = (ICfg8583InPort)port;
+                isSync = in8583.getIsSync();
+            }else if(port instanceof ICfgOutPort) {
+                ICfg8583OutPort out8583 = (ICfg8583OutPort)port;
+                isSync = out8583.getIsSync();
+            }
+            url+= CfgConstants.BOOLEAN_TRUE.equals(isSync)? "?sync=true" : "?sync=false";
             
-            // see mina doc on http://camel.apache.org/mina.html
-            url+="?sync=false";
+            url+=("&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT);
+//            url+=("&disconnect=true");
         }
         
         return url;

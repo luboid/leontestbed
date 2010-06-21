@@ -4,6 +4,7 @@ import com.topfinance.cfg.TestDummy;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;
+import com.topfinance.util.Iso8583Util;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -97,7 +98,7 @@ public class Iso8583ToXml {
     
     
     public ISOMsg objectToIso8583(Object jaxbObj, Map<String, String> mappings) {
-    	ISOMsg res = new ISOMsg();
+    	ISOMsg res = Iso8583Util.emptyMsg();
     	try {
     		for(String key: mappings.keySet()) {
     			String oPath = mappings.get(key);
@@ -114,9 +115,11 @@ public class Iso8583ToXml {
     			    strVal = value.toString();
     			}
     			Integer fldPos = Integer.valueOf(key);
-    			res.set(new ISOField(fldPos, strVal)); 
+    			
+    			Iso8583Util.setField(res, fldPos, strVal);
+    			 
     		}
-    		res.set(new ISOField(BcConstants.ISO8583_START, BcConstants.ISO8583_START_VALUE));
+    		
 
     	} catch (Exception ex) {
     		ex.printStackTrace();
@@ -149,8 +152,7 @@ public class Iso8583ToXml {
                 } else {
                     Integer fldno = Integer.valueOf(StringUtils.substringBetween(mapto, MAP_ISO_PREFIX, MAP_ISO_SURFIX));
                     
-                    
-                    value = TestIBPSMsg.ISO8859ToGBK((String)msg.getValue(fldno));
+                    value = Iso8583Util.getField(msg, fldno);
                 }
                 
                 
@@ -291,43 +293,7 @@ public class Iso8583ToXml {
                 
     }
     
-    public static ISOMsg createDummyISOMsg(String sample8583FileName) {
-        
-        // construct a dummy ISOMsg from the generated sample 8583 file,
-        // which could be changed manually (by default it contains value extracted from sample xml)
-        
-        ISOMsg msg = new ISOMsg();
-        
-        List<String> lines = null;
-        try {
-            msg.setPackager(new ISOIBPSPackager());
-            msg.set (new ISOField (BcConstants.ISO8583_START,  BcConstants.ISO8583_START_VALUE));
-            lines = IOUtils.readLines(new InputStreamReader(new FileInputStream(sample8583FileName),
-                                                            BcConstants.ENCODING));
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
-        
-        for (String line : lines) {
-            try {
-                if(StringUtils.isBlank(line)) {
-                    continue;
-                }
-                String[] arr = StringUtils.split(line, "=");
-                int pos = Integer.valueOf(arr[0]);
-                String val = arr[1];
-                msg.set(new ISOField(pos, TestIBPSMsg.GBKToISO8859(val)));
-                
-            } catch (Exception ex) {
-                info("error in line"+line);
-                throw new RuntimeException("error in line: " + line, ex);
-            }
 
-        }
-
-        return msg;
-
-    }
     
     
     public static Map<String, String> loadMappings(InputStream input)  {

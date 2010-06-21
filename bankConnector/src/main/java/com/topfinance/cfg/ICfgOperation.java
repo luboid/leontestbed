@@ -12,7 +12,10 @@ public interface ICfgOperation extends ICfgItem {
     public void setUpIsReply(String upIsReply);
     public String getUpAckType();
     public void setUpAckType(String upAckType);
-
+    
+    public String getUpPpReplyType();
+    public void setUpPpReplyType(String upPpReplyType);
+    
     public String getDownIsEnabled();
     public void setDownIsEnabled(String downIsEnabled);
     public String getDownReplyType();
@@ -20,5 +23,8 @@ public interface ICfgOperation extends ICfgItem {
     public String getDownIsReply();
     public void setDownIsReply(String downIsReply);
     public String getDownAckType();
-    public void setDownAckType(String downAckType);    
+    public void setDownAckType(String downAckType);
+    
+    public String getDownPpReplyType();
+    public void setDownPpReplyType(String upPpReplyType);
 }

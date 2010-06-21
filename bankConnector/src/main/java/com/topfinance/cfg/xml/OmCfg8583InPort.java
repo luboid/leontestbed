@@ -1,7 +1,21 @@
 package com.topfinance.cfg.xml;
 
-import com.topfinance.cfg.ICfgInPort;
+import org.simpleframework.xml.Attribute;
+import com.topfinance.cfg.ICfg8583InPort;
 
-public class OmCfg8583InPort extends OmCfgInPort implements ICfgInPort{
+public class OmCfg8583InPort extends OmCfgInPort implements ICfg8583InPort{
+    
+    @Attribute(required=true)
+    private String isSync;
 
+    public String getIsSync() {
+        return isSync;
+    }
+
+    public void setIsSync(String isSync) {
+        this.isSync = isSync;
+    }
+    
+    
+    
 }

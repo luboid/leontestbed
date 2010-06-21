@@ -38,6 +38,9 @@ public interface BcConstants {
 
     public static final Long INTERVAL_POLLER = 1000l*60*5;
     
-    public static final String MSG_PP_ERROR = "ERROR!!"; 
+    public static final String MSG_PP_ERROR = "ERROR!!";
+    
+    // long enough to avoid timeout
+    public static final Long CHANNEL_DEFAULT_TIMEOUT = 1000l*60*30;
     
 }

@@ -91,9 +91,9 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
             inUrls.add(url);
         }
 
-        from(inUrls.toArray(new String[0])).bean(dis, "preprocess").to("seda:process");
+        from(inUrls.toArray(new String[0])).bean(dis, "preprocess").to("seda:process?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+10);
         // two phases using separate thread pool
-        from("seda:process").bean(dis, "process");        
+        from("seda:process?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+10).bean(dis, "process");        
         
         // todo move to configuration
         // 1 minute

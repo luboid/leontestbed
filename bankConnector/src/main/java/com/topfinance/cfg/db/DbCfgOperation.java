@@ -95,4 +95,24 @@ public class DbCfgOperation implements ICfgOperation {
 
     }
 
+    public String getDownPpReplyType() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public String getUpPpReplyType() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public void setDownPpReplyType(String upPpReplyType) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    public void setUpPpReplyType(String upPpReplyType) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

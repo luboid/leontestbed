@@ -20,6 +20,9 @@ public class OmCfgOperation implements ICfgOperation {
     private String upIsEnabled;
     
     @Attribute(required=false)
+    private String upPpReplyType;
+    
+    @Attribute(required=false)
     private String upReplyType;
     
     @Attribute(required=false)
@@ -30,6 +33,9 @@ public class OmCfgOperation implements ICfgOperation {
     
     @Attribute(required=false)
     private String downIsEnabled;
+    
+    @Attribute(required=false)
+    private String downPpReplyType;
     
     @Attribute(required=false)
     private String downReplyType;
@@ -128,6 +134,22 @@ public class OmCfgOperation implements ICfgOperation {
 
     public void setDownAckType(String downAckType) {
         this.downAckType = downAckType;
+    }
+
+    public String getUpPpReplyType() {
+        return upPpReplyType;
+    }
+
+    public void setUpPpReplyType(String upPpReplyType) {
+        this.upPpReplyType = upPpReplyType;
+    }
+
+    public String getDownPpReplyType() {
+        return downPpReplyType;
+    }
+
+    public void setDownPpReplyType(String downPpReplyType) {
+        this.downPpReplyType = downPpReplyType;
     }
 
 

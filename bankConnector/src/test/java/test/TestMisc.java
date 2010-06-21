@@ -5,6 +5,7 @@ import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.converter.XMLGregorianCalendarConverter;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.util.BCUtils;
+import com.topfinance.util.Iso8583Util;
 
 import java.beans.PropertyDescriptor;
 import java.io.FileInputStream;
@@ -56,7 +57,7 @@ public class TestMisc extends TestCase {
         String outMapFile = "D:/bankConnector/source/test/map/ibps.101.001.01-up.map";
         String op = TestDummy.OPERATION_101;
         String jaxbPkgName = Iso8583ToXml.getPackageName(op);
-        ISOMsg m = Iso8583ToXml.createDummyISOMsg(outSample8583File);
+        ISOMsg m = Iso8583Util.createDummyISOMsg(outSample8583File);
         byte[] bytes = m.pack();
         String s = ISOUtil.hexString(bytes);
         

@@ -48,6 +48,7 @@ CREATE TABLE TBL_HIBER (
         TS                 TIMESTAMP	not null,
         EXPIRATION         bigint(20) unsigned  not null,
         DIRECTION          VARCHAR(5)    ,
+        OPERATION        	 VARCHAR(64)    ,
     INDEX TBL_HIBER_HIBERKEY (HIBERKEY)
 ) Type=InnoDB;
 --:

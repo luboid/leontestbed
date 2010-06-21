@@ -14,11 +14,11 @@ import com.topfinance.db.ResendEntry;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.util.AuditMsgUtil;
 import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
+import com.topfinance.util.Iso8583Util;
 import com.topfinance.util.ResendUtil;
 
 import java.io.InputStream;
@@ -31,13 +31,36 @@ import org.apache.camel.Message;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.jpos.iso.ISOMsg;
-import org.jpos.iso.ISOPackager;
-import org.jpos.iso.ISOUtil;
 
-public class UpwardProcessor extends AbstractProcessor{
+public class UpwardProcessor extends AbstractProcessor implements MessageListener{
     
     private static Logger logger = Logger.getLogger(UpwardProcessor.class);
     
+    
+    public void onMessage(MessageEvent event) {
+        logger.info("onMessage.............");
+        boolean accepted = false;
+        if(event instanceof MessageAckEvent) {
+            if(getMsgContext().getMesgId().equals(event.getOrigMsgId())) {
+                // accept this event
+                getMsgContext().setParsedSyncReplyMsg(event.getParsedMsg());
+                getMsgContext().setPackagedSyncReplyMsg(event.getPackagedMsg());
+                accepted = true;
+            }
+            
+        }else if(event instanceof MessageReplyEvent) {
+            if(getMsgContext().getDocId().equals(event.getOrigDocId())) {
+                getMsgContext().setParsedSyncReplyMsg(event.getParsedMsg());
+                getMsgContext().setPackagedSyncReplyMsg(event.getPackagedMsg());
+                accepted = true;
+            }
+        }
+        
+        if(accepted) {
+            getMsgContext().setAsyncMsgReceived(true);
+        }
+
+    }
     public void log(String msg) {
         logger.debug(msg);
     }
@@ -55,7 +78,7 @@ public class UpwardProcessor extends AbstractProcessor{
         
         logReceiveMsg();
         
-        parseMessage();        
+        parseRequest();        
         
     }
     
@@ -72,13 +95,16 @@ public class UpwardProcessor extends AbstractProcessor{
         loadTxContext();
         
         // transform and package
-        packageReq();
+        packReq();
 
-        String syncReply = send();
+        String tpSyncReply = send();
         
-        handleTPSyncResponse(syncReply);
+        handlePpSyncResponse(tpSyncReply);
+        
+        
+        
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(), ex);
             sendErrMsg();
         }
     }
@@ -124,6 +150,23 @@ public class UpwardProcessor extends AbstractProcessor{
     private void sendErrMsg() {
         // for upward. need send back error to pp
         try {
+            String errorText = BcConstants.MSG_PP_ERROR;
+            
+            
+            ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
+            String opName = getMsgContext().getOperationName();
+            ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), opName);
+            
+            
+            if(OP_REPLY_TYPE_SYNC.equals(cfgOpn.getUpPpReplyType())) {
+                // send error thru sync channel
+                logger.info("unknown exception: send error msg to pp thru sync channel...");
+                getMsgContext().getSrcExchange().getOut().setBody(errorText);
+                
+            }
+            else {
+                // send error thru async channel
+                logger.info("unknown exception: send error msg to pp thru async channel...");
             ICfgReader reader = CfgImplFactory.loadCfgReader();
             
             ICfgInPort inPort = getMsgContext().getCfgInPort();
@@ -131,9 +174,10 @@ public class UpwardProcessor extends AbstractProcessor{
             
             String url = BCUtils.getFullUrlFromPort(outPort);
 
-            String errorText = BcConstants.MSG_PP_ERROR;
-            logger.info("sendErrMsg!!!!");
+            
+            
             ServerRoutes.getInstance().produce(url, errorText, true);
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -153,7 +197,7 @@ public class UpwardProcessor extends AbstractProcessor{
         return ppreq;
     }
     
-    protected void parseMessage() {
+    protected void parseRequest() {
 
         // get the type of input msg body(tcp8583/cmt) 
         // 1. can be known from the CfgInPort's type
@@ -179,18 +223,11 @@ public class UpwardProcessor extends AbstractProcessor{
 //        int type = isoMsg.getType();
         ICfgReader reader = CfgImplFactory.loadCfgReader();
         if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(getMsgContext().getCfgInPort()).getProvider())) {
-            ISOMsg msg = new ISOMsg();
-            try {
-                String req = (String)getMsgContext().getSrcExchange().getIn().getBody();
-                log("req="+req);
-                byte[] bytes = ISOUtil.hex2byte(req);
-                ISOPackager packager = new ISOIBPSPackager();
-                msg.setPackager (packager);                
-                msg.unpack (bytes);
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new RuntimeException(e);
-            }
+
+            String req = (String)getMsgContext().getSrcExchange().getIn().getBody();
+            log("req="+req);
+            ISOMsg msg = Iso8583Util.unpackMsg(req);
+
             getMsgContext().setParsedMsg(msg);
             
             opName = msg.getString(BcConstants.ISO8583_OP_NAME);
@@ -262,7 +299,7 @@ public class UpwardProcessor extends AbstractProcessor{
      
     }
     
-    protected void packageReq() {
+    protected void packReq() {
         // plugin impl need compose the output msg format
         // either from the input msg body, or from config
         String mesgId = BCUtils.getUniqueMesgId();
@@ -343,7 +380,7 @@ public class UpwardProcessor extends AbstractProcessor{
             String hiberkey = getMsgContext().getDocId();
             String txId = getMsgContext().getTxId();
             String auditId = getMsgContext().getAuditTx().getAuditId();
-            HiberUtil.saveHiber(hiberkey, DIRECTION_UP, txId, auditId);
+            HiberUtil.saveHiber(hiberkey, DIRECTION_UP, txId, auditId, getMsgContext().getOperationName());
         }
         
         
@@ -351,8 +388,7 @@ public class UpwardProcessor extends AbstractProcessor{
         String url = BCUtils.getFullUrlFromPort(cfgOP);
         String syncReply = null;
         
-        // exchangepattern always inout, either resp or ack
-        // send
+
         boolean isInOnly = OP_ACK_TYPE_SYNC.equals(ackType) ?  false : true;
         
         logger.info("dispatching to outport: "+cfgOP.getName()+", url="+url);
@@ -376,68 +412,138 @@ public class UpwardProcessor extends AbstractProcessor{
     }
     
     
-    protected void handleTPSyncResponse(String syncReply) {
+    protected void handlePpSyncResponse(String syncReply) {
         
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
         String opName = getMsgContext().getOperationName();
         ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), opName);
-        if(OP_REPLY_TYPE_SYNC.equals(cfgOpn.getUpReplyType())) {
-            log("received tp syncReply="+syncReply);
-            // send back to pp
-            log("send tp syncReply to pp");
-            getMsgContext().getSrcExchange().getOut().setBody(syncReply);
-            auditLog(STATE_SENT_OUT_MSG, "received sync ack from tp and send to pp", STATUS_COMPLETED);            
-        } else {
-            // async or notify
+        
+        
+        if(OP_REPLY_TYPE_SYNC.equals(cfgOpn.getUpPpReplyType())) {
+
+            if(OP_REPLY_TYPE_SYNC.equals(cfgOpn.getUpReplyType())) {
+                // todo in fact should consider reply and ack together
+                // now tp channel is always async so won't happen anyway
+                log("received tp syncReply="+syncReply);
+                // send back to pp
+                log("send tp syncReply to pp");
+                getMsgContext().getSrcExchange().getOut().setBody(syncReply);
+                auditLog(STATE_SENT_OUT_MSG, "received sync ack from tp and send to pp", STATUS_COMPLETED);
+                
+            } else {
+                // async (tp) to sync (pp)
+                getMsgContext().setAsyncMsgReceived(false);
+                
+                MessageMonitor.registerListener(this);
+                try {
+                // poll and wait
+                while(true) {
+                    logger.info("poll after 2 seconds...");
+                    if(!getMsgContext().isAsyncMsgReceived()) {
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                        }
+                    } else {
+                        // check the status
+                        Object msg = getMsgContext().getParsedSyncReplyMsg();
+                        if(msg instanceof AckRoot) {
+                            // is async ack
+                            AckRoot ackRoot = (AckRoot)msg;
+                            if(AckRoot.MSG_PRO_CD_SUCCESS.equals(ackRoot.getMsgProCd())){
+                                // positive ack
+                                // continue to wait async reply
+                                logger.info("received positive ack... continue to wait async reply");
+                                // reset flag
+                                getMsgContext().setAsyncMsgReceived(false);
+                                // back to poll loop
+                                continue;
+                                
+                            } else {
+                                // negative ack
+                                logger.info("received negative ack... send to pp and stop processing");
+                                // audit log done in Down
+                                getMsgContext().getSrcExchange().getOut().setBody(getMsgContext().getPackagedSyncReplyMsg());
+                                break;
+                            }
+                            
+                        } else {
+                            // is async reply
+                            getMsgContext().getSrcExchange().getOut().setBody(getMsgContext().getPackagedSyncReplyMsg());
+                            break;    
+                        }  
+                        
+                    }
+                }
+                
+                } finally {
+                    // critical to avoid leak
+                    MessageMonitor.deregisterListener(this);
+                }
+                
+            }
             
-            if(!OP_ACK_TYPE_SYNC.equals(cfgOpn.getUpAckType())) {
+        } else {
+            
+            // pp expect async reply ( now only when tp channel is async )
+            if(!StringUtils.isEmpty(syncReply)) {
+                String msg = "Do not support async pp chanel while tp chanel is sync";
+                throw new RuntimeException(msg);
+            }
+            else {
+                // do nothing. let DownwardProcessor handle it 
                 return;
             }
             
-            String ack = syncReply;
-            logger.info("received 990 ack="+ack);
-            
-            String headerText = ack.substring(0, MsgHeader.TOTAL_LENGTH);
-            String bodyText = ack.substring(MsgHeader.TOTAL_LENGTH);
-            MsgHeader header = null;
-            try {
-                header = MsgHeader.fromText(headerText);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                // no way to generate any meaningful ack
-                throw new RuntimeException(ex);
-            }      
-            
-            // verify the ack
-            AckRoot ackRoot = null;
-            try {
-                ackRoot = AckRoot.loadFromString(bodyText);
-            } catch (BcException ex) {
-                // do nothing
-            }
-            
-            String nextStatus = "", nextDesc="";
-            if(OP_REPLY_TYPE_ASYNC.equals(cfgOpn.getUpReplyType())) {
-                nextStatus = STATUS_PENDING;
-                nextDesc = "message sent to TP, waiting for async reply";
-            }else {
-                // notify
-                nextStatus = STATUS_COMPLETED;
-                nextDesc = "message sent to PP";
-            }
-            
-            if(ackRoot==null || !AckRoot.MSG_PRO_CD_SUCCESS.equals(ackRoot.getMsgProCd())) {
-                // ack failed
-                auditLog(STATE_SENT_OUT_MSG, "Ack failed", STATUS_ERROR);
-            } else {
-                // ack successed
-                auditLog(STATE_SENT_OUT_MSG, nextDesc, nextStatus);
-            }
+        }
+    }
+    
+//    protected void packAndSendSyncResponse() {
+
+//            String ack = syncReply;
+//            logger.info("received 990 ack="+ack);
+//            
+//            String headerText = ack.substring(0, MsgHeader.TOTAL_LENGTH);
+//            String bodyText = ack.substring(MsgHeader.TOTAL_LENGTH);
+//            MsgHeader header = null;
+//            try {
+//                header = MsgHeader.fromText(headerText);
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//                // no way to generate any meaningful ack
+//                throw new RuntimeException(ex);
+//            }      
+//            
+//            // verify the ack
+//            AckRoot ackRoot = null;
+//            try {
+//                ackRoot = AckRoot.loadFromString(bodyText);
+//            } catch (BcException ex) {
+//                // do nothing
+//            }
+//            
+//            String nextStatus = "", nextDesc="";
+//            if(OP_REPLY_TYPE_ASYNC.equals(cfgOpn.getUpReplyType())) {
+//                nextStatus = STATUS_PENDING;
+//                nextDesc = "message sent to TP, waiting for async reply";
+//            }else {
+//                // notify
+//                nextStatus = STATUS_COMPLETED;
+//                nextDesc = "message sent to PP";
+//            }
+//            
+//            if(ackRoot==null || !AckRoot.MSG_PRO_CD_SUCCESS.equals(ackRoot.getMsgProCd())) {
+//                // ack failed
+//                auditLog(STATE_SENT_OUT_MSG, "Ack failed", STATUS_ERROR);
+//            } else {
+//                // ack successed
+//                auditLog(STATE_SENT_OUT_MSG, nextDesc, nextStatus);
+//            }
             
             // TODO send the ack to pp
-        }
+        
 
-    }
+//    }
     
 
 
@@ -448,5 +554,7 @@ public class UpwardProcessor extends AbstractProcessor{
     public void setMsgContext(UWMessageContext messageContext) {
         this.msgContext = messageContext;
     }
+
+
 
 }

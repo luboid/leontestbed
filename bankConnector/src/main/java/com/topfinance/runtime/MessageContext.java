@@ -58,6 +58,11 @@ public abstract class MessageContext {
     
     private AuditTransaction auditTx = new AuditTransaction();
     
+
+    volatile boolean asyncMsgReceived;
+    private String origOperation;
+    private Object parsedSyncReplyMsg;
+    private String packagedSyncReplyMsg;
     
 //    public void createTransactionContext(BCTrace trace) {
 //        try {
@@ -304,6 +309,38 @@ public abstract class MessageContext {
 
     public void setOrigDocId(String origDocId) {
         this.origDocId = origDocId;
+    }
+
+    public boolean isAsyncMsgReceived() {
+        return asyncMsgReceived;
+    }
+
+    public void setAsyncMsgReceived(boolean asyncMsgReceived) {
+        this.asyncMsgReceived = asyncMsgReceived;
+    }
+
+    public Object getParsedSyncReplyMsg() {
+        return parsedSyncReplyMsg;
+    }
+
+    public void setParsedSyncReplyMsg(Object parsedSyncReplyMsg) {
+        this.parsedSyncReplyMsg = parsedSyncReplyMsg;
+    }
+
+    public String getPackagedSyncReplyMsg() {
+        return packagedSyncReplyMsg;
+    }
+
+    public void setPackagedSyncReplyMsg(String packagedSyncReplyMsg) {
+        this.packagedSyncReplyMsg = packagedSyncReplyMsg;
+    }
+
+    public String getOrigOperation() {
+        return origOperation;
+    }
+
+    public void setOrigOperation(String origOperation) {
+        this.origOperation = origOperation;
     }
 
 
