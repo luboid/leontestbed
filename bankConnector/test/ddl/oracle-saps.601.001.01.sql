@@ -35,81 +35,84 @@ CREATE TABLE T_MSG_SAPS_601_001_01  (
    CONSTRAINT PK_T_MSG_SAPS_601_001_01 PRIMARY KEY (UUID)
 );
 
+COMMENT ON TABLE T_MSG_SAPS_601_001_01 IS
+'轧差通知报文';
+
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.UUID IS 
-'';
+'UUID';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.GRPHDR_MSGID IS 
-'bkToCstmrDbtCdtNtfctn.grpHdr.msgId';
+'报文标识号';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.CREDTTM IS 
-'bkToCstmrDbtCdtNtfctn.grpHdr.creDtTm';
+'报文发送时间';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.EMAILADR IS 
-'bkToCstmrDbtCdtNtfctn.grpHdr.msgRcpt.ctctDtls.emailAdr';
+'数字签名';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.ADDTLINF IS 
-'bkToCstmrDbtCdtNtfctn.grpHdr.addtlInf';
+'原报文类型代码';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.NTFCTN_ID IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].id';
+'原报文标识号';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.CREDTTM1 IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].creDtTm';
+'原报文发送时间';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.RPTGSRC_PRTRY IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].rptgSrc.prtry';
+'轧差场次';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.ACCT_ID_OTHR_ID IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].acct.id.othr.id';
+'轧差清算行行号';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.RLTDACCT_ID_OTHR_ID IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].rltdAcct.id.othr.id';
+'原发起机构号';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.AMT_VALUE IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].amt.value';
+'结算金额';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.AMT_CCY IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].amt.ccy';
+'货币符号';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.CDTDBTIND IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].cdtDbtInd';
+'借贷标识';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.NTRY_STS IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].sts';
+'轧差状态';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.BOOKGDT_DT IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].bookgDt.dt';
+'轧差日期';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.DOMN_CD IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].bkTxCd.domn.cd';
+'交易域码';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.FMLY_CD IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].bkTxCd.domn.fmly.cd';
+'交易族码';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.SUBFMLYCD IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].bkTxCd.domn.fmly.subFmlyCd';
+'交易族子码';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.AMT_VALUE1 IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].amtDtls.instdAmt.amt.value';
+'交易金额';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.AMT_CCY1 IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].amtDtls.instdAmt.amt.ccy';
+'交易货币';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.CLRSYSREF IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].ntryDtls[0].txDtls[0].refs.clrSysRef';
+'清算系统类型';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.DBTR_NM IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].ntryDtls[0].txDtls[0].rltdPties.dbtr.nm';
+'付款人名称';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.DBTRACCT_ID_OTHR_ID IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].ntryDtls[0].txDtls[0].rltdPties.dbtrAcct.id.othr.id';
+'付款人账号';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.DBTRACCT_ID_OTHR_ISSR IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].ntryDtls[0].txDtls[0].rltdPties.dbtrAcct.id.othr.issr';
+'付款人开户行名称';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.TP_PRTRY IS 
-'bkToCstmrDbtCdtNtfctn.ntfctn[0].ntry[0].ntryDtls[0].txDtls[0].rltdPties.dbtrAcct.tp.prtry';
+'付款人账户类型';
 
 COMMENT ON COLUMN T_MSG_SAPS_601_001_01.TS IS 
-'';
+'时间戳';
 

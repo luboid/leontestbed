@@ -40,96 +40,99 @@ CREATE TABLE T_MSG_IBPS_101_001_01  (
    CONSTRAINT PK_T_MSG_IBPS_101_001_01 PRIMARY KEY (UUID)
 );
 
+COMMENT ON TABLE T_MSG_IBPS_101_001_01 IS
+'网银贷记业务表';
+
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.UUID IS 
-'';
+'UUID';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.GRPHDR_MSGID IS 
-'fiToFICstmrCdtTrf.grpHdr.msgId';
+'报文标识号';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.CREDTTM IS 
-'fiToFICstmrCdtTrf.grpHdr.creDtTm';
+'报文发送时间';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.BTCHBOOKG IS 
-'fiToFICstmrCdtTrf.grpHdr.btchBookg';
+'批量报文标识';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.NBOFTXS IS 
-'fiToFICstmrCdtTrf.grpHdr.nbOfTxs';
+'明细业务总笔数';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.CTRLSUM IS 
-'fiToFICstmrCdtTrf.grpHdr.ctrlSum';
+'明细业务总金额';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.INTRBKSTTLMDT IS 
-'fiToFICstmrCdtTrf.grpHdr.intrBkSttlmDt';
+'当前工作日';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.STTLMMTD IS 
-'fiToFICstmrCdtTrf.grpHdr.sttlmInf.sttlmMtd';
+'清算方式';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.ENDTOENDID IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId';
+'端到端标识号';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.PMTID_TXID IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtId.txId';
+'交易标识号';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.INSTRPRTY IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.instrPrty';
+'业务优先级';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.CTGYPURP_PRTRY IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.ctgyPurp.prtry';
+'业务类型编码';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.INTRBKSTTLMAMT_VALUE IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmAmt.value';
+'货币结算金额';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.INTRBKSTTLMAMT_CCY IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmAmt.ccy';
+'货币符号';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.ACCPTNCDTTM IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].accptncDtTm';
+'委托时间';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.CHRGBR IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].chrgBr';
+'收费方式';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.DBTR_NM IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtr.nm';
+'付款人户名';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.EMAILADR IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtr.ctctDtls.emailAdr';
+'数字签名';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.DBTRACCT_ID_OTHR_ID IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.id.othr.id';
+'付款人账号';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.DBTRACCT_ID_OTHR_ISSR IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.id.othr.issr';
+'付款人开户行名称';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.TP_PRTRY IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.tp.prtry';
+'付款人账户类型';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.CLRSYSMMBID_MMBID IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAgt.finInstnId.clrSysMmbId.mmbId';
+'付款清算行行号';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.BRNCHID_ID IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAgt.brnchId.id';
+'付款人开户行所属网银系统行号';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.CTRYSUBDVSN IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].dbtrAgt.brnchId.pstlAdr.ctrySubDvsn';
+'付款人开户行所属城市代码';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.CLRSYSMMBID_MMBID1 IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtrAgt.finInstnId.clrSysMmbId.mmbId';
+'收款清算行行号';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.BRNCHID_ID1 IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtrAgt.brnchId.id';
+'收款人开户行所属网银系统行号';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.CDTR_NM IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtr.nm';
+'收款人户名';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.CDTRACCT_ID_OTHR_ID IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].cdtrAcct.id.othr.id';
+'收款人账号';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.PURP_PRTRY IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].purp.prtry';
+'业务种类编码';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.RMTINF_USTRD IS 
-'fiToFICstmrCdtTrf.cdtTrfTxInf[0].rmtInf.ustrd[0]';
+'附言';
 
 COMMENT ON COLUMN T_MSG_IBPS_101_001_01.TS IS 
-'';
+'时间戳';
 

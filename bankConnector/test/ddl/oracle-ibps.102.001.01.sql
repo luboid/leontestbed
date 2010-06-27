@@ -38,90 +38,93 @@ CREATE TABLE T_MSG_IBPS_102_001_01  (
    CONSTRAINT PK_T_MSG_IBPS_102_001_01 PRIMARY KEY (UUID)
 );
 
+COMMENT ON TABLE T_MSG_IBPS_102_001_01 IS
+'网银贷记业务回执表';
+
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.UUID IS 
-'';
+'UUID';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.GRPHDR_MSGID IS 
-'fiToFIPmtStsRpt.grpHdr.msgId';
+'报文标识号';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.CREDTTM IS 
-'fiToFIPmtStsRpt.grpHdr.creDtTm';
+'报文发送时间';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.ORGNLMSGID IS 
-'fiToFIPmtStsRpt.orgnlGrpInfAndSts.orgnlMsgId';
+'原报文标识号';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.ORGNLMSGNMID IS 
-'fiToFIPmtStsRpt.orgnlGrpInfAndSts.orgnlMsgNmId';
+'原报文类型代码';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.ADDTLINF IS 
-'fiToFIPmtStsRpt.orgnlGrpInfAndSts.stsRsnInf[0].addtlInf[0]';
+'业务回执附言';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.TXINFANDSTS_STSID IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].stsId';
+'业务状态';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.ORGNLENDTOENDID IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlEndToEndId';
+'原端到端标识号';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.ORGNLTXID IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxId';
+'原交易标识号';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.RSN_PRTRY IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].stsRsnInf[0].rsn.prtry';
+'业务拒绝码';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.INTRBKSTTLMAMT_VALUE IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.intrBkSttlmAmt.value';
+'原结算金额';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.INTRBKSTTLMAMT_CCY IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.intrBkSttlmAmt.ccy';
+'原货币符号';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.INSTRPRTY IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.pmtTpInf.instrPrty';
+'编码';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.CTGYPURP_PRTRY IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.pmtTpInf.ctgyPurp.prtry';
+'原业务类型编码';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.DBTR_NM IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.dbtr.nm';
+'付款人户名';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.DBTRACCT_ID_OTHR_ID IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.dbtrAcct.id.othr.id';
+'付款人账号';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.DBTRACCT_ID_OTHR_ISSR IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.dbtrAcct.id.othr.issr';
+'付款人开户行名称';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.TP_PRTRY IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.dbtrAcct.tp.prtry';
+'付款人账户类型';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.CLRSYSMMBID_MMBID IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.dbtrAgt.finInstnId.clrSysMmbId.mmbId';
+'付款清算行行号';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.BRNCHID_ID IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.dbtrAgt.brnchId.id';
+'收款人开户行所属网银系统行号';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.CLRSYSMMBID_MMBID1 IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.cdtrAgt.finInstnId.clrSysMmbId.mmbId';
+'收款清算行行号';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.BRNCHID_ID1 IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.cdtrAgt.brnchId.id';
+'收款人开户行所属网银系统行号';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.CTRYSUBDVSN IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.cdtrAgt.brnchId.pstlAdr.ctrySubDvsn';
+'收款人开户行所属城市代码';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.CDTR_NM IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.cdtr.nm';
+'收款人户名';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.EMAILADR IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.cdtr.ctctDtls.emailAdr';
+'数字签名';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.CDTRACCT_ID_OTHR_ID IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.cdtrAcct.id.othr.id';
+'收款人账号';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.CDTRACCT_ID_OTHR_ISSR IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.cdtrAcct.id.othr.issr';
+'收款人开户行名称';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.TP_PRTRY1 IS 
-'fiToFIPmtStsRpt.txInfAndSts[0].orgnlTxRef.cdtrAcct.tp.prtry';
+'收款人账户类型';
 
 COMMENT ON COLUMN T_MSG_IBPS_102_001_01.TS IS 
-'';
+'时间戳';
 
