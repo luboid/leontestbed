@@ -1,6 +1,6 @@
 package ${table.pkgName};
 
-import com.topfinance.converter.JaxbMapping;
+import com.topfinance.ebo.msg.JaxbMapping;
 import java.util.Date;
 
 import javax.persistence.Column;

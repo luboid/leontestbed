@@ -14,6 +14,7 @@ import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.components.tcp8583.Iso8583Codec;
+import com.topfinance.converter.CalendarConverter;
 import com.topfinance.runtime.BcConstants;
 
 import java.beans.PropertyDescriptor;
@@ -31,6 +32,7 @@ import org.apache.camel.component.jetty.JettyHttpComponent;
 import org.apache.camel.component.mina.MinaComponent;
 import org.apache.camel.component.mina.MinaConfiguration;
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -43,6 +45,10 @@ public class BCUtils {
     public static String getUniqueId() {
         return getUniqueId("uid-");
         
+    }
+    
+    public static void registerConverter() {
+        ConvertUtils.register(new CalendarConverter(), Date.class);
     }
     
     public static String getHomeDir() {

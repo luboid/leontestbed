@@ -1,7 +1,7 @@
 package com.topfinance.util;
 
 import com.cnaps2.cncc.service.IIBPSManager;
-import com.topfinance.converter.JaxbMapping;
+import com.topfinance.ebo.msg.JaxbMapping;
 import com.topfinance.runtime.Main;
 
 import java.lang.reflect.Field;
@@ -9,7 +9,6 @@ import java.lang.reflect.Field;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import test.TestParseSampleXml;
 
 public class AuditMsgUtil {
     private static Logger logger = Logger.getLogger(AuditMsgUtil.class);
@@ -20,7 +19,7 @@ public class AuditMsgUtil {
 
     public static void saveMsg(Object jaxbObj, String op) {
         try {
-            String eboClassName = "com.topfinance.ebo.msg."+TestParseSampleXml.getEboClassNameFromOp(op);
+            String eboClassName = "com.topfinance.ebo.msg."+ParseSampleXml.getEboClassNameFromOp(op);
             Class eboClass = Class.forName(eboClassName);
             Object ebo = eboClass.newInstance();
             Field[] fields = eboClass.getDeclaredFields();

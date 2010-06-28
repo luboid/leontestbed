@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>  
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">  
+<xs:schema xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.02" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.02">  
+
 <xs:element name="Document" type="Document"/>  
 <xs:complexType name="Document">  
    <xs:sequence>  
@@ -7,7 +8,16 @@
                     <xs:element name="origDocId" type="xs:string"/>
                     <xs:element name="opName" type="xs:string"/>
                     <xs:element name="hostIdentity" type="xs:string"/>
-                    <xs:element name="partnerIdentity" type="xs:string"/> 
+                    <xs:element name="partnerIdentity" type="xs:string"/>
+                    <xs:element name="startDate" type="ISODate"/> 
+                    <xs:element name="startDateTime" type="ISODateTime"/>
     </xs:sequence>  
 </xs:complexType>
+
+	<xs:simpleType name="ISODateTime">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="ISODate">
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
 </xs:schema>

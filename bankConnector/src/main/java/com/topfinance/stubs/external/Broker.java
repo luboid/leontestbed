@@ -11,8 +11,8 @@ import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.TestDummy;
 import com.topfinance.cfg.db.DbCfgReader;
 import com.topfinance.cfg.xml.XmlCfgReader;
+import com.topfinance.converter.CalendarConverter;
 import com.topfinance.converter.Iso8583ToXml;
-import com.topfinance.converter.XMLGregorianCalendarConverter;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
@@ -22,12 +22,11 @@ import com.topfinance.util.Iso8583Util;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
-
-import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.CamelContext;
@@ -95,7 +94,7 @@ public class Broker implements Processor, CfgConstants{
         
         
         System.out.println("starting Broker...");
-        ConvertUtils.register(new XMLGregorianCalendarConverter(), XMLGregorianCalendar.class);
+        BCUtils.registerConverter();
         
         Options options = new Options();
         options.addOption("spring", true, "spring configuration file");

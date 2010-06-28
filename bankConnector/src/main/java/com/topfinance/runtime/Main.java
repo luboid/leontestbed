@@ -3,12 +3,11 @@ package com.topfinance.runtime;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
-import com.topfinance.converter.XMLGregorianCalendarConverter;
+import com.topfinance.converter.CalendarConverter;
 import com.topfinance.util.BCUtils;
 
+import java.util.Date;
 import java.util.List;
-
-import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -41,7 +40,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             // register converters used in jaxb-ebo conversion
-            ConvertUtils.register(new XMLGregorianCalendarConverter(), XMLGregorianCalendar.class);
+            BCUtils.registerConverter();
             
             Options options = new Options();
             options.addOption("spring", true, "spring configuration file");

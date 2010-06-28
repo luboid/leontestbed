@@ -1,14 +1,11 @@
 package com.topfinance.converter;
 
 import com.topfinance.cfg.TestDummy;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.Iso8583Util;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.lang.reflect.Field;
@@ -30,9 +27,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.jpos.iso.ISODate;
-import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
-import test.tcp8583.TestIBPSMsg;
 
 
 public class Iso8583ToXml {

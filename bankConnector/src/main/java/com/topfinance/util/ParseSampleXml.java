@@ -1,13 +1,12 @@
-package test;
+package com.topfinance.util;
 
 import com.cnaps2.cncc.service.IIBPSManager;
+import com.topfinance.cfg.TestDummy;
+import com.topfinance.converter.CalendarConverter;
 import com.topfinance.converter.Iso8583ToXml;
-import com.topfinance.converter.JaxbMapping;
-import com.topfinance.converter.XMLGregorianCalendarConverter;
 import com.topfinance.ebo.msg.Ibps10100101;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
+import com.topfinance.ebo.msg.JaxbMapping;
 import com.topfinance.runtime.BcConstants;
-import com.topfinance.util.Iso8583Util;
 import freemarker.template.Configuration;
 import freemarker.template.ObjectWrapper;
 import freemarker.template.Template;
@@ -26,6 +25,7 @@ import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -46,14 +46,13 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.jpos.iso.ISODate;
 import org.jpos.iso.ISOMsg;
-import org.jpos.iso.ISOPackager;
-import org.jpos.iso.ISOUtil;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import org.xml.sax.helpers.DefaultHandler;
 
-public class TestParseSampleXml extends DefaultHandler{
+
+public class ParseSampleXml extends DefaultHandler{
     
     public static class Entry {
         public Entry(String key, String value, Class jaxbType) {
@@ -112,7 +111,7 @@ public class TestParseSampleXml extends DefaultHandler{
     
 
 
-    public TestParseSampleXml(String basePath, String op) {
+    public ParseSampleXml(String basePath, String op) {
         this.basePath = basePath;
         this.op = op;
         init();
@@ -142,10 +141,10 @@ public class TestParseSampleXml extends DefaultHandler{
         
     }
     private void debug(String s) {
-//        System.out.println(s);
+//        System.out.println("in [ParseSampleXml] DEBUG: "+s);
     }
     private void info(String s) {
-      System.out.println(s);
+      System.out.println("in [ParseSampleXml] INFO: "+s);
   }
     private String getJavaName(String name) {
         return StringUtils.uncapitalize(name);
@@ -229,8 +228,8 @@ public class TestParseSampleXml extends DefaultHandler{
         
         
         
-        String pattern1 = "yyyy-MM-DD'T'hh:mm:ss";
-        String pattern2 = "yyyy-MM-DD";
+        String pattern1 = "yyyy-MM-dd'T'hh:mm:ss";
+        String pattern2 = "yyyy-MM-dd";
         
         Date date = null;
         try {
@@ -250,7 +249,7 @@ public class TestParseSampleXml extends DefaultHandler{
             debug("Exception in guessing DateValue for eleName=" + eleName + ", strValue=" + strValue);
         } else {
             res = ISODate.getDateTime(date);
-            String pattern3 = "yyyy-MM-DD hh:mm:ss";
+            String pattern3 = "yyyy-MM-dd hh:mm:ss";
             debug("date="+new SimpleDateFormat(pattern3).format(date)+", res="+res);
         }
         return res;
@@ -792,8 +791,8 @@ public class TestParseSampleXml extends DefaultHandler{
         info("start of testGeneratedEbo..." );
         try {
             
-            // construct jaxbObj using the generated .map 
-            ISOMsg m = new ISOMsg();
+            // construct jaxbObj using the generated .map and sample8583
+            ISOMsg m = Iso8583Util.createDummyISOMsg(BCUtils.getHomeDir()+"/sample/8583/"+op+".8583");
 
             Map<String, String> mappings = Iso8583ToXml.loadMappings(new FileInputStream(outMapFile));
             Iso8583ToXml main = new Iso8583ToXml(jaxbPkgName);
@@ -803,7 +802,7 @@ public class TestParseSampleXml extends DefaultHandler{
             
             // convert jaxbObj -> ebo
             // TODO 
-            String eboClassName = "com.topfinance.ebo.msg.Ibps10100101";
+            String eboClassName = EBO_PKG_NAME+"."+getEboClassNameFromOp(op);
             Class eboClass = Class.forName(eboClassName);
             Object ebo = eboClass.newInstance();
             Field[] fields = eboClass.getDeclaredFields();
@@ -811,10 +810,10 @@ public class TestParseSampleXml extends DefaultHandler{
                 String fName = field.getName();
                 Class fType = field.getType();
                 
-                if(Date.class.isAssignableFrom(fType)) {
-                    // TODO skip date type... XMLGregorianCalendarconversion is trouble
-                    continue;
-                }
+//                if(Date.class.isAssignableFrom(fType)) {
+//                    // TODO skip date type... XMLGregorianCalendarconversion is trouble
+//                    continue;
+//                }
                 if(Boolean.class.isAssignableFrom(fType)) {
                     // TODO skip boolean type...  public Boolean isBtchBookg() is not a valid getter method
                     continue;
@@ -836,8 +835,7 @@ public class TestParseSampleXml extends DefaultHandler{
             
             
             // store the ebo
-            Ibps10100101 ibps101 = (Ibps10100101)ebo;
-            ibps101.setUuid(String.valueOf(new Date().getTime()));
+            BeanUtils.setProperty(ebo, "uuid", String.valueOf(new Date().getTime()));
             
             info("initializing DB Connection with spring: " + config + "...");
             ApplicationContext ctx = new ClassPathXmlApplicationContext(config);
@@ -859,28 +857,28 @@ public class TestParseSampleXml extends DefaultHandler{
 
         
         String[] ops = new String[] {
-//             TestDummy.OPERATION_101,
-//             TestDummy.OPERATION_102,
-//             TestDummy.OPERATION_601
+             TestDummy.OPERATION_101,
+             TestDummy.OPERATION_102,
+             TestDummy.OPERATION_601
         };
         
         String basePath = "D:/bankConnector/source/test";
-        ConvertUtils.register(new XMLGregorianCalendarConverter(), XMLGregorianCalendar.class);
+        BCUtils.registerConverter();
         
         
         for (String op : ops) {
-            TestParseSampleXml main = new TestParseSampleXml(basePath, op);
+            ParseSampleXml main = new ParseSampleXml(basePath, op);
 
             // could comment out and skip the steps you don't want
-            main.parseXml();
+//            main.parseXml();
 
-            main.generateMap();
-            main.testGeneratedMap();
+//            main.generateMap();
+//            main.testGeneratedMap();
 
-             main.generateDdlAndEbo();
+//             main.generateDdlAndEbo();
 
              // must copy the generated ebo java to /src/shared/java/ and compile the project, before calling this
-             // main.testGeneratedEbo();
+              main.testGeneratedEbo();
         }
         
 

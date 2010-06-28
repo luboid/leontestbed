@@ -13,7 +13,6 @@ import org.apache.log4j.Logger;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOUtil;
-import test.tcp8583.TestIBPSMsg;
 
 public class Iso8583Util {
     private static Logger logger = Logger.getLogger(Iso8583Util.class);
@@ -48,10 +47,16 @@ public class Iso8583Util {
             throw new RuntimeException(ex);
         }
     }
-    
+    public static String GBKToISO8859(String str) throws Exception {
+        return new String(str.getBytes("GBK"), "ISO-8859-1");
+    }
+
+    public static String ISO8859ToGBK(String str) throws Exception {
+        return new String(str.getBytes("ISO-8859-1"), "GBK");
+    }
     public static void setField(ISOMsg msg, int pos, String s) {
         try {
-            msg.set(new ISOField(pos, TestIBPSMsg.GBKToISO8859(s)));
+            msg.set(new ISOField(pos, GBKToISO8859(s)));
             
         } catch (Exception ex) {
             throw new RuntimeException(ex);
@@ -59,9 +64,9 @@ public class Iso8583Util {
     }
     public static String getField(ISOMsg msg, int pos) {
         try {
-           return TestIBPSMsg.ISO8859ToGBK((String)msg.getValue(pos));
+           return ISO8859ToGBK((String)msg.getValue(pos));
         } catch (Exception ex) {
-            throw new RuntimeException(ex);
+            throw new RuntimeException("error in retrieving value of pos["+pos+"]", ex);
         }
     }
     

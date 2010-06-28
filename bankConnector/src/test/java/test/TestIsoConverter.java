@@ -1,27 +1,24 @@
 package test;
 
 import com.topfinance.cfg.TestDummy;
+import com.topfinance.converter.CalendarConverter;
 import com.topfinance.converter.Iso8583ToXml;
-import com.topfinance.converter.XMLGregorianCalendarConverter;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.Iso8583Util;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.xml.datatype.XMLGregorianCalendar;
 
 import junit.framework.TestCase;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.jpos.iso.ISODate;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
-import org.jpos.iso.ISOPackager;
 
 public class TestIsoConverter extends TestCase {
 
@@ -45,7 +42,7 @@ public class TestIsoConverter extends TestCase {
             m.set (new ISOField (103,  dStr));
             m.set (new ISOField (104,  "12345678"));
             
-            ConvertUtils.register(new XMLGregorianCalendarConverter(), XMLGregorianCalendar.class);
+            BCUtils.registerConverter();
             
             InputStream mapFile = Iso8583ToXml.class.getResourceAsStream("/com/topfinance/plugin/cnaps2/v00800102-up.map");
             System.out.println("mapFile="+mapFile);

@@ -1,4 +1,4 @@
-package com.topfinance.converter;
+package com.topfinance.ebo.msg;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

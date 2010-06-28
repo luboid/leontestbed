@@ -1,19 +1,18 @@
 package test;
 
 import com.topfinance.cfg.TestDummy;
+import com.topfinance.converter.CalendarConverter;
 import com.topfinance.converter.Iso8583ToXml;
-import com.topfinance.converter.XMLGregorianCalendarConverter;
 import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.Iso8583Util;
 
 import java.beans.PropertyDescriptor;
 import java.io.FileInputStream;
+import java.util.Calendar;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
-
-import javax.xml.datatype.XMLGregorianCalendar;
 
 import junit.framework.TestCase;
 import org.apache.commons.beanutils.ConvertUtils;
@@ -52,7 +51,7 @@ public class TestMisc extends TestCase {
     }
     
     public void testExtractJaxb() throws Exception {
-        ConvertUtils.register(new XMLGregorianCalendarConverter(), XMLGregorianCalendar.class);
+        BCUtils.registerConverter();
         String outSample8583File = "D:/bankConnector/source/test/8583/ibps.101.001.01.8583";
         String outMapFile = "D:/bankConnector/source/test/map/ibps.101.001.01-up.map";
         String op = TestDummy.OPERATION_101;
