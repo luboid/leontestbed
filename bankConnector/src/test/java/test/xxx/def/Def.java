@@ -1,4 +1,4 @@
-package test.abc.def;
+package test.xxx.def;
 
 public class Def {
 

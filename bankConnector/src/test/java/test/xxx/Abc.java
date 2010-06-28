@@ -1,4 +1,4 @@
-package test.abc;
+package test.xxx;
 
 public class Abc {
 
