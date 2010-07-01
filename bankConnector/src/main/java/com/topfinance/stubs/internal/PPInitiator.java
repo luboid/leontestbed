@@ -28,7 +28,6 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.PosixParser;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 
 public class PPInitiator implements Runnable, Processor, CfgConstants{
@@ -69,6 +68,9 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
     
     public static void main(String[] args) throws Exception{
         System.out.println("starting PPInitiator...");
+        System.out.println("log4j conf is "+System.getProperty("log4j.configuration"));
+        logger.info("log4j is working...");
+        
         Options options = new Options();
         options.addOption("cfg", true, "configuration file");
         options.addOption("cfgType", true, "configuration type");

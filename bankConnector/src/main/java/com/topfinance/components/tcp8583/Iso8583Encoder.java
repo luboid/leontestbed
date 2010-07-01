@@ -9,21 +9,30 @@ import org.apache.mina.filter.codec.ProtocolEncoder;
 import org.apache.mina.filter.codec.ProtocolEncoderOutput;
 
 public class Iso8583Encoder implements ProtocolEncoder{
+    
+    private void info(String s) {
+        logger.info(s);
+    }
+    private void debug(String s) {
+        logger.debug(s);
+//        logger.info(s);
+    }
+    
     private static Logger logger = Logger.getLogger(Iso8583Encoder.class);
     public void encode(IoSession session, Object message, ProtocolEncoderOutput out) throws Exception {
         
         String req = (String)message;
-        logger.debug("req="+req);
+        debug("req="+req);
         
         byte[] request = req.getBytes(BcConstants.ENCODING);
         int length = request.length;
         
-        logger.debug("length="+length);
+        debug("length="+length);
         
         String sLength = String.valueOf(length);
         sLength = "+"+StringUtils.leftPad(sLength, 4, '0');
         
-        logger.debug("sLength="+sLength);
+        debug("sLength="+sLength);
         ByteBuffer buffer = ByteBuffer.allocate(5+length, false);
         buffer.put(sLength.getBytes("UTF-8"));
         buffer.put(request);

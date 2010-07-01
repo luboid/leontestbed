@@ -48,11 +48,15 @@ public class Iso8583Util {
         }
     }
     public static String GBKToISO8859(String str) throws Exception {
-        return new String(str.getBytes("GBK"), "ISO-8859-1");
+//        return new String(str.getBytes("GBK"), "ISO-8859-1");
+//        return new String(str.getBytes("UTF-8"), "ISO-8859-1");
+        return str;
     }
 
     public static String ISO8859ToGBK(String str) throws Exception {
-        return new String(str.getBytes("ISO-8859-1"), "GBK");
+//        return new String(str.getBytes("ISO-8859-1"), "GBK");
+//        return new String(str.getBytes("ISO-8859-1"), "UTF-8");
+        return str;
     }
     public static void setField(ISOMsg msg, int pos, String s) {
         try {

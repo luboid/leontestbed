@@ -35,13 +35,29 @@
 	<target depends="build" name="release" >
 		<mkdir dir="release"/>
 		<mkdir dir="release/bin"/>
+		<mkdir dir="release/bin/logs"/>
 		<mkdir dir="release/lib"/>
+		<mkdir dir="release/target"/>
+		<mkdir dir="release/sample"/>
 		
         <copy includeemptydirs="false" todir="release/lib">
             <fileset dir="lib" />
+        </copy>
+		    <copy includeemptydirs="false" todir="release/target">
         	<fileset file="target/${jar.name}" />
         </copy>
-		
+		    <copy includeemptydirs="false" todir="release/sample">
+        	<fileset dir="sample" >
+        		<include name="8583/*.*" />
+        		<include name="map/*.*" />
+        	</fileset>
+        </copy>        
+		    <copy includeemptydirs="true" todir="release/bin">
+        	<fileset dir="bin" />
+        </copy>        
+        
+        <zip  destfile="release-zip/bankConnector.zip"
+       					basedir="release" /> 
 	</target>
 	
     <target depends="build-project" name="build"/>
