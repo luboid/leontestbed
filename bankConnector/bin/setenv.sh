@@ -13,7 +13,6 @@ export CFGTYPE
 
 CLASSPATH=.:${BC2_HOME}/target/bc.jar
 CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/mysql-connector-java-3.1.12-bin.jar
-CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/ojdbc14.jar
 CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/commons-cli-1.2.jar
 CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/simple-xml-2.3.3.jar
 CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/activation-1.1.jar
@@ -78,7 +77,7 @@ CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/commons-lang-2.4.jar
 CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/commons-httpclient-3.1.jar
 CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/servlet-api-2.5-6.1.14.jar
 CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/mina-core-1.1.7.jar
-CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/jpos.jar sourcepath=/jpos-1.6.6
+CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/jpos.jar
 CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/commons-beanutils-1.8.3.jar
 CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/switchGW/hibernate-3.2.0.ga.jar
 CLASSPATH=${CLASSPATH}:${BC2_HOME}/lib/switchGW/hibernate-annotations-3.2.0.ga.jar

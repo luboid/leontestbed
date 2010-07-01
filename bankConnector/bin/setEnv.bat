@@ -87,6 +87,7 @@ set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\switchGW\persistence-api-1.0.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\gwXML\gwccms.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\gwXML\gwibps.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\gwXML\gwiso.jar
+set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\gwXML\gwbind.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\camel-core-2.3.0.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\camel-http-2.3.0.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\camel-jetty-2.3.0.jar
