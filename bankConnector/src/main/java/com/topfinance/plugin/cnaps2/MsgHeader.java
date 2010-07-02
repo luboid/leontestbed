@@ -1,7 +1,5 @@
 package com.topfinance.plugin.cnaps2;
 
-import com.topfinance.util.ResendUtil;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,7 +57,7 @@ public class MsgHeader {
             if(val == null) {
                 val = meta.getDefaultVal();
             }
-            if(val==null || val.toString().isEmpty()) {
+            if(val==null || org.apache.commons.lang.StringUtils.isEmpty(val.toString())) {
                 if(meta.isRequired()) {
                     // TODO validate required
                     // throw 

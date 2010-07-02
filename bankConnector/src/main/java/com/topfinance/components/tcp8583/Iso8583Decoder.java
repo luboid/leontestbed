@@ -42,7 +42,7 @@ public class Iso8583Decoder extends CumulativeProtocolDecoder {
         int length = state.length;
         if (state.length == -1) {
             int remain1 = in.remaining();
-            info("remain1=" + remain1);
+            debug("remain1=" + remain1);
             if (remain1 < 5) {
                 return false;
             }
@@ -62,7 +62,7 @@ public class Iso8583Decoder extends CumulativeProtocolDecoder {
             String head = prefix.substring(0, 1);
             String sLength = prefix.substring(1);
 
-            info("received Iso8583 msg, length=" + sLength);
+            debug("received Iso8583 msg, length=" + sLength);
             length = Integer.valueOf(StringUtils.trimLeadingCharacter(sLength, '0'));
 
             state.length = length;
@@ -72,7 +72,7 @@ public class Iso8583Decoder extends CumulativeProtocolDecoder {
         // throw new BufferDataException("dataLength: " + dataLength);
         // }
         int remain2 = in.remaining();
-        info("remain2=" + remain2);
+        debug("remain2=" + remain2);
         if (remain2 < length) {
             return false;
         }
