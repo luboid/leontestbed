@@ -259,10 +259,13 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         ICfgInPort cfgIP = reader.getInPortByUri(inUri);
         // TODO try to unpack the msg and verify
         try {
+            if(inUri.contains("queue")) {
+                
+            }else {
             ISOMsg iso = Iso8583Util.unpackMsg(msg);
             String iso601Id = Iso8583Util.getField(iso, BcConstants.ISO8583_DOC_ID);
             logger.info("received async reply: docId="+iso601Id);
-
+            }
         } catch (Exception ex) {
             
         }
