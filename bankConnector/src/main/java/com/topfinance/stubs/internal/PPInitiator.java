@@ -248,7 +248,7 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         String inUri = exchange.getFromEndpoint().getEndpointUri();
         String msg = exchange.getIn().getBody(String.class);
         logger.info("received async message from url="+exchange.getFromEndpoint().getEndpointUri());
-        logger.debug("rawMsg="+msg);
+        logger.info("rawMsg="+msg);
         
         // TODO handle error msg
         if(msg.equals(BcConstants.MSG_PP_ERROR)) {

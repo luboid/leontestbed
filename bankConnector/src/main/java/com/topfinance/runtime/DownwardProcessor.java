@@ -513,37 +513,54 @@ public class DownwardProcessor extends AbstractProcessor{
         
     	String opName = getMsgContext().getOperationName();
     	ICfgReader reader = CfgImplFactory.loadCfgReader();
-    	InputStream mapFile = reader.getMappingRule(opName, DIRECTION_DOWN);
-    	Map<String, String> mappings = Iso8583ToXml.loadMappings(mapFile);
+    	ICfgOperation cfgOpn = reader.getOperation(getMsgContext().getProtocol(), opName);
+    	
+    	if(CfgConstants.OP_FORMAT_XML.equals(cfgOpn.getDownFormat())){
+    	    // TODO convert xml
+    	    Object jaxbObj = getMsgContext().getParsedMsg();
+    	    Iso8583ToXml main = new Iso8583ToXml(Iso8583ToXml.getPackageName(opName));
+    	    String msg = main.objectToXml(jaxbObj);
+    	    logger.debug("packed="+msg);
+    	    getMsgContext().setPackagedMsg(msg);
+    	}
+    	else  {
+    	    //if(CfgConstants.OP_FORMAT_8583.equals(cfgOpn.getDownFormat()))
+            InputStream mapFile = reader.getMappingRule(opName, DIRECTION_DOWN);
+            Map<String, String> mappings = Iso8583ToXml.loadMappings(mapFile);
 
-    	Object jaxbObj = getMsgContext().getParsedMsg();
-        Iso8583ToXml main = new Iso8583ToXml("com.topfinance.plugin.cnaps2.v00800102");
-        ISOMsg isoMsg = main.objectToIso8583(jaxbObj, mappings);
-        try {
-            Iso8583Util.setField(isoMsg, BcConstants.ISO8583_OP_NAME, opName);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            throw new RuntimeException(ex);
-        }
-        
-        logger.debug("obj="+isoMsg);
-        
-        try {
-            String msg = Iso8583Util.packMsg(isoMsg);
-            logger.debug("packed="+msg);
-            getMsgContext().setPackagedMsg(msg);
+            Object jaxbObj = getMsgContext().getParsedMsg();
+            Iso8583ToXml main = new Iso8583ToXml("com.topfinance.plugin.cnaps2.v00800102");
+            ISOMsg isoMsg = main.objectToIso8583(jaxbObj, mappings);
+            try {
+                Iso8583Util.setField(isoMsg, BcConstants.ISO8583_OP_NAME, opName);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
             
+            logger.debug("obj="+isoMsg);
             
-//            ISOMsg m = new ISOMsg();
-//            m.setPackager(new ISOIBPSPackager());
-//            m.unpack(b);
-//            String docId = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
-//            logger.debug("=========docId="+docId);
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            throw new RuntimeException(ex);
-        }
+            try {
+                String msg = Iso8583Util.packMsg(isoMsg);
+                logger.debug("packed="+msg);
+                getMsgContext().setPackagedMsg(msg);
+                
+                
+//                ISOMsg m = new ISOMsg();
+//                m.setPackager(new ISOIBPSPackager());
+//                m.unpack(b);
+//                String docId = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
+//                logger.debug("=========docId="+docId);
+                
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+    	} 
+//    	else {
+//    	    throw new RuntimeException("should configure the format of the operation, currently either 8583 or xml");
+//    	}
+    	
         auditLog(STATE_PKG_OUT_MSG, "packaged message to PP", STATUS_PENDING);
     }
     

@@ -13,6 +13,9 @@ public interface CfgConstants {
     public final static String DIRECTION_UP = "U";
     public final static String DIRECTION_DOWN = "D";
     
+    public final static String OP_FORMAT_XML = "xml";
+    public final static String OP_FORMAT_8583 = "8583";
+    
     public final static String OP_REPLY_TYPE_NOTIFY = "N";
     public final static String OP_REPLY_TYPE_SYNC = "S";
     public final static String OP_REPLY_TYPE_ASYNC = "A";

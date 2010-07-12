@@ -12,6 +12,8 @@ public interface ICfgOperation extends ICfgItem {
     public void setUpIsReply(String upIsReply);
     public String getUpAckType();
     public void setUpAckType(String upAckType);
+    public String getUpFormat();
+    public void setUpFormat(String upFormat);
     
     public String getUpPpReplyType();
     public void setUpPpReplyType(String upPpReplyType);
@@ -27,4 +29,9 @@ public interface ICfgOperation extends ICfgItem {
     
     public String getDownPpReplyType();
     public void setDownPpReplyType(String upPpReplyType);
+    
+    public String getDownFormat();
+    public void setDownFormat(String downFormat);
+    
+    
 }

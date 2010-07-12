@@ -115,4 +115,24 @@ public class DbCfgOperation implements ICfgOperation {
         
     }
 
+    public String getDownFormat() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public String getUpFormat() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public void setDownFormat(String downFormat) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    public void setUpFormat(String upFormat) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
