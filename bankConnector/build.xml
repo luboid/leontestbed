@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project basedir="." default="release" name="bankConnector">
+<project basedir="." default="build" name="bankConnector">
     <property environment="env"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
@@ -34,7 +34,6 @@
 	
 	<target depends="build" name="release" >
 		<mkdir dir="release"/>
-		<mkdir dir="release-zip"/>
 		<mkdir dir="release/bin"/>
 		<mkdir dir="release/bin/logs"/>
 		<mkdir dir="release/lib"/>
@@ -69,7 +68,7 @@
             <classpath refid="bankConnector.classpath"/>
         </javac>
     	
-        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}" encoding="UTF-8">
             <src path="src/main/java"/>
             <exclude name="com/bc/runtime/RouterBean.java"/>
             <exclude name="com/bc/runtime/RouterBeanImpl.java"/>
@@ -120,8 +119,6 @@
             <exclude name="com/topfinance/cfg/om/OmCfgRoute.java"/>
             <exclude name="com/topfinance/cfg/ICfgRoute.java"/>
             <exclude name="com/topfinance/components/tcp8583/ISO8583BjobPackager.java"/>
-            <exclude name="com/topfinance/plugin/cnaps2/utils/IBPSMsgFactory.java"/>
-            <exclude name="com/topfinance/plugin/cnaps2/utils/Tcp8583StructFactory.java"/>
             <exclude name="com/topfinance/plugin/cnaps2/DocRoot.java"/>
             <exclude name="com/topfinance/plugin/cnaps2/v00200103/"/>
             <exclude name="com/topfinance/plugin/cnaps2/v00800102/"/>
