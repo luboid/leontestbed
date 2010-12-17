@@ -7,30 +7,27 @@ import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
-import com.topfinance.cfg.TestDummy;
-import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.db.HiberEntry;
 import com.topfinance.db.ResendEntry;
+import com.topfinance.message.DefaultCnaps2Packer;
+import com.topfinance.message.Factory;
+import com.topfinance.message.FatalParseException;
+import com.topfinance.message.IUpInMsgHandler;
 import com.topfinance.plugin.cnaps2.AckRoot;
-import com.topfinance.plugin.cnaps2.Cnaps2Constants;
-import com.topfinance.plugin.cnaps2.MsgHeader;
 import com.topfinance.util.AuditMsgUtil;
 import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
-import com.topfinance.util.Iso8583Util;
 import com.topfinance.util.ResendUtil;
 
 import java.io.InputStream;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.jpos.iso.ISOMsg;
 
 public class UpwardProcessor extends AbstractProcessor implements MessageListener{
     
@@ -99,7 +96,7 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
 
         String tpSyncReply = send();
         
-        handlePpSyncResponse(tpSyncReply);
+        handleTpSyncResponse(tpSyncReply);
         
         
         
@@ -114,12 +111,12 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
         String opName = getMsgContext().getOperationName();
         ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), opName);
         
-        if(BOOLEAN_FALSE.equals(cfgOpn.getUpIsEnabled())) {
+        if(BOOLEAN_FALSE.equals(getMsgContext().getOds().getOd(opName).getUpIsEnabled())) {
             
             throw new RuntimeException("up is not enabled on the op");
         }
         
-        if(BOOLEAN_TRUE.equals(cfgOpn.getUpIsReply())) {
+        if(BOOLEAN_TRUE.equals(getMsgContext().getOds().getOd(opName).getUpIsReply())) {
             String origDocId = getMsgContext().getOrigDocId();   
             if(StringUtils.isEmpty(origDocId)) {
                 throw new RuntimeException("origDocId should not be null if op is reply");
@@ -172,11 +169,10 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
             ICfgInPort inPort = getMsgContext().getCfgInPort();
             ICfgOutPort outPort = reader.getAckPortByIP(inPort);
             
-            String url = BCUtils.getFullUrlFromPort(outPort);
 
             
             
-            ServerRoutes.getInstance().produce(url, errorText, true);
+            ServerRoutes.getInstance().produce(outPort, errorText, true);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -201,7 +197,7 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
 
         // get the type of input msg body(tcp8583/cmt) 
         // 1. can be known from the CfgInPort's type
-        // 2. can be know from operation's upFormat
+        // 2. can be known from operation's upFormat
         // or we can do verification of 8583 matching here
      
         // TODO get the type based on another cfg on InPort
@@ -211,65 +207,60 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
         // CMT on 8583 (possible? use the 8583 codec but different body)        
         // 8583 on HTTP (possible?)
         // 8583 on 8583 (this is the default case we handling here)
-        String hIdentity = null;
-        String pIdentity = null;
+//        String hIdentity = null;
+//        String pIdentity = null;
         String opName = null;
         String docId = null;
         String origDocId = null;
         
+        ICfgInPort inPort = getMsgContext().getCfgInPort();
+        String req = (String)getMsgContext().getSrcExchange().getIn().getBody();
+        log("req="+req);
         // calling the parser...
         // possibly be isoMessage or cmtMessage
 //        IsoMessage isoMsg = new IsoMessage();
 //        int type = isoMsg.getType();
-        ICfgReader reader = CfgImplFactory.loadCfgReader();
-        if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(getMsgContext().getCfgInPort()).getProvider())) {
-
-            String req = (String)getMsgContext().getSrcExchange().getIn().getBody();
-            log("req="+req);
-            ISOMsg msg = Iso8583Util.unpackMsg(req);
-
-            getMsgContext().setParsedMsg(msg);
-            
-            opName = msg.getString(BcConstants.ISO8583_OP_NAME);
-            docId = msg.getString(BcConstants.ISO8583_DOC_ID);
-            origDocId = msg.getString(BcConstants.ISO8583_ORIG_DOC_ID);
-            hIdentity = msg.getString(BcConstants.ISO8583_HOST_ID);
-            pIdentity = msg.getString(BcConstants.ISO8583_PARTNER_ID);
-            
-            logger.info("opName="+opName+", docId="+docId+", origDocId="+origDocId);
-            
-        }
- 
-        else {
-
-            throw new RuntimeException("should go thru 8583");
-//        // TODO This docRoot is in fact like a header.
-//        // here we just use this as both header and body.
-//        DocRoot msg = null;
-//        try {
-//            msg = DocRoot.loadFromString(getMsgContext().getSrcExchange().getIn().getBody(String.class));
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            throw new RuntimeException(ex);
+//        ICfgReader reader = CfgImplFactory.loadCfgReader();
+//        if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(getMsgContext().getCfgInPort()).getProvider())) {
+//
+//            
+//            
+//            ISOMsg msg = Iso8583Util.unpackMsg(req);
+//
+//            getMsgContext().setParsedMsg(msg);
+//            
+//            opName = msg.getString(BcConstants.ISO8583_OP_NAME);
+//            docId = msg.getString(BcConstants.ISO8583_DOC_ID);
+//            origDocId = msg.getString(BcConstants.ISO8583_ORIG_DOC_ID);
+//            hIdentity = msg.getString(BcConstants.ISO8583_HOST_ID);
+//            pIdentity = msg.getString(BcConstants.ISO8583_PARTNER_ID);
+//            
+//            logger.info("opName="+opName+", docId="+docId+", origDocId="+origDocId);
+//            
 //        }
-//        getMsgContext().setParsedMsg(msg);
-//        
-//                
-//        // now we have no PP msg header,
-//        // so just extract these fields from payload
-//        hIdentity = msg.getHostIdentity();
-//        pIdentity = msg.getPartnerIdentity();
-//        opName = msg.getOpName();
-//        docId = msg.getDocId();
-//        origDocId = msg.getOrigDocId();
+//        else {
+//            throw new RuntimeException("should go thru 8583");
+//        }
+        ICfgReader reader = CfgImplFactory.loadCfgReader();
+        IUpInMsgHandler upInMsgHandler = Factory.loadParser(reader.getUpInMHByPort(inPort).getClazz());
+        Object parsedMsg = null;
+        try {
+            parsedMsg = upInMsgHandler.parse(req);
+        } catch (FatalParseException ex) {
+            // what to do? 
+            throw new RuntimeException(ex);
         }
-        
+        getMsgContext().setParsedMsg(parsedMsg);
+        opName = upInMsgHandler.getOpName();
+        logger.info("opName="+opName);
+        docId = upInMsgHandler.getDocId();
+        origDocId = upInMsgHandler.getOrigDocId();
         
         getMsgContext().setDocId(docId);
         getMsgContext().setOrigDocId(origDocId);
         getMsgContext().setOperationName(opName);
-        getMsgContext().setOrigSender(hIdentity);
-        getMsgContext().setOrigReceiver(pIdentity);
+//        getMsgContext().setOrigSender(hIdentity);
+//        getMsgContext().setOrigReceiver(pIdentity);
         
         // todo: verify the pp msg
         
@@ -310,41 +301,47 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
         String origSender = getMsgContext().getOrigSender();
         String origReceiver = getMsgContext().getOrigReceiver();
         
-        MsgHeader header = new MsgHeader(origSender, origReceiver, mesgType, mesgId, mesgRefId);
-        
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
+        ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), mesgType);
         String body = "";
+        InputStream mapFile = cfgReader.getMappingRule(cfgOpn, DIRECTION_UP);
         
-        if (TCP_PROVIDER_8583.equals(cfgReader.getTransInfoByPort(getMsgContext().getCfgInPort()).getProvider())) {
-            // TODO retrieve mapFile and pkgName based on opName, could be a db column
-
-            InputStream mapFile = cfgReader.getMappingRule(mesgType, DIRECTION_UP); 
-            String pkgName = Iso8583ToXml.getPackageName(mesgType);
-
-            Map<String, String> mappings = Iso8583ToXml.loadMappings(mapFile);
-            if(TestDummy.OPERATION_102.equals(mesgType)){
-                // upward 102
-                // NOTE this is not necessary if generated mapping rule was modified to take care of orig_msg_id
-                mappings.put(Cnaps2Constants.ORIG_MSG_ID_102, getMsgContext().getOrigDocId());
-            }
-            
-            ISOMsg msg = (ISOMsg)getMsgContext().getParsedMsg();
-            Iso8583ToXml converter = new Iso8583ToXml(pkgName);
-            Object jaxbObj = converter.iso8583ToObject(msg, mappings);
-            body = converter.objectToXml(jaxbObj);
-            // TODO use object to do biz level auditing
-            
-            AuditMsgUtil.saveMsg(jaxbObj, mesgType);
-            
-            
-            
-        } else {
-            // simply do nothing to body
-//            body = this.getMsgContext().getSrcExchange().getIn().getBody(String.class);
-            throw new RuntimeException("should go thru 8583");
-        }
+//        if (TCP_PROVIDER_8583.equals(cfgReader.getTransInfoByPort(getMsgContext().getCfgInPort()).getProvider())) {
+//            // TODO retrieve mapFile and pkgName based on opName, could be a db column
+//            
+//            String pkgName = Iso8583ToXml.getPackageName(mesgType);
+//            Map<String, String> mappings = Iso8583ToXml.loadMappings(mapFile);
+//            if(TestDummy.OPERATION_102.equals(mesgType)){
+//                // upward 102
+//                // NOTE this is not necessary if generated mapping rule was modified to take care of orig_msg_id
+//                mappings.put(Cnaps2Constants.ORIG_MSG_ID_102, getMsgContext().getOrigDocId());
+//            }
+//            ISOMsg msg = (ISOMsg)getMsgContext().getParsedMsg();
+//            Iso8583ToXml converter = new Iso8583ToXml(pkgName);
+//            Object jaxbObj = converter.iso8583ToObject(msg, mappings);
+//            body = converter.objectToXml(jaxbObj);
+//            
+//
+//            
+//        } else {
+//            // simply do nothing to body
+////            body = this.getMsgContext().getSrcExchange().getIn().getBody(String.class);
+//            throw new RuntimeException("should go thru 8583");
+//        }
         
-        String request = header.toText()+body;
+        Object parsedObj = getMsgContext().getParsedMsg();
+        ICfgOutPort op = getMsgContext().getCfgOutPort();
+//        IDownOutMsgHandler handler = Factory.loadHandler(op.getHandlerClazz());
+//        Object jaxbObj = handler.convert(parsedObj, mesgType, mapFile);
+        
+        IUpInMsgHandler upInMsgHandler = Factory.loadParser(cfgReader.getUpInMHByPort(getMsgContext().getCfgInPort()).getClazz());
+        Object jaxbObj = upInMsgHandler.convert(parsedObj, mesgType, mapFile);
+        
+        // TODO use object to do biz level auditing
+        AuditMsgUtil.saveMsg(jaxbObj, mesgType);
+        
+        DefaultCnaps2Packer handler = new DefaultCnaps2Packer();
+        String request = handler.pack(jaxbObj, origSender, origReceiver, mesgType, mesgId, mesgRefId);
         getMsgContext().setPackagedMsg(request);
         
         auditLog(STATE_PKG_OUT_MSG, "packaged message to TP", STATUS_PENDING);
@@ -356,7 +353,7 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
         String opName = getMsgContext().getOperationName();
         ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), opName);
-        String ackType = cfgOpn.getUpAckType();
+        String ackType = getMsgContext().getOds().getOd(opName).getUpAckType();
         
         String resendStatus = OP_ACK_TYPE_ASYNC.equals(ackType)? ResendEntry.STATUS_ACTIVE : ResendEntry.STATUS_INACTIVE; 
             // save resend
@@ -376,25 +373,24 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
         
         
         // go this even if the up request itself is a reply
-        if(OP_REPLY_TYPE_ASYNC.equals(cfgOpn.getUpReplyType())){
+        if(OP_REPLY_TYPE_ASYNC.equals(getMsgContext().getOds().getOd(opName).getUpReplyType())){
             String hiberkey = getMsgContext().getDocId();
             String txId = getMsgContext().getTxId();
             String auditId = getMsgContext().getAuditTx().getAuditId();
-            HiberUtil.saveHiber(hiberkey, DIRECTION_UP, txId, auditId, getMsgContext().getOperationName());
+            HiberUtil.saveHiber(hiberkey, DIRECTION_UP, txId, auditId, getMsgContext().getOperationName(), inPortName);
         }
         
         
         
-        String url = BCUtils.getFullUrlFromPort(cfgOP);
         String syncReply = null;
         
 
         boolean isInOnly = OP_ACK_TYPE_SYNC.equals(ackType) ?  false : true;
         
-        logger.info("dispatching to outport: "+cfgOP.getName()+", url="+url);
+        logger.info("dispatching to outport: "+cfgOP.getName());
         logger.debug("rawMsg=["+getMsgContext().getPackagedMsg()+"]");
         
-        syncReply = ServerRoutes.getInstance().produce(url, getMsgContext().getPackagedMsg(), isInOnly);
+        syncReply = ServerRoutes.getInstance().produce(cfgOP, getMsgContext().getPackagedMsg(), isInOnly);
 
         auditLog(STATE_SEND_OUT_MSG, "sending msg to TP", STATUS_PENDING);     
 
@@ -412,7 +408,7 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
     }
     
     
-    protected void handlePpSyncResponse(String syncReply) {
+    protected void handleTpSyncResponse(String syncReply) {
         
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
         String opName = getMsgContext().getOperationName();
@@ -421,7 +417,7 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
         
         if(OP_REPLY_TYPE_SYNC.equals(cfgOpn.getUpPpReplyType())) {
 
-            if(OP_REPLY_TYPE_SYNC.equals(cfgOpn.getUpReplyType())) {
+            if(OP_REPLY_TYPE_SYNC.equals(getMsgContext().getOds().getOd(opName).getUpReplyType())) {
                 // todo in fact should consider reply and ack together
                 // now tp channel is always async so won't happen anyway
                 log("received tp syncReply="+syncReply);

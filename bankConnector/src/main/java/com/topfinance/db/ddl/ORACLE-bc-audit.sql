@@ -54,6 +54,7 @@ CREATE TABLE TBL_HIBER (
         STATUS             VARCHAR2(64)     NULL,
         TS                 TIMESTAMP	DEFAULT SYSTIMESTAMP,
         EXPIRATION         NUMBER(18) not null,
+        INPORT_NAME        VARCHAR2(64)     NULL,
         DIRECTION          VARCHAR2(5)     NULL,
         OPERATION        	 VARCHAR2(64) 
 );

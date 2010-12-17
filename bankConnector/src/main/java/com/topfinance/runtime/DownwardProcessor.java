@@ -1,5 +1,6 @@
 package com.topfinance.runtime;
 
+import com.topfinance.cfg.CfgAccessException;
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgInPort;
@@ -9,29 +10,28 @@ import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.TestDummy;
-import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.db.HiberEntry;
 import com.topfinance.db.ResendEntry;
+import com.topfinance.message.DefaultCnaps2Parser;
+import com.topfinance.message.Factory;
+import com.topfinance.message.FatalParseException;
+import com.topfinance.message.IDownOutMsgHandler;
 import com.topfinance.plugin.cnaps2.AckRoot;
-import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
 import com.topfinance.util.AuditMsgUtil;
 import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
-import com.topfinance.util.Iso8583Util;
 import com.topfinance.util.ResendUtil;
 
 import java.io.InputStream;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.jpos.iso.ISOMsg;
 
 public class DownwardProcessor extends AbstractProcessor{
     
@@ -117,23 +117,29 @@ public class DownwardProcessor extends AbstractProcessor{
     }
 
 
-    private boolean needConvertToSyncPpReply() {
+    private boolean needConvertToSyncPpReply() throws CfgAccessException{
         
         boolean res = false;
         ICfgReader reader = CfgImplFactory.loadCfgReader();
-        ICfgOperation thisOpn = reader.getOperation(getMsgContext().getProtocol(), getMsgContext().getOperationName());
+        String opName = getMsgContext().getOperationName();
+        ICfgOperation thisOpn = reader.getOperation(getMsgContext().getProtocol(), opName);
         
         if (!getMsgContext().isAck() && 
-            CfgConstants.BOOLEAN_FALSE.equals(thisOpn.getDownIsReply())) {
+            CfgConstants.BOOLEAN_FALSE.equals(getMsgContext().getOds().getOd(opName).getDownIsReply())) {
             // not ack and not a reply
             res = false;
             
         } else {
             String origOp = getMsgContext().getOrigOperation();
-            ICfgOperation origOpn = reader.getOperation(getMsgContext().getProtocol(), origOp);
-            res = OP_REPLY_TYPE_SYNC.equals(origOpn.getUpPpReplyType());
             
-            if(thisOpn!=null && OP_REPLY_TYPE_SYNC.equals(thisOpn.getDownReplyType()) && res) {
+            ICfgOperation origOpn = null;
+            if(StringUtils.isNotEmpty(origOp)) {
+                origOpn = reader.getOperation(getMsgContext().getProtocol(), origOp);
+            }
+            res = origOpn==null? false : OP_REPLY_TYPE_SYNC.equals(origOpn.getUpPpReplyType());
+            
+            if(thisOpn!=null && OP_REPLY_TYPE_SYNC.equals(getMsgContext().getOds().getOd(opName).getDownReplyType()) && res) {
+                // TODO this is not clear
                 throw new RuntimeException("configuration error: sync mode in more than 2 level is not allowed");
             }
         }        
@@ -155,7 +161,7 @@ public class DownwardProcessor extends AbstractProcessor{
     }
     
     
-    protected String validateAndParse() {
+    protected String validateAndParse() throws CfgAccessException{
         
 
         // calling the parser...
@@ -167,22 +173,7 @@ public class DownwardProcessor extends AbstractProcessor{
         // TODO handle inbound async ack?
         // the inbound msg is an ack of previous outbound msg
         String message = getMsgContext().getSrcExchange().getIn().getBody(String.class);
-        String headerText = message.substring(0, MsgHeader.TOTAL_LENGTH);
-        String bodyText = message.substring(MsgHeader.TOTAL_LENGTH);
-        MsgHeader header = null;
-        try {
-            header = MsgHeader.fromText(headerText);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            // no way to generate any meaningful ack
-            throw new RuntimeException(ex);
-        }        
-        
-        String mesgId = header.getMesgID();
-        String mesgRefId = header.getMesgRefID();
-        String mesgType = header.getMesgType();
-        String origSender = header.getOrigSender();
-        String origReceiver = header.getOrigReceiver();
+
         
         String validateStatus = AckRoot.MSG_PRO_CD_SUCCESS;
         // TODO validation of header
@@ -191,6 +182,24 @@ public class DownwardProcessor extends AbstractProcessor{
         //      syncAck = new AckRoot();
         // }
 
+        Object jaxbObj = null;
+//        IUpInMsgHandler upMsgHandler = Factory.loadParser(getMsgContext().getCfgInPort().getParserClazz());
+        DefaultCnaps2Parser upMsgHandler = new DefaultCnaps2Parser();
+        try {
+            jaxbObj = upMsgHandler.parse(message);
+        } catch (FatalParseException ex) {
+            ex.printStackTrace();
+            // no way to generate any meaningful ack
+            throw new RuntimeException(ex);
+        }
+        
+        String mesgId = upMsgHandler.getMesgId();
+        String mesgRefId = upMsgHandler.getMesgRefId();
+        String origSender = upMsgHandler.getOrigSender();
+        String origReceiver = upMsgHandler.getOrigReceiver();
+        String mesgType = upMsgHandler.getMesgType();
+        String docId = upMsgHandler.getDocId();
+        String origDocId = upMsgHandler.getOrigDocId();
         
         // set context
         getMsgContext().setMesgId(mesgId);
@@ -199,18 +208,33 @@ public class DownwardProcessor extends AbstractProcessor{
         getMsgContext().setOrigSender(origSender);
         getMsgContext().setOrigReceiver(origReceiver);
         
+        
+        // TODO verify these value, especially mesgType
+        
         if(!getMsgContext().isAck()) {
             // TODO auditlog should be done after parsing and know whether it's ack or not
             auditLog(STATE_RECEIVED_REQ, "Received Message over transport: ", STATUS_PENDING);
             // find outPort
             ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
-            List<ICfgRouteRule> listRouteRule = cfgReader.getListDownRoute();  
-            
-            ICfgOutPort outPort = BCUtils.findRoute(listRouteRule, getMsgContext().getOperationName());
 
-             if(outPort ==null) {
-                 logger.warn("cannot find route rule matching");
-                 validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;             
+            ICfgOutPort outPort = findRoute();
+            
+             if(outPort == null) {
+                 String origOperation = getMsgContext().getOrigOperation();
+                 // check the origOperation
+                 ICfgOperation origCfgOpn = null;
+                 if(StringUtils.isNotEmpty(origOperation)) {
+                     origCfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), origOperation);
+                 }
+                 
+                 if(origCfgOpn==null || CfgConstants.OP_REPLY_TYPE_ASYNC.equals(origCfgOpn.getUpPpReplyType())) {
+                     // if no orig, or orig operation expect async reply, need a route
+                     logger.warn("cannot find route rule matching");
+                     validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;             
+                 } else {
+                     // else, it's ok to have no route
+                 }
+
              } else {
                  getMsgContext().setCfgOutPort(outPort);
                  ICfgNode cfgHN = cfgReader.getNodeByPort(getMsgContext().getCfgInPort());
@@ -228,53 +252,18 @@ public class DownwardProcessor extends AbstractProcessor{
         
         // validate others
         
-        
-        if (getMsgContext().isAck()) {
-            AckRoot ack = null;
-            try {
-                ack = AckRoot.loadFromString(bodyText);
-            } catch (BcException ex) {
-                validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
+        if(jaxbObj!=null) {
+            getMsgContext().setParsedMsg(jaxbObj);
+            if(!getMsgContext().isAck()) {
+                getMsgContext().setDocId(docId);
+                getMsgContext().setOrigDocId(origDocId);
+                logger.info("==========docId = "+docId+", origDocId="+origDocId);
+                // TODO use object to do biz level auditing 
+                AuditMsgUtil.saveMsg(jaxbObj, mesgType);
             }
-            if (ack != null) {
-                getMsgContext().setParsedMsg(ack);
-            }            
         } else {
-            
-            // Parse xml body
-            String pkgName = Iso8583ToXml.getPackageName(mesgType);
-
-            Object jaxbObj = null;
-            try {
-                jaxbObj = new Iso8583ToXml(pkgName).xmlToObject(bodyText);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
-            }
-            if(jaxbObj!=null) {
-                getMsgContext().setParsedMsg(jaxbObj);
-                String msgId = BCUtils.extractMsgId(jaxbObj);
-                getMsgContext().setDocId(msgId);
-                String origMsgId = BCUtils.extractOrigMsgId(jaxbObj, mesgType, Cnaps2Constants.OPATHS_ORIG_MSG_ID);
-                getMsgContext().setOrigDocId(origMsgId);
-                log("==========msgId = "+msgId+", origMsgId="+origMsgId);
-                
-            }
-            
-            // TODO use object to do biz level auditing 
-            AuditMsgUtil.saveMsg(jaxbObj, mesgType);
-            
-//            DocRoot body = null;
-//            try {
-//                body = DocRoot.loadFromString(bodyText);
-//            } catch (BcException ex) {
-//                validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
-//            }
-//            if (body != null) {
-//                getMsgContext().setDocId(body.getDocId());
-//                getMsgContext().setOrigDocId(body.getOrigDocId());
-//                getMsgContext().setParsedMsg(body);
-//            }
+            // must be sth wrong?  
+            validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
         }
         
         // save or resurrect hibernate
@@ -305,30 +294,38 @@ public class DownwardProcessor extends AbstractProcessor{
         
         return validateStatus;
     }    
-    
-    private void loadTxContextForAsyncAck() {
+    private ICfgOutPort findRoute() throws CfgAccessException{
+        ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
+        List<ICfgRouteRule> listRouteRule = cfgReader.getListDownRoute();
+        ICfgOutPort outPort = BCUtils.findRoute(listRouteRule, getMsgContext().getOperationName());
+        return outPort;
+    }
+    private void loadTxContextForAsyncAck() throws CfgAccessException{
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
         AckRoot ack = (AckRoot)getMsgContext().getParsedMsg();
         String origMesgId = ack.getMsgId();
         String ackCode = ack.getMsgProCd();
-        
+
         ResendEntry resend = ResendUtil.resurrectResend(origMesgId);
         if(resend!=null) {
             String auditId = resend.getAuditId();
             // all follow-up auditlog must use the retrieved auditId (which will be currentAuditId)
             getMsgContext().getAuditTx().setAuditId(auditId);
             if(AckRoot.MSG_PRO_CD_SUCCESS.equals(ackCode)) {
-                String opName = ack.getMsgTp();
-                getMsgContext().setOrigOperation(opName);
-                ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), opName);
+                String origOpName = ack.getMsgTp();
+                getMsgContext().setOrigOperation(origOpName);
+                
+                ICfgOperation origCfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), origOpName);
                 
                 // TODO handle if async reply comes ealier than ack
                 // possible, including last status in hiber/resend entry
                 
                 String nextStatus = STATUS_COMPLETED;
-                if(OP_REPLY_TYPE_ASYNC.equals(cfgOpn.getUpReplyType())) {
+                if(OP_REPLY_TYPE_ASYNC.equals(getMsgContext().getOds().getOd(origOpName).getUpReplyType())) {
                     // expect async reply
                     nextStatus = STATUS_PENDING;
+                } else {
+                    // todo: sth wrong? expect sync reply but got async ack  
                 }
                 AuditUtil.updateOtherAuditLogStatus(auditId, 
                                                STATE_SENT_OUT_MSG, "received sync ack from tp and send to pp", nextStatus);    
@@ -348,7 +345,7 @@ public class DownwardProcessor extends AbstractProcessor{
         
         
     }
-    private void loadTxContextForAsyncReply() {
+    private void loadTxContextForAsyncReply() throws CfgAccessException{
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
         String opName = getMsgContext().getOperationName();
         ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), opName);
@@ -356,13 +353,13 @@ public class DownwardProcessor extends AbstractProcessor{
         String error = "";
         boolean logged = false;
         
-        if(BOOLEAN_FALSE.equals(cfgOpn.getDownIsEnabled())) {
+        if(BOOLEAN_FALSE.equals(getMsgContext().getOds().getOd(opName).getDownIsEnabled())) {
             sendErrMsg();
             error = "down is not enabled on the op {"+opName+"}";
         }
         else {
             
-        if(BOOLEAN_TRUE.equals(cfgOpn.getDownIsReply())) {
+        if(BOOLEAN_TRUE.equals(getMsgContext().getOds().getOd(opName).getDownIsReply())) {
             // get async reply
             String origDocId = getMsgContext().getOrigDocId();   
             if(StringUtils.isEmpty(origDocId)) {
@@ -380,6 +377,8 @@ public class DownwardProcessor extends AbstractProcessor{
                     AuditUtil.updateOtherAuditLogStatus(auditId, STATE_RECEIVED_RESP, "received async reply", STATUS_COMPLETED);
                     getMsgContext().setTxId(hiber.getTxId());
                     getMsgContext().setOrigOperation(hiber.getOperation());
+                    getMsgContext().setOrigInPortName(hiber.getInPortName());
+                    
                     auditLog(STATE_INITIALISE_CONTEXT, "retrieved transactionID["+getMsgContext().getTxId()
                          +"] by matching the async reply with original request", STATUS_PENDING);
                     logged = true;                
@@ -399,17 +398,18 @@ public class DownwardProcessor extends AbstractProcessor{
         }        
     }
     
-    private void pkgAndsendTpAck(String validateStatus) {
+    private void pkgAndsendTpAck(String validateStatus) throws CfgAccessException{
         
 
             
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
-
+        String opName = getMsgContext().getOperationName();
         AckRoot ack = null;
-        ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), getMsgContext().getOperationName());
+        ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), opName);
         log("cfgOp="+(cfgOpn==null? "null":cfgOpn.getName()));
-        if (OP_REPLY_TYPE_SYNC.equals(cfgOpn.getDownReplyType())
-            || OP_ACK_TYPE_NONE.equals(cfgOpn.getDownAckType())) {
+        if (OP_REPLY_TYPE_SYNC.equals(getMsgContext().getOds().getOd(opName).getDownReplyType())
+            || OP_ACK_TYPE_NONE.equals(getMsgContext().getOds().getOd(opName).getDownAckType())) {
+            // no ack if sync reply is expected
             // TODO what do with sync-req-resp which may still need a sync reply?
             return;
         } 
@@ -432,7 +432,7 @@ public class DownwardProcessor extends AbstractProcessor{
         ); 
         String ackText = msgHeader.toText()+ack.dumpToString();
         
-        if (OP_ACK_TYPE_SYNC.equals(cfgOpn.getDownAckType())) {
+        if (OP_ACK_TYPE_SYNC.equals(getMsgContext().getOds().getOd(opName).getDownAckType())) {
             // send sync ack
             getMsgContext().getSrcExchange().getOut().setBody(ackText);
             if (!ack.getMsgProCd().equals(AckRoot.MSG_PRO_CD_SUCCESS)) {
@@ -448,12 +448,11 @@ public class DownwardProcessor extends AbstractProcessor{
                 ICfgInPort inPort = getMsgContext().getCfgInPort();
                 ICfgOutPort ackPort = reader.getAckPortByIP(inPort);
                 
-                String url = BCUtils.getFullUrlFromPort(ackPort);
 
                 // always InOnly
                 // send
-                logger.info("dispatching async ack {"+ackText+"} to outport: "+ackPort.getName()+", on url="+url);
-                ServerRoutes.getInstance().produce(url, ackText, true);
+                logger.info("dispatching async ack {"+ackText+"} to outport: "+ackPort.getName());
+                ServerRoutes.getInstance().produce(ackPort, ackText, true);
                 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -472,7 +471,7 @@ public class DownwardProcessor extends AbstractProcessor{
     }
     
     
-    private void loadTxContext() {
+    private void loadTxContext() throws CfgAccessException{
 
         if(getMsgContext().isAck()) {
             // is async ack
@@ -500,7 +499,7 @@ public class DownwardProcessor extends AbstractProcessor{
         getMsgContext().setPackagedMsg(ppAck);
     }
     
-    protected void packReq() {
+    protected void packReq() throws CfgAccessException{
         // plugin impl need compose the output msg format
         // either from the input msg body, or from config 
 //        String ppReq = ((DocRoot)getMsgContext().getParsedMsg()).toText();
@@ -515,48 +514,77 @@ public class DownwardProcessor extends AbstractProcessor{
     	ICfgReader reader = CfgImplFactory.loadCfgReader();
     	ICfgOperation cfgOpn = reader.getOperation(getMsgContext().getProtocol(), opName);
     	
-    	if(CfgConstants.OP_FORMAT_XML.equals(cfgOpn.getDownFormat())){
-    	    // TODO convert xml
-    	    Object jaxbObj = getMsgContext().getParsedMsg();
-    	    Iso8583ToXml main = new Iso8583ToXml(Iso8583ToXml.getPackageName(opName));
-    	    String msg = main.objectToXml(jaxbObj);
-    	    logger.debug("packed="+msg);
-    	    getMsgContext().setPackagedMsg(msg);
-    	}
-    	else  {
-    	    //if(CfgConstants.OP_FORMAT_8583.equals(cfgOpn.getDownFormat()))
-            InputStream mapFile = reader.getMappingRule(opName, DIRECTION_DOWN);
-            Map<String, String> mappings = Iso8583ToXml.loadMappings(mapFile);
-
-            Object jaxbObj = getMsgContext().getParsedMsg();
-            Iso8583ToXml main = new Iso8583ToXml("com.topfinance.plugin.cnaps2.v00800102");
-            ISOMsg isoMsg = main.objectToIso8583(jaxbObj, mappings);
-            try {
-                Iso8583Util.setField(isoMsg, BcConstants.ISO8583_OP_NAME, opName);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                throw new RuntimeException(ex);
-            }
-            
-            logger.debug("obj="+isoMsg);
-            
-            try {
-                String msg = Iso8583Util.packMsg(isoMsg);
-                logger.debug("packed="+msg);
-                getMsgContext().setPackagedMsg(msg);
-                
-                
-//                ISOMsg m = new ISOMsg();
-//                m.setPackager(new ISOIBPSPackager());
-//                m.unpack(b);
-//                String docId = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
-//                logger.debug("=========docId="+docId);
-                
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                throw new RuntimeException(ex);
-            }
-    	} 
+    	InputStream mapFile = reader.getMappingRule(cfgOpn, DIRECTION_DOWN);
+    	Object jaxbObj = getMsgContext().getParsedMsg();
+    	
+    	IDownOutMsgHandler handler = null;
+    	ICfgOperation origCfgOpn = null;
+        String origOperation = getMsgContext().getOrigOperation();
+        if(StringUtils.isNotEmpty(origOperation)) {
+            origCfgOpn = reader.getOperation(getMsgContext().getProtocol(), origOperation);    
+        } 
+        // check the original upward request's origOperation
+        if(origCfgOpn==null || CfgConstants.OP_REPLY_TYPE_ASYNC.equals(origCfgOpn.getUpPpReplyType())) {
+            // no original, or original expect async reply, 
+            // will find the handler from outPort
+            handler = Factory.loadHandler(reader.getDownOutMHByPort(getMsgContext().getCfgOutPort()).getClazz());
+        } else if(CfgConstants.OP_REPLY_TYPE_SYNC.equals(origCfgOpn.getUpPpReplyType())){
+            // sync
+            ICfgInPort origInPort = reader.getInportByName(getMsgContext().getOrigInPortName());
+            handler = Factory.loadHandler(reader.getSyncReplyDownOutMHByPort(origInPort).getClazz());
+        } else {
+            // notify??
+            throw new RuntimeException("should not comes here");
+        }
+    	
+    	Object convertedObj = handler.convert(jaxbObj, opName, mapFile);
+    	String msg = handler.pack(convertedObj, null, null, null, null, null);
+        
+    	logger.debug("packed="+msg);
+        getMsgContext().setPackagedMsg(msg);
+        
+        
+//    	if(CfgConstants.OP_FORMAT_XML.equals(cfgOpn.getDownFormat())){
+//    	    // TODO convert xml
+//    	    
+//    	    Iso8583ToXml main = new Iso8583ToXml(Iso8583ToXml.getPackageName(opName));
+//    	    String msg = main.objectToXml(jaxbObj);
+//    	    logger.debug("packed="+msg);
+//    	    getMsgContext().setPackagedMsg(msg);
+//    	}
+//    	else  {
+//    	    //if(CfgConstants.OP_FORMAT_8583.equals(cfgOpn.getDownFormat()))
+//            
+//            Map<String, String> mappings = Iso8583ToXml.loadMappings(mapFile);
+//
+//            Iso8583ToXml main = new Iso8583ToXml("com.topfinance.plugin.cnaps2.v00800102");
+//            ISOMsg isoMsg = main.objectToIso8583(jaxbObj, mappings);
+//            try {
+//                Iso8583Util.setField(isoMsg, BcConstants.ISO8583_OP_NAME, opName);
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//                throw new RuntimeException(ex);
+//            }
+//            
+//            logger.debug("obj="+isoMsg);
+//            
+//            try {
+//                String msg = Iso8583Util.packMsg(isoMsg);
+//                logger.debug("packed="+msg);
+//                getMsgContext().setPackagedMsg(msg);
+//                
+//                
+////                ISOMsg m = new ISOMsg();
+////                m.setPackager(new ISOIBPSPackager());
+////                m.unpack(b);
+////                String docId = (String)m.getValue(BcConstants.ISO8583_DOC_ID);
+////                logger.debug("=========docId="+docId);
+//                
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//                throw new RuntimeException(ex);
+//            }
+//    	} 
 //    	else {
 //    	    throw new RuntimeException("should configure the format of the operation, currently either 8583 or xml");
 //    	}
@@ -595,29 +623,34 @@ public class DownwardProcessor extends AbstractProcessor{
                               );
         
         // go this even if the down request itself is a reply
-        if(OP_REPLY_TYPE_ASYNC.equals(cfgOpn.getDownReplyType())){
+        String opName = getMsgContext().getOperationName();
+        if(OP_REPLY_TYPE_ASYNC.equals(getMsgContext().getOds().getOd(opName).getDownReplyType())){
             String hiberkey = getMsgContext().getDocId();
             String txId = getMsgContext().getTxId();
             String auditId = getMsgContext().getAuditTx().getAuditId();
-            HiberUtil.saveHiber(hiberkey, DIRECTION_DOWN, txId, auditId, getMsgContext().getOperationName());
+            HiberUtil.saveHiber(hiberkey, DIRECTION_DOWN, txId, auditId, getMsgContext().getOperationName(), inPortName);
+        } else {
+            // handled in handlePPSyncResponse() ??
+            // TODO what if PP response is async but TP side expect sync response? 
         }
         
         ICfgOutPort cfgOP = getMsgContext().getCfgOutPort();
-        String url = BCUtils.getFullUrlFromPort(cfgOP);
 
         String syncReply = null;
 
         // send
         boolean isInOnly = true;
-        if(OP_REPLY_TYPE_SYNC.equals(cfgOpn.getDownReplyType())) {
+//        if(OP_REPLY_TYPE_SYNC.equals(getMsgContext().getOds().getOd(opName).getDownReplyType())) {
+        // should check pp resp type rather than tp resp type
+        if(OP_REPLY_TYPE_SYNC.equals(cfgOpn.getDownPpReplyType())) {
             isInOnly = false;
         }
         
 
         
-        logger.info("directly dispatching to outport: "+cfgOP.getName()+", url="+url+", isInOnly="+isInOnly);
+        
         try {
-            syncReply = ServerRoutes.getInstance().produce(url, getMsgContext().getPackagedMsg(), isInOnly);
+            syncReply = ServerRoutes.getInstance().produce(cfgOP, getMsgContext().getPackagedMsg(), isInOnly);
             
             // reset the resend entry
             ResendUtil.resetResend(getMsgContext().getMesgId());
@@ -631,20 +664,22 @@ public class DownwardProcessor extends AbstractProcessor{
         return syncReply;
     }
     
-    protected void handlePPSyncResponse(String syncReply) {
+    protected void handlePPSyncResponse(String syncReply) throws CfgAccessException{
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
         String opName = getMsgContext().getOperationName();
         ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), opName); 
         
-        if(OP_REPLY_TYPE_SYNC.equals(cfgOpn.getDownReplyType())) {
+        if(OP_REPLY_TYPE_SYNC.equals(getMsgContext().getOds().getOd(opName).getDownReplyType())) {
             log("received pp syncReply="+syncReply);      
             // send back to tp
-            log("send pp syncReply to tp");
+            log("send pp syncReply to tp in sync");
             getMsgContext().getSrcExchange().getOut().setBody(syncReply);
             auditLog(STATE_SENT_OUT_MSG, "received sync reply from pp and send to tp", STATUS_COMPLETED);            
         } else {
             // async or notify
+            // nothing to do with this sync pp response, as channel to TP is async
             logForAsyncOrNone();
+            
            
         }
         
@@ -657,7 +692,7 @@ public class DownwardProcessor extends AbstractProcessor{
         ICfgOperation cfgOpn = cfgReader.getOperation(getMsgContext().getProtocol(), opName); 
         
         String nextStatus = "", nextDesc="";
-        if(OP_REPLY_TYPE_ASYNC.equals(cfgOpn.getDownReplyType())) {
+        if(OP_REPLY_TYPE_ASYNC.equals(getMsgContext().getOds().getOd(opName).getDownReplyType())) {
             nextStatus = STATUS_PENDING;
             nextDesc = "message sent to PP, waiting for async reply";
         }else {

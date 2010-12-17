@@ -6,6 +6,8 @@ import com.topfinance.converter.CalendarConverter;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.ebo.msg.Ibps10100101;
 import com.topfinance.ebo.msg.JaxbMapping;
+import com.topfinance.message.Default8583ToCnaps2UpInMH;
+import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import freemarker.template.Configuration;
 import freemarker.template.ObjectWrapper;
@@ -482,11 +484,12 @@ public class ParseSampleXml extends DefaultHandler{
     public void testGeneratedMap() {
 
         try {
-            ISOMsg m = Iso8583Util.createDummyISOMsg(outSample8583File);
+            ISOMsg m = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), outSample8583File);
             
             String s = Iso8583Util.packMsg(m);
             
-            ISOMsg m1 = Iso8583Util.unpackMsg(s);
+//            ISOMsg m1 = Iso8583Util.unpackMsg(s);
+            ISOMsg m1 = (ISOMsg)new Default8583ToCnaps2UpInMH().parse(s);
                         
             Map<String, String> mappings = Iso8583ToXml.loadMappings(new FileInputStream(outMapFile));
             Iso8583ToXml main = new Iso8583ToXml(jaxbPkgName);
@@ -792,7 +795,7 @@ public class ParseSampleXml extends DefaultHandler{
         try {
             
             // construct jaxbObj using the generated .map and sample8583
-            ISOMsg m = Iso8583Util.createDummyISOMsg(BCUtils.getHomeDir()+"/sample/8583/"+op+".8583");
+            ISOMsg m = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), BCUtils.getHomeDir()+"/sample/8583/"+op+".8583");
 
             Map<String, String> mappings = Iso8583ToXml.loadMappings(new FileInputStream(outMapFile));
             Iso8583ToXml main = new Iso8583ToXml(jaxbPkgName);

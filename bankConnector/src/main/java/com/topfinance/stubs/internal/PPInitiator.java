@@ -8,6 +8,8 @@ import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.TestDummy;
+import com.topfinance.message.Default8583ToCnaps2UpInMH;
+import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.Iso8583Util;
@@ -48,7 +50,7 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
                 if(DIRECTION_UP.equals(outPort.getDirection())) {
                     continue;
                 }
-                String url = BCUtils.getFullUrlFromPort(outPort);
+                String url = BCUtils.getFullUrlFromPortForConsumer(outPort);
                 System.out.println("listenning on url=" + url);
                 from(url).process(processor);
             }
@@ -141,7 +143,12 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
     private void initCamel(CamelContext camel) {
         List<ICfgTransportInfo> listTi = reader.getListOfTransportInfo();
         for (ICfgTransportInfo ti : listTi) {
-            BCUtils.initCamelComponent(camel, ti);
+            try {
+                BCUtils.initCamelComponent(camel, ti);
+            } catch (Exception ex) {
+                logger.error("failed initializing camel components, quit...", ex);
+                System.exit(0);
+            }
         }
     }
 
@@ -180,12 +187,12 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         // package request
         if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(chosenInPort).getProvider())) {
             
-            ISOMsg m1 = Iso8583Util.createDummyISOMsg(BCUtils.getHomeDir()+"/sample/8583/"+op+".8583");
+            ISOMsg m1 = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), BCUtils.getHomeDir()+"/sample/8583/"+op+".8583");
             Iso8583Util.setField(m1, BcConstants.ISO8583_OP_NAME, op);
             Iso8583Util.setField(m1, BcConstants.ISO8583_DOC_ID, docId);
             Iso8583Util.setField(m1, BcConstants.ISO8583_ORIG_DOC_ID, "");
-            Iso8583Util.setField(m1, BcConstants.ISO8583_HOST_ID, hostIdentity);
-            Iso8583Util.setField(m1, BcConstants.ISO8583_HOST_ID, partnerIdentity);
+//            Iso8583Util.setField(m1, BcConstants.ISO8583_HOST_ID, hostIdentity);
+//            Iso8583Util.setField(m1, BcConstants.ISO8583_HOST_ID, partnerIdentity);
             
             requestText = Iso8583Util.packMsg(m1);
             
@@ -194,8 +201,9 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
         }
         
         
+        boolean isInOnly = !wantSyncReply;
         // send reques
-        String url = BCUtils.getFullUrlFromPort(chosenInPort);
+        String url = BCUtils.getFullUrlFromPort(chosenInPort, isInOnly);
         
         // MUST start a new camel context!!!
         CamelContext newCamel = new DefaultCamelContext();
@@ -227,7 +235,8 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
             if(syncResp.equals(BcConstants.MSG_PP_ERROR)) {
                 logger.warn("received error msg!!!!!!!");    
             } else {
-                ISOMsg iso = Iso8583Util.unpackMsg(syncResp);
+//                ISOMsg iso = Iso8583Util.unpackMsg(syncResp);
+                ISOMsg iso = (ISOMsg)new Default8583ToCnaps2UpInMH().parse(syncResp);
                 String iso601Id = Iso8583Util.getField(iso, BcConstants.ISO8583_DOC_ID);
                 logger.info("received sync reply: docId="+iso601Id);
             }
@@ -262,7 +271,8 @@ public class PPInitiator implements Runnable, Processor, CfgConstants{
             if(inUri.contains("queue")) {
                 
             }else {
-            ISOMsg iso = Iso8583Util.unpackMsg(msg);
+//            ISOMsg iso = Iso8583Util.unpackMsg(msg);
+                ISOMsg iso = (ISOMsg)new Default8583ToCnaps2UpInMH().parse(msg);
             String iso601Id = Iso8583Util.getField(iso, BcConstants.ISO8583_DOC_ID);
             logger.info("received async reply: docId="+iso601Id);
             }

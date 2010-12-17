@@ -3,6 +3,8 @@ package com.topfinance.cfg.db;
 import java.io.InputStream;
 import java.util.List;
 
+import com.topfinance.cfg.CfgAccessException;
+import com.topfinance.cfg.ICfgDownOutMH;
 import com.topfinance.cfg.ICfgInPort;
 import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOperation;
@@ -12,6 +14,7 @@ import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.ICfgTransportInfo;
+import com.topfinance.cfg.ICfgUpInMH;
 
 public class DbCfgReader implements ICfgReader {
     
@@ -105,6 +108,46 @@ public class DbCfgReader implements ICfgReader {
     public void init(String config) {
         // TODO Auto-generated method stub
 
+    }
+
+    public List<ICfgDownOutMH> getListOfDownOutMH() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public List<ICfgUpInMH> getListOfUpInMH() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ICfgDownOutMH getDownOutMHByPort(ICfgOutPort port) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ICfgDownOutMH getSyncReplyDownOutMHByPort(ICfgInPort port) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ICfgUpInMH getUpInMHByPort(ICfgInPort port) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public InputStream getMappingRule(ICfgOperation cfgOpn, String direction) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public List<ICfgProtocol> getListProtocol() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public ICfgProtocol getProtocolByName(String name) throws CfgAccessException {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

@@ -1,9 +1,12 @@
 package com.topfinance.cfg;
 
 public interface CfgConstants {
+    
+    public final static String JMS_PROVIDER_IBMMQ = "IBMMQ";
     public final static String JMS_PROVIDER_AMQ = "AMQ";
     public final static String HTTP_PROVIDER_JETTY = "JETTY";
     public final static String TCP_PROVIDER_8583 = "8583";
+    
     
     public final static String PROTOCOL_CNAPS2 = "CNAPS2";
     

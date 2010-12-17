@@ -15,6 +15,7 @@ public class HiberEntry {
     public static final String COL_STATUS = "STATUS";
     public static final String COL_TS = "TS";
     public static final String COL_EXPIRATION = "EXPIRATION";
+    public static final String COL_INPORT_NAME = "INPORT_NAME";
     public static final String COL_DIRECTION = "DIRECTION";
     public static final String COL_OPERATION = "OPERATION";
     
@@ -80,5 +81,11 @@ public class HiberEntry {
     }
     public void setOperation(String operation) {
         setField(COL_OPERATION, operation);
+    }
+    public String getInPortName() {
+        return (String)getField(COL_INPORT_NAME);
+    }
+    public void setInPortName(String inPort) {
+        setField(COL_INPORT_NAME, inPort);
     }
 }

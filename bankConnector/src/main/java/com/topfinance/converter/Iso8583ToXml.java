@@ -26,6 +26,7 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.jpos.iso.ISOBasePackager;
 import org.jpos.iso.ISODate;
 import org.jpos.iso.ISOMsg;
 
@@ -92,8 +93,8 @@ public class Iso8583ToXml {
     }
     
     
-    public ISOMsg objectToIso8583(Object jaxbObj, Map<String, String> mappings) {
-    	ISOMsg res = Iso8583Util.emptyMsg();
+    public static ISOMsg objectToIso8583(ISOBasePackager packager, Object jaxbObj, Map<String, String> mappings) {
+    	ISOMsg res = Iso8583Util.emptyMsg(packager);
     	try {
     		for(String key: mappings.keySet()) {
     			String oPath = mappings.get(key);
@@ -136,6 +137,7 @@ public class Iso8583ToXml {
                 
                 // this is to save the "Document." from mapping rule
                 // todo is there a better way?
+                // TODO this is not generic enough
                 Object obj = findObject("Document."+oPath);
                 
                 
@@ -291,8 +293,35 @@ public class Iso8583ToXml {
 
     
     
+
+    
+    public static void main(String[] args) throws Exception{
+        
+        // for unit test, see test.TestIsoConverter
+        
+    }
+
+
+    public static String getPackageName(String mesgType) {
+        // this is a fixed rule
+        
+        // TODO mesgType is name of operation, could change. 
+        // it should be sth like "type" of operation which is enumeration value
+        
+        String pkgName = "";
+        if (mesgType.equals(TestDummy.OPERATION_101)) {
+//            pkgName = "com.topfinance.plugin.cnaps2.v00800102";
+            pkgName = "com.cnaps2.xml.iso20022.pacs.v00800102";
+        } else if(mesgType.equals(TestDummy.OPERATION_102)) {
+            pkgName = "com.cnaps2.xml.iso20022.pacs.v00200103";                
+        } else if(mesgType.equals(TestDummy.OPERATION_601)) {
+            pkgName = "com.cnaps2.xml.iso20022.camt.v05400102";                
+        }        
+        return pkgName;
+    }
+    
     public static Map<String, String> loadMappings(InputStream input)  {
- 
+        
         Map<String, String> res = new HashMap<String, String>();
         // load the mapping rule
         try {
@@ -322,31 +351,6 @@ public class Iso8583ToXml {
         
         return res;
     }
-    
-    public static void main(String[] args) throws Exception{
-        
-        // for unit test, see test.TestIsoConverter
-        
-    }
-
-    public static String getPackageName(String mesgType) {
-        // this is a fixed rule
-        
-        // TODO mesgType is name of operation, could change. 
-        // it should be sth like "type" of operation which is enumeration value
-        
-        String pkgName = "";
-        if (mesgType.equals(TestDummy.OPERATION_101)) {
-//            pkgName = "com.topfinance.plugin.cnaps2.v00800102";
-            pkgName = "com.cnaps2.xml.iso20022.pacs.v00800102";
-        } else if(mesgType.equals(TestDummy.OPERATION_102)) {
-            pkgName = "com.cnaps2.xml.iso20022.pacs.v00200103";                
-        } else if(mesgType.equals(TestDummy.OPERATION_601)) {
-            pkgName = "com.cnaps2.xml.iso20022.camt.v05400102";                
-        }        
-        return pkgName;
-    }
-    
 
     
     

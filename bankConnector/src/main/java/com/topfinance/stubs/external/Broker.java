@@ -1,34 +1,33 @@
 package com.topfinance.stubs.external;
 
+import com.topfinance.cfg.CfgAccessException;
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
-import com.topfinance.cfg.ICfgAMQInfo;
 import com.topfinance.cfg.ICfgInPort;
-import com.topfinance.cfg.ICfgJettyInfo;
+import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgOutPort;
+import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.TestDummy;
-import com.topfinance.cfg.db.DbCfgReader;
+import com.topfinance.cfg.jpa.JpaCfgReader;
 import com.topfinance.cfg.xml.XmlCfgReader;
-import com.topfinance.converter.CalendarConverter;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
+import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcException;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.Iso8583Util;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
-import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
@@ -36,9 +35,7 @@ import org.apache.camel.ExchangePattern;
 import org.apache.camel.Processor;
 import org.apache.camel.Producer;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.jetty.JettyHttpComponent;
 import org.apache.camel.impl.DefaultCamelContext;
-import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
@@ -135,8 +132,8 @@ public class Broker implements Processor, CfgConstants{
         
         // hardcode
         if(CfgImplFactory.TYPE_DB.equals(cfgType)) {
-            readerA = new DbCfgReader(cfgA);
-            readerB = new DbCfgReader(cfgB);
+            readerA = new JpaCfgReader(cfgA);
+            readerB = new JpaCfgReader(cfgB);
         }
         else {
             readerA = new XmlCfgReader(cfgA);
@@ -180,40 +177,49 @@ public class Broker implements Processor, CfgConstants{
         }
     }
     
-    private void loadPortConfig(ICfgReader reader, List<String> inUrls, List<String> outUrls) {
+    private void loadPortConfig(ICfgReader reader, List<String> inUrls, List<String> outUrls) throws CfgAccessException{
         List<ICfgTransportInfo> listTi = reader.getListOfTransportInfo();
         for(ICfgTransportInfo ti : listTi) {
-            String provider = ti.getProvider();
-            if(CfgConstants.JMS_PROVIDER_AMQ.equals(provider)) {
-                ActiveMQComponent amq = new ActiveMQComponent();
-                // ?? won't work unless define as normal JMSComponent
-//                amq.setConnectionFactory(jmsInfo.getConnectionFactory());
-                ICfgAMQInfo amqji = (ICfgAMQInfo)ti;
-                amq.setBrokerURL(amqji.getBrokerUrl());
-                if(camel.getComponent(ti.getPrefix())!=null) {
-                    log("skip adding existed component: "+ti.getPrefix());
-                    continue;
-                }
-                camel.addComponent(ti.getPrefix(), amq);
-                log("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
+            try {
+                BCUtils.initCamelComponent(camel, ti);
+            } catch (Exception ex) {
+                logger.error("failed initializing camel components, quit...", ex);
+                System.exit(0);
             }
-            else if(CfgConstants.HTTP_PROVIDER_JETTY.equals(provider)) {
-                JettyHttpComponent jetty = new JettyHttpComponent();
-                ICfgJettyInfo jettyti = (ICfgJettyInfo)ti;
-                // TODO setting up JettyHttpComponent with jettyti
-                camel.addComponent(ti.getPrefix(), jetty);
-                log("adding component: "+ti.getPrefix());
-            }
+//            String provider = ti.getProvider();
+//            if(CfgConstants.JMS_PROVIDER_AMQ.equals(provider)) {
+//                ActiveMQComponent amq = new ActiveMQComponent();
+//                // ?? won't work unless define as normal JMSComponent
+////                amq.setConnectionFactory(jmsInfo.getConnectionFactory());
+//                ICfgAMQInfo amqji = (ICfgAMQInfo)ti;
+//                amq.setBrokerURL(amqji.getBrokerUrl());
+//                if(camel.getComponent(ti.getPrefix())!=null) {
+//                    log("skip adding existed component: "+ti.getPrefix());
+//                    continue;
+//                }
+//                camel.addComponent(ti.getPrefix(), amq);
+//                log("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
+//            }
+//            else if(CfgConstants.HTTP_PROVIDER_JETTY.equals(provider)) {
+//                JettyHttpComponent jetty = new JettyHttpComponent();
+//                ICfgJettyInfo jettyti = (ICfgJettyInfo)ti;
+//                // TODO setting up JettyHttpComponent with jettyti
+//                camel.addComponent(ti.getPrefix(), jetty);
+//                log("adding component: "+ti.getPrefix());
+//            }
         }
         
 
+        // for broker it's always async thus inonly
+        boolean isInOnly = true;
         
         // bc's down in port is broker's out port
         // TODO consider multiple Down in port? 
         List<ICfgInPort> ips = reader.getListOfEnabledInport();
         for(ICfgInPort ip : ips) {
             if(DIRECTION_DOWN.equals(ip.getDirection())) {
-                String url = BCUtils.getFullUrlFromPort(ip, reader, false);
+                
+                String url = BCUtils.getFullUrlFromPort(ip, reader, false, isInOnly);
                 outUrls.add(url);
             }
         }
@@ -222,7 +228,7 @@ public class Broker implements Processor, CfgConstants{
         List<ICfgOutPort> ops = reader.getListOfEnabledOutport();
         for(ICfgOutPort op : ops) {
             if(DIRECTION_UP.equals(op.getDirection())) {
-                inUrls.add(BCUtils.getFullUrlFromPort(op, reader, true));
+                inUrls.add(BCUtils.getFullUrlFromPort(op, reader, true, isInOnly));
             }
         }
     }
@@ -378,11 +384,15 @@ public class Broker implements Processor, CfgConstants{
             String op = TestDummy.OPERATION_601;
             String iso8583601Sample = BCUtils.getHomeDir()+"/sample/8583/"+op+".8583";
             
-            //load other data from sample
-            ISOMsg iso601 = Iso8583Util.createDummyISOMsg(iso8583601Sample);
+            // todo Maybe a Cnaps2Util and a createDummyCnaps2 method
+            //load other data from sample. 
+            ISOMsg iso601 = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), iso8583601Sample);
             
             // TODO 
-            InputStream mrStream = XmlCfgReader.getMappingRuleFromFS(op, DIRECTION_UP);
+            ICfgProtocol prot = readerA.getProtocolByName(CfgConstants.PROTOCOL_CNAPS2);
+            ICfgOperation cfgOpn = readerA.getOperation(prot, op); 
+            InputStream mrStream = readerA.getMappingRule(cfgOpn, DIRECTION_UP);
+            
             Map<String, String> mapping = Iso8583ToXml.loadMappings(mrStream);
             
             // however control the msgid fields with real data

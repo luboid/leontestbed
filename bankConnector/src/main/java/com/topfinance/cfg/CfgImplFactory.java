@@ -1,6 +1,6 @@
 package com.topfinance.cfg;
 
-import com.topfinance.cfg.db.DbCfgReader;
+import com.topfinance.cfg.jpa.JpaCfgReader;
 import com.topfinance.cfg.xml.XmlCfgReader;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class CfgImplFactory {
         if(TYPE_FILE.equals(type)) {
             res =  XmlCfgReader.getInstance(config);
         }else if(TYPE_DB.equals(type)) {
-            res =  DbCfgReader.getInstance(config);
+            res =  JpaCfgReader.getInstance(config);
         }
         return res;
     }

@@ -2,6 +2,10 @@ package com.topfinance.cfg;
 
 public interface ICfgInPort extends ICfgPort {
     
+//    public String getUpInMHClazz();
+    
+//    public String getSyncReplyDownOutMHClazz();
+    
 //    public ICfgProtocol getProtocol();
 //    public void setProtocol(ICfgProtocol protocol);
     

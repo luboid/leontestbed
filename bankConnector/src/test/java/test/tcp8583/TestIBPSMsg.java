@@ -45,6 +45,7 @@ public class TestIBPSMsg {
 		msg.set(new ISOField(66, "00100"));// 16.业务类型编码 [0..1] REMARK Prtry01 PP065
 		msg.set(new ISOField(100, "IBPS.101.001.01"));// 99
 		byte[] b = msg.pack(); // 5) packit
+		System.out.println("b=" + new String(b, "UTF-8") + "..");
 		return ISOUtil.hexString(b);
 	}
 	

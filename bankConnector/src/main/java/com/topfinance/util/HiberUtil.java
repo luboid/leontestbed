@@ -61,7 +61,7 @@ public class HiberUtil {
         HiberEntry hiber = new HiberEntry();
         for(String key:fields.keySet()) {
             Object val = fields.get(key);
-            logger.trace("key="+key+", val="+val+", val.type="+val.getClass().getName());
+            logger.trace("key="+key+", val="+val+", val.type="+(val==null? "null" : val.getClass().getName()));
             if(val instanceof BigInteger) {
                 val = ((BigInteger)val).longValue();
             }
@@ -79,7 +79,7 @@ public class HiberUtil {
         return hiber;
     }
     
-    public static void saveHiber(String hiberkey, String direction, String txId, String auditId, String operation) {
+    public static void saveHiber(String hiberkey, String direction, String txId, String auditId, String operation, String inPortName) {
         
         HiberEntry hiber = new HiberEntry();
         
@@ -88,6 +88,7 @@ public class HiberUtil {
         hiber.setAuditId(auditId);
         hiber.setDirection(direction);
         hiber.setOperation(operation);
+        hiber.setInPortName(inPortName);
         
         // TODO 5min, moved to configuration
         hiber.setExpiration(BcConstants.EXPIRY_HIBER+System.currentTimeMillis());

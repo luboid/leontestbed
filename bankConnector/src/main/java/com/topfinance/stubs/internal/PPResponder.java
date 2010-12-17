@@ -8,6 +8,8 @@ import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
 import com.topfinance.cfg.TestDummy;
+import com.topfinance.message.Default8583ToCnaps2UpInMH;
+import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.Iso8583Util;
@@ -50,7 +52,7 @@ public class PPResponder implements Processor, CfgConstants{
                 if (DIRECTION_UP.equals(outPort.getDirection())) {
                     continue;
                 }
-                String url = BCUtils.getFullUrlFromPort(outPort);
+                String url = BCUtils.getFullUrlFromPortForConsumer(outPort);
                 logger.info("listenning on url=" + url);
                 from(url).process(processor);
             }
@@ -120,8 +122,8 @@ public class PPResponder implements Processor, CfgConstants{
         logger.info("received async message from url=" + exchange.getFromEndpoint().getEndpointUri());
         logger.debug("rawMsg="+msg);
 
-        ISOMsg m = Iso8583Util.unpackMsg(msg);
-        
+//        ISOMsg m = Iso8583Util.unpackMsg(msg);
+        ISOMsg m = (ISOMsg)new Default8583ToCnaps2UpInMH().parse(msg);
         String docId_101 = Iso8583Util.getField(m, BcConstants.ISO8583_DOC_ID);
         
         String opName = m.getString(BcConstants.ISO8583_OP_NAME);
@@ -148,14 +150,20 @@ public class PPResponder implements Processor, CfgConstants{
                 break;                
             }
         }
+
+        // send async pp resp in separate thread
+        String op = TestDummy.OPERATION_102;
+        ICfgOperation cfgOpn= reader.getOperation(reader.getProtByInPort(chosenInPort), op);
+        boolean wantSyncReply = CfgConstants.OP_REPLY_TYPE_SYNC.equals(cfgOpn.getUpPpReplyType());
         
-        url = BCUtils.getFullUrlFromPort(chosenInPort);
+        
+        boolean isInOnly = !wantSyncReply;
+        url = BCUtils.getFullUrlFromPort(chosenInPort, isInOnly);
         
         String docId_102 = BCUtils.getUniqueDocId();
         String respText = "";
         if(TCP_PROVIDER_8583.equals(reader.getTransInfoByPort(chosenInPort).getProvider())) {
-            String op = TestDummy.OPERATION_102;
-            ISOMsg m1 = Iso8583Util.createDummyISOMsg(BCUtils.getHomeDir()+"/sample/8583/"+op+".8583");
+            ISOMsg m1 = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), BCUtils.getHomeDir()+"/sample/8583/"+op+".8583");
             // prepare 102
             Iso8583Util.setField(m1, BcConstants.ISO8583_OP_NAME, op);
             Iso8583Util.setField(m1, BcConstants.ISO8583_DOC_ID, docId_102);
@@ -173,11 +181,7 @@ public class PPResponder implements Processor, CfgConstants{
         String s = stdIn.readLine();
         
         logger.info("dispatching 102 docId="+docId_102+", to url="+url);
-        logger.debug("rawMsg="+respText);
-        // send async pp resp in separate thread
-        String op = TestDummy.OPERATION_102;
-        ICfgOperation cfgOpn= reader.getOperation(reader.getProtByInPort(chosenInPort), op);
-        boolean wantSyncReply = CfgConstants.OP_REPLY_TYPE_SYNC.equals(cfgOpn.getUpPpReplyType()); 
+        logger.debug("rawMsg="+respText); 
         
         executor.execute(new SendJob(url, camel, respText, wantSyncReply));
         
@@ -226,7 +230,8 @@ public class PPResponder implements Processor, CfgConstants{
                         if(syncResp.equals(BcConstants.MSG_PP_ERROR)) {
                             logger.warn("received error msg!!!!!!!");    
                         } else {
-                            ISOMsg iso = Iso8583Util.unpackMsg(syncResp);
+//                            ISOMsg iso = Iso8583Util.unpackMsg(syncResp);
+                            ISOMsg iso = (ISOMsg)new Default8583ToCnaps2UpInMH().parse(syncResp);
                             String iso601Id = Iso8583Util.getField(iso, BcConstants.ISO8583_DOC_ID);
                             logger.info("received sync reply: docId="+iso601Id);
                         }

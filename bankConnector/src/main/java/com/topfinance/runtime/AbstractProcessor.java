@@ -1,5 +1,6 @@
 package com.topfinance.runtime;
 
+import com.topfinance.cfg.CfgAccessException;
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgOperation;
@@ -46,7 +47,7 @@ public abstract class AbstractProcessor implements CfgConstants, BcConstants {
     
 
     
-    protected ICfgOperation getCfgOperation() {
+    protected ICfgOperation getCfgOperation() throws CfgAccessException{
         ICfgReader cfgReader = CfgImplFactory.loadCfgReader();
         String opName = msgContext.getOperationName();
         ICfgOperation cfgOpn = cfgReader.getOperation(msgContext.getProtocol(), opName);

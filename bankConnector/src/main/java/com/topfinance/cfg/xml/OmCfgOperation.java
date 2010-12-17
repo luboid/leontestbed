@@ -17,41 +17,49 @@ public class OmCfgOperation implements ICfgOperation {
     private ICfgProtocol protocol;
     
     @Attribute(required=false)
-    private String upIsEnabled;
-    
-    @Attribute(required=false)
     private String upPpReplyType;
     
     @Attribute(required=false)
-    private String upReplyType;
+    private String upMappingFile;
     
-    @Attribute(required=false)
-    private String upIsReply;
+//    @Attribute(required=false)
+//    private String upFormat;
     
-    @Attribute(required=false)
-    private String upAckType;
+//    @Attribute(required=false)
+//    private String upIsEnabled;
+//        
+//    @Attribute(required=false)
+//    private String upReplyType;
+//    
+//    @Attribute(required=false)
+//    private String upIsReply;
+//    
+//    @Attribute(required=false)
+//    private String upAckType;
     
-    @Attribute(required=false)
-    private String upFormat;
-    
-    
-    @Attribute(required=false)
-    private String downIsEnabled;
+
     
     @Attribute(required=false)
     private String downPpReplyType;
     
     @Attribute(required=false)
-    private String downReplyType;
+    private String downMappingFile;
+//    @Attribute(required=false)
+//    private String downFormat;
     
-    @Attribute(required=false)
-    private String downIsReply;
-    
-    @Attribute(required=false)
-    private String downAckType;
+//    @Attribute(required=false)
+//    private String downIsEnabled;
+//
+//    @Attribute(required=false)
+//    private String downReplyType;
+//    
+//    @Attribute(required=false)
+//    private String downIsReply;
+//    
+//    @Attribute(required=false)
+//    private String downAckType;
 
-    @Attribute(required=false)
-    private String downFormat;
+
     
     public ICfgProtocol getProtocol() {
         return protocol;
@@ -77,71 +85,7 @@ public class OmCfgOperation implements ICfgOperation {
         this.name = name;
     }
 
-    public String getUpIsEnabled() {
-        return upIsEnabled;
-    }
 
-    public void setUpIsEnabled(String upIsEnabled) {
-        this.upIsEnabled = upIsEnabled;
-    }
-
-
-
-    public String getDownIsEnabled() {
-        return downIsEnabled;
-    }
-
-    public void setDownIsEnabled(String downIsEnabled) {
-        this.downIsEnabled = downIsEnabled;
-    }
-
-    public String getUpReplyType() {
-        return upReplyType;
-    }
-
-    public void setUpReplyType(String upReplyType) {
-        this.upReplyType = upReplyType;
-    }
-
-    public String getUpIsReply() {
-        return upIsReply;
-    }
-
-    public void setUpIsReply(String upIsReply) {
-        this.upIsReply = upIsReply;
-    }
-
-    public String getDownReplyType() {
-        return downReplyType;
-    }
-
-    public void setDownReplyType(String downReplyType) {
-        this.downReplyType = downReplyType;
-    }
-
-    public String getDownIsReply() {
-        return downIsReply;
-    }
-
-    public void setDownIsReply(String downIsReply) {
-        this.downIsReply = downIsReply;
-    }
-
-    public String getUpAckType() {
-        return upAckType;
-    }
-
-    public void setUpAckType(String upAckType) {
-        this.upAckType = upAckType;
-    }
-
-    public String getDownAckType() {
-        return downAckType;
-    }
-
-    public void setDownAckType(String downAckType) {
-        this.downAckType = downAckType;
-    }
 
     public String getUpPpReplyType() {
         return upPpReplyType;
@@ -159,21 +103,23 @@ public class OmCfgOperation implements ICfgOperation {
         this.downPpReplyType = downPpReplyType;
     }
 
-    public String getUpFormat() {
-        return upFormat;
+    public String getUpMappingFile() {
+        return upMappingFile;
     }
 
-    public void setUpFormat(String upFormat) {
-        this.upFormat = upFormat;
+    public void setUpMappingFile(String upMappingFile) {
+        this.upMappingFile = upMappingFile;
     }
 
-    public String getDownFormat() {
-        return downFormat;
+    public String getDownMappingFile() {
+        return downMappingFile;
     }
 
-    public void setDownFormat(String downFormat) {
-        this.downFormat = downFormat;
+    public void setDownMappingFile(String downMappingFile) {
+        this.downMappingFile = downMappingFile;
     }
+
+
 
 
 

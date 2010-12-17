@@ -1,13 +1,13 @@
 package com.topfinance.util;
 
+import com.ibm.mq.jms.MQQueueConnectionFactory;
+import com.topfinance.cfg.CfgAccessException;
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
-import com.topfinance.cfg.ICfg8583InPort;
-import com.topfinance.cfg.ICfg8583Info;
-import com.topfinance.cfg.ICfg8583OutPort;
-import com.topfinance.cfg.ICfgAMQInfo;
-import com.topfinance.cfg.ICfgInPort;
-import com.topfinance.cfg.ICfgJettyInfo;
+import com.topfinance.cfg.ICfgTransport8583;
+import com.topfinance.cfg.ICfgTransportAMQ;
+import com.topfinance.cfg.ICfgTransportIBMMQ;
+import com.topfinance.cfg.ICfgTransportJetty;
 import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgPort;
 import com.topfinance.cfg.ICfgReader;
@@ -19,6 +19,8 @@ import com.topfinance.runtime.BcConstants;
 
 import java.beans.PropertyDescriptor;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +30,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.CamelContext;
+import org.apache.camel.Component;
 import org.apache.camel.component.jetty.JettyHttpComponent;
+import org.apache.camel.component.jms.JmsComponent;
+import org.apache.camel.component.jms.JmsConfiguration;
 import org.apache.camel.component.mina.MinaComponent;
 import org.apache.camel.component.mina.MinaConfiguration;
 import org.apache.commons.beanutils.BeanUtils;
@@ -36,6 +41,7 @@ import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.jms.connection.CachingConnectionFactory;
 
 
 public class BCUtils {
@@ -49,6 +55,18 @@ public class BCUtils {
     
     public static void registerConverter() {
         ConvertUtils.register(new CalendarConverter(), Date.class);
+    }
+    
+    public static InputStream getMappingRuleFromFS(String fileName) {
+        
+        String mapFileName = BCUtils.getHomeDir()+"/sample/map/"+fileName;
+        BCUtils.testFileExist(mapFileName, false);
+        try {
+            InputStream mapFile = new FileInputStream(mapFileName);
+            return mapFile;
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
     
     public static String getHomeDir() {
@@ -120,7 +138,7 @@ public class BCUtils {
         return res;
     }
     
-    public static ICfgOutPort findRoute(List<ICfgRouteRule> listRouteRule, String operationName) {
+    public static ICfgOutPort findRoute(List<ICfgRouteRule> listRouteRule, String operationName) throws CfgAccessException{
         
         // filling in some info of CfgOutPort( which is known) for the next step routing
         // the info can be carried either in a header or property of exchange
@@ -147,35 +165,67 @@ public class BCUtils {
     }
     
     
-    public static void initCamelComponent(CamelContext camel, ICfgTransportInfo ti) {
+    public static void initCamelComponent(CamelContext camel, ICfgTransportInfo ti) throws Exception{
+        
         String provider = ti.getProvider();
+        Component comp = null;
         if(CfgConstants.JMS_PROVIDER_AMQ.equals(provider)) {
-            ActiveMQComponent amq = new ActiveMQComponent();
+            
             // ?? won't work unless define as normal JMSComponent
 //            amq.setConnectionFactory(jmsInfo.getConnectionFactory());
-            ICfgAMQInfo amqji = (ICfgAMQInfo)ti;
+            ICfgTransportAMQ amqji = (ICfgTransportAMQ)ti;
+            ActiveMQComponent amq = new ActiveMQComponent();
+            comp = amq;
             amq.setBrokerURL(amqji.getBrokerUrl());
-            camel.addComponent(ti.getPrefix(), amq);
-            logger.info("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
+            
+//            logger.info("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
+        }
+        
+        else if(CfgConstants.JMS_PROVIDER_IBMMQ.equals(provider)) {
+            ICfgTransportIBMMQ ibmmqti = (ICfgTransportIBMMQ)ti;
+            // ibm mq
+            MQQueueConnectionFactory factory = new MQQueueConnectionFactory(); 
+            factory.setHostName(ibmmqti.getHostName()); 
+            factory.setPort(ibmmqti.getPort()); 
+            factory.setQueueManager(ibmmqti.getQueueManager());
+            factory.setChannel(ibmmqti.getChannel()); 
+            factory.setTransportType(ibmmqti.getTransportType());
+            //Where some_ccsid_int is a Character Code Set identifier. It depends on the system as to what code sets are supported. 819, 1200 and 1208 are good ones to try.
+            factory.setCCSID(ibmmqti.getCCSID());
+            
+            CachingConnectionFactory cf = new CachingConnectionFactory(factory);
+            
+            JmsConfiguration jc = new JmsConfiguration(cf);
+            JmsComponent ibmmq = new JmsComponent(jc);
+            comp = ibmmq;
         }
         else if(CfgConstants.HTTP_PROVIDER_JETTY.equals(provider)) {
+            ICfgTransportJetty jettyti = (ICfgTransportJetty)ti;
             JettyHttpComponent jetty = new JettyHttpComponent();
-            ICfgJettyInfo jettyti = (ICfgJettyInfo)ti;
+            comp = jetty;
             // TODO setting up JettyHttpComponent with jettyti
-            camel.addComponent(ti.getPrefix(), jetty);
-            logger.info("adding component: "+ti.getPrefix());
+            
+            
         }
         else if(CfgConstants.TCP_PROVIDER_8583.equals(provider)) {
+            ICfgTransport8583 iso8583ti = (ICfgTransport8583)ti;
+            
             MinaComponent mina = new MinaComponent();
+            comp = mina;
             MinaConfiguration conf = new MinaConfiguration();
             conf.setCodec(new Iso8583Codec());
             mina.setConfiguration(conf);
-            ICfg8583Info iso8583ti = (ICfg8583Info)ti;
             // TODO setting up MinaComponent with iso8583ti
-            camel.addComponent(ti.getPrefix(), mina);
-            logger.info("adding component: "+ti.getPrefix());
+            
         }
-    
+        
+        if(camel.getComponent(ti.getPrefix())!=null) {
+            logger.warn("skip adding existed component: "+ti.getPrefix());
+        } else {
+            // TODO typing configurations
+            logger.info("adding component: "+ti.getPrefix());
+            camel.addComponent(ti.getPrefix(), comp);
+        }
     }
     
     
@@ -200,7 +250,7 @@ public class BCUtils {
         return getUniqueId("m-", 20);
     }   
     
-    public static String getFullUrlFromPort(ICfgPort port, ICfgReader reader, boolean isConsumer) {
+    public static String getFullUrlFromPort(ICfgPort port, ICfgReader reader, boolean isConsumer, boolean isInOnly) throws CfgAccessException{
         String url = port.getUrl();
         // handle URL prefix
         
@@ -211,16 +261,19 @@ public class BCUtils {
         if(CfgConstants.TCP_PROVIDER_8583.equals(ti.getProvider())) {
             
             // decide sync parameter: see mina doc on http://camel.apache.org/mina.html
-            String isSync = "";
-            if(port instanceof ICfgInPort) {
-            // TODO more mina configuration
-                ICfg8583InPort in8583 = (ICfg8583InPort)port;
-                isSync = in8583.getIsSync();
-            }else if(port instanceof ICfgOutPort) {
-                ICfg8583OutPort out8583 = (ICfg8583OutPort)port;
-                isSync = out8583.getIsSync();
-            }
-            url+= CfgConstants.BOOLEAN_TRUE.equals(isSync)? "?sync=true" : "?sync=false";
+            
+//            String isSync = "";
+//            if(port instanceof ICfgInPort) {
+//            // TODO more mina configuration
+//                ICfg8583InPort in8583 = (ICfg8583InPort)port;
+//                isSync = in8583.getIsSync();
+//            }else if(port instanceof ICfgOutPort) {
+//                ICfg8583OutPort out8583 = (ICfg8583OutPort)port;
+//                isSync = out8583.getIsSync();
+//            }
+//            url+= CfgConstants.BOOLEAN_TRUE.equals(isSync)? "?sync=true" : "?sync=false";
+            
+            url += isInOnly? "?sync=false" : "?sync=true";
             
             url+=("&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT);
             if(!isConsumer) {
@@ -231,12 +284,15 @@ public class BCUtils {
         return url;
     }
     
-    public static String getFullUrlFromPort(ICfgPort port, boolean isConsumer) {
+    public static String getFullUrlFromPortForConsumer(ICfgPort port) throws CfgAccessException{
+        boolean isConsumer = true; 
+        boolean isInOnly = false; 
         ICfgReader reader = CfgImplFactory.loadCfgReader();
-        return getFullUrlFromPort(port, reader, isConsumer);
+        return getFullUrlFromPort(port, reader, isConsumer, isInOnly);
     }
-    public static String getFullUrlFromPort(ICfgPort port) {
+    public static String getFullUrlFromPort(ICfgPort port, boolean isInOnly) throws CfgAccessException{
+        boolean isConsumer = false;
         ICfgReader reader = CfgImplFactory.loadCfgReader();
-        return getFullUrlFromPort(port, reader, false);
+        return getFullUrlFromPort(port, reader, isConsumer, isInOnly);
     }
 }

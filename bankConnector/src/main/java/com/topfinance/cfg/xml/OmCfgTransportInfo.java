@@ -1,7 +1,12 @@
 package com.topfinance.cfg.xml;
 
 import com.topfinance.cfg.ICfgTransportInfo;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementMap;
 
 public abstract class OmCfgTransportInfo implements ICfgTransportInfo {
     @Attribute(required=false)
@@ -12,6 +17,9 @@ public abstract class OmCfgTransportInfo implements ICfgTransportInfo {
     private String provider;
     @Attribute(required=false)
     private String prefix;
+    
+    @ElementMap(entry="config", key="key", attribute=true, inline=true, required=false)
+    private Map<String, String> config;
     
     public String getOid() {
         return oid;
@@ -36,5 +44,11 @@ public abstract class OmCfgTransportInfo implements ICfgTransportInfo {
     }
     public void setPrefix(String prefix) {
         this.prefix = prefix;
+    }
+    public Map<String, String> getConfig() {
+        return config;
+    }
+    public void setConfig(Map<String, String> config) {
+        this.config = config;
     }
 }

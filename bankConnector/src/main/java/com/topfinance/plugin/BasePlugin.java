@@ -7,10 +7,10 @@ import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.db.HiberEntry;
 import com.topfinance.db.ResendEntry;
-import com.topfinance.plugin.cnaps2.Cnaps2Plugin;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.runtime.DWMessageContext;
 import com.topfinance.runtime.DownwardProcessor;
+import com.topfinance.runtime.OperationDefinitions;
 import com.topfinance.runtime.ServerRoutes;
 import com.topfinance.runtime.UWMessageContext;
 import com.topfinance.runtime.UpwardProcessor;
@@ -18,14 +18,52 @@ import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
 import com.topfinance.util.ResendUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.camel.Exchange;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 
-public class BasePlugin implements BcConstants, CfgConstants{
+public abstract class BasePlugin implements BcConstants, CfgConstants{
+    
+    static Logger logger = Logger.getLogger(BasePlugin.class);
+    
+    
+    private static Map<String, String> pluginNames = new HashMap<String, String>();
+    
+    static {
+        pluginNames.put(CfgConstants.PROTOCOL_CNAPS2, "com.topfinance.plugin.cnaps2.Cnaps2Plugin");
+    }
+    
+    private static Map<String, BasePlugin> plugins = new HashMap<String, BasePlugin>();
+
+    public static void createPlugin(String name, String clazz) {
+        try {
+            BasePlugin plugin = (BasePlugin)Class.forName(clazz).newInstance();
+            plugins.put(name, plugin);
+        } catch (Exception ex) {
+            logger.error("error when creating plugin for "+name, ex);
+            throw new RuntimeException(ex);
+        }
+    }
+    
+    public abstract OperationDefinitions loadOperationDefinitions();
     
     public static BasePlugin loadPlugin(String name) {
-        return new Cnaps2Plugin();
+        BasePlugin res = plugins.get(name);
+        if(res ==null) {
+            String clazz = pluginNames.get(name);
+            if(clazz==null) {
+                throw new RuntimeException("plugin ["+name+"] not supported");
+            }
+            BasePlugin.createPlugin(name, clazz);
+            res = plugins.get(name);
+        }
+        return res;
     }
+    
     public DWMessageContext createDWMessageContext(Exchange exchange) {
         return new DWMessageContext(exchange);
     }
@@ -59,10 +97,9 @@ public class BasePlugin implements BcConstants, CfgConstants{
                     ICfgReader reader = CfgImplFactory.loadCfgReader();
                     ICfgInPort inPort = reader.getInportByName(inPortName);
                     ICfgOutPort outPort = reader.getAckPortByIP(inPort);
-                    String url = BCUtils.getFullUrlFromPort(outPort);
                     
                     String errorText = BcConstants.MSG_PP_ERROR;
-                    ServerRoutes.getInstance().produce(url, errorText, true);
+                    ServerRoutes.getInstance().produce(outPort, errorText, true);
                     
                 }
                 AuditUtil.updateOtherAuditLogStatus(auditId, STATE_SENT_OUT_MSG, "tp ack not received before timeout", STATUS_ERROR);
@@ -100,10 +137,9 @@ public class BasePlugin implements BcConstants, CfgConstants{
                     ICfgReader reader = CfgImplFactory.loadCfgReader();
                     ICfgInPort inPort = reader.getInportByName(inPortName);
                     ICfgOutPort outPort = reader.getAckPortByIP(inPort);
-                    String url = BCUtils.getFullUrlFromPort(outPort);
                     
                     String errorText = "ERROR!!";
-                    ServerRoutes.getInstance().produce(url, errorText, true);
+                    ServerRoutes.getInstance().produce(outPort, errorText, true);
                 }
                 AuditUtil.updateOtherAuditLogStatus(auditId, STATE_SENT_OUT_MSG, "tp async reply not received before timeout", STATUS_ERROR);
                 // TODO delete the HiberEntry (if have) to deny the following async reply                

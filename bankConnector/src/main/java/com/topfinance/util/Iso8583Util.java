@@ -10,6 +10,7 @@ import java.util.List;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.jpos.iso.ISOBasePackager;
 import org.jpos.iso.ISOField;
 import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOUtil;
@@ -19,10 +20,10 @@ public class Iso8583Util {
     private static void info(String msg) {
         logger.info(msg);
     }
-    public static ISOMsg unpackMsg(String msg) {
+    public static ISOMsg unpackMsg(String msg, ISOBasePackager packager) {
         try {
             ISOMsg m = new ISOMsg();
-            m.setPackager(new ISOIBPSPackager());
+            m.setPackager(packager);
             m.unpack(ISOUtil.hex2byte(msg));
             return m;
         } catch (Exception ex) {
@@ -37,10 +38,10 @@ public class Iso8583Util {
             throw new RuntimeException(ex);
         }
     }
-    public static ISOMsg emptyMsg() {
+    public static ISOMsg emptyMsg(ISOBasePackager packager) {
         try {
             ISOMsg msg = new ISOMsg();
-            msg.setPackager(new ISOIBPSPackager());
+            msg.setPackager(packager);
             msg.set(new ISOField(BcConstants.ISO8583_START, BcConstants.ISO8583_START_VALUE));
             return msg;
         } catch (Exception ex) {
@@ -74,12 +75,12 @@ public class Iso8583Util {
         }
     }
     
-    public static ISOMsg createDummyISOMsg(String sample8583FileName) {
+    public static ISOMsg createDummyISOMsg(ISOBasePackager packager, String sample8583FileName) {
         
         // construct a dummy ISOMsg from the generated sample 8583 file,
         // which could be changed manually (by default it contains value extracted from sample xml)
         
-        ISOMsg msg = emptyMsg();
+        ISOMsg msg = emptyMsg(packager);
         
         List<String> lines = null;
         try {

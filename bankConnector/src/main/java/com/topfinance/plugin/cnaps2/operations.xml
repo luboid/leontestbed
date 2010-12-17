@@ -1,0 +1,15 @@
+<OperationDefinitions id="7">
+   <list>
+      <OperationDefinition class="com.topfinance.runtime.OperationDefinition" id="8" name="ibps.101.001.01" upIsEnabled="T" upReplyType="A" upIsReply="F" upAckType="ASYNC" downIsEnabled="T" downReplyType="A" downIsReply="F" downAckType="ASYNC">
+         
+      </OperationDefinition>
+      
+      <OperationDefinition class="com.topfinance.runtime.OperationDefinition" id="9" name="ibps.102.001.01" upIsEnabled="T"  upReplyType="A" upIsReply="T" upAckType="ASYNC" downIsEnabled="F" downReplyType="N" downIsReply="T">
+         
+      </OperationDefinition>
+      
+      <OperationDefinition class="com.topfinance.runtime.OperationDefinition" id="10" name="saps.601.001.01" upIsEnabled="F" downIsEnabled="T" downReplyType="N" downIsReply="T" >
+         
+      </OperationDefinition>
+   </list>
+</OperationDefinitions>

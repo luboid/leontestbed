@@ -13,8 +13,8 @@ public class OmCfgRouteRule implements ICfgRouteRule{
     private String name;
     @Element(required=false)
     private ICfgOutPort outPort;
-    @Element(required=false)
-    private ICfgInPort inPort;
+//    @Element(required=false)
+//    private ICfgInPort inPort;
     @Attribute(required=false)
     private String operationMask;
     @Attribute(required=false)
@@ -38,12 +38,7 @@ public class OmCfgRouteRule implements ICfgRouteRule{
     public void setName(String name) {
         this.name = name;
     }
-    public ICfgOutPort getOutPort() {
-        return outPort;
-    }
-    public void setOutPort(ICfgOutPort outPort) {
-        this.outPort = outPort;
-    }
+
     public String getOperationMask() {
         return operationMask;
     }
@@ -56,18 +51,19 @@ public class OmCfgRouteRule implements ICfgRouteRule{
     public void setSequence(int sequence) {
         this.sequence = sequence;
     }
-    public ICfgInPort getInPort() {
-        return inPort;
-    }
-    public void setInPort(ICfgInPort inPort) {
-        this.inPort = inPort;
-    }
+
 
     public String getDirection() {
         return direction;
     }
     public void setDirection(String direction) {
         this.direction = direction;
+    }
+    public ICfgOutPort getOutPort() {
+        return outPort;
+    }
+    public void setOutPort(ICfgOutPort outPort) {
+        this.outPort = outPort;
     }
     
     

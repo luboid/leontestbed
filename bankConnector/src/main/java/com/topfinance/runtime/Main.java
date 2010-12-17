@@ -1,18 +1,17 @@
 package com.topfinance.runtime;
 
+import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransportInfo;
-import com.topfinance.converter.CalendarConverter;
+import com.topfinance.plugin.BasePlugin;
 import com.topfinance.util.BCUtils;
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.spring.spi.ApplicationContextRegistry;
-import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.Options;
@@ -54,7 +53,6 @@ public class Main {
             // make sure it is there
             BCUtils.getHomeDir();
 
-            
             if( cmd.hasOption( "spring" ) ) {
                 spring = cmd.getOptionValue( "spring" );
             }

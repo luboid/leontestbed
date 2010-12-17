@@ -61,8 +61,11 @@ public abstract class MessageContext {
 
     volatile boolean asyncMsgReceived;
     private String origOperation;
+    private String origInPortName;
     private Object parsedSyncReplyMsg;
     private String packagedSyncReplyMsg;
+    
+    private OperationDefinitions ods;
     
 //    public void createTransactionContext(BCTrace trace) {
 //        try {
@@ -341,6 +344,22 @@ public abstract class MessageContext {
 
     public void setOrigOperation(String origOperation) {
         this.origOperation = origOperation;
+    }
+
+    public OperationDefinitions getOds() {
+        return ods;
+    }
+
+    public void setOds(OperationDefinitions operationDefinitions) {
+        this.ods = operationDefinitions;
+    }
+
+    public String getOrigInPortName() {
+        return origInPortName;
+    }
+
+    public void setOrigInPortName(String origInPortName) {
+        this.origInPortName = origInPortName;
     }
 
 

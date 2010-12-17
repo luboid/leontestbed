@@ -4,11 +4,11 @@ package com.topfinance.runtime;
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgInPort;
+import com.topfinance.cfg.ICfgOutPort;
 import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.plugin.BasePlugin;
 import com.topfinance.util.BCUtils;
-import com.topfinance.util.DbUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,14 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
     }
     
     
+    public String produce(ICfgOutPort port, String bodyText, boolean isInOnly) throws Exception {
+        String url = BCUtils.getFullUrlFromPort(port, isInOnly);
+        logger.info("sending to outport: "+port.getName()+", url="+url+", isInOnly="+isInOnly);
+        
+        return produce(url, bodyText, isInOnly);
+    }
     public String produce(String url, String bodyText, boolean isInOnly) throws Exception {
+        
         String syncResp = null;
         Endpoint outEp = getContext().getEndpoint(url);
         Producer producer = outEp.createProducer();
@@ -58,7 +65,6 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         
         return syncResp;
     }
-    
     @Override
     public void configure() throws Exception {
         
@@ -86,7 +92,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         List<String> inUrls = new ArrayList<String>();
         for(ICfgInPort inPort : inPorts) {
             i++;
-            String url = BCUtils.getFullUrlFromPort(inPort, true);
+            String url = BCUtils.getFullUrlFromPortForConsumer(inPort);
             logger.info("listening on url="+url);
             inUrls.add(url);
         }
@@ -95,7 +101,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         // two phases using separate thread pool
         from("seda:process?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+10).bean(dis, "process");        
         
-        // todo move to configuration
+        // TODO move to configuration
         // 1 minute
         // start the poller
         // in a HA or LB clustering, the poller should only start from the primary instance
@@ -120,9 +126,10 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
             ICfgInPort cfgIP = reader.getInPortByUri(inUri);
             String direction = cfgIP.getDirection();
             ICfgProtocol protocol = reader.getProtByInPort(cfgIP);
-            String pluginName = protocol.getPluginName();
+            String pluginName = protocol.getName();
             BasePlugin plugin = BasePlugin.loadPlugin(pluginName);
-             
+            OperationDefinitions ods = BasePlugin.loadPlugin(pluginName).loadOperationDefinitions();
+            
             AbstractProcessor p = null;
             MessageContext msgContext = null;
             // now the process instance is not shared
@@ -136,6 +143,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
             
             msgContext.setCfgInPort(cfgIP);
             msgContext.setProtocol(protocol);
+            msgContext.setOds(ods);
             p.setMsgContext(msgContext);
             p.preprocess();
             exchange.getIn().setHeader("ctx", msgContext);
@@ -148,7 +156,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
             ICfgInPort cfgIP = ctx.getCfgInPort();    
             String direction = cfgIP.getDirection();
             ICfgProtocol protocol = reader.getProtByInPort(cfgIP);
-            String pluginName = protocol.getPluginName();
+            String pluginName = protocol.getName();
             BasePlugin plugin = BasePlugin.loadPlugin(pluginName);
              
             AbstractProcessor p = null;
@@ -165,7 +173,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         public void processResendAlertMessage(Exchange exchange) throws Exception {
             logger.info("processResendAlertMessage......");
             // TODO get protocol from msg header
-            String pluginName = "";
+            String pluginName = CfgConstants.PROTOCOL_CNAPS2;
             BasePlugin plugin = BasePlugin.loadPlugin(pluginName);
             String resendkey = exchange.getIn().getBody(String.class);
             plugin.processResendAlertMessage(resendkey);
@@ -174,7 +182,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         public void processHiberAlertMessage(Exchange exchange) throws Exception {
             logger.info("processHiberAlertMessage......");
             // TODO get protocol from msg header
-            String pluginName = "";
+            String pluginName = CfgConstants.PROTOCOL_CNAPS2;
             BasePlugin plugin = BasePlugin.loadPlugin(pluginName);
             String resendkey = exchange.getIn().getBody(String.class);
             plugin.processHiberAlertMessage(resendkey);

@@ -1,7 +1,7 @@
 package com.topfinance.runtime;
 
 public interface BcConstants {
-
+    
     public static final String ENV_HOME = "BC2_HOME";
     
     public static final String ENCODING = "UTF-8";
@@ -12,8 +12,8 @@ public interface BcConstants {
     public static final int ISO8583_DOC_ID = 128;
     public static final int ISO8583_ORIG_DOC_ID = 127;
     
-    public static final int ISO8583_HOST_ID = 124;
-    public static final int ISO8583_PARTNER_ID = 125;
+//    public static final int ISO8583_HOST_ID = 124;
+//    public static final int ISO8583_PARTNER_ID = 125;
     
     
     public static final String INTER_COMM_PREFIX = "interQueue";

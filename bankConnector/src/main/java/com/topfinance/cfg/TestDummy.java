@@ -1,11 +1,11 @@
 package com.topfinance.cfg;
 
-import com.topfinance.cfg.xml.OmCfgAMQInPort;
-import com.topfinance.cfg.xml.OmCfgAMQInfo;
-import com.topfinance.cfg.xml.OmCfgAMQOutPort;
-import com.topfinance.cfg.xml.OmCfgJettyInfo;
+import com.topfinance.cfg.xml.OmCfgTransportAMQ;
+import com.topfinance.cfg.xml.OmCfgInPort;
+import com.topfinance.cfg.xml.OmCfgTransportJetty;
 import com.topfinance.cfg.xml.OmCfgNode;
 import com.topfinance.cfg.xml.OmCfgOperation;
+import com.topfinance.cfg.xml.OmCfgOutPort;
 import com.topfinance.cfg.xml.OmCfgProtocol;
 import com.topfinance.cfg.xml.OmCfgRouteRule;
 import com.topfinance.cfg.xml.XmlCfgReader;
@@ -68,21 +68,21 @@ public class TestDummy extends TestCase implements CfgConstants{
         // build the dummy data for testing
 
         // transportInfo
-        OmCfgAMQInfo ti1 = new OmCfgAMQInfo();
+        OmCfgTransportAMQ ti1 = new OmCfgTransportAMQ();
         ti1.setName("PREFIX_HOST_AMQ");
         ti1.setProvider(JMS_PROVIDER_AMQ);
         ti1.setPrefix(PREFIX_HOST_AMQ);
         ti1.setBrokerUrl(BROKER_URL_HOST);
         instance.getDataHolder().listTransportInfo.add(ti1);
         
-        OmCfgAMQInfo ti2 = new OmCfgAMQInfo();
+        OmCfgTransportAMQ ti2 = new OmCfgTransportAMQ();
         ti2.setName("PREFIX_PARTNER_AMQ");
         ti2.setProvider(JMS_PROVIDER_AMQ);
         ti2.setPrefix(PREFIX_PARTNER_AMQ);
         ti2.setBrokerUrl(BROKER_URL_PARTNER);
         instance.getDataHolder().listTransportInfo.add(ti2);
         
-        OmCfgJettyInfo ti3 = new OmCfgJettyInfo();
+        OmCfgTransportJetty ti3 = new OmCfgTransportJetty();
         ti3.setName("PREFIX_HOST_JETTY");
         ti3.setProvider(HTTP_PROVIDER_JETTY);
         ti3.setPrefix(PREFIX_HOST_JETTY);
@@ -90,11 +90,11 @@ public class TestDummy extends TestCase implements CfgConstants{
         
         
         // protocol
-        ICfgProtocol protocol = new OmCfgProtocol();
+        OmCfgProtocol protocol = new OmCfgProtocol();
         protocol.setName("PROTOCOL_CNAPS2");
-        protocol.setPluginName(PROTOCOL_CNAPS2);
-        protocol.setUpSendAckToPP(BOOLEAN_FALSE);
-        protocol.setDownRecievePPAck(BOOLEAN_FALSE);
+        protocol.setName(PROTOCOL_CNAPS2);
+//        protocol.setUpSendAckToPP(BOOLEAN_FALSE);
+//        protocol.setDownRecievePPAck(BOOLEAN_FALSE);
         instance.getDataHolder().listProtocol.add(protocol);
         
         // operation
@@ -102,34 +102,34 @@ public class TestDummy extends TestCase implements CfgConstants{
         OmCfgOperation opn1 = new OmCfgOperation();
         opn1.setName(OPERATION_101);
         opn1.setProtocol(protocol);
-        opn1.setUpIsEnabled(BOOLEAN_TRUE);
-        opn1.setUpReplyType(OP_REPLY_TYPE_ASYNC);
-        opn1.setUpIsReply(BOOLEAN_FALSE);
-        opn1.setDownIsEnabled(BOOLEAN_TRUE);
-        opn1.setDownReplyType(OP_REPLY_TYPE_ASYNC);
-        opn1.setDownIsReply(BOOLEAN_FALSE);
+//        opn1.setUpIsEnabled(BOOLEAN_TRUE);
+//        opn1.setUpReplyType(OP_REPLY_TYPE_ASYNC);
+//        opn1.setUpIsReply(BOOLEAN_FALSE);
+//        opn1.setDownIsEnabled(BOOLEAN_TRUE);
+//        opn1.setDownReplyType(OP_REPLY_TYPE_ASYNC);
+//        opn1.setDownIsReply(BOOLEAN_FALSE);
         instance.getDataHolder().listOperation.add(opn1);
         
         OmCfgOperation opn2 = new OmCfgOperation();
         opn2.setName(OPERATION_102);
         opn2.setProtocol(protocol);
-        opn2.setUpIsEnabled(BOOLEAN_TRUE);
-        opn2.setUpReplyType(OP_REPLY_TYPE_NOTIFY);
-        opn1.setUpIsReply(BOOLEAN_TRUE);
-        opn2.setDownIsEnabled(BOOLEAN_FALSE);
+//        opn2.setUpIsEnabled(BOOLEAN_TRUE);
+//        opn2.setUpReplyType(OP_REPLY_TYPE_NOTIFY);
+//        opn1.setUpIsReply(BOOLEAN_TRUE);
+//        opn2.setDownIsEnabled(BOOLEAN_FALSE);
         instance.getDataHolder().listOperation.add(opn2);
         
         OmCfgOperation opn3 = new OmCfgOperation();
         opn3.setName(OPERATION_601);
         opn3.setProtocol(protocol);
-        opn3.setUpIsEnabled(BOOLEAN_FALSE);
-        opn3.setDownIsEnabled(BOOLEAN_TRUE);
-        opn3.setDownReplyType(OP_REPLY_TYPE_NOTIFY);
-        opn1.setDownIsReply(BOOLEAN_TRUE);
+//        opn3.setUpIsEnabled(BOOLEAN_FALSE);
+//        opn3.setDownIsEnabled(BOOLEAN_TRUE);
+//        opn3.setDownReplyType(OP_REPLY_TYPE_NOTIFY);
+//        opn1.setDownIsReply(BOOLEAN_TRUE);
         instance.getDataHolder().listOperation.add(opn3);
         
         // Inport
-        OmCfgAMQInPort ip1 = new OmCfgAMQInPort();
+        OmCfgInPort ip1 = new OmCfgInPort();
         ip1.setName("QUEUE_UP_IN_ECHO");
         ip1.setTransportInfo(ti1);
         ip1.setUrl(QUEUE_UP_IN_ECHO);
@@ -137,7 +137,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         ip1.setProtocol(protocol);
         instance.getDataHolder().listInPort.add(ip1);
         
-        OmCfgAMQInPort ip2 = new OmCfgAMQInPort();
+        OmCfgInPort ip2 = new OmCfgInPort();
         ip2.setName("HTTPURL_UP_IN_ECHO");
         ip2.setTransportInfo(ti3);
         ip2.setUrl(HTTPURL_UP_IN_ECHO);
@@ -146,7 +146,7 @@ public class TestDummy extends TestCase implements CfgConstants{
         instance.getDataHolder().listInPort.add(ip2);
         
         // OutPort
-        OmCfgAMQOutPort op1 = new OmCfgAMQOutPort();
+        OmCfgOutPort op1 = new OmCfgOutPort();
         op1.setTransportInfo(ti2);
         op1.setUrl(QUEUE_UP_OUT_ECHO);
         op1.setName("QUEUE_UP_OUT_ECHO");
@@ -154,19 +154,19 @@ public class TestDummy extends TestCase implements CfgConstants{
         instance.getDataHolder().listOutPort.add(op1);
         
         // nodes
-        ICfgNode host1 = new OmCfgNode();
+        OmCfgNode host1 = new OmCfgNode();
         host1.setName("host1");
         host1.setType(NODETYPE_HOST);
 //        host1.setIdentity("host1");
         instance.getDataHolder().listNode.add(host1);
         
-        ICfgNode host2 = new OmCfgNode();
+        OmCfgNode host2 = new OmCfgNode();
         host2.setName("host2");
         host2.setType(NODETYPE_HOST);
 //        host2.setIdentity("host2");
         instance.getDataHolder().listNode.add(host2);
         
-        ICfgNode partner1 = new OmCfgNode();
+        OmCfgNode partner1 = new OmCfgNode();
         partner1.setName("partner1");
         partner1.setType(NODETYPE_PARTNER);
 //        partner1.setIdentity("partner1");

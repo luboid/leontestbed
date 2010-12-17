@@ -8,8 +8,8 @@ public class OmCfgProtocol implements ICfgProtocol{
     private String oid;
     @Attribute(required=false)
     private String name;
-    @Attribute(required=false)
-    private String pluginName;
+//    @Attribute(required=false)
+//    private String pluginName;
     @Attribute(required=false)
     private String upSendAckToPP;
     @Attribute(required=false)
@@ -28,12 +28,7 @@ public class OmCfgProtocol implements ICfgProtocol{
     public void setName(String name) {
         this.name = name;
     }
-    public String getPluginName() {
-        return pluginName;
-    }
-    public void setPluginName(String pluginName) {
-        this.pluginName = pluginName;
-    }
+
     public String getUpSendAckToPP() {
         return upSendAckToPP;
     }

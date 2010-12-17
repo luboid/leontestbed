@@ -99,8 +99,8 @@ public class Test8583 extends SimpleLogSource {
             m.set (new ISOField (BcConstants.ISO8583_OP_NAME,  TestDummy.OPERATION_101));
             m.set (new ISOField (BcConstants.ISO8583_DOC_ID,  BCUtils.getUniqueDocId()));
             m.set (new ISOField (BcConstants.ISO8583_ORIG_DOC_ID,  ""));
-            m.set (new ISOField (BcConstants.ISO8583_HOST_ID,  "xxxx"));
-            m.set (new ISOField (BcConstants.ISO8583_PARTNER_ID,  "yyyy"));
+//            m.set (new ISOField (BcConstants.ISO8583_HOST_ID,  "xxxx"));
+//            m.set (new ISOField (BcConstants.ISO8583_PARTNER_ID,  "yyyy"));
 
             byte[] b = m.pack();                      // 5) packit
             
@@ -131,8 +131,8 @@ public class Test8583 extends SimpleLogSource {
             opName = m1.getString(BcConstants.ISO8583_OP_NAME);
             docId = m1.getString(BcConstants.ISO8583_DOC_ID);
             origDocId = m1.getString(BcConstants.ISO8583_ORIG_DOC_ID);
-            hIdentity = m1.getString(BcConstants.ISO8583_HOST_ID);
-            pIdentity = m1.getString(BcConstants.ISO8583_PARTNER_ID);
+//            hIdentity = m1.getString(BcConstants.ISO8583_HOST_ID);
+//            pIdentity = m1.getString(BcConstants.ISO8583_PARTNER_ID);
             System.out.println("opName="+opName+", docId="+docId);
             
             opName = (String)m1.getValue(BcConstants.ISO8583_OP_NAME);

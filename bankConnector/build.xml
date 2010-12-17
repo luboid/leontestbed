@@ -10,6 +10,7 @@
     <path id="bankConnector.classpath">
         <pathelement location="target/classes"/>
     	<fileset dir="lib" includes="**/*.jar" />
+    	<fileset dir="lib4build" includes="**/*.jar" />
     </path>
 	
     <target name="init">
@@ -144,6 +145,26 @@
     	
     </target>
 
+	<target name="ddl" description="Export schema to DDL file" depends="build"> 
+		<!-- compile model classes before running hibernatetool -->
 
+	  <!-- task definition; project.class.path contains all necessary libs -->
+	  <taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask"
+	      classpathref="bankConnector.classpath" />
+
+	  <hibernatetool destdir="export/db"> <!-- check that directory exists -->
+	    <jpaconfiguration persistenceunit="myPersistenceUnitName" />
+	    <classpath path="target/classes">
+
+	      <!--
+	          compiled model classes and other configuration files don't forget
+	          to put the parent directory of META-INF/persistence.xml here
+	      -->
+	    </classpath>
+	    <hbm2ddl outputfilename="schemaexport.sql" format="true"
+	        export="false" drop="true" />
+	  </hibernatetool>
+		
+	</target>
 
 </project>
