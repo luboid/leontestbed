@@ -9,10 +9,14 @@
 	   default-autowire="byName" default-lazy-init="true">
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<!-- property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@192.168.68.66:1521:ORCL"/>
 		<property name="username" value="gwtest"/>
-		<property name="password" value="1234"/>
+		<property name="password" value="1234"/-->
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/bankB"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>		
 	</bean>
 
 	<!--Hibernate SessionFatory-->
@@ -20,33 +24,30 @@
 		<property name="dataSource" ref="dataSource"/>
 		<property name="annotatedClasses">
 			<list>
-				<value>com.cnaps2.cncc.ebo.TblTxEbo</value>
-				<value>com.cnaps2.cncc.ebo.TblTxDetailEbo</value>
-				<value>com.cnaps2.cncc.ebo.TblHiberEbo</value>
-				<value>com.cnaps2.cncc.ebo.TblResendEbo</value>
-
-    			<value>com.cnaps2.cncc.ebo.ConfNodeEbo</value>
-    			<value>com.cnaps2.cncc.ebo.ConfProtocolEbo</value>
-    			<value>com.cnaps2.cncc.ebo.ConfTransportEbo</value>
-    			<value>com.cnaps2.cncc.ebo.ConfInPortEbo</value>
-    			<value>com.cnaps2.cncc.ebo.ConfOutPortEbo</value>
-    			<value>com.cnaps2.cncc.ebo.ConfOperationEbo</value>
-    			<value>com.cnaps2.cncc.ebo.ConfRouteRuleEbo</value>
-
-    			<value>com.cnaps2.cncc.ebo.SysParamCtrlEbo</value>
-    			<value>com.cnaps2.cncc.ebo.SysOrgEbo</value>
-    			<value>com.cnaps2.cncc.ebo.SysUserEbo</value>
-    			<value>com.cnaps2.cncc.ebo.SysFuncsEbo</value>
-    			<value>com.cnaps2.cncc.ebo.SysOperEbo</value>
-    			<value>com.cnaps2.cncc.ebo.msg.MsgListEbo</value>
-    			<value>com.cnaps2.cncc.ebo.msg.MsgPairEbo</value>
-
+				<value>com.topfinance.cfg.jpa.JpaCfgDownOutMH</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgUpInMH</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgRouteRule</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgOutPort</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgInPort</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransportJetty</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransport8583</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransportIBMMQ</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransportAMQ</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransportInfo</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgNode</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgOperation</value>
+    			<value>com.topfinance.cfg.jpa.JpaCfgProtocol</value>
+    			
+    			<value>com.topfinance.ebo.msg.Ibps10100101</value>
+    			<value>com.topfinance.ebo.msg.Ibps10200101</value>
+    			<value>com.topfinance.ebo.msg.Saps60100101</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>				
-				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
+				<!-- prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop-->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.cache.use_query_cache">true</prop>
 			</props>
@@ -56,29 +57,8 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	<bean id="transportManager"   class="com.cnaps2.cncc.service.impl.TransportManagerImpl"/>
-	<bean id="nodeManager"   class="com.cnaps2.cncc.service.impl.NodeManagerImpl"/>
-	<bean id="protocolManager"   class="com.cnaps2.cncc.service.impl.ProtocolManagerImpl"/>
-	<bean id="routeManager"   class="com.cnaps2.cncc.service.impl.RouteRuleManagerImpl"/>
-	<bean id="inPortManager"   class="com.cnaps2.cncc.service.impl.InPortManagerImpl"/>
-	<bean id="outPortManager"   class="com.cnaps2.cncc.service.impl.OutPortManagerImpl"/>
-	<bean id="operManager"   class="com.cnaps2.cncc.service.impl.OperationManagerImpl"/>
-	
-	<bean id="ctrlManager"   class="com.cnaps2.cncc.service.impl.ParamCtrlManagerImpl"/>
-	<bean id="sysOrgManager"   class="com.cnaps2.cncc.service.impl.SysOrgManagerImpl"/>
-	<bean id="sysUserManager"   class="com.cnaps2.cncc.service.impl.SysUserManagerImpl"/>
-	<bean id="sysFuncManager"   class="com.cnaps2.cncc.service.impl.SysFuncManagerImpl"/>
-	<bean id="sysOperManager"   class="com.cnaps2.cncc.service.impl.SysOperManagerImpl"/>
-					
-	<bean id="tblTxManager"   class="com.cnaps2.cncc.service.impl.TblTxManagerImpl"/>
-	<bean id="tblTxDetailManager"   class="com.cnaps2.cncc.service.impl.TblTxDetailManagerImpl"/>
-	<bean id="tblHiberManager"   class="com.cnaps2.cncc.service.impl.TblHiberManagerImpl"/>
-	<bean id="tblResendManager"   class="com.cnaps2.cncc.service.impl.TblResendManagerImpl"/>
-
-	<bean id="ibpsManager"   class="com.cnaps2.cncc.service.impl.IBPSManagerImpl"/>	
-	<bean id="msgMatchManager"   class="com.cnaps2.cncc.service.impl.MsgMatchManagerImpl"/>	
-	
-
+	<bean id="protocolManager"   class="com.topfinance.cfg.jpa.dao.ProtocolManagerImpl"/>
+	<bean id="dao"   class="com.topfinance.db.dao.HibernateGenericDao"/>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 
 	<aop:aspectj-autoproxy/>

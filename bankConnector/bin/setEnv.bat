@@ -2,6 +2,7 @@ echo off
 
 set BC2_HOME=D:\bankConnector\source
 set JAVA_HOME=D:\Program Files\Java\jdk1.6.0_17
+rem set CFGTYPE=DB
 set CFGTYPE=FILE
 
 
@@ -88,6 +89,12 @@ set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\gwXML\gwccms.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\gwXML\gwibps.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\gwXML\gwiso.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\gwXML\gwbind.jar
+set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\mq\com.ibm.mq.jar
+set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\mq\com.ibm.mq.jms.Nojndi.jar
+set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\mq\com.ibm.mq.soap.jar
+set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\mq\com.ibm.mqjms.jar
+set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\mq\connector.jar
+set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\mq\dhbcore.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\camel-core-2.3.0.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\camel-http-2.3.0.jar
 set	CLASSPATH=%CLASSPATH%;%BC2_HOME%\lib\camel-jetty-2.3.0.jar
