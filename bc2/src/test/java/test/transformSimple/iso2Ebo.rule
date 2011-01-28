@@ -1,0 +1,8 @@
+<simpleMappingRule targetName="com.topfinance.ebo.msg.Ibps10100101">
+   <mappings class="java.util.ArrayList">
+      <mapping targetPath="grpHdrMsgId" srcPath="f128"/>
+      <mapping targetPath="btchBookg" srcPath="f82"/>
+      <mapping targetPath="nbOfTxs" srcPath="f83"/>
+      <mapping targetPath="ctrlSum" srcPath="f84"/>
+   </mappings>
+</simpleMappingRule>

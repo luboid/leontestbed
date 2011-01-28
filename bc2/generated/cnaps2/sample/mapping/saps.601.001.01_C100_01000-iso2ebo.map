@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">test.transform.IsoObj</param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps60100101" createOnElement="test.transform.IsoObj">
+ 		<jb:value data="/test.transform.IsoObj/f128"  property="grpHdrMsgId"/>
+ 		<jb:value data="/test.transform.IsoObj/f81" decoder="com.topfinance.smooks.IsoDateDecoder"  property="creDtTm"/>
+ 		<jb:value data="/test.transform.IsoObj/f82"  property="emailAdr"/>
+ 		<jb:value data="/test.transform.IsoObj/f83"  property="addtlInf"/>
+ 		<jb:value data="/test.transform.IsoObj/f84"  property="ntfctnId"/>
+ 		<jb:value data="/test.transform.IsoObj/f85" decoder="com.topfinance.smooks.IsoDateDecoder"  property="creDtTm1"/>
+ 		<jb:value data="/test.transform.IsoObj/f86"  property="rptgSrcPrtry"/>
+ 		<jb:value data="/test.transform.IsoObj/f87"  property="acctIdOthrId"/>
+ 		<jb:value data="/test.transform.IsoObj/f88"  property="rltdAcctIdOthrId"/>
+ 		<jb:value data="/test.transform.IsoObj/f89"  property="amtValue"/>
+ 		<jb:value data="/test.transform.IsoObj/f90"  property="amtCcy"/>
+ 		<jb:value data="/test.transform.IsoObj/f91"  property="cdtDbtInd"/>
+ 		<jb:value data="/test.transform.IsoObj/f92"  property="ntrySts"/>
+ 		<jb:value data="/test.transform.IsoObj/f93" decoder="com.topfinance.smooks.IsoDateDecoder"  property="bookgDtDt"/>
+ 		<jb:value data="/test.transform.IsoObj/f94"  property="domnCd"/>
+ 		<jb:value data="/test.transform.IsoObj/f95"  property="fmlyCd"/>
+ 		<jb:value data="/test.transform.IsoObj/f96"  property="subFmlyCd"/>
+ 		<jb:value data="/test.transform.IsoObj/f97"  property="amtValue1"/>
+ 		<jb:value data="/test.transform.IsoObj/f98"  property="amtCcy1"/>
+ 		<jb:value data="/test.transform.IsoObj/f99"  property="clrSysRef"/>
+ 		<jb:value data="/test.transform.IsoObj/f100"  property="dbtrNm"/>
+ 		<jb:value data="/test.transform.IsoObj/f101"  property="dbtrAcctIdOthrId"/>
+ 		<jb:value data="/test.transform.IsoObj/f102"  property="dbtrAcctIdOthrIssr"/>
+ 		<jb:value data="/test.transform.IsoObj/f103"  property="tpPrtry"/>
+	</jb:bean>
+</smooks-resource-list>  
+    

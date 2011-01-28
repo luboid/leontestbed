@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Saps60400101</param>
+  </params>
+  <jb:bean beanId="target" class="test.transform.IsoObj" createOnElement="com.topfinance.ebo.msg.Saps60400101">
+ 	<jb:value data="/com.topfinance.ebo.msg.Saps60400101/grpHdrMsgId"  property="f128"/>
+	<jb:expression property="f81" execOnElement="creDtTm">
+  	new com.topfinance.transform.smooks.IsoDateEncoder().encode2(_VALUE)
+  </jb:expression>  
+ 	<jb:value data="/com.topfinance.ebo.msg.Saps60400101/instgDrctPty"  property="f82"/>
+ 	<jb:value data="/com.topfinance.ebo.msg.Saps60400101/instgIndrctPty"  property="f83"/>
+ 	<jb:value data="/com.topfinance.ebo.msg.Saps60400101/instdDrctPty"  property="f84"/>
+ 	<jb:value data="/com.topfinance.ebo.msg.Saps60400101/instdIndrctPty"  property="f85"/>
+ 	<jb:value data="/com.topfinance.ebo.msg.Saps60400101/grpHdrSysCd"  property="f86"/>
+ 	<jb:value data="/com.topfinance.ebo.msg.Saps60400101/grpHdrRmk"  property="f87"/>
+ 	<jb:value data="/com.topfinance.ebo.msg.Saps60400101/orgnlMsgId"  property="f88"/>
+ 	<jb:value data="/com.topfinance.ebo.msg.Saps60400101/orgnlInstgDrctPty"  property="f89"/>
+ 	<jb:value data="/com.topfinance.ebo.msg.Saps60400101/orgnlMT"  property="f90"/>
+	</jb:bean>
+</smooks-resource-list>  
+    

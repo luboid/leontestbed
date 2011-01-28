@@ -1,0 +1,2198 @@
+<?xml version="1.0"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+
+    <!-- TODO:
+            THIS IS A CONFIGURATION TEMPLATE!!  It is not the finished article.
+
+            1. For each <jb:bindings> element, set the createOnElement attribute to the event element that should
+               be used to create the bean instance.
+            2. Update the <jb:value data> attributes to select the event element/attribute supplying the binding
+               data for that bean property.
+            3. Check the <jb:value decoder> attributes.  Not all will be set, depending on the actual property type.
+               These must be configured by hand e.g. you may need to configure <jb:decodeParam>
+               sub-elements for the decoder on some of the bindings.  E.g. for a date field:
+                    <jb:value property="date" data="header/date" decoder="Date">
+                        <jb:decodeParam name="format">EEE MMM dd HH:mm:ss z yyyy</jb:decodeParam>
+                    </jb:value>
+            4. Double-check the binding config elements (<jb:value> and <jb:wiring>), making sure all Java properties
+               have been covered in the generated configuration.
+
+            Determining appropriate values for the <jb:bean createOnElement> and <jb:value data> attributes can
+            sometimes be difficult, especially for non XML Sources (Java etc).  The Html Reporting tool can be a great
+            help here because it helps you visualise the input message model (against which the selectors will be
+            applied) as seen by Smooks.  So, first off, generate a report using your Source data, but with an empty
+            transformation configuration.  In the report, you can see the model against which you need to add your
+            configurations.  Add the configurations one at a time, rerunning the report to check they are being applied.
+
+            For details on how to run a report, see the Smooks User Guide (http://milyn.codehaus.org/Smooks+User+Guide#SmooksUserGuide-CheckingtheSmooksExecutionProcess).
+    -->
+
+    
+    <jb:bean beanId="document" class="com.cnaps2.xml.iso20022.pacs.v00800102.Document" createOnElement="$TODO$">
+        <jb:wiring property="fiToFICstmrCdtTrf" beanIdRef="fiToFICstmrCdtTrf" />
+    </jb:bean>
+
+    <jb:bean beanId="fiToFICstmrCdtTrf" class="com.cnaps2.xml.iso20022.pacs.v00800102.FIToFICustomerCreditTransferV02" createOnElement="$TODO$">
+        <jb:wiring property="grpHdr" beanIdRef="grpHdr" />
+        <jb:wiring property="cdtTrfTxInf" beanIdRef="cdtTrfTxInf" />
+    </jb:bean>
+
+    <jb:bean beanId="grpHdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GroupHeader33" createOnElement="$TODO$">
+        <jb:value property="msgId" decoder="String" data="$TODO$" />
+        <jb:value property="creDtTm" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="btchBookg" decoder="Boolean" data="$TODO$" />
+        <jb:value property="nbOfTxs" decoder="String" data="$TODO$" />
+        <jb:value property="ctrlSum" decoder="$TODO$" data="$TODO$" />
+        <jb:wiring property="ttlIntrBkSttlmAmt" beanIdRef="ttlIntrBkSttlmAmt" />
+        <jb:value property="intrBkSttlmDt" decoder="$TODO$" data="$TODO$" />
+        <jb:wiring property="sttlmInf" beanIdRef="sttlmInf" />
+        <jb:wiring property="pmtTpInf" beanIdRef="pmtTpInf" />
+        <jb:wiring property="instgAgt" beanIdRef="instgAgt" />
+        <jb:wiring property="instdAgt" beanIdRef="instdAgt" />
+    </jb:bean>
+
+    <jb:bean beanId="ttlIntrBkSttlmAmt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveCurrencyAndAmount" createOnElement="$TODO$">
+        <jb:value property="value" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="sttlmInf" class="com.cnaps2.xml.iso20022.pacs.v00800102.SettlementInformation13" createOnElement="$TODO$">
+        <jb:value property="sttlmMtd" decoder="String" data="$TODO$" />
+        <jb:wiring property="sttlmAcct" beanIdRef="sttlmAcct" />
+        <jb:wiring property="clrSys" beanIdRef="clrSys" />
+        <jb:wiring property="instgRmbrsmntAgt" beanIdRef="instgRmbrsmntAgt" />
+        <jb:wiring property="instgRmbrsmntAgtAcct" beanIdRef="instgRmbrsmntAgtAcct" />
+        <jb:wiring property="instdRmbrsmntAgt" beanIdRef="instdRmbrsmntAgt" />
+        <jb:wiring property="instdRmbrsmntAgtAcct" beanIdRef="instdRmbrsmntAgtAcct" />
+        <jb:wiring property="thrdRmbrsmntAgt" beanIdRef="thrdRmbrsmntAgt" />
+        <jb:wiring property="thrdRmbrsmntAgtAcct" beanIdRef="thrdRmbrsmntAgtAcct" />
+    </jb:bean>
+
+    <jb:bean beanId="sttlmAcct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSys" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification3Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="instgRmbrsmntAgt" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="instgRmbrsmntAgtAcct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="instdRmbrsmntAgt" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="instdRmbrsmntAgtAcct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="thrdRmbrsmntAgt" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="thrdRmbrsmntAgtAcct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pmtTpInf" class="com.cnaps2.xml.iso20022.pacs.v00800102.PaymentTypeInformation21" createOnElement="$TODO$">
+        <jb:value property="instrPrty" decoder="String" data="$TODO$" />
+        <jb:value property="clrChanl" decoder="String" data="$TODO$" />
+        <jb:wiring property="svcLvl" beanIdRef="svcLvl" />
+        <jb:wiring property="lclInstrm" beanIdRef="lclInstrm" />
+        <jb:wiring property="ctgyPurp" beanIdRef="ctgyPurp" />
+    </jb:bean>
+
+    <jb:bean beanId="svcLvl" class="com.cnaps2.xml.iso20022.pacs.v00800102.ServiceLevel8Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="lclInstrm" class="com.cnaps2.xml.iso20022.pacs.v00800102.LocalInstrument2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="ctgyPurp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CategoryPurpose1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="instgAgt" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="instdAgt" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="cdtTrfTxInf" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="cdtTrfTxInf_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="cdtTrfTxInf_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.CreditTransferTransactionInformation11" createOnElement="$TODO$">
+        <jb:wiring property="pmtId" beanIdRef="pmtId" />
+        <jb:wiring property="pmtTpInf" beanIdRef="pmtTpInf" />
+        <jb:wiring property="intrBkSttlmAmt" beanIdRef="intrBkSttlmAmt" />
+        <jb:value property="intrBkSttlmDt" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="sttlmPrty" decoder="String" data="$TODO$" />
+        <jb:wiring property="sttlmTmIndctn" beanIdRef="sttlmTmIndctn" />
+        <jb:wiring property="sttlmTmReq" beanIdRef="sttlmTmReq" />
+        <jb:value property="accptncDtTm" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="poolgAdjstmntDt" decoder="$TODO$" data="$TODO$" />
+        <jb:wiring property="instdAmt" beanIdRef="instdAmt" />
+        <jb:value property="xchgRate" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="chrgBr" decoder="String" data="$TODO$" />
+        <jb:wiring property="chrgsInf" beanIdRef="chrgsInf" />
+        <jb:wiring property="prvsInstgAgt" beanIdRef="prvsInstgAgt" />
+        <jb:wiring property="prvsInstgAgtAcct" beanIdRef="prvsInstgAgtAcct" />
+        <jb:wiring property="instgAgt" beanIdRef="instgAgt" />
+        <jb:wiring property="instdAgt" beanIdRef="instdAgt" />
+        <jb:wiring property="intrmyAgt1" beanIdRef="intrmyAgt1" />
+        <jb:wiring property="intrmyAgt1Acct" beanIdRef="intrmyAgt1Acct" />
+        <jb:wiring property="intrmyAgt2" beanIdRef="intrmyAgt2" />
+        <jb:wiring property="intrmyAgt2Acct" beanIdRef="intrmyAgt2Acct" />
+        <jb:wiring property="intrmyAgt3" beanIdRef="intrmyAgt3" />
+        <jb:wiring property="intrmyAgt3Acct" beanIdRef="intrmyAgt3Acct" />
+        <jb:wiring property="ultmtDbtr" beanIdRef="ultmtDbtr" />
+        <jb:wiring property="initgPty" beanIdRef="initgPty" />
+        <jb:wiring property="dbtr" beanIdRef="dbtr" />
+        <jb:wiring property="dbtrAcct" beanIdRef="dbtrAcct" />
+        <jb:wiring property="dbtrAgt" beanIdRef="dbtrAgt" />
+        <jb:wiring property="dbtrAgtAcct" beanIdRef="dbtrAgtAcct" />
+        <jb:wiring property="cdtrAgt" beanIdRef="cdtrAgt" />
+        <jb:wiring property="cdtrAgtAcct" beanIdRef="cdtrAgtAcct" />
+        <jb:wiring property="cdtr" beanIdRef="cdtr" />
+        <jb:wiring property="cdtrAcct" beanIdRef="cdtrAcct" />
+        <jb:wiring property="ultmtCdtr" beanIdRef="ultmtCdtr" />
+        <jb:wiring property="instrForCdtrAgt" beanIdRef="instrForCdtrAgt" />
+        <jb:wiring property="instrForNxtAgt" beanIdRef="instrForNxtAgt" />
+        <jb:wiring property="purp" beanIdRef="purp" />
+        <jb:wiring property="rgltryRptg" beanIdRef="rgltryRptg" />
+        <jb:wiring property="rltdRmtInf" beanIdRef="rltdRmtInf" />
+        <jb:wiring property="rmtInf" beanIdRef="rmtInf" />
+    </jb:bean>
+
+    <jb:bean beanId="pmtId" class="com.cnaps2.xml.iso20022.pacs.v00800102.PaymentIdentification3" createOnElement="$TODO$">
+        <jb:value property="instrId" decoder="String" data="$TODO$" />
+        <jb:value property="endToEndId" decoder="String" data="$TODO$" />
+        <jb:value property="txId" decoder="String" data="$TODO$" />
+        <jb:value property="clrSysRef" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pmtTpInf" class="com.cnaps2.xml.iso20022.pacs.v00800102.PaymentTypeInformation21" createOnElement="$TODO$">
+        <jb:value property="instrPrty" decoder="String" data="$TODO$" />
+        <jb:value property="clrChanl" decoder="String" data="$TODO$" />
+        <jb:wiring property="svcLvl" beanIdRef="svcLvl" />
+        <jb:wiring property="lclInstrm" beanIdRef="lclInstrm" />
+        <jb:wiring property="ctgyPurp" beanIdRef="ctgyPurp" />
+    </jb:bean>
+
+    <jb:bean beanId="svcLvl" class="com.cnaps2.xml.iso20022.pacs.v00800102.ServiceLevel8Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="lclInstrm" class="com.cnaps2.xml.iso20022.pacs.v00800102.LocalInstrument2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="ctgyPurp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CategoryPurpose1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="intrBkSttlmAmt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveCurrencyAndAmount" createOnElement="$TODO$">
+        <jb:value property="value" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="sttlmTmIndctn" class="com.cnaps2.xml.iso20022.pacs.v00800102.SettlementDateTimeIndication1" createOnElement="$TODO$">
+        <jb:value property="dbtDtTm" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="cdtDtTm" decoder="$TODO$" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="sttlmTmReq" class="com.cnaps2.xml.iso20022.pacs.v00800102.SettlementTimeRequest2" createOnElement="$TODO$">
+    </jb:bean>
+
+    <jb:bean beanId="instdAmt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveOrHistoricCurrencyAndAmount" createOnElement="$TODO$">
+        <jb:value property="value" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="chrgsInf" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="chrgsInf_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="chrgsInf_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.ChargesInformation5" createOnElement="$TODO$">
+        <jb:wiring property="amt" beanIdRef="amt" />
+        <jb:wiring property="pty" beanIdRef="pty" />
+    </jb:bean>
+
+    <jb:bean beanId="amt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveOrHistoricCurrencyAndAmount" createOnElement="$TODO$">
+        <jb:value property="value" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pty" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="prvsInstgAgt" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="prvsInstgAgtAcct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="instgAgt" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="instdAgt" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="intrmyAgt1" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="intrmyAgt1Acct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="intrmyAgt2" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="intrmyAgt2Acct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="intrmyAgt3" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="intrmyAgt3Acct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="ultmtDbtr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32" createOnElement="$TODO$">
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:value property="ctryOfRes" decoder="String" data="$TODO$" />
+        <jb:wiring property="ctctDtls" beanIdRef="ctctDtls" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.Party6Choice" createOnElement="$TODO$">
+        <jb:wiring property="orgId" beanIdRef="orgId" />
+        <jb:wiring property="prvtId" beanIdRef="prvtId" />
+    </jb:bean>
+
+    <jb:bean beanId="orgId" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentification4" createOnElement="$TODO$">
+        <jb:value property="bicOrBEI" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericOrganisationIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="prvtId" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentification5" createOnElement="$TODO$">
+        <jb:wiring property="dtAndPlcOfBirth" beanIdRef="dtAndPlcOfBirth" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="dtAndPlcOfBirth" class="com.cnaps2.xml.iso20022.pacs.v00800102.DateAndPlaceOfBirth" createOnElement="$TODO$">
+        <jb:value property="birthDt" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="prvcOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="cityOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="ctryOfBirth" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericPersonIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="ctctDtls" class="com.cnaps2.xml.iso20022.pacs.v00800102.ContactDetails2" createOnElement="$TODO$">
+        <jb:value property="nmPrfx" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:value property="phneNb" decoder="String" data="$TODO$" />
+        <jb:value property="mobNb" decoder="String" data="$TODO$" />
+        <jb:value property="faxNb" decoder="String" data="$TODO$" />
+        <jb:value property="emailAdr" decoder="String" data="$TODO$" />
+        <jb:value property="othr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="initgPty" class="com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32" createOnElement="$TODO$">
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:value property="ctryOfRes" decoder="String" data="$TODO$" />
+        <jb:wiring property="ctctDtls" beanIdRef="ctctDtls" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.Party6Choice" createOnElement="$TODO$">
+        <jb:wiring property="orgId" beanIdRef="orgId" />
+        <jb:wiring property="prvtId" beanIdRef="prvtId" />
+    </jb:bean>
+
+    <jb:bean beanId="orgId" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentification4" createOnElement="$TODO$">
+        <jb:value property="bicOrBEI" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericOrganisationIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="prvtId" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentification5" createOnElement="$TODO$">
+        <jb:wiring property="dtAndPlcOfBirth" beanIdRef="dtAndPlcOfBirth" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="dtAndPlcOfBirth" class="com.cnaps2.xml.iso20022.pacs.v00800102.DateAndPlaceOfBirth" createOnElement="$TODO$">
+        <jb:value property="birthDt" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="prvcOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="cityOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="ctryOfBirth" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericPersonIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="ctctDtls" class="com.cnaps2.xml.iso20022.pacs.v00800102.ContactDetails2" createOnElement="$TODO$">
+        <jb:value property="nmPrfx" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:value property="phneNb" decoder="String" data="$TODO$" />
+        <jb:value property="mobNb" decoder="String" data="$TODO$" />
+        <jb:value property="faxNb" decoder="String" data="$TODO$" />
+        <jb:value property="emailAdr" decoder="String" data="$TODO$" />
+        <jb:value property="othr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="dbtr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32" createOnElement="$TODO$">
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:value property="ctryOfRes" decoder="String" data="$TODO$" />
+        <jb:wiring property="ctctDtls" beanIdRef="ctctDtls" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.Party6Choice" createOnElement="$TODO$">
+        <jb:wiring property="orgId" beanIdRef="orgId" />
+        <jb:wiring property="prvtId" beanIdRef="prvtId" />
+    </jb:bean>
+
+    <jb:bean beanId="orgId" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentification4" createOnElement="$TODO$">
+        <jb:value property="bicOrBEI" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericOrganisationIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="prvtId" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentification5" createOnElement="$TODO$">
+        <jb:wiring property="dtAndPlcOfBirth" beanIdRef="dtAndPlcOfBirth" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="dtAndPlcOfBirth" class="com.cnaps2.xml.iso20022.pacs.v00800102.DateAndPlaceOfBirth" createOnElement="$TODO$">
+        <jb:value property="birthDt" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="prvcOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="cityOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="ctryOfBirth" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericPersonIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="ctctDtls" class="com.cnaps2.xml.iso20022.pacs.v00800102.ContactDetails2" createOnElement="$TODO$">
+        <jb:value property="nmPrfx" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:value property="phneNb" decoder="String" data="$TODO$" />
+        <jb:value property="mobNb" decoder="String" data="$TODO$" />
+        <jb:value property="faxNb" decoder="String" data="$TODO$" />
+        <jb:value property="emailAdr" decoder="String" data="$TODO$" />
+        <jb:value property="othr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="dbtrAcct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="dbtrAgt" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="dbtrAgtAcct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="cdtrAgt" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4" createOnElement="$TODO$">
+        <jb:wiring property="finInstnId" beanIdRef="finInstnId" />
+        <jb:wiring property="brnchId" beanIdRef="brnchId" />
+    </jb:bean>
+
+    <jb:bean beanId="finInstnId" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7" createOnElement="$TODO$">
+        <jb:value property="bic" decoder="String" data="$TODO$" />
+        <jb:wiring property="clrSysMmbId" beanIdRef="clrSysMmbId" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysMmbId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="$TODO$">
+        <jb:wiring property="clrSysId" beanIdRef="clrSysId" />
+        <jb:value property="mmbId" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="clrSysId" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="brnchId" class="com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="cdtrAgtAcct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="cdtr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32" createOnElement="$TODO$">
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:value property="ctryOfRes" decoder="String" data="$TODO$" />
+        <jb:wiring property="ctctDtls" beanIdRef="ctctDtls" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.Party6Choice" createOnElement="$TODO$">
+        <jb:wiring property="orgId" beanIdRef="orgId" />
+        <jb:wiring property="prvtId" beanIdRef="prvtId" />
+    </jb:bean>
+
+    <jb:bean beanId="orgId" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentification4" createOnElement="$TODO$">
+        <jb:value property="bicOrBEI" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericOrganisationIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="prvtId" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentification5" createOnElement="$TODO$">
+        <jb:wiring property="dtAndPlcOfBirth" beanIdRef="dtAndPlcOfBirth" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="dtAndPlcOfBirth" class="com.cnaps2.xml.iso20022.pacs.v00800102.DateAndPlaceOfBirth" createOnElement="$TODO$">
+        <jb:value property="birthDt" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="prvcOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="cityOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="ctryOfBirth" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericPersonIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="ctctDtls" class="com.cnaps2.xml.iso20022.pacs.v00800102.ContactDetails2" createOnElement="$TODO$">
+        <jb:value property="nmPrfx" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:value property="phneNb" decoder="String" data="$TODO$" />
+        <jb:value property="mobNb" decoder="String" data="$TODO$" />
+        <jb:value property="faxNb" decoder="String" data="$TODO$" />
+        <jb:value property="emailAdr" decoder="String" data="$TODO$" />
+        <jb:value property="othr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="cdtrAcct" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16" createOnElement="$TODO$">
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="$TODO$">
+        <jb:value property="iban" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="ultmtCdtr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32" createOnElement="$TODO$">
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:value property="ctryOfRes" decoder="String" data="$TODO$" />
+        <jb:wiring property="ctctDtls" beanIdRef="ctctDtls" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.Party6Choice" createOnElement="$TODO$">
+        <jb:wiring property="orgId" beanIdRef="orgId" />
+        <jb:wiring property="prvtId" beanIdRef="prvtId" />
+    </jb:bean>
+
+    <jb:bean beanId="orgId" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentification4" createOnElement="$TODO$">
+        <jb:value property="bicOrBEI" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericOrganisationIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="prvtId" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentification5" createOnElement="$TODO$">
+        <jb:wiring property="dtAndPlcOfBirth" beanIdRef="dtAndPlcOfBirth" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="dtAndPlcOfBirth" class="com.cnaps2.xml.iso20022.pacs.v00800102.DateAndPlaceOfBirth" createOnElement="$TODO$">
+        <jb:value property="birthDt" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="prvcOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="cityOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="ctryOfBirth" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericPersonIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="ctctDtls" class="com.cnaps2.xml.iso20022.pacs.v00800102.ContactDetails2" createOnElement="$TODO$">
+        <jb:value property="nmPrfx" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:value property="phneNb" decoder="String" data="$TODO$" />
+        <jb:value property="mobNb" decoder="String" data="$TODO$" />
+        <jb:value property="faxNb" decoder="String" data="$TODO$" />
+        <jb:value property="emailAdr" decoder="String" data="$TODO$" />
+        <jb:value property="othr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="instrForCdtrAgt" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="instrForCdtrAgt_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="instrForCdtrAgt_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.InstructionForCreditorAgent1" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="instrInf" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="instrForNxtAgt" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="instrForNxtAgt_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="instrForNxtAgt_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.InstructionForNextAgent1" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="instrInf" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="purp" class="com.cnaps2.xml.iso20022.pacs.v00800102.Purpose2Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="rgltryRptg" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="rgltryRptg_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="rgltryRptg_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.RegulatoryReporting3" createOnElement="$TODO$">
+        <jb:value property="dbtCdtRptgInd" decoder="String" data="$TODO$" />
+        <jb:wiring property="authrty" beanIdRef="authrty" />
+        <jb:wiring property="dtls" beanIdRef="dtls" />
+    </jb:bean>
+
+    <jb:bean beanId="authrty" class="com.cnaps2.xml.iso20022.pacs.v00800102.RegulatoryAuthority2" createOnElement="$TODO$">
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="dtls" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="dtls_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="dtls_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.StructuredRegulatoryReporting3" createOnElement="$TODO$">
+        <jb:value property="tp" decoder="String" data="$TODO$" />
+        <jb:value property="dt" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:wiring property="amt" beanIdRef="amt" />
+    </jb:bean>
+
+    <jb:bean beanId="amt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveOrHistoricCurrencyAndAmount" createOnElement="$TODO$">
+        <jb:value property="value" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="rltdRmtInf" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="rltdRmtInf_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="rltdRmtInf_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.RemittanceLocation2" createOnElement="$TODO$">
+        <jb:value property="rmtId" decoder="String" data="$TODO$" />
+        <jb:value property="rmtLctnMtd" decoder="String" data="$TODO$" />
+        <jb:value property="rmtLctnElctrncAdr" decoder="String" data="$TODO$" />
+        <jb:wiring property="rmtLctnPstlAdr" beanIdRef="rmtLctnPstlAdr" />
+    </jb:bean>
+
+    <jb:bean beanId="rmtLctnPstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.NameAndAddress10" createOnElement="$TODO$">
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="adr" beanIdRef="adr" />
+    </jb:bean>
+
+    <jb:bean beanId="adr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="rmtInf" class="com.cnaps2.xml.iso20022.pacs.v00800102.RemittanceInformation5" createOnElement="$TODO$">
+        <jb:wiring property="strd" beanIdRef="strd" />
+    </jb:bean>
+
+    <jb:bean beanId="strd" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="strd_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="strd_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.StructuredRemittanceInformation7" createOnElement="$TODO$">
+        <jb:wiring property="rfrdDocInf" beanIdRef="rfrdDocInf" />
+        <jb:wiring property="rfrdDocAmt" beanIdRef="rfrdDocAmt" />
+        <jb:wiring property="cdtrRefInf" beanIdRef="cdtrRefInf" />
+        <jb:wiring property="invcr" beanIdRef="invcr" />
+        <jb:wiring property="invcee" beanIdRef="invcee" />
+    </jb:bean>
+
+    <jb:bean beanId="rfrdDocInf" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="rfrdDocInf_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="rfrdDocInf_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.ReferredDocumentInformation3" createOnElement="$TODO$">
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="nb" decoder="String" data="$TODO$" />
+        <jb:value property="rltdDt" decoder="$TODO$" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.ReferredDocumentType2" createOnElement="$TODO$">
+        <jb:wiring property="cdOrPrtry" beanIdRef="cdOrPrtry" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="cdOrPrtry" class="com.cnaps2.xml.iso20022.pacs.v00800102.ReferredDocumentType1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="rfrdDocAmt" class="com.cnaps2.xml.iso20022.pacs.v00800102.RemittanceAmount1" createOnElement="$TODO$">
+        <jb:wiring property="duePyblAmt" beanIdRef="duePyblAmt" />
+        <jb:wiring property="dscntApldAmt" beanIdRef="dscntApldAmt" />
+        <jb:wiring property="cdtNoteAmt" beanIdRef="cdtNoteAmt" />
+        <jb:wiring property="taxAmt" beanIdRef="taxAmt" />
+        <jb:wiring property="adjstmntAmtAndRsn" beanIdRef="adjstmntAmtAndRsn" />
+        <jb:wiring property="rmtdAmt" beanIdRef="rmtdAmt" />
+    </jb:bean>
+
+    <jb:bean beanId="duePyblAmt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveOrHistoricCurrencyAndAmount" createOnElement="$TODO$">
+        <jb:value property="value" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="dscntApldAmt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveOrHistoricCurrencyAndAmount" createOnElement="$TODO$">
+        <jb:value property="value" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="cdtNoteAmt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveOrHistoricCurrencyAndAmount" createOnElement="$TODO$">
+        <jb:value property="value" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="taxAmt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveOrHistoricCurrencyAndAmount" createOnElement="$TODO$">
+        <jb:value property="value" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="adjstmntAmtAndRsn" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="adjstmntAmtAndRsn_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="adjstmntAmtAndRsn_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.DocumentAdjustment1" createOnElement="$TODO$">
+        <jb:wiring property="amt" beanIdRef="amt" />
+        <jb:value property="cdtDbtInd" decoder="String" data="$TODO$" />
+        <jb:value property="rsn" decoder="String" data="$TODO$" />
+        <jb:value property="addtlInf" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="amt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveOrHistoricCurrencyAndAmount" createOnElement="$TODO$">
+        <jb:value property="value" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="rmtdAmt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveOrHistoricCurrencyAndAmount" createOnElement="$TODO$">
+        <jb:value property="value" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="ccy" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="cdtrRefInf" class="com.cnaps2.xml.iso20022.pacs.v00800102.CreditorReferenceInformation2" createOnElement="$TODO$">
+        <jb:wiring property="tp" beanIdRef="tp" />
+        <jb:value property="ref" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CreditorReferenceType2" createOnElement="$TODO$">
+        <jb:wiring property="cdOrPrtry" beanIdRef="cdOrPrtry" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="cdOrPrtry" class="com.cnaps2.xml.iso20022.pacs.v00800102.CreditorReferenceType1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="invcr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32" createOnElement="$TODO$">
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:value property="ctryOfRes" decoder="String" data="$TODO$" />
+        <jb:wiring property="ctctDtls" beanIdRef="ctctDtls" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.Party6Choice" createOnElement="$TODO$">
+        <jb:wiring property="orgId" beanIdRef="orgId" />
+        <jb:wiring property="prvtId" beanIdRef="prvtId" />
+    </jb:bean>
+
+    <jb:bean beanId="orgId" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentification4" createOnElement="$TODO$">
+        <jb:value property="bicOrBEI" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericOrganisationIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="prvtId" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentification5" createOnElement="$TODO$">
+        <jb:wiring property="dtAndPlcOfBirth" beanIdRef="dtAndPlcOfBirth" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="dtAndPlcOfBirth" class="com.cnaps2.xml.iso20022.pacs.v00800102.DateAndPlaceOfBirth" createOnElement="$TODO$">
+        <jb:value property="birthDt" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="prvcOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="cityOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="ctryOfBirth" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericPersonIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="ctctDtls" class="com.cnaps2.xml.iso20022.pacs.v00800102.ContactDetails2" createOnElement="$TODO$">
+        <jb:value property="nmPrfx" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:value property="phneNb" decoder="String" data="$TODO$" />
+        <jb:value property="mobNb" decoder="String" data="$TODO$" />
+        <jb:value property="faxNb" decoder="String" data="$TODO$" />
+        <jb:value property="emailAdr" decoder="String" data="$TODO$" />
+        <jb:value property="othr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="invcee" class="com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32" createOnElement="$TODO$">
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:wiring property="pstlAdr" beanIdRef="pstlAdr" />
+        <jb:wiring property="id" beanIdRef="id" />
+        <jb:value property="ctryOfRes" decoder="String" data="$TODO$" />
+        <jb:wiring property="ctctDtls" beanIdRef="ctctDtls" />
+    </jb:bean>
+
+    <jb:bean beanId="pstlAdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6" createOnElement="$TODO$">
+        <jb:value property="adrTp" decoder="String" data="$TODO$" />
+        <jb:value property="dept" decoder="String" data="$TODO$" />
+        <jb:value property="subDept" decoder="String" data="$TODO$" />
+        <jb:value property="strtNm" decoder="String" data="$TODO$" />
+        <jb:value property="bldgNb" decoder="String" data="$TODO$" />
+        <jb:value property="pstCd" decoder="String" data="$TODO$" />
+        <jb:value property="twnNm" decoder="String" data="$TODO$" />
+        <jb:value property="ctrySubDvsn" decoder="String" data="$TODO$" />
+        <jb:value property="ctry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="id" class="com.cnaps2.xml.iso20022.pacs.v00800102.Party6Choice" createOnElement="$TODO$">
+        <jb:wiring property="orgId" beanIdRef="orgId" />
+        <jb:wiring property="prvtId" beanIdRef="prvtId" />
+    </jb:bean>
+
+    <jb:bean beanId="orgId" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentification4" createOnElement="$TODO$">
+        <jb:value property="bicOrBEI" decoder="String" data="$TODO$" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericOrganisationIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="prvtId" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentification5" createOnElement="$TODO$">
+        <jb:wiring property="dtAndPlcOfBirth" beanIdRef="dtAndPlcOfBirth" />
+        <jb:wiring property="othr" beanIdRef="othr" />
+    </jb:bean>
+
+    <jb:bean beanId="dtAndPlcOfBirth" class="com.cnaps2.xml.iso20022.pacs.v00800102.DateAndPlaceOfBirth" createOnElement="$TODO$">
+        <jb:value property="birthDt" decoder="$TODO$" data="$TODO$" />
+        <jb:value property="prvcOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="cityOfBirth" decoder="String" data="$TODO$" />
+        <jb:value property="ctryOfBirth" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="othr" class="java.util.ArrayList" createOnElement="$TODO$">
+        <jb:wiring beanIdRef="othr_entry" />
+    </jb:bean>
+
+    <jb:bean beanId="othr_entry" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericPersonIdentification1" createOnElement="$TODO$">
+        <jb:value property="id" decoder="String" data="$TODO$" />
+        <jb:wiring property="schmeNm" beanIdRef="schmeNm" />
+        <jb:value property="issr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="schmeNm" class="com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentificationSchemeName1Choice" createOnElement="$TODO$">
+        <jb:value property="cd" decoder="String" data="$TODO$" />
+        <jb:value property="prtry" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+    <jb:bean beanId="ctctDtls" class="com.cnaps2.xml.iso20022.pacs.v00800102.ContactDetails2" createOnElement="$TODO$">
+        <jb:value property="nmPrfx" decoder="String" data="$TODO$" />
+        <jb:value property="nm" decoder="String" data="$TODO$" />
+        <jb:value property="phneNb" decoder="String" data="$TODO$" />
+        <jb:value property="mobNb" decoder="String" data="$TODO$" />
+        <jb:value property="faxNb" decoder="String" data="$TODO$" />
+        <jb:value property="emailAdr" decoder="String" data="$TODO$" />
+        <jb:value property="othr" decoder="String" data="$TODO$" />
+    </jb:bean>
+
+</smooks-resource-list>

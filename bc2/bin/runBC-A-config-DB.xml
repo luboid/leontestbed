@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+	   default-autowire="byName" default-lazy-init="true">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<!-- property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@192.168.65.157:1521:BCQA"/>
+		<property name="username" value="hong01"/>
+		<property name="password" value="hong01"/-->
+		
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/bankA3?setUnicode=true&amp;characterEncoding=UTF-8"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>		
+	</bean>
+
+	<!--Hibernate SessionFatory-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.topfinance.cfg.jpa.JpaCfgFormat</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgFormat8583</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgRouteRule</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgPortOut</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgPortIn</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransInJetty</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransIn8583</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransInIBMMQ</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransInAMQ</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransIn</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransOut8583</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransOutAMQ</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgTransOut</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgNode</value>
+				<value>com.topfinance.cfg.jpa.JpaCfgOperation</value>
+    			<value>com.topfinance.cfg.jpa.JpaCfgProtocol</value>
+    			
+    			<value>com.topfinance.cfg.jpa.TCfgMapRuleEbo</value>
+    			<value>com.topfinance.cfg.jpa.TCfgMapRuleDetailEbo</value>
+    			<value>com.topfinance.cfg.jpa.TC2BisEleBscEbo</value>
+    			
+    			<value>com.topfinance.ebo.msg.Ibps10100101</value>
+    			<value>com.topfinance.ebo.msg.Ibps10200101</value>
+    			<value>com.topfinance.ebo.msg.Saps60100101</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>				
+				<!-- prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop-->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+			</props>
+		</property>
+	</bean>
+	<!--Hibernate TransactionManager-->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="protocolManager"   class="com.topfinance.cfg.jpa.dao.ProtocolManagerImpl"/>
+	<bean id="dao"   class="com.topfinance.db.dao.HibernateGenericDao"/>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<aop:aspectj-autoproxy/>
+
+
+	<aop:config proxy-target-class="true">
+		<aop:advisor pointcut="execution(* com.cnaps2.cncc.service.impl.*ManagerImpl.*(..))"
+					 advice-ref="txAdvice"/>				 
+		<aop:advisor pointcut="execution(* com.cnaps2.framework.dao.*Dao.*(..))" advice-ref="txAdvice"/>
+	</aop:config>
+
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
+			<tx:method name="*" rollback-for="com.cnaps2.framework.exception.AppException"/>
+		</tx:attributes>
+	</tx:advice>
+</beans>

@@ -1,0 +1,29 @@
+Web 问题：
+
+有关简单列举值：
+
+菜单= 协议操作：
+EBO = TCfgOperationEbo
+field= downPpReplyType
+lable= 下行回复模式
+列举值 = ( A=异步，S=同步，N=无回复）
+field= upPpReplyType
+lable= 上行回复模式
+列举值 = ( A=异步，S=同步，N=无回复）
+
+
+菜单= 传输信息：
+EBO = TCfgTransInEbo 和 TCfgTransOutEbo
+
+field=isprivate
+lable= 行内/行外
+列举值 = (T=行内，F=行外）
+
+field=type
+lable= 类型
+列举值 = (IBMMQ=IBMMQ，AMQ=ApacheMQ, 8583=ISO8583, JETTY=JETTY）
+
+field=provider 暂时从界面上隐藏掉吧。就是添加修改和列表都不显示这个字段
+
+field=clas，
+label=实现类  也隐藏掉这个字段。

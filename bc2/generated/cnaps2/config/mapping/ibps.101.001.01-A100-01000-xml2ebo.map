@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived">File:/D:\bankConnector\source\sample\Schema\pacs.008.001.02.xsd</param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ibps10100101" createOnElement="Document">
+		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/MsgId" property="grpHdrMsgId"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/BtchBookg" property="btchBookg"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/NbOfTxs" property="nbOfTxs"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/CtrlSum" property="ctrlSum"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/IntrBkSttlmDt" property="intrBkSttlmDt"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/SttlmInf/SttlmMtd" property="sttlmMtd"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtId/EndToEndId" property="endToEndId"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtId/TxId" property="pmtIdTxId"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtTpInf/InstrPrty" property="instrPrty"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtTpInf/CtgyPurp/Prtry" property="ctgyPurpPrtry"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/IntrBkSttlmAmt/Value" property="intrBkSttlmAmtValue"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/IntrBkSttlmAmt/@Ccy" property="intrBkSttlmAmtCcy"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/AccptncDtTm" property="accptncDtTm"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/ChrgBr" property="chrgBr"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/Dbtr/Nm" property="dbtrNm"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/Dbtr/CtctDtls/EmailAdr" property="emailAdr"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/DbtrAcct/Id/Othr/Id" property="dbtrAcctIdOthrId"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/DbtrAcct/Id/Othr/Issr" property="dbtrAcctIdOthrIssr"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/DbtrAcct/Tp/Prtry" property="tpPrtry"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="clrSysMmbIdMmbId"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/DbtrAgt/BrnchId/Id" property="brnchIdId"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/DbtrAgt/BrnchId/PstlAdr/CtrySubDvsn" property="ctrySubDvsn"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="clrSysMmbIdMmbId1"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/CdtrAgt/BrnchId/Id" property="brnchIdId1"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/Cdtr/Nm" property="cdtrNm"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/CdtrAcct/Id/Othr/Id" property="cdtrAcctIdOthrId"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/Purp/Prtry" property="purpPrtry"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="rmtInfUstrd"/>    
+	</jb:bean>
+</smooks-resource-list>  
+    

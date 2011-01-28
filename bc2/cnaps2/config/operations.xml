@@ -1,0 +1,62 @@
+<OperationDefinitions id="7">
+   <list>
+      <OperationDefinition class="com.topfinance.runtime.OperationDefinition" 
+      	id="8" name="ibps.101.001.01" 
+      	upIsEnabled="T" upReplyType="A" upIsReply="F" upAckType="ASYNC" 
+      	downIsEnabled="T" downReplyType="A" downIsReply="F" downAckType="ASYNC" 
+      	pathDocId="/Document/FIToFICstmrCdtTrf/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtTpInf/InstrPrty/text()" 
+      	pathOpClass="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtTpInf/CtgyPurp/Prtry/text()">
+         
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="9"
+      	name="ibps.102.001.01" upIsEnabled="T" upReplyType="A"
+      	upIsReply="T" upAckType="ASYNC" downIsEnabled="F"
+      	downReplyType="N" downIsReply="T" pathDocId=""
+      	pathOrigDocId="/Document/FIToFIPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgId/text()"
+      	pathOpType="/Document/FIToFIPmtStsRpt/TxInfAndSts/OrgnlTxRef/PmtTpInf/CtgyPurp/Prtry/text()" 
+      	pathOpClass="/Document/FIToFIPmtStsRpt/TxInfAndSts/OrgnlTxRef/PmtTpInf/InstrPrty/text()">
+
+      </OperationDefinition>
+
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="10"
+      	name="saps.601.001.01" 
+      	upIsEnabled="F" downIsEnabled="T"
+      	downReplyType="N" downIsReply="T" 
+      	pathDocId="/Document/BkToCstmrDbtCdtNtfctn/GrpHdr/MsgId/text()"
+      	pathOrigDocId="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Id/text()"
+      	pathOpType="/Document/BkToCstmrDbtCdtNtfctn/GrpHdr/MsgRcpt/CtctDtls/EmailAdr/text()" 
+      	pathOpClass="/Document/BkToCstmrDbtCdtNtfctn/GrpHdr/AddtlInf/text()"      	
+      	>
+
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="11"
+      	name="hvps.111.001.01" 
+      	upIsEnabled="T" upReplyType="A" upIsReply="F" upAckType="ASYNC" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="F" downAckType="ASYNC"  
+      	pathDocId="/Document/FIToFICstmrCdtTrf/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtTpInf/CtgyPurp/Prtry/text()" 
+      	pathOpClass="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/Purp/Prtry/text()"     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="12"
+      	name="saps.604.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/SttlmRtrRct/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/SttlmRtrRct/OrgnlGrpHdr/OrgnlMsgId/text()" 
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+   </list>
+</OperationDefinitions>

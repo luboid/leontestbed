@@ -1,0 +1,4 @@
+#Wed Dec 15 13:32:20 CST 2010
+default.configuration=bankConnector
+eclipse.preferences.version=1
+hibernate3.enabled=true

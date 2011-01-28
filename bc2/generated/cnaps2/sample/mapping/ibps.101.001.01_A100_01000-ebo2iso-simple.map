@@ -1,0 +1,33 @@
+<simpleMappingRule targetName="test.transform.IsoObj">
+   <mappings class="java.util.ArrayList">
+      <mapping  targetPath="f128" srcPath="grpHdrMsgId"/>
+      <mapping targetType="ISODATE" srcType="JAVADATE" targetPath="f81" srcPath="creDtTm"/>
+      <mapping  targetPath="f82" srcPath="btchBookg"/>
+      <mapping  targetPath="f83" srcPath="nbOfTxs"/>
+      <mapping  targetPath="f84" srcPath="ctrlSum"/>
+      <mapping targetType="ISODATE" srcType="JAVADATE" targetPath="f85" srcPath="intrBkSttlmDt"/>
+      <mapping  targetPath="f86" srcPath="sttlmMtd"/>
+      <mapping  targetPath="f87" srcPath="endToEndId"/>
+      <mapping  targetPath="f88" srcPath="pmtIdTxId"/>
+      <mapping  targetPath="f89" srcPath="instrPrty"/>
+      <mapping  targetPath="f90" srcPath="ctgyPurpPrtry"/>
+      <mapping  targetPath="f91" srcPath="intrBkSttlmAmtValue"/>
+      <mapping  targetPath="f92" srcPath="intrBkSttlmAmtCcy"/>
+      <mapping targetType="ISODATE" srcType="JAVADATE" targetPath="f93" srcPath="accptncDtTm"/>
+      <mapping  targetPath="f94" srcPath="chrgBr"/>
+      <mapping  targetPath="f95" srcPath="dbtrNm"/>
+      <mapping  targetPath="f96" srcPath="emailAdr"/>
+      <mapping  targetPath="f97" srcPath="dbtrAcctIdOthrId"/>
+      <mapping  targetPath="f98" srcPath="dbtrAcctIdOthrIssr"/>
+      <mapping  targetPath="f99" srcPath="tpPrtry"/>
+      <mapping  targetPath="f100" srcPath="clrSysMmbIdMmbId"/>
+      <mapping  targetPath="f101" srcPath="brnchIdId"/>
+      <mapping  targetPath="f102" srcPath="ctrySubDvsn"/>
+      <mapping  targetPath="f103" srcPath="clrSysMmbIdMmbId1"/>
+      <mapping  targetPath="f104" srcPath="brnchIdId1"/>
+      <mapping  targetPath="f105" srcPath="cdtrNm"/>
+      <mapping  targetPath="f106" srcPath="cdtrAcctIdOthrId"/>
+      <mapping  targetPath="f107" srcPath="purpPrtry"/>
+      <mapping  targetPath="f108" srcPath="rmtInfUstrd"/>
+   </mappings>
+</simpleMappingRule>

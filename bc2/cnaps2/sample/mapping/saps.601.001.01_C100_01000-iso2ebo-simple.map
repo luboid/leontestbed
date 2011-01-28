@@ -1,0 +1,28 @@
+<simpleMappingRule targetName="com.topfinance.ebo.msg.Saps60100101">
+   <mappings class="java.util.ArrayList">
+      <mapping  targetPath="grpHdrMsgId" srcPath="f128"/>
+      <mapping targetType="JAVADATE" srcType="ISODATE" targetPath="creDtTm" srcPath="f81"/>
+      <mapping  targetPath="emailAdr" srcPath="f82"/>
+      <mapping  targetPath="addtlInf" srcPath="f83"/>
+      <mapping  targetPath="ntfctnId" srcPath="f84"/>
+      <mapping targetType="JAVADATE" srcType="ISODATE" targetPath="creDtTm1" srcPath="f85"/>
+      <mapping  targetPath="rptgSrcPrtry" srcPath="f86"/>
+      <mapping  targetPath="acctIdOthrId" srcPath="f87"/>
+      <mapping  targetPath="rltdAcctIdOthrId" srcPath="f88"/>
+      <mapping  targetPath="amtValue" srcPath="f89"/>
+      <mapping  targetPath="amtCcy" srcPath="f90"/>
+      <mapping  targetPath="cdtDbtInd" srcPath="f91"/>
+      <mapping  targetPath="ntrySts" srcPath="f92"/>
+      <mapping targetType="JAVADATE" srcType="ISODATE" targetPath="bookgDtDt" srcPath="f93"/>
+      <mapping  targetPath="domnCd" srcPath="f94"/>
+      <mapping  targetPath="fmlyCd" srcPath="f95"/>
+      <mapping  targetPath="subFmlyCd" srcPath="f96"/>
+      <mapping  targetPath="amtValue1" srcPath="f97"/>
+      <mapping  targetPath="amtCcy1" srcPath="f98"/>
+      <mapping  targetPath="clrSysRef" srcPath="f99"/>
+      <mapping  targetPath="dbtrNm" srcPath="f100"/>
+      <mapping  targetPath="dbtrAcctIdOthrId" srcPath="f101"/>
+      <mapping  targetPath="dbtrAcctIdOthrIssr" srcPath="f102"/>
+      <mapping  targetPath="tpPrtry" srcPath="f103"/>
+   </mappings>
+</simpleMappingRule>

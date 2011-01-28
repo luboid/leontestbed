@@ -1,0 +1,46 @@
+http://jira.codehaus.org/browse/MILYN-553
+I have a Java class that contains two variables of the same User-defined Class which in turn contains non-simple type variables, e.g
+
+public class Person {
+   private Address addr1;
+   private Address addr2; 
+
+}
+
+public class Address{
+   private City city;
+}
+
+public class City {
+   private String name;
+}
+
+When use ConfigGenerator to generate the template config file, (Also it's same problem when using JBoss Tool's Smooks Eclipse plug-in)
+
+the config file will be generated as: 
+	<jb:bean beanId="person" class="Person" createOnElement="$TODO$">
+		<jb:wiring beanIdRef="addr1" property="addr1"/>
+		<jb:wiring beanIdRef="addr2" property="addr2"/>
+	</jb:bean>
+  <jb:bean beanId="addr1" class="Address" createOnElement="$TODO$">
+    <jb:wiring beanIdRef="city" property="city"/>
+  </jb:bean>
+ <jb:bean beanId="city" class="City" createOnElement="$TODO$">
+    <jb:value data="$TODO$" decoder="String" property="name"/
+  </jb:bean>
+  <jb:bean beanId="addr2" class="Address" createOnElement="$TODO$">
+    <jb:wiring beanIdRef="city" property="city"/>
+  </jb:bean>
+  <jb:bean beanId="city" class="City" createOnElement="$TODO$">
+    <jb:value data="$TODO$" decoder="String" property="name"/
+  </jb:bean>
+
+This is not correct, as the same beanId="city" is used twice. 
+
+This is a big trouble when I have a big Class structure to map and the template-gen does not really work. 
+
+Also the JbossTools's smooks Eclipse plug-in has the same problem generating wrong smooks config file from a Java Class.
+
+
+Cause and fix:
+The generation tool has to consider the possible of beanId conflication rather than simply let beanId=property's name;

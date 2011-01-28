@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="bankConnector/target/bc.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/bankConnector/bcjar.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="true" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=bankConnector/src\/main\/resources"/>
+        <file path="/bankConnector/build.xml.old"/>
+        <javaElement handleIdentifier="=bankConnector/src\/main\/java"/>
+        <javaElement handleIdentifier="=bankConnector/src\/test\/java"/>
+        <file path="/bankConnector/.checkstyle"/>
+        <file path="/bankConnector/build.xml"/>
+        <file path="/bankConnector/build-gen.xml"/>
+        <javaElement handleIdentifier="=bankConnector/src\/test\/gwXML"/>
+        <javaElement handleIdentifier="=bankConnector/src\/shared\/java"/>
+        <file path="/bankConnector/README.txt"/>
+        <file path="/bankConnector/.project"/>
+        <file path="/bankConnector/.classpath"/>
+    </selectedElements>
+</jardesc>

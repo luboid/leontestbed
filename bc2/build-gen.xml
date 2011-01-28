@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="bankConnector">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../eclipse-jee-helios-SR1-win32/eclipse"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="gwXML.location" value="../SVN-ROOT/gwXML"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+    <path id="smooks14.userclasspath">
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/xstream-1.2.2.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/antlr-2.7.7.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/commons-collections-3.1.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/commons-lang-2.4.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/commons-logging-1.1.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/dtdparser-1.21.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/freemarker-2.3.11.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/groovy-all-1.5.0.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/jackson-core-lgpl-1.0.1.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/jaxen-1.1.1.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/jline-0.9.93.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/jta-1.1.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/milyn-smooks-all-1.4-20101019.200704-5.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/mvel2-2.0.17.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/ognl-2.7.3.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/opencsv-1.8.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/persistence-api-1.0.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/slf4j-api-1.5.8.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/snakeyaml-1.6.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/stringtemplate-2.2.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/xercesImpl-2.6.2.jar"/>
+        <pathelement location="../../resource/smooks-1.4/smooks-1.4-Beta1/lib/xpp3_min-1.1.3.4.O.jar"/>
+    </path>
+    <path id="gwXML.classpath">
+        <pathelement location="${gwXML.location}/output/classes"/>
+    </path>
+    <path id="bankConnector.classpath">
+        <pathelement location="target/classes"/>
+        <pathelement location="lib/mysql-connector-java-3.1.12-bin.jar"/>
+        <pathelement location="lib/commons-cli-1.2.jar"/>
+        <pathelement location="lib/simple-xml-2.3.3.jar"/>
+        <pathelement location="lib/activation-1.1.jar"/>
+        <pathelement location="lib/activeio-core-3.1.2.jar"/>
+        <pathelement location="lib/activemq-camel-5.3.0.jar"/>
+        <pathelement location="lib/activemq-core-5.3.0.jar"/>
+        <pathelement location="lib/activemq-pool-5.3.0.jar"/>
+        <pathelement location="lib/activemq-protobuf-1.0.jar"/>
+        <pathelement location="lib/aopalliance-1.0.jar"/>
+        <pathelement location="lib/asm-3.1.jar"/>
+        <pathelement location="lib/aspectjrt-1.6.2.jar"/>
+        <pathelement location="lib/aspectjweaver-1.6.2.jar"/>
+        <pathelement location="lib/cglib-nodep-2.1_3.jar"/>
+        <pathelement location="lib/commons-logging-1.1.1.jar"/>
+        <pathelement location="lib/commons-logging-api-1.1.jar"/>
+        <pathelement location="lib/commons-management-1.0.jar"/>
+        <pathelement location="lib/commons-net-2.0.jar"/>
+        <pathelement location="lib/commons-pool-1.5.4.jar"/>
+        <pathelement location="lib/geronimo-j2ee-management_1.0_spec-1.1.jar"/>
+        <pathelement location="lib/geronimo-j2ee-management_1.1_spec-1.0.1.jar"/>
+        <pathelement location="lib/geronimo-jms_1.1_spec-1.1.1.jar"/>
+        <pathelement location="lib/geronimo-jta_1.0.1B_spec-1.0.1.jar"/>
+        <pathelement location="lib/groovy-all-1.7.0.jar"/>
+        <pathelement location="lib/jackson-asl-0.9.4.jar"/>
+        <pathelement location="lib/jaxb-api-2.1.jar"/>
+        <pathelement location="lib/jaxb-impl-2.1.12.jar"/>
+        <pathelement location="lib/jdom-1.0.jar"/>
+        <pathelement location="lib/jersey-atom-1.1.1-ea.jar"/>
+        <pathelement location="lib/jersey-core-1.1.1-ea.jar"/>
+        <pathelement location="lib/jersey-json-1.1.1-ea.jar"/>
+        <pathelement location="lib/jersey-server-1.1.1-ea.jar"/>
+        <pathelement location="lib/jersey-spring-1.1.1-ea.jar"/>
+        <pathelement location="lib/jettison-1.2.jar"/>
+        <pathelement location="lib/jline-0.9.94.jar"/>
+        <pathelement location="lib/jruby-1.4.0.jar"/>
+        <pathelement location="lib/jsr311-api-1.1.jar"/>
+        <pathelement location="lib/jstl-1.1.2.jar"/>
+        <pathelement location="lib/junit-4.4.jar"/>
+        <pathelement location="lib/kahadb-5.3.0.jar"/>
+        <pathelement location="lib/log4j-1.2.14.jar"/>
+        <pathelement location="lib/rome-0.9.jar"/>
+        <pathelement location="lib/sitemesh-2.3.jar"/>
+        <pathelement location="lib/slf4j-api-1.5.10.jar"/>
+        <pathelement location="lib/slf4j-log4j12-1.5.10.jar"/>
+        <pathelement location="lib/spring-2.5.6.jar"/>
+        <pathelement location="lib/spring-aop-2.5.6.jar"/>
+        <pathelement location="lib/spring-beans-2.5.6.jar"/>
+        <pathelement location="lib/spring-context-2.5.6.jar"/>
+        <pathelement location="lib/spring-context-support-2.5.6.jar"/>
+        <pathelement location="lib/spring-core-2.5.6.jar"/>
+        <pathelement location="lib/spring-jms-2.5.6.jar"/>
+        <pathelement location="lib/spring-tx-2.5.6.jar"/>
+        <pathelement location="lib/spring-web-2.5.6.jar"/>
+        <pathelement location="lib/standard-1.1.2.jar"/>
+        <pathelement location="lib/stax-api-1.0-2.jar"/>
+        <pathelement location="lib/stax-api-1.0.1.jar"/>
+        <pathelement location="lib/xbean-spring-3.5.jar"/>
+        <pathelement location="lib/commons-collections-3.2.1.jar"/>
+        <pathelement location="lib/commons-io-1.4.jar"/>
+        <pathelement location="lib/commons-lang-2.4.jar"/>
+        <pathelement location="lib/commons-httpclient-3.1.jar"/>
+        <pathelement location="lib/servlet-api-2.5-6.1.14.jar"/>
+        <pathelement location="lib/mina-core-1.1.7.jar"/>
+        <pathelement location="lib/jpos.jar"/>
+        <pathelement location="lib/commons-beanutils-1.8.3.jar"/>
+        <pathelement location="lib/switchGW/hibernate-3.2.0.ga.jar"/>
+        <pathelement location="lib/switchGW/hibernate-annotations-3.2.0.ga.jar"/>
+        <pathelement location="lib/jdom.jar"/>
+        <pathelement location="lib/freemarker.jar"/>
+        <pathelement location="lib/switchGW/antlr-2.7.6.jar"/>
+        <pathelement location="lib/switchGW/antlr-3.0ea8.jar"/>
+        <pathelement location="lib/switchGW/dom4j-1.6.1.jar"/>
+        <pathelement location="lib/switchGW/ehcache-1.2.3.jar"/>
+        <pathelement location="lib/switchGW/ojdbc14.jar"/>
+        <pathelement location="lib/switchGW/persistence-api-1.0.jar"/>
+        <pathelement location="lib/camel-core-2.3.0.jar"/>
+        <pathelement location="lib/camel-http-2.3.0.jar"/>
+        <pathelement location="lib/camel-jetty-2.3.0.jar"/>
+        <pathelement location="lib/camel-jms-2.3.0.jar"/>
+        <pathelement location="lib/camel-mina-2.3.0.jar"/>
+        <pathelement location="lib/camel-ruby-2.3.0.jar"/>
+        <pathelement location="lib/camel-spring-2.3.0.jar"/>
+        <pathelement location="lib/camel-test-2.3.0.jar"/>
+        <pathelement location="lib/jetty-continuation-7.0.1.v20091125.jar"/>
+        <pathelement location="lib/jetty-http-7.0.1.v20091125.jar"/>
+        <pathelement location="lib/jetty-io-7.0.1.v20091125.jar"/>
+        <pathelement location="lib/jetty-security-7.0.1.v20091125.jar"/>
+        <pathelement location="lib/jetty-server-7.0.1.v20091125.jar"/>
+        <pathelement location="lib/jetty-servlet-7.0.1.v20091125.jar"/>
+        <pathelement location="lib/jetty-servlets-7.0.1.v20091125.jar"/>
+        <pathelement location="lib/jetty-util-7.0.1.v20091125.jar"/>
+        <pathelement location="lib/gwXML/gwccms.jar"/>
+        <pathelement location="lib/gwXML/gwibps.jar"/>
+        <pathelement location="lib/gwXML/gwbind.jar"/>
+        <pathelement location="lib/commons-dbcp.jar"/>
+        <pathelement location="lib/imq.jar"/>
+        <pathelement location="lib/mq/com.ibm.mq.jar"/>
+        <pathelement location="lib/mq/com.ibm.mq.jms.Nojndi.jar"/>
+        <pathelement location="lib/mq/com.ibm.mq.soap.jar"/>
+        <pathelement location="lib/mq/com.ibm.mqjms.jar"/>
+        <pathelement location="lib/mq/dhbcore.jar"/>
+        <pathelement location="lib/mq/connector.jar"/>
+        <path refid="smooks14.userclasspath"/>
+        <path refid="gwXML.classpath"/>
+    </path>
+    <path id="run.gen_smoooks.classpath">
+        <path refid="bankConnector.classpath"/>
+        <path refid="smooks14.userclasspath"/>
+    </path>
+    <path id="run.gen_smoooks.bootclasspath">
+        <fileset dir="${java.home}/lib" includes="*.jar"/>
+        <fileset dir="${java.home}/lib/ext" includes="*.jar"/>
+        <path refid="smooks14.userclasspath"/>
+    </path>
+    <path id="run.gen_smoooks_test.classpath">
+        <path refid="bankConnector.classpath"/>
+        <path refid="smooks14.userclasspath"/>
+    </path>
+    <path id="run.gen_smoooks_test.bootclasspath">
+        <fileset dir="${java.home}/lib" includes="*.jar"/>
+        <fileset dir="${java.home}/lib/ext" includes="*.jar"/>
+        <path refid="smooks14.userclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/shared/java">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/test/gwXML">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+                <exclude name="com/bc/cfg/ICfgRoute.java"/>
+                <exclude name="com/bc/cfg/om/OmCfgRoute.java"/>
+                <exclude name="com/bc/runtime/AuditTracker.java"/>
+                <exclude name="com/bc/runtime/RouterBean.java"/>
+                <exclude name="com/bc/runtime/RouterBeanImpl.java"/>
+                <exclude name="com/bc/stubs/external/JmsEchoServer.java"/>
+                <exclude name="com/bc/stubs/internal/CamelClient.java"/>
+                <exclude name="com/bc/stubs/internal/CamelClientEndpoint.java"/>
+                <exclude name="com/bc/stubs/internal/HttpClientMain.java"/>
+                <exclude name="com/bc/stubs/internal/JmsClientMain.java"/>
+                <exclude name="com/tibco/ax/fw/"/>
+                <exclude name="com/tibco/ax/fw/alert/"/>
+                <exclude name="com/tibco/ax/fw/db/LogViewImpl.java"/>
+                <exclude name="com/tibco/ax/fw/db/ReportAccessImpl.java"/>
+                <exclude name="com/tibco/ax/fw/runtime/hibernation/BCCacheEventListener.java"/>
+                <exclude name="com/tibco/ax/fw/runtime/hibernation/BCCacheEventListenerFactory.java"/>
+                <exclude name="com/tibco/ax/fw/runtime/hibernation/HibernateEHCacheStore.java"/>
+                <exclude name="com/tibco/ax/fw/runtime/hibernation/HibernateThreadTest.java"/>
+                <exclude name="com/tibco/ax/fw/util/BCSdkTrace.java"/>
+                <exclude name="com/tibco/ax/fw/util/BufferedFileInputStream.java"/>
+                <exclude name="com/tibco/ax/fw/util/BufferedFileOutputStream.java"/>
+                <exclude name="com/tibco/ax/fw/util/DBLock.java"/>
+                <exclude name="com/tibco/ax/fw/util/DBLockTransEntry.java"/>
+                <exclude name="com/tibco/ax/fw/util/FTPUtil.java"/>
+                <exclude name="com/tibco/ax/fw/util/FileNameUtil.java"/>
+                <exclude name="com/tibco/ax/fw/util/FileUtil.java"/>
+                <exclude name="com/tibco/ax/fw/util/GUISendRvMsg.java"/>
+                <exclude name="com/tibco/ax/fw/util/INTStreamUtils.java"/>
+                <exclude name="com/tibco/ax/fw/util/IniFile.java"/>
+                <exclude name="com/tibco/ax/fw/util/KSUtil.java"/>
+                <exclude name="com/tibco/ax/fw/util/LDAPUtil.java"/>
+                <exclude name="com/tibco/ax/fw/util/MimeHeaderUtil.java"/>
+                <exclude name="com/tibco/ax/fw/util/RenameTextFile.java"/>
+                <exclude name="com/tibco/ax/fw/util/SharedBufferedFileInputStream.java"/>
+                <exclude name="com/tibco/ax/fw/util/URLUtil.java"/>
+                <exclude name="com/tibco/ax/fw/util/XiNodeUtil.java"/>
+                <exclude name="com/topfinance/cfg/ICfgPassway.java"/>
+                <exclude name="com/topfinance/cfg/ICfgProtocolBinding.java"/>
+                <exclude name="com/topfinance/cfg/ICfgRoute.java"/>
+                <exclude name="com/topfinance/cfg/om/OmCfgPassway.java"/>
+                <exclude name="com/topfinance/cfg/om/OmCfgProtocolBinding.java"/>
+                <exclude name="com/topfinance/cfg/om/OmCfgRoute.java"/>
+                <exclude name="com/topfinance/components/tcp8583/ISO8583BjobPackager.java"/>
+                <exclude name="com/topfinance/plugin/IPlugin.java"/>
+                <exclude name="com/topfinance/plugin/cnaps2/DocRoot.java"/>
+                <exclude name="com/topfinance/plugin/cnaps2/utils/IBPSMsgFactory.java"/>
+                <exclude name="com/topfinance/plugin/cnaps2/utils/Tcp8583StructFactory.java"/>
+                <exclude name="com/topfinance/plugin/cnaps2/v00200103/"/>
+                <exclude name="com/topfinance/plugin/cnaps2/v00800102/"/>
+                <exclude name="com/topfinance/plugin/cnaps2/v05400102/"/>
+                <exclude name="com/topfinance/runtime/AuditTracker.java"/>
+                <exclude name="com/topfinance/runtime/RouterBean.java"/>
+                <exclude name="com/topfinance/runtime/RouterBeanImpl.java"/>
+                <exclude name="com/topfinance/stubs/external/JmsEchoServer.java"/>
+                <exclude name="com/topfinance/stubs/internal/HttpClientMain.java"/>
+                <exclude name="com/topfinance/stubs/internal/JmsClientMain.java"/>
+                <exclude name="com/topfinance/cfg/ICfg8583InPort.java"/>
+                <exclude name="com/topfinance/cfg/ICfg8583OutPort.java"/>
+                <exclude name="com/topfinance/cfg/xml/OmCfgAMQInPort.java"/>
+                <exclude name="com/topfinance/cfg/xml/OmCfg8583InPort.java"/>
+                <exclude name="com/topfinance/cfg/xml/OmCfg8583OutPort.java"/>
+                <exclude name="com/topfinance/cfg/xml/OmCfgAMQOutPort.java"/>
+                <exclude name="com/topfinance/cfg/db/DbCfgReader.java"/>
+                <exclude name="com/topfinance/cfg/xml/OmCfgPort.java"/>
+                <exclude name="com/topfinance/cfg/ICfgPort.java"/>
+                <exclude name="com/topfinance/cfg/ICfgUpInMH.java"/>
+                <exclude name="com/topfinance/cfg/ICfgDownOutMH.java"/>
+                <exclude name="com/topfinance/cfg/xml/OmCfgDownOutMH.java"/>
+                <exclude name="com/topfinance/cfg/xml/OmCfgUpInMH.java"/>
+                <exclude name="com/topfinance/cfg/jpa/JpaCfgPort.java"/>
+                <exclude name="com/topfinance/cfg/jpa/JpaCfgUpInMH.java"/>
+                <exclude name="com/topfinance/cfg/jpa/JpaCfgMsgHandler.java"/>
+                <exclude name="com/topfinance/cfg/jpa/JpaCfgDownOutMH.java"/>
+                <exclude name="com/topfinance/message/IDownOutMsgHandler.java"/>
+                <exclude name="com/topfinance/message/IUpInMsgHandler.java"/>
+                <exclude name="com/topfinance/message/DefaultCnaps2To8583DownOutMH.java"/>
+                <exclude name="com/topfinance/message/DefaultCnaps2ToXmlDownOutMH.java"/>
+                <exclude name="com/topfinance/message/Default8583ToCnaps2UpInMH.java"/>
+                <exclude name="com/topfinance/message/Factory.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/resources">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/test/java">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+                <exclude name="test/TestDbCfgReader.java"/>
+                <exclude name="test/TestIsoConverter.java"/>
+                <exclude name="test/TestMisc.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build-gen.xml" dir="${gwXML.location}" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+        <ant antfile="build-gen.xml" dir="${gwXML.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="src/shared/java"/>
+            <classpath refid="bankConnector.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="src/test/gwXML"/>
+            <classpath refid="bankConnector.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <exclude name="com/bc/cfg/ICfgRoute.java"/>
+            <exclude name="com/bc/cfg/om/OmCfgRoute.java"/>
+            <exclude name="com/bc/runtime/AuditTracker.java"/>
+            <exclude name="com/bc/runtime/RouterBean.java"/>
+            <exclude name="com/bc/runtime/RouterBeanImpl.java"/>
+            <exclude name="com/bc/stubs/external/JmsEchoServer.java"/>
+            <exclude name="com/bc/stubs/internal/CamelClient.java"/>
+            <exclude name="com/bc/stubs/internal/CamelClientEndpoint.java"/>
+            <exclude name="com/bc/stubs/internal/HttpClientMain.java"/>
+            <exclude name="com/bc/stubs/internal/JmsClientMain.java"/>
+            <exclude name="com/tibco/ax/fw/"/>
+            <exclude name="com/tibco/ax/fw/alert/"/>
+            <exclude name="com/tibco/ax/fw/db/LogViewImpl.java"/>
+            <exclude name="com/tibco/ax/fw/db/ReportAccessImpl.java"/>
+            <exclude name="com/tibco/ax/fw/runtime/hibernation/BCCacheEventListener.java"/>
+            <exclude name="com/tibco/ax/fw/runtime/hibernation/BCCacheEventListenerFactory.java"/>
+            <exclude name="com/tibco/ax/fw/runtime/hibernation/HibernateEHCacheStore.java"/>
+            <exclude name="com/tibco/ax/fw/runtime/hibernation/HibernateThreadTest.java"/>
+            <exclude name="com/tibco/ax/fw/util/BCSdkTrace.java"/>
+            <exclude name="com/tibco/ax/fw/util/BufferedFileInputStream.java"/>
+            <exclude name="com/tibco/ax/fw/util/BufferedFileOutputStream.java"/>
+            <exclude name="com/tibco/ax/fw/util/DBLock.java"/>
+            <exclude name="com/tibco/ax/fw/util/DBLockTransEntry.java"/>
+            <exclude name="com/tibco/ax/fw/util/FTPUtil.java"/>
+            <exclude name="com/tibco/ax/fw/util/FileNameUtil.java"/>
+            <exclude name="com/tibco/ax/fw/util/FileUtil.java"/>
+            <exclude name="com/tibco/ax/fw/util/GUISendRvMsg.java"/>
+            <exclude name="com/tibco/ax/fw/util/INTStreamUtils.java"/>
+            <exclude name="com/tibco/ax/fw/util/IniFile.java"/>
+            <exclude name="com/tibco/ax/fw/util/KSUtil.java"/>
+            <exclude name="com/tibco/ax/fw/util/LDAPUtil.java"/>
+            <exclude name="com/tibco/ax/fw/util/MimeHeaderUtil.java"/>
+            <exclude name="com/tibco/ax/fw/util/RenameTextFile.java"/>
+            <exclude name="com/tibco/ax/fw/util/SharedBufferedFileInputStream.java"/>
+            <exclude name="com/tibco/ax/fw/util/URLUtil.java"/>
+            <exclude name="com/tibco/ax/fw/util/XiNodeUtil.java"/>
+            <exclude name="com/topfinance/cfg/ICfgPassway.java"/>
+            <exclude name="com/topfinance/cfg/ICfgProtocolBinding.java"/>
+            <exclude name="com/topfinance/cfg/ICfgRoute.java"/>
+            <exclude name="com/topfinance/cfg/om/OmCfgPassway.java"/>
+            <exclude name="com/topfinance/cfg/om/OmCfgProtocolBinding.java"/>
+            <exclude name="com/topfinance/cfg/om/OmCfgRoute.java"/>
+            <exclude name="com/topfinance/components/tcp8583/ISO8583BjobPackager.java"/>
+            <exclude name="com/topfinance/plugin/IPlugin.java"/>
+            <exclude name="com/topfinance/plugin/cnaps2/DocRoot.java"/>
+            <exclude name="com/topfinance/plugin/cnaps2/utils/IBPSMsgFactory.java"/>
+            <exclude name="com/topfinance/plugin/cnaps2/utils/Tcp8583StructFactory.java"/>
+            <exclude name="com/topfinance/plugin/cnaps2/v00200103/"/>
+            <exclude name="com/topfinance/plugin/cnaps2/v00800102/"/>
+            <exclude name="com/topfinance/plugin/cnaps2/v05400102/"/>
+            <exclude name="com/topfinance/runtime/AuditTracker.java"/>
+            <exclude name="com/topfinance/runtime/RouterBean.java"/>
+            <exclude name="com/topfinance/runtime/RouterBeanImpl.java"/>
+            <exclude name="com/topfinance/stubs/external/JmsEchoServer.java"/>
+            <exclude name="com/topfinance/stubs/internal/HttpClientMain.java"/>
+            <exclude name="com/topfinance/stubs/internal/JmsClientMain.java"/>
+            <exclude name="com/topfinance/cfg/ICfg8583InPort.java"/>
+            <exclude name="com/topfinance/cfg/ICfg8583OutPort.java"/>
+            <exclude name="com/topfinance/cfg/xml/OmCfgAMQInPort.java"/>
+            <exclude name="com/topfinance/cfg/xml/OmCfg8583InPort.java"/>
+            <exclude name="com/topfinance/cfg/xml/OmCfg8583OutPort.java"/>
+            <exclude name="com/topfinance/cfg/xml/OmCfgAMQOutPort.java"/>
+            <exclude name="com/topfinance/cfg/db/DbCfgReader.java"/>
+            <exclude name="com/topfinance/cfg/xml/OmCfgPort.java"/>
+            <exclude name="com/topfinance/cfg/ICfgPort.java"/>
+            <exclude name="com/topfinance/cfg/ICfgUpInMH.java"/>
+            <exclude name="com/topfinance/cfg/ICfgDownOutMH.java"/>
+            <exclude name="com/topfinance/cfg/xml/OmCfgDownOutMH.java"/>
+            <exclude name="com/topfinance/cfg/xml/OmCfgUpInMH.java"/>
+            <exclude name="com/topfinance/cfg/jpa/JpaCfgPort.java"/>
+            <exclude name="com/topfinance/cfg/jpa/JpaCfgUpInMH.java"/>
+            <exclude name="com/topfinance/cfg/jpa/JpaCfgMsgHandler.java"/>
+            <exclude name="com/topfinance/cfg/jpa/JpaCfgDownOutMH.java"/>
+            <exclude name="com/topfinance/message/IDownOutMsgHandler.java"/>
+            <exclude name="com/topfinance/message/IUpInMsgHandler.java"/>
+            <exclude name="com/topfinance/message/DefaultCnaps2To8583DownOutMH.java"/>
+            <exclude name="com/topfinance/message/DefaultCnaps2ToXmlDownOutMH.java"/>
+            <exclude name="com/topfinance/message/Default8583ToCnaps2UpInMH.java"/>
+            <exclude name="com/topfinance/message/Factory.java"/>
+            <classpath refid="bankConnector.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="src/main/resources"/>
+            <exclude name="**/*.java"/>
+            <classpath refid="bankConnector.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="src/test/java"/>
+            <exclude name="test/TestDbCfgReader.java"/>
+            <exclude name="test/TestIsoConverter.java"/>
+            <exclude name="test/TestMisc.java"/>
+            <classpath refid="bankConnector.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="gen_smoooks">
+        <java classname="org.milyn.javabean.gen.ConfigGenerator" failonerror="true" fork="yes">
+            <arg line="-c com.cnaps2.xml.iso20022.pacs.v00800102.Document -o D:/bankConnector/source/sample/smooks/gen-smooks-test-2.xml"/>
+            <classpath refid="run.gen_smoooks.classpath"/>
+            <bootclasspath>
+                <path refid="run.gen_smoooks.bootclasspath"/>
+            </bootclasspath>
+        </java>
+    </target>
+    <target name="gen_smoooks_test">
+        <java classname="org.milyn.javabean.gen.ConfigGenerator" failonerror="true" fork="yes">
+            <arg line="-c test.smooks.Person -o D:/bankConnector/source/src/test/java/test/smooks/gen-config-new.xml"/>
+            <classpath refid="run.gen_smoooks_test.classpath"/>
+            <bootclasspath>
+                <path refid="run.gen_smoooks_test.bootclasspath"/>
+            </bootclasspath>
+        </java>
+    </target>
+    <target name="ParseSampleXml">
+        <java classname="com.topfinance.util.ParseSampleXml" failonerror="true" fork="yes">
+            <classpath refid="bankConnector.classpath"/>
+        </java>
+    </target>
+    <target name="TestDualTransform">
+        <java classname="test.transform2.TestDualTransform" failonerror="true" fork="yes">
+            <classpath refid="bankConnector.classpath"/>
+        </java>
+    </target>
+    <target name="TestDualTransform.testIso2Ebo2Jaxb2Xml">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.transform2.TestDualTransform" todir="${junit.output.dir}"/>
+            <classpath refid="bankConnector.classpath"/>
+        </junit>
+    </target>
+    <target name="TestDualTransform.testXml2Jaxb2Ebo2Iso">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.transform2.TestDualTransform" todir="${junit.output.dir}"/>
+            <classpath refid="bankConnector.classpath"/>
+        </junit>
+    </target>
+    <target name="TestDummy.testHandleMap">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.topfinance.cfg.TestDummy" todir="${junit.output.dir}"/>
+            <classpath refid="bankConnector.classpath"/>
+        </junit>
+    </target>
+    <target name="TestDummy.testLoadConfigure">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="com.topfinance.cfg.TestDummy" todir="${junit.output.dir}"/>
+            <classpath refid="bankConnector.classpath"/>
+        </junit>
+    </target>
+    <target name="TestGenDummySmooks.test4JaxbAsInput">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tools.TestGenDummySmooks" todir="${junit.output.dir}"/>
+            <classpath refid="bankConnector.classpath"/>
+        </junit>
+    </target>
+    <target name="TestSmooks">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.smooks.TestSmooks" todir="${junit.output.dir}"/>
+            <classpath refid="bankConnector.classpath"/>
+        </junit>
+    </target>
+    <target name="TestSmooks.testTrans">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.smooks.TestSmooks" todir="${junit.output.dir}"/>
+            <classpath refid="bankConnector.classpath"/>
+        </junit>
+    </target>
+    <target name="TestTransform.testIsoObjAndJaxbObj">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.transform.TestTransform" todir="${junit.output.dir}"/>
+            <classpath refid="bankConnector.classpath"/>
+        </junit>
+    </target>
+    <target name="TestTransform.testJaxb2Iso">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="test.transform.TestTransform" todir="${junit.output.dir}"/>
+            <classpath refid="bankConnector.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>

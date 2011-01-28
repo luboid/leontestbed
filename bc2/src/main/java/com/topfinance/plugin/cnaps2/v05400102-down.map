@@ -1,0 +1,7 @@
+# mapping rule for xml->iso conversion for 601
+
+122=bkToCstmrDbtCdtNtfctn.grpHdr.msgId
+123=bkToCstmrDbtCdtNtfctn.ntfctn[0].id
+
+
+101=bkToCstmrDbtCdtNtfctn.ntfctn[0].addtlNtfctnInf

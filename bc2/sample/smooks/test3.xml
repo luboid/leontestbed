@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:ftl="http://www.milyn.org/xsd/smooks/freemarker-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">test.smooks1.Doc</param>
+  </params>
+  <jb:bean beanId="IsoObj" class="test.transform.IsoObj" createOnElement="test.smooks1.Doc">
+    <jb:value data="/test.smooks1.Doc/name" property="f80"/>
+    <jb:value data="/test.smooks1.Doc/orders/test.smooks1.Order/name" property="f81"/>
+  </jb:bean>
+  <ftl:freemarker applyOnElement="#document">
+    <ftl:template><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<ns0:Document xmlns:ns0="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.02">
+    <ns0:FIToFICstmrCdtTrf>
+        <ns0:GrpHdr>
+            <ns0:MsgId>${IsoObj.f80!?string}</ns0:MsgId>            
+            <ns0:CreDtTm>#required</ns0:CreDtTm>            
+            <ns0:NbOfTxs>#required</ns0:NbOfTxs>            
+            <ns0:SttlmInf>
+                <ns0:SttlmMtd>#required</ns0:SttlmMtd>                
+            </ns0:SttlmInf>            
+        </ns0:GrpHdr>        
+        <ns0:CdtTrfTxInf>
+            <ns0:PmtId>
+                <ns0:EndToEndId>#required</ns0:EndToEndId>                
+                <ns0:TxId>#required</ns0:TxId>                
+            </ns0:PmtId>            
+            <ns0:IntrBkSttlmAmt Ccy="#required" />            
+            <ns0:ChrgBr>#required</ns0:ChrgBr>            
+            <ns0:Dbtr>
+            </ns0:Dbtr>            
+            <ns0:DbtrAgt>
+                <ns0:FinInstnId>
+                </ns0:FinInstnId>                
+            </ns0:DbtrAgt>            
+            <ns0:CdtrAgt>
+                <ns0:FinInstnId>
+                </ns0:FinInstnId>                
+            </ns0:CdtrAgt>            
+            <ns0:Cdtr>
+            </ns0:Cdtr>            
+        </ns0:CdtTrfTxInf>        
+    </ns0:FIToFICstmrCdtTrf>    
+</ns0:Document>]]></ftl:template>
+    <param name="rootElementName">Document</param>
+    <param name="modelSrc">File:/D:\bankConnector\source\sample\Schema\pacs.008.001.02.xsd</param>
+    <param name="modelSrcType">XSD</param>
+    <param name="messageType">XML</param>
+    <param name="templateDataProvider">java_mapping</param>
+  </ftl:freemarker>
+</smooks-resource-list>

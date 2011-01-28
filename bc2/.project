@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>bankConnector</name>
+	<comment>An example using Spring XML to talk to the JMS server from different kind of client techniques
+        and having AOP aspect to perform audit trails in the Camel Server</comment>
+	<projects>
+		<project>camel-core</project>
+		<project>camel-groovy</project>
+		<project>camel-jms</project>
+		<project>camel-ruby</project>
+		<project>camel-spring</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.hibernate.eclipse.console.hibernateBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</nature>
+		<nature>org.hibernate.eclipse.console.hibernateNature</nature>
+	</natures>
+</projectDescription>

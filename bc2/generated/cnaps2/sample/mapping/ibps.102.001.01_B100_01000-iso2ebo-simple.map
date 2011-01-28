@@ -1,0 +1,31 @@
+<simpleMappingRule targetName="com.topfinance.ebo.msg.Ibps10200101">
+   <mappings class="java.util.ArrayList">
+      <mapping  targetPath="grpHdrMsgId" srcPath="f128"/>
+      <mapping targetType="JAVADATE" srcType="ISODATE" targetPath="creDtTm" srcPath="f81"/>
+      <mapping  targetPath="orgnlMsgId" srcPath="f82"/>
+      <mapping  targetPath="orgnlMsgNmId" srcPath="f83"/>
+      <mapping  targetPath="addtlInf" srcPath="f84"/>
+      <mapping  targetPath="txInfAndStsStsId" srcPath="f85"/>
+      <mapping  targetPath="orgnlEndToEndId" srcPath="f86"/>
+      <mapping  targetPath="orgnlTxId" srcPath="f87"/>
+      <mapping  targetPath="rsnPrtry" srcPath="f88"/>
+      <mapping  targetPath="intrBkSttlmAmtValue" srcPath="f89"/>
+      <mapping  targetPath="intrBkSttlmAmtCcy" srcPath="f90"/>
+      <mapping  targetPath="instrPrty" srcPath="f91"/>
+      <mapping  targetPath="ctgyPurpPrtry" srcPath="f92"/>
+      <mapping  targetPath="dbtrNm" srcPath="f93"/>
+      <mapping  targetPath="dbtrAcctIdOthrId" srcPath="f94"/>
+      <mapping  targetPath="dbtrAcctIdOthrIssr" srcPath="f95"/>
+      <mapping  targetPath="tpPrtry" srcPath="f96"/>
+      <mapping  targetPath="clrSysMmbIdMmbId" srcPath="f97"/>
+      <mapping  targetPath="brnchIdId" srcPath="f98"/>
+      <mapping  targetPath="clrSysMmbIdMmbId1" srcPath="f99"/>
+      <mapping  targetPath="brnchIdId1" srcPath="f100"/>
+      <mapping  targetPath="ctrySubDvsn" srcPath="f101"/>
+      <mapping  targetPath="cdtrNm" srcPath="f102"/>
+      <mapping  targetPath="emailAdr" srcPath="f103"/>
+      <mapping  targetPath="cdtrAcctIdOthrId" srcPath="f104"/>
+      <mapping  targetPath="cdtrAcctIdOthrIssr" srcPath="f105"/>
+      <mapping  targetPath="tpPrtry1" srcPath="f106"/>
+   </mappings>
+</simpleMappingRule>

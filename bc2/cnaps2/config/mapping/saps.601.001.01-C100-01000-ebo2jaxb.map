@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Saps60100101</param>
+  </params>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.grpHdr.msgRcpt" class="com.cnaps2.xml.iso20022.camt.v05400102.PartyIdentification32" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.grpHdr.msgRcpt.ctctDtls" property="ctctDtls"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.grpHdr.msgRcpt.ctctDtls" class="com.cnaps2.xml.iso20022.camt.v05400102.ContactDetails2" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/emailAdr"  property="emailAdr"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.amtDtls" class="com.cnaps2.xml.iso20022.camt.v05400102.AmountAndCurrencyExchange3" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.amtDtls.instdAmt" property="instdAmt"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.acct.id.othr" class="com.cnaps2.xml.iso20022.camt.v05400102.GenericAccountIdentification1" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/acctIdOthrId"  property="id"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.rptgSrc" class="com.cnaps2.xml.iso20022.camt.v05400102.ReportingSource1Choice" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/rptgSrcPrtry"  property="prtry"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.bkTxCd.domn.fmly" class="com.cnaps2.xml.iso20022.camt.v05400102.BankTransactionCodeStructure6" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/fmlyCd"  property="cd"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/subFmlyCd"  property="subFmlyCd"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.rltdAcct.id" class="com.cnaps2.xml.iso20022.camt.v05400102.AccountIdentification4Choice" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.rltdAcct.id.othr" property="othr"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.amt" class="com.cnaps2.xml.iso20022.camt.v05400102.ActiveOrHistoricCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/amtValue" decoder="BigDecimal" property="value"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/amtCcy"  property="ccy"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.bkTxCd.domn" class="com.cnaps2.xml.iso20022.camt.v05400102.BankTransactionCodeStructure5" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.bkTxCd.domn.fmly" property="fmly"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/domnCd"  property="cd"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.amtDtls.instdAmt.amt" class="com.cnaps2.xml.iso20022.camt.v05400102.ActiveOrHistoricCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/amtValue1" decoder="BigDecimal" property="value"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/amtCcy1"  property="ccy"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties.dbtrAcct" class="com.cnaps2.xml.iso20022.camt.v05400102.CashAccount16" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties.dbtrAcct.id" property="id"/>
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties.dbtrAcct.tp" property="tp"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn" class="com.cnaps2.xml.iso20022.camt.v05400102.BankToCustomerDebitCreditNotificationV02" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0]" property="ntfctn"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.grpHdr" class="com.cnaps2.xml.iso20022.camt.v05400102.GroupHeader42" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.grpHdr.msgRcpt" property="msgRcpt"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/grpHdrMsgId"  property="msgId"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/addtlInf"  property="addtlInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx" class="com.cnaps2.xml.iso20022.camt.v05400102.AccountNotification2" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.rptgSrc" property="rptgSrc"/>
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.acct" property="acct"/>
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.rltdAcct" property="rltdAcct"/>
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0]" property="ntry"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/ntfctnId"  property="id"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/creDtTm1" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.bkTxCd" class="com.cnaps2.xml.iso20022.camt.v05400102.BankTransactionCodeStructure4" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.bkTxCd.domn" property="domn"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties" class="com.cnaps2.xml.iso20022.camt.v05400102.TransactionParty2" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties.dbtr" property="dbtr"/>
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties.dbtrAcct" property="dbtrAcct"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.bookgDt" class="com.cnaps2.xml.iso20022.camt.v05400102.DateAndDateTimeChoice" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/bookgDtDt" decoder="Date" property="dt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.refs" class="com.cnaps2.xml.iso20022.camt.v05400102.TransactionReferences2" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/clrSysRef"  property="clrSysRef"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx" class="com.cnaps2.xml.iso20022.camt.v05400102.EntryDetails1" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0]" property="txDtls"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties.dbtrAcct.tp" class="com.cnaps2.xml.iso20022.camt.v05400102.CashAccountType2" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/tpPrtry"  property="prtry"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.cnaps2.xml.iso20022.camt.v05400102.Document" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn" property="bkToCstmrDbtCdtNtfctn"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx" class="com.cnaps2.xml.iso20022.camt.v05400102.ReportEntry2" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.amt" property="amt"/>
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.bookgDt" property="bookgDt"/>
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.bkTxCd" property="bkTxCd"/>
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.amtDtls" property="amtDtls"/>
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0]" property="ntryDtls"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/cdtDbtInd"  property="cdtDbtInd"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/ntrySts"  property="sts"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties.dbtrAcct.id.othr" class="com.cnaps2.xml.iso20022.camt.v05400102.GenericAccountIdentification1" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/dbtrAcctIdOthrId"  property="id"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/dbtrAcctIdOthrIssr"  property="issr"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.rltdAcct" class="com.cnaps2.xml.iso20022.camt.v05400102.CashAccount16" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.rltdAcct.id" property="id"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.amtDtls.instdAmt" class="com.cnaps2.xml.iso20022.camt.v05400102.AmountAndCurrencyExchangeDetails3" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.amtDtls.instdAmt.amt" property="amt"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.rltdAcct.id.othr" class="com.cnaps2.xml.iso20022.camt.v05400102.GenericAccountIdentification1" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/rltdAcctIdOthrId"  property="id"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties.dbtrAcct.id" class="com.cnaps2.xml.iso20022.camt.v05400102.AccountIdentification4Choice" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties.dbtrAcct.id.othr" property="othr"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties.dbtr" class="com.cnaps2.xml.iso20022.camt.v05400102.PartyIdentification32" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps60100101/dbtrNm"  property="nm"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.acct" class="com.cnaps2.xml.iso20022.camt.v05400102.CashAccount20" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.acct.id" property="id"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx" class="com.cnaps2.xml.iso20022.camt.v05400102.EntryTransaction2" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.refs" property="refs"/>
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx.ntryDtls[0].xxx.txDtls[0].xxx.rltdPties" property="rltdPties"/>
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.ntry[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.acct.id" class="com.cnaps2.xml.iso20022.camt.v05400102.AccountIdentification4Choice" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+    	<jb:wiring beanIdRef="bkToCstmrDbtCdtNtfctn.ntfctn[0].xxx.acct.id.othr" property="othr"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

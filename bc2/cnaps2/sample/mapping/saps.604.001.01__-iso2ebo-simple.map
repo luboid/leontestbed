@@ -1,0 +1,15 @@
+<simpleMappingRule targetName="com.topfinance.ebo.msg.Saps60400101">
+   <mappings class="java.util.ArrayList">
+      <mapping  targetPath="grpHdrMsgId" srcPath="f128"/>
+      <mapping targetType="JAVADATE" srcType="ISODATE" targetPath="creDtTm" srcPath="f81"/>
+      <mapping  targetPath="instgDrctPty" srcPath="f82"/>
+      <mapping  targetPath="instgIndrctPty" srcPath="f83"/>
+      <mapping  targetPath="instdDrctPty" srcPath="f84"/>
+      <mapping  targetPath="instdIndrctPty" srcPath="f85"/>
+      <mapping  targetPath="grpHdrSysCd" srcPath="f86"/>
+      <mapping  targetPath="grpHdrRmk" srcPath="f87"/>
+      <mapping  targetPath="orgnlMsgId" srcPath="f88"/>
+      <mapping  targetPath="orgnlInstgDrctPty" srcPath="f89"/>
+      <mapping  targetPath="orgnlMT" srcPath="f90"/>
+   </mappings>
+</simpleMappingRule>

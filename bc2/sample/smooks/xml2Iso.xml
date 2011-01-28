@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived">Workspace://bankConnector/sample/Schema/pacs.008.001.02.xsd</param>
+  </params>
+  <jb:bean beanId="IsoObj" class="test.transform.IsoObj" createOnElement="Document">
+    <jb:value property="f80"/>
+    <jb:value property="f81"/>
+    <jb:value property="f82"/>
+    <jb:value property="f83"/>
+    <jb:value property="f84"/>
+    <jb:value property="f85"/>
+    <jb:value property="f86"/>
+    <jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtId/EndToEndId" property="f87"/>
+    <jb:value property="f88"/>
+    <jb:value property="f89"/>
+    <jb:value property="f9"/>
+    <jb:value property="f90"/>
+    <jb:value property="f91"/>
+    <jb:value property="f92"/>
+    <jb:value property="f93"/>
+    <jb:value property="f94"/>
+    <jb:value property="f95"/>
+    <jb:value property="f96"/>
+    <jb:value property="f97"/>
+    <jb:value property="f98"/>
+    <jb:value property="f99"/>
+    <jb:value property="f100"/>
+    <jb:value property="f101"/>
+    <jb:value property="f102"/>
+    <jb:value property="f103"/>
+    <jb:value property="f104"/>
+    <jb:value property="f105"/>
+    <jb:value property="f106"/>
+    <jb:value property="f107"/>
+    <jb:value property="f108"/>
+    <jb:value property="f109"/>
+    <jb:value property="f128"/>
+  </jb:bean>
+</smooks-resource-list>

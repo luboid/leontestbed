@@ -1,0 +1,27 @@
+<simpleMappingRule targetName="test.transform.IsoObj">
+   <mappings class="java.util.ArrayList">
+      <mapping  targetPath="f128" srcPath="grpHdrMsgId"/>
+      <mapping targetType="ISODATE" srcType="JAVADATE" targetPath="f81" srcPath="creDtTm"/>
+      <mapping  targetPath="f82" srcPath="nbOfTxs"/>
+      <mapping  targetPath="f83" srcPath="sttlmMtd"/>
+      <mapping  targetPath="f84" srcPath="endToEndId"/>
+      <mapping  targetPath="f85" srcPath="pmtIdTxId"/>
+      <mapping  targetPath="f86" srcPath="ctgyPurpPrtry"/>
+      <mapping  targetPath="f87" srcPath="intrBkSttlmAmtValue"/>
+      <mapping  targetPath="f88" srcPath="intrBkSttlmAmtCcy"/>
+      <mapping targetType="ISODATE" srcType="JAVADATE" targetPath="f89" srcPath="intrBkSttlmDt"/>
+      <mapping  targetPath="f90" srcPath="sttlmPrty"/>
+      <mapping  targetPath="f91" srcPath="chrgBr"/>
+      <mapping  targetPath="f92" srcPath="dbtrNm"/>
+      <mapping  targetPath="f93" srcPath="dbtrAcctIdOthrId"/>
+      <mapping  targetPath="f94" srcPath="dbtrAcctIdOthrIssr"/>
+      <mapping  targetPath="f95" srcPath="clrSysMmbIdMmbId"/>
+      <mapping  targetPath="f96" srcPath="brnchIdId"/>
+      <mapping  targetPath="f97" srcPath="clrSysMmbIdMmbId1"/>
+      <mapping  targetPath="f98" srcPath="brnchIdId1"/>
+      <mapping  targetPath="f99" srcPath="cdtrNm"/>
+      <mapping  targetPath="f100" srcPath="cdtrAcctIdOthrId"/>
+      <mapping  targetPath="f101" srcPath="cdtrAcctIdOthrIssr"/>
+      <mapping  targetPath="f102" srcPath="purpPrtry"/>
+   </mappings>
+</simpleMappingRule>

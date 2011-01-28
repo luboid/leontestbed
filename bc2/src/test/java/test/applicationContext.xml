@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
+	   default-autowire="byName" default-lazy-init="true">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@192.168.68.66:1521:ORCL"/>
+		<property name="username" value="gwtest"/>
+		<property name="password" value="1234"/>
+	</bean>
+
+	<!--Hibernate SessionFatory-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.cnaps2.cncc.ebo.TblTxEbo</value>
+				<value>com.cnaps2.cncc.ebo.TblTxDetailEbo</value>
+				<value>com.cnaps2.cncc.ebo.TblHiberEbo</value>
+				<value>com.cnaps2.cncc.ebo.TblResendEbo</value>
+
+    			<value>com.cnaps2.cncc.ebo.ConfNodeEbo</value>
+    			<value>com.cnaps2.cncc.ebo.ConfProtocolEbo</value>
+    			<value>com.cnaps2.cncc.ebo.ConfTransportEbo</value>
+    			<value>com.cnaps2.cncc.ebo.ConfInPortEbo</value>
+    			<value>com.cnaps2.cncc.ebo.ConfOutPortEbo</value>
+    			<value>com.cnaps2.cncc.ebo.ConfOperationEbo</value>
+    			<value>com.cnaps2.cncc.ebo.ConfRouteRuleEbo</value>
+
+    			<value>com.cnaps2.cncc.ebo.SysParamCtrlEbo</value>
+    			<value>com.cnaps2.cncc.ebo.SysOrgEbo</value>
+    			<value>com.cnaps2.cncc.ebo.SysUserEbo</value>
+    			<value>com.cnaps2.cncc.ebo.SysFuncsEbo</value>
+    			<value>com.cnaps2.cncc.ebo.SysOperEbo</value>
+    			<value>com.topfinance.ebo.msg.Ibps10100101</value>
+    			<value>com.topfinance.ebo.msg.Ibps10200101</value>
+    			<value>com.topfinance.ebo.msg.Saps60100101</value>
+
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>				
+				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+			</props>
+		</property>
+	</bean>
+	<!--Hibernate TransactionManager-->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="transportManager"   class="com.cnaps2.cncc.service.impl.TransportManagerImpl"/>
+	<bean id="nodeManager"   class="com.cnaps2.cncc.service.impl.NodeManagerImpl"/>
+	<bean id="protocolManager"   class="com.cnaps2.cncc.service.impl.ProtocolManagerImpl"/>
+	<bean id="routeManager"   class="com.cnaps2.cncc.service.impl.RouteRuleManagerImpl"/>
+	<bean id="inPortManager"   class="com.cnaps2.cncc.service.impl.InPortManagerImpl"/>
+	<bean id="outPortManager"   class="com.cnaps2.cncc.service.impl.OutPortManagerImpl"/>
+	<bean id="operManager"   class="com.cnaps2.cncc.service.impl.OperationManagerImpl"/>
+	
+	<bean id="ctrlManager"   class="com.cnaps2.cncc.service.impl.ParamCtrlManagerImpl"/>
+	<bean id="sysOrgManager"   class="com.cnaps2.cncc.service.impl.SysOrgManagerImpl"/>
+	<bean id="sysUserManager"   class="com.cnaps2.cncc.service.impl.SysUserManagerImpl"/>
+	<bean id="sysFuncManager"   class="com.cnaps2.cncc.service.impl.SysFuncManagerImpl"/>
+	<bean id="sysOperManager"   class="com.cnaps2.cncc.service.impl.SysOperManagerImpl"/>
+					
+	<bean id="tblTxManager"   class="com.cnaps2.cncc.service.impl.TblTxManagerImpl"/>
+	<bean id="tblTxDetailManager"   class="com.cnaps2.cncc.service.impl.TblTxDetailManagerImpl"/>
+	<bean id="tblHiberManager"   class="com.cnaps2.cncc.service.impl.TblHiberManagerImpl"/>
+	<bean id="tblResendManager"   class="com.cnaps2.cncc.service.impl.TblResendManagerImpl"/>
+
+	<bean id="ibpsManager"   class="com.cnaps2.cncc.service.impl.IBPSManagerImpl"/>	
+	<bean id="msgMatchManager"   class="com.cnaps2.cncc.service.impl.MsgMatchManagerImpl"/>	
+	
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<aop:aspectj-autoproxy/>
+
+
+	<aop:config proxy-target-class="true">
+		<aop:advisor pointcut="execution(* com.cnaps2.cncc.service.impl.*ManagerImpl.*(..))"
+					 advice-ref="txAdvice"/>				 
+		<aop:advisor pointcut="execution(* com.cnaps2.framework.dao.*Dao.*(..))" advice-ref="txAdvice"/>
+	</aop:config>
+
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
+			<tx:method name="*" rollback-for="com.cnaps2.framework.exception.AppException"/>
+		</tx:attributes>
+	</tx:advice>
+</beans>

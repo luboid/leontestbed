@@ -1,0 +1,15 @@
+<simpleMappingRule targetName="test.transform.IsoObj">
+   <mappings class="java.util.ArrayList">
+      <mapping  targetPath="f128" srcPath="grpHdrMsgId"/>
+      <mapping targetType="ISODATE" srcType="JAVADATE" targetPath="f81" srcPath="creDtTm"/>
+      <mapping  targetPath="f82" srcPath="instgDrctPty"/>
+      <mapping  targetPath="f83" srcPath="instgIndrctPty"/>
+      <mapping  targetPath="f84" srcPath="instdDrctPty"/>
+      <mapping  targetPath="f85" srcPath="instdIndrctPty"/>
+      <mapping  targetPath="f86" srcPath="grpHdrSysCd"/>
+      <mapping  targetPath="f87" srcPath="grpHdrRmk"/>
+      <mapping  targetPath="f88" srcPath="orgnlMsgId"/>
+      <mapping  targetPath="f89" srcPath="orgnlInstgDrctPty"/>
+      <mapping  targetPath="f90" srcPath="orgnlMT"/>
+   </mappings>
+</simpleMappingRule>

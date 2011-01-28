@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.AccountSchemeName1Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ActiveCurrencyAndAmount</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ActiveOrHistoricCurrencyAndAmount</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.Adapter1</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.Adapter2</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.AddressType2Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.BranchAndFinancialInstitutionIdentification4</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.BranchData2</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.CashAccount16</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType4Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.CategoryPurpose1Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ChargeBearerType1Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ChargesInformation5</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ClearingChannel2Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification2Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification3Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ContactDetails2</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.CreditDebitCode</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.CreditorReferenceInformation2</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.CreditorReferenceType1Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.CreditorReferenceType2</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.CreditTransferTransactionInformation11</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.DateAndPlaceOfBirth</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.Document</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.DocumentAdjustment1</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.DocumentType3Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.DocumentType5Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.FinancialIdentificationSchemeName1Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.FinancialInstitutionIdentification7</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.FIToFICustomerCreditTransferV02</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.GenericFinancialIdentification1</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.GenericOrganisationIdentification1</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.GenericPersonIdentification1</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.GroupHeader33</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.Instruction3Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.Instruction4Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.InstructionForCreditorAgent1</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.InstructionForNextAgent1</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.LocalInstrument2Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.NameAndAddress10</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.NamePrefix1Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ObjectFactory</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentification4</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.OrganisationIdentificationSchemeName1Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.package-info</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.package</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.Party6Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.PaymentIdentification3</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.PaymentTypeInformation21</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentification5</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.PersonIdentificationSchemeName1Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.PostalAddress6</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.Priority2Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.Priority3Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.Purpose2Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ReferredDocumentInformation3</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ReferredDocumentType1Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ReferredDocumentType2</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.RegulatoryAuthority2</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.RegulatoryReporting3</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.RegulatoryReportingType1Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.RemittanceAmount1</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.RemittanceInformation5</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.RemittanceLocation2</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.RemittanceLocationMethod2Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.ServiceLevel8Choice</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.SettlementDateTimeIndication1</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.SettlementInformation13</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.SettlementMethod1Code</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.SettlementTimeRequest2</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.StructuredRegulatoryReporting3</param>
+    <param name="input.java" type="input.type.deactived">com.cnaps2.xml.iso20022.pacs.v00800102.StructuredRemittanceInformation7</param>
+  </params>
+  <jb:bean beanId="ebo" class="com.topfinance.ebo.msg.Ibps10100101" createOnElement="com.cnaps2.xml.iso20022.pacs.v00800102.Document">
+    <jb:value data="/com.cnaps2.xml.iso20022.pacs.v00800102.Document/fiToFICstmrCdtTrf.cdtTrfTxInf[0].accptncDtTm" decoder="Date" property="accptncDtTm"/>
+    <jb:value property="brnchIdId"/>
+    <jb:value property="brnchIdId1"/>
+    <jb:value property="btchBookg"/>
+    <jb:value property="cdtrAcctIdOthrId"/>
+    <jb:value property="cdtrNm"/>
+    <jb:value property="chrgBr"/>
+    <jb:value property="clrSysMmbIdMmbId"/>
+    <jb:value property="clrSysMmbIdMmbId1"/>
+    <jb:value property="creDtTm"/>
+    <jb:value property="ctgyPurpPrtry"/>
+    <jb:value property="ctrlSum"/>
+    <jb:value property="ctrySubDvsn"/>
+    <jb:value property="dbtrAcctIdOthrId"/>
+    <jb:value property="dbtrAcctIdOthrIssr"/>
+    <jb:value property="dbtrNm"/>
+    <jb:value property="emailAdr"/>
+    <jb:value property="endToEndId"/>
+    <jb:value property="grpHdrMsgId"/>
+    <jb:value property="instrPrty"/>
+    <jb:value property="intrBkSttlmAmtCcy"/>
+    <jb:value property="intrBkSttlmAmtValue"/>
+    <jb:value property="intrBkSttlmDt"/>
+    <jb:value property="nbOfTxs"/>
+    <jb:value property="pmtIdTxId"/>
+    <jb:value property="purpPrtry"/>
+    <jb:value property="rmtInfUstrd"/>
+    <jb:value property="sttlmMtd"/>
+    <jb:value property="tpPrtry"/>
+    <jb:value property="ts"/>
+    <jb:value property="uuid"/>
+  </jb:bean>
+</smooks-resource-list>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">test.transform.IsoObj</param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ibps10100101" createOnElement="test.transform.IsoObj">
+ 		<jb:value data="/test.transform.IsoObj/f128"  property="grpHdrMsgId"/>
+ 		<jb:value data="/test.transform.IsoObj/f81" decoder="com.topfinance.smooks.IsoDateDecoder"  property="creDtTm"/>
+ 		<jb:value data="/test.transform.IsoObj/f82"  property="btchBookg"/>
+ 		<jb:value data="/test.transform.IsoObj/f83"  property="nbOfTxs"/>
+ 		<jb:value data="/test.transform.IsoObj/f84"  property="ctrlSum"/>
+ 		<jb:value data="/test.transform.IsoObj/f85" decoder="com.topfinance.smooks.IsoDateDecoder"  property="intrBkSttlmDt"/>
+ 		<jb:value data="/test.transform.IsoObj/f86"  property="sttlmMtd"/>
+ 		<jb:value data="/test.transform.IsoObj/f87"  property="endToEndId"/>
+ 		<jb:value data="/test.transform.IsoObj/f88"  property="pmtIdTxId"/>
+ 		<jb:value data="/test.transform.IsoObj/f89"  property="instrPrty"/>
+ 		<jb:value data="/test.transform.IsoObj/f90"  property="ctgyPurpPrtry"/>
+ 		<jb:value data="/test.transform.IsoObj/f91"  property="intrBkSttlmAmtValue"/>
+ 		<jb:value data="/test.transform.IsoObj/f92"  property="intrBkSttlmAmtCcy"/>
+ 		<jb:value data="/test.transform.IsoObj/f93" decoder="com.topfinance.smooks.IsoDateDecoder"  property="accptncDtTm"/>
+ 		<jb:value data="/test.transform.IsoObj/f94"  property="chrgBr"/>
+ 		<jb:value data="/test.transform.IsoObj/f95"  property="dbtrNm"/>
+ 		<jb:value data="/test.transform.IsoObj/f96"  property="emailAdr"/>
+ 		<jb:value data="/test.transform.IsoObj/f97"  property="dbtrAcctIdOthrId"/>
+ 		<jb:value data="/test.transform.IsoObj/f98"  property="dbtrAcctIdOthrIssr"/>
+ 		<jb:value data="/test.transform.IsoObj/f99"  property="tpPrtry"/>
+ 		<jb:value data="/test.transform.IsoObj/f100"  property="clrSysMmbIdMmbId"/>
+ 		<jb:value data="/test.transform.IsoObj/f101"  property="brnchIdId"/>
+ 		<jb:value data="/test.transform.IsoObj/f102"  property="ctrySubDvsn"/>
+ 		<jb:value data="/test.transform.IsoObj/f103"  property="clrSysMmbIdMmbId1"/>
+ 		<jb:value data="/test.transform.IsoObj/f104"  property="brnchIdId1"/>
+ 		<jb:value data="/test.transform.IsoObj/f105"  property="cdtrNm"/>
+ 		<jb:value data="/test.transform.IsoObj/f106"  property="cdtrAcctIdOthrId"/>
+ 		<jb:value data="/test.transform.IsoObj/f107"  property="purpPrtry"/>
+ 		<jb:value data="/test.transform.IsoObj/f108"  property="rmtInfUstrd"/>
+	</jb:bean>
+</smooks-resource-list>  
+    

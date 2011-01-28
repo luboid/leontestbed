@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xml</param>
+    <param name="input.xml" type="input.type.actived">Workspace://bankConnector/src/test/java/test/smooks1/Doc.xml</param>
+  </params>
+  <jb:bean beanId="doc" class="test.smooks1.Doc" createOnElement="/doc/order">
+    <jb:value property="name" data="/doc/@name"/>
+    <jb:wiring beanIdRef="orders" property="orders"/>
+  </jb:bean>
+  <jb:bean beanId="orders" class="java.util.ArrayList" createOnElement="/doc/order">
+    <jb:wiring beanIdRef="Order"/>
+    <jb:wiring beanIdRef="Order2"/>
+  </jb:bean>
+  <jb:bean beanId="Order" class="test.smooks1.Order" createOnElement="/doc/order">
+    <jb:value data="/doc/order/@name1" property="name"/>
+  </jb:bean>
+  <jb:bean beanId="Order2" class="test.smooks1.Order" createOnElement="/doc/order">
+    <jb:value data="/doc/order/@name2" property="name"/>
+  </jb:bean>
+</smooks-resource-list>

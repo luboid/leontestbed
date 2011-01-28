@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="inputType">input.java</param>
+    <param name="stream.filter.type">SAX</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ibps10100101</param>
+  </params>
+  <jb:bean beanId="IsoObj" class="test.transform.IsoObj" createOnElement="com.topfinance.ebo.msg.Ibps10100101">
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/clrSysMmbIdMmbId" property="f100"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/brnchIdId" property="f101"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/ctrySubDvsn" property="f102"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/clrSysMmbIdMmbId1" property="f103"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/brnchIdId1" property="f104"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/cdtrNm" property="f105"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/cdtrAcctIdOthrId" property="f106"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/purpPrtry" property="f107"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/rmtInfUstrd" property="f108"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/grpHdrMsgId" property="f128"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/creDtTm" property="f81"/>
+    <!--jb:value property="f82"/-->
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/nbOfTxs" property="f83"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/ctrlSum" property="f84"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/intrBkSttlmDt" property="f85"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/sttlmMtd" property="f86"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/endToEndId" property="f87"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/pmtIdTxId" property="f88"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/instrPrty" property="f89"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/ctgyPurpPrtry" property="f90"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/intrBkSttlmAmtValue" property="f91"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/intrBkSttlmAmtCcy" property="f92"/>
+   	<jb:expression property="f93" execOnElement="com.topfinance.ebo.msg.Ibps10100101/accptncDtTm">
+        new com.topfinance.smooks.IsoDateEncoder().encode2(_VALUE)
+    </jb:expression>    
+    <!-- jb:value data="/com.topfinance.ebo.msg.Ibps10100101/accptncDtTm" property="f93">
+    </jb:value-->
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/chrgBr" property="f94"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/dbtrNm" property="f95"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/emailAdr" property="f96"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/dbtrAcctIdOthrId" property="f97"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/dbtrAcctIdOthrIssr" property="f98"/>
+    <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/tpPrtry" property="f99"/>
+  </jb:bean>
+</smooks-resource-list>

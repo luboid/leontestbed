@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived">File:/D:\bankConnector\source\sample\Schema\pacs.008.001.02.xsd</param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps60400101" createOnElement="Document">
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/MsgId" property="grpHdrMsgId"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/InstgPty/InstgIndrctPty" property="instgIndrctPty"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/InstdPty/InstdIndrctPty" property="instdIndrctPty"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/SysCd" property="grpHdrSysCd"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/Rmk" property="grpHdrRmk"/>    
+		<jb:value data="/Document/SttlmRtrRct/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+		<jb:value data="/Document/SttlmRtrRct/OrgnlGrpHdr/OrgnlInstgDrctPty" property="orgnlInstgDrctPty"/>    
+		<jb:value data="/Document/SttlmRtrRct/OrgnlGrpHdr/OrgnlMT" property="orgnlMT"/>    
+	</jb:bean>
+</smooks-resource-list>  
+    
