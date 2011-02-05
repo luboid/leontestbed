@@ -17,18 +17,18 @@ import org.milyn.event.report.HtmlReportGenerator;
 import org.milyn.payload.JavaResult;
 import org.milyn.payload.JavaSource;
 
-import test.transform.IsoHelper;
-import test.transform.IsoObj;
-import test.transform.IsoSchema;
 
 import com.cnaps2.xml.iso20022.pacs.v00800102.Document;
 import com.topfinance.cfg.TestDummy;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.ebo.msg.Ibps10100101;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.transform.smooks.SmooksTransformer;
-import com.topfinance.util.Iso8583Util;
+import com.topfinance.transform.util.ISOIBPSPackager;
+import com.topfinance.transform.util.Iso8583Util;
+import com.topfinance.transform.util.IsoHelper;
+import com.topfinance.transform.util.IsoObj;
+import com.topfinance.transform.util.IsoSchema;
 
 public class TestDualTransform extends TestCase {
 	

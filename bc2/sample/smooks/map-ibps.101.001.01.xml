@@ -2,9 +2,9 @@
   <params>
     <param name="stream.filter.type">SAX</param>
     <param name="inputType">input.java</param>
-    <param name="input.java" type="input.type.actived">test.transform.IsoObj</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.transform.util.IsoObj</param>
   </params>
-  <jb:bean beanId="Document" class="com.cnaps2.xml.iso20022.pacs.v00800102.Document" createOnElement="test.transform.IsoObj">
+  <jb:bean beanId="Document" class="com.cnaps2.xml.iso20022.pacs.v00800102.Document" createOnElement="com.topfinance.transform.util.IsoObj">
     <jb:wiring beanIdRef="fiToFICstmrCdtTrf" property="fiToFICstmrCdtTrf"/>
   </jb:bean>
   <jb:bean beanId="fiToFICstmrCdtTrf" class="com.cnaps2.xml.iso20022.pacs.v00800102.FIToFICustomerCreditTransferV02">
@@ -15,13 +15,13 @@
     <jb:wiring beanIdRef="CreditTransferTransactionInformation11"/>
   </jb:bean>
   <jb:bean beanId="CreditTransferTransactionInformation11" class="com.cnaps2.xml.iso20022.pacs.v00800102.CreditTransferTransactionInformation11">
-    <jb:value data="/test.transform.IsoObj/f93" decoder="Date" property="accptncDtTm"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f93" decoder="Date" property="accptncDtTm"/>
     <jb:wiring beanIdRef="cdtr" property="cdtr"/>
     <jb:wiring beanIdRef="cdtrAcct" property="cdtrAcct"/>
     <jb:wiring beanIdRef="cdtrAgt" property="cdtrAgt"/>
     <jb:wiring beanIdRef="dbtr" property="dbtr"/>
     <jb:wiring beanIdRef="dbtrAcct" property="dbtrAcct"/>
-    <jb:value data="/test.transform.IsoObj/f94" property="chrgBr"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f94" property="chrgBr"/>
     <jb:wiring beanIdRef="instdAmt" property="instdAmt"/>
     <jb:wiring beanIdRef="intrBkSttlmAmt" property="intrBkSttlmAmt"/>
     <jb:value property="intrBkSttlmDt"/>
@@ -35,11 +35,11 @@
     <jb:wiring beanIdRef="sttlmTmReq" property="sttlmTmReq"/>
     <jb:value property="xchgRate"/>
   </jb:bean>
-  <jb:bean beanId="cdtr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32" createOnElement="test.transform.IsoObj">
+  <jb:bean beanId="cdtr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32" createOnElement="com.topfinance.transform.util.IsoObj">
     <jb:wiring beanIdRef="ctctDtls" property="ctctDtls"/>
     <jb:value property="ctryOfRes"/>
     <jb:wiring beanIdRef="id" property="id"/>
-    <jb:value data="/test.transform.IsoObj/f105"  property="nm"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f105"  property="nm"/>
     <jb:wiring beanIdRef="pstlAdr" property="pstlAdr"/>
   </jb:bean>
   <jb:bean beanId="ctctDtls" class="com.cnaps2.xml.iso20022.pacs.v00800102.ContactDetails2" >
@@ -55,14 +55,14 @@
     <jb:wiring beanIdRef="orgId" property="orgId"/>
     <jb:wiring beanIdRef="prvtId" property="prvtId"/>
   </jb:bean>
-    <jb:bean beanId="dbtr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32" createOnElement="test.transform.IsoObj">
+    <jb:bean beanId="dbtr" class="com.cnaps2.xml.iso20022.pacs.v00800102.PartyIdentification32" createOnElement="com.topfinance.transform.util.IsoObj">
     <jb:wiring beanIdRef="dbtr_ctctDtls" property="ctctDtls"/>
     <jb:value property="ctryOfRes"/>
-    <jb:value data="/test.transform.IsoObj/f95" property="nm"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f95" property="nm"/>
     <jb:wiring beanIdRef="pstlAdr" property="pstlAdr"/>
   </jb:bean>
-  <jb:bean beanId="dbtr_ctctDtls" class="com.cnaps2.xml.iso20022.pacs.v00800102.ContactDetails2" createOnElement="test.transform.IsoObj">
-    <jb:value data="/test.transform.IsoObj/f96" property="emailAdr"/>
+  <jb:bean beanId="dbtr_ctctDtls" class="com.cnaps2.xml.iso20022.pacs.v00800102.ContactDetails2" createOnElement="com.topfinance.transform.util.IsoObj">
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f96" property="emailAdr"/>
     <jb:value property="faxNb"/>
     <jb:value property="mobNb"/>
     <jb:value property="nm"/>
@@ -107,15 +107,15 @@
   </jb:bean> 
   <jb:bean beanId="dbtrAcct_tp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CashAccountType2">
     <jb:value property="cd"/>
-    <jb:value data="/test.transform.IsoObj/f99" property="prtry"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f99" property="prtry"/>
   </jb:bean>  
   <jb:bean beanId="dbtrAcct_id1" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice">
     <jb:value property="IBAN"/>
     <jb:wiring beanIdRef="dbtrAcct_id1_othr" property="othr"/>
   </jb:bean>   
   <jb:bean beanId="dbtrAcct_id1_othr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GenericAccountIdentification1">
-    <jb:value data="/test.transform.IsoObj/f97" property="id"/>
-    <jb:value data="/test.transform.IsoObj/f98" property="issr"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f97" property="id"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f98" property="issr"/>
   </jb:bean>  
   <jb:bean beanId="id1" class="com.cnaps2.xml.iso20022.pacs.v00800102.AccountIdentification4Choice">
     <jb:value property="IBAN"/>
@@ -170,25 +170,25 @@
     <jb:value property="value"/>
   </jb:bean>
   <jb:bean beanId="intrBkSttlmAmt" class="com.cnaps2.xml.iso20022.pacs.v00800102.ActiveCurrencyAndAmount">
-    <jb:value data="/test.transform.IsoObj/f92" property="ccy"/>
-    <jb:value data="/test.transform.IsoObj/f91" decoder="BigDecimal" property="value"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f92" property="ccy"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f91" decoder="BigDecimal" property="value"/>
   </jb:bean>
   <jb:bean beanId="pmtId" class="com.cnaps2.xml.iso20022.pacs.v00800102.PaymentIdentification3">
     <jb:value property="clrSysRef"/>
-    <jb:value data="/test.transform.IsoObj/f87" property="endToEndId"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f87" property="endToEndId"/>
     <jb:value property="instrId"/>
-    <jb:value data="/test.transform.IsoObj/f88" property="txId"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f88" property="txId"/>
   </jb:bean>
   <jb:bean beanId="pmtTpInf" class="com.cnaps2.xml.iso20022.pacs.v00800102.PaymentTypeInformation21">
     <jb:value property="clrChanl"/>
     <jb:wiring beanIdRef="ctgyPurp" property="ctgyPurp"/>
-    <jb:value data="/test.transform.IsoObj/f89" property="instrPrty"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f89" property="instrPrty"/>
     <jb:wiring beanIdRef="lclInstrm" property="lclInstrm"/>
     <jb:wiring beanIdRef="svcLvl" property="svcLvl"/>
   </jb:bean>
   <jb:bean beanId="ctgyPurp" class="com.cnaps2.xml.iso20022.pacs.v00800102.CategoryPurpose1Choice">
     <jb:value property="cd"/>
-    <jb:value data="/test.transform.IsoObj/f90" property="prtry"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f90" property="prtry"/>
   </jb:bean>
   <jb:bean beanId="lclInstrm" class="com.cnaps2.xml.iso20022.pacs.v00800102.LocalInstrument2Choice">
     <jb:value property="cd"/>
@@ -224,17 +224,17 @@
     <jb:value property="prefix"/>
   </jb:bean>
   <jb:bean beanId="grpHdr" class="com.cnaps2.xml.iso20022.pacs.v00800102.GroupHeader33">
-    <jb:value data="/test.transform.IsoObj/f82" property="btchBookg"/>
-    <jb:value data="/test.transform.IsoObj/f81" property="creDtTm"/>
-    <jb:value data="/test.transform.IsoObj/f84" property="ctrlSum"/>
-    <jb:value data="/test.transform.IsoObj/f85" property="intrBkSttlmDt"/>
-    <jb:value data="/test.transform.IsoObj/f128" property="msgId"/>
-    <jb:value data="/test.transform.IsoObj/f83" property="nbOfTxs"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f82" property="btchBookg"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f81" property="creDtTm"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f84" property="ctrlSum"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f85" property="intrBkSttlmDt"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f128" property="msgId"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f83" property="nbOfTxs"/>
     <jb:wiring beanIdRef="sttlmInf" property="sttlmInf"/>
   </jb:bean>
   <jb:bean beanId="sttlmInf" class="com.cnaps2.xml.iso20022.pacs.v00800102.SettlementInformation13">
     <jb:wiring beanIdRef="clrSys" property="clrSys"/>
-    <jb:value data="/test.transform.IsoObj/f86" property="sttlmMtd"/>
+    <jb:value data="/com.topfinance.transform.util.IsoObj/f86" property="sttlmMtd"/>
   </jb:bean>
   <jb:bean beanId="clrSys" class="com.cnaps2.xml.iso20022.pacs.v00800102.ClearingSystemIdentification3Choice">
     <jb:value property="cd"/>

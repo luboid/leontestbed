@@ -6,7 +6,7 @@
     <param name="input.java" type="input.type.actived">com.cnaps2.xml.iso20022.pacs.v00800102.Document</param>
   </params>
   
-  <jb:bean beanId="IsoObj" class="test.transform.IsoObj" createOnElement="com.cnaps2.xml.iso20022.pacs.v00800102.Document">
+  <jb:bean beanId="IsoObj" class="com.topfinance.transform.util.IsoObj" createOnElement="com.cnaps2.xml.iso20022.pacs.v00800102.Document">
     <jb:value property="f80" data="/com.cnaps2.xml.iso20022.pacs.v00800102.Document/fiToFICstmrCdtTrf/grpHdr/msgId" />
 	<jb:value property="f81" data="/com.cnaps2.xml.iso20022.pacs.v00800102.Document/fiToFICstmrCdtTrf/cdtTrfTxInf/com.cnaps2.xml.iso20022.pacs.v00800102.CreditTransferTransactionInformation11/chrgBr" />
   </jb:bean>

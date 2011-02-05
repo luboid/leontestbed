@@ -5,7 +5,7 @@ import com.topfinance.converter.CalendarConverter;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.util.BCUtils;
-import com.topfinance.util.Iso8583Util;
+import com.topfinance.transform.util.Iso8583Util;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;

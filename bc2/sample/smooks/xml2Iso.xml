@@ -5,7 +5,7 @@
     <param name="input.xsd.rootElement">Document</param>
     <param name="input.xsd" type="input.type.actived">Workspace://bankConnector/sample/Schema/pacs.008.001.02.xsd</param>
   </params>
-  <jb:bean beanId="IsoObj" class="test.transform.IsoObj" createOnElement="Document">
+  <jb:bean beanId="IsoObj" class="com.topfinance.transform.util.IsoObj" createOnElement="Document">
     <jb:value property="f80"/>
     <jb:value property="f81"/>
     <jb:value property="f82"/>

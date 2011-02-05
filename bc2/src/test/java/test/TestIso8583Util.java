@@ -7,12 +7,12 @@ import junit.framework.TestCase;
 import org.jpos.iso.ISODate;
 import org.jpos.iso.ISOMsg;
 
-import test.transform.IsoHelper;
-import test.transform.IsoObj;
-import test.transform.IsoSchema;
 
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
-import com.topfinance.util.Iso8583Util;
+import com.topfinance.transform.util.ISOIBPSPackager;
+import com.topfinance.transform.util.Iso8583Util;
+import com.topfinance.transform.util.IsoHelper;
+import com.topfinance.transform.util.IsoObj;
+import com.topfinance.transform.util.IsoSchema;
 
 public class TestIso8583Util extends TestCase {
     

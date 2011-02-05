@@ -11,7 +11,7 @@ import org.jpos.iso.ISOMsg;
 import org.jpos.iso.ISOPackager;
 import org.jpos.iso.ISOUtil;
 
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
+import com.topfinance.transform.util.ISOIBPSPackager;
 
 public class TestIBPSMsg {
 	

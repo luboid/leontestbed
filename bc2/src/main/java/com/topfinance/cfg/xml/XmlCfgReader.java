@@ -15,8 +15,6 @@ import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.strategy.CycleStrategy;
 import org.simpleframework.xml.strategy.Strategy;
 
-import test.transform.IsoSchema;
-import test.transform.IsoSchema.IsoField;
 
 import com.topfinance.cfg.CfgAccessException;
 import com.topfinance.cfg.CfgConstants;
@@ -34,6 +32,8 @@ import com.topfinance.cfg.ICfgTransOut;
 import com.topfinance.cfg.util.CfgUtils;
 import com.topfinance.runtime.OpInfo;
 import com.topfinance.transform.simple.SimpleMappingRule;
+import com.topfinance.transform.util.IsoSchema;
+import com.topfinance.transform.util.IsoSchema.IsoField;
 import com.topfinance.util.BCUtils;
 
 @Root

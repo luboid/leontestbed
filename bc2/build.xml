@@ -40,7 +40,7 @@
 		<mkdir dir="release/bin/logs"/>
 		<mkdir dir="release/lib"/>
 		<mkdir dir="release/target"/>
-		<mkdir dir="release/sample"/>
+		<mkdir dir="release/cnaps2"/>
 		
         <copy includeemptydirs="false" todir="release/lib">
             <fileset dir="lib" />
@@ -48,13 +48,15 @@
 		    <copy includeemptydirs="false" todir="release/target">
         	<fileset file="target/${jar.name}" />
         </copy>
-		    <copy includeemptydirs="false" todir="release/sample">
-        	<fileset dir="sample" >
-        		<include name="8583/*.*" />
-        		<include name="map/*.*" />
+		
+		<copy includeemptydirs="false" todir="release/cnaps2">
+        	<fileset dir="cnaps2" >
+        		<include name="config/**/*.*" />
+        		<include name="sample/**/*.*" />
         	</fileset>
         </copy>        
-		    <copy includeemptydirs="true" todir="release/bin">
+		
+		<copy includeemptydirs="true" todir="release/bin">
         	<fileset dir="bin" />
         </copy>        
         
@@ -63,8 +65,14 @@
 	</target>
 	
     <target depends="build-project" name="build"/>
-    <target depends="init" name="build-project">
+	
+    <target depends="clean, init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
+    	
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
+            <src path="src/test/gwXML"/>
+            <classpath refid="bankConnector.classpath"/>
+        </javac>
         <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">
             <src path="src/shared/java"/>
             <classpath refid="bankConnector.classpath"/>
@@ -72,61 +80,6 @@
     	
         <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}" encoding="UTF-8">
             <src path="src/main/java"/>
-            <exclude name="com/bc/runtime/RouterBean.java"/>
-            <exclude name="com/bc/runtime/RouterBeanImpl.java"/>
-            <exclude name="com/bc/runtime/AuditTracker.java"/>
-            <exclude name="com/bc/cfg/ICfgRoute.java"/>
-            <exclude name="com/bc/cfg/om/OmCfgRoute.java"/>
-            <exclude name="com/tibco/ax/fw/alert/"/>
-            <exclude name="com/tibco/ax/fw/util/GUISendRvMsg.java"/>
-            <exclude name="com/tibco/ax/fw/db/LogViewImpl.java"/>
-            <exclude name="com/tibco/ax/fw/db/ReportAccessImpl.java"/>
-            <exclude name="com/tibco/ax/fw/util/BCSdkTrace.java"/>
-            <exclude name="com/tibco/ax/fw/util/BufferedFileInputStream.java"/>
-            <exclude name="com/tibco/ax/fw/util/BufferedFileOutputStream.java"/>
-            <exclude name="com/tibco/ax/fw/util/FileNameUtil.java"/>
-            <exclude name="com/tibco/ax/fw/util/FileUtil.java"/>
-            <exclude name="com/tibco/ax/fw/util/IniFile.java"/>
-            <exclude name="com/tibco/ax/fw/util/INTStreamUtils.java"/>
-            <exclude name="com/tibco/ax/fw/util/MimeHeaderUtil.java"/>
-            <exclude name="com/tibco/ax/fw/util/SharedBufferedFileInputStream.java"/>
-            <exclude name="com/tibco/ax/fw/util/KSUtil.java"/>
-            <exclude name="com/tibco/ax/fw/util/RenameTextFile.java"/>
-            <exclude name="com/tibco/ax/fw/util/FTPUtil.java"/>
-            <exclude name="com/tibco/ax/fw/util/LDAPUtil.java"/>
-            <exclude name="com/tibco/ax/fw/util/DBLock.java"/>
-            <exclude name="com/tibco/ax/fw/util/DBLockTransEntry.java"/>
-            <exclude name="com/tibco/ax/fw/util/XiNodeUtil.java"/>
-            <exclude name="com/tibco/ax/fw/util/URLUtil.java"/>
-            <exclude name="com/tibco/ax/fw/runtime/hibernation/HibernateEHCacheStore.java"/>
-            <exclude name="com/tibco/ax/fw/runtime/hibernation/BCCacheEventListener.java"/>
-            <exclude name="com/tibco/ax/fw/runtime/hibernation/BCCacheEventListenerFactory.java"/>
-            <exclude name="com/tibco/ax/fw/runtime/hibernation/HibernateThreadTest.java"/>
-            <exclude name="com/tibco/ax/fw/"/>
-            <exclude name="com/bc/stubs/internal/HttpClientMain.java"/>
-            <exclude name="com/bc/stubs/internal/JmsClientMain.java"/>
-            <exclude name="com/bc/stubs/external/JmsEchoServer.java"/>
-            <exclude name="com/bc/stubs/internal/CamelClient.java"/>
-            <exclude name="com/bc/stubs/internal/CamelClientEndpoint.java"/>
-            <exclude name="com/topfinance/stubs/external/JmsEchoServer.java"/>
-            <exclude name="com/topfinance/stubs/internal/HttpClientMain.java"/>
-            <exclude name="com/topfinance/stubs/internal/JmsClientMain.java"/>
-            <exclude name="com/topfinance/runtime/RouterBean.java"/>
-            <exclude name="com/topfinance/runtime/RouterBeanImpl.java"/>
-            <exclude name="com/topfinance/runtime/AuditTracker.java"/>
-            <exclude name="com/topfinance/cfg/ICfgPassway.java"/>
-            <exclude name="com/topfinance/cfg/ICfgProtocolBinding.java"/>
-            <exclude name="com/topfinance/cfg/om/OmCfgProtocolBinding.java"/>
-            <exclude name="com/topfinance/cfg/om/OmCfgPassway.java"/>
-            <exclude name="com/topfinance/cfg/om/OmCfgRoute.java"/>
-            <exclude name="com/topfinance/cfg/ICfgRoute.java"/>
-            <exclude name="com/topfinance/components/tcp8583/ISO8583BjobPackager.java"/>
-            <exclude name="com/topfinance/plugin/cnaps2/utils/IBPSMsgFactory.java"/>
-            <exclude name="com/topfinance/plugin/cnaps2/utils/Tcp8583StructFactory.java"/>        	
-            <exclude name="com/topfinance/plugin/cnaps2/DocRoot.java"/>
-            <exclude name="com/topfinance/plugin/cnaps2/v00200103/"/>
-            <exclude name="com/topfinance/plugin/cnaps2/v00800102/"/>
-            <exclude name="com/topfinance/plugin/cnaps2/v05400102/"/>
             <classpath refid="bankConnector.classpath"/>
         </javac>
         <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" source="${source}" target="${target}">

@@ -4,7 +4,7 @@
     <param name="stream.filter.type">SAX</param>
     <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ibps10100101</param>
   </params>
-  <jb:bean beanId="IsoObj" class="test.transform.IsoObj" createOnElement="com.topfinance.ebo.msg.Ibps10100101">
+  <jb:bean beanId="IsoObj" class="com.topfinance.transform.util.IsoObj" createOnElement="com.topfinance.ebo.msg.Ibps10100101">
     <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/clrSysMmbIdMmbId" property="f100"/>
     <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/brnchIdId" property="f101"/>
     <jb:value data="/com.topfinance.ebo.msg.Ibps10100101/ctrySubDvsn" property="f102"/>

@@ -18,11 +18,11 @@ import org.apache.commons.lang.StringUtils;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
-import test.transform.IsoObj;
 
 import com.topfinance.transform.simple.SimpleMappingRule;
 import com.topfinance.transform.simple.SimpleMappingRule.Mapping;
 import com.topfinance.transform.simple.SimpleTransformer;
+import com.topfinance.transform.util.IsoObj;
 
 public class TestSimpleTransform extends TestCase {
 	

@@ -27,8 +27,8 @@ import org.jpos.iso.ISOMsg;
 
 import com.topfinance.cfg.TestDummy;
 import com.topfinance.runtime.BcConstants;
+import com.topfinance.transform.util.Iso8583Util;
 import com.topfinance.util.BCUtils;
-import com.topfinance.util.Iso8583Util;
 
 
 public class Iso8583ToXml {

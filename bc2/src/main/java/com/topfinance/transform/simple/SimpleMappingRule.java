@@ -10,12 +10,12 @@ import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-import test.transform.IsoObj;
 
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.jpa.TCfgMapRuleDetailEbo;
 import com.topfinance.cfg.jpa.TCfgMapRuleEbo;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
+import com.topfinance.transform.util.IsoObj;
 
 public class SimpleMappingRule {
 	

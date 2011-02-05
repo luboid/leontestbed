@@ -4,7 +4,7 @@
     <param name="inputType">input.java</param>
     <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Saps60100101</param>
   </params>
-  <jb:bean beanId="target" class="test.transform.IsoObj" createOnElement="com.topfinance.ebo.msg.Saps60100101">
+  <jb:bean beanId="target" class="com.topfinance.transform.util.IsoObj" createOnElement="com.topfinance.ebo.msg.Saps60100101">
  	<jb:value data="/com.topfinance.ebo.msg.Saps60100101/grpHdrMsgId"  property="f128"/>
 	<jb:expression property="f81" execOnElement="creDtTm">
   	new com.topfinance.transform.smooks.IsoDateEncoder().encode2(_VALUE)

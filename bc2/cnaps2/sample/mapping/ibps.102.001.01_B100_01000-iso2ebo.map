@@ -2,36 +2,36 @@
   <params>
     <param name="stream.filter.type">SAX</param>
     <param name="inputType">input.java</param>
-    <param name="input.java" type="input.type.actived">test.transform.IsoObj</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.transform.util.IsoObj</param>
   </params>
-  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ibps10200101" createOnElement="test.transform.IsoObj">
- 		<jb:value data="/test.transform.IsoObj/f128"  property="grpHdrMsgId"/>
- 		<jb:value data="/test.transform.IsoObj/f81" decoder="com.topfinance.smooks.IsoDateDecoder"  property="creDtTm"/>
- 		<jb:value data="/test.transform.IsoObj/f82"  property="orgnlMsgId"/>
- 		<jb:value data="/test.transform.IsoObj/f83"  property="orgnlMsgNmId"/>
- 		<jb:value data="/test.transform.IsoObj/f84"  property="addtlInf"/>
- 		<jb:value data="/test.transform.IsoObj/f85"  property="txInfAndStsStsId"/>
- 		<jb:value data="/test.transform.IsoObj/f86"  property="orgnlEndToEndId"/>
- 		<jb:value data="/test.transform.IsoObj/f87"  property="orgnlTxId"/>
- 		<jb:value data="/test.transform.IsoObj/f88"  property="rsnPrtry"/>
- 		<jb:value data="/test.transform.IsoObj/f89"  property="intrBkSttlmAmtValue"/>
- 		<jb:value data="/test.transform.IsoObj/f90"  property="intrBkSttlmAmtCcy"/>
- 		<jb:value data="/test.transform.IsoObj/f91"  property="instrPrty"/>
- 		<jb:value data="/test.transform.IsoObj/f92"  property="ctgyPurpPrtry"/>
- 		<jb:value data="/test.transform.IsoObj/f93"  property="dbtrNm"/>
- 		<jb:value data="/test.transform.IsoObj/f94"  property="dbtrAcctIdOthrId"/>
- 		<jb:value data="/test.transform.IsoObj/f95"  property="dbtrAcctIdOthrIssr"/>
- 		<jb:value data="/test.transform.IsoObj/f96"  property="tpPrtry"/>
- 		<jb:value data="/test.transform.IsoObj/f97"  property="clrSysMmbIdMmbId"/>
- 		<jb:value data="/test.transform.IsoObj/f98"  property="brnchIdId"/>
- 		<jb:value data="/test.transform.IsoObj/f99"  property="clrSysMmbIdMmbId1"/>
- 		<jb:value data="/test.transform.IsoObj/f100"  property="brnchIdId1"/>
- 		<jb:value data="/test.transform.IsoObj/f101"  property="ctrySubDvsn"/>
- 		<jb:value data="/test.transform.IsoObj/f102"  property="cdtrNm"/>
- 		<jb:value data="/test.transform.IsoObj/f103"  property="emailAdr"/>
- 		<jb:value data="/test.transform.IsoObj/f104"  property="cdtrAcctIdOthrId"/>
- 		<jb:value data="/test.transform.IsoObj/f105"  property="cdtrAcctIdOthrIssr"/>
- 		<jb:value data="/test.transform.IsoObj/f106"  property="tpPrtry1"/>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ibps10200101" createOnElement="com.topfinance.transform.util.IsoObj">
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f128"  property="grpHdrMsgId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f81" decoder="com.topfinance.smooks.IsoDateDecoder"  property="creDtTm"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f82"  property="orgnlMsgId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f83"  property="orgnlMsgNmId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f84"  property="addtlInf"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f85"  property="txInfAndStsStsId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f86"  property="orgnlEndToEndId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f87"  property="orgnlTxId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f88"  property="rsnPrtry"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f89"  property="intrBkSttlmAmtValue"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f90"  property="intrBkSttlmAmtCcy"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f91"  property="instrPrty"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f92"  property="ctgyPurpPrtry"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f93"  property="dbtrNm"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f94"  property="dbtrAcctIdOthrId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f95"  property="dbtrAcctIdOthrIssr"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f96"  property="tpPrtry"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f97"  property="clrSysMmbIdMmbId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f98"  property="brnchIdId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f99"  property="clrSysMmbIdMmbId1"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f100"  property="brnchIdId1"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f101"  property="ctrySubDvsn"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f102"  property="cdtrNm"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f103"  property="emailAdr"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f104"  property="cdtrAcctIdOthrId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f105"  property="cdtrAcctIdOthrIssr"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f106"  property="tpPrtry1"/>
 	</jb:bean>
 </smooks-resource-list>  
     

@@ -31,17 +31,17 @@ import org.jdom.input.SAXBuilder;
 import org.jpos.iso.ISODate;
 import org.jpos.iso.ISOMsg;
 
-import test.cnaps2.OpTester;
 
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.TestDummy;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.runtime.OpInfo;
 import com.topfinance.transform.smooks.SmooksTransformer;
+import com.topfinance.transform.util.ISOIBPSPackager;
+import com.topfinance.transform.util.Iso8583Util;
 import com.topfinance.util.MetaJaxbElement.Value;
 import com.topfinance.util.MetaJaxbElement.Wiring;
 

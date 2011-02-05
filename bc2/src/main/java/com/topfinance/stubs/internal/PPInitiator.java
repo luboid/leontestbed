@@ -27,13 +27,13 @@ import com.topfinance.cfg.ICfgReader;
 import com.topfinance.cfg.ICfgTransIn;
 import com.topfinance.cfg.ICfgTransOut;
 import com.topfinance.cfg.TestDummy;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.runtime.OpInfo;
 import com.topfinance.stubs.StubUtils;
+import com.topfinance.transform.util.ISOIBPSPackager;
+import com.topfinance.transform.util.Iso8583Util;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.FilePathHelper;
-import com.topfinance.util.Iso8583Util;
 
 public class PPInitiator implements Runnable, Processor, CfgConstants{
     private static Logger logger = Logger.getLogger(PPInitiator.class.getName());

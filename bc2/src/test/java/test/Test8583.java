@@ -65,8 +65,8 @@ import org.jpos.util.SimpleLogListener;
 import org.jpos.util.SimpleLogSource;
 
 import com.topfinance.cfg.TestDummy;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
 import com.topfinance.runtime.BcConstants;
+import com.topfinance.transform.util.ISOIBPSPackager;
 import com.topfinance.util.BCUtils;
 
 public class Test8583 extends SimpleLogSource {

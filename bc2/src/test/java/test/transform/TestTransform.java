@@ -20,9 +20,12 @@ import com.cnaps2.xml.iso20022.pacs.v00800102.GroupHeader33;
 import com.topfinance.cfg.TestDummy;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
+import com.topfinance.transform.util.ISOIBPSPackager;
+import com.topfinance.transform.util.Iso8583Util;
+import com.topfinance.transform.util.IsoHelper;
+import com.topfinance.transform.util.IsoObj;
+import com.topfinance.transform.util.IsoSchema;
 import com.topfinance.util.BCUtils;
-import com.topfinance.util.Iso8583Util;
 
 public class TestTransform extends TestCase {
     

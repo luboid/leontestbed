@@ -2,20 +2,20 @@
   <params>
     <param name="stream.filter.type">SAX</param>
     <param name="inputType">input.java</param>
-    <param name="input.java" type="input.type.actived">test.transform.IsoObj</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.transform.util.IsoObj</param>
   </params>
-  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps60400101" createOnElement="test.transform.IsoObj">
- 		<jb:value data="/test.transform.IsoObj/f128"  property="grpHdrMsgId"/>
- 		<jb:value data="/test.transform.IsoObj/f81" decoder="com.topfinance.smooks.IsoDateDecoder"  property="creDtTm"/>
- 		<jb:value data="/test.transform.IsoObj/f82"  property="instgDrctPty"/>
- 		<jb:value data="/test.transform.IsoObj/f83"  property="instgIndrctPty"/>
- 		<jb:value data="/test.transform.IsoObj/f84"  property="instdDrctPty"/>
- 		<jb:value data="/test.transform.IsoObj/f85"  property="instdIndrctPty"/>
- 		<jb:value data="/test.transform.IsoObj/f86"  property="grpHdrSysCd"/>
- 		<jb:value data="/test.transform.IsoObj/f87"  property="grpHdrRmk"/>
- 		<jb:value data="/test.transform.IsoObj/f88"  property="orgnlMsgId"/>
- 		<jb:value data="/test.transform.IsoObj/f89"  property="orgnlInstgDrctPty"/>
- 		<jb:value data="/test.transform.IsoObj/f90"  property="orgnlMT"/>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps60400101" createOnElement="com.topfinance.transform.util.IsoObj">
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f128"  property="grpHdrMsgId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f81" decoder="com.topfinance.smooks.IsoDateDecoder"  property="creDtTm"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f82"  property="instgDrctPty"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f83"  property="instgIndrctPty"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f84"  property="instdDrctPty"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f85"  property="instdIndrctPty"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f86"  property="grpHdrSysCd"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f87"  property="grpHdrRmk"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f88"  property="orgnlMsgId"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f89"  property="orgnlInstgDrctPty"/>
+ 		<jb:value data="/com.topfinance.transform.util.IsoObj/f90"  property="orgnlMT"/>
 	</jb:bean>
 </smooks-resource-list>  
     

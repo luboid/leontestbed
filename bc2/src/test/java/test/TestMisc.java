@@ -3,9 +3,9 @@ package test;
 import com.topfinance.cfg.TestDummy;
 import com.topfinance.converter.CalendarConverter;
 import com.topfinance.converter.Iso8583ToXml;
-import com.topfinance.plugin.cnaps2.utils.ISOIBPSPackager;
+import com.topfinance.transform.util.ISOIBPSPackager;
 import com.topfinance.util.BCUtils;
-import com.topfinance.util.Iso8583Util;
+import com.topfinance.transform.util.Iso8583Util;
 
 import java.beans.PropertyDescriptor;
 import java.io.FileInputStream;

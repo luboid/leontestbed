@@ -1,4 +1,4 @@
-<simpleMappingRule targetName="test.transform.IsoObj">
+<simpleMappingRule targetName="com.topfinance.transform.util.IsoObj">
    <mappings class="java.util.ArrayList">
       <mapping  targetPath="f128" srcPath="grpHdrMsgId"/>
       <mapping targetType="ISODATE" srcType="JAVADATE" targetPath="f81" srcPath="creDtTm"/>

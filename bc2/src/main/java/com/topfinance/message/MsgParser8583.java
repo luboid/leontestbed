@@ -6,9 +6,6 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-import test.transform.IsoHelper;
-import test.transform.IsoObj;
-import test.transform.IsoSchema;
 
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
@@ -19,6 +16,9 @@ import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.runtime.OpInfo;
 import com.topfinance.transform.simple.SimpleMappingRule;
 import com.topfinance.transform.simple.SimpleTransformer;
+import com.topfinance.transform.util.IsoHelper;
+import com.topfinance.transform.util.IsoObj;
+import com.topfinance.transform.util.IsoSchema;
 
 public class MsgParser8583 implements IMsgParser {
     private static Logger logger = Logger.getLogger(MsgParser8583.class);
