@@ -1,6 +1,9 @@
 echo off
 
-set BC2_HOME=D:\bankConnector\source
+rem IMPORTANT
+rem may need put %BC2_HOME%\lib\jaxb-api-2.1.jar to JRE/lib/endorsed folder, in order to override JDK's default JAXB lib
+
+set BC2_HOME=D:\bankConnector\bc2\bc2
 set JAVA_HOME=D:\Program Files\Java\jdk1.6.0_17
 rem set CFGTYPE=DB
 set CFGTYPE=FILE

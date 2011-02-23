@@ -166,4 +166,30 @@ public class OpTester extends TestCase {
         	
         }
 	}
+	
+	public void testDown() {
+        CfgImplFactory.setType(CfgImplFactory.TYPE_FILE);
+        CfgImplFactory.setConfig("D:/bankConnector/bc2/bc2/bin/runBC-A-config-FILE.xml");
+        // work in /generated folder
+    	BCUtils.setHomeDir("D:/bankConnector/bc2/bc2");
+    	
+        OpInfo[] ops = new OpInfo[] {
+        		TestDummy.OPINFO_111
+//        		,
+//                TestDummy.OPINFO_101
+//                ,
+//                TestDummy.OPERATION_102
+//                ,
+//                TestDummy.OPERATION_601
+           };
+        
+        for (OpInfo op : ops) {
+        	try {
+        		down(op);
+        	} catch (Exception ex) {
+        		ex.printStackTrace();
+        	}
+        }
+        
+	}
 }

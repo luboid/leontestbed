@@ -289,8 +289,10 @@ public class DownwardProcessor extends AbstractProcessor{
                 AuditUtil.updateOtherAuditLogStatus(getMsgContext().getAuditTx().getAuditId(),
                                                     STATE_PARSE_VALIDATION, "ack failed to validated", STATUS_ERROR);
             } else {
-                AuditUtil.updateOtherAuditLogStatus(getMsgContext().getAuditTx().getAuditId(),
-                                                    STATE_PARSE_VALIDATION, "ack validated", STATUS_PENDING);
+            	
+            	// TODO this will override the complete status when UpReplyType=N
+//                AuditUtil.updateOtherAuditLogStatus(getMsgContext().getAuditTx().getAuditId(),
+//                                                    STATE_PARSE_VALIDATION, "ack validated", STATUS_PENDING);
             }        
         }
         
@@ -330,11 +332,11 @@ public class DownwardProcessor extends AbstractProcessor{
                     // todo: sth wrong? expect sync reply but got async ack  
                 }
                 AuditUtil.updateOtherAuditLogStatus(auditId, 
-                                               STATE_SENT_OUT_MSG, "received sync ack from tp and send to pp", nextStatus);    
+                                               STATE_SENT_OUT_MSG, "message sent to tp successfully (received good ack)", nextStatus);    
             }
             else {
                 AuditUtil.updateOtherAuditLogStatus(auditId, 
-                                               STATE_SENT_OUT_MSG, "received sync ack with fail mark", STATUS_ERROR);
+                                               STATE_SENT_OUT_MSG, "message sent to tp but received ack with fail mark", STATUS_ERROR);
             }
             
 

@@ -35,7 +35,7 @@
       	id="TI_PUBLIC_AMQ" name="PREFIX_PUBLIC_AMQ" provider="AMQ"
       	prefix="amqC-B" isPrivate="F">
       	<config key="brokerUrl">tcp://localhost:40000</config>
-      	<config key="maxConsumer">10</config>
+      	<config key="maxConsumer">32</config>
       </ICfgTransIn>
       <ICfgTransIn class="com.topfinance.cfg.xml.OmCfgTransInIBMMQ"
       	id="TI_PUBLIC_IBMMQ" name="PREFIX_PUBLIC_IBMMQ" provider="IBMMQ"
@@ -87,7 +87,7 @@
       </ICfgOperation>
       <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation"
       	id="hvps.111" name="hvps.111.001.01"
-      	upPpReplyType="S" 
+      	upPpReplyType="N" 
       	downPpReplyType="N"
       	>
       	<protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6" />

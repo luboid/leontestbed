@@ -5,6 +5,7 @@ import java.io.InputStream;
 
 import javax.xml.transform.stream.StreamSource;
 
+import org.apache.log4j.Logger;
 import org.milyn.Smooks;
 import org.milyn.container.ExecutionContext;
 import org.milyn.event.report.HtmlReportGenerator;
@@ -13,6 +14,7 @@ import org.milyn.payload.JavaSource;
 
 public class SmooksTransformer {
 	
+	private static Logger logger = Logger.getLogger(SmooksTransformer.class);
 	public static final String ROOT_BEAN_ID = "target";
 	
 	public static Object java2Java(Object src, InputStream mapping) {
@@ -28,8 +30,10 @@ public class SmooksTransformer {
 			JavaResult result = new JavaResult();
 
 			// Configure the execution context to generate a report...
-			executionContext.setEventListener(new HtmlReportGenerator("target/report/report.html"));
-
+			if(logger.isDebugEnabled()) {
+				executionContext.setEventListener(new HtmlReportGenerator("target/report/report.html"));
+			}
+			
 			smooks.filterSource(executionContext, source, result);
 
 			return result.getBean(ROOT_BEAN_ID);
@@ -57,8 +61,10 @@ public class SmooksTransformer {
             JavaResult result = new JavaResult();
 
             // Configure the execution context to generate a report...
-            executionContext.setEventListener(new HtmlReportGenerator("target/report/report.html"));
-
+            if(logger.isDebugEnabled()) {
+            	executionContext.setEventListener(new HtmlReportGenerator("target/report/report.html"));
+            }
+            
             smooks.filterSource(executionContext, source, result);
 
 			return result.getBean(ROOT_BEAN_ID);

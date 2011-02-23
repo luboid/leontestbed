@@ -5,18 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.log4j.Logger;
 import org.jpos.iso.ISOBasePackager;
 import org.jpos.iso.ISOFieldPackager;
 import org.jpos.iso.ISOMsg;
-
 
 import com.topfinance.cfg.ICfgFormat8583;
 import com.topfinance.transform.util.IsoSchema.IsoField;
 
 public class IsoHelper {
     
+	private static Logger logger = Logger.getLogger(IsoHelper.class);
+	
     private static void debug(String s) {
-        System.out.println(s);
+    	
+    	if(logger.isDebugEnabled()) {
+    		logger.debug(s);
+    	}
     }
     
     public static String pack(ISOBasePackager packager, IsoObj obj) {
@@ -40,7 +45,7 @@ public class IsoHelper {
             debug("f98="+obj.getF98());
             
             byte[] raw = m.pack();
-            System.out.println("b=" + new String(raw, "UTF-8") + "..");
+            debug("b=" + new String(raw, "UTF-8") + "..");
 
             String res = Iso8583Util.packMsg(m);
             
@@ -66,7 +71,7 @@ public class IsoHelper {
             }
 
             byte[] raw = m.pack();
-            System.out.println("b=" + new String(raw, "UTF-8") + "..");
+            debug("b=" + new String(raw, "UTF-8") + "..");
 
             String res = Iso8583Util.packMsg(m);
             

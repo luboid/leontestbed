@@ -33,7 +33,8 @@
 		<!-- start the public JMS -->
    	<broker:broker useJmx="false" persistent="false" brokerName="localhost">
         <broker:transportConnectors>
-            <broker:transportConnector name="public" uri="tcp://localhost:40000"/>
+            <broker:transportConnector name="publicB" uri="tcp://localhost:40000"/>
+            <broker:transportConnector name="publicA" uri="tcp://localhost:41000"/>
         </broker:transportConnectors>
     </broker:broker>
 

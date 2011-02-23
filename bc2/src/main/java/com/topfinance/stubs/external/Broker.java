@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
+import org.apache.activemq.camel.component.ActiveMQComponent;
 import org.apache.camel.CamelContext;
+import org.apache.camel.Component;
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.ExchangePattern;
@@ -27,8 +29,8 @@ import com.topfinance.cfg.CfgAccessException;
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgFormat;
-import com.topfinance.cfg.ICfgPortIn;
 import com.topfinance.cfg.ICfgOperation;
+import com.topfinance.cfg.ICfgPortIn;
 import com.topfinance.cfg.ICfgPortOut;
 import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
@@ -44,6 +46,7 @@ import com.topfinance.message.IMsgParser;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
+import com.topfinance.runtime.BcConstants;
 import com.topfinance.runtime.BcException;
 import com.topfinance.runtime.OpInfo;
 import com.topfinance.transform.util.ISOIBPSPackager;
@@ -59,19 +62,40 @@ public class Broker implements Processor, CfgConstants{
     }
     
     private static ApplicationContext ctx;
+    
+    public static class Dispatcher {
+        public Dispatcher() {
+        }
+        
+        public void preprocess(Exchange exchange) throws Exception {
+        	String inUrl = exchange.getFromEndpoint().getEndpointUri();
+        	exchange.getIn().setHeader("inUrl", inUrl);
+        }
+    }
     public static class MyRoute extends RouteBuilder{
         Processor processor;
         public MyRoute(Processor processor) {
             this.processor = processor;
         }
         public void configure() throws Exception {
+        	Dispatcher dis = new Dispatcher();
+        	
+        	int threadSize = 32;
+        	
             for (String inUrl : inUrlsA) {
                 logger.info("listening on url: "+inUrl);
-                from(inUrl).process(processor);
+
+                String seda="seda:process?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
+                
+                from(inUrl).bean(dis, "preprocess").to(seda);
+                from(seda).process(processor);
             }
             for (String inUrl : inUrlsB) {
                 logger.info("listening on url: "+inUrl);
-                from(inUrl).process(processor);
+                
+                String seda2="seda:process2?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
+                from(inUrl).bean(dis, "preprocess").to(seda2);
+                from(seda2).process(processor);
             }
         }        
     }        
@@ -79,7 +103,7 @@ public class Broker implements Processor, CfgConstants{
     CamelContext camel;
     static ICfgReader readerA;
     static ICfgReader readerB;
-    private final ExecutorService executor = new ScheduledThreadPoolExecutor(5);
+    private final ExecutorService executor = new ScheduledThreadPoolExecutor(32);
     
     // maps of hostIds->outportUrl
 //    static Map<String, String> routing = new HashMap<String, String>();
@@ -224,6 +248,16 @@ public class Broker implements Processor, CfgConstants{
         for(ICfgTransOut ti : listTiOut) {
             try {
                 BCUtils.initCamelComponentOut(camel, ti);
+                
+                // TODO move broker configuration to separate XML instead of composing from A and B
+                int threadSize = 32;
+                String provider = ti.getProvider();
+                Component comp = null;
+                if(CfgConstants.JMS_PROVIDER_AMQ.equals(provider)) {
+                	comp = camel.getComponent(ti.getPrefix());
+                	((ActiveMQComponent)comp).setMaxConcurrentConsumers(threadSize);
+                }
+                
             } catch (Exception ex) {
                 logger.error("failed initializing camel components, quit...", ex);
                 System.exit(0);
@@ -255,7 +289,10 @@ public class Broker implements Processor, CfgConstants{
     public void process(Exchange exchange) throws Exception {
         
         // parse header and doc
-        String inUrl = exchange.getFromEndpoint().getEndpointUri();
+    	try {
+//        String inUrl = exchange.getFromEndpoint().getEndpointUri();
+    	String inUrl = (String)exchange.getIn().getHeader("inUrl");
+    		
         String message = exchange.getIn().getBody(String.class);
         logger.info("received message from url="+inUrl);
         logger.debug("rawMsg="+message);
@@ -265,6 +302,7 @@ public class Broker implements Processor, CfgConstants{
         String bodyText = message.substring(MsgHeader.TOTAL_LENGTH);
         logger.debug("body="+bodyText);
         MsgHeader header = null;
+        
         try {
             header = MsgHeader.fromText(headerText);
         } catch (Exception ex) {
@@ -354,7 +392,7 @@ public class Broker implements Processor, CfgConstants{
 //        exchange.getOut().setBody(ackText);
         
         // send async ack
-        new SendJob(ackText, ackUrl, camel).run();
+        executor.execute(new SendJob(ackText, ackUrl, camel));
         
         
         // prepare and send response, hardcoded
@@ -396,31 +434,31 @@ public class Broker implements Processor, CfgConstants{
             executor.execute(new SendJob(outText, outUrl, camel));   
             
             
-            String docId_111 = BCUtils.extractMsgId(jaxbObj);
-            // send 604 to A
-            OpInfo opInfo = TestDummy.OPINFO_604;
-            outHeader = new MsgHeader(
-                    origSender,
-                    origReceiver,
-                    opInfo.getMesgType(),
-                    // always generate unique header level id
-                    BCUtils.getUniqueId(), 
-                    mesgRefId
-                 );
-
-            // TODO 
-            ICfgProtocol prot = readerA.getProtocolByName(CfgConstants.PROTOCOL_CNAPS2);
-            ICfgOperation cfgOpn = readerA.getOperation(prot, opInfo.getMesgType()); 
-            Object ebo = createEbo(opInfo, prot, cfgOpn);
-            
-    		BeanUtils.setProperty(ebo, Cnaps2Constants.ORIG_MSG_ID_604_EBOFLD, docId_111);
-    		BeanUtils.setProperty(ebo, Cnaps2Constants.MSG_ID_EBOFLD, BCUtils.getUniqueDocId());
-    		// TODO check docid, opId, etc? 
-    		DefaultCnaps2Packer packer = new DefaultCnaps2Packer();
-    		String body = packer.packBody(ebo, cfgOpn, opInfo);
-    		outText = outHeader.toText()+body;
-            logger.info("=================forwarding 601 to BankA on url="+ackUrl);
-            executor.execute(new SendJob(outText, ackUrl, camel));
+//            String docId_111 = BCUtils.extractMsgId(jaxbObj);
+//            // send 604 to A
+//            OpInfo opInfo = TestDummy.OPINFO_604;
+//            outHeader = new MsgHeader(
+//                    origSender,
+//                    origReceiver,
+//                    opInfo.getMesgType(),
+//                    // always generate unique header level id
+//                    BCUtils.getUniqueId(), 
+//                    mesgRefId
+//                 );
+//
+//            // TODO 
+//            ICfgProtocol prot = readerA.getProtocolByName(CfgConstants.PROTOCOL_CNAPS2);
+//            ICfgOperation cfgOpn = readerA.getOperation(prot, opInfo.getMesgType()); 
+//            Object ebo = createEbo(opInfo, prot, cfgOpn);
+//            
+//    		BeanUtils.setProperty(ebo, Cnaps2Constants.ORIG_MSG_ID_604_EBOFLD, docId_111);
+//    		BeanUtils.setProperty(ebo, Cnaps2Constants.MSG_ID_EBOFLD, BCUtils.getUniqueDocId());
+//    		// TODO check docid, opId, etc? 
+//    		DefaultCnaps2Packer packer = new DefaultCnaps2Packer();
+//    		String body = packer.packBody(ebo, cfgOpn, opInfo);
+//    		outText = outHeader.toText()+body;
+//            logger.info("=================forwarding 601 to BankA on url="+ackUrl);
+//            executor.execute(new SendJob(outText, ackUrl, camel));
             
             
         } else if(mesgType.equals(TestDummy.OPERATION_102)) {
@@ -505,8 +543,10 @@ public class Broker implements Processor, CfgConstants{
             
             
         }
-         
-        
+
+    	} catch (Exception ex) {
+    		logger.error("ERROR IN BROKER!!!"+ex.getMessage());
+    	}
     }
     public Object createEbo(OpInfo opInfo, ICfgProtocol prot, ICfgOperation cfgOpn) throws Exception{
         String iso8583601Sample = FilePathHelper.sample8583(opInfo);

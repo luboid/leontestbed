@@ -201,7 +201,7 @@ public class BCUtils {
             
             // extra
             amq.setMaxConcurrentConsumers(amqji.getMaxConsumer());
-//            logger.info("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
+            logger.debug("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
         }
         
         else if(CfgConstants.JMS_PROVIDER_IBMMQ.equals(provider)) {
@@ -269,7 +269,7 @@ public class BCUtils {
             
             // extra
             amq.setRequestTimeout(amqji.getReqTimeout());
-//            logger.info("adding component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
+            logger.debug("adding out component: "+ti.getPrefix()+", brokerUrl="+amqji.getBrokerUrl());
         }
         
         else if(CfgConstants.JMS_PROVIDER_IBMMQ.equals(provider)) {

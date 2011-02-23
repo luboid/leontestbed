@@ -74,7 +74,7 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         List<ICfgPortIn> inPorts = reader.getListOfEnabledInport();
         
         // 2. iterate and start listening on each URL, and direct them to next step of RuntimeController.
-        int i=0;
+//        int i=0;
         Dispatcher dis = new Dispatcher();
 //        for(ICfgPortIn inPort : inPorts) {
 //            i++;
@@ -89,17 +89,34 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
 //        }
         
         
-        List<String> inUrls = new ArrayList<String>();
+        List<String> inUrlsPublic = new ArrayList<String>();
+        
+        List<String> inUrlsPrivate = new ArrayList<String>();
         for(ICfgPortIn inPort : inPorts) {
-            i++;
+//            i++;
             String url = BCUtils.getFullUrlFromPortIn(inPort, reader, false);
-            logger.info("listening on url="+url);
-            inUrls.add(url);
+            if(DIRECTION_UP.equals(inPort.getDirection())) {
+                logger.info("listening on private inport, url="+url);
+                inUrlsPrivate.add(url);            	
+            }
+            else {
+                logger.info("listening on public inport, url="+url);
+                inUrlsPublic.add(url);            	
+            }
         }
 
-        from(inUrls.toArray(new String[0])).bean(dis, "preprocess").to("seda:process?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+10);
+        int threadSize = 32;
+        
+        String sedaUp = "seda:processUp?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
+        from(inUrlsPrivate.toArray(new String[0])).bean(dis, "preprocess").to(sedaUp);
         // two phases using separate thread pool
-        from("seda:process?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+10).bean(dis, "process");        
+        from(sedaUp).bean(dis, "process");        
+
+        String sedaDown = "seda:processDown?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
+        from(inUrlsPublic.toArray(new String[0])).bean(dis, "preprocess").to(sedaDown);
+        // two phases using separate thread pool
+        from(sedaDown).bean(dis, "process"); 
+        
         
         // TODO move to configuration
         // 1 minute

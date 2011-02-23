@@ -38,7 +38,7 @@
       <OperationDefinition
       	class="com.topfinance.runtime.OperationDefinition" id="11"
       	name="hvps.111.001.01" 
-      	upIsEnabled="T" upReplyType="A" upIsReply="F" upAckType="ASYNC" 
+      	upIsEnabled="T" upReplyType="N" upIsReply="F" upAckType="ASYNC" 
       	downIsEnabled="T" downReplyType="N" downIsReply="F" downAckType="ASYNC"  
       	pathDocId="/Document/FIToFICstmrCdtTrf/GrpHdr/MsgId/text()" 
       	pathOrigDocId="" 
