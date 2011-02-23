@@ -16,7 +16,9 @@
 		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtTpInf/CtgyPurp/Prtry" property="ctgyPurpPrtry"/>    
 		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/IntrBkSttlmAmt/Value" property="intrBkSttlmAmtValue"/>    
 		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/IntrBkSttlmAmt/@Ccy" property="intrBkSttlmAmtCcy"/>    
-		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/IntrBkSttlmDt" property="intrBkSttlmDt"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/IntrBkSttlmDt" decoder="Date" property="intrBkSttlmDt">
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>    
+		</jb:value>    
 		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/SttlmPrty" property="sttlmPrty"/>    
 		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/ChrgBr" property="chrgBr"/>    
 		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/Dbtr/Nm" property="dbtrNm"/>    
