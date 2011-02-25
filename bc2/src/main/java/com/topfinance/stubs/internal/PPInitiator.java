@@ -227,7 +227,8 @@ public class PPInitiator implements CfgConstants{
                 producer.stop();
                 System.exit(0);
             }
-
+            
+            producer.stop();
 
         }
         

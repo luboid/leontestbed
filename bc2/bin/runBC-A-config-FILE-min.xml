@@ -47,10 +47,12 @@
       	<config key="transportType">1</config>
       	<config key="ccsid">1381</config>
       </ICfgTransIn>
-      <ICfgTransIn class="com.topfinance.cfg.xml.OmCfgTransInJetty"
+      
+      <!-- ICfgTransIn class="com.topfinance.cfg.xml.OmCfgTransInJetty"
       	id="4" name="PREFIX_PP_JETTY" provider="JETTY" prefix="jettyA"
       	isPrivate="T">
-      </ICfgTransIn>
+      </ICfgTransIn-->
+      
       <ICfgTransIn class="com.topfinance.cfg.xml.OmCfgTransIn8583"
       	id="8583" name="PREFIX_PP_8583" provider="8583" prefix="Iso8583A"
       	isPrivate="T"/>
@@ -152,12 +154,13 @@
          <format class="com.topfinance.cfg.xml.OmCfgFormat"
          	ref="FORMAT_8583">
          </format></ICfgInPort>
-      <ICfgInPort class="com.topfinance.cfg.xml.OmCfgPortIn" id="13" name="HTTPURL_UP_IN_PP" direction="U" url="http://localhost:61000/upinpp">
+      <!-- ICfgInPort class="com.topfinance.cfg.xml.OmCfgPortIn" id="13" name="HTTPURL_UP_IN_PP" direction="U" url="http://localhost:61000/upinpp">
       	 <node class="com.topfinance.cfg.xml.OmCfgNode" ref="HOST"/>
-         <protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6"/><transIn
+         <protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6"/>
+         <transIn
          	class="com.topfinance.cfg.xml.OmCfgTransInJetty" ref="4">
-</transIn>
-      </ICfgInPort>
+		</transIn>
+      </ICfgInPort-->
       
 			<ICfgInPort class="com.topfinance.cfg.xml.OmCfgPortIn" id="8583In" 
 			name="8583URL_UP_IN_PP" 
