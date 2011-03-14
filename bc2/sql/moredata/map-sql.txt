@@ -1,0 +1,51 @@
+ALTER TABLE "T_CFG_FMT_ELE_MAP_FILE"
+   DROP CONSTRAINT FK_T_CFG_FM_REFERENCE_T_CFG_FO
+/
+ALTER TABLE "T_CFG_FMT_ELE_MAP_RULE"
+   DROP CONSTRAINT FK_T_CFG_FM_REFERENCE_T_CFG_FM
+/
+
+DROP TABLE "T_CFG_FMT_ELE_MAP_FILE" CASCADE CONSTRAINTS
+/
+DROP TABLE "T_CFG_FMT_ELE_MAP_RULE" CASCADE CONSTRAINTS
+/
+/*==============================================================*/
+/* Table: "T_CFG_FMT_ELE_MAP_FILE"                              */
+/*==============================================================*/
+CREATE TABLE "T_CFG_FMT_ELE_MAP_FILE"  (
+   ID                   INTEGER                         NOT NULL,
+   "MSG_CODE"           VARCHAR(20)                     NOT NULL,
+   "TP_CODE"            VARCHAR(10),
+   "CLS_CODE"           CHAR(5),
+   FMT_ID               INTEGER                         NOT NULL,
+   FORMAT               VARCHAR(20),
+   CONSTRAINT PK_T_CFG_FMT_ELE_MAP_FILE PRIMARY KEY (ID)
+)
+/
+
+COMMENT ON TABLE "T_CFG_FMT_ELE_MAP_FILE" IS
+'要素映射文件表'
+/
+
+/*==============================================================*/
+/* Table: "T_CFG_FMT_ELE_MAP_RULE"                              */
+/*==============================================================*/
+CREATE TABLE "T_CFG_FMT_ELE_MAP_RULE"  (
+   "ID"                 INTEGER                         NOT NULL,
+   "MAP_ID"             INTEGER,
+   PTE_FLD_ID           INTEGER,
+   BIZ_FLD_ID           VARCHAR(120),
+   PTE_FLD_PATH         VARCHAR(120),
+   PTE_FLD_TYPE         VARCHAR(120),
+   BIZ_FLD_MODE         VARCHAR(255),
+   BIZ_FLD_TYPE         VARCHAR(120),
+   BIZ_FLD_VALUE        VARCHAR(120),
+   BIZ_FLD_PATH         VARCHAR(255),
+   BIZ_FLD_NAME         VARCHAR(120),
+   CONSTRAINT PK_T_CFG_FMT_ELE_MAP_RULE PRIMARY KEY ("ID")
+)
+/
+
+COMMENT ON TABLE "T_CFG_FMT_ELE_MAP_RULE" IS
+'要素映射规则明细'
+/
