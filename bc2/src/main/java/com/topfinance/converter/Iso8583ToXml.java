@@ -25,9 +25,10 @@ import org.jpos.iso.ISOBasePackager;
 import org.jpos.iso.ISODate;
 import org.jpos.iso.ISOMsg;
 
-import com.topfinance.cfg.TestDummy;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.transform.util.Iso8583Util;
+import com.topfinance.transform.util.IsoHelper;
+import com.topfinance.transform.util.IsoObj;
 import com.topfinance.util.BCUtils;
 
 
@@ -125,6 +126,9 @@ public class Iso8583ToXml {
     	return res;
     }
     
+//    public Object iso8583ToObject(ISOMsg msg, Map<String, String> mappings) {
+//    	IsoObj obj = IsoHelper.parse(msg);
+//    }
     
     public Object iso8583ToObject(ISOMsg msg, Map<String, String> mappings) {
         Object res = null;

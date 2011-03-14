@@ -9,6 +9,7 @@ import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
 import com.topfinance.runtime.OpInfo;
 import com.topfinance.transform.smooks.SmooksTransformer;
+import com.topfinance.util.PerfUtil;
 
 public class DefaultCnaps2Packer  {
 
@@ -20,13 +21,24 @@ public class DefaultCnaps2Packer  {
     	// TODO handle origMsgId that is not in pp mapping? 
     	
         // ebo2jaxb
-        InputStream mapping = FormatFactory.loadPluginMapping(opInfo, CfgConstants.DIRECTION_UP);
-        Object jaxbObj = SmooksTransformer.java2Java(ebo, mapping);
     	
+    	long s = PerfUtil.time();
+        InputStream mapping = FormatFactory.loadPluginMapping(opInfo, CfgConstants.DIRECTION_UP);
+        long e1 = PerfUtil.time();
+        PerfUtil.perfLog(" cost "+(e1-s)+", end loadPluginMapping" );
+        
+        Object jaxbObj = SmooksTransformer.java2Java(opInfo.toString(), ebo, mapping);
+        long e2 = PerfUtil.time();
+        PerfUtil.perfLog(" cost "+(e2-e1)+", end java2Java" );
+        
+        
         String pkgName = Cnaps2Constants.getPackageName(cfgOpn.getName());
         Iso8583ToXml converter = new Iso8583ToXml(pkgName);
         
         String body = converter.objectToXml(jaxbObj);
+        long e3 = PerfUtil.time();
+        PerfUtil.perfLog(" cost "+(e3-e2)+", end objectToXml" );
+        
         return body;
     }
     

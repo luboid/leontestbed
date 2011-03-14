@@ -63,6 +63,16 @@ public class ParseSampleXml{
         public String key;
         public String value;
         public Class jaxbType;
+        
+        public String eboFldName;
+
+		@Override
+		public String toString() {
+			return "Entry [key=" + key + ", value=" + value + ", jaxbType="
+					+ jaxbType + ", eboFldName=" + eboFldName + "]";
+		}
+        
+        
     }
     
 
@@ -98,7 +108,7 @@ public class ParseSampleXml{
     public static final String EBO_PKG_NAME = "com.topfinance.ebo.msg";
    
     
-    List<Entry> parsed = new ArrayList<Entry>();
+    public List<Entry> parsed = new ArrayList<Entry>();
     String basePath;
 //    String op;
     OpInfo opInfo;
@@ -133,7 +143,15 @@ public class ParseSampleXml{
         init();
     }
     
-    public static String getEboClassNameFromOp(String op) {
+    public static String getTblNameFromOp(OpInfo opInfo) {
+//    	return TBL_NAME_PREFIX+StringUtils.upperCase(StringUtils.replace(opInfo.getMesgType(), ".", "_"));
+    	return TBL_NAME_PREFIX+StringUtils.upperCase(StringUtils.replace(opInfo.toString(), ".", "_"));
+    }
+    
+    public static String getEboClassNameFromOp(OpInfo opInfo) {
+    	
+//    	String op = opInfo.getMesgType();
+    	String op = opInfo.getMesgType()+opInfo.getOpType()+opInfo.getOpClass();
         return StringUtils.capitalize(StringUtils.remove(op, '.'));
     }
     
@@ -144,14 +162,17 @@ public class ParseSampleXml{
         jaxbPkgName = Cnaps2Constants.getPackageName(opInfo.getMesgType());
         
         eboPkgName = EBO_PKG_NAME;
-        eboClassName = getEboClassNameFromOp(opInfo.getMesgType());
-        tblName = TBL_NAME_PREFIX+StringUtils.upperCase(StringUtils.replace(opInfo.getMesgType(), ".", "_"));
+        eboClassName = getEboClassNameFromOp(opInfo);
+        tblName = getTblNameFromOp(opInfo);
         
         outSample8583File = FilePathHelper.sample8583(opInfo, basePath); //basePath+"/sample/8583/"+op+".8583";
 //        outMapFile = basePath+"/map/"+op+"-up.map";
 //        outReverseMapFile = basePath+"/map/"+op+"-down.map";
-        outDdlOracleFile = basePath+"/cnaps2/ddl/"+"oracle-"+opInfo.getMesgType()+".sql";
-        outDdlMysqlFile =  basePath+"/cnaps2/ddl/"+"mysql-"+opInfo.getMesgType()+".sql";
+        
+//        outDdlOracleFile = basePath+"/cnaps2/ddl/"+"oracle-"+opInfo.getMesgType()+".sql";
+//        outDdlMysqlFile =  basePath+"/cnaps2/ddl/"+"mysql-"+opInfo.getMesgType()+".sql";
+      outDdlOracleFile = basePath+"/cnaps2/ddl/"+"oracle-"+opInfo.toString()+".sql";
+      outDdlMysqlFile =  basePath+"/cnaps2/ddl/"+"mysql-"+opInfo.toString()+".sql";        
         
         outEboPath = basePath+"/cnaps2/java/"+StringUtils.replace(eboPkgName, ".", "/");
         
@@ -366,6 +387,7 @@ public class ParseSampleXml{
     }
     
     private void addToParsed(String key, String value, Class type) {
+    	debug("addedToParsed: key="+key+", value="+value+", type="+type.getSimpleName());
         parsed.add(new Entry(key, value, type));
     }
     
@@ -500,7 +522,7 @@ public class ParseSampleXml{
                 // for iso2ebo and ebo2iso
                 StringBuffer javaNameBuf = new StringBuffer();
                 StringBuffer dbNameBuf = new StringBuffer();
-                getEboVariableNameFromJaxbOPath(javaNameBuf, dbNameBuf, key);
+                getEboVariableNameFromJaxbOPath(javaNameBuf, dbNameBuf, pp);
                 
                 tellDuplicate(nameCounter, javaNameBuf, dbNameBuf);
                 String capitizedJavaName = javaNameBuf.toString();
@@ -749,7 +771,15 @@ public class ParseSampleXml{
         return res;
     }
     // get a meaningful Java name from full opath (while keep reasonably short)  
-    private void getEboVariableNameFromJaxbOPath(StringBuffer javaNameBuf, StringBuffer dbNameBuf, String oPath) {
+    private void getEboVariableNameFromJaxbOPath(StringBuffer javaNameBuf, StringBuffer dbNameBuf, Entry entry) {
+    	
+    	if(entry.eboFldName!=null) {
+    		javaNameBuf.append(entry.eboFldName);
+    		dbNameBuf.append(entry.eboFldName);
+    		return;
+    	}
+    	
+    	String oPath = entry.key;
         List<String> temp = new ArrayList<String>();
         String[] words = StringUtils.split(oPath, ".");
         
@@ -794,7 +824,7 @@ public class ParseSampleXml{
         
     }
     
-    private void generateMapEbo2Jaxb() {
+    public void generateMapEbo2Jaxb() {
     	debug("=======generateMapEbo2Jaxb======");
     	try {
     	String rootJaxbClassName = jaxbPkgName+".Document";
@@ -830,7 +860,7 @@ public class ParseSampleXml{
             EboInfo.Column column = new EboInfo.Column();
             StringBuffer javaNameBuf = new StringBuffer();
             StringBuffer dbNameBuf = new StringBuffer();
-            getEboVariableNameFromJaxbOPath(javaNameBuf, dbNameBuf, key);
+            getEboVariableNameFromJaxbOPath(javaNameBuf, dbNameBuf, pp);
             
             tellDuplicate(nameCounter, javaNameBuf, dbNameBuf);
             
@@ -1123,7 +1153,7 @@ public class ParseSampleXml{
         }
     }
     
-    private void generateDdlAndEbo() {
+    public void generateDdlAndEbo() {
         try {
 
             debug("\n============generateDdlAndEbo=======");
@@ -1156,7 +1186,7 @@ public class ParseSampleXml{
                 EboInfo.Column column = new EboInfo.Column();
                 StringBuffer javaNameBuf = new StringBuffer();
                 StringBuffer dbNameBuf = new StringBuffer();
-                getEboVariableNameFromJaxbOPath(javaNameBuf, dbNameBuf, key);
+                getEboVariableNameFromJaxbOPath(javaNameBuf, dbNameBuf, pp);
                 
                 tellDuplicate(nameCounter, javaNameBuf, dbNameBuf);
                 
@@ -1402,9 +1432,9 @@ public class ParseSampleXml{
 //             ,
 //        		TestDummy.OPINFO_601
 //        		,
-//        		TestDummy.OPINFO_111
+        		TestDummy.OPINFO_111
 //        		,
-        		TestDummy.OPINFO_604
+//        		TestDummy.OPINFO_604
         };
         
         // for running from command line
@@ -1428,9 +1458,11 @@ public class ParseSampleXml{
 //            main.testGeneratedMap();
 
             debug("main.generateMapEbo2Jaxb();");
-            main.generateMapEbo2Jaxb();
-            
+            main.generateMapEbo2Jaxb();            
             main.generateDdlAndEbo();
+            
+            
+            
             
             main.testGenerated();
             

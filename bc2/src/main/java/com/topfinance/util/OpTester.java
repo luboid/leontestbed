@@ -58,10 +58,13 @@ public class OpTester extends TestCase {
 		// prepare 8583
 		ISOMsg isomsg = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), FilePathHelper.sample8583(opInfo));
 		String msg = Iso8583Util.packMsg(isomsg);
+		debug("msg="+msg);
 		
 		// process
 		IMsgParser parser = FormatFactory.getMsgParser(format);
 		Object ebo = parser.parseConvert(msg, format, protocol);
+		debug("ebo="+ebo);
+		
 		// TODO check docid, opId, etc? 
 		
 		if(opInfo.getMesgType().equals(TestDummy.OPERATION_601)) {

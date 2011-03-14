@@ -34,6 +34,7 @@ public class JpaCfgFormat8583 implements ICfgFormat8583, ITransFormatMeta {
 	String desc;
 	
 	int pos;
+	int sequn;
 	
     @Id
     @Column(name = "ID", nullable = false)
@@ -96,6 +97,15 @@ public class JpaCfgFormat8583 implements ICfgFormat8583, ITransFormatMeta {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	@Column(name = "SEQUN")
+	public int getSequn() {
+		return sequn;
+	}
+
+	public void setSequn(int sequn) {
+		this.sequn = sequn;
 	}
 
 }

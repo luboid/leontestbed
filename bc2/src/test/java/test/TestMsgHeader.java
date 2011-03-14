@@ -1,5 +1,7 @@
 package test;
 
+import java.lang.reflect.Constructor;
+
 import junit.framework.TestCase;
 
 import com.topfinance.plugin.cnaps2.MsgHeader;
@@ -37,5 +39,24 @@ public class TestMsgHeader extends TestCase {
         }
     }
     
+    public void testConstructor() {
+    	
+    	try {
+    		Constructor con = Person.class.getConstructor(int.class);
+    		
+    		System.out.println("con="+con);
+    	
+    	} catch (Exception ex) {
+    		ex.printStackTrace();
+    	}
+    }
+    
+    public static class Person {
+    	public int i;
+    	public Person(int i) {
+    		this.i = i;
+    	}
+    	
+    }
     
 }

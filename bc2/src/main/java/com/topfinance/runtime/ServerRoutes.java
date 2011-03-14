@@ -20,11 +20,12 @@ import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
 import com.topfinance.plugin.BasePlugin;
 import com.topfinance.util.BCUtils;
+import com.topfinance.util.PerfUtil;
 
 public class ServerRoutes extends RouteBuilder implements CfgConstants{
     private static Logger logger = Logger.getLogger(ServerRoutes.class);
     
-    
+
     private ServerRoutes() {
     }
     private static ServerRoutes instance;
@@ -50,7 +51,8 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         return produce(url, bodyText, isInOnly);
     }
     public String produce(String url, String bodyText, boolean isInOnly) throws Exception {
-        
+    	long s = PerfUtil.time();
+    	
         String syncResp = null;
         Endpoint outEp = getContext().getEndpoint(url);
         Producer producer = outEp.createProducer();
@@ -62,7 +64,8 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         if(!isInOnly) {
             syncResp = destExchange.getOut().getBody(String.class);
         }
-        
+        long e = PerfUtil.time();
+        PerfUtil.perfLog(" cost "+(e-s)+", end produce" );
         return syncResp;
     }
     @Override
@@ -107,12 +110,14 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
 
         int threadSize = 32;
         
-        String sedaUp = "seda:processUp?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
+        
+        //&multipleConsumers=true
+        String sedaUp = "seda:processUp?waitForTaskToComplete=Never&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
         from(inUrlsPrivate.toArray(new String[0])).bean(dis, "preprocess").to(sedaUp);
         // two phases using separate thread pool
         from(sedaUp).bean(dis, "process");        
 
-        String sedaDown = "seda:processDown?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
+        String sedaDown = "seda:processDown?waitForTaskToComplete=Never&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
         from(inUrlsPublic.toArray(new String[0])).bean(dis, "preprocess").to(sedaDown);
         // two phases using separate thread pool
         from(sedaDown).bean(dis, "process"); 
@@ -137,6 +142,8 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
         }
         
         public void preprocess(Exchange exchange) throws Exception {
+        	long s = PerfUtil.time();
+        	PerfUtil.perfLog("start preprocess");
             String inUri = exchange.getFromEndpoint().getEndpointUri();
             logger.debug("inUri="+inUri);
             ICfgReader reader = CfgImplFactory.loadCfgReader();
@@ -169,10 +176,13 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
             p.setMsgContext(msgContext);
             p.preprocess();
             exchange.getIn().setHeader("ctx", msgContext);
+            long e = PerfUtil.time();
+            PerfUtil.perfLog(" cost "+(e-s)+", end preprocess");
         }
         
         public void process(Exchange exchange) throws Exception {
-            
+        	long s = PerfUtil.time();
+        	PerfUtil.perfLog("start process");
             ICfgReader reader = CfgImplFactory.loadCfgReader();
             MessageContext ctx = (MessageContext)exchange.getIn().getHeader("ctx");
             ICfgPortIn cfgIP = ctx.getCfgInPort();    
@@ -190,6 +200,8 @@ public class ServerRoutes extends RouteBuilder implements CfgConstants{
             }
             p.setMsgContext(ctx);
             p.process();
+            long e = PerfUtil.time();
+            PerfUtil.perfLog( " cost "+(e-s)+", end process");
         }       
         
         public void processResendAlertMessage(Exchange exchange) throws Exception {

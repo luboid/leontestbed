@@ -28,6 +28,7 @@ import com.topfinance.util.AuditMsgUtil;
 import com.topfinance.util.AuditUtil;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.HiberUtil;
+import com.topfinance.util.PerfUtil;
 import com.topfinance.util.ResendUtil;
 
 public class UpwardProcessor extends AbstractProcessor implements MessageListener{
@@ -90,11 +91,15 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
 
         
         // save or resurrect hibernate
+        
         loadTxContext();
         
         // transform and package
+        long s = PerfUtil.time();
         packReq();
-
+        long e = PerfUtil.time();
+        PerfUtil.perfLog(" cost "+(e-s)+", end packReq" );
+        
         String tpSyncReply = send();
         
         handleTpSyncResponse(tpSyncReply);

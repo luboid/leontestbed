@@ -12,12 +12,7 @@ public class Cnaps2Constants {
     public static final String ORIG_MSG_ID_601_EBOFLD =  "ntfctnId";
     public static final String ORIG_MSG_ID_604_EBOFLD =  "orgnlMsgId";
     
-    public static String EBO_101 = "com.topfinance.ebo.msg.Ibps10100101";
-    public static String EBO_102 = "com.topfinance.ebo.msg.Ibps10200101";
-    public static String EBO_601 = "com.topfinance.ebo.msg.Saps60100101";
-    
-    public static String EBO_111 = "com.topfinance.ebo.msg.Hvps11100101";
-    public static String EBO_604 = "com.topfinance.ebo.msg.Saps60400101";
+
     
     public static final String MSG_ID_EBOFLD =  "grpHdrMsgId";
     
@@ -44,17 +39,7 @@ public class Cnaps2Constants {
         OPATHS_ORIG_MSG_ID.put(TestDummy.OPERATION_601, ORIG_MSG_ID_601);
         OPATHS_ORIG_MSG_ID.put(TestDummy.OPERATION_102, ORIG_MSG_ID_102);
     }
-    
-    public static Map<String, String> MSGCODE_EBOCLS = new HashMap<String, String>();
-    static {
-        // TODO this is a static list according to spec
-    	MSGCODE_EBOCLS.put(TestDummy.OPERATION_101, EBO_101);
-    	MSGCODE_EBOCLS.put(TestDummy.OPERATION_102, EBO_102);
-    	MSGCODE_EBOCLS.put(TestDummy.OPERATION_601, EBO_601);
-    	
-    	MSGCODE_EBOCLS.put(TestDummy.OPERATION_111, EBO_111);
-    	MSGCODE_EBOCLS.put(TestDummy.OPERATION_604, EBO_604);
-    }
+
     
 	public static String getPackageName(String mesgType) {
         // this is a fixed rule

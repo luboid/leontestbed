@@ -5,22 +5,39 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
-
-import com.topfinance.cfg.CfgConstants;
-import com.topfinance.cfg.jpa.TCfgMapRuleDetailEbo;
-import com.topfinance.cfg.jpa.TCfgMapRuleEbo;
-import com.topfinance.plugin.cnaps2.Cnaps2Constants;
-import com.topfinance.transform.util.IsoObj;
+import com.topfinance.cfg.CfgImplFactory;
+import com.topfinance.cfg.jpa.JpaCfgReader;
+import com.topfinance.payment.ebo.TCfgFmtEleMapFileEbo;
+import com.topfinance.payment.ebo.TCfgFmtEleMapRuleEbo;
 
 public class SimpleMappingRule {
 	
+//    public static String EBO_101 = "com.topfinance.ebo.msg.Ibps10100101";
+//    public static String EBO_102 = "com.topfinance.ebo.msg.Ibps10200101";
+//    public static String EBO_601 = "com.topfinance.ebo.msg.Saps60100101";
+//    public static String EBO_111 = "com.topfinance.ebo.msg.Hvps11100101";
+//    public static String EBO_604 = "com.topfinance.ebo.msg.Saps60400101";
+//    public static Map<String, String> MSGCODE_EBOCLS = new HashMap<String, String>();
+//    static {
+//        // TODO this is a static list according to spec
+//    	MSGCODE_EBOCLS.put(TestDummy.OPERATION_101, EBO_101);
+//    	MSGCODE_EBOCLS.put(TestDummy.OPERATION_102, EBO_102);
+//    	MSGCODE_EBOCLS.put(TestDummy.OPERATION_601, EBO_601);
+//    	
+//    	MSGCODE_EBOCLS.put(TestDummy.OPERATION_111, EBO_111);
+//    	MSGCODE_EBOCLS.put(TestDummy.OPERATION_604, EBO_604);
+//    }
 
-
+    public final static String DIRECTION_UP = "U";
+	static final String EBO_PKG = "com.topfinance.ebo.msg.";
+	static final String ISOOBJ_CLAZZ = "com.topfinance.transform.util.IsoObj";
+	
 	// 注，这个是必填。
 	// if targetMode=Java, this is target's className 
 	// (especially if target is a JAXB tree, this is the Document object's className)
@@ -214,20 +231,97 @@ public class SimpleMappingRule {
 		}
 	}
 	
-	public static SimpleMappingRule fromDb(TCfgMapRuleEbo cfg, String direction) {
+	public static final String PATH_SAMPLE_MAPPING = "/cnaps2/sample/mapping/";
+	public static String sampleMappingSimple(String msgCode, String tpCode, String clsCode, String direction, String basePath) {
+		String s = DIRECTION_UP.equals(direction) ? "iso2ebo" : "ebo2iso";
+		return basePath+PATH_SAMPLE_MAPPING+msgCode+"_"+tpCode+"_"+clsCode+"-"+s+"-simple.map";
+	}
+    
+//	public static SimpleMappingRule fromDb(TCfgMapRuleEbo cfg, String direction) {
+//        try {
+//            SimpleMappingRule rule = new SimpleMappingRule();
+//            if(CfgConstants.DIRECTION_UP.equals(direction)) {
+//            	// iso2ebo
+//            	// TODO
+//            	rule.setTargetName(Cnaps2Constants.MSGCODE_EBOCLS.get(cfg.getMsgCode()));
+//            	for(TCfgMapRuleDetailEbo detail : cfg.getMappings()) {
+//            		Mapping m = new Mapping();
+//            		rule.getMappings().add(m);
+//            		m.setTargetPath(detail.getBizFldPath());
+//            		m.setTargetType(detail.getBizFldType());
+//            		m.setSrcPath(detail.getPteFldPath());
+//            		m.setSrcType(detail.getPteFldType());
+//            		m.setValue(detail.getBizFldValue());
+//            		// TODO
+//            		m.setMode("");
+//            	}
+//            }
+//            else {
+//            	// ebo2Iso
+//            	rule.setTargetName(IsoObj.class.getName());
+//            	for(TCfgMapRuleDetailEbo detail : cfg.getMappings()) {
+//            		Mapping m = new Mapping();
+//            		rule.getMappings().add(m);
+//            		m.setSrcPath(detail.getBizFldPath());
+//            		m.setSrcType(detail.getBizFldType());
+//            		m.setTargetPath(detail.getPteFldPath());
+//            		m.setTargetType(detail.getPteFldType());
+//            		m.setValue(detail.getBizFldValue());
+//            		// TODO
+//            		m.setMode("");
+//            	}
+//            	
+//            }
+//            
+//            
+//            return rule;
+//        } catch (Exception ex) {
+//            throw new RuntimeException(ex);
+//        }
+//	}
+	
+	public static String getPosSequn(String pos, TCfgFmtEleMapFileEbo cfg) {
+		
+		// to get formatId:  cfg.getTCfgFormat().getUid();
+		
+		return ((JpaCfgReader)CfgImplFactory.loadCfgReader()).getPosSequn(pos);
+	}
+	
+	
+	
+    public static String getEboClassNameFromOp(String mesgType, String opType, String opClass) {
+    	
+    	// this should be same as in ParseSampleXml.getEboClassNameFromOp
+    	String op = mesgType+opType+opClass;
+        return EBO_PKG+StringUtils.capitalize(StringUtils.remove(op, '.'));
+    }
+	public static SimpleMappingRule fromDb(TCfgFmtEleMapFileEbo cfg, String direction) {
         try {
             SimpleMappingRule rule = new SimpleMappingRule();
-            if(CfgConstants.DIRECTION_UP.equals(direction)) {
+            if(DIRECTION_UP.equals(direction)) {
             	// iso2ebo
             	// TODO
-            	rule.setTargetName(Cnaps2Constants.MSGCODE_EBOCLS.get(cfg.getMsgCode()));
-            	for(TCfgMapRuleDetailEbo detail : cfg.getMappings()) {
+//            	rule.setTargetName(Cnaps2Constants.MSGCODE_EBOCLS.get(cfg.getMsgCode()));
+            	rule.setTargetName(getEboClassNameFromOp(cfg.getMsgCode(), cfg.getTpCode(), cfg.getClsCode()));
+            	
+            	for(TCfgFmtEleMapRuleEbo detail : cfg.getMappings()) {
             		Mapping m = new Mapping();
             		rule.getMappings().add(m);
-            		m.setTargetPath(detail.getBizFldPath());
-            		m.setTargetType(detail.getBizFldType());
-            		m.setSrcPath(detail.getPteFldPath());
-            		m.setSrcType(detail.getPteFldType());
+            		
+//            		m.setTargetPath(detail.getBizFldPath());
+            		m.setTargetPath(StringUtils.uncapitalize(detail.getBizFldEleId()));
+            		
+//            		m.setTargetType(detail.getBizFldType());
+            		if("ISODateTime".equalsIgnoreCase(detail.getBizFldType())) {
+            			m.setTargetType("JAVADATE");
+            			m.setSrcType("ISODATE");
+            		}
+            		
+//            		m.setSrcPath(detail.getPteFldPath());
+            		String pos = getPosSequn(detail.getPteFldPath(), cfg);
+            		m.setSrcPath("f"+pos);
+            		
+            		
             		m.setValue(detail.getBizFldValue());
             		// TODO
             		m.setMode("");
@@ -235,14 +329,28 @@ public class SimpleMappingRule {
             }
             else {
             	// ebo2Iso
-            	rule.setTargetName(IsoObj.class.getName());
-            	for(TCfgMapRuleDetailEbo detail : cfg.getMappings()) {
+            	rule.setTargetName(ISOOBJ_CLAZZ);
+            	for(TCfgFmtEleMapRuleEbo detail : cfg.getMappings()) {
             		Mapping m = new Mapping();
             		rule.getMappings().add(m);
-            		m.setSrcPath(detail.getBizFldPath());
-            		m.setSrcType(detail.getBizFldType());
-            		m.setTargetPath(detail.getPteFldPath());
-            		m.setTargetType(detail.getPteFldType());
+//            		m.setSrcPath(detail.getBizFldPath());
+            		m.setSrcPath(StringUtils.uncapitalize(detail.getBizFldEleId()));
+            		
+
+            		
+//            		m.setTargetPath(detail.getPteFldPath());
+            		String pos = getPosSequn(detail.getPteFldPath(), cfg);
+            		m.setTargetPath("f"+pos);
+            		
+            		
+//            		m.setTargetType(detail.getPteFldType());
+//            		m.setSrcType(detail.getBizFldType());
+            		if("ISODateTime".equalsIgnoreCase(detail.getBizFldType())) {
+            			m.setTargetType("ISODATE");
+            			m.setSrcType("JAVADATE");
+            		}
+            		
+            		
             		m.setValue(detail.getBizFldValue());
             		// TODO
             		m.setMode("");
@@ -256,8 +364,5 @@ public class SimpleMappingRule {
             throw new RuntimeException(ex);
         }
 	}
-	
-	
-
 	
 }

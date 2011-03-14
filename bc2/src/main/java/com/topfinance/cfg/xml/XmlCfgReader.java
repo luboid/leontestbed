@@ -303,15 +303,16 @@ public class XmlCfgReader extends TestCase implements ICfgReader {
     
     public SimpleMappingRule getMappingRule(OpInfo opInfo, ICfgOperation cfgOpn, String direction) {
     	byte[] res = null;
-    	for(OmCfgMappingRule rule : getDataHolder().listMappingRule) {
-    		if(rule.getMesgType().equals(opInfo.getMesgType()) && 
-    				rule.getOpType().equals(opInfo.getOpType()) &&
-    				rule.getOpClass().equals(opInfo.getOpClass()) &&
-    				rule.getDirection().equals(direction)) {
-    			res = rule.getMapping();
-    		}
-
-    	}
+//    	for(OmCfgMappingRule rule : getDataHolder().listMappingRule) {
+//    		if(rule.getMesgType().equals(opInfo.getMesgType()) && 
+//    				rule.getOpType().equals(opInfo.getOpType()) &&
+//    				rule.getOpClass().equals(opInfo.getOpClass()) &&
+//    				rule.getDirection().equals(direction)) {
+//    			res = rule.getMapping();
+//    		}
+//
+//    	}
+    	res = OmCfgMappingRule.getMapping(opInfo.getMesgType(), opInfo.getOpType(), opInfo.getOpClass(), direction);
     	return SimpleMappingRule.fromXml(new ByteArrayInputStream(res));
     }
     public List<ICfgFormat8583> getFormat8583(ICfgFormat format) throws CfgAccessException {

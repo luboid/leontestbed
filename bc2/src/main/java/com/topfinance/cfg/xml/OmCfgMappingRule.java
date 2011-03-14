@@ -48,6 +48,18 @@ public class OmCfgMappingRule implements ICfgMappingRule{
 			throw new CfgAccessException(ex);
 		}
 	}
+	public static byte[] getMapping(String mesgType, String opType, String opClass, String direction) {
+		try {
+			String filePath = FilePathHelper.sampleMappingSimple(new OpInfo(mesgType, opType, opClass), direction);
+			BCUtils.testFileExist(filePath, false);
+			
+				ByteArrayOutputStream out = new ByteArrayOutputStream();
+				IOUtils.copy(new FileInputStream(filePath), out);
+				return out.toByteArray();
+		} catch (Exception ex) {
+			throw new CfgAccessException(ex);
+		}
+	}
 	public void setMapping(byte[] mapping) {
 	}
 	

@@ -1,17 +1,24 @@
 package test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import junit.framework.TestCase;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.milyn.Smooks;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-import com.topfinance.cfg.ICfgPortIn;
+import com.topfinance.cfg.CfgConstants;
+import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgOperation;
+import com.topfinance.cfg.ICfgPortIn;
 import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgRouteRule;
 import com.topfinance.cfg.TestDummy;
@@ -22,6 +29,15 @@ import com.topfinance.cfg.jpa.JpaCfgTransIn;
 import com.topfinance.cfg.jpa.dao.IProtocolManager;
 import com.topfinance.cfg.xml.XmlCfgReader;
 import com.topfinance.db.dao.IDao;
+import com.topfinance.payment.ebo.TCfgFmtEleMapFileEbo;
+import com.topfinance.payment.ebo.TCfgFmtEleMapRuleEbo;
+import com.topfinance.runtime.OpInfo;
+import com.topfinance.transform.simple.SimpleMappingRule;
+import com.topfinance.util.BCUtils;
+import com.topfinance.util.FilePathHelper;
+import com.topfinance.util.OpTester;
+import com.topfinance.util.ParseSampleXml;
+import com.topfinance.util.ParseSampleXml.Entry;
 
 public class TestJpaAccess extends TestCase {
     private static Logger logger = Logger.getLogger(TestJpaAccess.class);
@@ -188,4 +204,156 @@ public class TestJpaAccess extends TestCase {
         
         
     }
+    
+    public void testGenerated() {
+    	debug("start testGenerated...");
+    	Smooks smooks = null;
+    	String mesgType = "hvps.111.001.01";
+    	String tpCode = "A100";
+    	String clsCode = "02101";
+    	String direction = CfgConstants.DIRECTION_UP;
+    	OpInfo opInfo = new OpInfo(mesgType, tpCode, clsCode);
+    	
+        CfgImplFactory.setType(CfgImplFactory.TYPE_FILE);
+        CfgImplFactory.setConfig("D:/bankConnector/source/bin/runBC-A-config-FILE.xml");
+        String basePath = "D:/bankConnector/source/generated";
+        // work in /generated folder
+    	BCUtils.setHomeDir(basePath);
+    	OpTester tester = new OpTester();
+//    	tester.up(opInfo);
+    	tester.down(opInfo);
+    	
+    	debug("end testGenerated...");
+    }
+    
+    
+    public void testGenPrivateMap() throws Exception {
+    	debug("start testGenPrivateMap...");
+    	
+    	String mesgType = "hvps.111.001.01";
+    	String tpCode = "A100";
+    	String clsCode = "02101";
+    	String direction = CfgConstants.DIRECTION_UP;
+    	OpInfo opInfo = new OpInfo(mesgType, tpCode, clsCode);
+    	
+    	String basePath = "D:/bankConnector/source/generated";
+    	
+    	
+    	TCfgFmtEleMapFileEbo ruleDb = getJpaReader().getMapFile(mesgType, tpCode, clsCode);
+    	CfgImplFactory.setType(CfgImplFactory.TYPE_DB);
+    	CfgImplFactory.setConfig(DBSTORE);
+    	
+    	savePrivateMap(direction, opInfo, basePath, ruleDb);
+    	savePrivateMap(CfgConstants.DIRECTION_DOWN, opInfo, basePath, ruleDb);
+    	
+    	debug("end testGenPrivateMap...");
+    }
+	private void savePrivateMap(String direction, OpInfo opInfo,
+			String basePath, TCfgFmtEleMapFileEbo ruleDb) throws IOException {
+		SimpleMappingRule rule = SimpleMappingRule.fromDb(ruleDb, direction);
+    	byte[] ruleXml = rule.toXml();
+    	String outFile = FilePathHelper.sampleMappingSimple(opInfo, direction,  basePath);
+    	FileUtils.writeByteArrayToFile(new File(outFile), ruleXml);
+	}
+    
+    
+    
+    public String getKeyFromBizFldPath(String xpath)  throws Exception {
+    	String key = null;
+    	StringBuffer buf = new StringBuffer();
+    	
+    	String[] tokens = StringUtils.split(xpath, "/");
+    	for(int i=1;i<tokens.length;i++) {
+    		if(i!=1) {
+    			buf.append(".");
+    		}
+    		String oPath="";
+    		if(tokens[i].equalsIgnoreCase("FIToFICstmrCdtTrf")) {
+    			oPath = "fiToFICstmrCdtTrf";
+    		}else if(tokens[i].equalsIgnoreCase("cdtTrfTxInf")) {
+    			oPath = "cdtTrfTxInf[0]";
+    		}else {
+    			oPath = StringUtils.uncapitalize(tokens[i]);
+    		}
+    		buf.append(oPath);
+    	}
+    	
+    		
+    	
+    	return buf.toString();
+    	
+    }
+    
+    
+    public Class getJaxbTypeFromBizFldType(String bizFldType)  throws Exception{
+    	String clazz = null;
+    	Class res = null;
+    	
+    	if(bizFldType.contains("Text")) {
+    		clazz = "java.lang.String";
+    	}else if(bizFldType.toLowerCase().contains("code")){
+    		clazz = "java.lang.String";
+    	} else if(bizFldType.equalsIgnoreCase("ActiveCurrencyAndAmount")) {
+    		clazz = "java.math.BigDecimal";
+    	} else if(bizFldType.equalsIgnoreCase("ISODateTime")) {
+    		clazz = "java.util.Date";
+    	}
+    	
+    	
+    	if(clazz!=null) {
+    		res = Class.forName(clazz);
+    	}
+    	else {
+    		throw new RuntimeException("no clazz matched for bizFldType= "+bizFldType);
+    	}
+    	return res;
+    	
+    }
+    public void testGenPublicMap() throws Exception {
+    	debug("start testGenPublicMap...");
+    	
+    	String basePath = "D:/bankConnector/source/generated";
+    	
+    	String mesgType = "hvps.111.001.01";
+    	String tpCode = "A100";
+    	String clsCode = "02101";
+    	String direction = CfgConstants.DIRECTION_UP;
+    	OpInfo op = new OpInfo(mesgType, tpCode, clsCode);
+    	TCfgFmtEleMapFileEbo ruleDb = getJpaReader().getMapFile(mesgType, tpCode, clsCode);
+    	
+    	ParseSampleXml main = new ParseSampleXml(basePath,op);
+    	
+    	
+    	
+    	for(TCfgFmtEleMapRuleEbo detail : ruleDb.getMappings()) {
+    		String key = getKeyFromBizFldPath(detail.getBizFldPath());
+    		String value = "";
+    		Class jaxbType = getJaxbTypeFromBizFldType(detail.getBizFldType());
+    		
+    		String eblFldName = detail.getBizFldEleId();
+    		Entry entry = new Entry(key, value, jaxbType);
+    		entry.eboFldName = eblFldName;
+    		main.parsed.add(entry);
+    	}
+    	
+    	
+    	for(Entry entry : main.parsed) {
+    		debug("=="+entry);
+    	}
+    	
+    	main.generateMapEbo2Jaxb();
+    	main.generateDdlAndEbo();
+    	
+    	
+//    	SimpleMappingRule rule = SimpleMappingRule.fromDb(ruleDb, direction);
+//    	byte[] ruleXml = rule.toXml();
+//    	
+//    	String outFolder = "D:/bankConnector/source/test/map";
+//    	String outFile = mesgType+"_"+tpCode+"_"+clsCode+"_"+direction+"-simple.map";
+//    	
+//    	FileUtils.writeByteArrayToFile(new File(outFolder, outFile), ruleXml);
+    	
+    	debug("end testGenPublicMap...");
+    }
+    
 }

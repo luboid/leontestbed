@@ -41,7 +41,7 @@ public class AuditMsgUtil {
             // store the ebo
             BeanUtils.setProperty(ebo, "uuid", BCUtils.getUniqueId("uid-"));
 
-            getMgr().save(ebo);
+//            getMgr().save(ebo);
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new RuntimeException(ex);

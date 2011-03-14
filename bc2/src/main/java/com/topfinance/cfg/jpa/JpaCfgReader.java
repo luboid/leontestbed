@@ -24,6 +24,7 @@ import com.topfinance.cfg.ICfgTransOut;
 import com.topfinance.cfg.util.CfgUtils;
 import com.topfinance.db.dao.DbException;
 import com.topfinance.db.dao.IDao;
+import com.topfinance.payment.ebo.TCfgFmtEleMapFileEbo;
 import com.topfinance.runtime.OpInfo;
 import com.topfinance.transform.simple.SimpleMappingRule;
 import com.topfinance.util.BCUtils;
@@ -223,8 +224,8 @@ public class JpaCfgReader implements ICfgReader {
 			List list = getDao().find(hql, paras);
 			TCfgMapRuleEbo rule = list.size() > 0 ? (TCfgMapRuleEbo) list.get(0) : null;
 			
-			
-			return SimpleMappingRule.fromDb(rule, direction);
+			throw new RuntimeException("===========not implemented========");
+//			return SimpleMappingRule.fromDb(rule, direction);
 		} catch (DbException ex) {
 			throw new CfgAccessException(ex);
 		}
@@ -298,5 +299,29 @@ public class JpaCfgReader implements ICfgReader {
             throw new CfgAccessException(ex);
         }
 	}
+    public TCfgFmtEleMapFileEbo getMapFile(String mesgType, String tpCode, String clsCode) {
+        try {
+            String hql = "from "+TCfgFmtEleMapFileEbo.class.getSimpleName()+" o where o.msgCode = ? and o.tpCode=? and o.clsCode=?";
+            Object[] paras = new Object[] {mesgType, tpCode, clsCode};
+            List list = getDao().find(hql, paras);
+            return list.size()>0 ? (TCfgFmtEleMapFileEbo)list.get(0) : null;
+        } catch (DbException ex) {
+            throw new CfgAccessException(ex);
+        }
+    }
+    public String getPosSequn(String pos) {
+        try {
+        	String hql = "select f.sequn from JpaCfgFormat8583 f where f.format.uid = "+1;
+			hql += " and f.pos ='" + pos + "'";
+//            Object[] paras = new Object[] {mesgType, tpCode, clsCode};
+            List list = getDao().find(hql);
+			if(list.size() == 1)
+				return list.get(0).toString();
+			else
+				throw new RuntimeException("[找不到对于的位置]FmtOID="+1+",POSITION=" + pos);
 
+        } catch (DbException ex) {
+            throw new CfgAccessException(ex);
+        }
+    }
 }

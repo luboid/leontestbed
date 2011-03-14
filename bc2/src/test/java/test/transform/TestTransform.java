@@ -20,6 +20,8 @@ import com.cnaps2.xml.iso20022.pacs.v00800102.GroupHeader33;
 import com.topfinance.cfg.TestDummy;
 import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
+import com.topfinance.transform.simple.SimpleMappingRule;
+import com.topfinance.transform.simple.SimpleTransformer;
 import com.topfinance.transform.util.ISOIBPSPackager;
 import com.topfinance.transform.util.Iso8583Util;
 import com.topfinance.transform.util.IsoHelper;
@@ -103,12 +105,24 @@ public class TestTransform extends TestCase {
         Map<String, String> mappings = Iso8583ToXml.loadMappings(mapping);
         Iso8583ToXml converter = new Iso8583ToXml(Cnaps2Constants.getPackageName(mesgType));
         Object jaxbObj = converter.iso8583ToObject(msg, mappings);
-        String xml2 = main.objectToXml(doc);
+        String xml2 = main.objectToXml(jaxbObj);
         debug("old xml=\n"+xml2);
         
+        
+        
+        
+        // in latest way...
+        String mapFile2 = "D:/bankConnector/source/sample/map/ibps.101.001.01-iso2jaxb-simple.map";
+        SimpleMappingRule rule = SimpleMappingRule.fromXml(new FileInputStream(mapFile2));
+        Object jaxb2 = new SimpleTransformer().transform2(parsed, rule);
+        String xml3 = main.objectToXml(jaxb2);
+        debug("new xml=\n"+xml3);
+        
+        // this passed
+        assertTrue(xml3.equals(xml2));
+        
+        // this can't for ignoring some date field in xml
         assertTrue(xml.equals(xml2));
-        
-        
     	} catch (Exception ex) {
     		ex.printStackTrace();
     	}

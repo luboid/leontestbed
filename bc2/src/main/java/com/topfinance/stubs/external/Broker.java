@@ -46,13 +46,13 @@ import com.topfinance.message.IMsgParser;
 import com.topfinance.plugin.cnaps2.AckRoot;
 import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.plugin.cnaps2.MsgHeader;
-import com.topfinance.runtime.BcConstants;
 import com.topfinance.runtime.BcException;
 import com.topfinance.runtime.OpInfo;
 import com.topfinance.transform.util.ISOIBPSPackager;
 import com.topfinance.transform.util.Iso8583Util;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.FilePathHelper;
+import com.topfinance.util.PerfUtil;
 
 public class Broker implements Processor, CfgConstants{
     private static Logger logger = Logger.getLogger(Broker.class.getName());
@@ -60,6 +60,14 @@ public class Broker implements Processor, CfgConstants{
     public static void log(String msg) {
         logger.debug("in Broker: "+msg);
     }
+//    public static void perfLog(String s) {
+//    	String log = new StringBuffer()
+//    	.append(" t=").append(System.currentTimeMillis())
+//    	.append(", m=").append(s)
+//    	.append("[").append(Thread.currentThread().getName()).append("]")
+//    	.toString();
+//    	logger.warn(log);
+//    }
     
     private static ApplicationContext ctx;
     
@@ -85,17 +93,18 @@ public class Broker implements Processor, CfgConstants{
             for (String inUrl : inUrlsA) {
                 logger.info("listening on url: "+inUrl);
 
-                String seda="seda:process?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
-                
-                from(inUrl).bean(dis, "preprocess").to(seda);
-                from(seda).process(processor);
+//                String seda="seda:process?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
+//                from(inUrl).bean(dis, "preprocess").to(seda);
+//                from(seda).process(processor);
+                from(inUrl).process(processor);
             }
             for (String inUrl : inUrlsB) {
                 logger.info("listening on url: "+inUrl);
                 
-                String seda2="seda:process2?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
-                from(inUrl).bean(dis, "preprocess").to(seda2);
-                from(seda2).process(processor);
+//                String seda2="seda:process2?waitForTaskToComplete=Always&timeout="+BcConstants.CHANNEL_DEFAULT_TIMEOUT+"&concurrentConsumers="+threadSize;
+//                from(inUrl).bean(dis, "preprocess").to(seda2);
+//                from(seda2).process(processor);
+                from(inUrl).process(processor);
             }
         }        
     }        
@@ -290,8 +299,11 @@ public class Broker implements Processor, CfgConstants{
         
         // parse header and doc
     	try {
-//        String inUrl = exchange.getFromEndpoint().getEndpointUri();
-    	String inUrl = (String)exchange.getIn().getHeader("inUrl");
+    		long s = PerfUtil.time();
+    		PerfUtil.perfLog("start process");
+    		
+        String inUrl = exchange.getFromEndpoint().getEndpointUri();
+//    	String inUrl = (String)exchange.getIn().getHeader("inUrl");
     		
         String message = exchange.getIn().getBody(String.class);
         logger.info("received message from url="+inUrl);
@@ -357,14 +369,17 @@ public class Broker implements Processor, CfgConstants{
             validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
         }
         
+        long s1 = PerfUtil.time();
         String pkgName = Cnaps2Constants.getPackageName(mesgType);
         Object jaxbObj = null;
         try {
-            jaxbObj = new Iso8583ToXml(pkgName).xmlToObject(bodyText);
+//            jaxbObj = new Iso8583ToXml(pkgName).xmlToObject(bodyText);
         } catch (Exception ex) {
             ex.printStackTrace();
             validateStatus = AckRoot.MSG_PRO_CD_FAIL_VERIFY;
         }
+        long e1 = PerfUtil.time();
+        PerfUtil.perfLog(" cost "+(e1-s1)+", end xmlToObject" );
         
         AckRoot ack = null;
         // TODO handle sync-req-reply and notify
@@ -392,7 +407,8 @@ public class Broker implements Processor, CfgConstants{
 //        exchange.getOut().setBody(ackText);
         
         // send async ack
-        executor.execute(new SendJob(ackText, ackUrl, camel));
+//        executor.execute(new SendJob(ackText, ackUrl, camel));
+        new SendJob(ackText, ackUrl, camel).run();
         
         
         // prepare and send response, hardcoded
@@ -543,7 +559,9 @@ public class Broker implements Processor, CfgConstants{
             
             
         }
-
+        long e = PerfUtil.time();
+        PerfUtil.perfLog(" cost "+(e-s)+", end process");
+        
     	} catch (Exception ex) {
     		logger.error("ERROR IN BROKER!!!"+ex.getMessage());
     	}
@@ -580,13 +598,19 @@ public class Broker implements Processor, CfgConstants{
 
         public void run() {
             try {
+            	
+            	long s = PerfUtil.time();
                 // get the endpoint from the camel context
                 Endpoint endpoint = camel.getEndpoint(url);
-
+                long e1 = PerfUtil.time();
+                PerfUtil.perfLog(" cost "+(e1-s)+", end camel.getEndpoint" );
+                
                 // create the exchange used for the communication
                 // we use the in out pattern for a synchronized exchange
                 // where we expect a response
                 Exchange exchange = endpoint.createExchange(ExchangePattern.InOnly);
+                long e2 = PerfUtil.time();
+                PerfUtil.perfLog(" cost "+(e2-e1)+", end endpoint.createExchange" );
                 
                 // set the input on the in body
                 // must you correct type to match the expected type of an
@@ -595,12 +619,18 @@ public class Broker implements Processor, CfgConstants{
 
                 // to send the exchange we need an producer to do it for us
                 Producer producer = endpoint.createProducer();
+                long e3 = PerfUtil.time();
+                PerfUtil.perfLog(" cost "+(e3-e2)+", end createProducer" );
+                
                 // start the producer so it can operate
                 producer.start();
-
+                long e4 = PerfUtil.time();
+                PerfUtil.perfLog(" cost "+(e4-e3)+", end producer.start()" );
                 
                 producer.process(exchange);
-
+                long e5 = PerfUtil.time();
+                PerfUtil.perfLog(" cost "+(e5-e4)+", end producer.process" );
+                
                 // sync pp ack
 //                String ack = exchange.getOut().getBody(String.class);
 //                System.out.println("... received ack: " + ack);

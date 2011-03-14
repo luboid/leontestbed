@@ -2,6 +2,8 @@ package com.topfinance.transform.smooks;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.transform.stream.StreamSource;
 
@@ -12,16 +14,38 @@ import org.milyn.event.report.HtmlReportGenerator;
 import org.milyn.payload.JavaResult;
 import org.milyn.payload.JavaSource;
 
+import com.topfinance.util.PerfUtil;
+
 public class SmooksTransformer {
 	
 	private static Logger logger = Logger.getLogger(SmooksTransformer.class);
 	public static final String ROOT_BEAN_ID = "target";
 	
-	public static Object java2Java(Object src, InputStream mapping) {
+//	public static Object java2Java(Object src, InputStream mapping) {
+//		return java2Java(null, src, mapping);
+//	}
+	
+	public static Map<String, Smooks> cachedSmooks = new HashMap<String, Smooks>();
+	
+	public static Object java2Java(String mappingId, Object src, InputStream mapping) {
+		
 		Smooks smooks = null;
 		try {
+			
+			long e0 = PerfUtil.time();
+			
 			smooks = new Smooks(mapping);
-
+//			if(mappingId!=null) {
+//				smooks = cachedSmooks.get(mappingId);
+//			}
+//			if(smooks==null) {
+//				smooks = new Smooks(mapping);
+//				if(mappingId!=null) {
+//					// concurrent access to cache?
+//					cachedSmooks.put(mappingId, smooks);
+//				}
+//			}
+			
 			ExecutionContext executionContext = smooks.createExecutionContext();
 
 			// Transform the source Order to the target LineOrder via a
@@ -33,9 +57,12 @@ public class SmooksTransformer {
 			if(logger.isDebugEnabled()) {
 				executionContext.setEventListener(new HtmlReportGenerator("target/report/report.html"));
 			}
-			
+			long e1 = PerfUtil.time();
+	        PerfUtil.perfLog(" cost "+(e1-e0)+", end Smooks init" );
+	        
 			smooks.filterSource(executionContext, source, result);
-
+			long e2 = PerfUtil.time();
+	        PerfUtil.perfLog(" cost "+(e2-e1)+", end filterSource" );
 			return result.getBean(ROOT_BEAN_ID);
 		} catch (Exception ex) {
 			ex.printStackTrace();
