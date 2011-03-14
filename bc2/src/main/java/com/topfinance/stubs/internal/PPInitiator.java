@@ -153,13 +153,14 @@ public class PPInitiator implements CfgConstants{
 //            OpInfo opInfo = TestDummy.OPINFO_101;
             
             OpInfo opInfo = null;
-            if(msgCode==null) {
-            	opInfo = TestDummy.OPINFO_111;
-            }else if("111".equals(msgCode)) {
-            	opInfo = TestDummy.OPINFO_111;
-            }else if("101".equals(msgCode)) {
-            	opInfo = TestDummy.OPINFO_101;
-            }
+            opInfo = opInfo.fromString(msgCode);
+//            if(msgCode==null) {
+//            	opInfo = TestDummy.OPINFO_111;
+//            }else if("111".equals(msgCode)) {
+//            	opInfo = TestDummy.OPINFO_111;
+//            }else if("101".equals(msgCode)) {
+//            	opInfo = TestDummy.OPINFO_101;
+//            }
             
             logger.info("msgCode="+msgCode+", opInfo="+opInfo.toString());
             

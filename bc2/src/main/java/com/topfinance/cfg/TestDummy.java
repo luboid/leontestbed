@@ -59,8 +59,8 @@ public class TestDummy extends TestCase implements CfgConstants{
     public static OpInfo OPINFO_102 = new OpInfo(TestDummy.OPERATION_102, "B100", "01000");
     public static OpInfo OPINFO_601 = new OpInfo(TestDummy.OPERATION_601, "C100", "01000");
     
-//    public static OpInfo OPINFO_111 = new OpInfo(TestDummy.OPERATION_111, "A202", "05003");
-    public static OpInfo OPINFO_111 = new OpInfo(TestDummy.OPERATION_111, "A100", "02101");
+    public static OpInfo OPINFO_111 = new OpInfo(TestDummy.OPERATION_111, "A202", "05003");
+//    public static OpInfo OPINFO_111 = new OpInfo(TestDummy.OPERATION_111, "A100", "02101");
     public static OpInfo OPINFO_604 = new OpInfo(TestDummy.OPERATION_604, "", "");
     
     
