@@ -12,7 +12,9 @@
 		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/BtchBookg" property="btchBookg"/>    
 		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/NbOfTxs" property="nbOfTxs"/>    
 		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/CtrlSum" property="ctrlSum"/>    
-		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/IntrBkSttlmDt" property="intrBkSttlmDt"/>    
+		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/IntrBkSttlmDt" decoder="Date" property="intrBkSttlmDt">
+			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value>    
 		<jb:value data="/Document/FIToFICstmrCdtTrf/GrpHdr/SttlmInf/SttlmMtd" property="sttlmMtd"/>    
 		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtId/EndToEndId" property="endToEndId"/>    
 		<jb:value data="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtId/TxId" property="pmtIdTxId"/>    
