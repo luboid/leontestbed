@@ -20,7 +20,9 @@
 		<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/Amt/@Ccy" property="amtCcy"/>    
 		<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/CdtDbtInd" property="cdtDbtInd"/>    
 		<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/Sts" property="ntrySts"/>    
-		<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/BookgDt/Dt" property="bookgDtDt"/>    
+		<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/BookgDt/Dt" decoder="Date" property="bookgDtDt">
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>    
+		</jb:value>        
 		<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/BkTxCd/Domn/Cd" property="domnCd"/>    
 		<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/BkTxCd/Domn/Fmly/Cd" property="fmlyCd"/>    
 		<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/BkTxCd/Domn/Fmly/SubFmlyCd" property="subFmlyCd"/>    
