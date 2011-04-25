@@ -1,0 +1,29 @@
+<jxb:bindings version="1.0" 
+               xmlns:jxb="http://java.sun.com/xml/ns/jaxb" 
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               > 
+   <jxb:bindings schemaLocation="file:../../sample/Schema/testNested.xsd" node="/xs:schema">   
+          
+   <jxb:globalBindings 
+         fixedAttributeAsConstantProperty="false" 
+         collectionType="java.util.Vector" 
+         typesafeEnumBase="xs:NCName" 
+         choiceContentProperty="false" 
+         typesafeEnumMemberName="generateError" 
+         enableFailFastCheck="false"  
+         generateIsSetMethod="false" 
+         underscoreBinding="asCharInWord"> 
+         
+   </jxb:globalBindings>
+   <jxb:schemaBindings> 
+      <jxb:package name="com.cnaps2.xml.testNested"> 
+        <jxb:javadoc><![CDATA[<body>Package level documentation for generated package com.topfinance.plugin.cnaps2.</body>]]> 
+        </jxb:javadoc> 
+      </jxb:package> 
+      <jxb:nameXmlTransform> 
+        <jxb:elementName suffix="Element"/> 
+      </jxb:nameXmlTransform> 
+    </jxb:schemaBindings>  
+	</jxb:bindings>
+
+</jxb:bindings> 
