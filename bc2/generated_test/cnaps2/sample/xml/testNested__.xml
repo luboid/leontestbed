@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document name="Doc1">
+	<Book author="Author1" name="Book1"/>
+	<Book author="Author2" name="Book2"/>
+</Document>

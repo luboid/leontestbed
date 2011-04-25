@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived">File:/D:\bankConnector\source\sample\Schema\pacs.008.001.02.xsd</param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.TestNested" createOnElement="Document">
+		<jb:value data="/Document/@name" property="name"/>  
+		<jb:wiring beanIdRef="books" property="books"/>  
+	</jb:bean>
+	
+  <jb:bean beanId="books" class="java.util.ArrayList" createOnElement="Document">
+   	<jb:wiring beanIdRef="book" />
+  </jb:bean>
+  	
+	<jb:bean beanId="book" class="com.topfinance.ebo.msg.Book" createOnElement="/Document/Book">
+		<jb:value data="/Document/Book/@name" property="name"/> 
+		<jb:value data="/Document/Book/@author" property="author"/> 
+	</jb:bean>
+  
+</smooks-resource-list>  
+    

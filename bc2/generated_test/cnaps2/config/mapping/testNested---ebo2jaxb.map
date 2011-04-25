@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.TestNested</param>
+  </params>
+  	<jb:bean beanId="target" class="com.cnaps2.xml.testNested.Document" createOnElement="com.topfinance.ebo.msg.TestNested">
+    	<jb:wiring beanIdRef="bookList" property="book"/>
+    	<jb:value data="com.topfinance.ebo.msg.TestNested/name" property="name"/>
+  	</jb:bean>
+  	<jb:bean beanId="bookList" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.TestNested/books">
+   		<jb:wiring beanIdRef="book" />
+  	</jb:bean>
+  	<jb:bean beanId="book" class="com.cnaps2.xml.testNested.Book" createOnElement="com.topfinance.ebo.msg.Book">
+    	<jb:value data="name" property="name"/>
+    	<jb:value data="author" property="author"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

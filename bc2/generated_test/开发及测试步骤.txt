@@ -2,21 +2,35 @@
 
 
 完成代码：
+1) 修改TestGenMap.java
+	- 有关ebo访问的部分
 
 
-
-准备工作
+一次性准备工作
+0) 修改spring配置文件（数据库参数）
+1) 修改TestGenMap.java （见对应代码段中的TODO注释）
+	- USE_DB常量  
+	- DBSTORE常量
+	- testGenPublicMap()
+	
+为每个报文{msgCode,tpCode,clsCode}	
 1) 报文的Sample XML，放到 \generated_test\cnaps2\sample\xml
-2) 根据报文schema生成报文的JAXB类，放到 \src\test\gwXML\com\cnaps2\xml\iso20022 对应目录下 （我这里可提供jaxb生成脚本）
+2) 根据报文schema生成报文的JAXB类，放到 \src\test\gwXML\com\cnaps2\xml\iso20022 对应目录下
+	- 生成步骤
+	- 将xsd copy到\sample\Schema\
+	- 修改\test\jaxb\myxjc.bat （参照已有例子）
+	- 运行\test\jaxb\myxjc.bat
+	- 将生成的jaxb包（在\generated_test\cnaps2\java\下）copy到\src\test\gwXML\下，编译
+
 3) 准备好报文要转化的数据库表及EBO实体类（或可根据后面生成的EBO实体类对照修改）
 4) 准备好对应的bscEle和extEle的数据
 5) 修改Cnaps2Constants.java（见对应代码段中的TODO注释）
 	- getPackageName()
 6) 修改TestGenMap.java （见对应代码段中的TODO注释）
-	- setUp()  
-	- DBSTORE常量
-	- testGenPublicMap()
-7) 修改spring配置文件（数据库参数）
+	- 报文的msgCode,tyCode和clsCode
+7) 修改\generated_test\cnaps2\config\operations.xml，加上对应报文。
+
+
 
 运行，观察结果，并调试
 1) 运行TestGenMap.testGenPublicMap() 作为JUnit（JUnit3）-- 生成模板map规则
