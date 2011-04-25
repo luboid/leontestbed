@@ -2,8 +2,8 @@ package com.topfinance.transform.smooks;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 import javax.xml.transform.stream.StreamSource;
 
@@ -25,7 +25,7 @@ public class SmooksTransformer {
 //		return java2Java(null, src, mapping);
 //	}
 	
-	public static Map<String, Smooks> cachedSmooks = new HashMap<String, Smooks>();
+	public static Map<String, Smooks> cachedSmooks = new ConcurrentSkipListMap<String, Smooks>();
 	
 	public static Object java2Java(String mappingId, Object src, InputStream mapping) {
 		
@@ -34,17 +34,17 @@ public class SmooksTransformer {
 			
 			long e0 = PerfUtil.time();
 			
-			smooks = new Smooks(mapping);
-//			if(mappingId!=null) {
-//				smooks = cachedSmooks.get(mappingId);
-//			}
-//			if(smooks==null) {
-//				smooks = new Smooks(mapping);
-//				if(mappingId!=null) {
-//					// concurrent access to cache?
-//					cachedSmooks.put(mappingId, smooks);
-//				}
-//			}
+//			smooks = new Smooks(mapping);
+			if(mappingId!=null) {
+				smooks = cachedSmooks.get(mappingId);
+			}
+			if(smooks==null) {
+				smooks = new Smooks(mapping);
+				if(mappingId!=null) {
+					// concurrent access to cache?
+					cachedSmooks.put(mappingId, smooks);
+				}
+			}
 			
 			ExecutionContext executionContext = smooks.createExecutionContext();
 

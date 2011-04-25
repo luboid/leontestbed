@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -27,8 +28,6 @@ import org.jpos.iso.ISOMsg;
 
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.transform.util.Iso8583Util;
-import com.topfinance.transform.util.IsoHelper;
-import com.topfinance.transform.util.IsoObj;
 import com.topfinance.util.BCUtils;
 
 
@@ -53,10 +52,20 @@ public class Iso8583ToXml {
     private static void info(String msg) {
         logger.info(msg);
     }
+    
+    static Map<String, JAXBContext> cachedJaxb = new ConcurrentSkipListMap<String, JAXBContext>();
+    
     public String objectToXml(Object object) {
         String rtnStr = "";
         try {
-                JAXBContext jaxbContext = JAXBContext.newInstance(pkgName);
+        		
+                JAXBContext jaxbContext = cachedJaxb.get(pkgName);
+                if(jaxbContext==null) {
+                	jaxbContext = JAXBContext.newInstance(pkgName);
+                	cachedJaxb.put(pkgName, jaxbContext);
+                }
+                
+                
                 Marshaller marshaller = jaxbContext.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_ENCODING, BcConstants.ENCODING);
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);

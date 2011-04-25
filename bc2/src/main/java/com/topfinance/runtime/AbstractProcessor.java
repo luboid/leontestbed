@@ -8,6 +8,7 @@ import com.topfinance.cfg.ICfgReader;
 import com.topfinance.db.AuditTransaction;
 import com.topfinance.db.AuditTransactionDetail;
 import com.topfinance.util.AuditUtil;
+import com.topfinance.util.PerfUtil;
 
 public abstract class AbstractProcessor implements CfgConstants, BcConstants {
     
@@ -21,6 +22,7 @@ public abstract class AbstractProcessor implements CfgConstants, BcConstants {
 
     public void auditLog(String state, String desc, String status) {
         try {
+        	long e0 = PerfUtil.time();
             AuditTransaction auditTx = msgContext.getAuditTx();
             auditTx.setDocId(msgContext.getDocId());
             auditTx.setTxId(msgContext.getTxId());
@@ -39,7 +41,8 @@ public abstract class AbstractProcessor implements CfgConstants, BcConstants {
             detail.setDesc(desc);
             
             AuditUtil.saveAuditLog(auditTx, detail);
-            
+            long e1 = PerfUtil.time();
+            PerfUtil.perfLog(" cost "+(e1-e0)+", end AbstractProcessor.auditLog" );
         } catch (Exception ex) {
             ex.printStackTrace();
         }

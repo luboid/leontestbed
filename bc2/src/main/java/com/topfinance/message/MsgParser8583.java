@@ -19,6 +19,7 @@ import com.topfinance.transform.simple.SimpleTransformer;
 import com.topfinance.transform.util.IsoHelper;
 import com.topfinance.transform.util.IsoObj;
 import com.topfinance.transform.util.IsoSchema;
+import com.topfinance.util.PerfUtil;
 
 public class MsgParser8583 implements IMsgParser {
     private static Logger logger = Logger.getLogger(MsgParser8583.class);
@@ -54,10 +55,13 @@ public class MsgParser8583 implements IMsgParser {
         // msg2iso
         List<ICfgFormat8583> config = CfgImplFactory.loadCfgReader().getFormat8583(format);
         IsoSchema schema = IsoHelper.fromConfig(config);
+        
+        long e0 = PerfUtil.time();
         IsoObj iso = IsoHelper.parse(schema, msg);
 //        ISOMsg isomsg = Iso8583Util.unpackMsg(msg, getPackager(format));
 //        IsoObj iso = IsoHelper.parse(isomsg);
-        
+        long e1 = PerfUtil.time();
+        PerfUtil.perfLog(" cost "+(e1-e0)+", end IsoHelper.parse" );
         
         docId = IsoHelper.getField(iso, format.getPathDocId());
         origDocId = IsoHelper.getField(iso, format.getPathOrigDocId());
@@ -76,8 +80,11 @@ public class MsgParser8583 implements IMsgParser {
 //        byte[] mapping = CfgImplFactory.loadCfgReader().getMappingRule(opInfo, opn, CfgConstants.DIRECTION_UP);
         SimpleMappingRule rule = CfgImplFactory.loadCfgReader().getMappingRule(opInfo, opn, CfgConstants.DIRECTION_UP);
         
+        long e2 = PerfUtil.time();
 //        parsedMsg = SmooksTransformer.java2Java(iso, mapping);
         parsedMsg = new SimpleTransformer().transform(iso, rule);
+        long e3 = PerfUtil.time();
+        PerfUtil.perfLog(" cost "+(e3-e2)+", end SimpleTransformer().transform" );
         
         return parsedMsg;
 	}
