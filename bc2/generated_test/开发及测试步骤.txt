@@ -3,7 +3,7 @@
 
 完成代码：
 1) 修改TestGenMap.java
-	- 有关ebo访问的部分
+	- 有关数据库访问的部分如getBizEle()等
 
 
 一次性准备工作
@@ -12,6 +12,7 @@
 	- USE_DB常量  
 	- DBSTORE常量
 	- testGenPublicMap()
+	
 	
 为每个报文{msgCode,tpCode,clsCode}	
 1) 报文的Sample XML，放到 \generated_test\cnaps2\sample\xml
