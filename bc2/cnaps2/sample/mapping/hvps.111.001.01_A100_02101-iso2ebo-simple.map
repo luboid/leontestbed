@@ -1,23 +1,23 @@
 <simpleMappingRule targetName="com.topfinance.ebo.msg.Hvps11100101A10002101">
    <mappings class="java.util.ArrayList">
-      <mapping srcPath="f93" value="" mode="" targetPath="dbtrAcctId"/>
-      <mapping srcPath="f100" value="" mode="" targetPath="cdtrAcctId"/>
-      <mapping srcPath="f96" value="" mode="" targetPath="dbtrAgtBrnchId"/>
-      <mapping srcPath="f84" value="" mode="" targetPath="endToEndId"/>
-      <mapping srcPath="f85" value="" mode="" targetPath="txId"/>
-      <mapping srcPath="f82" value="1" mode="" targetPath="nbOfTxs"/>
-      <mapping srcPath="f95" value="" mode="" targetPath="cdtrClrSysMmbId"/>
-      <mapping srcPath="f90" value="" mode="" targetPath="sttlmPrty"/>
-      <mapping srcPath="f102" value="" mode="" targetPath="bizTcCd"/>
-      <mapping srcPath="f86" value="" mode="" targetPath="bizTpCd"/>
-      <mapping srcPath="f92" value="" mode="" targetPath="dbtrNm"/>
-      <mapping srcPath="f128" value="" mode="" targetPath="msgId"/>
-      <mapping srcPath="f83" value="CLRG" mode="" targetPath="settlementMethod"/>
-      <mapping srcPath="f98" value="" mode="" targetPath="cdtrAgtBrnchId"/>
+      <mapping srcPath="f99" mode="" targetPath="cdtrNm"/>
+      <mapping srcPath="f81" mode="" targetPath="creDtTm" targetType="JAVADATE" srcType="ISODATE"/>
+      <mapping srcPath="f100" mode="" targetPath="cdtrAcctId"/>
+      <mapping srcPath="f84" mode="" targetPath="endToEndId"/>
+      <mapping srcPath="f128" mode="" targetPath="msgId"/>
+      <mapping srcPath="f93" mode="" targetPath="dbtrAcctId"/>
+      <mapping srcPath="f95" mode="" targetPath="dbtrClrSysMmbId"/>
+      <mapping srcPath="f98" mode="" targetPath="cdtrAgtBrnchId"/>
       <mapping srcPath="f91" value="DEBT" mode="" targetPath="chrgBr"/>
-      <mapping srcPath="f81" value="" mode="" targetPath="creDtTm" targetType="JAVADATE" srcType="ISODATE"/>
-      <mapping srcPath="f95" value="" mode="" targetPath="dbtrClrSysMmbId"/>
-      <mapping srcPath="f94" value="" mode="" targetPath="dbtrAcctIssr"/>
-      <mapping srcPath="f99" value="" mode="" targetPath="cdtrNm"/>
+      <mapping srcPath="f85" mode="" targetPath="txId"/>
+      <mapping srcPath="f102" mode="" targetPath="bizTcCd"/>
+      <mapping srcPath="f82" value="1" mode="" targetPath="nbOfTxs"/>
+      <mapping srcPath="f95" mode="" targetPath="cdtrClrSysMmbId"/>
+      <mapping srcPath="f83" value="CLRG" mode="" targetPath="settlementMethod"/>
+      <mapping srcPath="f94" mode="" targetPath="dbtrAcctIssr"/>
+      <mapping srcPath="f96" mode="" targetPath="dbtrAgtBrnchId"/>
+      <mapping srcPath="f92" mode="" targetPath="dbtrNm"/>
+      <mapping srcPath="f90" mode="" targetPath="sttlmPrty"/>
+      <mapping srcPath="f86" mode="" targetPath="bizTpCd"/>
    </mappings>
 </simpleMappingRule>
