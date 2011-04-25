@@ -9,7 +9,6 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.io.IOUtils;
 import org.jpos.iso.ISOMsg;
 
-
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgFormat;
@@ -46,34 +45,13 @@ public class OpTester extends TestCase {
 	
 	public void up(OpInfo opInfo) {
 		try {
-			String mesgType = opInfo.getMesgType();
-			
-		ICfgReader reader = CfgImplFactory.loadCfgReader();
-		ICfgProtocol protocol = reader.getProtocolByName(PROTOCOL);
-		ICfgOperation opn = reader.getOperation(protocol, mesgType);
-		
-		// In runtime the format should be from PortIn config, but here assume it's the same as in Operation
-		ICfgFormat format = reader.getFormatByOpn(opn);
-		
-		// prepare 8583
-		ISOMsg isomsg = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), FilePathHelper.sample8583(opInfo));
-		String msg = Iso8583Util.packMsg(isomsg);
-		debug("msg="+msg);
-		
-		// process
-		IMsgParser parser = FormatFactory.getMsgParser(format);
-		Object ebo = parser.parseConvert(msg, format, protocol);
-		debug("ebo="+ebo);
+
 		
 		// TODO check docid, opId, etc? 
 		
-		if(opInfo.getMesgType().equals(TestDummy.OPERATION_601)) {
-			BeanUtils.setProperty(ebo, Cnaps2Constants.ORIG_MSG_ID_601_EBOFLD, "xxxxxx");
-		}
-		String body = new DefaultCnaps2Packer().packBody(ebo, opn, opInfo);
-
-		
-		debug("body=\n"+body);
+			Object ebo = upPrivate(opInfo);
+			
+			String xml = upPublic(ebo, opInfo);
 		
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -82,47 +60,63 @@ public class OpTester extends TestCase {
 		}
 	}
 
-	public void down(OpInfo opInfo) {
+	public Object upPrivate(OpInfo opInfo) {
 		try {
 			String mesgType = opInfo.getMesgType();
-    		ICfgReader reader = CfgImplFactory.loadCfgReader();
-    		ICfgProtocol protocol = reader.getProtocolByName(PROTOCOL);
-    		ICfgOperation opn = reader.getOperation(protocol, mesgType);
-    		
-    		
-    		
-			// prepare xml;
-			String cnaps2Msg = IOUtils.toString(new FileInputStream(FilePathHelper.sampleXml(opInfo)), "UTF-8");
 			
-			// TODO this is only temporary
-			String bodyText = null;
-	    	int pos = cnaps2Msg.indexOf("}\r\n");
-	    	if(pos>=0) {
-	    		String headerText = cnaps2Msg.substring(0, pos);
-	    		bodyText = cnaps2Msg.substring(pos+3);
-	    	} else {
-	    		bodyText = cnaps2Msg;
-	    	}
+			ICfgReader reader = CfgImplFactory.loadCfgReader();
+			ICfgProtocol protocol = reader.getProtocolByName(PROTOCOL);
+			ICfgOperation opn = reader.getOperation(protocol, mesgType);
 			
+			// In runtime the format should be from PortIn config, but here assume it's the same as in Operation
+			ICfgFormat format = reader.getFormatByOpn(opn);
+			
+			// prepare 8583
+			ISOMsg isomsg = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), FilePathHelper.sample8583(opInfo));
+			String msg = Iso8583Util.packMsg(isomsg);
+			debug("msg="+msg);
 			
 			// process
-        	InputStream in = new FileInputStream(FilePathHelper.configOds());
-        	OperationDefinitions ods = OperationDefinitions.load(in);
+			IMsgParser parser = FormatFactory.getMsgParser(format);
+			Object ebo = parser.parseConvert(msg, format, protocol);
+			debug("ebo="+ebo);
+			
+			return ebo;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
+			
+		}
+	}
 
-        	DefaultCnaps2Parser parser = new DefaultCnaps2Parser();
-        	parser.getOpInfo().setMesgType(opInfo.getMesgType());
-//        	String bodyText = parser.parseHeader(cnaps2Msg);
-			Object ebo = parser.parseBody(bodyText, mesgType, ods, protocol);
+	public String upPublic(Object ebo, OpInfo opInfo) {
+		try {
+
+			// TODO check docid, opId, etc?
+
+			if (opInfo.getMesgType().equals(TestDummy.OPERATION_601)) {
+				BeanUtils.setProperty(ebo,
+						Cnaps2Constants.ORIG_MSG_ID_601_EBOFLD, "xxxxxx");
+			}
+			String body = new DefaultCnaps2Packer().packBody(ebo,
+					opInfo.getMesgType(), opInfo);
+
+			debug("body=\n" + body);
+			return body;
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
+
+		}
+	}
+	
+	public void down(OpInfo opInfo) {
+		try {
+
+		    Object ebo = downPublic(opInfo);
 			
-			
-	        IMsgPacker packer = FormatFactory.getMsgPacker(reader.getFormatByOpn(opn)); 
-        	String msg = packer.convertPack(ebo, opn, opInfo);		
-	        debug("msg=\n"+msg);
-	        
-	        
-	        
-	        IsoObj obj = IsoHelper.parse(new IsoSchema(), msg);
-	        debug("f126="+obj.getF126());
+		    Object iso = downPrivate(opInfo, ebo);
 	        
 	        
 		} catch (Exception ex) {
@@ -131,6 +125,65 @@ public class OpTester extends TestCase {
 			
 		}
 	}
+	public Object downPrivate(OpInfo opInfo, Object ebo) {
+        try {
+            String mesgType = opInfo.getMesgType();
+            ICfgReader reader = CfgImplFactory.loadCfgReader();
+            ICfgProtocol protocol = reader.getProtocolByName(PROTOCOL);
+            ICfgOperation opn = reader.getOperation(protocol, mesgType);
+            IMsgPacker packer = FormatFactory.getMsgPacker(reader.getFormatByOpn(opn)); 
+            String msg = packer.convertPack(ebo, opn, opInfo);      
+            debug("msg=\n"+msg);
+            
+            IsoObj obj = IsoHelper.parse(new IsoSchema(), msg);
+            debug("f126="+obj.getF126());            
+            
+            return obj;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+
+        }
+    }
+	public Object downPublic(OpInfo opInfo) {
+	    try {
+	           String mesgType = opInfo.getMesgType();
+
+	            
+	            
+	            
+	            // prepare xml;
+	            String cnaps2Msg = IOUtils.toString(new FileInputStream(FilePathHelper.sampleXml(opInfo)), "UTF-8");
+	            
+	            // TODO this is only temporary
+	            String bodyText = null;
+	            int pos = cnaps2Msg.indexOf("}\r\n");
+	            if(pos>=0) {
+	                String headerText = cnaps2Msg.substring(0, pos);
+	                bodyText = cnaps2Msg.substring(pos+3);
+	            } else {
+	                bodyText = cnaps2Msg;
+	            }
+	            
+	            
+	            // process
+	            InputStream in = new FileInputStream(FilePathHelper.configOds());
+	            OperationDefinitions ods = OperationDefinitions.load(in);
+
+	            DefaultCnaps2Parser parser = new DefaultCnaps2Parser();
+	            parser.getOpInfo().setMesgType(opInfo.getMesgType());
+//	          String bodyText = parser.parseHeader(cnaps2Msg);
+	            Object ebo = parser.parseBody(bodyText, mesgType, ods, null);
+	            
+	            return ebo;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+            
+        }
+	    
+	}
+	
 	
 	public static void main(String args[]) {
 		OpTester tester = new OpTester();

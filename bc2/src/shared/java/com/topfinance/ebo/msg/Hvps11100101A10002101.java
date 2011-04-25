@@ -530,7 +530,26 @@ public class Hvps11100101A10002101  implements java.io.Serializable {
 
     public void  setTs(java.util.Date newTs) {
         ts = newTs;
-    }	  
+    }
+
+
+@Override
+public String toString() {
+	return "Hvps11100101A10002101 [uuid=" + uuid + ", dbtrAcctId=" + dbtrAcctId
+			+ ", sttlmPrty=" + sttlmPrty + ", dbtrAgtBrnchId=" + dbtrAgtBrnchId
+			+ ", cdtrClrSysMmbId=" + cdtrClrSysMmbId + ", nbOfTxs=" + nbOfTxs
+			+ ", txId=" + txId + ", intrBkSttlmAmt=" + intrBkSttlmAmt
+			+ ", msgId=" + msgId + ", bizTpCd=" + bizTpCd + ", cdtrNm="
+			+ cdtrNm + ", dbtrNm=" + dbtrNm + ", cdtrAcctId=" + cdtrAcctId
+			+ ", creDtTm=" + creDtTm + ", settlementMethod=" + settlementMethod
+			+ ", cdtrAgtBrnchId=" + cdtrAgtBrnchId + ", endToEndId="
+			+ endToEndId + ", chrgBr=" + chrgBr + ", bizTcCd=" + bizTcCd
+			+ ", dbtrClrSysMmbId=" + dbtrClrSysMmbId + ", dbtrAcctIssr="
+			+ dbtrAcctIssr + ", rmk=" + rmk + ", ts=" + ts + "]";
+}
+
+
+ 
     
     
 }    

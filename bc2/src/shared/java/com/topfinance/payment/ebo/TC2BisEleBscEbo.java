@@ -1,4 +1,4 @@
-package com.topfinance.cfg.jpa;
+package com.topfinance.payment.ebo;
 
 // Generated 2011-1-9 9:12:59 by Hibernate Tools 3.4.0.Beta1
 

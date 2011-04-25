@@ -58,7 +58,7 @@ public class DefaultCnaps2Parser  {
         } else {
         	
         	OperationDefinition od = ods.getOd(mesgType);
-        	ICfgOperation cfgOpn = CfgImplFactory.loadCfgReader().getOperation(protocol, mesgType);
+//        	ICfgOperation cfgOpn = CfgImplFactory.loadCfgReader().getOperation(protocol, mesgType);
         	
             // Parse xml body
 //            String pkgName = getJaxbPackageName(mesgType);
