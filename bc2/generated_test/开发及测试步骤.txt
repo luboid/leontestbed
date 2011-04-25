@@ -34,6 +34,10 @@
 
 
 运行，观察结果，并调试
-1) 运行TestGenMap.testGenPublicMap() 作为JUnit（JUnit3）-- 生成模板map规则
-2) 运行TestGenMap.testGenerated() 作为JUnit（注意应用JUnit3）-- 运行转换
+1) 运行TestGenMap.testGenPublicMap() 作为JUnit（JUnit3）
+		-- 生成模板map规则，文件存于\generated_test\cnaps2\config\mapping目录下
+2) 运行TestGenMap.testGenerated() 作为JUnit（注意应用JUnit3）
+		-- 运行转换，以\generated_test\cnaps2\sample\xml\目录下的xml作为输入
+		-- 第一步先将xml转化为ebo并储存到数据库
+		-- 第二部将ebo读取出来转化为xml，并打印到标准输出
 3) 如有问题，修改生成的map文件（注意不要重新生成覆盖了。。或者可以copy到另一个目录再做）
