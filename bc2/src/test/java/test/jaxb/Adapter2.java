@@ -8,21 +8,22 @@
 
 package test.jaxb;
 
-import java.util.Calendar;
+
+import java.util.Date;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter2
-    extends XmlAdapter<String, Calendar>
+    extends XmlAdapter<String, Date>
 {
 
 
-    public Calendar unmarshal(String value) {
-        return (com.topfinance.converter.Cnaps2DataTypeConverter.parseDateTime(value));
+    public Date unmarshal(String value) {
+        return (com.cnaps2.xml.bind.Cnaps2DataTypeConverter.parseDateTime(value));
     }
 
-    public String marshal(Calendar value) {
-        return (com.topfinance.converter.Cnaps2DataTypeConverter.printDateTime(value));
+    public String marshal(Date value) {
+        return (com.cnaps2.xml.bind.Cnaps2DataTypeConverter.printDateTime(value));
     }
 
 }

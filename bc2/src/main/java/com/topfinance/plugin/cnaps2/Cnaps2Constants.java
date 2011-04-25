@@ -3,6 +3,8 @@ package com.topfinance.plugin.cnaps2;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.topfinance.cfg.TestDummy;
 
 public class Cnaps2Constants {
@@ -47,8 +49,11 @@ public class Cnaps2Constants {
         // TODO mesgType is name of operation, could change. 
         // it should be sth like "type" of operation which is enumeration value
         
-        String pkgName = "";
-        if (mesgType.equals(TestDummy.OPERATION_101)) {
+        String pkgName = null;
+        if(mesgType.equals("testNested")) {
+        	pkgName="com.cnaps2.xml.testNested";
+        }
+        else if (mesgType.equals(TestDummy.OPERATION_101)) {
 //            pkgName = "com.topfinance.plugin.cnaps2.v00800102";
             pkgName = JAXB_ISO_PACS_v00800102;
         } else if(mesgType.equals(TestDummy.OPERATION_102)) {
@@ -59,7 +64,11 @@ public class Cnaps2Constants {
             pkgName = JAXB_ISO_PACS_v00800102;   
         } else if(mesgType.equals(TestDummy.OPERATION_604)) {
             pkgName = "com.cnaps2.xml.iso20022.saps.v60400101";                 
-        }        
+        }         
+        
+        if(pkgName==null) {
+        	throw new RuntimeException("no package found for mesgType="+mesgType);
+        }
         return pkgName;
     }
 	

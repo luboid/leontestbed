@@ -1,4 +1,4 @@
-package com.topfinance.converter;
+package com.cnaps2.xml.bind;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,13 +18,11 @@ public class Cnaps2DataTypeConverter {
     
     
  // TODO timezone or locale??
-    public static Calendar parseDate(String value) {
+    public static Date parseDate(String value) {
         
         try {
             SimpleDateFormat tf = new SimpleDateFormat(PATTERN_DATE);
-            Date date = tf.parse(value);
-            Calendar res = Calendar.getInstance();
-            res.setTime(date);
+            Date res = tf.parse(value);
             return res;
         } catch (ParseException e) {
             
@@ -35,20 +33,18 @@ public class Cnaps2DataTypeConverter {
         
     }
     
-    public static String printDate(Calendar value) {
+    public static String printDate(Date value) {
         
         SimpleDateFormat tf = new SimpleDateFormat(PATTERN_DATE);
-        String res = tf.format(value.getTime());
+        String res = tf.format(value);
         return res;
         
     }
     
-    public static Calendar parseDateTime(String value) {
+    public static Date parseDateTime(String value) {
         try {
             SimpleDateFormat tf = new SimpleDateFormat(PATTERN_DATE_TIME);
-            Date date = tf.parse(value);
-            Calendar res = Calendar.getInstance();
-            res.setTime(date);
+            Date res = tf.parse(value);
             return res;
         } catch (ParseException e) {
             e.printStackTrace();
@@ -57,10 +53,10 @@ public class Cnaps2DataTypeConverter {
         
     }
     
-    public static String printDateTime(Calendar value) {
+    public static String printDateTime(Date value) {
         
         SimpleDateFormat tf = new SimpleDateFormat(PATTERN_DATE_TIME);
-        String res = tf.format(value.getTime());
+        String res = tf.format(value);
         return res;
         
     }

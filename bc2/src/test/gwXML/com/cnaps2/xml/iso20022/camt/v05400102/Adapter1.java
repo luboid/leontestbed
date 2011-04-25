@@ -9,6 +9,7 @@
 package com.cnaps2.xml.iso20022.camt.v05400102;
 
 import java.util.Date;
+
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter1

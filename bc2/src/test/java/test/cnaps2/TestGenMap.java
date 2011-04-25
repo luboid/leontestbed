@@ -11,7 +11,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.topfinance.cfg.CfgAccessException;
-import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.db.dao.IDao;
 import com.topfinance.payment.ebo.TC2BisEleBscEbo;
 import com.topfinance.runtime.OpInfo;
@@ -86,9 +85,15 @@ public class TestGenMap extends TestCase {
     public void testGenerated() {
     	
     	String basePath = "D:/bankConnector/source/generated_test";
-        String mesgType = "hvps.111.001.01";
-        String tpCode = "A100";
-        String clsCode = "02101";
+    	
+    	// This is a sample to handle the XML that needs to be stored in a parent-child table 
+        String mesgType = "testNested";
+        String tpCode = "";
+        String clsCode = "";
+    	
+//        String mesgType = "hvps.111.001.01";
+//        String tpCode = "A100";
+//        String clsCode = "02101";
         OpInfo opInfo = new OpInfo(mesgType, tpCode, clsCode);
         debug("===========================start testGenerated for op="+opInfo+"============================");
         
@@ -110,6 +115,7 @@ public class TestGenMap extends TestCase {
         if(USE_DB) {
         	getDao().save(ebo);
         }
+        
         
         debug("==========================================test Ebo2XML conversion=========================================");
         // fetch a clean ebo from DB, rather than use the above ebo instance.
