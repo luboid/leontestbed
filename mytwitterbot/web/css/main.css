@@ -1,0 +1,255 @@
+body, table {
+    background: #FFFFFF none repeat scroll 0 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    margin: 0;
+}
+
+.logo-text {
+    font-size: 2em;
+    margin-left: 50px;
+    line-height: 48px;
+    text-shadow: 0px 0px 15px #000000;
+    font-family: Verdana;
+    font-weight: bold;
+    color: #FFFFFF;
+    <!--[if IE] >
+
+color: #000000;
+    <![endif]-->
+}
+
+form {
+    padding: 0em;
+    display: inline;
+    margin: 0em;
+}
+
+.button {
+    font-size: 100%;
+}
+
+#header {
+    width: 100%;
+    padding: 1em 0 1em 0;
+}
+
+.single-line-list {
+    text-align: right;
+    padding: 0;
+    white-space: nowrap;
+    margin: 0;
+    display: inline;
+    list-style-type: none;
+	width : 99%
+}
+
+.single-line-list span {
+    line-height: 1.5em;
+    display: inline;
+    padding: 0 0 0.5em;
+    margin: 0;
+}
+
+#content {
+}
+
+#addTwitterAccount {
+    background-color: #E5ECF9;
+    border-top: 1px solid #3366CC;
+    margin: 0 0 1.25em;
+    padding: 0.25em 0.5em;
+    vertical-align: top;
+    font-size: 130%;
+}
+
+.left-pane {
+    float: left;
+    width: 20%;
+}
+
+#twitterAccountList {
+    list-style-type: none;
+    margin: 0 0 0 1.5em;
+    padding: 1em 0;
+}
+
+#twitterAccountList li {
+    line-height: 1.5em;
+    padding: 0.5em 0 0 0.5em;
+    margin-right: -2px;
+}
+
+#twitterAccountList a {
+    -moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-topleft: 4px;
+    border: SOLID 3px #E5ECF9;
+    border-right: none;
+    padding: 0.5em 0 0.5em 2em;
+    display: block;
+    font-weight: bold;
+    margin-right: -1px;
+    text-decoration: none;
+    background-color: #E5ECF9;
+}
+
+#twitterAccountList a:hover {
+    background-color: #FFFFFF;
+}
+
+.right-pane {
+    float: right;
+    width: 79%;
+}
+
+#twitterAccount {
+    margin: 0;
+    padding: 0;
+    width: 99%;
+}
+
+.actionBar {
+    border: #3366CC SOLID 1px;
+    line-height: 1.5em;
+    padding: 0.5em;
+    background-color: #E5ECF9;
+}
+
+#actionList {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-align: right;
+}
+
+.actionBar .right-pane {
+    text-align: right
+}
+
+#actionList li {
+    display: inline;
+}
+
+.content-window {
+    border: SOLID 1px #3366CC;
+}
+
+#toolbar {
+    background-color: #E9E9E9;
+    padding: 0.3em;
+}
+
+#twitterStatus {
+    margin: 1em 0 0 0;
+}
+
+.clear {
+    clear: both;
+}
+
+#footer {
+}
+
+#message {
+    padding: 0.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.text-box {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+}
+
+.multiline-text {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    border: none;
+}
+
+#noTweets {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 3em;
+    display: none;
+}
+
+.side-window {
+    margin: 0.8em;
+    border: SOLID 3px #3366CC;
+    -moz-border-radius: 5px;
+}
+
+.side-window div {
+    background-color: #3366CC;
+    line-height: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    color: #E5ECF9;
+}
+
+.side-window > form {
+    display: block;
+    padding: 0.5em;
+}
+
+#scheduler table {
+    font-size: 0.8em;
+    list-style-type: none;
+    margin: 1em 0 0 1em;
+    padding: 0;
+}
+
+#shrinker input{
+	margin : 0.6em 0 0.6em 0;	
+}
+
+.tweetLine {
+    width: 98%;
+    border: SOLID 2px #CBCBCB;
+    padding: 0;
+    margin: 1%;
+    -moz-border-radius: 5px;
+}
+
+.tweetLine .bottom-line {
+    background-color: #F3F5FC;
+}
+
+.tweetLine .bottom-line div {
+    margin: 0;
+    padding: 0.2em 1em;
+    color: #3366CC;
+}
+
+.tweetLine .time {
+    border: none;
+    background-color: #F3F5FC;
+    width: 23em;
+    color: #3366CC;
+    cursor: pointer;
+}
+
+.tweetLine .focus-time {
+    cursor: auto;
+    border: Solid 1px black;
+    background-color: #FFFFFF;
+}
+
+.pagination {
+	width : 98%;
+	text-align : right;
+	margin : 0 1% 0 1%;
+}
+
+.pagination a {
+	text-decoration : none;
+	padding : 0.3em;
+	background-color : #E5ECF9;
+	color : #3366CC;
+}
+
+.pagination a:hover {
+	background-color : #3366CC;
+	color : #E5ECF9;
+}
