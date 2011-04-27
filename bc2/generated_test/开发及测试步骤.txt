@@ -7,11 +7,14 @@
 
 
 一次性准备工作
-0) 修改spring配置文件（数据库参数）
+0) 修改runBC-A-config-DB.xml配置文件（数据库参数）
 1) 修改TestGenMap.java （见对应代码段中的TODO注释）
 	- USE_DB常量  
 	- DBSTORE常量
 	- testGenPublicMap()
+2）所有二代协议的XML/schema
+3）生成的EBO实体类？？
+
 	
 	
 为每个报文{msgCode,tpCode,clsCode}	
@@ -23,13 +26,18 @@
 	- 运行\test\jaxb\myxjc.bat
 	- 将生成的jaxb包（在\generated_test\cnaps2\java\下）copy到\src\test\gwXML\下，编译
 
-3) 准备好报文要转化的数据库表及EBO实体类（或可根据后面生成的EBO实体类对照修改）
+3) 准备好报文要转化的数据库表及EBO实体类（或可根据后面生成的EBO实体类对照修改） 
+	- EBO类里需加上toString()方法以便打印
+	- 修改runBC-A-config-DB.xml，加上对应EBO实体类的映射
 4) 准备好对应的bscEle和extEle的数据
 5) 修改Cnaps2Constants.java（见对应代码段中的TODO注释）
-	- getPackageName()
+	- getPackageName()  （应等于在saps.604.001.01.jxb中指定的包名）
 6) 修改TestGenMap.java （见对应代码段中的TODO注释）
 	- 报文的msgCode,tyCode和clsCode
 7) 修改\generated_test\cnaps2\config\operations.xml，加上对应报文。
+	- 参考二代文档，填上tpCode和clsCode的对应XPATH
+	- 在sample XML里面，给对应XAPTH的元素填上正确的clsCode和tpCode的值	
+	
 
 
 
@@ -41,3 +49,6 @@
 		-- 第一步先将xml转化为ebo并储存到数据库
 		-- 第二部将ebo读取出来转化为xml，并打印到标准输出
 3) 如有问题，修改生成的map文件（注意不要重新生成覆盖了。。或者可以copy到另一个目录再做）
+
+
+youranklean@163.com
