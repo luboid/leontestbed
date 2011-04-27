@@ -158,7 +158,7 @@ public class TestGenMap extends TestCase {
 	// String basePath = "D:/bankConnector/source/generated";
 	//
 	//
-	// TCfgFmtEleMapFileEbo ruleDb = getJpaReader().getMapFile(mesgType, tpCode,
+	// JpaCfgFmtEleMapFileEbo ruleDb = getJpaReader().getMapFile(mesgType, tpCode,
 	// clsCode);
 	// CfgImplFactory.setType(CfgImplFactory.TYPE_DB);
 	// CfgImplFactory.setConfig(DBSTORE);
@@ -169,7 +169,7 @@ public class TestGenMap extends TestCase {
 	// debug("end testGenPrivateMap...");
 	// }
 	// private void savePrivateMap(String direction, OpInfo opInfo,
-	// String basePath, TCfgFmtEleMapFileEbo ruleDb) throws IOException {
+	// String basePath, JpaCfgFmtEleMapFileEbo ruleDb) throws IOException {
 	// SimpleMappingRule rule = SimpleMappingRule.fromDb(ruleDb, direction);
 	// byte[] ruleXml = rule.toXml();
 	// String outFile = FilePathHelper.sampleMappingSimple(opInfo, direction,

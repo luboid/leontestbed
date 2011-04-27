@@ -24,7 +24,7 @@ import com.topfinance.cfg.ICfgTransOut;
 import com.topfinance.cfg.util.CfgUtils;
 import com.topfinance.db.dao.DbException;
 import com.topfinance.db.dao.IDao;
-import com.topfinance.payment.ebo.TCfgFmtEleMapFileEbo;
+import com.topfinance.payment.ebo.JpaCfgFmtEleMapFileEbo;
 import com.topfinance.runtime.OpInfo;
 import com.topfinance.transform.simple.SimpleMappingRule;
 import com.topfinance.util.BCUtils;
@@ -299,12 +299,12 @@ public class JpaCfgReader implements ICfgReader {
             throw new CfgAccessException(ex);
         }
 	}
-    public TCfgFmtEleMapFileEbo getMapFile(String mesgType, String tpCode, String clsCode) {
+    public JpaCfgFmtEleMapFileEbo getMapFile(String mesgType, String tpCode, String clsCode) {
         try {
-            String hql = "from "+TCfgFmtEleMapFileEbo.class.getSimpleName()+" o where o.msgCode = ? and o.tpCode=? and o.clsCode=?";
+            String hql = "from "+JpaCfgFmtEleMapFileEbo.class.getSimpleName()+" o where o.msgCode = ? and o.tpCode=? and o.clsCode=?";
             Object[] paras = new Object[] {mesgType, tpCode, clsCode};
             List list = getDao().find(hql, paras);
-            return list.size()>0 ? (TCfgFmtEleMapFileEbo)list.get(0) : null;
+            return list.size()>0 ? (JpaCfgFmtEleMapFileEbo)list.get(0) : null;
         } catch (DbException ex) {
             throw new CfgAccessException(ex);
         }

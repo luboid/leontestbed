@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "T_CFG_FMT_ELE_MAP_RULE")
-public class TCfgFmtEleMapRuleEbo {
+public class JpaCfgFmtEleMapRuleEbo {
 
 	// 以下两个ID字段用于UI匹配左右及连线
 
@@ -48,7 +48,7 @@ public class TCfgFmtEleMapRuleEbo {
 	String bizFldName;
 
 	// 映射规则
-	private TCfgFmtEleMapFileEbo mapFile;
+	private JpaCfgFmtEleMapFileEbo mapFile;
 
 	private Integer id;
 
@@ -148,10 +148,10 @@ public class TCfgFmtEleMapRuleEbo {
 	@ManyToOne
 	//@JoinColumn(name="map_id",insertable=false,updatable=false)
 	//@Column(name = "map_id")
-	public TCfgFmtEleMapFileEbo getMap() {
+	public JpaCfgFmtEleMapFileEbo getMap() {
 		return mapFile;
 	}
-	public void setMap(TCfgFmtEleMapFileEbo mapFile) {
+	public void setMap(JpaCfgFmtEleMapFileEbo mapFile) {
 		this.mapFile = mapFile;
 	}
 

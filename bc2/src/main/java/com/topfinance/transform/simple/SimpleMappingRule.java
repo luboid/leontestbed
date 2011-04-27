@@ -13,8 +13,8 @@ import org.simpleframework.xml.core.Persister;
 
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.jpa.JpaCfgReader;
-import com.topfinance.payment.ebo.TCfgFmtEleMapFileEbo;
-import com.topfinance.payment.ebo.TCfgFmtEleMapRuleEbo;
+import com.topfinance.payment.ebo.JpaCfgFmtEleMapFileEbo;
+import com.topfinance.payment.ebo.JpaCfgFmtEleMapRuleEbo;
 
 public class SimpleMappingRule {
 	
@@ -280,7 +280,7 @@ public class SimpleMappingRule {
 //        }
 //	}
 	
-	public static String getPosSequn(String pos, TCfgFmtEleMapFileEbo cfg) {
+	public static String getPosSequn(String pos, JpaCfgFmtEleMapFileEbo cfg) {
 		
 		// to get formatId:  cfg.getTCfgFormat().getUid();
 		
@@ -295,7 +295,7 @@ public class SimpleMappingRule {
     	String op = mesgType+opType+opClass;
         return EBO_PKG+StringUtils.capitalize(StringUtils.remove(op, '.'));
     }
-	public static SimpleMappingRule fromDb(TCfgFmtEleMapFileEbo cfg, String direction) {
+	public static SimpleMappingRule fromDb(JpaCfgFmtEleMapFileEbo cfg, String direction) {
         try {
             SimpleMappingRule rule = new SimpleMappingRule();
             if(DIRECTION_UP.equals(direction)) {
@@ -304,7 +304,7 @@ public class SimpleMappingRule {
 //            	rule.setTargetName(Cnaps2Constants.MSGCODE_EBOCLS.get(cfg.getMsgCode()));
             	rule.setTargetName(getEboClassNameFromOp(cfg.getMsgCode(), cfg.getTpCode(), cfg.getClsCode()));
             	
-            	for(TCfgFmtEleMapRuleEbo detail : cfg.getMappings()) {
+            	for(JpaCfgFmtEleMapRuleEbo detail : cfg.getMappings()) {
             		Mapping m = new Mapping();
             		rule.getMappings().add(m);
             		
@@ -330,7 +330,7 @@ public class SimpleMappingRule {
             else {
             	// ebo2Iso
             	rule.setTargetName(ISOOBJ_CLAZZ);
-            	for(TCfgFmtEleMapRuleEbo detail : cfg.getMappings()) {
+            	for(JpaCfgFmtEleMapRuleEbo detail : cfg.getMappings()) {
             		Mapping m = new Mapping();
             		rule.getMappings().add(m);
 //            		m.setSrcPath(detail.getBizFldPath());

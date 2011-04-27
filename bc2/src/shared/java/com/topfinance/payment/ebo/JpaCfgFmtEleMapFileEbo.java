@@ -27,7 +27,7 @@ import com.topfinance.cfg.jpa.JpaCfgFormat;
  */
 @Entity
 @Table(name = "T_CFG_FMT_ELE_MAP_FILE")
-public class TCfgFmtEleMapFileEbo implements java.io.Serializable {
+public class JpaCfgFmtEleMapFileEbo implements java.io.Serializable {
 
 	private Integer id;
 
@@ -41,20 +41,20 @@ public class TCfgFmtEleMapFileEbo implements java.io.Serializable {
 
 	private String format;
 	
-	private Set<TCfgFmtEleMapRuleEbo> mappings = new HashSet<TCfgFmtEleMapRuleEbo>();
+	private Set<JpaCfgFmtEleMapRuleEbo> mappings = new HashSet<JpaCfgFmtEleMapRuleEbo>();
     @OneToMany(mappedBy="map",fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "MAP_ID")
-    public Set<TCfgFmtEleMapRuleEbo> getMappings() {
+    public Set<JpaCfgFmtEleMapRuleEbo> getMappings() {
         return mappings;
     }
-    public void setMappings(Set<TCfgFmtEleMapRuleEbo> mappings) {
+    public void setMappings(Set<JpaCfgFmtEleMapRuleEbo> mappings) {
         this.mappings = mappings;
     }
 
-	public TCfgFmtEleMapFileEbo() {
+	public JpaCfgFmtEleMapFileEbo() {
 	}
 
-	public TCfgFmtEleMapFileEbo(Integer id, String msgCode, String tpCode, String clsCode, JpaCfgFormat tCfgFormat,
+	public JpaCfgFmtEleMapFileEbo(Integer id, String msgCode, String tpCode, String clsCode, JpaCfgFormat tCfgFormat,
 			String format) {
 		this.id = id;
 		this.msgCode = msgCode;
