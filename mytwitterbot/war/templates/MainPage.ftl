@@ -127,7 +127,7 @@
 																		&nbsp;|&nbsp;<a href = "/pages/transaction?action=showTxns" id = "showTxnsLink">Unpaid Transactions </a>  
 																</li>
 																<li>
-																		&nbsp;|&nbsp;<a href = "/pages/transaction?action=showTxns" id = "showStatusLink">My Messages </a>  
+																		&nbsp;|&nbsp;<a href = "/pages/status?action=Show" id = "showPaidTweetsLink">My Messages </a>  
 																</li>																
 																</ul>
                             </ul>
@@ -164,7 +164,7 @@
                         </div>
                     </div>
                     <div id = "twitterContent" class = "content-window">
-                        <form name = "updateForm" method = "POST" action = "/pages/status" target = "resultFrame">
+                        <form id="updateFormId" name = "updateForm" method = "POST" action = "/pages/status" target = "resultFrame">
                             <input name = "screenName" type = "hidden" id = "screenName"/>
                             <div id = "toolbar">
                                 <div class = "left-pane">
@@ -185,7 +185,7 @@
                                         <input type = "submit" name = "action" value = "Delete" class = "button"/>
                                     </div>
                                     <div id = "uploadButtons">
-                                        <input type = "Submit" name = "action" value = "Add" class = "button">
+                                        <input id = "AddTransaction" type = "Submit" name = "action" value = "Add" class = "button">
                                         &nbsp;
                                         <input type = "reset" value = "Cancel" class = "button"/>
                                     </div>

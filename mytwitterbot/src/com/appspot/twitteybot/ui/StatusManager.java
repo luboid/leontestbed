@@ -1,5 +1,12 @@
 package com.appspot.twitteybot.ui;
 
+import com.appspot.twitteybot.datastore.PMF;
+import com.appspot.twitteybot.datastore.TwitterStatus;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserServiceFactory;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -32,12 +39,7 @@ import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.appspot.twitteybot.datastore.PMF;
-import com.appspot.twitteybot.datastore.TwitterStatus;
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserServiceFactory;
+
 
 /**
  * Responsible for parsing a file that is uploaded with the status messages.
@@ -71,13 +73,17 @@ public class StatusManager extends HttpServlet {
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_FETCH)) {
 			this.processFetch(req, resp);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
-			this.processAdd(req, resp);
+//			this.processAdd(req, resp);
+//		    throw new RuntimeException("add txn should not come here");
+		    req.getRequestDispatcher("/pages/transaction").forward(req, resp);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_DELETE)) {
 			this.processUpdate(req, resp, true);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_UPDATE)) {
 			this.processUpdate(req, resp, false);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_SHOW)) {
 			this.processShow(req, resp);
+        } else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_SHOW_TWEET_OF_TXN)) {
+            this.processShowTweetsOfTxn(req, resp);			
 		} else {
 			resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 		}
@@ -99,7 +105,29 @@ public class StatusManager extends HttpServlet {
 				"Showing " + (end - start) + " tweets", LEVEL_INFO, resp, start, end);
 		pm.close();
 	}
-
+	
+    private void processShowTweetsOfTxn(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        PersistenceManager pm = PMF.get().getPersistenceManager();
+        long start = 0;
+        long end = PAGE_SIZE;
+        long txnId = -1;
+        try {
+            start = Long.parseLong(req.getParameter(Pages.PARAM_START));
+        } catch (NumberFormatException e) {
+        }
+        try {
+            end = Long.parseLong(req.getParameter(Pages.PARAM_END));
+        } catch (NumberFormatException e) {
+        }
+        try {
+            txnId = Long.parseLong(req.getParameter(Pages.PARAM_TXN_ID));
+        } catch (NumberFormatException e) {
+        }
+        this.constructResponse(this.getTwitterStatus(txnId, pm, start, end),
+                "Showing " + (end - start) + " tweets", LEVEL_INFO, resp, start, end);
+        pm.close();
+    }
+    
 	private void processUpdate(HttpServletRequest req, HttpServletResponse resp, boolean delete) throws IOException {
 		int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
 		PersistenceManager pm = PMF.get().getPersistenceManager();
@@ -162,47 +190,7 @@ public class StatusManager extends HttpServlet {
 		pm.close();
 	}
 
-	private void processAdd(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		String screenName = req.getParameter(Pages.PARAM_SCREENNAME);
-		User user = UserServiceFactory.getUserService().getCurrentUser();
 
-		String message = null;
-		String level = LEVEL_INFO;
-
-		if (screenName == null || screenName == "") {
-			message = "Twitter Screen Name was null and hence, could not add tweets";
-			level = LEVEL_ERROR;
-			log.log(Level.SEVERE, "ScerenName supplied was null");
-		} else {
-			List<TwitterStatus> twitterStatuses = new ArrayList<TwitterStatus>();
-			int failedTweetCount = 0;
-			for (int i = 0; i <= totalItems; i++) {
-				if (this.getBoolFromParam(req.getParameter(Pages.PARAM_STATUS_CANADD + i), "on")) {
-					try {
-						twitterStatuses.add(new TwitterStatus(user, screenName, req
-								.getParameter(Pages.PARAM_STATUS_SOURCE + i), req
-								.getParameter(Pages.PARAM_STATUS_UPDATE_DATE + i), req
-								.getParameter(Pages.PARAM_STATUS_STATUS + i), this.getBoolFromParam(
-								req.getParameter(Pages.PARAM_STATUS_CAN_DELETE + i), "on")));
-					} catch (RuntimeException e) {
-						message = "There were errors parsing the time for tweets." + (++failedTweetCount)
-								+ " tweets were not added.";
-						level = LEVEL_WARN;
-						log.log(Level.WARNING, "Could not add " + req.getParameter(Pages.PARAM_STATUS_UPDATE_DATE + i)
-								+ " as parsing failed");
-					}
-				}
-			}
-			if (message == null) {
-				message = twitterStatuses.size() + " Tweets Successfully added to this account.";
-			}
-			pm.makePersistentAll(twitterStatuses);
-		}
-		this.constructResponse(this.getTwitterStatus(screenName, pm), message, level, resp);
-		pm.close();
-	}
 
 	private void processFetch(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String twitterScreenName = req.getParameter(Pages.PARAM_SCREENNAME);
@@ -344,6 +332,17 @@ public class StatusManager extends HttpServlet {
 		this.constructResponse(list, message, level, resp, 0, PAGE_SIZE);
 	}
 
+	
+	private List<TwitterStatus> getTwitterStatus(long txnId, PersistenceManager pm, long start, long end) {
+	       Query query = pm.newQuery(TwitterStatus.class);
+	        query.setFilter("transactionId == transactionIdVar");
+	        query.declareParameters("Long transactionIdVar");
+	        query.setOrdering("updatedTime asc");
+	        query.setRange(start, end);
+	        @SuppressWarnings("unchecked")
+	        List<TwitterStatus> twitterStatuses = (List<TwitterStatus>) query.execute(txnId);
+	        return twitterStatuses;
+	}
 	private List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm, long start, long end) {
 		Query query = pm.newQuery(TwitterStatus.class);
 		query.setFilter("twitterScreenName == twitterScreenNameVar && user == userVar");

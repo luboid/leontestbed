@@ -106,12 +106,15 @@ var TwitteyBot = (function(){
                 return false;
             });            
 						
-						$("#showStatusLink").click(function(event){
+						$("#showPaidTweetsLink").click(function(event){
             		// leon
                 me.showTweets(true);
                 return false;
             });
-            
+
+	
+						
+						
             $("#sampleTweets").click(function(){
                 $("#resultFrame").attr("src", "/pages/status?action=fetch&source_=" + TwitteyBot.__BASE__ +  "tweets.txt&screenName=" +
                 $("#twitterScreenName").html());
@@ -310,16 +313,38 @@ var TwitteyBot = (function(){
                 "start": start,
                 "end": end
             });
-            $("#scheduler").hide();
-            $("#shrinker").hide();            
+         
             $("#uploadButtons").hide();
             $("#otherButtons").hide();
             //alert('here showTxns');
         },        
         
+        showTweetsOfTxn: function(txnId, start, end){
+        		//alert('here in detail txnId='+txnId);
+        		
+            var screenName = $("#twitterScreenName").html();
+            var me = this;
+            TwitteyBot.showLoading();
+            $("#twitterStatus").load("/pages/status", {
+                "action": "ShowTweetOfTxn",
+                "screenName": screenName,
+                "txnId": txnId,
+                "start": start,
+                "end": end
+            });
+
+            $("#uploadButtons").hide();
+            $("#otherButtons").show();
+                    		
+						return false;
+        },
+        
+        
         onTxnsLoaded: function(caller){
         	//alert('here onTxnsLoaded 3');
         	//$("#actionList").show();
+          $("#scheduler").hide();
+          $("#shrinker").hide();           	
         	$("#showLoading").hide();
           $("#noTweets").hide();
           $("#transactionContent").show();        	          

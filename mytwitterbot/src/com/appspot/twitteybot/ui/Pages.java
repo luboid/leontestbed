@@ -4,11 +4,22 @@ public class Pages {
     
     public static final boolean LOCAL_TEST = true;
     
+    public static final String TEMPLATE_TXNPAGE= "ShowTransaction.ftl";
+    
+    public static final String PARAM_TXN_ACTION_ADD = "Add";
+    public static final String PARAM_TXN_ACTION_SHOW = "Show";
+    public static final String FTLVAR_TXN = "txnList";
+    public static final String FTLVAR_TXN_MESSAGE = "message";
+    public static final String FTLVAR_TXN_LEVEL = "level";
+    public static final String FTLVAR_TXN_START = "start";
+    public static final String FTLVAR_TXN_END = "end";
+    
+    
 	public static final String TEMPLATE_MAIN_PAGE = "MainPage.ftl";
 	public static final String TEMPLATE_STATUSPAGE = "ShowStatus.ftl";
 	public static final String TEMPLATE_ADMINPAGE = "Admin.ftl";
 	
-	public static final String TEMPLATE_TXNPAGE= "ShowTransaction.ftl";
+	
 	
 	public static final String PARAM_SEPARATOR = "separator";
 	public static final String PARAM_KEY = "key";
@@ -22,7 +33,11 @@ public class Pages {
 	public static final String PARAM_ACTION_SHOW = "Show";
 	public static final String PARAM_ACTION_UPLOAD = "Upload";
 	public static final String PARAM_ACTION_FETCH = "fetch";
-
+	
+	// leon
+	public static final String PARAM_ACTION_SHOW_TWEET_OF_TXN = "ShowTweetOfTxn";
+	
+	
 	public static final String PARAM_STATUS_CANADD = "item_";
 	public static final String PARAM_TOTAL_ITEMS = "totalItems";
 	public static final String PARAM_STATUS_UPDATE_DATE = "updatedTime_";
@@ -38,6 +53,9 @@ public class Pages {
 	public static final String PARAM_SCREENNAME = "screenName";
 	public static final String PARAM_CSVFILE = "csvFile";
 
+	// leon
+	public static final String PARAM_TXN_ID = "txnId";
+	
 	public static final String PARAM_START = "start";
 	public static final String PARAM_END = "end";
 

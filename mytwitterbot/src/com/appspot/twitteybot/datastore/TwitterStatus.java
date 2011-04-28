@@ -1,5 +1,7 @@
 package com.appspot.twitteybot.datastore;
 
+import com.google.appengine.api.users.User;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,8 +11,6 @@ import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
-
-import com.google.appengine.api.users.User;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class TwitterStatus implements Serializable {
@@ -43,6 +43,9 @@ public class TwitterStatus implements Serializable {
 	@Persistent
 	private boolean canDelete;
 
+	@Persistent
+	private long transactionId;
+	
 	public enum State {
 		SCHEDULED, TO_DELETE, QUEUED
 	}
@@ -170,5 +173,15 @@ public class TwitterStatus implements Serializable {
 				+ ", source=" + source + ", state=" + state + ", status=" + status + ", twitterScreenName="
 				+ twitterScreenName + ", updatedTime=" + updatedTime + ", user=" + user + "]";
 	}
+
+    public long getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(long transactionId) {
+        this.transactionId = transactionId;
+    }
+
+
 
 }
