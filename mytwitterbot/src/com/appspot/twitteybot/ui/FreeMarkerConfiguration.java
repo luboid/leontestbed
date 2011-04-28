@@ -66,7 +66,12 @@ public class FreeMarkerConfiguration {
      */
     public static void writeResponse(Map<String, Object> templateValues, String templateFile, PrintWriter writer) {
 	try {
-	    writer.write(getProcessedTemplate(templateValues, templateFile));
+	    String s = getProcessedTemplate(templateValues, templateFile);
+	    if(Pages.LOCAL_TEST) {
+	        log.info("getProcessedTemplate========\n"+s);
+	    }
+	    writer.write(s);
+	    
 	} catch (TemplateException e) {
 	    log.log(Level.WARNING, templateFile, e);
 	    e.printStackTrace(writer);

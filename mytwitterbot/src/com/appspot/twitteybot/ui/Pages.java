@@ -1,10 +1,14 @@
 package com.appspot.twitteybot.ui;
 
 public class Pages {
+    
+    public static final boolean LOCAL_TEST = true;
+    
 	public static final String TEMPLATE_MAIN_PAGE = "MainPage.ftl";
 	public static final String TEMPLATE_STATUSPAGE = "ShowStatus.ftl";
 	public static final String TEMPLATE_ADMINPAGE = "Admin.ftl";
-
+	
+	public static final String TEMPLATE_TXNPAGE= "ShowTransaction.ftl";
 	
 	public static final String PARAM_SEPARATOR = "separator";
 	public static final String PARAM_KEY = "key";

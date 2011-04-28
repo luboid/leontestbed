@@ -40,9 +40,9 @@ public class MainPage extends HttpServlet {
 		if (twitterAccounts == null || twitterAccounts.size() == 0) {
 			twitterAccounts = new ArrayList<TwitterAccount>();
 			// TODO leon: dummy
-			TwitterAccount ta = new TwitterAccount();
-			ta.setTwitterScreenName("dummy");
-			twitterAccounts.add(ta);
+//			TwitterAccount ta = new TwitterAccount();
+//			ta.setTwitterScreenName("dummy");
+//			twitterAccounts.add(ta);
 		}
 
 		Map<String, Object> templateValues = new HashMap<String, Object>();

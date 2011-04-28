@@ -50,7 +50,11 @@ public class TwitterAccountManager extends HttpServlet {
 				.read(ApplicationProperty.CONSUMER_SECRET));
 		log.info("Using consumer key " + ApplicationProperty.read(ApplicationProperty.CONSUMER_KEY));
 		try {
-			if (action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
+		    if(Pages.LOCAL_TEST && action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
+		        saveToken("token", "tokenSecret", "papaya");
+		        resp.sendRedirect(Pages.PAGE_MAIN);
+		    }
+		    else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
 				RequestToken requestToken = twitter.getOAuthRequestToken();
 				resp.addCookie(new Cookie(COOKIE_TOKEN, requestToken.getToken()));
 				resp.addCookie(new Cookie(COOKIE_TOKEN_SECRET, requestToken.getTokenSecret()));
@@ -79,13 +83,16 @@ public class TwitterAccountManager extends HttpServlet {
 			e.printStackTrace(resp.getWriter());
 		}
 	}
-
+	
 	private void saveToken(AccessToken token) {
+	    saveToken(token.getToken(), token.getTokenSecret(), token.getScreenName());
+	}
+	private void saveToken(String token, String tokenSecret, String screenName) {
 		TwitterAccount twitterAccount = new TwitterAccount();
 		twitterAccount.setUser(UserServiceFactory.getUserService().getCurrentUser());
-		twitterAccount.setToken(token.getToken());
-		twitterAccount.setSecret(token.getTokenSecret());
-		twitterAccount.setTwitterScreenName(token.getScreenName());
+		twitterAccount.setToken(token);
+		twitterAccount.setSecret(tokenSecret);
+		twitterAccount.setTwitterScreenName(screenName);
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm.makePersistent(twitterAccount);
 		pm.close();

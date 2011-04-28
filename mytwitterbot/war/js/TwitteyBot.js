@@ -75,10 +75,12 @@ var TwitteyBot = (function(){
         
         initTwitterAcccounts: function(){
             var me = this;
-            $("#actionList>li>a , #deleteAccountButton").click(function(event){
+            //$("#actionList>li>a , #deleteAccountButton").click(function(event){
+            $("#actionFetchFile, #actionUploadFile, #deleteAccountButton").click(function(event){
                 $("#uploadFileForm").hide();
                 $("#fetchFileForm").hide()
                 $("#deleteAccountForm").hide();
+                //alert('#actionList>li>a , #deleteAccountButton');
                 $("#actionList").hide();
                 $(this.href.substring(this.href.indexOf("#"))).fadeIn();
                 return false;
@@ -87,12 +89,25 @@ var TwitteyBot = (function(){
                 $("#uploadFileForm").hide();
                 $("#fetchFileForm").hide();
                 $("#deleteAccountForm").hide();
+                //alert('.actionBar :reset, :submit');
                 $("#actionList").fadeIn();
             });
             $("#twitterAccountList a").click(function(event){
                 var screenName = $.urlParser(this.href).params["screenName"];
                 $("#twitterScreenName").html(screenName);
                 $("#screenName").attr("value", screenName);
+                me.showTweets(true);
+                return false;
+            });
+            
+						$("#showTxnsLink").click(function(event){
+            		// leon
+                me.showTxns(true);
+                return false;
+            });            
+						
+						$("#showStatusLink").click(function(event){
+            		// leon
                 me.showTweets(true);
                 return false;
             });
@@ -172,6 +187,13 @@ var TwitteyBot = (function(){
                 me.showMessage($("#responseMessage").attr("value"), $("#responseMessage").attr("title"));
             };
             
+						this.onTxnLoad = function(content){
+								//alert('here onTxnLoad');
+                $("#transactionDetail").html(content);
+                me.onTxnsLoaded(true);
+                me.showMessage($("#responseMessage").attr("value"), $("#responseMessage").attr("title"));
+            };
+            
             $("#twitterContent form").submit(function(){
                 me.showLoading();
                 $("#uploadButtons").hide();
@@ -247,6 +269,7 @@ var TwitteyBot = (function(){
         showLoading: function(){
             $("#showLoading").show();
             $("#twitterContent").hide();
+            $("#transactionContent").hide(); 
             $("#noTweets").hide();
         },
         
@@ -271,8 +294,37 @@ var TwitteyBot = (function(){
                 "start": start,
                 "end": end
             });
+
             $("#uploadButtons").hide();
             $("#otherButtons").show();
+        },
+        
+				showTxns: function(arg, start, end){
+       		  // leon
+            var screenName = $("#twitterScreenName").html();
+            var me = this;
+            TwitteyBot.showLoading();
+            $("#transactionDetail").load("/pages/transaction", {
+                "action": "show",
+                "screenName": screenName,
+                "start": start,
+                "end": end
+            });
+            $("#scheduler").hide();
+            $("#shrinker").hide();            
+            $("#uploadButtons").hide();
+            $("#otherButtons").hide();
+            //alert('here showTxns');
+        },        
+        
+        onTxnsLoaded: function(caller){
+        	//alert('here onTxnsLoaded 3');
+        	//$("#actionList").show();
+        	$("#showLoading").hide();
+          $("#noTweets").hide();
+          $("#transactionContent").show();        	          
+          $("#twitterContent").hide();        	
+					
         },
         
         onTweetsLoaded: function(caller){
@@ -282,6 +334,8 @@ var TwitteyBot = (function(){
             
             var pageSize = 30;
             $("#showLoading").hide();
+            $("#scheduler").show();
+            $("#shrinker").show();             
             if ($("#twitterContent .tweetLine").size() === 0) {
                 if (start === 0) {
                     $("#twitterContent").hide();
@@ -295,6 +349,7 @@ var TwitteyBot = (function(){
             else {
                 $("#noTweets").hide();
                 $("#twitterContent").show();
+                $("#transactionContent").hide();
             }
             
             if (start <= 0) {

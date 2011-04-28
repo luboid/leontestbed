@@ -108,18 +108,28 @@
                         </div>
                         <div class = "right-pane" style ="width : 64%">
                             <ul id = "actionList">
+                            		<ul>
                                 <li>
                                     Upload Tweets from a file on
                                 </li>
                                 <li>
-                                    <a href = "#fetchFileForm">the internet</a>
+                                    <a href = "#fetchFileForm" id="actionFetchFile">the internet</a>
                                 </li>
                                 <li>
-                                    &nbsp;|&nbsp;<a href = "#uploadFileForm"> your computer</a>
+                                    &nbsp;|&nbsp;<a href = "#uploadFileForm" id="actionUploadFile"> your computer</a>
                                 </li>
-								<li>
-									&nbsp;&nbsp;<input type = "button" id = "OneTweet" value = "Schedule One Tweet" class = "button"/>
-								</li>
+																<li>
+																		&nbsp;&nbsp;<input type = "button" id = "OneTweet" value = "Schedule One Tweet" class = "button"/>
+																</li>
+																</ul>
+																<ul>
+																<li>
+																		&nbsp;|&nbsp;<a href = "/pages/transaction?action=showTxns" id = "showTxnsLink">Unpaid Transactions </a>  
+																</li>
+																<li>
+																		&nbsp;|&nbsp;<a href = "/pages/transaction?action=showTxns" id = "showStatusLink">My Messages </a>  
+																</li>																
+																</ul>
                             </ul>
                             <div id = "fetchFileForm">
                                 <form target = "resultFrame" action = "#" method = "POST" name = "uploadFile">
@@ -187,6 +197,33 @@
                             </div>
                         </form>
                     </div>
+										<div id = "transactionContent" class = "content-window">
+                        <form name = "transactionForm" method = "POST" action = "/pages/transaction" target = "resultFrame">
+                            <input name = "screenName" type = "hidden" id = "screenNameXXX"/>
+                            <div id = "txntoolbar">
+                                <div class = "left-pane">
+                                    Select&nbsp;
+                                    <div class = "single-line-list" style ="text-align:left">
+                                        <span>
+                                            <a href = "#" id = "selectAllTxn">All</a>, 
+                                        </span>
+                                        <span>
+                                            <a href = "#" id = "selectNoneTxn">None</a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class = "right-pane" style ="text-align : right">
+                                    <div id = "transactionButtons">
+                                        <input type = "reset" value = "Cancel" class = "button"/>
+                                    </div>
+                                </div>
+                                <div class = "clear">
+                                </div>
+                            </div>
+                            <div id = "transactionDetail">
+                            </div>
+                        </form>
+                    </div>                        
                     <div id = "showLoading" style ="display:none" class ="content-window">
                         <div style ="text-align:center; padding : 3em">
                             <span style ="font-weight : bold; font-size : 3em; color : white; text-shadow : 0px 0px 20px  #000000">
@@ -216,10 +253,10 @@
         </div>
         <div id = "footer">
         </div>
-        <iframe id = "resultFrame" name = "resultFrame" style ="width : 100%; display:none">
+        <iframe id = "resultFrame" name = "resultFrame" style ="width : 100%; "> <!-- display:none -->
         </iframe>
     </body>
-    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type = "text/javascript">
+    <script src = "/js/jquery.min.js" type = "text/javascript">
     </script>
     <script src = "/js/date.js" type = "text/javascript">
     </script>
