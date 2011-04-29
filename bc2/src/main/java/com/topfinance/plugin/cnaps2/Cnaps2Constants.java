@@ -33,7 +33,7 @@ public class Cnaps2Constants {
 //    public static final String X_MSG_ID_101 = "/Document/FIToFICstmrCdtTrf/grpHdr/msgId";
 //    public static final String X_MSG_ID_601 = "/Document/BkToCstmrDbtCdtNtfctn/grpHdr/msgId";
     
-    public static final String JAXB_ISO_PACS_v00800102 =  "com.cnaps2.xml.iso20022.pacs.v00800102";
+    public static final String JAXB_ISO_PACS_v00800102 =  "com.xml.iso20022.pacs.v00800102";
     
     public static Map<String, String> OPATHS_ORIG_MSG_ID = new HashMap<String, String>();
     static {
@@ -49,7 +49,7 @@ public class Cnaps2Constants {
         // TODO mesgType is name of operation, could change. 
         // it should be sth like "type" of operation which is enumeration value
         
-        String pkgName = null;
+		String pkgName = null;
         if(mesgType.equals("testNested")) {
         	pkgName="com.cnaps2.xml.testNested";
         }
@@ -57,13 +57,17 @@ public class Cnaps2Constants {
 //            pkgName = "com.topfinance.plugin.cnaps2.v00800102";
             pkgName = JAXB_ISO_PACS_v00800102;
         } else if(mesgType.equals(TestDummy.OPERATION_102)) {
-            pkgName = "com.cnaps2.xml.iso20022.pacs.v00200103";                
+            pkgName = "com.xml.iso20022.pacs.v00200103";                
         } else if(mesgType.equals(TestDummy.OPERATION_601)) {
-            pkgName = "com.cnaps2.xml.iso20022.camt.v05400102";    
+            pkgName = "com.xml.iso20022.camt.v05400102";    
         } else if(mesgType.equals(TestDummy.OPERATION_111)) {
             pkgName = JAXB_ISO_PACS_v00800102;   
         } else if(mesgType.equals(TestDummy.OPERATION_604)) {
-            pkgName = "com.cnaps2.xml.iso20022.saps.v60400101";                 
+            pkgName = "com.xml.iso20022.saps.v60400101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_CCMS_990_001_02)) {
+            pkgName = "com.xml.cnaps2.ccms.v99000102";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_CCMS_991_001_01)) {
+            pkgName = "com.xml.cnaps2.ccms.v99100101";                 
         }         
         
         if(pkgName==null) {
