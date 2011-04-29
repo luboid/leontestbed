@@ -13,7 +13,7 @@
             <input type = "checkbox" id = "item_${item_index}" name = "item_${item_index}" class = "item-index" value = "on"/>
         </div>
         <div class = "right-pane" style ="width:97%">
-            <a href="#" onClick="javascript: top.TwitteyBot.showTweetsOfTxn(${item.keyId});">Amount=${item.amount},Number=${item.numberOfStatus}, Status=${item.txnState} + Transaction Status</a>
+            This transaction contains ${item.numberOfStatus} tweets, total cost $${item.amount} ($${item.unitPrice} each tweet), Status=${item.txnState}
         </div>
         <div class = "clear bottom-line">
             <div class = "left-pane single-line-list" style ="right; padding : 0.5em;">
@@ -25,12 +25,24 @@
                         | 
                     </span>
                     {item.source} 
-                    <span style ="color : #000000">
-                        | 
-                    </span>
                 </span>
                 <span>
-                    GoPay Button + Cancel Button
+                    <span style ="color : #000000">
+                        | 
+                    </span>                
+                		<a href="#" onClick="javascript: top.TwitteyBot.showTweetsOfTxn(${item.keyId});">Edit Detail</a>
+                </span>                		
+                <span>
+                    <span style ="color : #000000">
+                        | 
+                    </span>                                		
+                    <a href="/pages/paypal?Payment_Amount=${item.amount}" >Pay with Paypal</a>
+                </span>                    
+                <span>
+                    <span style ="color : #000000">
+                        | 
+                    </span>                                		
+                    <a href="/pages/transaction?action=CancelTxn&screenName=${item.twitterScreenName}&txnId=${item.keyId}" >Cancel Txn</a>
                 </span>
             </div>
             <div class = "right-pane" style ="width : 30%; text-align : right; padding : 0.5em; color:#3366CC">

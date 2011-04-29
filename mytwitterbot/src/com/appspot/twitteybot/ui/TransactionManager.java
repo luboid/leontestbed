@@ -1,5 +1,6 @@
 package com.appspot.twitteybot.ui;
 
+import com.appspot.twitteybot.datastore.DsHelper;
 import com.appspot.twitteybot.datastore.PMF;
 import com.appspot.twitteybot.datastore.Transact;
 import com.appspot.twitteybot.datastore.TwitterStatus;
@@ -42,7 +43,9 @@ public class TransactionManager extends HttpServlet {
         } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_ADD)) {
             this.processAdd(req, resp);
         } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_SHOW)) {
-            this.processShow(req, resp);            
+            this.processShow(req, resp);   
+        } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_CANCEL)) {
+            this.processCancel(req, resp);              
         } else {
             resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
         }
@@ -60,9 +63,29 @@ public class TransactionManager extends HttpServlet {
             end = Long.parseLong(req.getParameter(Pages.PARAM_END));
         } catch (NumberFormatException e) {
         }
-        this.constructResponse(this.getUnPaidTransact(req.getParameter(Pages.PARAM_SCREENNAME), pm, start, end),
+        this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, start, end),
                 "Showing " + (end - start) + " transactions", LEVEL_INFO, resp, start, end);
         pm.close();
+    }
+    
+    private void processCancel(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        long txnId = -1;
+        try {
+            txnId = Long.parseLong(req.getParameter(Pages.PARAM_TXN_ID));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        PersistenceManager pm = PMF.get().getPersistenceManager();
+        Transact transact = DsHelper.getTransact(txnId, pm);
+        List<TwitterStatus> tweets = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
+        pm.deletePersistentAll(tweets);
+        pm.deletePersistent(transact);
+        
+        this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE),
+                "Showing " + PAGE_SIZE + " transactions", LEVEL_INFO, resp, 0, PAGE_SIZE);
+        pm.close();
+        
     }
     private void processAdd(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
@@ -129,7 +152,7 @@ public class TransactionManager extends HttpServlet {
             pm.makePersistentAll(twitterStatuses);
         }
         
-        List<Transact> unPaidTransact = getUnPaidTransact(screenName, pm);
+        List<Transact> unPaidTransact = getTransactList(false, screenName, pm);
 //        this.constructResponse(this.getTwitterStatus(screenName, pm), message, level, resp);
         this.constructResponse(unPaidTransact, message, level, resp);
         pm.close();
@@ -159,19 +182,7 @@ public class TransactionManager extends HttpServlet {
         }
     }
     
-    private List<Transact> getUnPaidTransact(String screenName, PersistenceManager pm) {
-        return getUnPaidTransact(screenName, pm, 0, PAGE_SIZE);
-    }
-    
-    private List<Transact> getUnPaidTransact(String screenName, PersistenceManager pm, long start, long end) {
-        Query query = pm.newQuery(Transact.class);
-        query.setFilter("twitterScreenName == twitterScreenNameVar && user == userVar");
-        query.declareParameters("String twitterScreenNameVar, com.google.appengine.api.users.User userVar");
-        query.setOrdering("updatedTime asc");
-        query.setRange(start, end);
-        @SuppressWarnings("unchecked")
-        List<Transact> unPaidTransact = (List<Transact>) query.execute(screenName, UserServiceFactory
-                .getUserService().getCurrentUser());
-        return unPaidTransact;
+    private List<Transact> getTransactList(boolean getpaid, String screenName, PersistenceManager pm) {
+        return DsHelper.getTransactList(getpaid, screenName, pm, 0, PAGE_SIZE);
     }
 }

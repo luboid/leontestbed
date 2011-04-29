@@ -184,9 +184,9 @@ var TwitteyBot = (function(){
             });
             $("#twitterContent :reset").click(this.showTweets);
             
-            this.onStatusLoad = function(content){
+            this.onStatusLoad = function(content, txnId){
                 $("#twitterStatus").html(content);
-                me.onTweetsLoaded(true);
+                me.onTweetsLoaded(true, txnId);
                 me.showMessage($("#responseMessage").attr("value"), $("#responseMessage").attr("title"));
             };
             
@@ -352,12 +352,18 @@ var TwitteyBot = (function(){
 					
         },
         
-        onTweetsLoaded: function(caller){
+        onTweetsLoaded: function(caller, txnId){
             var me = TwitteyBot;
             var start = parseInt($("#page-start").val(), 10);
             var end = parseInt($("#page-end").val(), 10);
             
             var pageSize = 30;
+            if(txnId>0) {
+            		$("#txnButtons").show();
+            }else {
+            		$("#txnButtons").hide();
+            }
+            
             $("#showLoading").hide();
             $("#scheduler").show();
             $("#shrinker").show();             

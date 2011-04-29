@@ -1,4 +1,21 @@
 <div id = "results">
+    
+    <div> 
+    	<#if (TheTxn??)>
+    			This transaction contains ${TheTxn.numberOfStatus} tweets, total cost $${TheTxn.amount} ($${TheTxn.unitPrice} each)
+    			<form name = "paypalForm" method = "POST" action = "/pages/paypal" target = "paybox" 
+    				onsubmit="window.open('about:blank','paybox','');">
+    					<input type = "hidden" name = "Payment_Amount" value = "${TheTxn.amount}" />
+    					<input type = "Submit" name = "action" value = "Pay with Paypal" class = "button"/>
+    			</form>
+    			<form name = "paypalForm" method = "POST" action = "/pages/transaction" target = "resultFrame" >
+    					<input type = "hidden" name = "action" value = "CancelTxn" />
+    					<input type = "hidden" name = "screenName" value = "${TheTxn.twitterScreenName}" />
+    					<input type = "hidden" name = "txnId" value = "${TheTxn.keyId}" />
+    					<input type = "Submit" name = "action" value = "Cancel" class = "button"/>
+    			</form>    			
+    	</#if>
+    </div> 
     <div class = "pagination">
         <a href = "#" class = "pagination-prev">&#171; prev</a>&nbsp;<a href = "#" class = "pagination-next">next  &#187;</a>
     </div>
@@ -56,5 +73,5 @@
     <input id = "responseMessage" title = "${level!""}" style = "display:none" value ='${message!""}'/>
 </div>
 <script>
-    top.TwitteyBot.onStatusLoad(document.getElementById("results").innerHTML);
+    top.TwitteyBot.onStatusLoad(document.getElementById("results").innerHTML, <#if (TheTxn??)>${TheTxn.keyId}<#else>-1</#if>);
 </script>

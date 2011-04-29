@@ -8,6 +8,7 @@ public class Pages {
     
     public static final String PARAM_TXN_ACTION_ADD = "Add";
     public static final String PARAM_TXN_ACTION_SHOW = "Show";
+    public static final String PARAM_TXN_ACTION_CANCEL = "CancelTxn";
     public static final String FTLVAR_TXN = "txnList";
     public static final String FTLVAR_TXN_MESSAGE = "message";
     public static final String FTLVAR_TXN_LEVEL = "level";
@@ -63,6 +64,9 @@ public class Pages {
 	public static final String PAGE_MAIN = "/pages/main?";
 	public static final String PAGE_TASK_QUEUE = "/task/status";
 
+	// leon
+	public static final String FTLVAR_TWITTER_TXN = "TheTxn";
+	
 	public static final String FTLVAR_TWITTER_STATUS = "statuses";
 	public static final String FTLVAR_TWITTER_ACCOUNTS = "accounts";
 	public static final String FTLVAR_USERNAME = "username";

@@ -1,6 +1,8 @@
 package com.appspot.twitteybot.ui;
 
+import com.appspot.twitteybot.datastore.DsHelper;
 import com.appspot.twitteybot.datastore.PMF;
+import com.appspot.twitteybot.datastore.Transact;
 import com.appspot.twitteybot.datastore.TwitterStatus;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -55,6 +57,9 @@ public class StatusManager extends HttpServlet {
 	private static final String LEVEL_ERROR = "error";
 	private static final String LEVEL_WARN = "warn";
 	private static final long PAGE_SIZE = 30;
+	
+	private static final long NO_TXN = -1;
+	
 	public static final String DATE_FORMAT = "MM/dd/yyyy";
 	public static final String TIME_FORMAT = "HH:mm";
 
@@ -101,7 +106,17 @@ public class StatusManager extends HttpServlet {
 			end = Long.parseLong(req.getParameter(Pages.PARAM_END));
 		} catch (NumberFormatException e) {
 		}
-		this.constructResponse(this.getTwitterStatus(req.getParameter(Pages.PARAM_SCREENNAME), pm, start, end),
+		String screenName = req.getParameter(Pages.PARAM_SCREENNAME);
+		
+		List<TwitterStatus> statuss = new ArrayList<TwitterStatus>();
+		List<Transact> paidTxns = DsHelper.getTransactList(true,screenName, pm, -1, -1);
+		for(Transact txn : paidTxns) {
+		    List<TwitterStatus> s = DsHelper.getTwitterStatus(txn.getKeyId(), pm, start, end);
+		    statuss.addAll(s);
+		}
+		
+		// TODO make it a sing query otherwise start/end won't work
+		this.constructResponse(null, statuss,
 				"Showing " + (end - start) + " tweets", LEVEL_INFO, resp, start, end);
 		pm.close();
 	}
@@ -110,7 +125,7 @@ public class StatusManager extends HttpServlet {
         PersistenceManager pm = PMF.get().getPersistenceManager();
         long start = 0;
         long end = PAGE_SIZE;
-        long txnId = -1;
+        long txnId = NO_TXN;
         try {
             start = Long.parseLong(req.getParameter(Pages.PARAM_START));
         } catch (NumberFormatException e) {
@@ -123,7 +138,11 @@ public class StatusManager extends HttpServlet {
             txnId = Long.parseLong(req.getParameter(Pages.PARAM_TXN_ID));
         } catch (NumberFormatException e) {
         }
-        this.constructResponse(this.getTwitterStatus(txnId, pm, start, end),
+        Transact txn = null;
+        if(txnId!=NO_TXN) {
+            txn = DsHelper.getTransact(txnId, pm);
+        }
+        this.constructResponse(txn, DsHelper.getTwitterStatus(txnId, pm, start, end),
                 "Showing " + (end - start) + " tweets", LEVEL_INFO, resp, start, end);
         pm.close();
     }
@@ -316,9 +335,15 @@ public class StatusManager extends HttpServlet {
 		return result;
 	}
 
-	private void constructResponse(List<TwitterStatus> list, String message, String level, HttpServletResponse resp,
+	private void constructResponse(Transact txn, List<TwitterStatus> list, String message, String level, HttpServletResponse resp,
 			long start, long end) throws IOException {
-		Map<String, Object> templateValues = new HashMap<String, Object>();
+	    
+	    Map<String, Object> templateValues = new HashMap<String, Object>();
+	    if(txn!=null) {
+	        templateValues.put(Pages.FTLVAR_TWITTER_TXN, txn);
+	    }
+	    
+		
 		templateValues.put(Pages.FTLVAR_TWITTER_STATUS, list);
 		templateValues.put(Pages.FTLVAR_LEVEL, level);
 		templateValues.put(Pages.FTLVAR_START, start);
@@ -327,37 +352,21 @@ public class StatusManager extends HttpServlet {
 		FreeMarkerConfiguration.writeResponse(templateValues, Pages.TEMPLATE_STATUSPAGE, resp.getWriter());
 	}
 
-	private void constructResponse(List<TwitterStatus> list, String message, String level, HttpServletResponse resp)
+	private void constructResponse(Transact txn, List<TwitterStatus> list, String message, String level, HttpServletResponse resp)
 			throws IOException {
-		this.constructResponse(list, message, level, resp, 0, PAGE_SIZE);
+		this.constructResponse(txn, list, message, level, resp, 0, PAGE_SIZE);
 	}
-
 	
-	private List<TwitterStatus> getTwitterStatus(long txnId, PersistenceManager pm, long start, long end) {
-	       Query query = pm.newQuery(TwitterStatus.class);
-	        query.setFilter("transactionId == transactionIdVar");
-	        query.declareParameters("Long transactionIdVar");
-	        query.setOrdering("updatedTime asc");
-	        query.setRange(start, end);
-	        @SuppressWarnings("unchecked")
-	        List<TwitterStatus> twitterStatuses = (List<TwitterStatus>) query.execute(txnId);
-	        return twitterStatuses;
-	}
-	private List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm, long start, long end) {
-		Query query = pm.newQuery(TwitterStatus.class);
-		query.setFilter("twitterScreenName == twitterScreenNameVar && user == userVar");
-		query.declareParameters("String twitterScreenNameVar, com.google.appengine.api.users.User userVar");
-		query.setOrdering("updatedTime asc");
-		query.setRange(start, end);
-		@SuppressWarnings("unchecked")
-		List<TwitterStatus> twitterStatuses = (List<TwitterStatus>) query.execute(screenName, UserServiceFactory
-				.getUserService().getCurrentUser());
-		return twitterStatuses;
-	}
+    private void constructResponse(List<TwitterStatus> list, String message, String level, HttpServletResponse resp)
+        throws IOException {
+        this.constructResponse(null, list, message, level, resp, 0, PAGE_SIZE);
+    }
+	
+	
 
-	private List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm) {
-		return this.getTwitterStatus(screenName, pm, 0, PAGE_SIZE);
-	}
+    private List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm) {
+        return DsHelper.getTwitterStatus(screenName, pm, 0, PAGE_SIZE);
+    }
 
 	private boolean getBoolFromParam(String param, String trueValue) {
 		if (param != null && param.equals(trueValue)) {
