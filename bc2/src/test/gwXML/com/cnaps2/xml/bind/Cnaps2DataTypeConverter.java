@@ -1,4 +1,4 @@
-package com.cnaps2.xml.bind;
+package com.xml.bind;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
