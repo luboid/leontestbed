@@ -180,9 +180,9 @@
                                 </div>
                                 <div class = "right-pane" style ="text-align : right">
                                 		<div id = "txnButtons">
-                                				<input type = "Submit" name = "action" value = "PayTxn" class = "button"/>
+                                				<!--<input type = "Submit" name = "action" value = "PayTxn" class = "button"/>
                                 				&nbsp;
-                                				<input type = "Submit" name = "action" value = "CancelTxn" class = "button"/>
+                                				<input type = "Submit" name = "action" value = "CancelTxn" class = "button"/>-->
                                 		</div>
                                     <div id = "otherButtons">
                                         <input type = "Submit" name = "action" value = "Update" class = "button"/>

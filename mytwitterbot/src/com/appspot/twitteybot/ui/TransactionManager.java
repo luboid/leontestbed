@@ -4,6 +4,7 @@ import com.appspot.twitteybot.datastore.DsHelper;
 import com.appspot.twitteybot.datastore.PMF;
 import com.appspot.twitteybot.datastore.Transact;
 import com.appspot.twitteybot.datastore.TwitterStatus;
+import com.appspot.twitteybot.datastore.Transact.TxnState;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 
@@ -17,7 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +45,9 @@ public class TransactionManager extends HttpServlet {
         } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_SHOW)) {
             this.processShow(req, resp);   
         } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_CANCEL)) {
-            this.processCancel(req, resp);              
+            this.processCancel(req, resp);      
+        } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_PAYTXN)) {
+            this.processPayTxn(req, resp);                      
         } else {
             resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
         }
@@ -67,7 +69,24 @@ public class TransactionManager extends HttpServlet {
                 "Showing " + (end - start) + " transactions", LEVEL_INFO, resp, start, end);
         pm.close();
     }
-    
+    private void processPayTxn(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        long txnId = -1;
+        try {
+            txnId = Long.parseLong(req.getParameter(Pages.PARAM_TXN_ID));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        PersistenceManager pm = PMF.get().getPersistenceManager();
+        Transact transact = DsHelper.getTransact(txnId, pm);
+        transact.setTxnState(TxnState.PAID);
+        pm.makePersistent(transact);
+        
+        this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE),
+                "Showing " + PAGE_SIZE + " transactions", LEVEL_INFO, resp, 0, PAGE_SIZE);
+        pm.close();
+        
+    }
     private void processCancel(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         long txnId = -1;
         try {

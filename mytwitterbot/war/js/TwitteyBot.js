@@ -339,7 +339,37 @@ var TwitteyBot = (function(){
 						return false;
         },
         
+        cancelTxn: function(txnId){
+        		//alert('here in detail txnId='+txnId);
+        		
+            var screenName = $("#twitterScreenName").html();
+            var me = this;
+            TwitteyBot.showLoading();
+            $("#twitterStatus").load("/pages/transaction", {
+                "action": "CancelTxn",
+                "screenName": screenName,
+                "txnId": txnId
+            });
+
+            $("#uploadButtons").hide();
+            $("#otherButtons").show();
+                    		
+						return false;
+        },
         
+       payTxn: function(txnId){
+            var me = this;
+            TwitteyBot.showLoading();
+            $("#twitterStatus").load("/pages/transaction", {
+                "action": "PayTxn",
+                "txnId": txnId
+            });
+
+            $("#uploadButtons").hide();
+            $("#otherButtons").show();
+                    		
+						return false;
+        },
         onTxnsLoaded: function(caller){
         	//alert('here onTxnsLoaded 3');
         	//$("#actionList").show();

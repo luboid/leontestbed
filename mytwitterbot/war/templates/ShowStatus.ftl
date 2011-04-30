@@ -12,7 +12,7 @@
     					<input type = "hidden" name = "action" value = "CancelTxn" />
     					<input type = "hidden" name = "screenName" value = "${TheTxn.twitterScreenName}" />
     					<input type = "hidden" name = "txnId" value = "${TheTxn.keyId}" />
-    					<input type = "Submit" name = "action" value = "Cancel" class = "button"/>
+    					<input type = "Submit" name = "xxx" value = "Cancel this Txn" class = "button"/>
     			</form>    			
     	</#if>
     </div> 

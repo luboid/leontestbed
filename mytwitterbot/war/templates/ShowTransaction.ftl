@@ -42,8 +42,16 @@
                     <span style ="color : #000000">
                         | 
                     </span>                                		
-                    <a href="/pages/transaction?action=CancelTxn&screenName=${item.twitterScreenName}&txnId=${item.keyId}" >Cancel Txn</a>
+                    <!--a href="/pages/transaction?action=CancelTxn&screenName=${item.twitterScreenName}&txnId=${item.keyId}" >Cancel Txn</a-->
+                    <a href="#" onClick="javascript: top.TwitteyBot.cancelTxn(${item.keyId});">Cancel Txn2</a>
                 </span>
+                
+                <span>
+                    <span style ="color : #000000">
+                        | 
+                    </span>
+                    <a href="#" onClick="javascript: top.TwitteyBot.payTxn(${item.keyId});">Mark this Txn as Paid (Test only)</a>
+                </span>             
             </div>
             <div class = "right-pane" style ="width : 30%; text-align : right; padding : 0.5em; color:#3366CC">
                 No. of Tweets
