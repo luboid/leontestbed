@@ -258,7 +258,7 @@
         </div>
         <div id = "footer">
         </div>
-        <iframe id = "resultFrame" name = "resultFrame" style ="width : 100%; "> <!-- display:none -->
+        <iframe id = "resultFrame" name = "resultFrame" style ="width : 100%; display:none "> <!--  -->
         </iframe>
     </body>
     <script src = "/js/jquery.min.js" type = "text/javascript">

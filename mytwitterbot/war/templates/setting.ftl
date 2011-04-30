@@ -1,13 +1,41 @@
 <div class='setting'>
 <form method = "POST" action="/admin?action=add">
-<div class='header'>
+<!--div class='header'>
     Unit-Price Setting
 </div>
 <div class='content'>
    Dollor per Tweet  <input type='text' value='0'/>
-</div>
+</div-->
+
 <div class='header'>
-   Twitter Configuration
+   Setting
+</div>
+<div>
+
+    <table>
+        <tr height='30px'>
+            <td>
+                Unit-Price (Doller per tweet)
+            </td>
+            <td>
+                $<input name = "unitPrice" style="width:360px;" value = '0.01'>
+            </td>
+        </tr>
+        <tr height='30px'>
+            <td>
+                Owner's paypal account
+            </td>
+            <td>
+                <input name = "accountId" style="width:360px;" value = 'myPaypalAccountId'>
+            </td>
+        </tr>
+	
+    </table>
+       
+</div>
+<br/>
+<div class='header'>
+   Application Configuration (To register this application with Twitter as a consumer)
 </div>
 <div>
 

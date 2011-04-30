@@ -37,7 +37,15 @@ public class TransactionManager extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter(Pages.PARAM_ACTION);
-        log.info("action"+action);
+        
+        String txnId =null;
+        try {
+            txnId = req.getParameter(Pages.PARAM_TXN_ID);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        log.warning("action=="+action+", txnId="+txnId);
+        
         if (action == null) {
             resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
         } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_ADD)) {

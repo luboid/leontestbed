@@ -24,33 +24,34 @@
                     <span style ="color : #000000">
                         | 
                     </span>
-                    {item.source} 
+                    {item.source} <!--${item.keyId?c}==${item.encodedKey}-->
                 </span>
                 <span>
                     <span style ="color : #000000">
                         | 
                     </span>                
-                		<a href="#" onClick="javascript: top.TwitteyBot.showTweetsOfTxn(${item.keyId});">Edit Detail</a>
+                		<a href="#" onClick="javascript: top.TwitteyBot.showTweetsOfTxn(${item.keyId?c});">Edit Detail</a>
                 </span>                		
                 <span>
                     <span style ="color : #000000">
                         | 
                     </span>                                		
-                    <a href="/pages/paypal?Payment_Amount=${item.amount}" >Pay with Paypal</a>
+                    <!--a href="/pages/paypal?Payment_Amount=${item.amount}" >Pay with Paypal</a-->
+                    <a href="#" onClick="javascript: top.TwitteyBot.goPaypal(${item.amount});">Pay with Paypal</a>
                 </span>                    
                 <span>
                     <span style ="color : #000000">
                         | 
                     </span>                                		
-                    <!--a href="/pages/transaction?action=CancelTxn&screenName=${item.twitterScreenName}&txnId=${item.keyId}" >Cancel Txn</a-->
-                    <a href="#" onClick="javascript: top.TwitteyBot.cancelTxn(${item.keyId});">Cancel Txn2</a>
+                    <!--a href="/pages/transaction?action=CancelTxn&screenName=${item.twitterScreenName}&txnId=${item.keyId?c}" >Cancel Txn</a-->
+                    <a href="#" onClick="javascript: top.TwitteyBot.cancelTxn(${item.keyId?c});">Cancel Txn</a>
                 </span>
                 
                 <span>
                     <span style ="color : #000000">
                         | 
                     </span>
-                    <a href="#" onClick="javascript: top.TwitteyBot.payTxn(${item.keyId});">Mark this Txn as Paid (Test only)</a>
+                    <a href="#" onClick="javascript: top.TwitteyBot.payTxn(${item.keyId?c});">Mark this Txn as Paid (Test only)</a>
                 </span>             
             </div>
             <div class = "right-pane" style ="width : 30%; text-align : right; padding : 0.5em; color:#3366CC">

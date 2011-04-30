@@ -48,7 +48,7 @@ public class TwitterAccountManager extends HttpServlet {
 		Twitter twitter = new Twitter();
 		twitter.setOAuthConsumer(ApplicationProperty.read(ApplicationProperty.CONSUMER_KEY), ApplicationProperty
 				.read(ApplicationProperty.CONSUMER_SECRET));
-		log.info("Using consumer key " + ApplicationProperty.read(ApplicationProperty.CONSUMER_KEY));
+		log.warning("action="+action+", Using consumer key " + ApplicationProperty.read(ApplicationProperty.CONSUMER_KEY));
 		try {
 		    if(Pages.LOCAL_TEST && action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
 		        saveToken("token", "tokenSecret", "papaya");

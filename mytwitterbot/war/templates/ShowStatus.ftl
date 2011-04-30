@@ -11,8 +11,8 @@
     			<form name = "paypalForm" method = "POST" action = "/pages/transaction" target = "resultFrame" >
     					<input type = "hidden" name = "action" value = "CancelTxn" />
     					<input type = "hidden" name = "screenName" value = "${TheTxn.twitterScreenName}" />
-    					<input type = "hidden" name = "txnId" value = "${TheTxn.keyId}" />
-    					<input type = "Submit" name = "xxx" value = "Cancel this Txn" class = "button"/>
+    					<input type = "hidden" name = "txnId" value = "${TheTxn.keyId?c}" />
+    					<input type = "Submit" name = "xxx" value = "Cancel this Txn (tweets will be deleted)" class = "button"/>
     			</form>    			
     	</#if>
     </div> 
@@ -73,5 +73,5 @@
     <input id = "responseMessage" title = "${level!""}" style = "display:none" value ='${message!""}'/>
 </div>
 <script>
-    top.TwitteyBot.onStatusLoad(document.getElementById("results").innerHTML, <#if (TheTxn??)>${TheTxn.keyId}<#else>-1</#if>);
+    top.TwitteyBot.onStatusLoad(document.getElementById("results").innerHTML, <#if (TheTxn??)>${TheTxn.keyId?c}<#else>-1</#if>);
 </script>

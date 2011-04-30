@@ -44,6 +44,7 @@ $(document).ready(function(){
     });
     
     TwitteyBot.init();
+    AppAdmin.init();
 });
 
 var TwitteyBot = (function(){
@@ -341,7 +342,7 @@ var TwitteyBot = (function(){
         
         cancelTxn: function(txnId){
         		//alert('here in detail txnId='+txnId);
-        		
+        		//alert('cancelTxn, txnId='+txnId);
             var screenName = $("#twitterScreenName").html();
             var me = this;
             TwitteyBot.showLoading();
@@ -359,6 +360,7 @@ var TwitteyBot = (function(){
         
        payTxn: function(txnId){
             var me = this;
+            //alert('payTxn, txnId='+txnId);
             TwitteyBot.showLoading();
             $("#twitterStatus").load("/pages/transaction", {
                 "action": "PayTxn",
@@ -370,6 +372,12 @@ var TwitteyBot = (function(){
                     		
 						return false;
         },
+        
+        goPaypal: function(amount){
+        		window.open('/pages/paypal?Payment_Amount='+amount,'paybox','');
+						return false;
+        },
+        
         onTxnsLoaded: function(caller){
         	//alert('here onTxnsLoaded 3');
         	//$("#actionList").show();
@@ -589,3 +597,19 @@ var ShrinkTweets = function(type){
         }
     });
 };
+
+
+var AppAdmin = {
+    init : function(){
+    	var menus = $('a',$('.nav'));
+    	var panes = $('.admin-content >div');
+    	$.each(menus,function(index,menu){
+    		$(menu).bind('click',function(){
+    			menus.removeClass('selected');
+    			$(menu).addClass('selected');
+    			panes.hide();
+    			$(panes[index]).show();
+    		});
+    	});
+    }
+}
