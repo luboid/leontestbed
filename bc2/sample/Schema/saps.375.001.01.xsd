@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="urn:cnaps:std:saps:2010:tech:xsd:saps.604.001.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:cnaps:std:saps:2010:tech:xsd:saps.604.001.01" elementFormDefault="qualified">
+<xs:schema xmlns="urn:cnaps:std:saps:2010:tech:xsd:saps.375.001.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:cnaps:std:saps:2010:tech:xsd:saps.375.001.01" elementFormDefault="qualified">
 	<xs:element name="Document" type="Document"/>
 	<xs:complexType name="Document">
 		<xs:sequence>
-			<xs:element name="SttlmRtrRct" type="SttlmRtrRctV1"/>
+			<xs:element name="IntrBkLnMgmtRspn" type="IntrBkLnMgmtRspnV1"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="SttlmRtrRctV1">
+	<xs:complexType name="IntrBkLnMgmtRspnV1">
 		<xs:sequence>
 			<xs:element name="GrpHdr" type="GroupHeader1"/>
-			<xs:element name="OrgnlGrpHdr" type="OriginalGroupHeader1"/>
-			<xs:element name="NPCPrcInf" type="NPCProcessInformation1"/>
-			<xs:element name="AcctInf" type="AccountInformation1" minOccurs="0"/>
+			<xs:element name="OrgnlGrpHdr" type="OriginalGroupHeader1" />
+			<xs:element name="RspnInf" type="ResponseInformation1"/>
+			<xs:element name="IntrBkLnPrtcolInf" type="InterbankLoanProtocolInformation1" />
 		</xs:sequence>
 	</xs:complexType>
-		<xs:complexType name="AccountInformation1">
+		<xs:complexType name="InterbankLoanProtocolInformation1">
 		<xs:sequence>
-			<xs:element name="Bal" type="SummaryAmountText" minOccurs="0"/>
+			<xs:element name="OrgnlPrtcolNb" type="Max60Text" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="GroupHeader1">
@@ -49,7 +49,14 @@
 			<xs:element name="OrgnlMT" type="Max35Text"/>
 		</xs:sequence>
 	</xs:complexType>
-
+	<xs:complexType name="Partition1">
+		<xs:sequence>
+			<xs:element name="TtlNb" type="Max8NumericText"/>
+			<xs:element name="StartNb" type="Max8NumericText"/>
+			<xs:element name="EndNb" type="Max8NumericText"/>
+		</xs:sequence>
+	</xs:complexType>
+	
 	<xs:simpleType name="ISODate">
 		<xs:restriction base="xs:date"/>
 	</xs:simpleType>
@@ -59,22 +66,23 @@
 			<xs:maxLength value="35"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="Max105Text">
+		<xs:simpleType name="Max105Text">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
 			<xs:maxLength value="105"/>
 		</xs:restriction>
 	</xs:simpleType>
+
 	<xs:simpleType name="Max4Text">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
 			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="Max60Text">
+		<xs:simpleType name="Max60Text">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
-			<xs:maxLength value="4"/>
+			<xs:maxLength value="60"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ISODateTime">
@@ -115,46 +123,37 @@
 			<xs:maxLength value="2048"/>
 		</xs:restriction>
 	</xs:simpleType>
-			<xs:simpleType name="Max2Text">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="2"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="Max8Text">
-		<xs:restriction base="xs:string">
-			<xs:minLength value="1"/>
-			<xs:maxLength value="8"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="Max256Text">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
 			<xs:maxLength value="256"/>
 		</xs:restriction>
 	</xs:simpleType>
-
-		<xs:simpleType name="CreditDebitCode1">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="CRDT"/>
-			<xs:enumeration value="DBIT"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="SummaryAmountText">
-		<xs:restriction base="xs:string">
-			<xs:pattern value="[A-Z]{3,3}[+-]\d{1,20}\.\d{2,2}"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="NPCProcessInformation1">
+		<xs:complexType name="ResponseInformation1">
 		<xs:sequence>
-			<xs:element name="PrcSts" type="Max4Text"/>
-			<xs:element name="PrcCd" type="Max8Text"/>
+			<xs:element name="Sts" type="Max4Text"/>
+			<xs:element name="RjctCd" type="Max4Text" minOccurs="0"/>
 			<xs:element name="RjctInf" type="Max105Text" minOccurs="0"/>
-			<xs:element name="NetgDt" type="ISODate" minOccurs="0"/>
-			<xs:element name="NetgRnd" type="Max2Text" minOccurs="0"/>
-			<xs:element name="SttlmDt" type="ISODate" minOccurs="0"/>
-			<xs:element name="RcvTm" type="ISODateTime" minOccurs="0"/>
-			<xs:element name="TrnsmtTm" type="ISODateTime" minOccurs="0"/>
+			<xs:element name="PrcPty" type="Max14Text" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
+<xs:simpleType name="ActiveCurrencyAndAmount_SimpleType">
+<xs:restriction base="xs:decimal">
+<xs:minInclusive value="0"/>
+<xs:fractionDigits value="5"/>
+<xs:totalDigits value="18"/>
+</xs:restriction>
+</xs:simpleType>
+<xs:complexType name="ActiveCurrencyAndAmount">
+<xs:simpleContent>
+<xs:extension base="ActiveCurrencyAndAmount_SimpleType">
+<xs:attribute name="Ccy" type="ActiveCurrencyCode" use="required"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:simpleType name="ActiveCurrencyCode">
+<xs:restriction base="xs:string">
+<xs:pattern value="[A-Z]{3,3}"/>
+</xs:restriction>
+</xs:simpleType>
 </xs:schema>

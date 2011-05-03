@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="urn:cnaps:std:saps:2010:tech:xsd:saps.604.001.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:cnaps:std:saps:2010:tech:xsd:saps.604.001.01" elementFormDefault="qualified">
+<xs:schema xmlns="urn:cnaps:std:saps:2010:tech:xsd:saps.606.001.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:cnaps:std:saps:2010:tech:xsd:saps.606.001.01" elementFormDefault="qualified">
 	<xs:element name="Document" type="Document"/>
 	<xs:complexType name="Document">
 		<xs:sequence>
-			<xs:element name="SttlmRtrRct" type="SttlmRtrRctV1"/>
+			<xs:element name="AcctBookgNtfctn" type="AcctBookgNtfctnV1"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="SttlmRtrRctV1">
+	<xs:complexType name="AcctBookgNtfctnV1">
 		<xs:sequence>
 			<xs:element name="GrpHdr" type="GroupHeader1"/>
 			<xs:element name="OrgnlGrpHdr" type="OriginalGroupHeader1"/>
 			<xs:element name="NPCPrcInf" type="NPCProcessInformation1"/>
-			<xs:element name="AcctInf" type="AccountInformation1" minOccurs="0"/>
+			<xs:element name="AcctBookgNtfctnInf" type="AccountBookingNotificationInformation1"/>
 		</xs:sequence>
 	</xs:complexType>
-		<xs:complexType name="AccountInformation1">
+		<xs:complexType name="AccountBookingNotificationInformation1">
 		<xs:sequence>
+			<xs:element name="TxTp" type="Max4Text"/>
+			<xs:element name="CtgyPurpCd" type="Max5Text" />
+			<xs:element name="NetgRnd" type="Max10NumericText" minOccurs="0"/>
+			<xs:element name="DbtCdtId" type="CreditDebitCode1"/>
+			<xs:element name="Amt" type="SummaryAmountText"/>
 			<xs:element name="Bal" type="SummaryAmountText" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -42,14 +47,13 @@
 			<xs:element name="InstdPty" type="Max14Text" />
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="OriginalGroupHeader1">
+		<xs:complexType name="OriginalGroupHeader1">
 		<xs:sequence>
 			<xs:element name="OrgnlMsgId" type="Max35Text"/>
 			<xs:element name="OrgnlInstgPty" type="Max14Text"/>
 			<xs:element name="OrgnlMT" type="Max35Text"/>
 		</xs:sequence>
 	</xs:complexType>
-
 	<xs:simpleType name="ISODate">
 		<xs:restriction base="xs:date"/>
 	</xs:simpleType>
@@ -71,10 +75,16 @@
 			<xs:maxLength value="4"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="Max5Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="Max60Text">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
-			<xs:maxLength value="4"/>
+			<xs:maxLength value="60"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="ISODateTime">
@@ -87,11 +97,11 @@
 			
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="Max8NumericText">
+	<xs:simpleType name="Max10NumericText">
 		<xs:restriction base="xs:string">
 			<xs:minLength value="1"/>
-			<xs:maxLength value="8"/>
-			<xs:pattern value="[0-9]{1,8}"/>
+			<xs:maxLength value="10"/>
+			<xs:pattern value="[0-9]{1,10}"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="SystemCode1">
@@ -107,6 +117,14 @@
 			<xs:enumeration value="FXPS"/>
 			<xs:enumeration value="NETS"/>
 			<xs:enumeration value="PBCS"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+
+	<xs:simpleType name="CreditDebitCode1">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CRDT"/>
+			<xs:enumeration value="DBIT"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="Max2048Text">
@@ -134,12 +152,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 
-		<xs:simpleType name="CreditDebitCode1">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="CRDT"/>
-			<xs:enumeration value="DBIT"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="SummaryAmountText">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="[A-Z]{3,3}[+-]\d{1,20}\.\d{2,2}"/>
