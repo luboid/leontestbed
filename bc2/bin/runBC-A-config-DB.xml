@@ -9,15 +9,16 @@
 	   default-autowire="byName" default-lazy-init="true">
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<!-- property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@192.168.65.157:1521:BCQA"/>
-		<property name="username" value="hong01"/>
-		<property name="password" value="hong01"/-->
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@10.60.108.35:1521:tibcodev"/>
+		<property name="username" value="paygw"/>
+		<property name="password" value="1234"/>
 		
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<!--<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/bankA3?setUnicode=true&amp;characterEncoding=UTF-8"/>
 		<property name="username" value="root"/>
-		<property name="password" value="root"/>		
+		<property name="password" value="root"/>
+		-->
 	</bean>
 
 	<!--Hibernate SessionFatory-->
@@ -44,17 +45,18 @@
     			
     			<value>com.topfinance.cfg.jpa.TCfgMapRuleEbo</value>
     			<value>com.topfinance.cfg.jpa.TCfgMapRuleDetailEbo</value>
-    			<value>com.topfinance.cfg.jpa.TC2BisEleBscEbo</value>
+    			<!--<value>com.topfinance.cfg.jpa.TC2BisEleBscEbo</value>-->
     			
     			<value>com.topfinance.ebo.msg.Ibps10100101</value>
     			<value>com.topfinance.ebo.msg.Ibps10200101</value>
     			<value>com.topfinance.ebo.msg.Saps60100101</value>
+    			<value>com.topfinance.ebo.msg.Ccms99000102</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>				
-				<!-- prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop-->
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>-->
 				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.cache.use_query_cache">true</prop>
