@@ -1,0 +1,9 @@
+2011-5-3:
+1、T_C2_BIS_ELE_BSC表中,msg_code='ccms.991.001.01'数据报文中
+   1)
+      ELE_ID = 'SndNdMgmtSts'和ELE_ID = 'RcvNdMgmtSts'的两条数据追加
+   2)
+      ELE_ID = 'SndSvcrRcvSts'的数据，path值更改了，
+      path='/Document/SndSvcrMgmtInf/SndSvcrRcvSts'
+   3)
+      msg_code='ccms.991.001.01'和msg_code = 'beps.416.001.01'的type值修改了，少了一个t，对应的doc文档应该注意，看是否需要修改
