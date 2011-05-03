@@ -33,7 +33,7 @@ public class TestGenMap extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		if (USE_DB) {
-			//init(DBSTORE);
+			init(DBSTORE);
 		}
 	}
 
@@ -96,7 +96,7 @@ public class TestGenMap extends TestCase {
 
 		// This is a sample to handle the XML that needs to be stored in a
 		// parent-child table
-		String mesgType = "testNested";
+		String mesgType = "ccms.990.001.02";
 		String tpCode = "";
 		String clsCode = "";
 
@@ -112,32 +112,32 @@ public class TestGenMap extends TestCase {
 
 			BCUtils.setHomeDir(basePath);
 			OpTester tester = new OpTester();
-			// tester.up(opInfo);
-			// tester.down(opInfo);
+			 //tester.up(opInfo);
+			 //tester.down(opInfo);
 
 			debug("==========================================test Xml2Ebo conversion=========================================");
 			Object ebo = tester.downPublic(opInfo);
 
 			debug("ebo=" + ebo);
 			// to Store this ebo to DB
-//			if (USE_DB) {
-//				getDao().save(ebo);
-//			}
+			if (USE_DB) {
+				getDao().save(ebo);
+			}
 
 			debug("==========================================test Ebo2XML conversion=========================================");
 			// fetch a clean ebo from DB, rather than use the above ebo
 			// instance.
-			if (USE_DB) {
-				// find by ID, assume always uuid
-				// TODO change it accordingly
-				String idField = "uuid";
-				String idValue = BeanUtils.getProperty(ebo, idField);
-				String hql = "from " + ebo.getClass().getSimpleName() + " where " + idField + "=?";
-				Object[] paras = new Object[] { idValue };
-				List list = getDao().find(hql, paras);
-				ebo = list.size() > 0 ? list.get(0) : null;
-			}
-			String xml = tester.upPublic(ebo, opInfo);
+//			if (USE_DB) {
+//				// find by ID, assume always uuid
+//				// TODO change it accordingly
+//				String idField = "id";
+//				String idValue = BeanUtils.getProperty(ebo, idField);
+//				String hql = "from " + ebo.getClass().getSimpleName() + " where " + idField + "=?";
+//				Object[] paras = new Object[] { idValue };
+//				List list = getDao().find(hql, paras);
+//				ebo = list.size() > 0 ? list.get(0) : null;
+//			}
+//			String xml = tester.upPublic(ebo, opInfo);
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -221,13 +221,15 @@ public class TestGenMap extends TestCase {
 		return res;
 	}
 
-	public void testGenPublicMap() throws Exception {
+	public void atestGenPublicMap() throws Exception {
 		// TODO change these setting accordingly
 		String basePath = "E:/DevSpace/bc2/generated_test";
-		// String msgCode = "hvps.111.001.01";
-		String msgCode = "hvps.111.001.01";
-		String tpCode = "A100";
-		String clsCode = "02101";
+		//String msgCode = "hvps.111.001.01";
+		String msgCode = "ccms.990.001.02";
+//		String tpCode = "A100";
+//		String clsCode = "02101";
+		String tpCode = "";
+		String clsCode = "";
 		OpInfo op = new OpInfo(msgCode, tpCode, clsCode);
 
 		debug("start testGenPublicMap for op=" + op + "...");
