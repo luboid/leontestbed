@@ -1155,7 +1155,6 @@ public class ParseSampleXml{
     
     public void generateDdlAndEbo() {
         try {
-
             debug("\n============generateDdlAndEbo=======");
             EboInfo eboInfo = new EboInfo();
             eboInfo.setPkgName(eboPkgName);
@@ -1164,14 +1163,13 @@ public class ParseSampleXml{
             
             // default field:
             EboInfo.Column uuid = new EboInfo.Column();
-            uuid.setCapitalisedVariableName("Uuid");
-            uuid.setVariableName("uuid");
-            uuid.setJavaType("String");
-            uuid.setDbName("UUID");
-            uuid.setDbTypeOracle("VARCHAR2(64)");
-            uuid.setDbTypeMysql("VARCHAR(64)");
+            uuid.setCapitalisedVariableName("id");
+            uuid.setVariableName("id");
+            uuid.setJavaType("Integer");
+            uuid.setDbName("ID");
+            uuid.setDbTypeOracle("Integer");
+            uuid.setDbTypeMysql("int");
             eboInfo.getBasicColumns().add(uuid);
-            
             
             // avoid duplication
             Map<String, Integer> nameCounter = new HashMap<String, Integer>();
@@ -1214,8 +1212,7 @@ public class ParseSampleXml{
                 column.setDbTypeMysql(getMysqlDbTypeFromJaxbType(jaxbType));
                 
                 column.setObjPath(key);
- 
-
+                 
                 // used in xml2Ebo map
                 List<String> xmlPaths = new ArrayList<String>();
                 xmlPaths.add("Document");
@@ -1251,23 +1248,19 @@ public class ParseSampleXml{
                 	buf.append("/").append(xmlPath);
                 }
                 column.setXmlPath(buf.toString());
-                
                 eboInfo.getBasicColumns().add(column);
-                
             }
             
-            EboInfo.Column ts = new EboInfo.Column();
-            ts.setCapitalisedVariableName("Ts");
-            ts.setVariableName("ts");
-            ts.setJavaType("java.util.Date");
-            ts.setDbName("TS");
-            ts.setDbTypeOracle("TIMESTAMP");
-            ts.setDbTypeMysql("TIMESTAMP");
-            ts.setDbExtraOracle("DEFAULT SYSTIMESTAMP");
-            ts.setDbExtraMysql("");
-            eboInfo.getBasicColumns().add(ts);            
-            
-
+//            EboInfo.Column ts = new EboInfo.Column();
+//            ts.setCapitalisedVariableName("Ts");
+//            ts.setVariableName("ts");
+//            ts.setJavaType("java.util.Date");
+//            ts.setDbName("TS");
+//            ts.setDbTypeOracle("TIMESTAMP");
+//            ts.setDbTypeMysql("TIMESTAMP");
+//            ts.setDbExtraOracle("DEFAULT SYSTIMESTAMP");
+//            ts.setDbExtraMysql("");
+//            eboInfo.getBasicColumns().add(ts);            
             
             File outEboDir = new File(outEboPath);
             if(!outEboDir.exists()) {
@@ -1304,16 +1297,9 @@ public class ParseSampleXml{
             out1.flush();
             System.out.println("generated outMapSmooksXml2EboFile at " + outMapSmooksXml2EboFile);
             
-            
-            
-            
-            
-            
-            System.out.println("end generateMap...");
-            
+            System.out.println("end generateMap...");            
         } catch (Exception ex) {
             ex.printStackTrace();
-
         }
     }
     
@@ -1417,8 +1403,6 @@ public class ParseSampleXml{
     	OpTester tester = new OpTester();
     	tester.up(opInfo);
     	tester.down(opInfo);
-    	
-    	
     }
     
     public static void main(String[] args) throws Exception{
@@ -1461,11 +1445,7 @@ public class ParseSampleXml{
             main.generateMapEbo2Jaxb();            
             main.generateDdlAndEbo();
             
-            
-            
-            
             main.testGenerated();
-            
              // must copy the generated ebo java to /src/shared/java/ and compile the project, before calling this
 //              main.testGeneratedEbo();
         }
@@ -1475,11 +1455,5 @@ public class ParseSampleXml{
 //        debug("size="+ss.length+", 0="+ss[0]);
 //        OpInfo oi = OpInfo.fromString(s);
 //        debug("oi="+oi);
-        
-        
-
-        
     }
-    
-    
 }
