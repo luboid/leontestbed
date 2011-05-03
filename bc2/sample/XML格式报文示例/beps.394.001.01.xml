@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:beps:2010:tech:xsd:beps.394.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<CstmrPmtQryRspn>
+		<GrpHdr>
+			<MsgId>2010092100001239</MsgId>
+			<CreDtTm>2001-12-17T09:30:47</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>103100000018</InstgDrctPty>
+				<InstgPty>103100000018</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>104100004370</InstdDrctPty>
+				<InstdPty>104100004370</InstdPty>
+			</InstdPty>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试</Rmk>
+		</GrpHdr>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010092100001238</OrgnlMsgId>
+			<OrgnlInstgPty>104100004370</OrgnlInstgPty>
+			<OrgnlMsgTp>beps.393.001.01</OrgnlMsgTp>
+		</OrgnlGrpHdr>
+		<OrgnlTxInf>
+			<OrgnlCtgyPurpCd>00400</OrgnlCtgyPurpCd>
+			<OrgnlChrgId>GTC01001221</OrgnlChrgId>
+			<OrgnlCorprtnId>CNO10DT01111</OrgnlCorprtnId>
+			<OrgnlUsrId>UR2010010001222</OrgnlUsrId>
+		</OrgnlTxInf>
+		<CstmrPmtQryRspnInf>
+			<RspsnInf>
+				<Sts>PR05</Sts>
+			</RspsnInf>
+			<CstmrPmtDtls>
+				<CdtrAgt>
+					<FIId>
+						<ClrSysMmbId>
+							<MmbId>103100000018</MmbId>
+						</ClrSysMmbId>
+					</FIId>
+					<BrnchId>
+						<Id>103100000018</Id>
+					</BrnchId>
+				</CdtrAgt>
+				<Cdtr>
+					<Nm>XX电力公司</Nm>
+				</Cdtr>
+				<CdtrAcct>
+					<Id>
+						<Othr>
+							<Id>2310230111201111210123100022201</Id>
+							<Issr>308581000106</Issr>
+						</Othr>
+					</Id>
+				</CdtrAcct>
+				<PmtAmt Ccy="CNY">200.50</PmtAmt>
+			</CstmrPmtDtls>
+		</CstmrPmtQryRspnInf>
+	</CstmrPmtQryRspn>
+</Document>

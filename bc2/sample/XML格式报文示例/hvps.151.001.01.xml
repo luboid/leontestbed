@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:cnaps:std:hvps:2010:tech:xsd:hvps.151.001.01">
+	<ClrBkDrftAppl>
+		<GrpHdr>
+			<MsgId>2010090500001234</MsgId>
+			<CreDtTm>2010-09-15T10:00:00</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>103100000000</InstgDrctPty>
+				<InstgPty>103100000010</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>108900000000</InstdDrctPty>
+				<InstdPty>108900000000</InstdPty>
+			</InstdPty>
+			<SysCd>HVPS</SysCd>
+			<Rmk>申请清算银行汇票资金报文</Rmk>
+		</GrpHdr>
+		<ClrBkDrftApplInf>
+			<DrftInf>
+				<Dt>1967-08-13</Dt>
+				<Nb>01234567890123456789012345678901</Nb>
+				<TstCd>0123456789</TstCd>
+				<Tp>CT00</Tp>
+				<Amt Ccy="CNY">100.00</Amt>
+				<IssrBk>103100000018</IssrBk>
+				<IssrAcct>12345678900987654321012345678912</IssrAcct>
+				<IssrNm>梅西</IssrNm>
+				<RcvrNm>卡卡</RcvrNm>
+				<HldrBk>103200000010</HldrBk>
+				<HldrAcct>abcdefghijklmnopqrstuvwxyz132468</HldrAcct>
+				<HldrNm>卡卡</HldrNm>
+			</DrftInf>
+			<RmngAmt Ccy="CNY">100.00</RmngAmt>
+			<ActlSttlmAmt Ccy="CNY">100.00</ActlSttlmAmt>
+			<RmndDtPmt>2010-10-13</RmndDtPmt>
+		</ClrBkDrftApplInf>
+	</ClrBkDrftAppl>
+</Document>

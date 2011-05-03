@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:cnaps:std:hvps:2010:tech:xsd:hvps.143.001.01">
+	<SttlAcctsReq>
+		<GrpHdr>
+			<MsgId>2010090500001234</MsgId>
+			<CreDtTm>2010-09-15T10:00:00</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>103100000000</InstgDrctPty>
+				<InstgPty>103100000010</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>108900000000</InstdDrctPty>
+				<InstdPty>108900000000</InstdPty>
+			</InstdPty>
+			<SysCd>HVPS</SysCd>
+			<Rmk>PVP结算申请信息报文</Rmk>
+		</GrpHdr>
+		<SttlAcctsReqInf>
+			<Dbtr>
+				<Nm>梅西</Nm>
+			</Dbtr>
+			<DbtrAcct>
+				<Id>
+					<Othr>
+						<Id>12345678900987654321012345678912</Id>
+						<Issr>103100000018</Issr>
+					</Othr>
+				</Id>
+			</DbtrAcct>
+			<PurchsPric Ccy="CNY">1000.00</PurchsPric>
+			<BuyAmt Ccy="CNY">100000.12</BuyAmt>
+		</SttlAcctsReqInf>
+	</SttlAcctsReq>
+</Document>

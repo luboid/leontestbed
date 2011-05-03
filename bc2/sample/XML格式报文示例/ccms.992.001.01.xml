@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:ccms:2010:tech:xsd:ccms.992.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ChckRspn>
+		<ChckRspnInf>
+			<OrigSndNd>103100000018</OrigSndNd>
+			<OrigSndSvsrNm>servername01</OrigSndSvsrNm>
+			<OrigSndLineMgrNm>QMUNPCA</OrigSndLineMgrNm>
+			<RcvRoadNm>npc.mbfe</RcvRoadNm>
+			<OrigSndDt>12345</OrigSndDt>
+			<RspnNd>103100000034</RspnNd>
+			<RspnSvcrNm>servername</RspnSvcrNm>
+			<RspnLineMgr>QMU1000A</RspnLineMgr>
+			<RcvLineNm>LINE</RcvLineNm>
+		</ChckRspnInf>
+		<LdFctrInf>
+			<RspnLclLineNm>1000.2900</RspnLclLineNm>
+			<LdFctr>12</LdFctr>
+		</LdFctrInf>
+	</ChckRspn>
+</Document>

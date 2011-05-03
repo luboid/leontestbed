@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:ccms:2010:tech:xsd:pacs.002.001.03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<FIToFIPmtStsRpt>
+		<GrpHdr>
+			<MsgId>2010020200000002</MsgId>
+			<CreDtTm>2001-12-17T09:30:47</CreDtTm>
+			<InstgAgt>
+				<FinInstnId>
+					<Othr>
+						<Id>103100000018</Id>
+					</Othr>
+				</FinInstnId>
+			</InstgAgt>
+			<InstdAgt>
+				<FinInstnId>
+					<Othr>
+						<Id>104100004370</Id>
+					</Othr>
+				</FinInstnId>
+			</InstdAgt>
+		</GrpHdr>
+		<OrgnlGrpInfAndSts>
+			<OrgnlMsgId>2010020200000001</OrgnlMsgId>
+			<OrgnlMsgNmId>hvps.111.001.01</OrgnlMsgNmId>
+			<StsRsnInf>
+				<AddtlInf>/G01/O6004</AddtlInf>
+				<AddtlInf>/H08/0</AddtlInf>
+			</StsRsnInf>
+		</OrgnlGrpInfAndSts>
+		<TxInfAndSts>
+			<StsId>PR07</StsId>
+			<OrgnlInstrId>2010020200000111</OrgnlInstrId>
+			<ClrSysRef>2010-10-10</ClrSysRef>
+		</TxInfAndSts>
+	</FIToFIPmtStsRpt>
+</Document>

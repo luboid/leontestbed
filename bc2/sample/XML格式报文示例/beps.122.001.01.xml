@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:beps:2010:tech:xsd:beps.122.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<FinCdtTrf>
+		<PKGGrpHdr>
+			<MsgId>2010101000001261</MsgId>
+			<CreDtTm>2010-10-10T09:30:30</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>308581000106</InstgDrctPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>104100004370</InstdDrctPty>
+			</InstdPty>
+			<NbOfTxs>0</NbOfTxs>
+			<CtrlSum Ccy="AAA">6000.00</CtrlSum>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试测试</Rmk>
+		</PKGGrpHdr>
+		<FinCdtTrfInf>
+			<TxId>2010101008700001</TxId>
+			<Dbtr>
+				<Nm>卡卡西</Nm>
+				<PstlAdr>
+					<AdrLine>地址地址地址</AdrLine>	
+				</PstlAdr>
+			</Dbtr>
+			<DbtrAcct>
+				<Id>
+					<Othr>
+						<Id>2310230111201111210123100010235</Id>
+						<Issr>308581000106</Issr>
+					</Othr>
+				</Id>
+			</DbtrAcct>
+			<DbtrAgt>
+				<BrnchId>
+					<Id>308581000106</Id>
+				</BrnchId>
+			</DbtrAgt>
+			<CdtrAgt>
+				<BrnchId>
+					<Id>104100004370</Id>
+				</BrnchId>
+			</CdtrAgt>
+			<Cdtr>
+				<Nm>奇牙</Nm>
+				<PstlAdr>
+					<AdrLine>地址地址地址</AdrLine>	
+				</PstlAdr>
+			</Cdtr>
+			<CdtrAcct>
+				<Id>
+					<Othr>
+						<Id>2310230111201111210123100010977</Id>
+						<Issr>104100004370</Issr>
+					</Othr>
+				</Id>
+			</CdtrAcct>
+			<Amt Ccy="CNY">89900.00</Amt>
+			<PmtTpInf>
+				<CtgyPurp>
+					<Prtry>A104</Prtry>
+				</CtgyPurp>
+			</PmtTpInf>
+			<Purp>
+				<Prtry>02201</Prtry>
+			</Purp>
+			<AddtlInf>明细测试测试场测试</AddtlInf>
+			<FinCdtTrfAddtlInf>
+				<NtlTrsrCdtInf>
+					<FslInf>
+						<FlowNb>00001</FlowNb>
+						<Amt Ccy="CNY">300.14</Amt>
+						<RptCd>10023</RptCd>
+						<RcvCd>31200</RcvCd>
+						<RptFrms>2010-10-10</RptFrms>
+						<RptNb>3221</RptNb>
+					</FslInf>
+					<BugtLvl>BL00</BugtLvl>
+					<Ind>ID00</Ind>
+					<BugtTp>BT00</BugtTp>
+					<NbOfTxs>1</NbOfTxs>
+					<NtlTrsrCdtInfDtls>
+						<TpCd>1111111111</TpCd>
+						<SbjtCd>21002</SbjtCd>
+						<Amt Ccy="CNY">20.50</Amt>
+					</NtlTrsrCdtInfDtls>
+				</NtlTrsrCdtInf>
+			</FinCdtTrfAddtlInf>
+		</FinCdtTrfInf>
+	</FinCdtTrf>
+</Document>

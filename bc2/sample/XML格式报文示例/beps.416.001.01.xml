@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.055.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CstmrPmtCxlReq>
+		<Assgnmt>
+			<Id>2010101000001251</Id>
+			<Assgnr>
+				<Agt>
+					<FinInstnId>
+						<ClrSysMmbId>
+							<MmbId>103100000018</MmbId>
+						</ClrSysMmbId>
+					</FinInstnId>
+				</Agt>
+			</Assgnr>
+			<Assgne>
+				<Agt>
+					<FinInstnId>
+						<ClrSysMmbId>
+							<MmbId>308581000106</MmbId>
+						</ClrSysMmbId>
+					</FinInstnId>
+				</Agt>
+			</Assgne>
+			<CreDtTm>2010-10-10T09:30:30</CreDtTm>
+		</Assgnmt>
+		<Undrlyg>
+			<OrgnlGrpInfAndCxl>
+				<Case>
+					<Id>1</Id>
+					<Cretr>
+						<Agt>
+							<FinInstnId>
+								<ClrSysMmbId>
+									<MmbId>103100000018</MmbId>
+								</ClrSysMmbId>
+							</FinInstnId>
+						</Agt>
+					</Cretr>
+				</Case>
+				<OrgnlMsgId>2010101000033301</OrgnlMsgId>
+				<OrgnlMsgNmId>beps.391.001.01</OrgnlMsgNmId>
+				<CxlRsnInf>
+					<AddtlInf>测试测试测试测试测试测试测试测试测试</AddtlInf>
+				</CxlRsnInf>
+			</OrgnlGrpInfAndCxl>
+		</Undrlyg>
+	</CstmrPmtCxlReq>
+</Document>

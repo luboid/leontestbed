@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:ccms:2010:tech:xsd:ccms.313.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CmonSgntrInfBizRspn>
+		<GrpHdr>
+			<MsgId>2010101000001260</MsgId>
+			<CreDtTm>2001-12-17T09:30:47</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>103100000018</InstgDrctPty>
+				<InstgPty>104100004370</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>308581000106</InstdDrctPty>
+				<InstdPty>907100011301</InstdPty>
+			</InstdPty>
+			<SysCd>SAPS</SysCd>
+			<Rmk>备注备注备注</Rmk>
+		</GrpHdr>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010101000002260</OrgnlMsgId>
+			<OrgnlInstgPty>103100000018</OrgnlInstgPty>
+			<OrgnlMsgTp>ccms.312.001.01</OrgnlMsgTp>
+		</OrgnlGrpHdr>
+		<RspnInf>
+			<Sts>PR09</Sts>
+			<RjctCd>RJ02</RjctCd>
+			<RjctInf>业务拒绝信息业务拒绝信息</RjctInf>
+			<PrcPty>308581000106</PrcPty>
+		</RspnInf>
+		<CmonSgntrInfBizRspnInf>
+			<OrgnlCtgyPurpCd>02112</OrgnlCtgyPurpCd>
+			<OrgnlTxTpCd>M502</OrgnlTxTpCd>
+		</CmonSgntrInfBizRspnInf>
+	</CmonSgntrInfBizRspn>
+</Document>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:cnaps:std:hvps:2010:tech:xsd:hvps.715.001.01">
+	<TxDwnldgRspn>
+		<GrpHdr>
+			<MsgId>2010090500004321</MsgId>
+			<CreDtTm>2010-09-15T10:00:00</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>0000</InstgDrctPty>
+				<InstgPty>0000</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>103100000000</InstdDrctPty>
+				<InstdPty>103100000010</InstdPty>
+			</InstdPty>
+			<SysCd>HVPS</SysCd>
+			<Rmk>大额业务下载应答报文</Rmk>
+		</GrpHdr>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010101612345678</OrgnlMsgId>
+			<OrgnlInstgPty>103100000000</OrgnlInstgPty>
+			<OrgnlMT>hvps.714.001.01</OrgnlMT>
+		</OrgnlGrpHdr>
+		<TxDwnldgRspnInf>
+			<NPCPrcInf>
+				<PrcSts>PR04</PrcSts>
+				<PrcCd>CB1I0000</PrcCd>
+				<SttlmDt>2010-09-15</SttlmDt>
+				<RcvTm>2010-09-15T10:00:01</RcvTm>
+				<TrnsmtTm>2010-09-15T10:00:02</TrnsmtTm>
+			</NPCPrcInf>
+			<OrgnlMsgCntt>
+				<Cntt>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcdefj</Cntt>
+				<PrcSts>PR04</PrcSts>
+			</OrgnlMsgCntt>
+		</TxDwnldgRspnInf>
+	</TxDwnldgRspn>
+</Document>

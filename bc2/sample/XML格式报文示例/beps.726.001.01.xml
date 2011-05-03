@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:beps:2010:tech:xsd:beps.726.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<AcctChck>
+		<GrpHdr>
+			<MsgId>2010101000001259</MsgId>
+			<CreDtTm>2010-10-10T09:30:30</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>0000</InstgDrctPty>
+				<InstgPty>0000</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>308581000106</InstdDrctPty>
+				<InstdPty>308581000106</InstdPty>
+			</InstdPty>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试测试</Rmk>
+		</GrpHdr>
+		<Prttn>
+			<TtlNb>1</TtlNb>
+			<StartNb>1</StartNb>
+			<EndNb>1</EndNb>
+		</Prttn>
+		<AcctChckInf>
+			<ChckDt>2010-10-10</ChckDt>
+			<NbOfChckInf1>1</NbOfChckInf1>
+			<ChckInfDtls1>
+				<TxTpCd>beps.121.001.01</TxTpCd>
+				<SndTtlCnt>1</SndTtlCnt>
+				<SndTtlAmt Ccy="CNY">2000.50</SndTtlAmt>
+				<RcvTtlCnt>1</RcvTtlCnt>
+				<RcvTtlAmt Ccy="CNY">2000.00</RcvTtlAmt>
+				<SndDtls1>
+					<OrgnlGrpHdr>
+						<OrgnlMsgId>2010101230000111</OrgnlMsgId>
+						<OrgnlInstgPty>308581000106</OrgnlInstgPty>
+						<OrgnlMsgTp>beps.125.001.01</OrgnlMsgTp>
+					</OrgnlGrpHdr>
+					<TtlCnt>1</TtlCnt>
+					<CtrlSum Ccy="CNY">21000.00</CtrlSum>
+					<PrcSts>PR04</PrcSts>
+				</SndDtls1>
+				<RcvDtls1>
+					<OrgnlGrpHdr>
+						<OrgnlMsgId>2010101230000232</OrgnlMsgId>
+						<OrgnlInstgPty>907100011301</OrgnlInstgPty>
+						<OrgnlMsgTp>beps.125.001.01</OrgnlMsgTp>
+					</OrgnlGrpHdr>
+					<TtlCnt>0</TtlCnt>
+					<CtrlSum Ccy="CNY">490.00</CtrlSum>
+					<PrcSts>PR04</PrcSts>
+				</RcvDtls1>
+			</ChckInfDtls1>
+			<NbOfChckInf2>1</NbOfChckInf2>
+			<ChckInfDtls2>
+				<TxTpCd>String</TxTpCd>
+				<SndTtlCnt>0</SndTtlCnt>
+				<RcvTtlCnt>0</RcvTtlCnt>
+				<SndDtls2>
+					<OrgnlGrpHdr>
+						<OrgnlMsgId>2010101230000009</OrgnlMsgId>
+						<OrgnlInstgPty>308581000106</OrgnlInstgPty>
+						<OrgnlMsgTp>beps.133.001.01</OrgnlMsgTp>
+					</OrgnlGrpHdr>
+					<PrcSts>PR00</PrcSts>
+				</SndDtls2>
+				<RcvDtls2>
+					<OrgnlGrpHdr>
+						<OrgnlMsgId>2010101230000012</OrgnlMsgId>
+						<OrgnlInstgPty>907100011301</OrgnlInstgPty>
+						<OrgnlMsgTp>beps.133.001.01</OrgnlMsgTp>
+					</OrgnlGrpHdr>
+					<PrcSts>PR00</PrcSts>
+				</RcvDtls2>
+			</ChckInfDtls2>
+		</AcctChckInf>
+	</AcctChck>
+</Document>

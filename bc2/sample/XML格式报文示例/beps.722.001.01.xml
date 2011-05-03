@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:beps:2010:tech:xsd:beps.722.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<DtlChckReq>
+		<GrpHdr>
+			<MsgId>2010101000001255</MsgId>
+			<CreDtTm>2010-10-10T09:30:30</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>308581000106</InstgDrctPty>
+				<InstgPty>308581000106</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>0000</InstdDrctPty>
+				<InstdPty>0000</InstdPty>
+			</InstdPty>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试测试</Rmk>
+		</GrpHdr>
+		<DtlChckReqInf>
+			<ChckDt>2010-10-10</ChckDt>
+			<DtlChckPmtInf>
+				<NbOfTxs>1</NbOfTxs>
+				<DtlChckPmtDtls>
+					<SndRcvTp>SR00</SndRcvTp>
+					<TxNetgDt>2010-10-10</TxNetgDt>
+					<TxNetgRnd>03</TxNetgRnd>
+					<MT>beps.121.001.01</MT>
+				</DtlChckPmtDtls>
+			</DtlChckPmtInf>
+			<DtlChckMsg>
+				<NbOfTxs>1</NbOfTxs>
+				<DtlChckMsgDtls>
+					<SndRcvTp>SR01</SndRcvTp>
+					<MT>beps.127.001.01</MT>
+				</DtlChckMsgDtls>
+			</DtlChckMsg>
+		</DtlChckReqInf>
+	</DtlChckReq>
+</Document>

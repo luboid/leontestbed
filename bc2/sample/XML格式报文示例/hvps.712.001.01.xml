@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:cnaps:std:hvps:2010:tech:xsd:hvps.712.001.01">
+	<DtlReq>
+		<GrpHdr>
+			<MsgId>2010090500001234</MsgId>
+			<CreDtTm>2010-09-15T10:00:00</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>103100000000</InstgDrctPty>
+				<InstgPty>103100000010</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>0000</InstdDrctPty>
+				<InstdPty>0000</InstdPty>
+			</InstdPty>
+			<SysCd>HVPS</SysCd>
+			<Rmk>大额业务明细核对申请报文</Rmk>
+		</GrpHdr>
+		<DtlReqInf>
+			<ChckngDt>2010-09-15</ChckngDt>
+			<TtlCnt>1</TtlCnt>
+			<Dtls>
+				<TxTpCd>G002</TxTpCd>
+				<SndRcvTp>SR00</SndRcvTp>
+			</Dtls>
+		</DtlReqInf>
+	</DtlReq>
+</Document>

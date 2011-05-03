@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:ccms:2010:tech:xsd:camt.005.001.04" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<GetTx>
+		<MsgId>
+			<Id>2010101002000907</Id>
+		</MsgId>
+		<TxQryDef>
+			<TxCrit>
+				<NewCrit>
+					<SchCrit>
+						<PmtSch>
+							<InstrRef>
+								<PmtInstrRef>2010101000001260</PmtInstrRef>
+							</InstrRef>
+							<InstrRef>
+								<PrtryRef>/A70/308581000106</PrtryRef>
+							</InstrRef>
+							<InstrRef>
+								<PrtryRef>/F26/beps.125.001.01</PrtryRef>
+							</InstrRef>
+						</PmtSch>
+					</SchCrit>
+				</NewCrit>
+			</TxCrit>
+		</TxQryDef>
+	</GetTx>
+</Document>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.002.001.03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CstmrPmtStsRpt>
+		<GrpHdr>
+			<MsgId>2010101000001274</MsgId>
+			<CreDtTm>2010-10-10T09:30:30</CreDtTm>
+			<InitgPty>
+				<Nm>103100000018</Nm>
+			</InitgPty>
+			<FwdgAgt>
+				<FinInstnId>
+					<ClrSysMmbId>
+						<MmbId>907100011301</MmbId>
+					</ClrSysMmbId>
+				</FinInstnId>
+			</FwdgAgt>
+		</GrpHdr>
+		<OrgnlGrpInfAndSts>
+			<OrgnlMsgId>2010101000001270</OrgnlMsgId>
+			<OrgnlMsgNmId>beps.381.001.01</OrgnlMsgNmId>
+		</OrgnlGrpInfAndSts>
+		<OrgnlPmtInfAndSts>
+			<OrgnlPmtInfId>1</OrgnlPmtInfId>
+			<StsRsnInf>
+				<AddtlInf>测试测试测试测试测试测试测试测试</AddtlInf>
+			</StsRsnInf>
+			<TxInfAndSts>
+				<StsId>PR05</StsId>
+			</TxInfAndSts>
+		</OrgnlPmtInfAndSts>
+	</CstmrPmtStsRpt>
+</Document>

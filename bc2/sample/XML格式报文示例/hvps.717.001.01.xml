@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:cnaps:std:hvps:2010:tech:xsd:hvps.717.001.01">
+	<IntrBkLnDwnld>
+		<GrpHdr>
+			<MsgId>2010090500004321</MsgId>
+			<CreDtTm>2010-09-15T10:00:00</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>0000</InstgDrctPty>
+				<InstgPty>0000</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>103100000000</InstdDrctPty>
+				<InstdPty>103100000010</InstdPty>
+			</InstdPty>
+			<SysCd>HVPS</SysCd>
+			<Rmk>拆借信息下载报文</Rmk>
+		</GrpHdr>
+		<Prttn>
+			<TtlNb>0</TtlNb>
+			<StartNb>0</StartNb>
+			<EndNb>0</EndNb>
+		</Prttn>
+		<IntrBkLnDwnldInf>
+			<TtlAmt Ccy="CNY">2010.15</TtlAmt>
+			<TtlCnt>1</TtlCnt>
+			<Dtls>
+				<Amt Ccy="CNY">100.00</Amt>
+				<InstgClrSysMmb>103200000000</InstgClrSysMmb>
+				<InstgBrnchId>103200000003</InstgBrnchId>
+				<InstdClrSysMmb>103300000000</InstdClrSysMmb>
+				<InstdBrnchId>103300000010</InstdBrnchId>
+				<TxTp>A200</TxTp>
+				<CtgyPurpCd>02118</CtgyPurpCd>
+				<IntrBkLnRate>0.03</IntrBkLnRate>
+				<IntrBkLmt>03</IntrBkLmt>
+				<OrgnlMsgId>2010090500009321</OrgnlMsgId>
+			</Dtls>
+		</IntrBkLnDwnldInf>
+	</IntrBkLnDwnld>
+</Document>

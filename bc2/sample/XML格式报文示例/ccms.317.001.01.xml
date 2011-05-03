@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:ccms:2010:tech:xsd:camt.006.001.04" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<RtrTx>
+		<MsgId>
+			<Id>2010101002000908</Id>
+		</MsgId>
+		<BizQryRef>
+			<QryRef>2010101002000907</QryRef>
+			<QryNm>308581000106</QryNm>
+		</BizQryRef>
+		<BizRpt>
+			<TxRpt>
+				<InstrRef>
+					<PmtInstrRef>1</PmtInstrRef>
+				</InstrRef>
+				<Tx>
+					<PmtFr>
+						<AcctId>
+							<DmstAcct>
+								<Id>308581000106</Id>
+							</DmstAcct>
+						</AcctId>
+					</PmtFr>
+					<Pmt>
+						<TxRef>2010101000001260</TxRef>
+						<TrfValDt>
+							<Dt>2010-10-10</Dt>
+						</TrfValDt>
+						<InstrSts>
+							<PmtInstrSts>
+								<PrtrySts>PR04</PrtrySts>
+							</PmtInstrSts>
+							<PmtInstrStsRsn>
+								<PrtryRjctnRsn>
+									<PrtryStsRsn>1</PrtryStsRsn>
+									<Rsn>CB2OI000</Rsn>
+								</PrtryRjctnRsn>
+							</PmtInstrStsRsn>
+						</InstrSts>
+						<Prty>
+							<PrtryCd>02</PrtryCd>
+						</Prty>
+						<PrcgVldtyTm>
+							<DtTmRg>
+								<FrDtTm>2010-10-10T09:30:30</FrDtTm>
+								<ToDtTm>2010-10-10T10:30:30</ToDtTm>
+							</DtTmRg>
+						</PrcgVldtyTm>
+						<IntrBkValDt>2010-10-10</IntrBkValDt>
+					</Pmt>
+				</Tx>
+			</TxRpt>
+		</BizRpt>
+	</RtrTx>
+</Document>

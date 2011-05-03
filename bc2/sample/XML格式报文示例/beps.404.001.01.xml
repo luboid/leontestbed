@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:beps:2010:tech:xsd:beps.404.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<InvcPrtRspn>
+		<GrpHdr>
+			<MsgId>2010101000001246</MsgId>
+			<CreDtTm>2010-10-10T09:30:30</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>103100000018</InstgDrctPty>
+				<InstgPty>103100000018</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>104100004370</InstdDrctPty>
+				<InstdPty>104100004370</InstdPty>
+			</InstdPty>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试测试</Rmk>
+		</GrpHdr>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010101000001245</OrgnlMsgId>
+			<OrgnlInstgPty>104100004370</OrgnlInstgPty>
+			<OrgnlMsgTp>beps.403.001.01</OrgnlMsgTp>
+		</OrgnlGrpHdr>
+		<InvcPrtRspnInf>
+			<RspsnInf>
+				<Sts>PR05</Sts>
+			</RspsnInf>
+			<InvcInf>
+				<StartTm>2010-10-09T09:30:30</StartTm>
+				<EndTm>2010-10-10T09:30:30</EndTm>
+				<PrtCnt>1</PrtCnt>
+				<NbOfItms>1</NbOfItms>
+				<ItmDtls>
+					<Nm>中水</Nm>
+					<Amt Ccy="CNY">20.00</Amt>
+				</ItmDtls>
+				<NbOfFldItms>1</NbOfFldItms>
+				<FldItmDtls>
+					<Nm>XXXX</Nm>
+					<Val>1</Val>
+				</FldItmDtls>
+				<Rmk>水费缴费发票打印</Rmk>
+			</InvcInf>
+		</InvcPrtRspnInf>
+	</InvcPrtRspn>
+</Document>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:beps:2010:tech:xsd:beps.397.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ChckCdtForLd>
+		<GrpHdr>
+			<MsgId>2010092100001241</MsgId>
+			<CreDtTm>2001-12-17T09:30:47</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>103100000018</InstgDrctPty>
+				<InstgPty>103100000018</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>104100004370</InstdDrctPty>
+				<InstdPty>104100004370</InstdPty>
+			</InstdPty>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试测试</Rmk>
+		</GrpHdr>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010092100001240</OrgnlMsgId>
+			<OrgnlInstgPty>103100000018</OrgnlInstgPty>
+			<OrgnlMsgTp>beps.397.001.01</OrgnlMsgTp>
+		</OrgnlGrpHdr>
+		<ChckCdtForLdInf>
+			<ApplyOrCclTp>AC01</ApplyOrCclTp>
+			<IsseDt>2010-08-13</IsseDt>
+			<Nb>231000101010010101021231231</Nb>
+			<Id>104100004370</Id>
+			<AcctNb>2310230111201111210123100010792</AcctNb>
+			<Amt Ccy="CNY">20000000.00</Amt>
+			<ChckMd>CD00</ChckMd>
+			<ChckCd>2342423hjhj23h4j1hjhj12h34j1h23h4j12kh34jkhjhjh234jh32j4h1j23h4j1h</ChckCd>
+			<ImgFrntLen>4000000</ImgFrntLen>
+			<Cntt>sdfadsfjkjk2j3j2k3jkjkjkk2k3jk42jk4j213kj4k12j4k32j4k32l1j4k1j23kl4j1kl23j4kl12j3k4jkjckj23k3kjck3jkj123kj12</Cntt>
+		</ChckCdtForLdInf>
+	</ChckCdtForLd>
+</Document>
