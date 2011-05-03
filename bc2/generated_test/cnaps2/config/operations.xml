@@ -60,6 +60,30 @@
       </OperationDefinition>
       
       <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="13"
+      	name="ccms.990.001.02" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/ComConf/ConfInf/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="14"
+      	name="ccms.991.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
       	class="com.topfinance.runtime.OperationDefinition" id="testNested"
       	name="testNested" 
       	upIsEnabled="F" 
