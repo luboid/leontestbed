@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="urn:cnaps:std:nets:2010:tech:xsd:nets.406.001.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:cnaps:std:nets:2010:tech:xsd:nets.406.001.01" elementFormDefault="qualified">
+	<xs:element name="Document" type="Document"/>
+	<xs:complexType name="Document">
+		<xs:sequence>
+			<xs:element name="NetgQQryRspn" type="NetgQQryRspnV01"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NetgQQryRspnV01">
+		<xs:sequence>
+			<xs:element name="GrpHdr" type="GroupHeader1"/>
+			<xs:element name="Prttn" type="Partition1"/>
+			<xs:element name="OrgnlGrpHdr" type="OriginalGroupHeader1"/>
+			<xs:element name="NPCPrcInf" type="NPCProcessInformation1"/>
+			<xs:element name="QInf" type="QueueInformation1" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GroupHeader1">
+		<xs:sequence>
+			<xs:element name="MsgId" type="Max35Text"/>
+			<xs:element name="CreDtTm" type="ISODateTime"/>
+			<xs:element name="InstgPty" type="InstgPty1"/>
+			<xs:element name="InstdPty" type="InstdPty1"/>
+			<xs:element name="SysCd" type="SystemCode1"/>
+			
+			<xs:element name="Rmk" type="Max256Text" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InstgPty1">
+		<xs:sequence>
+			<xs:element name="InstgDrctPty" type="Max14Text"/>
+			<xs:element name="InstgPty" type="Max14Text" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InstdPty1">
+		<xs:sequence>
+			<xs:element name="InstdDrctPty" type="Max14Text"/>
+			<xs:element name="InstdPty" type="Max14Text" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Partition1">
+		<xs:sequence>
+			<xs:element name="TtlNb" type="Max8NumericText"/>
+			<xs:element name="StartNb" type="Max8NumericText"/>
+			<xs:element name="EndNb" type="Max8NumericText"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OriginalGroupHeader1">
+		<xs:sequence>
+			<xs:element name="OrgnlMsgId" type="Max35Text"/>
+			<xs:element name="OrgnlInstgPty" type="Max14Text"/>
+			<xs:element name="OrgnlMT" type="Max35Text"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="QueueInformation1">
+		<xs:sequence>
+			<xs:element name="Nb" type="Max8NumericText"/>
+			<xs:element name="Dtls" type="Details" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Details">
+		<xs:sequence>
+			<xs:element name="OrgnlGrpHdr" type="OriginalGroupHeader1"/>
+			<xs:element name="Amt" type="ActiveCurrencyAndAmount"/>
+			<xs:element name="SeqNb" type="Max8NumericText"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Max35Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ISODateTime">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="Max14Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="14"/>
+			
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SystemCode1">
+		<xs:restriction base="xs:string">
+<xs:enumeration value="SAPS"/>
+<xs:enumeration value="HVPS"/>
+<xs:enumeration value="BEPS"/>
+<xs:enumeration value="CCMS"/>
+<xs:enumeration value="PMIS"/>
+<xs:enumeration value="IBPS"/>
+<xs:enumeration value="NCIS"/>
+<xs:enumeration value="ECDS"/>
+<xs:enumeration value="FXPS"/>
+<xs:enumeration value="NETS"/>
+<xs:enumeration value="PBCS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max2048Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="2048"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max256Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+		<xs:simpleType name="ISODate">
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="Max4Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max8NumericText">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="8"/>
+			<xs:pattern value="[0-9]{1,8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max105Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="105"/>
+		</xs:restriction>
+	</xs:simpleType>
+			<xs:simpleType name="Max2Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max8Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActiveCurrencyAndAmount_SimpleType">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:fractionDigits value="5"/>
+			<xs:totalDigits value="18"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ActiveCurrencyAndAmount">
+		<xs:simpleContent>
+			<xs:extension base="ActiveCurrencyAndAmount_SimpleType">
+				<xs:attribute name="Ccy" type="ActiveCurrencyCode" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="ActiveCurrencyCode">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{3,3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="NPCProcessInformation1">
+		<xs:sequence>
+			<xs:element name="PrcSts" type="Max4Text"/>
+			<xs:element name="PrcCd" type="Max8Text"/>
+			<xs:element name="RjctInf" type="Max105Text" minOccurs="0"/>
+			<xs:element name="NetgDt" type="ISODate" minOccurs="0"/>
+			<xs:element name="NetgRnd" type="Max2Text" minOccurs="0"/>
+			<xs:element name="SttlmDt" type="ISODate" minOccurs="0"/>
+			<xs:element name="RcvTm" type="ISODateTime" minOccurs="0"/>
+			<xs:element name="TrnsmtTm" type="ISODateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
