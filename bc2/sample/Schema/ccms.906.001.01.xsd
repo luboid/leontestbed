@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns="urn:cnaps:std:ccms:2010:tech:xsd:ccms.906.001.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:cnaps:std:ccms:2010:tech:xsd:ccms.906.001.01" elementFormDefault="qualified">
+	<xs:element name="Document" type="Document"/>
+	<xs:complexType name="Document">
+		<xs:sequence>
+			<xs:element name="BizClssTpMgmt" type="BizClssTpMgmtV01"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BizClssTpMgmtV01">
+		<xs:sequence>
+			<xs:element name="GrpHdr" type="GroupHeader1"/>
+			<xs:element name="ChngInf" type="ChngInf1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GroupHeader1">
+		<xs:sequence>
+			<xs:element name="MsgId" type="Max35Text"/>
+			<xs:element name="CreDtTm" type="ISODateTime"/>
+			<xs:element name="InstgPty" type="Instg1"/>
+			<xs:element name="InstdPty" type="Instd1"/>
+			<xs:element name="SysCd" type="SystemCode1"/>
+			<xs:element name="Rmk" type="Max256Text" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Instg1">
+		<xs:sequence>
+			<xs:element name="InstgDrctPty" type="Max14Text"/>
+			<xs:element name="InstgPty" type="Max14Text"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Instd1">
+		<xs:sequence>
+			<xs:element name="InstdDrctPty" type="Max14Text"/>
+			<xs:element name="InstdPty" type="Max14Text"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ChngInf1">
+		<xs:sequence>
+			<xs:element name="ChgTp" type="ChgTp1"/>
+			<xs:element name="MT" type="Max20Text"/>
+			<xs:element name="MsgNm" type="Max60Text"/>
+			<xs:element name="TxTpCd" type="Max4Text" minOccurs="0"/>
+			<xs:element name="TxTpNm" type="Max60Text" minOccurs="0"/>
+			<xs:element name="CtgyPurpCd" type="Max5NumericText" minOccurs="0"/>
+			<xs:element name="CtgyPurpNm" type="Max60Text" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ChgTp1">
+		<xs:sequence>
+			<xs:element name="ChngTp" type="ChangeCode1"/>
+			<xs:element name="FctvTp" type="EffectiveCode1"/>
+			<xs:element name="FctvDt" type="ISODate" minOccurs="0"/>
+			<xs:element name="IfctvDt" type="ISODate" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Max4Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max5NumericText">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="5"/>
+			<xs:pattern value="[0-9]{1,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max20Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max35Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max60Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max256Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max14Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="14"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max16NumericText">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="16"/>
+			<xs:pattern value="[0-9]{1,16}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ISODateTime">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="ISODate">
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="SystemCode1">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SAPS"/>
+			<xs:enumeration value="HVPS"/>
+			<xs:enumeration value="BEPS"/>
+			<xs:enumeration value="CCMS"/>
+			<xs:enumeration value="PMIS"/>
+			<xs:enumeration value="IBPS"/>
+			<xs:enumeration value="NCIS"/>
+			<xs:enumeration value="ECDS"/>
+			<xs:enumeration value="FXPS"/>
+			<xs:enumeration value="NETS"/>
+			<xs:enumeration value="PBCS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Code">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ChangeCode1">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EffectiveCode1">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

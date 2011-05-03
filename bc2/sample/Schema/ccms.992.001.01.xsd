@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns="urn:cnaps:std:ccms:2010:tech:xsd:ccms.992.001.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:cnaps:std:ccms:2010:tech:xsd:ccms.992.001.01" elementFormDefault="qualified">
+	<xs:element name="Document" type="Document"/>
+	<xs:complexType name="Document">
+		<xs:sequence>
+			<xs:element name="ChckRspn" type="ChckRspnV01"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ChckRspnV01">
+		<xs:sequence>
+			<xs:element name="ChckRspnInf" type="ChckRspnInf1"/>
+			<xs:element name="LdFctrInf" type="LdFctrInf1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ChckRspnInf1">
+		<xs:sequence>
+			<xs:element name="OrigSndNd" type="Max14Text"/>
+			<xs:element name="OrigSndSvsrNm" type="Max20Text"/>
+			<xs:element name="OrigSndLineMgrNm" type="Max48Text"/>
+			<xs:element name="RcvRoadNm" type="Max20Text"/>
+			<xs:element name="OrigSndDt" type="Max23Text"/>
+			<xs:element name="RspnNd" type="Max14Text"/>
+			<xs:element name="RspnSvcrNm" type="Max20Text"/>
+			<xs:element name="RspnLineMgr" type="Max48Text"/>
+			<xs:element name="RcvLineNm" type="Max48Text" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LdFctrInf1">
+		<xs:sequence>
+			<xs:element name="RspnLclLineNm" type="Max48Text"/>
+			<xs:element name="LdFctr" type="Max16Text"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Max14Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max48Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="48"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max20Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max23Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="23"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max16Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="16"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

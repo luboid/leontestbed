@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2008 (http://www.altova.com) by TEAM ViRiLiTY (VRL) -->
+<xs:schema xmlns="urn:cnaps:std:hvps:2010:tech:xsd:hvps.714.001.01" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:cnaps:std:hvps:2010:tech:xsd:hvps.714.001.01" elementFormDefault="qualified">
+	<xs:element name="Document" type="Document"/>
+	<xs:complexType name="Document">
+		<xs:sequence>
+			<xs:element name="TxDwnldgReq" type="TxDwnldgReqV01"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TxDwnldgReqV01">
+		<xs:sequence>
+			<xs:element name="GrpHdr" type="GroupHeader1"/>
+			<xs:element name="TxDwnldgReqInf" type="TxDwnldgReqInf1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GroupHeader1">
+		<xs:sequence>
+			<xs:element name="MsgId" type="Max35Text"/>
+			<xs:element name="CreDtTm" type="ISODateTime"/>
+			<xs:element name="InstgPty" type="InstgPty1"/>
+			<xs:element name="InstdPty" type="InstdPty1"/>
+			<xs:element name="SysCd" type="SystemCode1"/>
+			<xs:element name="Rmk" type="Max256Text" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InstgPty1">
+		<xs:sequence>
+			<xs:element name="InstgDrctPty" type="Max14Text"/>
+			<xs:element name="InstgPty" type="Max14Text"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InstdPty1">
+		<xs:sequence>
+			<xs:element name="InstdDrctPty" type="Max14Text"/>
+			<xs:element name="InstdPty" type="Max14Text"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TxDwnldgReqInf1">
+		<xs:sequence>
+			<xs:element name="NbOfTxs" type="Max8NumericText"/>
+			<xs:element name="TxsDtls" type="TxsDtls1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TxsDtls1">
+		<xs:sequence>
+			<xs:element name="SndRcvTp" type="SendReceiveCode1"/>
+			<xs:element name="OrgnlGrpHdr" type="OrgnlGrpHdr1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OrgnlGrpHdr1">
+		<xs:sequence>
+			<xs:element name="OrgnlMsgId" type="Max35Text"/>
+			<xs:element name="OrgnlInstgPty" type="Max14Text"/>
+			<xs:element name="OrgnlMT" type="Max35Text"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="Max8NumericText">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="8"/>
+			<xs:pattern value="[0-9]{1,8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max14Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="14"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max35Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max256Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="256"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Max2048Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="2048"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SystemCode1">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SAPS"/>
+			<xs:enumeration value="HVPS"/>
+			<xs:enumeration value="BEPS"/>
+			<xs:enumeration value="CCMS"/>
+			<xs:enumeration value="PMIS"/>
+			<xs:enumeration value="IBPS"/>
+			<xs:enumeration value="NCIS"/>
+			<xs:enumeration value="ECDS"/>
+			<xs:enumeration value="FXPS"/>
+			<xs:enumeration value="NETS"/>
+			<xs:enumeration value="PBCS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ISODateTime">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="ISODate">
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="SendReceiveCode1">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SR00"/>
+			<xs:enumeration value="SR01"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
