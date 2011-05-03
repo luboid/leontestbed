@@ -14,8 +14,6 @@ public class Cnaps2Constants {
     public static final String ORIG_MSG_ID_601_EBOFLD =  "ntfctnId";
     public static final String ORIG_MSG_ID_604_EBOFLD =  "orgnlMsgId";
     
-
-    
     public static final String MSG_ID_EBOFLD =  "grpHdrMsgId";
     
     public static final String MSG_ID_601 =  "bkToCstmrDbtCdtNtfctn.grpHdr.msgId";
