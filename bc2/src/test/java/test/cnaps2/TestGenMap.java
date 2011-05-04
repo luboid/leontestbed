@@ -222,7 +222,7 @@ public class TestGenMap extends TestCase {
 		return res;
 	}
 
-	public void testGenPublicMap_990() throws Exception {
+	public void _testGenPublicMap_990() throws Exception {
 		String msgCode = "ccms.990.001.02";
 		String tpCode = "";
 		String clsCode = "";
@@ -239,6 +239,15 @@ public class TestGenMap extends TestCase {
 			_testGenPublicMap(msgCode,tpCode,clsCode);
 		_testGenerated(msgCode,tpCode,clsCode);
 	}
+	
+	public void testNested() throws Exception {
+		String msgCode = "testNested";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE)
+			_testGenPublicMap(msgCode,tpCode,clsCode);
+		//_testGenerated(msgCode,tpCode,clsCode);
+	}	
 
 	public void _testGenPublicMap(String msgCode,String tpCode,String clsCode) throws Exception {
 		OpInfo op = new OpInfo(msgCode, tpCode, clsCode);
