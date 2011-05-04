@@ -30,7 +30,7 @@ public class TestGenMap extends TestCase {
 	public final static boolean USE_DB = true;
 	
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean TO_GENERATE = true;
+	public final static boolean TO_GENERATE = false;
 	
 	private static final String basePath = "E:/DevSpace/bc2/generated_test";
 
@@ -222,7 +222,7 @@ public class TestGenMap extends TestCase {
 		return res;
 	}
 
-	public void testGenerated_990_001_02() throws Exception {
+	public void atestGenerated_990_001_02() throws Exception {
 		String msgCode = "ccms.990.001.02";
 		String tpCode = "";
 		String clsCode = "";
@@ -233,7 +233,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 
-	public void testGenerated_991() throws Exception {
+	public void atestGenerated_991() throws Exception {
 		String msgCode = "ccms.991.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -244,7 +244,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 
-	public void testGenerated_311() throws Exception {
+	public void atestGenerated_311() throws Exception {
 		String msgCode = "ccms.311.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -266,7 +266,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testNested() throws Exception {
+	public void atestNested() throws Exception {
 		String msgCode = "testNested";
 		String tpCode = "";
 		String clsCode = "";
