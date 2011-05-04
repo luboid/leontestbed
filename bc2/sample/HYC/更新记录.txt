@@ -7,3 +7,14 @@
       path='/Document/SndSvcrMgmtInf/SndSvcrRcvSts'
    3)
       msg_code='ccms.991.001.01'和msg_code = 'beps.416.001.01'的type值修改了，少了一个t，对应的doc文档应该注意，看是否需要修改
+
+2011-05-04:
+1、ccms.311.001.01__.xml中<RspnInf>处改为：
+		<RspnInf>
+			<Sts>PR00</Sts>
+			<RjctCd>测试</RjctCd>
+			<RjctInf>测试测试</RjctInf>
+			<PrcPty>测试测</PrcPty>
+		</RspnInf>
+2、T_C2_CCMS_311的建表语句中两个字段名不一致，INSTGINDRCTPTY，INSTDINDRCTPTY需要相应调整,CNAPS2-v1.2.pdm也应调整（未调整）
+3、T_C2_BIS_ELE_BSC表中,msg_code='ccms.311.001.01'数据报文中ELE_ID = 'InstgIndrctPty'和ELE_ID = 'InstdIndrctPty'的两条数据修改
