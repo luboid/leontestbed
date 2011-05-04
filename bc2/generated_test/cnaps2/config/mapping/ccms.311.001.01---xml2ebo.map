@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived">File:/E:/DevSpace/bc2/sample/Schema/ccms.311.001.01.xsd</param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms31100101" createOnElement="Document">
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/MsgId" property="msgId"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/InstgPty/InstgPty" property="instgPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/InstdPty/InstdPty" property="instdPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/SysCd" property="sysCd"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/Rmk" property="rmk"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/OrgnlGrpHdr/OrgnlMsgTp" property="orgnlMsgTp"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/RspnInf/Sts" property="sts"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/RspnInf/RjctCd" property="rjctCd"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/RspnInf/RjctInf" property="rjctInf"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/RspnInf/PrcPty" property="prcPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/CmonNotSgntrInfBizRspnInf/OrgnlTxTpCd" property="orgnlTxTpCd"/>    
+	</jb:bean>
+</smooks-resource-list>  
+    
