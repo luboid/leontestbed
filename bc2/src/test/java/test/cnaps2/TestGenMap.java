@@ -28,6 +28,11 @@ public class TestGenMap extends TestCase {
 
 	// TODO change it to true when you are ready to connect to DB
 	public final static boolean USE_DB = true;
+	
+	// TODO change it to true when you are ready to connect to DB
+	public final static boolean TO_GENERATE = false;
+	
+	private static final String basePath = "E:/DevSpace/bc2/generated_test";
 
 	@Override
 	protected void setUp() throws Exception {
@@ -90,20 +95,18 @@ public class TestGenMap extends TestCase {
 		}
 	}
 
-	public void testGenerated() {
-
-		String basePath = "E:/DevSpace/bc2/generated_test";
+	public void _testGenerated(String msgCode,String tpCode,String clsCode) {
 
 		// This is a sample to handle the XML that needs to be stored in a
 		// parent-child table
-		String mesgType = "ccms.990.001.02";
-		String tpCode = "";
-		String clsCode = "";
+//		String msgCode = "ccms.990.001.02";
+//		String tpCode = "";
+//		String clsCode = "";
 
 		// String mesgType = "hvps.111.001.01";
 		// String tpCode = "A100";
 		// String clsCode = "02101";
-		OpInfo opInfo = new OpInfo(mesgType, tpCode, clsCode);
+		OpInfo opInfo = new OpInfo(msgCode, tpCode, clsCode);
 		debug("===========================start testGenerated for op=" + opInfo + "============================");
 
 		try {
@@ -138,12 +141,10 @@ public class TestGenMap extends TestCase {
 //				ebo = list.size() > 0 ? list.get(0) : null;
 //			}
 //			String xml = tester.upPublic(ebo, opInfo);
-
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		debug("end testGenerated for op=" + opInfo + ", basePath=" + basePath + "...");
-
 	}
 
 	// public void testGenPrivateMap() throws Exception {
@@ -221,15 +222,25 @@ public class TestGenMap extends TestCase {
 		return res;
 	}
 
-	public void atestGenPublicMap() throws Exception {
-		// TODO change these setting accordingly
-		String basePath = "E:/DevSpace/bc2/generated_test";
-		//String msgCode = "hvps.111.001.01";
+	public void testGenPublicMap_990() throws Exception {
 		String msgCode = "ccms.990.001.02";
-//		String tpCode = "A100";
-//		String clsCode = "02101";
 		String tpCode = "";
 		String clsCode = "";
+		if(TO_GENERATE)
+			_testGenPublicMap(msgCode,tpCode,clsCode);
+		_testGenerated(msgCode,tpCode,clsCode);
+	}
+
+	public void _testGenPublicMap_991() throws Exception {
+		String msgCode = "ccms.991.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE)
+			_testGenPublicMap(msgCode,tpCode,clsCode);
+		_testGenerated(msgCode,tpCode,clsCode);
+	}
+
+	public void _testGenPublicMap(String msgCode,String tpCode,String clsCode) throws Exception {
 		OpInfo op = new OpInfo(msgCode, tpCode, clsCode);
 
 		debug("start testGenPublicMap for op=" + op + "...");
