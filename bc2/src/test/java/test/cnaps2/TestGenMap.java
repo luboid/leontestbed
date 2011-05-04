@@ -30,7 +30,7 @@ public class TestGenMap extends TestCase {
 	public final static boolean USE_DB = true;
 	
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean TO_GENERATE = false;
+	public final static boolean TO_GENERATE = true;
 	
 	private static final String basePath = "E:/DevSpace/bc2/generated_test";
 
@@ -95,7 +95,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 
-	public void _testGenerated(String msgCode,String tpCode,String clsCode) {
+	public void _testGenerated(String msgCode, String tpCode, String clsCode) {
 
 		// This is a sample to handle the XML that needs to be stored in a
 		// parent-child table
@@ -222,22 +222,48 @@ public class TestGenMap extends TestCase {
 		return res;
 	}
 
-	public void _testGenPublicMap_990() throws Exception {
+	public void testGenerated_990_001_02() throws Exception {
 		String msgCode = "ccms.990.001.02";
 		String tpCode = "";
 		String clsCode = "";
-		if(TO_GENERATE)
-			_testGenPublicMap(msgCode,tpCode,clsCode);
-		_testGenerated(msgCode,tpCode,clsCode);
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
 	}
 
-	public void _testGenPublicMap_991() throws Exception {
+	public void testGenerated_991() throws Exception {
 		String msgCode = "ccms.991.001.01";
 		String tpCode = "";
 		String clsCode = "";
-		if(TO_GENERATE)
-			_testGenPublicMap(msgCode,tpCode,clsCode);
-		_testGenerated(msgCode,tpCode,clsCode);
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+
+	public void testGenerated_311() throws Exception {
+		String msgCode = "ccms.311.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_608() throws Exception {
+		String msgCode = "ccms.608.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
 	}
 	
 	public void testNested() throws Exception {
@@ -245,11 +271,11 @@ public class TestGenMap extends TestCase {
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE)
-			_testGenPublicMap(msgCode,tpCode,clsCode);
-		//_testGenerated(msgCode,tpCode,clsCode);
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		//_testGenerated(msgCode, tpCode, clsCode);
 	}	
 
-	public void _testGenPublicMap(String msgCode,String tpCode,String clsCode) throws Exception {
+	public void _testGenPublicMap(String msgCode, String tpCode, String clsCode) throws Exception {
 		OpInfo op = new OpInfo(msgCode, tpCode, clsCode);
 
 		debug("start testGenPublicMap for op=" + op + "...");
