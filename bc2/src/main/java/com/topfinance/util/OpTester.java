@@ -178,16 +178,12 @@ public class OpTester extends TestCase {
 	            return ebo;
         } catch (Exception ex) {
             ex.printStackTrace();
-            throw new RuntimeException(ex);
-            
-        }
-	    
+            throw new RuntimeException(ex);   
+        }   
 	}
 	
-	
 	public static void main(String args[]) {
-		OpTester tester = new OpTester();
-		
+		OpTester tester = new OpTester();		
         String[] ops = new String[] {
                 TestDummy.OPERATION_101
 //                ,
