@@ -64,9 +64,13 @@ public class Cnaps2Constants {
             pkgName = "com.xml.iso20022.saps.v60400101";                 
         } else if(mesgType.equals(TestDummy.OPERATION_CCMS_990_001_02)) {
             pkgName = "com.xml.cnaps2.ccms.v99000102";                 
-        } else if(mesgType.equals(TestDummy.OPERATION_CCMS_991_001_01)) {
+        } else if(mesgType.equals(TestDummy.OPERATION_991)) {
             pkgName = "com.xml.cnaps2.ccms.v99100101";                 
-        }         
+        } else if(mesgType.equals(TestDummy.OPERATION_311)) {
+            pkgName = "com.xml.cnaps2.ccms.v31100101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_608)) {
+            pkgName = "com.xml.cnaps2.ccms.v60800101";                 
+        }
         
         if(pkgName==null) {
         	throw new RuntimeException("no package found for mesgType="+mesgType);
