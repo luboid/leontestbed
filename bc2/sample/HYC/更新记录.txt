@@ -16,5 +16,8 @@
 			<RjctInf>测试测试</RjctInf>
 			<PrcPty>测试测</PrcPty>
 		</RspnInf>
-2、T_C2_CCMS_311的建表语句中两个字段名不一致，INSTGINDRCTPTY，INSTDINDRCTPTY需要相应调整,CNAPS2-v1.2.pdm也应调整（未调整）
-3、T_C2_BIS_ELE_BSC表中,msg_code='ccms.311.001.01'数据报文中ELE_ID = 'InstgIndrctPty'和ELE_ID = 'InstdIndrctPty'的两条数据修改
+2、T_C2_CCMS_311的建表语句中四个字段名不一致，INSTGINDRCTPTY，INSTDINDRCTPTY,ORGNLINSTGDRCTPTY,ORGNLMT需要相应调整为：INSTGPTY,INSTDPTY，ORGNLINSTGPTY，ORGNLMSGTP。OrgnlInstgPty和OrgnlMsgTp的type长度也需修改
+   CNAPS2-v1.2.pdm也应调整（未调整）
+3、T_C2_BIS_ELE_BSC表中,msg_code='ccms.311.001.01'数据报文中ELE_ID = 'InstgIndrctPty'和ELE_ID = 'InstdIndrctPty'的两条数据修改,
+   另外 ELE_ID = 'OrgnlInstgDrctPty'改为：ELE_ID = 'OrgnlInstgPty',ELE_ID = 'OrgnlMT'改为：ELE_ID = 'OrgnlMsgTp'
+   还有 OrgnlInstgPty和OrgnlMsgTp的type长度也需修改
