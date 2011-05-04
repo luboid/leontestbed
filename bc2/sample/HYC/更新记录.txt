@@ -21,3 +21,4 @@
 3、T_C2_BIS_ELE_BSC表中,msg_code='ccms.311.001.01'数据报文中ELE_ID = 'InstgIndrctPty'和ELE_ID = 'InstdIndrctPty'的两条数据修改,
    另外 ELE_ID = 'OrgnlInstgDrctPty'改为：ELE_ID = 'OrgnlInstgPty',ELE_ID = 'OrgnlMT'改为：ELE_ID = 'OrgnlMsgTp'
    还有 OrgnlInstgPty和OrgnlMsgTp的type长度也需修改
+4、T_C2_BIS_ELE_BSC表中,msg_code='ccms.991.001.01'所有数据的path字段值追加/ChckReq/
