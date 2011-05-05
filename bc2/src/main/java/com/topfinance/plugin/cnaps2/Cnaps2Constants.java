@@ -49,7 +49,7 @@ public class Cnaps2Constants {
         
 		String pkgName = null;
         if(mesgType.equals("testNested")) {
-        	pkgName="com.cnaps2.xml.testNested";
+        	pkgName="com.xml.testNested";
         }
         else if (mesgType.equals(TestDummy.OPERATION_101)) {
 //            pkgName = "com.topfinance.plugin.cnaps2.v00800102";
@@ -69,7 +69,9 @@ public class Cnaps2Constants {
         } else if(mesgType.equals(TestDummy.OPERATION_311)) {
             pkgName = "com.xml.cnaps2.ccms.v31100101";                 
         } else if(mesgType.equals(TestDummy.OPERATION_608)) {
-            pkgName = "com.xml.cnaps2.ccms.v60800101";                 
+            pkgName = "com.xml.cnaps2.pbcs.v60800101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_303)) {
+            pkgName = "com.xml.cnaps2.ccms.v30300102";                 
         }
         
         if(pkgName==null) {
