@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ccms99100101</param>
+  </params>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.ccms.v99100101.Document" createOnElement="com.topfinance.ebo.msg.Ccms99100101">
+    	<jb:wiring beanIdRef="chckReq" property="chckReq"/>
+  	</jb:bean>
+  	<jb:bean beanId="chckReq.sndSvcrMgmtInf" class="com.xml.cnaps2.ccms.v99100101.SndSvcrMgmtInf1" createOnElement="com.topfinance.ebo.msg.Ccms99100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/sndSvcrRcvSts"  property="sndSvcrRcvSts"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/sndNdMgmtSts"  property="sndNdMgmtSts"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/rcvNdMgmtSts"  property="rcvNdMgmtSts"/>
+  	</jb:bean>
+  	<jb:bean beanId="chckReq" class="com.xml.cnaps2.ccms.v99100101.ChckReqV01" createOnElement="com.topfinance.ebo.msg.Ccms99100101">
+    	<jb:wiring beanIdRef="chckReq.chckInf" property="chckInf"/>
+    	<jb:wiring beanIdRef="chckReq.sndSvcrMgmtInf" property="sndSvcrMgmtInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="chckReq.chckInf" class="com.xml.cnaps2.ccms.v99100101.ChckInf1" createOnElement="com.topfinance.ebo.msg.Ccms99100101">
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/sndNd"  property="sndNd"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/sndSvcrNm"  property="sndSvcrNm"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/sndLineMgrNm"  property="sndLineMgrNm"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/sndRoadNm"  property="sndRoadNm"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/sndDt"  property="sndDt"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/rcvNd"  property="rcvNd"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/rcvSvcrNm"  property="rcvSvcrNm"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/rcvLineMgr"  property="rcvLineMgr"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms99100101/rspnLineNm"  property="rspnLineNm"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

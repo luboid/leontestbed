@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived">File:/E:/DevSpace/bc2/sample/Schema/ccms.310.001.01.xsd</param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms31000101" createOnElement="Document">
+		<jb:value data="/Document/CmonNotSgntrInfBiz/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/GrpHdr/SysCd" property="sysCd"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/GrpHdr/Rmk" property="rmk"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/CmonNotSgntrInfBizInf/TxTpCd" property="prtry"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/CmonNotSgntrInfBizInf/Titl" property="titl"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/CmonNotSgntrInfBizInf/Cntt" property="msgCntt"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/CmonNotSgntrInfBizInf/AttchmtLen" property="attchmtLen"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/CmonNotSgntrInfBizInf/AttchmtNm" property="attchmtNm"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/CmonNotSgntrInfBizInf/AttchmtCntt" property="cntt"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/GrpHdr/MsgId" property="msgId"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBiz/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+	</jb:bean>
+</smooks-resource-list>  
+    

@@ -18,19 +18,19 @@
   	</jb:bean>
   	<jb:bean beanId="cmonNotSgntrInfBizRspn.grpHdr.instgPty" class="com.xml.cnaps2.ccms.v31100101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Ccms31100101">
   		<jb:value data="/com.topfinance.ebo.msg.Ccms31100101/instgDrctPty"  property="instgDrctPty"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Ccms31100101/instgPty"  property="instgPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms31100101/instgIndrctPty"  property="instgPty"/>
   	</jb:bean>
   	<jb:bean beanId="target" class="com.xml.cnaps2.ccms.v31100101.Document" createOnElement="com.topfinance.ebo.msg.Ccms31100101">
     	<jb:wiring beanIdRef="cmonNotSgntrInfBizRspn" property="cmonNotSgntrInfBizRspn"/>
   	</jb:bean>
   	<jb:bean beanId="cmonNotSgntrInfBizRspn.orgnlGrpHdr" class="com.xml.cnaps2.ccms.v31100101.OrgnlGrpHdr1" createOnElement="com.topfinance.ebo.msg.Ccms31100101">
   		<jb:value data="/com.topfinance.ebo.msg.Ccms31100101/orgnlMsgId"  property="orgnlMsgId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Ccms31100101/orgnlInstgPty"  property="orgnlInstgPty"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Ccms31100101/orgnlMsgTp"  property="orgnlMsgTp"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms31100101/orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms31100101/orgnlMT"  property="orgnlMsgTp"/>
   	</jb:bean>
   	<jb:bean beanId="cmonNotSgntrInfBizRspn.grpHdr.instdPty" class="com.xml.cnaps2.ccms.v31100101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Ccms31100101">
   		<jb:value data="/com.topfinance.ebo.msg.Ccms31100101/instdDrctPty"  property="instdDrctPty"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Ccms31100101/instdPty"  property="instdPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms31100101/instdIndrctPty"  property="instdPty"/>
   	</jb:bean>
   	<jb:bean beanId="cmonNotSgntrInfBizRspn" class="com.xml.cnaps2.ccms.v31100101.CmonNotSgntrInfBizRspnV01" createOnElement="com.topfinance.ebo.msg.Ccms31100101">
     	<jb:wiring beanIdRef="cmonNotSgntrInfBizRspn.grpHdr" property="grpHdr"/>

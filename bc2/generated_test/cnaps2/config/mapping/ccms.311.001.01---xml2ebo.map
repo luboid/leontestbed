@@ -10,14 +10,14 @@
 		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/MsgId" property="msgId"/>    
 		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/CreDtTm" property="creDtTm"/>    
 		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
-		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/InstgPty/InstgPty" property="instgPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
-		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/InstdPty/InstdPty" property="instdPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
 		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/SysCd" property="sysCd"/>    
 		<jb:value data="/Document/CmonNotSgntrInfBizRspn/GrpHdr/Rmk" property="rmk"/>    
 		<jb:value data="/Document/CmonNotSgntrInfBizRspn/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
-		<jb:value data="/Document/CmonNotSgntrInfBizRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgPty"/>    
-		<jb:value data="/Document/CmonNotSgntrInfBizRspn/OrgnlGrpHdr/OrgnlMsgTp" property="orgnlMsgTp"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+		<jb:value data="/Document/CmonNotSgntrInfBizRspn/OrgnlGrpHdr/OrgnlMsgTp" property="orgnlMT"/>    
 		<jb:value data="/Document/CmonNotSgntrInfBizRspn/RspnInf/Sts" property="sts"/>    
 		<jb:value data="/Document/CmonNotSgntrInfBizRspn/RspnInf/RjctCd" property="rjctCd"/>    
 		<jb:value data="/Document/CmonNotSgntrInfBizRspn/RspnInf/RjctInf" property="rjctInf"/>    
