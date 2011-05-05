@@ -1,4 +1,4 @@
-2011-5-3:
+2011-05-03:
 1、T_C2_BIS_ELE_BSC表中,msg_code='ccms.991.001.01'数据报文中
    1)
       ELE_ID = 'SndNdMgmtSts'和ELE_ID = 'RcvNdMgmtSts'的两条数据追加
@@ -16,9 +16,44 @@
 			<RjctInf>测试测试</RjctInf>
 			<PrcPty>测试测</PrcPty>
 		</RspnInf>
-2、T_C2_CCMS_311的建表语句中四个字段名不一致，INSTGINDRCTPTY，INSTDINDRCTPTY,ORGNLINSTGDRCTPTY,ORGNLMT需要相应调整为：INSTGPTY,INSTDPTY，ORGNLINSTGPTY，ORGNLMSGTP。OrgnlInstgPty和OrgnlMsgTp的type长度也需修改
+2、T_C2_CCMS_311的建表语句中 OrgnlInstgPty和OrgnlMsgTp的type长度已修改
    CNAPS2-v1.2.pdm也应调整（未调整）
-3、T_C2_BIS_ELE_BSC表中,msg_code='ccms.311.001.01'数据报文中ELE_ID = 'InstgIndrctPty'和ELE_ID = 'InstdIndrctPty'的两条数据修改,
-   另外 ELE_ID = 'OrgnlInstgDrctPty'改为：ELE_ID = 'OrgnlInstgPty',ELE_ID = 'OrgnlMT'改为：ELE_ID = 'OrgnlMsgTp'
-   还有 OrgnlInstgPty和OrgnlMsgTp的type长度也需修改
+3、T_C2_BIS_ELE_BSC表中，OrgnlInstgPty和OrgnlMsgTp的type长度也需修改
+
 4、T_C2_BIS_ELE_BSC表中,msg_code='ccms.991.001.01'所有数据的path字段值追加/ChckReq/
+
+5、ccms.990.001.02
+field=MT 对应的path“/Document/ComConf/ConfInf/OrigSndDt”修改为“/Document/ComConf/ConfInf/MT"
+
+2011-05-05:
+1、
+CREATE TABLE T_C2_CCMS_991  (
+   ID                 INTEGER                         NOT NULL,
+   SNDND              VARCHAR2(14),
+   SNDSVCRNM          VARCHAR2(20),
+   SNDLINEMGRNM       VARCHAR2(48),
+   SNDROADNM          VARCHAR2(20),
+   SNDDT              VARCHAR2(23),
+   RCVND              VARCHAR2(14),
+   RCVSVCRNM          VARCHAR2(20),
+   RCVLINEMGR         VARCHAR2(48),
+   RSPNLINENM         VARCHAR2(48),
+   SNDSVCRRCVSTS      VARCHAR2(1),
+   SNDNDMGMTSTS       VARCHAR2(1),
+   RCVNDMGMTSTS       VARCHAR2(1),
+   CONSTRAINT PK_T_C2_CCMS_991 PRIMARY KEY (ID)
+);建表语句中SNDNDMGMTSTS，RCVNDMGMTSTS两项追加，CNAPS2-v1.2.pdm也应调整（未调整）
+
+
+2、
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.303.001.02'数据报文中
+PATH = '/Document/FreeFrmt/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/FreeFrmt/GrpHdr/InstdPty/InstdPty'
+
+3、
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.310.001.01'数据报文中
+PATH = '/Document/CmonNotSgntrInfBiz/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/CmonNotSgntrInfBiz/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/CmonNotSgntrInfBiz/CmonNotSgntrInfBizInf/AttchmtCntt'
+
+4、
