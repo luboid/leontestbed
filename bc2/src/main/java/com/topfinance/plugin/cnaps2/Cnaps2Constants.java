@@ -72,6 +72,16 @@ public class Cnaps2Constants {
             pkgName = "com.xml.cnaps2.pbcs.v60800101";                 
         } else if(mesgType.equals(TestDummy.OPERATION_303)) {
             pkgName = "com.xml.cnaps2.ccms.v30300102";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_310)) {
+            pkgName = "com.xml.cnaps2.ccms.v31000101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_312)) {
+            pkgName = "com.xml.cnaps2.ccms.v31200101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_313)) {
+            pkgName = "com.xml.cnaps2.ccms.v31300101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_314)) {
+            pkgName = "com.xml.cnaps2.ccms.v31400101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_315)) {
+            pkgName = "com.xml.cnaps2.ccms.v31500101";                 
         }
         
         if(pkgName==null) {
