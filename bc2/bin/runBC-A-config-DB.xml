@@ -59,6 +59,14 @@
     			<value>com.topfinance.ebo.msg.Ccms31300101</value>
     			<value>com.topfinance.ebo.msg.Ccms31400101</value>
     			<value>com.topfinance.ebo.msg.Ccms31500101</value>
+    			<value>com.topfinance.ebo.msg.Ccms80100102</value>
+    			<value>com.topfinance.ebo.msg.Ccms80500102</value>
+    			<value>com.topfinance.ebo.msg.Ccms80600102</value>
+    			<value>com.topfinance.ebo.msg.Ccms80700102</value>
+    			<value>com.topfinance.ebo.msg.Ccms81100101</value>
+    			<value>com.topfinance.ebo.msg.Ccms90000102</value>
+    			<value>com.topfinance.ebo.msg.Ccms90300102</value>
+    			<value>com.topfinance.ebo.msg.Ccms91100102</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
