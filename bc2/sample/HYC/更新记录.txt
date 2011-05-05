@@ -80,3 +80,49 @@ PATH = '/Document/BizRspn/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/BizRspn/GrpHdr/InstdPty/InstdPty'
 PATH = '/Document/BizRspn/BizRspnInf/OrgnlInf/OrgnlGrpHdr/OrgnlInstgPty'
 PATH = '/Document/BizRspn/OrgnlGrpHdr/OrgnlInstgPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.801.001.02'数据报文中
+PATH = '/Document/SysStsNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/SysStsNtfctn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/SysStsNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/SysStsNtfctn/SysStsInf/CisChngNb'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.805.001.02'数据报文中
+PATH = '/Document/LoginReq/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/LoginReq/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/LoginReq/GrpHdr/InstdPty/InstdDrctPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.806.001.02'数据报文中
+PATH = '/Document/LoginRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/LoginRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/LoginRspn/GrpHdr/InstdPty/InstdDrctPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.807.001.02'数据报文中
+PATH = '/Document/LogoutNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/LogoutNtfctn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/LogoutNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.811.001.01'数据报文中
+PATH = '/Document/AcsSpclTmEndNtfctn/GrpHdr/MsgId'
+PATH = '/Document/AcsSpclTmEndNtfctn/GrpHdr/CreDtTm'
+PATH = '/Document/AcsSpclTmEndNtfctn/GrpHdr/InstgPty/InstgDrctPty'
+PATH = '/Document/AcsSpclTmEndNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/AcsSpclTmEndNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/AcsSpclTmEndNtfctn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/AcsSpclTmEndNtfctn/GrpHdr/SysCd'
+PATH = '/Document/AcsSpclTmEndNtfctn/GrpHdr/Rmk'
+PATH = '/Document/AcsSpclTmEndNtfctn/AcsSpclTmEndNtfctnInf/MsgCnt'
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.900.001.02'数据报文中
+PATH = '/Document/CmonConf/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/CmonConf/GrpHdr/InstdPty/InstdPty'
+SET PATH = '/Document/CmonConf/GrpHdr/InstdPty/InstdDrctPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.903.001.02'数据报文中
+PATH = '/Document/CertNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/CertNtfctn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/CertNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.911.001.02'数据报文中
+path = '/Document/DscrdMsgNtfctn/DscrdInf/Mt'
