@@ -57,3 +57,26 @@ PATH = '/Document/CmonNotSgntrInfBiz/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/CmonNotSgntrInfBiz/CmonNotSgntrInfBizInf/AttchmtCntt'
 
 4、
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.312.001.01'数据报文中
+PATH = '/Document/CmonSgntrInfBiz/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/CmonSgntrInfBiz/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.313.001.01'数据报文中
+PATH = '/Document/CmonSgntrInfBizRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/CmonSgntrInfBizRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/CmonSgntrInfBizRspn/OrgnlGrpHdr/OrgnlInstgPty'
+OrgnlInstgDrctPty的type改为Max14Text OrgnlMT的type改为Max35Text
+相应的建表语句中的长度也已经修改，CNAPS2-v1.2.pdm也应调整（未调整）
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.314.001.01'数据报文中
+PATH = '/Document/BizQry/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BizQry/GrpHdr/InstdPty/InstdPtyy'
+PATH = '/Document/BizQry/BizQryInf/OrgnlInf/OrgnlGrpHdr/OrgnlInstgPty'
+OrgnlInstgDrctPty的type改为Max14Text OrgnlMT的type改为Max35Text
+相应的建表语句中的长度也已经修改，CNAPS2-v1.2.pdm也应调整（未调整）
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.315.001.01'数据报文中
+PATH = '/Document/BizRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BizRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/BizRspn/BizRspnInf/OrgnlInf/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/BizRspn/OrgnlGrpHdr/OrgnlInstgPty'
