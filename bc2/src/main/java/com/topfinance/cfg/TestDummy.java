@@ -58,6 +58,14 @@ public class TestDummy extends TestCase implements CfgConstants{
     public static String OPERATION_313 = "ccms.313.001.01";
     public static String OPERATION_314 = "ccms.314.001.01";
     public static String OPERATION_315 = "ccms.315.001.01";
+    public static String OPERATION_801 = "ccms.801.001.02";
+    public static String OPERATION_805 = "ccms.805.001.02";
+    public static String OPERATION_806 = "ccms.806.001.02";
+    public static String OPERATION_807 = "ccms.807.001.02";
+    public static String OPERATION_811 = "ccms.811.001.01";
+    public static String OPERATION_900 = "ccms.900.001.02";
+    public static String OPERATION_903 = "ccms.903.001.02";
+    public static String OPERATION_911 = "ccms.911.001.02";
     
     //客户发起汇兑业务报文
     public static String OPERATION_111 = "hvps.111.001.01";
