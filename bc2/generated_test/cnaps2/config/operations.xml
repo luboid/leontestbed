@@ -132,6 +132,54 @@
       </OperationDefinition>
       
       <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="19"
+      	name="ccms.312.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/CmonSgntrInfBiz/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="20"
+      	name="ccms.313.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/CmonSgntrInfBizRspn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="21"
+      	name="ccms.314.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/BizQry/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="22"
+      	name="ccms.315.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/BizRspn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
       	class="com.topfinance.runtime.OperationDefinition" id="testNested"
       	name="testNested" 
       	upIsEnabled="F" 
