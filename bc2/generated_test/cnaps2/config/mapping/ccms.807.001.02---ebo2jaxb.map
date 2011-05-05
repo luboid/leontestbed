@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ccms80700102</param>
+  </params>
+  	<jb:bean beanId="logoutNtfctn" class="com.xml.cnaps2.ccms.v80700102.LogoutNtfctnV01" createOnElement="com.topfinance.ebo.msg.Ccms80700102">
+    	<jb:wiring beanIdRef="logoutNtfctn.grpHdr" property="grpHdr"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.ccms.v80700102.Document" createOnElement="com.topfinance.ebo.msg.Ccms80700102">
+    	<jb:wiring beanIdRef="logoutNtfctn" property="logoutNtfctn"/>
+  	</jb:bean>
+  	<jb:bean beanId="logoutNtfctn.grpHdr.instgPty" class="com.xml.cnaps2.ccms.v80700102.InstgPty1" createOnElement="com.topfinance.ebo.msg.Ccms80700102">
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="logoutNtfctn.grpHdr" class="com.xml.cnaps2.ccms.v80700102.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Ccms80700102">
+    	<jb:wiring beanIdRef="logoutNtfctn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="logoutNtfctn.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/msgId"  property="msgId"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/creDtTm"  property="creDtTm"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/sysCd"  property="sysCd"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="logoutNtfctn.grpHdr.instdPty" class="com.xml.cnaps2.ccms.v80700102.InstdPty1" createOnElement="com.topfinance.ebo.msg.Ccms80700102">
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

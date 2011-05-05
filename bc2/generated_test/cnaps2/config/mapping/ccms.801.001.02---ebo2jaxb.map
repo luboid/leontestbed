@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ccms80100102</param>
+  </params>
+  	<jb:bean beanId="sysStsNtfctn.grpHdr.instgPty" class="com.xml.cnaps2.ccms.v80100102.InstgPty1" createOnElement="com.topfinance.ebo.msg.Ccms80100102">
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.ccms.v80100102.Document" createOnElement="com.topfinance.ebo.msg.Ccms80100102">
+    	<jb:wiring beanIdRef="sysStsNtfctn" property="sysStsNtfctn"/>
+  	</jb:bean>
+  	<jb:bean beanId="sysStsNtfctn.sysStsInf" class="com.xml.cnaps2.ccms.v80100102.SysStsInf1" createOnElement="com.topfinance.ebo.msg.Ccms80100102">
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/orgnlSysDt"  property="orgnlSysDt"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/orgnlSysSts"  property="orgnlSysSts"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/curSysDt"  property="curSysDt"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/curSysSts"  property="curSysSts"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/hldayFlg"  property="hldayFlg"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/nxtSysDt"  property="nxtSysDt"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/bkChngNb"  property="bkChngNb"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/baseDataChngNb"  property="baseDataChngNb"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/cISChngNb"  property="cisChngNb"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/paramChngNb"  property="paramChngNb"/>
+  	</jb:bean>
+  	<jb:bean beanId="sysStsNtfctn.grpHdr.instdPty" class="com.xml.cnaps2.ccms.v80100102.InstdPty1" createOnElement="com.topfinance.ebo.msg.Ccms80100102">
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="sysStsNtfctn.grpHdr" class="com.xml.cnaps2.ccms.v80100102.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Ccms80100102">
+    	<jb:wiring beanIdRef="sysStsNtfctn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="sysStsNtfctn.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/msgId"  property="msgId"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/creDtTm"  property="creDtTm"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/sysCd"  property="sysCd"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80100102/rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="sysStsNtfctn" class="com.xml.cnaps2.ccms.v80100102.SysStsNtfctnV01" createOnElement="com.topfinance.ebo.msg.Ccms80100102">
+    	<jb:wiring beanIdRef="sysStsNtfctn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="sysStsNtfctn.sysStsInf" property="sysStsInf"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

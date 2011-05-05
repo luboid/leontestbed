@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ccms91100102</param>
+  </params>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.ccms.v91100102.Document" createOnElement="com.topfinance.ebo.msg.Ccms91100102">
+    	<jb:wiring beanIdRef="dscrdMsgNtfctn" property="dscrdMsgNtfctn"/>
+  	</jb:bean>
+  	<jb:bean beanId="dscrdMsgNtfctn.dscrdInf" class="com.xml.cnaps2.ccms.v91100102.DscrdInfV01" createOnElement="com.topfinance.ebo.msg.Ccms91100102">
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms91100102/origSndr"  property="origSndr"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms91100102/origSndDt"  property="origSndDt"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms91100102/mT"  property="mt"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms91100102/msgId"  property="msgId"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms91100102/msgRefId"  property="msgRefId"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms91100102/prcCd"  property="prcCd"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms91100102/rjctInf"  property="rjctInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="dscrdMsgNtfctn" class="com.xml.cnaps2.ccms.v91100102.DscrdMsgNtfctnV01" createOnElement="com.topfinance.ebo.msg.Ccms91100102">
+    	<jb:wiring beanIdRef="dscrdMsgNtfctn.dscrdInf" property="dscrdInf"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
