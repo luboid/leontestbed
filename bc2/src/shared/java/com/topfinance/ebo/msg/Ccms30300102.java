@@ -1,8 +1,6 @@
 package com.topfinance.ebo.msg;
 
 import com.topfinance.ebo.msg.JaxbMapping;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,13 +31,13 @@ public class Ccms30300102  implements java.io.Serializable {
     private String instgDrctPty;
     
     @JaxbMapping(objPath="freeFrmt.grpHdr.instgPty.instgPty")
-    private String instgPty;
+    private String instgIndrctPty;
     
     @JaxbMapping(objPath="freeFrmt.grpHdr.instdPty.instdDrctPty")
     private String instdDrctPty;
     
     @JaxbMapping(objPath="freeFrmt.grpHdr.instdPty.instdPty")
-    private String instdPty;
+    private String instdIndrctPty;
     
     @JaxbMapping(objPath="freeFrmt.grpHdr.sysCd")
     private String sysCd;
@@ -137,23 +135,23 @@ public class Ccms30300102  implements java.io.Serializable {
         instgDrctPty = newInstgDrctPty;
     }	  
   /**
-   * Returns the instgPty
+   * Returns the instgIndrctPty
    * 
-   * @return the instgPty
+   * @return the instgIndrctPty
    */
-    @Column(name = "INSTGPTY")
-    public String getInstgPty() {
-        return instgPty;
+    @Column(name = "INSTGINDRCTPTY")
+    public String getInstgIndrctPty() {
+        return instgIndrctPty;
     }	 
      
   /**
-   * Sets the instgPty
+   * Sets the instgIndrctPty
    *
-   * @param newInstgPty the new instgPty
+   * @param newInstgIndrctPty the new instgIndrctPty
    */
 
-    public void  setInstgPty(String newInstgPty) {
-        instgPty = newInstgPty;
+    public void  setInstgIndrctPty(String newInstgIndrctPty) {
+        instgIndrctPty = newInstgIndrctPty;
     }	  
   /**
    * Returns the instdDrctPty
@@ -175,23 +173,23 @@ public class Ccms30300102  implements java.io.Serializable {
         instdDrctPty = newInstdDrctPty;
     }	  
   /**
-   * Returns the instdPty
+   * Returns the instdIndrctPty
    * 
-   * @return the instdPty
+   * @return the instdIndrctPty
    */
-    @Column(name = "INSTDPTY")
-    public String getInstdPty() {
-        return instdPty;
+    @Column(name = "INSTDINDRCTPTY")
+    public String getInstdIndrctPty() {
+        return instdIndrctPty;
     }	 
      
   /**
-   * Sets the instdPty
+   * Sets the instdIndrctPty
    *
-   * @param newInstdPty the new instdPty
+   * @param newInstdIndrctPty the new instdIndrctPty
    */
 
-    public void  setInstdPty(String newInstdPty) {
-        instdPty = newInstdPty;
+    public void  setInstdIndrctPty(String newInstdIndrctPty) {
+        instdIndrctPty = newInstdIndrctPty;
     }	  
   /**
    * Returns the sysCd

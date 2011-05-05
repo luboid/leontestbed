@@ -33,13 +33,13 @@ public class Ccms31100101  implements java.io.Serializable {
     private String instgDrctPty;
     
     @JaxbMapping(objPath="cmonNotSgntrInfBizRspn.grpHdr.instgPty.instgPty")
-    private String instgPty;
+    private String instgIndrctPty;
     
     @JaxbMapping(objPath="cmonNotSgntrInfBizRspn.grpHdr.instdPty.instdDrctPty")
     private String instdDrctPty;
     
     @JaxbMapping(objPath="cmonNotSgntrInfBizRspn.grpHdr.instdPty.instdPty")
-    private String instdPty;
+    private String instdIndrctPty;
     
     @JaxbMapping(objPath="cmonNotSgntrInfBizRspn.grpHdr.sysCd")
     private String sysCd;
@@ -51,10 +51,10 @@ public class Ccms31100101  implements java.io.Serializable {
     private String orgnlMsgId;
     
     @JaxbMapping(objPath="cmonNotSgntrInfBizRspn.orgnlGrpHdr.orgnlInstgPty")
-    private String orgnlInstgPty;
+    private String orgnlInstgDrctPty;
     
     @JaxbMapping(objPath="cmonNotSgntrInfBizRspn.orgnlGrpHdr.orgnlMsgTp")
-    private String orgnlMsgTp;
+    private String orgnlMT;
     
     @JaxbMapping(objPath="cmonNotSgntrInfBizRspn.rspnInf.sts")
     private String sts;
@@ -158,23 +158,23 @@ public class Ccms31100101  implements java.io.Serializable {
         instgDrctPty = newInstgDrctPty;
     }	  
   /**
-   * Returns the instgPty
+   * Returns the instgIndrctPty
    * 
-   * @return the instgPty
+   * @return the instgIndrctPty
    */
-    @Column(name = "INSTGPTY")
-    public String getInstgPty() {
-        return instgPty;
+    @Column(name = "INSTGINDRCTPTY")
+    public String getInstgIndrctPty() {
+        return instgIndrctPty;
     }	 
      
   /**
-   * Sets the instgPty
+   * Sets the instgIndrctPty
    *
-   * @param newInstgPty the new instgPty
+   * @param newInstgIndrctPty the new instgIndrctPty
    */
 
-    public void  setInstgPty(String newInstgPty) {
-        instgPty = newInstgPty;
+    public void  setInstgIndrctPty(String newInstgIndrctPty) {
+        instgIndrctPty = newInstgIndrctPty;
     }	  
   /**
    * Returns the instdDrctPty
@@ -196,23 +196,23 @@ public class Ccms31100101  implements java.io.Serializable {
         instdDrctPty = newInstdDrctPty;
     }	  
   /**
-   * Returns the instdPty
+   * Returns the instdIndrctPty
    * 
-   * @return the instdPty
+   * @return the instdIndrctPty
    */
-    @Column(name = "INSTDPTY")
-    public String getInstdPty() {
-        return instdPty;
+    @Column(name = "INSTDINDRCTPTY")
+    public String getInstdIndrctPty() {
+        return instdIndrctPty;
     }	 
      
   /**
-   * Sets the instdPty
+   * Sets the instdIndrctPty
    *
-   * @param newInstdPty the new instdPty
+   * @param newInstdIndrctPty the new instdIndrctPty
    */
 
-    public void  setInstdPty(String newInstdPty) {
-        instdPty = newInstdPty;
+    public void  setInstdIndrctPty(String newInstdIndrctPty) {
+        instdIndrctPty = newInstdIndrctPty;
     }	  
   /**
    * Returns the sysCd
@@ -272,42 +272,42 @@ public class Ccms31100101  implements java.io.Serializable {
         orgnlMsgId = newOrgnlMsgId;
     }	  
   /**
-   * Returns the orgnlInstgPty
+   * Returns the orgnlInstgDrctPty
    * 
-   * @return the orgnlInstgPty
+   * @return the orgnlInstgDrctPty
    */
-    @Column(name = "ORGNLINSTGPTY")
-    public String getOrgnlInstgPty() {
-        return orgnlInstgPty;
+    @Column(name = "ORGNLINSTGDRCTPTY")
+    public String getOrgnlInstgDrctPty() {
+        return orgnlInstgDrctPty;
     }	 
      
   /**
-   * Sets the orgnlInstgPty
+   * Sets the orgnlInstgDrctPty
    *
-   * @param newOrgnlInstgPty the new orgnlInstgPty
+   * @param newOrgnlInstgDrctPty the new orgnlInstgDrctPty
    */
 
-    public void  setOrgnlInstgPty(String newOrgnlInstgPty) {
-        orgnlInstgPty = newOrgnlInstgPty;
+    public void  setOrgnlInstgDrctPty(String newOrgnlInstgDrctPty) {
+        orgnlInstgDrctPty = newOrgnlInstgDrctPty;
     }	  
   /**
-   * Returns the orgnlMsgTp
+   * Returns the orgnlMT
    * 
-   * @return the orgnlMsgTp
+   * @return the orgnlMT
    */
-    @Column(name = "ORGNLMSGTP")
-    public String getOrgnlMsgTp() {
-        return orgnlMsgTp;
+    @Column(name = "ORGNLMT")
+    public String getOrgnlMT() {
+        return orgnlMT;
     }	 
      
   /**
-   * Sets the orgnlMsgTp
+   * Sets the orgnlMT
    *
-   * @param newOrgnlMsgTp the new orgnlMsgTp
+   * @param newOrgnlMT the new orgnlMT
    */
 
-    public void  setOrgnlMsgTp(String newOrgnlMsgTp) {
-        orgnlMsgTp = newOrgnlMsgTp;
+    public void  setOrgnlMT(String newOrgnlMT) {
+        orgnlMT = newOrgnlMT;
     }	  
   /**
    * Returns the sts
