@@ -82,6 +82,22 @@ public class Cnaps2Constants {
             pkgName = "com.xml.cnaps2.ccms.v31400101";                 
         } else if(mesgType.equals(TestDummy.OPERATION_315)) {
             pkgName = "com.xml.cnaps2.ccms.v31500101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_801)) {
+            pkgName = "com.xml.cnaps2.ccms.v80100102";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_805)) {
+            pkgName = "com.xml.cnaps2.ccms.v80500102";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_806)) {
+            pkgName = "com.xml.cnaps2.ccms.v80600102";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_807)) {
+            pkgName = "com.xml.cnaps2.ccms.v80700102";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_811)) {
+            pkgName = "com.xml.cnaps2.ccms.v81100101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_900)) {
+            pkgName = "com.xml.cnaps2.ccms.v90000102";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_903)) {
+            pkgName = "com.xml.cnaps2.ccms.v90300102";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_911)) {
+            pkgName = "com.xml.cnaps2.ccms.v91100102";                 
         }
         
         if(pkgName==null) {
