@@ -53,6 +53,7 @@
     			<value>com.topfinance.ebo.msg.Ccms99000102</value>
     			<value>com.topfinance.ebo.msg.Ccms99100101</value>
     			<value>com.topfinance.ebo.msg.Ccms31100101</value>
+    			<value>com.topfinance.ebo.msg.Ccms30300102</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
