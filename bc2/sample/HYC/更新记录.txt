@@ -126,3 +126,150 @@ PATH = '/Document/CertNtfctn/GrpHdr/InstdPty/InstdDrctPty'
 
 T_C2_BIS_ELE_BSC表中,msg_code='ccms.911.001.02'数据报文中
 path = '/Document/DscrdMsgNtfctn/DscrdInf/Mt'
+
+2011-05-06:
+1、
+T_C2_BIS_ELE_BSC表中,msg_code='saps.358.001.01'数据报文中
+PATH = '/Document/MnlPldgFincgAppl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/MnlPldgFincgAppl/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/MnlPldgFincgAppl/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.359.001.01'数据报文中
+PATH = '/Document/FincgRqrmntNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/FincgRqrmntNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/FincgRqrmntNtfctn/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.361.001.01'数据报文中
+PATH = '/Document/BalWrngSetng/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BalWrngSetng/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/BalWrngSetng/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.362.001.01'数据报文中
+PATH = '/Document/BalWrngNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BalWrngNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/BalWrngNtfctn/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.363.001.01'数据报文中
+PATH = '/Document/QQryAppl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/QQryAppl/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/QQryAppl/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.365.001.01'数据报文中
+PATH = '/Document/QMgmtAppl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/QMgmtAppl/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/QMgmtAppl/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/QMgmtAppl/QMgmtApplInf/OrgnlGrpHdr/OrgnlInstgPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.366.001.01'数据报文中
+PATH = '/Document/AcctInfQryAppl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/AcctInfQryAppl/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/AcctInfQryAppl/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.366.001.01'数据报文中
+PATH = '/Document/LqdtyQryAppl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/LqdtyQryAppl/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/LqdtyQryAppl/GrpHdr/InstdPty/InstdPty'
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.370.001.01'数据报文中
+PATH = '/Document/AcctOpngAppl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/AcctOpngAppl/GrpHdr/InstdPty/InstdPty'
+Bal的TYPE = "SummaryAmountText", LENGH = "27"
+相应的建表语句也要修改，CNAPS2-v1.2.pdm也应调整（未调整）
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.371.001.01'数据报文中                                           
+PATH = '/Document/AcctMgmtAppl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/AcctMgmtAppl/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/AcctMgmtAppl/GrpHdr/InstdPty/InstdPty'
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.372.001.01'数据报文中 
+PATH = '/Document/AcctMgmtNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/AcctMgmtNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/AcctMgmtNtfctn/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.374.001.01'数据报文中 
+PATH = '/Document/IntrBkLnMgmtAppl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/IntrBkLnMgmtAppl/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.375.001.01'数据报文中 
+PATH = '/Document/IntrBkLnMgmtRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/IntrBkLnMgmtRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/IntrBkLnMgmtRspn/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/IntrBkLnMgmtRspn/OrgnlGrpHdr/OrgnlMT'
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.604.001.01'数据报文中 
+PATH = '/Document/SttlmRtrRct/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/SttlmRtrRct/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/SttlmRtrRct/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/SttlmRtrRct/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/SttlmRtrRct/NpcPrcInf/PrcSts'
+PATH = '/Document/SttlmRtrRct/NpcPrcInf/PrcCd'
+PATH = '/Document/SttlmRtrRct/NpcPrcInf/RjctInf'
+PATH = '/Document/SttlmRtrRct/NpcPrcInf/NetgDt'
+PATH = '/Document/SttlmRtrRct/NpcPrcInf/NetgRnd'
+PATH = '/Document/SttlmRtrRct/NpcPrcInf/SttlmDt'
+PATH = '/Document/SttlmRtrRct/NpcPrcInf/RcvTm'
+PATH = '/Document/SttlmRtrRct/NpcPrcInf/TrnsmtTm'
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.606.001.01'数据报文中 
+PATH = '/Document/AcctBookgNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/AcctBookgNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/AcctBookgNtfctn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/AcctBookgNtfctn/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/AcctBookgNtfctn/NpcPrcInf/PrcSts'
+PATH = '/Document/AcctBookgNtfctn/NpcPrcInf/PrcCd'
+PATH = '/Document/AcctBookgNtfctn/NpcPrcInf/RjctInf'
+PATH = '/Document/AcctBookgNtfctn/NpcPrcInf/NetgDt'
+PATH = '/Document/AcctBookgNtfctn/NpcPrcInf/NetgRnd'
+PATH = '/Document/AcctBookgNtfctn/NpcPrcInf/SttlmDt'
+PATH = '/Document/AcctBookgNtfctn/NpcPrcInf/RcvTm'
+PATH = '/Document/AcctBookgNtfctn/NpcPrcInf/TrnsmtTm'
+ELE_ID = "NpcNetgRnd"
+相应建表语句修改NETGRND改为NPCNETGRND，，CNAPS2-v1.2.pdm也应调整（未调整）
+
+xml数据不全，待修改。另外，金额数据不正确，已经修改
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.609.001.01'数据报文中 
+PATH = '/Document/IntraCityNetgQryAppl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/IntraCityNetgQryAppl/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/IntraCityNetgQryAppl/IntraCityNetgQryApplInf/OrgnlGrpHdr/OrgnlInstgPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.612.001.01'数据报文中 
+PATH = '/Document/UnltrlTx/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/UnltrlTx/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.613.001.01'数据报文中
+PATH = '/Document/AcctgErrRvsl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/AcctgErrRvsl/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.614.001.01'数据报文中
+PATH = '/Document/PoolIntrBkLnQryAppl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/PoolIntrBkLnQryAppl/GrpHdr/InstdPty/InstdPty'
+code值有不为空的，待多测
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.734.001.01'数据报文中
+PATH = '/Document/ACSTCBSAnlAcctg/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/ACSTCBSAnlAcctg/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/ACSTCBSAnlAcctg/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/AcstcbsAnlAcctg/GrpHdr/MsgId'
+PATH = '/Document/AcstcbsAnlAcctg/GrpHdr/CreDtTm'
+PATH = '/Document/AcstcbsAnlAcctg/GrpHdr/InstgPty/InstgDrctPty'
+PATH = '/Document/AcstcbsAnlAcctg/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/AcstcbsAnlAcctg/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/AcstcbsAnlAcctg/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/AcstcbsAnlAcctg/GrpHdr/SysCd' WHERE ROWID = '
+PATH = '/Document/AcstcbsAnlAcctg/GrpHdr/Rmk' WHERE ROWID = '
+PATH = '/Document/AcstcbsAnlAcctg/AcstcbsAnlAcctgInf/Acct'
+PATH = '/Document/AcstcbsAnlAcctg/AcstcbsAnlAcctgInf/InitlAmt'
+PATH = '/Document/AcstcbsAnlAcctg/AcstcbsAnlAcctgInf/InitlAmt'
+PATH = '/Document/AcstcbsAnlAcctg/AcstcbsAnlAcctgInf/AnlCdtrAmt'
+PATH = '/Document/AcstcbsAnlAcctg/AcstcbsAnlAcctgInf/AnlCdtrAmt'
+
+
+
+
+                                   
