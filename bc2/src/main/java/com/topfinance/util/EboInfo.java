@@ -5,6 +5,7 @@ import java.util.List;
 
 public class EboInfo {
 
+//	String subClassSurfix;
     String pkgName;
     String destinationClassName;
     String tableName;
@@ -14,8 +15,17 @@ public class EboInfo {
 
     }
     
+    // used to gen xml2ebo 
+    List<EboInfo> nestedEbo=new ArrayList<EboInfo>();
+    String wiringColumnName;
+    String wiringXmlPath;
+    
     
     public static class Column {
+    	
+
+    	boolean isNested;
+    	
         String variableName;
         String capitalisedVariableName;
         String javaType;
@@ -120,6 +130,16 @@ public class EboInfo {
             this.dbExtraMysql = dbExtraMysql;
         }
 
+		public boolean isNested() {
+			return isNested;
+		}
+
+		public void setNested(boolean isNested) {
+			this.isNested = isNested;
+		}
+
+
+
 
 
 
@@ -175,6 +195,45 @@ public class EboInfo {
     public void setBasicColumns(List<Column> basicColumns) {
         this.basicColumns = basicColumns;
     }
-    
+
+
+
+	public List<EboInfo> getNestedEbo() {
+		return nestedEbo;
+	}
+
+
+
+	public void setNestedEbo(List<EboInfo> nestedEbo) {
+		this.nestedEbo = nestedEbo;
+	}
+
+
+
+	public String getWiringColumnName() {
+		return wiringColumnName;
+	}
+
+
+
+	public void setWiringColumnName(String wiringColumnName) {
+		this.wiringColumnName = wiringColumnName;
+	}
+
+
+
+	public String getWiringXmlPath() {
+		return wiringXmlPath;
+	}
+
+
+
+	public void setWiringXmlPath(String wiringXmlPath) {
+		this.wiringXmlPath = wiringXmlPath;
+	}
+
+
+
+
     
 }

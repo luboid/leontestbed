@@ -50,6 +50,9 @@ public class Cnaps2Constants {
 		String pkgName = null;
         if(mesgType.equals("testNested")) {
         	pkgName="com.xml.testNested";
+        } 
+        else if(mesgType.equals("saps.737.001.01")) {
+        	pkgName = "com.xml.cnaps2.saps.v73700101";
         }
         else if (mesgType.equals(TestDummy.OPERATION_101)) {
 //            pkgName = "com.topfinance.plugin.cnaps2.v00800102";

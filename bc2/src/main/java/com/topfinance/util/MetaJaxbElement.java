@@ -9,6 +9,7 @@ public class MetaJaxbElement {
 //	String eboClassName;
 	String beanClass;
 	String beanId;
+	String createOn;
 	List<Value> values = new ArrayList<Value>();
 	List<Wiring> wirings = new ArrayList<Wiring>();
 	
@@ -115,5 +116,15 @@ public class MetaJaxbElement {
 					+ "]";
 		}
 		
+	}
+	public String getCreateOn() {
+		return createOn;
+	}
+
+
+
+
+	public void setCreateOn(String createOn) {
+		this.createOn = createOn;
 	}
 }

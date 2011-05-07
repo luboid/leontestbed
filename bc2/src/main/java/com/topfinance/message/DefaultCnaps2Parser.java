@@ -58,6 +58,9 @@ public class DefaultCnaps2Parser  {
         } else {
         	
         	OperationDefinition od = ods.getOd(mesgType);
+        	if(od==null) {
+        		throw new RuntimeException("no operation definition of "+mesgType+" in operations.xml!!");
+        	}
 //        	ICfgOperation cfgOpn = CfgImplFactory.loadCfgReader().getOperation(protocol, mesgType);
         	
             // Parse xml body

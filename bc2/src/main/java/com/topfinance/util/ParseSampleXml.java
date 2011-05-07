@@ -2,12 +2,14 @@ package com.topfinance.util;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -31,7 +33,6 @@ import org.jdom.input.SAXBuilder;
 import org.jpos.iso.ISODate;
 import org.jpos.iso.ISOMsg;
 
-
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.TestDummy;
@@ -53,25 +54,38 @@ import freemarker.template.TemplateException;
 
 public class ParseSampleXml{
     
-    public static class Entry {
-        public Entry(String key, String value, Class jaxbType) {
+
+	
+    public static class DataEle {
+    	
+    	public boolean isList() {
+    		return jaxbType == null;
+    	}
+    	
+        public DataEle(String key, String value, Class jaxbType) {
             super();
             this.key = key;
             this.value = value;
             this.jaxbType = jaxbType;
         }
+        // key is the xpath replaced / with .
         public String key;
+        
         public String value;
         public Class jaxbType;
-        
+
         public String eboFldName;
+        
+        public List<DataEle> leaves = new ArrayList<DataEle>();
 
 		@Override
 		public String toString() {
-			return "Entry [key=" + key + ", value=" + value + ", jaxbType="
-					+ jaxbType + ", eboFldName=" + eboFldName + "]";
+			return "DataEle [key=" + key + ", value=" + value + ", jaxbType="
+					+ jaxbType + ", eboFldName=" + eboFldName + ", leaves="
+					+ leaves + "]";
 		}
-        
+
+
         
     }
     
@@ -108,7 +122,7 @@ public class ParseSampleXml{
     public static final String EBO_PKG_NAME = "com.topfinance.ebo.msg";
    
     
-    public List<Entry> parsed = new ArrayList<Entry>();
+    public List<DataEle> parsed = new ArrayList<DataEle>();
     String basePath;
 //    String op;
     OpInfo opInfo;
@@ -125,8 +139,8 @@ public class ParseSampleXml{
     String outSample8583File;
 //    String outMapFile;
 //    String outReverseMapFile;
-    String outDdlOracleFile;
-    String outDdlMysqlFile;
+//    private String outDdlOracleFile;
+//    private String outDdlMysqlFile;
     String outEboPath;
     
     String outMapSmooksEbo2JaxbFile;
@@ -169,10 +183,8 @@ public class ParseSampleXml{
 //        outMapFile = basePath+"/map/"+op+"-up.map";
 //        outReverseMapFile = basePath+"/map/"+op+"-down.map";
         
-//        outDdlOracleFile = basePath+"/cnaps2/ddl/"+"oracle-"+opInfo.getMesgType()+".sql";
-//        outDdlMysqlFile =  basePath+"/cnaps2/ddl/"+"mysql-"+opInfo.getMesgType()+".sql";
-      outDdlOracleFile = basePath+"/cnaps2/ddl/"+"oracle-"+opInfo.toString()+".sql";
-      outDdlMysqlFile =  basePath+"/cnaps2/ddl/"+"mysql-"+opInfo.toString()+".sql";        
+//      outDdlOracleFile = basePath+"/cnaps2/ddl/"+"oracle-"+opInfo.toString()+".sql";
+//      outDdlMysqlFile =  basePath+"/cnaps2/ddl/"+"mysql-"+opInfo.toString()+".sql";        
         
         outEboPath = basePath+"/cnaps2/java/"+StringUtils.replace(eboPkgName, ".", "/");
         
@@ -190,11 +202,11 @@ public class ParseSampleXml{
     private void info(String s) {
       System.out.println("in [ParseSampleXml] INFO: "+s);
   }
-    private String getJavaName(String name) {
+    public static String getJavaName(String name) {
         return StringUtils.uncapitalize(name);
     }
     
-    private boolean isCollection(Class thisClass) {
+    public static boolean isCollection(Class thisClass) {
         boolean res = false;
         debug("thisClass=" + thisClass.getName());
         if (Collection.class.isAssignableFrom(thisClass)) {
@@ -208,6 +220,17 @@ public class ParseSampleXml{
         Field res = null;
         try {
             Class parentClass = Class.forName(jaxbPkgName + ".Document");
+            res = findField(pathStack, name, parentClass);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
+        return res;
+    }
+    
+    public static Field findField(Stack<String> pathStack, String name, Class parentClass) {
+        Field res = null;
+        try {
             for (String path : pathStack) {
                 String fieldName = "";
                 if(path.contains("[")) {
@@ -230,9 +253,9 @@ public class ParseSampleXml{
             throw new RuntimeException(ex);
         }
         return res;
-    }
+    }    
     
-    private static Class getValueClassIfHave(Class thisClass) {
+    public static Class getValueClassIfHave(Class thisClass) {
         Class res = null;
         
         // or another pkg prefix
@@ -388,10 +411,10 @@ public class ParseSampleXml{
     
     private void addToParsed(String key, String value, Class type) {
     	debug("addedToParsed: key="+key+", value="+value+", type="+type.getSimpleName());
-        parsed.add(new Entry(key, value, type));
+        parsed.add(new DataEle(key, value, type));
     }
     
-    private String printStack(Stack<String> stack) {
+    public static String printStack(Stack<String> stack) {
         StringBuffer buf = new StringBuffer();
         int i=0;
         for(String key : stack) {
@@ -462,7 +485,7 @@ public class ParseSampleXml{
             
             Map<String, Integer> nameCounter = new HashMap<String, Integer>();
             int i=0;
-            for (Entry pp : parsed) {
+            for (DataEle pp : parsed) {
                 String this8583Pos = String.valueOf(ISO8583_MAP_START_POS+i);
                 
                 String key = pp.key;
@@ -654,7 +677,12 @@ public class ParseSampleXml{
     }
     
     // mapping of jaxbType to EboType
-    private String getEboTypeFromJaxbType(Class jaxbType) {
+    private String getEboTypeFromJaxbType(DataEle pp, EboInfo subEbo) {
+    	Class jaxbType = pp.jaxbType;
+    	if(pp.isList()) {
+    		return "java.util.Set<"+subEbo.getDestinationClassName()+">";
+    	}
+    	
         String res = "";
         if(jaxbType.getName().startsWith(JAXB_PKG_PREFIX)) {
             // one of the enumeration class?
@@ -682,7 +710,12 @@ public class ParseSampleXml{
     }
     
     // mapping of jaxbType to DbType
-    private String getOracleDbTypeFromJaxbType(Class jaxbType) {
+    private String getOracleDbTypeFromJaxbType(DataEle pp) {
+    	
+    	if(pp.isList()) {
+    		return "";
+    	}
+    	Class jaxbType = pp.jaxbType;
         String DB_BOOLEAN = "CHAR(1)";
         String DB_SHORT_STRING = "VARCHAR2(20)";
         String DB_STRING = "VARCHAR2(200)";
@@ -726,7 +759,12 @@ public class ParseSampleXml{
         }
         return res;
     }
-    private String getMysqlDbTypeFromJaxbType(Class jaxbType) {
+    private String getMysqlDbTypeFromJaxbType(DataEle pp) {
+    	Class jaxbType = pp.jaxbType;
+    	if(pp.isList()) {
+    		return "";
+    	}
+    	
         String DB_BOOLEAN = "CHAR(1)";
         String DB_SHORT_STRING = "VARCHAR(20)";
         String DB_STRING = "VARCHAR(200)";
@@ -771,15 +809,16 @@ public class ParseSampleXml{
         return res;
     }
     // get a meaningful Java name from full opath (while keep reasonably short)  
-    private void getEboVariableNameFromJaxbOPath(StringBuffer javaNameBuf, StringBuffer dbNameBuf, Entry entry) {
+    private void getEboVariableNameFromJaxbOPath(StringBuffer javaNameBuf, StringBuffer dbNameBuf, DataEle dataEle) {
     	
-    	if(entry.eboFldName!=null) {
-    		javaNameBuf.append(entry.eboFldName);
-    		dbNameBuf.append(entry.eboFldName);
+    	if(dataEle.eboFldName!=null) {
+
+    		javaNameBuf.append(dataEle.eboFldName);
+    		dbNameBuf.append(dataEle.eboFldName);
     		return;
     	}
     	
-    	String oPath = entry.key;
+    	String oPath = dataEle.key;
         List<String> temp = new ArrayList<String>();
         String[] words = StringUtils.split(oPath, ".");
         
@@ -824,14 +863,293 @@ public class ParseSampleXml{
         
     }
     
+    public void handleOneEle(Map<String, Class> path2Class, Map<String, Integer> nameCounter, Map<String, MetaJaxbElement> path2Meta, DataEle pp, DataEle parent) throws Exception{
+		String rootPath="Document";
+    	String rootJaxbClassName = jaxbPkgName+".Document";
+    	Class rootJaxbClazz = Class.forName(rootJaxbClassName);
+    	
+        String key = pp.key;
+        String value = pp.value;
+        Class jaxbType = pp.jaxbType;
+        EboInfo.Column column = new EboInfo.Column();
+        StringBuffer javaNameBuf = new StringBuffer();
+        StringBuffer dbNameBuf = new StringBuffer();
+        getEboVariableNameFromJaxbOPath(javaNameBuf, dbNameBuf, pp);
+        
+        tellDuplicate(nameCounter, javaNameBuf, dbNameBuf);
+        
+        String capitizedJavaName = javaNameBuf.toString();
+//        String dbName = StringUtils.upperCase(dbNameBuf.toString());
+        
+//        if(nameCounter.get(dbName)==null) {
+//            // first
+//            nameCounter.put(dbName, 1);
+//        }else {
+//            // duplicate happened
+//            int oldCount = nameCounter.get(dbName);
+//            nameCounter.put(dbName, oldCount+1);
+//            dbName+=oldCount;
+//            capitizedJavaName+=oldCount;
+//            
+//        }
+        String varName = StringUtils.uncapitalize(capitizedJavaName);
+        
+        
+        //key=fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.instrPrty, value=NORM, jaxbType=class java.lang.String
+        debug("");
+        debug("key="+key+", value="+value+", jaxbType="+jaxbType+", varName="+varName);
+
+
+
+        List<String> eNames = new ArrayList<String>();
+        
+        String[] eNamesTemp = StringUtils.split(key, ".");
+        // preprocess, for array insert an extra element
+        for(String temp : eNamesTemp) {
+        	
+//        	if(temp.contains("[")) {
+//        		// array
+//        		eNames.add(temp.substring(0, temp.indexOf("[")));
+//        		eNames.add("xxx");
+//        	}else {
+//        		eNames.add(temp);
+//        	}
+        	
+        	eNames.add(temp);
+        }
+        
+        StringBuffer pathBuf = new StringBuffer();
+        int i=0;            
+        String parentPath=rootPath;
+        
+        Class parentClass = rootJaxbClazz;
+        
+        for(String eName : eNames) {
+        	i++;
+        	if(i!=1) {
+        		// first
+        		pathBuf.append(".");
+        	}
+        	pathBuf.append(eName);
+        	String path=pathBuf.toString();
+        	String beanId = path;
+        	
+        	debug("raw eName="+eName+", parentPath="+parentPath+", parentClass="+parentClass.getSimpleName());
+        	
+        	if(i==eNames.size()) {
+        		// last, is value
+            	MetaJaxbElement parentMeta = path2Meta.get(parentPath);
+            	if(parentMeta==null) {
+            		throw new RuntimeException("should not happen");
+            	}
+            	
+            	if(eName.contains("[")) {
+            		// array of values
+            		MetaJaxbElement meta = new MetaJaxbElement();
+//                	meta.setEboPkgName(eboPkgName);
+//                	meta.setEboClassName(eboClassName);
+                	meta.setBeanClass("java.util.ArrayList");
+                	meta.setBeanId(beanId);
+                	meta.setCreateOn(eboPkgName+"."+eboClassName);
+                	
+//                	meta.setPath(path);
+                	path2Meta.put(path, meta);
+                	
+                	// value
+                	Value v = new Value();
+                	v.setProperty("NULL");
+                	v.setData("/"+eboPkgName+"."+eboClassName+"/"+varName);
+                	v.setDecoder("NULL");
+                	// TODO decoder?
+                	meta.getValues().add(v);
+                	
+                	// add wiring to parent
+                	Wiring w = new Wiring();
+                	w.setBeanIdRef(beanId);
+                	w.setProperty(eName.substring(0, eName.indexOf("[")));
+                	parentMeta.getWirings().add(w);
+            	}
+            	
+            	else {
+            		if(eName.startsWith("@")) {
+            			eName = eName.substring(1);
+            		}
+            		Value v = new Value();
+            		if(parent==null) {
+//            			v.setData("/"+eboPkgName+"."+eboClassName+"/"+varName);	
+            			v.setData(varName);	
+            		}
+            		else {
+            			// nested
+//            			v.setData("/"+eboPkgName+"."+eboClassName+parent.eboFldName+"/"+varName);
+            			v.setData(varName);
+            		}
+            		
+            		v.setProperty(eName);
+        		
+            		Field f = parentClass.getDeclaredField(eName);
+        		
+            		String clazz = f.getType().getSimpleName();
+            		if("Date".equals(clazz)) {
+            			v.setDecoder("Date");
+            		}else if("BigDecimal".equals(clazz)) {
+            			v.setDecoder("BigDecimal");
+            		}else {
+            			v.setDecoder("NULL");
+            		}
+            		parentMeta.getValues().add(v);
+            	}
+        		
+        		continue;
+        	}
+        	
+        	debug("eName="+eName);
+        	
+        	Class thisClass = null;
+        	MetaJaxbElement meta = path2Meta.get(path);
+        	if(meta==null) {
+        		// this element
+        		
+        		if(eName.contains("[")) {
+        			// array
+
+            		meta = new MetaJaxbElement();
+//                	meta.setEboPkgName(eboPkgName);
+//                	meta.setEboClassName(eboClassName);
+                	meta.setBeanClass("java.util.ArrayList");
+                	meta.setBeanId(beanId);
+                	if(parent==null) {
+                		// is list but only occur once
+                		meta.setCreateOn(eboPkgName+"."+eboClassName);
+                	}
+                	else {
+                		// nested
+                		meta.setCreateOn(eboPkgName+"."+eboClassName+"/"+getJavaName(parent.eboFldName));
+                	}
+//                	meta.setPath(path);
+                	path2Meta.put(path, meta);
+        			
+                	// add wiring for parent element
+                	MetaJaxbElement parentMeta = path2Meta.get(parentPath);
+                	if(parentMeta==null) {
+                		throw new RuntimeException("should not happen");
+                	}
+                	
+                	boolean wiringExisted = false;
+                	for(Wiring w : parentMeta.getWirings()) {
+                		if(w.getProperty().equals(eName)) {
+                			// existed
+                			wiringExisted = true;
+                		}
+                	}
+                	if(!wiringExisted) {
+                		Wiring w = new Wiring();
+                		// property name is without [0]
+                		w.setProperty(eName.substring(0, eName.indexOf("[")));
+                		w.setBeanIdRef(beanId);
+                		parentMeta.getWirings().add(w);
+                	}
+                	
+                	
+        			// array member
+        			String fn = eName.substring(0, eName.indexOf("["));
+        			Field f = parentClass.getDeclaredField(fn);
+                	thisClass = Iso8583ToXml.getCollectionGenericType(f);
+                	pathBuf.append(".xxx");
+                	path+=".xxx";
+                	beanId = path;
+                	
+                	MetaJaxbElement meta2 = new MetaJaxbElement();
+//                	meta2.setEboPkgName(eboPkgName);
+//                	meta2.setEboClassName(eboClassName);
+                	meta2.setBeanClass(thisClass.getName());
+                	meta2.setBeanId(beanId);
+                	if(parent==null) {
+                		// is list but only occur once
+                		meta2.setCreateOn(eboPkgName+"."+eboClassName);
+                	}
+                	else {
+                		meta2.setCreateOn(eboPkgName+"."+eboClassName+parent.eboFldName);
+                	}
+//                	meta2.setPath(path);
+                	path2Meta.put(path, meta2);
+                	
+                	// wiring
+                	Wiring w = new Wiring();
+                	w.setProperty("NULL");
+                	w.setBeanIdRef(beanId);
+                	meta.getWirings().add(w);
+                	
+        		}
+        		else {
+        			debug("parentClass="+parentClass.getSimpleName()+", eName="+eName);
+        			thisClass = parentClass.getDeclaredField(eName).getType();
+        			
+            		meta = new MetaJaxbElement();
+//                	meta.setEboPkgName(eboPkgName);
+//                	meta.setEboClassName(eboClassName);
+                	meta.setBeanClass(thisClass.getName());
+                	meta.setBeanId(beanId);
+//                	meta.setPath(path);
+                	meta.setCreateOn(eboPkgName+"."+eboClassName);
+                	path2Meta.put(path, meta);
+                	
+                	// add wiring for parent element
+                	MetaJaxbElement parentMeta = path2Meta.get(parentPath);
+                	if(parentMeta==null) {
+                		throw new RuntimeException("should not happen");
+                	}
+                	
+                	boolean wiringExisted = false;
+                	for(Wiring w : parentMeta.getWirings()) {
+                		if(w.getProperty().equals(eName)) {
+                			// existed
+                			wiringExisted = true;
+                		}
+                	}
+                	if(!wiringExisted) {
+                		Wiring w = new Wiring();
+                		w.setProperty(eName);
+                		w.setBeanIdRef(beanId);
+                		parentMeta.getWirings().add(w);
+                	}
+        		}
+        		
+            	
+
+        	}
+        	else {
+        		debug("alreadyfound: path="+path);
+        		// already found
+        		thisClass = Class.forName(meta.getBeanClass());
+        		if(eName.contains("[")) {
+        			// array, member should already added
+        			
+        			// modify path
+                	pathBuf.append(".xxx");
+                	path+=".xxx";
+                	MetaJaxbElement memeberMeta = path2Meta.get(path);
+                	if(memeberMeta==null) {
+                		throw new RuntimeException("should not happen");
+                	}
+                	thisClass = Class.forName(memeberMeta.getBeanClass());
+        		}
+        		
+        	}
+        	
+        	parentPath = path;
+        	parentClass = thisClass;
+        }    	
+    }
     public void generateMapEbo2Jaxb() {
     	debug("=======generateMapEbo2Jaxb======");
     	try {
+    		String rootPath="Document";
     	String rootJaxbClassName = jaxbPkgName+".Document";
     	Class rootJaxbClazz = Class.forName(rootJaxbClassName);
     	
 
-        String rootPath="Document";
+        
         String rootBeanId=SmooksTransformer.ROOT_BEAN_ID;
         
 
@@ -842,6 +1160,7 @@ public class ParseSampleXml{
 //			root.setEboClassName(eboClassName);
 			root.setBeanClass(rootJaxbClassName);
 			root.setBeanId(rootBeanId);
+			root.setCreateOn(eboPkgName+"."+eboClassName);
 //			root.setPath(rootPath);
 			
 			path2Meta.put(rootPath, root);
@@ -852,255 +1171,17 @@ public class ParseSampleXml{
 		
         // avoid duplication
         Map<String, Integer> nameCounter = new HashMap<String, Integer>();
-    	for (Entry pp : parsed) {
-            String key = pp.key;
-            String value = pp.value;
-            Class jaxbType = pp.jaxbType;
-            
-            EboInfo.Column column = new EboInfo.Column();
-            StringBuffer javaNameBuf = new StringBuffer();
-            StringBuffer dbNameBuf = new StringBuffer();
-            getEboVariableNameFromJaxbOPath(javaNameBuf, dbNameBuf, pp);
-            
-            tellDuplicate(nameCounter, javaNameBuf, dbNameBuf);
-            
-            String capitizedJavaName = javaNameBuf.toString();
-//            String dbName = StringUtils.upperCase(dbNameBuf.toString());
-            
-//            if(nameCounter.get(dbName)==null) {
-//                // first
-//                nameCounter.put(dbName, 1);
-//            }else {
-//                // duplicate happened
-//                int oldCount = nameCounter.get(dbName);
-//                nameCounter.put(dbName, oldCount+1);
-//                dbName+=oldCount;
-//                capitizedJavaName+=oldCount;
-//                
-//            }
-            String varName = StringUtils.uncapitalize(capitizedJavaName);
-            
-            
-            //key=fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.instrPrty, value=NORM, jaxbType=class java.lang.String
-            debug("");
-            debug("key="+key+", value="+value+", jaxbType="+jaxbType+", varName="+varName);
+    	for (DataEle pp : parsed) {
 
-
-            List<String> eNames = new ArrayList<String>();
-            
-            String[] eNamesTemp = StringUtils.split(key, ".");
-            // preprocess, for array insert an extra element
-            for(String temp : eNamesTemp) {
-            	
-//            	if(temp.contains("[")) {
-//            		// array
-//            		eNames.add(temp.substring(0, temp.indexOf("[")));
-//            		eNames.add("xxx");
-//            	}else {
-//            		eNames.add(temp);
-//            	}
-            	
-            	eNames.add(temp);
+            // is it work? 
+            if(pp.isList()) {
+            	for(DataEle ele : pp.leaves) {
+            		handleOneEle(path2Class, nameCounter, path2Meta, ele, pp);
+            	}
             }
-            
-            StringBuffer pathBuf = new StringBuffer();
-            int i=0;            
-            String parentPath=rootPath;
-            
-            Class parentClass = rootJaxbClazz;
-            
-            for(String eName : eNames) {
-            	i++;
-            	if(i!=1) {
-            		// first
-            		pathBuf.append(".");
-            	}
-            	pathBuf.append(eName);
-            	String path=pathBuf.toString();
-            	String beanId = path;
-            	
-            	if(i==eNames.size()) {
-            		// last, is value
-                	MetaJaxbElement parentMeta = path2Meta.get(parentPath);
-                	if(parentMeta==null) {
-                		throw new RuntimeException("should not happen");
-                	}
-                	
-                	if(eName.contains("[")) {
-                		// array of values
-                		MetaJaxbElement meta = new MetaJaxbElement();
-//                    	meta.setEboPkgName(eboPkgName);
-//                    	meta.setEboClassName(eboClassName);
-                    	meta.setBeanClass("java.util.ArrayList");
-                    	meta.setBeanId(beanId);
-//                    	meta.setPath(path);
-                    	path2Meta.put(path, meta);
-                    	
-                    	// value
-                    	Value v = new Value();
-                    	v.setProperty("NULL");
-                    	v.setData("/"+eboPkgName+"."+eboClassName+"/"+varName);
-                    	v.setDecoder("NULL");
-                    	// TODO decoder?
-                    	meta.getValues().add(v);
-                    	
-                    	// add wiring to parent
-                    	Wiring w = new Wiring();
-                    	w.setBeanIdRef(beanId);
-                    	w.setProperty(eName.substring(0, eName.indexOf("[")));
-                    	parentMeta.getWirings().add(w);
-                	}
-                	
-                	else {
-                		if(eName.startsWith("@")) {
-                			eName = eName.substring(1);
-                		}
-                		Value v = new Value();
-                		v.setData("/"+eboPkgName+"."+eboClassName+"/"+varName);
-                		v.setProperty(eName);
-            		
-                		Field f = parentClass.getDeclaredField(eName);
-            		
-                		String clazz = f.getType().getSimpleName();
-                		if("Date".equals(clazz)) {
-                			v.setDecoder("Date");
-                		}else if("BigDecimal".equals(clazz)) {
-                			v.setDecoder("BigDecimal");
-                		}else {
-                			v.setDecoder("NULL");
-                		}
-                		parentMeta.getValues().add(v);
-                	}
-            		
-            		continue;
-            	}
-            	
-            	debug("eName="+eName+", parentPath="+parentPath+", parentClass="+parentClass.getSimpleName());
-            	
-            	Class thisClass = null;
-            	MetaJaxbElement meta = path2Meta.get(path);
-            	if(meta==null) {
-            		// this element
-            		
-            		
-            		
-            		if(eName.contains("[")) {
-            			// array
-
-                		meta = new MetaJaxbElement();
-//                    	meta.setEboPkgName(eboPkgName);
-//                    	meta.setEboClassName(eboClassName);
-                    	meta.setBeanClass("java.util.ArrayList");
-                    	meta.setBeanId(beanId);
-//                    	meta.setPath(path);
-                    	path2Meta.put(path, meta);
-            			
-                    	// add wiring for parent element
-                    	MetaJaxbElement parentMeta = path2Meta.get(parentPath);
-                    	if(parentMeta==null) {
-                    		throw new RuntimeException("should not happen");
-                    	}
-                    	
-                    	boolean wiringExisted = false;
-                    	for(Wiring w : parentMeta.getWirings()) {
-                    		if(w.getProperty().equals(eName)) {
-                    			// existed
-                    			wiringExisted = true;
-                    		}
-                    	}
-                    	if(!wiringExisted) {
-                    		Wiring w = new Wiring();
-                    		// property name is without [0]
-                    		w.setProperty(eName.substring(0, eName.indexOf("[")));
-                    		w.setBeanIdRef(beanId);
-                    		parentMeta.getWirings().add(w);
-                    	}
-                    	
-                    	
-            			// array member
-            			String fn = eName.substring(0, eName.indexOf("["));
-            			Field f = parentClass.getDeclaredField(fn);
-                    	thisClass = Iso8583ToXml.getCollectionGenericType(f);
-                    	pathBuf.append(".xxx");
-                    	path+=".xxx";
-                    	beanId = path;
-                    	
-                    	MetaJaxbElement meta2 = new MetaJaxbElement();
-//                    	meta2.setEboPkgName(eboPkgName);
-//                    	meta2.setEboClassName(eboClassName);
-                    	meta2.setBeanClass(thisClass.getName());
-                    	meta2.setBeanId(beanId);
-//                    	meta2.setPath(path);
-                    	path2Meta.put(path, meta2);
-                    	
-                    	// wiring
-                    	Wiring w = new Wiring();
-                    	w.setProperty("NULL");
-                    	w.setBeanIdRef(beanId);
-                    	meta.getWirings().add(w);
-                    	
-            		}
-            		else {
-            			debug("parentClass="+parentClass.getSimpleName()+", eName="+eName);
-            			thisClass = parentClass.getDeclaredField(eName).getType();
-            			
-                		meta = new MetaJaxbElement();
-//                    	meta.setEboPkgName(eboPkgName);
-//                    	meta.setEboClassName(eboClassName);
-                    	meta.setBeanClass(thisClass.getName());
-                    	meta.setBeanId(beanId);
-//                    	meta.setPath(path);
-                    	
-                    	path2Meta.put(path, meta);
-                    	
-                    	// add wiring for parent element
-                    	MetaJaxbElement parentMeta = path2Meta.get(parentPath);
-                    	if(parentMeta==null) {
-                    		throw new RuntimeException("should not happen");
-                    	}
-                    	
-                    	boolean wiringExisted = false;
-                    	for(Wiring w : parentMeta.getWirings()) {
-                    		if(w.getProperty().equals(eName)) {
-                    			// existed
-                    			wiringExisted = true;
-                    		}
-                    	}
-                    	if(!wiringExisted) {
-                    		Wiring w = new Wiring();
-                    		w.setProperty(eName);
-                    		w.setBeanIdRef(beanId);
-                    		parentMeta.getWirings().add(w);
-                    	}
-            		}
-            		
-                	
-
-            	}
-            	else {
-            		debug("alreadyfound: path="+path);
-            		// already found
-            		thisClass = Class.forName(meta.getBeanClass());
-            		if(eName.contains("[")) {
-            			// array, member should already added
-            			
-            			// modify path
-                    	pathBuf.append(".xxx");
-                    	path+=".xxx";
-                    	MetaJaxbElement memeberMeta = path2Meta.get(path);
-                    	if(memeberMeta==null) {
-                    		throw new RuntimeException("should not happen");
-                    	}
-                    	thisClass = Class.forName(memeberMeta.getBeanClass());
-            		}
-            		
-            	}
-            	
-            	parentPath = path;
-            	parentClass = thisClass;
+            else {
+            	handleOneEle(path2Class, nameCounter, path2Meta, pp, null);
             }
-            
-            
             
             
 
@@ -1156,100 +1237,9 @@ public class ParseSampleXml{
     public void generateDdlAndEbo() {
         try {
             debug("\n============generateDdlAndEbo=======");
-            EboInfo eboInfo = new EboInfo();
-            eboInfo.setPkgName(eboPkgName);
-            eboInfo.setDestinationClassName(eboClassName);
-            eboInfo.setTableName(tblName);
-            
-            // default field:
-            EboInfo.Column uuid = new EboInfo.Column();
-            uuid.setCapitalisedVariableName("id");
-            uuid.setVariableName("id");
-            uuid.setJavaType("Integer");
-            uuid.setDbName("ID");
-            uuid.setDbTypeOracle("Integer");
-            uuid.setDbTypeMysql("int");
-            eboInfo.getBasicColumns().add(uuid);
-            
-            // avoid duplication
-            Map<String, Integer> nameCounter = new HashMap<String, Integer>();
-            
-            for (Entry pp : parsed) {
-                String key = pp.key;
-                String value = pp.value;
-                Class jaxbType = pp.jaxbType;
-                
-                debug("key="+key+", value="+value+", jaxbType="+ (jaxbType==null ? "NULL" : jaxbType.getName()) );
-                
-                EboInfo.Column column = new EboInfo.Column();
-                StringBuffer javaNameBuf = new StringBuffer();
-                StringBuffer dbNameBuf = new StringBuffer();
-                getEboVariableNameFromJaxbOPath(javaNameBuf, dbNameBuf, pp);
-                
-                tellDuplicate(nameCounter, javaNameBuf, dbNameBuf);
-                
-                String capitizedJavaName = javaNameBuf.toString();
-                String dbName = StringUtils.upperCase(dbNameBuf.toString());
-                
-//                if(nameCounter.get(dbName)==null) {
-//                    // first
-//                    nameCounter.put(dbName, 1);
-//                }else {
-//                    // duplicate happened
-//                    int oldCount = nameCounter.get(dbName);
-//                    nameCounter.put(dbName, oldCount+1);
-//                    dbName+=oldCount;
-//                    capitizedJavaName+=oldCount;
-//                    
-//                }
 
-                column.setCapitalisedVariableName(capitizedJavaName);
-                column.setVariableName(StringUtils.uncapitalize(capitizedJavaName));
-                column.setJavaType(getEboTypeFromJaxbType(jaxbType));
-
-                column.setDbName(dbName);
-                column.setDbTypeOracle(getOracleDbTypeFromJaxbType(jaxbType));
-                column.setDbTypeMysql(getMysqlDbTypeFromJaxbType(jaxbType));
-                
-                column.setObjPath(key);
-                 
-                // used in xml2Ebo map
-                List<String> xmlPaths = new ArrayList<String>();
-                xmlPaths.add("Document");
-                String[] ss = StringUtils.split(key, ".");
-                for(String s: ss) {
-                	String xmlPath=s;
-
-                 // special case to handle
-                	if("fiToFICstmrCdtTrf".equals(s)) {
-                		xmlPath="FIToFICstmrCdtTrf";
-                	}else if("fiToFIPmtStsRpt".equals(s)) {
-                		xmlPath="FIToFIPmtStsRpt";
-                	}
-                	else if(s.startsWith("@")) {
-                		xmlPath="@"+StringUtils.capitalize(s.substring(1));
-                	}
-                	else {
-                		xmlPath=StringUtils.capitalize(s);
-                	}
-                	
-                	if(xmlPath.contains("[")) {
-                		xmlPath=xmlPath.substring(0, xmlPath.indexOf("["));
-                	}
-                	
-                	if("value".equals(xmlPath)) {
-                		continue;
-                	}
-                	xmlPaths.add(xmlPath);
-                }
-                StringBuffer buf = new StringBuffer();
-                
-                for(String xmlPath: xmlPaths) {
-                	buf.append("/").append(xmlPath);
-                }
-                column.setXmlPath(buf.toString());
-                eboInfo.getBasicColumns().add(column);
-            }
+            
+            EboInfo eboInfo = renderEboInfo(parsed, "");
             
 //            EboInfo.Column ts = new EboInfo.Column();
 //            ts.setCapitalisedVariableName("Ts");
@@ -1262,46 +1252,184 @@ public class ParseSampleXml{
 //            ts.setDbExtraMysql("");
 //            eboInfo.getBasicColumns().add(ts);            
             
-            File outEboDir = new File(outEboPath);
-            if(!outEboDir.exists()) {
-                outEboDir.mkdirs();
-            }
-            Writer eboOut = new OutputStreamWriter(new FileOutputStream(new File(outEboDir, eboClassName+".java")), ENCODING);
-            String eboContent = renderTemplate(eboInfo, TEMPLATE_NAME_EBO);
-            eboOut.write(eboContent);
-            eboOut.flush();
-            System.out.println("generated ebo at " + outEboPath);
+
             
-            Writer ddlOut = new OutputStreamWriter(new FileOutputStream(new File(outDdlOracleFile)), ENCODING);
-            String ddlContent = renderTemplate(eboInfo, TEMPLATE_NAME_DDL_ORACLE);
-            ddlOut.write(ddlContent);
-            ddlOut.flush();
-            System.out.println("generated oracle ddl at " + outDdlOracleFile);
             
-            Writer ddlOutMysql = new OutputStreamWriter(new FileOutputStream(new File(outDdlMysqlFile)), ENCODING);
-            String ddlContentMysql = renderTemplate(eboInfo, TEMPLATE_NAME_DDL_MYSQL);
-            ddlOutMysql.write(ddlContentMysql);
-            ddlOutMysql.flush();
-            System.out.println("generated oracle ddl at " + outDdlMysqlFile);
-            
-//            outMapSmooksXml2EboFile = basePath+"/map-smooks/"+op+"-xml2ebo.map";
-//            outMapPrivateIso2EboFile = basePath+"/map-private/"+op+"-iso2ebo.map";
-//            outMapPrivateEbo2IsoFile = basePath+"/map-private/"+op+"-ebo2iso.map";
-//            public static final String TEMPLATE_NAME_MAP_SMOOKS_XML2EBO = "map-smooks-xml2ebo.ftl";
-//            public static final String TEMPLATE_NAME_MAP_PRIVATE_ISO2EBO = "map-private-iso2ebo.ftl";
-//            public static final String TEMPLATE_NAME_MAP_PRIVATE_EBO2ISO = "map-private-ebo2iso.ftl";
-            
-            Writer out1 = new OutputStreamWriter(new FileOutputStream(new File(outMapSmooksXml2EboFile)), ENCODING);
-            String map1 = renderTemplate(eboInfo, TEMPLATE_NAME_MAP_SMOOKS_XML2EBO);
-            out1.write(map1);
-            out1.flush();
-            System.out.println("generated outMapSmooksXml2EboFile at " + outMapSmooksXml2EboFile);
             
             System.out.println("end generateMap...");            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
+
+	private EboInfo renderEboInfo(List<DataEle> elements, String subClassSurfix) throws Exception{
+		EboInfo eboInfo = new EboInfo();
+		eboInfo.setPkgName(eboPkgName);
+		eboInfo.setDestinationClassName(eboClassName+subClassSurfix);
+		eboInfo.setTableName(StringUtils.isBlank(subClassSurfix)? tblName : tblName+"_"+subClassSurfix);
+//		eboInfo.setSubClassSurfix(subClassSurfix);
+		
+		// default field:
+		EboInfo.Column uuid = new EboInfo.Column();
+		uuid.setCapitalisedVariableName("id");
+		uuid.setVariableName("id");
+		uuid.setJavaType("Integer");
+		uuid.setDbName("ID");
+		uuid.setDbTypeOracle("Integer");
+		uuid.setDbTypeMysql("int");
+		eboInfo.getBasicColumns().add(uuid);
+		
+		// avoid duplication
+		Map<String, Integer> nameCounter = new HashMap<String, Integer>();
+		
+		for (DataEle pp : elements) {
+		    String key = pp.key;
+		    String value = pp.value;
+		    Class jaxbType = pp.jaxbType;
+		    
+		    EboInfo subEbo = null;
+		    if(pp.isList()) {
+		    	// create subEbo
+		    	subEbo = renderEboInfo(pp.leaves, pp.eboFldName);
+
+		    }
+		    
+		    debug("key="+key+", value="+value+", jaxbType="+ (jaxbType==null ? "NULL" : jaxbType.getName()) );
+		    
+		    EboInfo.Column column = new EboInfo.Column();
+		    if(pp.isList()) {
+		    	column.setNested(true);
+		    }
+		    StringBuffer javaNameBuf = new StringBuffer();
+		    StringBuffer dbNameBuf = new StringBuffer();
+		    getEboVariableNameFromJaxbOPath(javaNameBuf, dbNameBuf, pp);
+		    
+		    tellDuplicate(nameCounter, javaNameBuf, dbNameBuf);
+		    
+		    String capitizedJavaName = javaNameBuf.toString();
+		    String dbName = StringUtils.upperCase(dbNameBuf.toString());
+		    
+//                if(nameCounter.get(dbName)==null) {
+//                    // first
+//                    nameCounter.put(dbName, 1);
+//                }else {
+//                    // duplicate happened
+//                    int oldCount = nameCounter.get(dbName);
+//                    nameCounter.put(dbName, oldCount+1);
+//                    dbName+=oldCount;
+//                    capitizedJavaName+=oldCount;
+//                    
+//                }
+
+		    column.setCapitalisedVariableName(capitizedJavaName);
+		    column.setVariableName(StringUtils.uncapitalize(capitizedJavaName));
+		    column.setJavaType(getEboTypeFromJaxbType(pp, subEbo));
+
+		    column.setDbName(dbName);
+		    column.setDbTypeOracle(getOracleDbTypeFromJaxbType(pp));
+		    column.setDbTypeMysql(getMysqlDbTypeFromJaxbType(pp));
+		    
+		    column.setObjPath(key);
+		     
+		    // used in xml2Ebo map
+		    List<String> xmlPaths = new ArrayList<String>();
+		    xmlPaths.add("Document");
+		    String[] ss = StringUtils.split(key, ".");
+		    for(String s: ss) {
+		    	String xmlPath=s;
+
+		     // special case to handle
+		    	if("fiToFICstmrCdtTrf".equals(s)) {
+		    		xmlPath="FIToFICstmrCdtTrf";
+		    	}else if("fiToFIPmtStsRpt".equals(s)) {
+		    		xmlPath="FIToFIPmtStsRpt";
+		    	}
+		    	else if(s.startsWith("@")) {
+		    		xmlPath="@"+StringUtils.capitalize(s.substring(1));
+		    	}
+		    	else {
+		    		xmlPath=StringUtils.capitalize(s);
+		    	}
+		    	
+		    	if(xmlPath.contains("[")) {
+		    		xmlPath=xmlPath.substring(0, xmlPath.indexOf("["));
+		    	}
+		    	
+		    	if("value".equals(xmlPath)) {
+		    		continue;
+		    	}
+		    	xmlPaths.add(xmlPath);
+		    }
+		    StringBuffer buf = new StringBuffer();
+		    
+		    for(String xmlPath: xmlPaths) {
+		    	buf.append("/").append(xmlPath);
+		    }
+		    column.setXmlPath(buf.toString());
+		    eboInfo.getBasicColumns().add(column);
+		    
+		    if(pp.isList()) {
+		    	// wiring it to parent Ebo?? 
+		    	eboInfo.getNestedEbo().add(subEbo);
+		    	subEbo.setWiringColumnName(column.getVariableName());
+		    	subEbo.setWiringXmlPath(column.getXmlPath());
+		    }
+		}
+		
+		renderDdlAndEbo(eboInfo, opInfo);
+		
+		return eboInfo;
+	}
+    
+    private String getOutDdlPath(EboInfo eboInfo, OpInfo opInfo, boolean isOracle) {
+//    	String ddlFile = basePath+"/cnaps2/ddl/"+ (isOracle? "oracle-":"mysql-")+opInfo.toString()+"_"+eboInfo.subClassSurfix+".sql";
+    	String ddlFile = basePath+"/cnaps2/ddl/"+ (isOracle? "oracle-":"mysql-")+eboInfo.getTableName()+".sql";
+    	return ddlFile;
+    }
+    
+	private void renderDdlAndEbo(EboInfo eboInfo, OpInfo opInfo)
+			throws UnsupportedEncodingException, FileNotFoundException,
+			IOException, TemplateException {
+		
+        File outEboDir = new File(outEboPath);
+        if(!outEboDir.exists()) {
+            outEboDir.mkdirs();
+        }
+        
+		Writer eboOut = new OutputStreamWriter(new FileOutputStream(new File(outEboDir, 
+				eboInfo.getDestinationClassName()+".java")), ENCODING);
+		String eboContent = renderTemplate(eboInfo, TEMPLATE_NAME_EBO);
+		eboOut.write(eboContent);
+		eboOut.flush();
+		System.out.println("generated ebo at " + outEboPath);
+		
+		String outDdlOracleFile = getOutDdlPath(eboInfo, opInfo, true);
+		Writer ddlOut = new OutputStreamWriter(new FileOutputStream(new File(outDdlOracleFile)), ENCODING);
+		String ddlContent = renderTemplate(eboInfo, TEMPLATE_NAME_DDL_ORACLE);
+		ddlOut.write(ddlContent);
+		ddlOut.flush();
+		System.out.println("generated oracle ddl at " + outDdlOracleFile);
+		
+		String outDdlMysqlFile = getOutDdlPath(eboInfo, opInfo, false);
+		Writer ddlOutMysql = new OutputStreamWriter(new FileOutputStream(new File(outDdlMysqlFile)), ENCODING);
+		String ddlContentMysql = renderTemplate(eboInfo, TEMPLATE_NAME_DDL_MYSQL);
+		ddlOutMysql.write(ddlContentMysql);
+		ddlOutMysql.flush();
+		System.out.println("generated oracle ddl at " + outDdlMysqlFile);
+		
+//            outMapSmooksXml2EboFile = basePath+"/map-smooks/"+op+"-xml2ebo.map";
+//            outMapPrivateIso2EboFile = basePath+"/map-private/"+op+"-iso2ebo.map";
+//            outMapPrivateEbo2IsoFile = basePath+"/map-private/"+op+"-ebo2iso.map";
+//            public static final String TEMPLATE_NAME_MAP_SMOOKS_XML2EBO = "map-smooks-xml2ebo.ftl";
+//            public static final String TEMPLATE_NAME_MAP_PRIVATE_ISO2EBO = "map-private-iso2ebo.ftl";
+//            public static final String TEMPLATE_NAME_MAP_PRIVATE_EBO2ISO = "map-private-ebo2iso.ftl";
+		
+		Writer out1 = new OutputStreamWriter(new FileOutputStream(new File(outMapSmooksXml2EboFile)), ENCODING);
+		String map1 = renderTemplate(eboInfo, TEMPLATE_NAME_MAP_SMOOKS_XML2EBO);
+		out1.write(map1);
+		out1.flush();
+		System.out.println("generated outMapSmooksXml2EboFile at " + outMapSmooksXml2EboFile);
+	}
     
     private String renderTemplate(Object data, String templateName) throws IOException,
         TemplateException {
