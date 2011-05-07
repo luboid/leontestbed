@@ -37,7 +37,7 @@ import com.topfinance.util.BCUtils;
 import com.topfinance.util.FilePathHelper;
 import com.topfinance.util.OpTester;
 import com.topfinance.util.ParseSampleXml;
-import com.topfinance.util.ParseSampleXml.Entry;
+import com.topfinance.util.ParseSampleXml.DataEle;
 
 public class TestJpaAccess extends TestCase {
     private static Logger logger = Logger.getLogger(TestJpaAccess.class);
