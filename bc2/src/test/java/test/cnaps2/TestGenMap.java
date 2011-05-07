@@ -1,38 +1,45 @@
 package test.cnaps2;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Stack;
 
 import junit.framework.TestCase;
 
-import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.topfinance.cfg.CfgAccessException;
+import com.topfinance.converter.Iso8583ToXml;
 import com.topfinance.db.dao.IDao;
 import com.topfinance.frame.exception.AppException;
 import com.topfinance.payment.ebo.TC2BisEleBscEbo;
+import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.runtime.OpInfo;
+import com.topfinance.ui.UIBizHelper;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.OpTester;
 import com.topfinance.util.ParseSampleXml;
-import com.topfinance.util.ParseSampleXml.Entry;
-import com.topfinance.ui.UIBizHelper;
+import com.topfinance.util.ParseSampleXml.DataEle;
 
 public class TestGenMap extends TestCase {
 
 	// TODO change the path
-	public final static String DBSTORE = "E:/DevSpace/bc2/bin/runBC-A-config-DB.xml";
+	public final static String DBSTORE = "D:/bankConnector/source/bin/runBC-A-config-DB.xml";
 
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean USE_DB = true;
+	public final static boolean USE_DB = false;
 	
 	// TODO change it to true when you are ready to connect to DB
 	public final static boolean TO_GENERATE = false;
 	
-	private static final String basePath = "E:/DevSpace/bc2/generated_test";
+	private static final String basePath = "D:/bankConnector/source/generated_test";
 
 	@Override
 	protected void setUp() throws Exception {
@@ -140,7 +147,7 @@ public class TestGenMap extends TestCase {
 //				List list = getDao().find(hql, paras);
 //				ebo = list.size() > 0 ? list.get(0) : null;
 //			}
-//			String xml = tester.upPublic(ebo, opInfo);
+			String xml = tester.upPublic(ebo, opInfo);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -178,10 +185,12 @@ public class TestGenMap extends TestCase {
 	// FileUtils.writeByteArrayToFile(new File(outFile), ruleXml);
 	// }
 
-	public String getKeyFromBizFldPath(String xpath) throws Exception {
+	public String getKeyFromBizFldPath(String xpath, OpInfo op) throws Exception {
 		String key = null;
 		StringBuffer buf = new StringBuffer();
 
+		
+		
 		String[] tokens = StringUtils.split(xpath, "/");
 		for (int i = 1; i < tokens.length; i++) {
 			if (i != 1) {
@@ -191,11 +200,67 @@ public class TestGenMap extends TestCase {
 			if (tokens[i].equalsIgnoreCase("FIToFICstmrCdtTrf")) {
 				oPath = "fiToFICstmrCdtTrf";
 			} else if (tokens[i].equalsIgnoreCase("cdtTrfTxInf")) {
+				// in com.cnaps2.xml.iso20022.pacs.v00800102.FIToFICustomerCreditTransferV02
 				oPath = "cdtTrfTxInf[0]";
 			} else {
 				oPath = StringUtils.uncapitalize(tokens[i]);
 			}
 			buf.append(oPath);
+		}
+		
+		Stack<String> pathStack = new Stack<String>();
+		String jaxbPkgName = Cnaps2Constants.getPackageName(op.getMesgType());
+		Class parentClass = Class.forName(jaxbPkgName + ".Document");
+		for (int i = 1; i < tokens.length; i++) {
+//			debug("tokens["+i+"]="+tokens[i]);
+			String name = ParseSampleXml.getJavaName(tokens[i]);
+//			if(i==1) {
+//				pathStack.push(name);
+//				// skip Document which is root
+//				continue;
+//			}
+			
+			Field thisField = ParseSampleXml.findField(pathStack, name, parentClass);
+			Class thisClass = thisField.getType();
+			if(i!=tokens.length-1) {
+				// not leaf
+				if(ParseSampleXml.isCollection(thisClass)) {
+	                // TODO probably [1][2].. ???
+	                name =name+"[0]";
+	                pathStack.push(name);
+	            }else {
+	    			pathStack.push(name);
+	            }
+			}
+			else {
+				// leaf
+	            boolean needAppendValue = false;
+	            Class valueClass = null;
+	            // test if collection is here
+	            if(ParseSampleXml.isCollection(thisClass)) {
+	                // TODO probably [1][2].. ???
+	            	name =name+"[0]";
+	                valueClass = Iso8583ToXml.getCollectionGenericType(thisField);
+	            } else {
+	                valueClass = ParseSampleXml.getValueClassIfHave(thisClass);
+	                if(valueClass==null) {
+	                    valueClass = thisClass;
+	                }
+	                else {
+	                    needAppendValue = true;
+	                }
+	            }
+	            
+	            String xmlPath = ParseSampleXml.printStack(pathStack);
+//	            String value = guessDateValue(name, ele.getText());
+	            String elementPath = xmlPath+"."+name;
+	            
+	            return needAppendValue? elementPath+".value" : elementPath;				
+			}
+			
+			
+
+
 		}
 		return buf.toString();
 	}
@@ -204,7 +269,11 @@ public class TestGenMap extends TestCase {
 		String clazz = null;
 		Class res = null;
 
-		if (bizFldType.contains("Text")) {
+		if(StringUtils.isEmpty(bizFldType)) {
+			return null;
+			
+		}
+		else if (bizFldType.contains("Text")) {
 			clazz = "java.lang.String";
 		} else if (bizFldType.toLowerCase().contains("code")) {
 			clazz = "java.lang.String";
@@ -254,7 +323,16 @@ public class TestGenMap extends TestCase {
 			_testGenerated(msgCode, tpCode, clsCode);
 		}
 	}
-	
+	public void testGenerated_saps_737_001_01() throws Exception {
+		String msgCode = "saps.737.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
 	public void testGenerated_608() throws Exception {
 		String msgCode = "ccms.608.001.01";
 		String tpCode = "";
@@ -281,21 +359,60 @@ public class TestGenMap extends TestCase {
 		debug("start testGenPublicMap for op=" + op + "...");
 
 		try {
+			
+			Map<Integer, DataEle> hookPoints = new HashMap<Integer, DataEle>();
+			
+////			List<TC2BisEleBscEbo> list1 = getBizEle(msgCode, tpCode, clsCode);
+//			String fn = "D:/bankConnector/data/mydata";
+//			
+////			ObjectOutputStream oo = new ObjectOutputStream(new FileOutputStream(fn));
+////			oo.writeObject(list1);
+////			oo.close();
+//			
+//			ObjectInputStream in = new ObjectInputStream(new FileInputStream(fn));
+//			List<TC2BisEleBscEbo> list = (List<TC2BisEleBscEbo>)in.readObject();
+				
+			
 			List<TC2BisEleBscEbo> list = getBizEle(msgCode, tpCode, clsCode);
+			
 			ParseSampleXml main = new ParseSampleXml(basePath, op);
 			for (TC2BisEleBscEbo detail : list) {
-				String key = getKeyFromBizFldPath(detail.getPath());
+				
+				debug("TC2BisEleBscEbo="+detail);
+				
+				String key = getKeyFromBizFldPath(detail.getPath(), op);
+				
+//				debug("path="+detail.getPath()+", key="+key);
+				
 				String value = "";
 				Class jaxbType = getJaxbTypeFromBizFldType(detail.getType());
-
 				String eblFldName = detail.getEleId();
-				Entry entry = new Entry(key, value, jaxbType);
-				entry.eboFldName = eblFldName;
-				main.parsed.add(entry);
+				DataEle dataEle = new DataEle(key, value, jaxbType);
+				dataEle.eboFldName = eblFldName;
+				
+				Integer upseq = detail.getUpseq();
+				// assume parent's seq always before its leaves
+				if(upseq!=null) {
+					DataEle parent = hookPoints.get(upseq);
+					if(parent!=null) {
+						parent.leaves.add(dataEle);
+					} else {
+						throw new RuntimeException("well.. leave come first, we have to handle this");
+					}
+				} else {
+					// first layer elements
+					main.parsed.add(dataEle);
+				}
+				
+				if(jaxbType==null) {
+					// hookpoint? 
+
+					hookPoints.put(detail.getSequn(), dataEle);
+				}
 			}
 
-			for (Entry entry : main.parsed) {
-				debug("==" + entry);
+			for (DataEle dataEle : main.parsed) {
+				debug("==" + dataEle);
 			}
 
 			main.generateMapEbo2Jaxb();
@@ -306,4 +423,18 @@ public class TestGenMap extends TestCase {
 		debug("end testGenPublicMap for op=" + op + ", basePath=" + basePath + "...");
 	}
 
+	
+	public void testMe() throws Exception{
+		try {
+//			testGenerated_311();
+			
+			testGenerated_saps_737_001_01();
+//			Field f = InstgPty1.class.getDeclaredField("instgIndrctPty");
+//			debug("f="+f);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw ex;
+		}		
+		
+	}
 }
