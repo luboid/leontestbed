@@ -6,7 +6,7 @@
     <param name="input.java" type="input.type.actived">${table.inputClassName}</param>
   </params>
   <#list table.metas as meta>    
-  	<jb:bean beanId="${meta.beanId}" class="${meta.beanClass}" createOnElement="${table.inputClassName}">
+  	<jb:bean beanId="${meta.beanId}" class="${meta.beanClass}" createOnElement="${meta.createOn}">
   		<#list meta.wirings as wiring> 
     	<jb:wiring beanIdRef="${wiring.beanIdRef}" <#if ("NULL"!=wiring.property)>property="${wiring.property}"</#if>/>
     	</#list>

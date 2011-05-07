@@ -8,11 +8,32 @@
   </params>
   <jb:bean beanId="target" class="${table.pkgName}.${table.destinationClassName}" createOnElement="Document">
 <#list table.basicColumns as column>    
-		<#if (""!=column.xmlPath)>
-		<jb:value data="${column.xmlPath}" property="${column.variableName}"/>    
+    <#if (column.nested) >
+    		<jb:wiring beanIdRef="${column.variableName}[0]" property="${column.variableName}"/>
+
+		<#elseif (""!=column.xmlPath)>
+				<jb:value data="${column.xmlPath}" property="${column.variableName}"/>    
 		</#if>
 </#list>   
 	</jb:bean>
+	
+<#list table.nestedEbo as ebo>
+  <jb:bean beanId="${ebo.wiringColumnName}[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="${ebo.wiringColumnName}" />
+  </jb:bean>
+	<jb:bean beanId="${ebo.wiringColumnName}" class="${table.pkgName}.${ebo.destinationClassName}" createOnElement="${ebo.wiringXmlPath}">
+		<#list ebo.basicColumns as column>    
+    	<#if (column.nested) >
+    		<jb:wiring beanIdRef="${column.variableName}" property="${column.variableName}"/>
+
+			<#elseif (""!=column.xmlPath)>
+				<jb:value data="${column.xmlPath}" property="${column.variableName}"/>    
+			</#if>
+		</#list>
+	</jb:bean>  
+</#list> 
+
+
 </smooks-resource-list>  
     
     
