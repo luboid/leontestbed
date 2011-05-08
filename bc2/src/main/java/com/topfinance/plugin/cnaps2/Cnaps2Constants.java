@@ -51,7 +51,7 @@ public class Cnaps2Constants {
         if(mesgType.equals("testNested")) {
         	pkgName="com.xml.testNested";
         }
-        else if(mesgType.equals("saps.737.001.01") {
+        else if(mesgType.equals("saps.737.001.01")) {
         	pkgName = "com.xml.cnaps2.ccms.v73700101";
       }
         else if (mesgType.equals(TestDummy.OPERATION_101)) {
