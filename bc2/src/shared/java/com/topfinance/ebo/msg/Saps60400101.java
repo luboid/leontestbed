@@ -1,8 +1,9 @@
 package com.topfinance.ebo.msg;
 
 import com.topfinance.ebo.msg.JaxbMapping;
-import java.util.Date;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,48 +14,72 @@ import javax.persistence.Table;
  */
  
 @Entity
-@Table(name = "T_MSG_SAPS_604_001_01")
+@Table(name = "T_C2_SAPS_604")
 public class Saps60400101  implements java.io.Serializable {
 
     // Fields 
     @JaxbMapping(objPath="")
-    private String uuid;
+    private Integer id;
     
     @JaxbMapping(objPath="sttlmRtrRct.grpHdr.msgId")
-    private String grpHdrMsgId;
+    private String msgId;
     
     @JaxbMapping(objPath="sttlmRtrRct.grpHdr.creDtTm")
-    private Date creDtTm;
+    private String creDtTm;
     
     @JaxbMapping(objPath="sttlmRtrRct.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
     
-    @JaxbMapping(objPath="sttlmRtrRct.grpHdr.instgPty.instgIndrctPty")
+    @JaxbMapping(objPath="sttlmRtrRct.grpHdr.instgPty.instgPty")
     private String instgIndrctPty;
     
     @JaxbMapping(objPath="sttlmRtrRct.grpHdr.instdPty.instdDrctPty")
     private String instdDrctPty;
     
-    @JaxbMapping(objPath="sttlmRtrRct.grpHdr.instdPty.instdIndrctPty")
+    @JaxbMapping(objPath="sttlmRtrRct.grpHdr.instdPty.instdPty")
     private String instdIndrctPty;
     
     @JaxbMapping(objPath="sttlmRtrRct.grpHdr.sysCd")
-    private String grpHdrSysCd;
+    private String sysCd;
     
     @JaxbMapping(objPath="sttlmRtrRct.grpHdr.rmk")
-    private String grpHdrRmk;
+    private String rmk;
     
     @JaxbMapping(objPath="sttlmRtrRct.orgnlGrpHdr.orgnlMsgId")
     private String orgnlMsgId;
     
-    @JaxbMapping(objPath="sttlmRtrRct.orgnlGrpHdr.orgnlInstgDrctPty")
+    @JaxbMapping(objPath="sttlmRtrRct.orgnlGrpHdr.orgnlInstgPty")
     private String orgnlInstgDrctPty;
     
     @JaxbMapping(objPath="sttlmRtrRct.orgnlGrpHdr.orgnlMT")
     private String orgnlMT;
     
-    @JaxbMapping(objPath="")
-    private java.util.Date ts;
+    @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.prcSts")
+    private String prcSts;
+    
+    @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.prcCd")
+    private String prcCd;
+    
+    @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.rjctInf")
+    private String rjctInf;
+    
+    @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.netgDt")
+    private String netgDt;
+    
+    @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.netgRnd")
+    private String netgRnd;
+    
+    @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.sttlmDt")
+    private String sttlmDt;
+    
+    @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.rcvTm")
+    private String rcvTm;
+    
+    @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.trnsmtTm")
+    private String trnsmtTm;
+    
+    @JaxbMapping(objPath="sttlmRtrRct.acctInf.bal")
+    private String bal;
     
     
 	
@@ -64,43 +89,45 @@ public class Saps60400101  implements java.io.Serializable {
 	
 	
   /**
-   * Returns the uuid
+   * Returns the id
    * 
-   * @return the uuid
+   * @return the id
    */
-  @Id
-    @Column(name = "UUID")
-    public String getUuid() {
-        return uuid;
+    @Id
+	  @Column(name = "ID", unique = true, nullable = false, precision = 22, scale = 0)
+	  @SequenceGenerator(name = "CFG_SEQUNCE_GEN", sequenceName = "S_CFG_SEQUNCE")
+	  @GeneratedValue(strategy = GenerationType.AUTO, generator = "CFG_SEQUNCE_GEN")
+    public Integer getid() {
+        return id;
     }	 
      
   /**
-   * Sets the uuid
+   * Sets the id
    *
-   * @param newUuid the new uuid
+   * @param newid the new id
    */
 
-    public void  setUuid(String newUuid) {
-        uuid = newUuid;
+    public void  setid(Integer newid) {
+        id = newid;
     }	  
   /**
-   * Returns the grpHdrMsgId
+   * Returns the msgId
    * 
-   * @return the grpHdrMsgId
+   * @return the msgId
    */
-    @Column(name = "GRPHDR_MSGID")
-    public String getGrpHdrMsgId() {
-        return grpHdrMsgId;
+    @Column(name = "MSGID")
+    public String getMsgId() {
+        return msgId;
     }	 
      
   /**
-   * Sets the grpHdrMsgId
+   * Sets the msgId
    *
-   * @param newGrpHdrMsgId the new grpHdrMsgId
+   * @param newMsgId the new msgId
    */
 
-    public void  setGrpHdrMsgId(String newGrpHdrMsgId) {
-        grpHdrMsgId = newGrpHdrMsgId;
+    public void  setMsgId(String newMsgId) {
+        msgId = newMsgId;
     }	  
   /**
    * Returns the creDtTm
@@ -108,7 +135,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public Date getCreDtTm() {
+    public String getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -118,7 +145,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(Date newCreDtTm) {
+    public void  setCreDtTm(String newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -198,42 +225,42 @@ public class Saps60400101  implements java.io.Serializable {
         instdIndrctPty = newInstdIndrctPty;
     }	  
   /**
-   * Returns the grpHdrSysCd
+   * Returns the sysCd
    * 
-   * @return the grpHdrSysCd
+   * @return the sysCd
    */
-    @Column(name = "GRPHDR_SYSCD")
-    public String getGrpHdrSysCd() {
-        return grpHdrSysCd;
+    @Column(name = "SYSCD")
+    public String getSysCd() {
+        return sysCd;
     }	 
      
   /**
-   * Sets the grpHdrSysCd
+   * Sets the sysCd
    *
-   * @param newGrpHdrSysCd the new grpHdrSysCd
+   * @param newSysCd the new sysCd
    */
 
-    public void  setGrpHdrSysCd(String newGrpHdrSysCd) {
-        grpHdrSysCd = newGrpHdrSysCd;
+    public void  setSysCd(String newSysCd) {
+        sysCd = newSysCd;
     }	  
   /**
-   * Returns the grpHdrRmk
+   * Returns the rmk
    * 
-   * @return the grpHdrRmk
+   * @return the rmk
    */
-    @Column(name = "GRPHDR_RMK")
-    public String getGrpHdrRmk() {
-        return grpHdrRmk;
+    @Column(name = "RMK")
+    public String getRmk() {
+        return rmk;
     }	 
      
   /**
-   * Sets the grpHdrRmk
+   * Sets the rmk
    *
-   * @param newGrpHdrRmk the new grpHdrRmk
+   * @param newRmk the new rmk
    */
 
-    public void  setGrpHdrRmk(String newGrpHdrRmk) {
-        grpHdrRmk = newGrpHdrRmk;
+    public void  setRmk(String newRmk) {
+        rmk = newRmk;
     }	  
   /**
    * Returns the orgnlMsgId
@@ -293,23 +320,175 @@ public class Saps60400101  implements java.io.Serializable {
         orgnlMT = newOrgnlMT;
     }	  
   /**
-   * Returns the ts
+   * Returns the prcSts
    * 
-   * @return the ts
+   * @return the prcSts
    */
-    @Column(name = "TS")
-    public java.util.Date getTs() {
-        return ts;
+    @Column(name = "PRCSTS")
+    public String getPrcSts() {
+        return prcSts;
     }	 
      
   /**
-   * Sets the ts
+   * Sets the prcSts
    *
-   * @param newTs the new ts
+   * @param newPrcSts the new prcSts
    */
 
-    public void  setTs(java.util.Date newTs) {
-        ts = newTs;
+    public void  setPrcSts(String newPrcSts) {
+        prcSts = newPrcSts;
+    }	  
+  /**
+   * Returns the prcCd
+   * 
+   * @return the prcCd
+   */
+    @Column(name = "PRCCD")
+    public String getPrcCd() {
+        return prcCd;
+    }	 
+     
+  /**
+   * Sets the prcCd
+   *
+   * @param newPrcCd the new prcCd
+   */
+
+    public void  setPrcCd(String newPrcCd) {
+        prcCd = newPrcCd;
+    }	  
+  /**
+   * Returns the rjctInf
+   * 
+   * @return the rjctInf
+   */
+    @Column(name = "RJCTINF")
+    public String getRjctInf() {
+        return rjctInf;
+    }	 
+     
+  /**
+   * Sets the rjctInf
+   *
+   * @param newRjctInf the new rjctInf
+   */
+
+    public void  setRjctInf(String newRjctInf) {
+        rjctInf = newRjctInf;
+    }	  
+  /**
+   * Returns the netgDt
+   * 
+   * @return the netgDt
+   */
+    @Column(name = "NETGDT")
+    public String getNetgDt() {
+        return netgDt;
+    }	 
+     
+  /**
+   * Sets the netgDt
+   *
+   * @param newNetgDt the new netgDt
+   */
+
+    public void  setNetgDt(String newNetgDt) {
+        netgDt = newNetgDt;
+    }	  
+  /**
+   * Returns the netgRnd
+   * 
+   * @return the netgRnd
+   */
+    @Column(name = "NETGRND")
+    public String getNetgRnd() {
+        return netgRnd;
+    }	 
+     
+  /**
+   * Sets the netgRnd
+   *
+   * @param newNetgRnd the new netgRnd
+   */
+
+    public void  setNetgRnd(String newNetgRnd) {
+        netgRnd = newNetgRnd;
+    }	  
+  /**
+   * Returns the sttlmDt
+   * 
+   * @return the sttlmDt
+   */
+    @Column(name = "STTLMDT")
+    public String getSttlmDt() {
+        return sttlmDt;
+    }	 
+     
+  /**
+   * Sets the sttlmDt
+   *
+   * @param newSttlmDt the new sttlmDt
+   */
+
+    public void  setSttlmDt(String newSttlmDt) {
+        sttlmDt = newSttlmDt;
+    }	  
+  /**
+   * Returns the rcvTm
+   * 
+   * @return the rcvTm
+   */
+    @Column(name = "RCVTM")
+    public String getRcvTm() {
+        return rcvTm;
+    }	 
+     
+  /**
+   * Sets the rcvTm
+   *
+   * @param newRcvTm the new rcvTm
+   */
+
+    public void  setRcvTm(String newRcvTm) {
+        rcvTm = newRcvTm;
+    }	  
+  /**
+   * Returns the trnsmtTm
+   * 
+   * @return the trnsmtTm
+   */
+    @Column(name = "TRNSMTTM")
+    public String getTrnsmtTm() {
+        return trnsmtTm;
+    }	 
+     
+  /**
+   * Sets the trnsmtTm
+   *
+   * @param newTrnsmtTm the new trnsmtTm
+   */
+
+    public void  setTrnsmtTm(String newTrnsmtTm) {
+        trnsmtTm = newTrnsmtTm;
+    }	  
+  /**
+   * Returns the bal
+   * 
+   * @return the bal
+   */
+    @Column(name = "BAL")
+    public String getBal() {
+        return bal;
+    }	 
+     
+  /**
+   * Sets the bal
+   *
+   * @param newBal the new bal
+   */
+
+    public void  setBal(String newBal) {
+        bal = newBal;
     }	  
     
     
