@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived">File:/E:/DevSpace/bc2/sample/Schema/saps.604.001.01.xsd</param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps60400101" createOnElement="Document">
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/MsgId" property="msgId"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/SysCd" property="sysCd"/>    
+		<jb:value data="/Document/SttlmRtrRct/GrpHdr/Rmk" property="rmk"/>    
+		<jb:value data="/Document/SttlmRtrRct/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+		<jb:value data="/Document/SttlmRtrRct/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+		<jb:value data="/Document/SttlmRtrRct/OrgnlGrpHdr/OrgnlMT" property="orgnlMT"/>    
+		<jb:value data="/Document/SttlmRtrRct/NpcPrcInf/PrcSts" property="prcSts"/>    
+		<jb:value data="/Document/SttlmRtrRct/NpcPrcInf/PrcCd" property="prcCd"/>    
+		<jb:value data="/Document/SttlmRtrRct/NpcPrcInf/RjctInf" property="rjctInf"/>    
+		<jb:value data="/Document/SttlmRtrRct/NpcPrcInf/NetgDt" property="netgDt"/>    
+		<jb:value data="/Document/SttlmRtrRct/NpcPrcInf/NetgRnd" property="netgRnd"/>    
+		<jb:value data="/Document/SttlmRtrRct/NpcPrcInf/SttlmDt" property="sttlmDt"/>    
+		<jb:value data="/Document/SttlmRtrRct/NpcPrcInf/RcvTm" property="rcvTm"/>    
+		<jb:value data="/Document/SttlmRtrRct/NpcPrcInf/TrnsmtTm" property="trnsmtTm"/>    
+		<jb:value data="/Document/SttlmRtrRct/AcctInf/Bal" property="bal"/>    
+	</jb:bean>
+</smooks-resource-list>  
+    

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived">File:/E:/DevSpace/bc2/sample/Schema/saps.612.001.01.xsd</param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps61200101" createOnElement="Document">
+		<jb:value data="/Document/UnltrlTx/GrpHdr/MsgId" property="msgId"/>    
+		<jb:value data="/Document/UnltrlTx/GrpHdr/MsgId" property="creDtTm"/>    
+		<jb:value data="/Document/UnltrlTx/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+		<jb:value data="/Document/UnltrlTx/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+		<jb:value data="/Document/UnltrlTx/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+		<jb:value data="/Document/UnltrlTx/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+		<jb:value data="/Document/UnltrlTx/GrpHdr/SysCd" property="sysCd"/>    
+		<jb:value data="/Document/UnltrlTx/GrpHdr/Rmk" property="rmk"/>    
+		<jb:value data="/Document/UnltrlTx/UnltrlTxInf/BookgId" property="bookgId"/>    
+		<jb:value data="/Document/UnltrlTx/UnltrlTxInf/DbtCdtId" property="dbtCdtId"/>    
+		<jb:value data="/Document/UnltrlTx/UnltrlTxInf/Amt" property="amt"/>    
+		<jb:value data="/Document/UnltrlTx/UnltrlTxInf/TxTp" property="txTp"/>    
+		<jb:value data="/Document/UnltrlTx/UnltrlTxInf/CtgyPurpCd" property="ctgyPurpCd"/>    
+	</jb:bean>
+</smooks-resource-list>  
+    

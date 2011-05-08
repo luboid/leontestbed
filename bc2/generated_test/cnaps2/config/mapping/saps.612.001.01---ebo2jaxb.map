@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Saps61200101</param>
+  </params>
+  	<jb:bean beanId="unltrlTx.grpHdr.instdPty" class="com.xml.cnaps2.saps.v61200101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Saps61200101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.saps.v61200101.Document" createOnElement="com.topfinance.ebo.msg.Saps61200101">
+    	<jb:wiring beanIdRef="unltrlTx" property="unltrlTx"/>
+  	</jb:bean>
+  	<jb:bean beanId="unltrlTx.unltrlTxInf" class="com.xml.cnaps2.saps.v61200101.UnilateralTransactionInformation1" createOnElement="com.topfinance.ebo.msg.Saps61200101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/bookgId"  property="bookgId"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/dbtCdtId"  property="dbtCdtId"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/amt"  property="amt"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/txTp"  property="txTp"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/ctgyPurpCd"  property="ctgyPurpCd"/>
+  	</jb:bean>
+  	<jb:bean beanId="unltrlTx.grpHdr.instgPty" class="com.xml.cnaps2.saps.v61200101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Saps61200101">
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="unltrlTx.grpHdr" class="com.xml.cnaps2.saps.v61200101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps61200101">
+    	<jb:wiring beanIdRef="unltrlTx.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="unltrlTx.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/msgId"  property="msgId"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/creDtTm"  property="msgId"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/sysCd"  property="sysCd"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps61200101/rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="unltrlTx" class="com.xml.cnaps2.saps.v61200101.UnltrlTxV01" createOnElement="com.topfinance.ebo.msg.Saps61200101">
+    	<jb:wiring beanIdRef="unltrlTx.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="unltrlTx.unltrlTxInf" property="unltrlTxInf"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

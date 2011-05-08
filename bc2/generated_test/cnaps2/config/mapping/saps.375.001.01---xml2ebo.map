@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived">File:/E:/DevSpace/bc2/sample/Schema/saps.375.001.01.xsd</param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps37500101" createOnElement="Document">
+		<jb:value data="/Document/IntrBkLnMgmtRspn/GrpHdr/MsgId" property="msgId"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/GrpHdr/SysCd" property="sysCd"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/GrpHdr/Rmk" property="rmk"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/OrgnlGrpHdr/OrgnlMT" property="orgnlMT"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/RspnInf/Sts" property="sts"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/RspnInf/RjctCd" property="rjctCd"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/RspnInf/RjctInf" property="rjctInf"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/RspnInf/PrcPty" property="prcPty"/>    
+		<jb:value data="/Document/IntrBkLnMgmtRspn/IntrBkLnPrtcolInf/OrgnlPrtcolNb" property="orgnlPrtcolNb"/>    
+	</jb:bean>
+</smooks-resource-list>  
+    
