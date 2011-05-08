@@ -67,6 +67,26 @@
     			<value>com.topfinance.ebo.msg.Ccms90000102</value>
     			<value>com.topfinance.ebo.msg.Ccms90300102</value>
     			<value>com.topfinance.ebo.msg.Ccms91100102</value>
+    			<value>com.topfinance.ebo.msg.Saps35800101</value>
+    			<value>com.topfinance.ebo.msg.Saps35900101</value>
+    			<value>com.topfinance.ebo.msg.Saps36100101</value>
+    			<value>com.topfinance.ebo.msg.Saps36200101</value>
+    			<value>com.topfinance.ebo.msg.Saps36300101</value>
+    			<value>com.topfinance.ebo.msg.Saps36500101</value>
+    			<value>com.topfinance.ebo.msg.Saps36600101</value>
+    			<value>com.topfinance.ebo.msg.Saps36800101</value>
+    			<value>com.topfinance.ebo.msg.Saps37000101</value>
+    			<value>com.topfinance.ebo.msg.Saps37100101</value>
+    			<value>com.topfinance.ebo.msg.Saps37200101</value>
+    			<value>com.topfinance.ebo.msg.Saps37400101</value>
+    			<value>com.topfinance.ebo.msg.Saps37500101</value>
+    			<value>com.topfinance.ebo.msg.Saps60400101</value>
+    			<value>com.topfinance.ebo.msg.Saps60600101</value>
+    			<value>com.topfinance.ebo.msg.Saps60900101</value>
+    			<value>com.topfinance.ebo.msg.Saps61200101</value>
+    			<value>com.topfinance.ebo.msg.Saps61300101</value>
+    			<value>com.topfinance.ebo.msg.Saps61400101</value>
+    			<value>com.topfinance.ebo.msg.Saps73400101</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
