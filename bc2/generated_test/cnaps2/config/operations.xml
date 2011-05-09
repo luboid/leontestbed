@@ -514,7 +514,103 @@
       	pathOpClass="" 
       	>
       </OperationDefinition>
-
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="51"
+      	name="hvps.142.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/ImdtTrfNtfctn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass="" 
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="52"
+      	name="hvps.143.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/SttlAcctsReq/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass="" 
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="53"
+      	name="hvps.143.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/SttlAcctsRspn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/SttlAcctsRspn/OrgnlGrpHdr/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass="" 
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="54"
+      	name="hvps.151.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/ClrBkDrftAppl/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass="" 
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="55"
+      	name="hvps.152.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/ClrBkDrftNtfctn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass="" 
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="56"
+      	name="hvps.153.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/RtrgBkDrftCptlAppl/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass="" 
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="57"
+      	name="hvps.710.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/AcctChckngReq/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass="" 
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="58"
+      	name="hvps.715.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/TxDwnldgRspn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="" 
+      	pathOpType="" 
+      	pathOpClass="" 
+      	>
+      </OperationDefinition>
+      
       <OperationDefinition
       	class="com.topfinance.runtime.OperationDefinition" id="testNested"
       	name="testNested" 
@@ -532,7 +628,7 @@
       	name="saps.737.001.01" 
       	upIsEnabled="F" 
       	downIsEnabled="T" downReplyType="N" downIsReply="T"  
-      	pathDocId="" 
+      	pathDocId="/Document/BalWorkDayChckngAppl/GrpHdr/MsgId/text()" 
       	pathOrigDocId="" 
       	pathOpType="" 
       	pathOpClass=""     	
