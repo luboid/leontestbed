@@ -4,15 +4,15 @@
     <param name="stream.filter.type">SAX</param>
     <param name="inputType">input.xsd</param>
     <param name="input.xsd.rootElement">Document</param>
-    <param name="input.xsd" type="input.type.actived">File:/D:\bankConnector\source\sample\Schema\pacs.008.001.02.xsd</param>
+    <param name="input.xsd" type="input.type.actived">File:/E:/DevSpace/bc2/sample/Schema/saps.737.001.01.xsd</param>
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps73700101" createOnElement="Document">
 				<jb:value data="/Document/BalWorkDayChckngAppl/GrpHdr/MsgId" property="msgId"/>    
 				<jb:value data="/Document/BalWorkDayChckngAppl/GrpHdr/CreDtTm" property="creDtTm"/>    
 				<jb:value data="/Document/BalWorkDayChckngAppl/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
-				<jb:value data="/Document/BalWorkDayChckngAppl/GrpHdr/InstgPty/InstgDrctPty" property="instgIndrctPty"/>    
-				<jb:value data="/Document/BalWorkDayChckngAppl/GrpHdr/InstgPty/InstgDrctPty" property="instdDrctPty"/>    
-				<jb:value data="/Document/BalWorkDayChckngAppl/GrpHdr/InstdPty/InstdDrctPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/BalWorkDayChckngAppl/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/BalWorkDayChckngAppl/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/BalWorkDayChckngAppl/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
 				<jb:value data="/Document/BalWorkDayChckngAppl/GrpHdr/SysCd" property="sysCd"/>    
 				<jb:value data="/Document/BalWorkDayChckngAppl/GrpHdr/Rmk" property="rmk"/>    
 				<jb:value data="/Document/BalWorkDayChckngAppl/BalWorkDayChckngApplInf/NbOfTx" property="nbOfTxs"/>    
@@ -25,7 +25,7 @@
   </jb:bean>
 	<jb:bean beanId="txList" class="com.topfinance.ebo.msg.Saps73700101TxList" createOnElement="/Document/BalWorkDayChckngAppl/BalWorkDayChckngApplInf/TxList">
 				<jb:value data="/Document/BalWorkDayChckngAppl/BalWorkDayChckngApplInf/TxList/MmbId" property="mmbId"/>    
-				<jb:value data="/Document/BalWorkDayChckngAppl/BalWorkDayChckngApplInf/TxList/MmbId" property="initlAmt"/>    
+				<jb:value data="/Document/BalWorkDayChckngAppl/BalWorkDayChckngApplInf/TxList/InitlAmt" property="initlAmt"/>    
 	</jb:bean>  
 
 

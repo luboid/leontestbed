@@ -9,9 +9,8 @@
     	<jb:wiring beanIdRef="balWorkDayChckngAppl" property="balWorkDayChckngAppl"/>
   	</jb:bean>
   	<jb:bean beanId="balWorkDayChckngAppl.grpHdr.instgPty" class="com.xml.cnaps2.saps.v73700101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Saps73700101">
-  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
-  		<jb:value data="instgIndrctPty"  property="instgDrctPty"/>
-  		<jb:value data="instdDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps73700101/instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps73700101/instgIndrctPty"  property="instgPty"/>
   	</jb:bean>
   	<jb:bean beanId="balWorkDayChckngAppl" class="com.xml.cnaps2.saps.v73700101.BalWorkDayChckngApplV01" createOnElement="com.topfinance.ebo.msg.Saps73700101">
     	<jb:wiring beanIdRef="balWorkDayChckngAppl.grpHdr" property="grpHdr"/>
@@ -29,7 +28,7 @@
   	</jb:bean>
   	<jb:bean beanId="balWorkDayChckngAppl.balWorkDayChckngApplInf.txList[0].xxx" class="com.xml.cnaps2.saps.v73700101.TxList1" createOnElement="com.topfinance.ebo.msg.Saps73700101TxList">
   		<jb:value data="mmbId"  property="mmbId"/>
-  		<jb:value data="initlAmt"  property="mmbId"/>
+  		<jb:value data="initlAmt"  property="initlAmt"/>
   	</jb:bean>
   	<jb:bean beanId="balWorkDayChckngAppl.balWorkDayChckngApplInf.txList[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps73700101/txList">
     	<jb:wiring beanIdRef="balWorkDayChckngAppl.balWorkDayChckngApplInf.txList[0].xxx" />
@@ -39,7 +38,8 @@
   		<jb:value data="nbOfTxs"  property="nbOfTx"/>
   	</jb:bean>
   	<jb:bean beanId="balWorkDayChckngAppl.grpHdr.instdPty" class="com.xml.cnaps2.saps.v73700101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Saps73700101">
-  		<jb:value data="instdIndrctPty"  property="instdDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps73700101/instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Saps73700101/instdIndrctPty"  property="instdPty"/>
   	</jb:bean>
 </smooks-resource-list>  
     
