@@ -228,7 +228,7 @@ PATH = '/Document/AcctBookgNtfctn/NpcPrcInf/SttlmDt'
 PATH = '/Document/AcctBookgNtfctn/NpcPrcInf/RcvTm'
 PATH = '/Document/AcctBookgNtfctn/NpcPrcInf/TrnsmtTm'
 ELE_ID = "NpcNetgRnd"
-相应建表语句修改NETGRND改为NPCNETGRND，，CNAPS2-v1.2.pdm也应调整（未调整）
+相应建表语句修改NETGRND改为NPCNETGRND，CNAPS2-v1.2.pdm也应调整（未调整）
 
 xml数据不全，待修改。另外，金额数据不正确，已经修改
 
@@ -278,4 +278,64 @@ saps.372.001.01
 saps.374.001.01
 saps.614.001.01
 
-                                   
+分别将他们改为非必须的     
+
+
+2011-05-09
+1、hvps的单表
+hvps.142.001.01，hvps.142.001.01改三项
+hvps.144.001.01，hvps.151.001.01，hvps.152.001.01，hvps.153.001.01hvps.710.001.01，hvps.711.001.01，hvps.712.001.01，hvps.713.001.01，hvps.714.001.01，hvps.715.001.01，hvps.716.001.01，hvps.17.001.01改两项
+
+hvps.142.001.01
+/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/DbtrAgt/FiId/ClrSysMmbId/MmbId
+/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/CdtrAgt/FiId/ClrSysMmbId/MmbId
+
+hvps.144.001.01
+/Document/SttlAcctsRspn/OrgnlGrpHdr/OrgnlInstgDrctPty改为/Document/SttlAcctsRspn/OrgnlGrpHdr/OrgnlMT
+
+hvps.151.001.01
+/Document/ClrBkDrftAppl/ClrBkDrftApplInf/DrftInf/Amt/  改为/Document/ClrBkDrftAppl/ClrBkDrftApplInf/DrftInf/Amt
+/Document/ClrBkDrftAppl/ClrBkDrftApplInf/RmngAmt/  改为/Document/ClrBkDrftAppl/ClrBkDrftApplInf/RmngAmt
+/Document/ClrBkDrftAppl/ClrBkDrftApplInf/ActlSttlmAmt/  改为/Document/ClrBkDrftAppl/ClrBkDrftApplInf/ActlSttlmAmt
+
+hvps.152.001.01
+/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/ActlSttlmAmt/  改为/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/ActlSttlmAmt 	
+
+hvps.153.001.01
+/Document/RtrgBkDrftCptlAppl/RtrgBkDrftCptlApplInf/DrftInf/Amt/  改为/Document/RtrgBkDrftCptlAppl/RtrgBkDrftCptlApplInf/DrftInf/Amt
+
+hvps.715.001.01
+/Document/TxDwnldgRspn/OrgnlGrpHdr/OrgnlInstgDrctPty改为
+/Document/TxDwnldgRspn/TxDwnldgRspnInf/NPCPrcInf/---改为/Document/TxDwnldgRspn/TxDwnldgRspnInf/NpcPrcInf/---
+
+saps.737.001.01
+改三项
+
+2、父子表：
+hvps.711.001.01
+hvps.712.001.01
+hvps.713.001.01
+hvps.714.001.01
+hvps.716.001.01
+hvps.717.001.01
+
+3、以下表的字段缺少，需改正pdm文件，CNAPS2-v1.2.pdm也应调整（未调整）
+hvps.142.001.01
+hvps.143.001.01
+hvps.144.001.01
+hvps.151.001.01
+hvps.152.001.01
+hvps.153.001.01
+hvps.710.001.01
+hvps.715.001.01
+4、
+hvps.711.001.01
+hvps.712.001.01
+hvps.713.001.01
+hvps.714.001.01
+hvps.716.001.01
+应为多表，没有连线表，CNAPS2-v1.2.pdm应调整（未调整）
+
+5、
+msg_code='hvps.144.001.01'
+PrcCd应为非必须项
