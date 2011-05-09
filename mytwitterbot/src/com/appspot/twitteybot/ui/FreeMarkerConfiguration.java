@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.appspot.twitteybot.datastore.ApplicationProperty;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
@@ -67,7 +68,7 @@ public class FreeMarkerConfiguration {
     public static void writeResponse(Map<String, Object> templateValues, String templateFile, PrintWriter writer) {
 	try {
 	    String s = getProcessedTemplate(templateValues, templateFile);
-	    if(Pages.LOCAL_TEST) {
+	    if(ApplicationProperty.isTesting()) {
 	        log.info("getProcessedTemplate========\n"+s);
 	    }
 	    writer.write(s);

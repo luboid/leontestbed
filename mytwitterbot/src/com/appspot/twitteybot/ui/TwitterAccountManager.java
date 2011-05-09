@@ -48,20 +48,22 @@ public class TwitterAccountManager extends HttpServlet {
 		Twitter twitter = new Twitter();
 		twitter.setOAuthConsumer(ApplicationProperty.read(ApplicationProperty.CONSUMER_KEY), ApplicationProperty
 				.read(ApplicationProperty.CONSUMER_SECRET));
-		log.warning("action="+action+", Using consumer key " + ApplicationProperty.read(ApplicationProperty.CONSUMER_KEY));
+		log.warning("action="+action+", Using consumer key " + ApplicationProperty.read(ApplicationProperty.CONSUMER_KEY)+", isTesting()="+ApplicationProperty.isTesting());
 		try {
-		    if(Pages.LOCAL_TEST && action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
+		    if(ApplicationProperty.isTesting() && action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
 		        saveToken("token", "tokenSecret", "papaya");
 		        resp.sendRedirect(Pages.PAGE_MAIN);
 		    }
 		    else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
 				RequestToken requestToken = twitter.getOAuthRequestToken();
+				log.warning("requestToken="+requestToken+", token="+requestToken.getToken()+", secret="+requestToken.getTokenSecret()+", url="+requestToken.getAuthorizationURL());
 				resp.addCookie(new Cookie(COOKIE_TOKEN, requestToken.getToken()));
 				resp.addCookie(new Cookie(COOKIE_TOKEN_SECRET, requestToken.getTokenSecret()));
 				resp.sendRedirect(requestToken.getAuthorizationURL());
 			} else if (action.equalsIgnoreCase(Pages.PARAM_OAUTH)) {
 				String token = null, tokenSecret = null;
 				Cookie[] cookies = req.getCookies();
+                log.warning("back from twitter, req="+req.getQueryString());				
 				for (Cookie cookie : cookies) {
 					if (cookie.getName().equals(COOKIE_TOKEN)) {
 						token = cookie.getValue();
@@ -84,6 +86,8 @@ public class TwitterAccountManager extends HttpServlet {
 			}
 		} catch (TwitterException e) {
 			e.printStackTrace(resp.getWriter());
+		} catch (Exception e) {
+		    e.printStackTrace(resp.getWriter());
 		}
 	}
 	

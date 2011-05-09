@@ -2,7 +2,7 @@ package com.appspot.twitteybot.ui;
 
 public class Pages {
     
-    public static final boolean LOCAL_TEST = true;
+//    public static final boolean LOCAL_TEST = true;
     
     public static final String TEMPLATE_TXNPAGE= "ShowTransaction.ftl";
     

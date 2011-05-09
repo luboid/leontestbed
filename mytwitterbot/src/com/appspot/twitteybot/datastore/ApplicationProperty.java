@@ -23,10 +23,26 @@ public class ApplicationProperty {
     public static final String PAYEE_ACCOUNT = "payee_account";
     
     
+    public static final String IS_TESTING = "is_test";
+    
 	public static final String CONSUMER_KEY = "consumer_key";
 	public static final String CONSUMER_SECRET = "consumer_secret";
 	private static final String APPLICATION_PROPERTIES = "application_properties";
 
+	   public static final boolean isTesting() {
+	        
+	        String isTesting = read(IS_TESTING);
+	        if(isTesting==null) {
+	            return false;
+	        }
+	        try {
+	            Boolean d = Boolean.parseBoolean(isTesting);
+	            return d;           
+	        } catch (Exception ex) {
+	            throw new RuntimeException(ex);
+	        }       
+	    }
+	   
 	public static final double getUnitPrice() {
 	    
 	    String unitPriceStr = read(UNIT_PRICE);

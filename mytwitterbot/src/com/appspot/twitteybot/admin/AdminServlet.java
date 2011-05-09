@@ -39,7 +39,9 @@ public class AdminServlet extends HttpServlet {
 //		            this.wrieAdminForm(resp.getWriter(), "Unit Price Must be a number");
 //		            return;
 //		      }
-		        
+		    
+            ApplicationProperty.write(ApplicationProperty.IS_TESTING, req
+                    .getParameter(ApplicationProperty.IS_TESTING));		        
 			ApplicationProperty.write(ApplicationProperty.CONSUMER_KEY, req
 					.getParameter(ApplicationProperty.CONSUMER_KEY));
 			ApplicationProperty.write(ApplicationProperty.CONSUMER_SECRET, req
@@ -55,11 +57,15 @@ public class AdminServlet extends HttpServlet {
 	}
 
 	private void wrieAdminForm(PrintWriter w, String error) {
+	    String isTesting = ApplicationProperty.read(ApplicationProperty.IS_TESTING);
 		String consumerKey = ApplicationProperty.read(ApplicationProperty.CONSUMER_KEY);
 		String consumerSecret = ApplicationProperty.read(ApplicationProperty.CONSUMER_SECRET);
 		String unitPrice = ApplicationProperty.read(ApplicationProperty.UNIT_PRICE);
 		String payeeAccount = ApplicationProperty.read(ApplicationProperty.PAYEE_ACCOUNT);
+		
+		
 		Map<String, Object> templateValues = new HashMap<String, Object>();
+		templateValues.put(ApplicationProperty.IS_TESTING, isTesting);
 		templateValues.put(ApplicationProperty.CONSUMER_KEY, consumerKey);
 		templateValues.put(ApplicationProperty.CONSUMER_SECRET, consumerSecret);
 		templateValues.put(ApplicationProperty.UNIT_PRICE, unitPrice);
