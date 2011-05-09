@@ -4,7 +4,7 @@
     <param name="stream.filter.type">SAX</param>
     <param name="inputType">input.xsd</param>
     <param name="input.xsd.rootElement">Document</param>
-    <param name="input.xsd" type="input.type.actived">File:/D:\bankConnector\source\sample\Schema\pacs.008.001.02.xsd</param>
+    <param name="input.xsd" type="input.type.actived"></param>
   </params>
   <jb:bean beanId="target" class="${table.pkgName}.${table.destinationClassName}" createOnElement="Document">
 <#list table.basicColumns as column>    
@@ -22,6 +22,7 @@
    	<jb:wiring beanIdRef="${ebo.wiringColumnName}" />
   </jb:bean>
 	<jb:bean beanId="${ebo.wiringColumnName}" class="${table.pkgName}.${ebo.destinationClassName}" createOnElement="${ebo.wiringXmlPath}">
+		<jb:wiring beanIdRef="target" property="fid"/>
 		<#list ebo.basicColumns as column>    
     	<#if (column.nested) >
     		<jb:wiring beanIdRef="${column.variableName}" property="${column.variableName}"/>
