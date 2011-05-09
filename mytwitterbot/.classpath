@@ -14,5 +14,7 @@
 	<classpathentry kind="lib" path="lib/twitter4j-2.0.9.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="lib" path="lib/paypal_base.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
