@@ -1,13 +1,13 @@
 package com.topfinance.ebo.msg;
 
-import com.topfinance.ebo.msg.JaxbMapping;
-import java.util.Date;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -101,7 +101,8 @@ public class Saps73700101TxList implements java.io.Serializable {
 		initlAmt = newInitlAmt;
 	}
 
-	@Column(name = "FID", precision = 22, scale = 0)
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
 	public Saps73700101 getFid() {
 		return fid;
 	}
@@ -113,7 +114,7 @@ public class Saps73700101TxList implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Saps73700101TxList [id=" + id + ", +fid=" + fid + ", + mmbId=" + mmbId
+		return "Saps73700101TxList [id=" + id + ", +fid=" + fid.getid() + ", + mmbId=" + mmbId
 				+ ", initlAmt=" + initlAmt + "]";
 	}
 
