@@ -1,5 +1,6 @@
 package com.appspot.twitteybot.ui;
 
+import com.appspot.twitteybot.datastore.ApplicationProperty;
 import com.appspot.twitteybot.datastore.DsHelper;
 import com.appspot.twitteybot.datastore.PMF;
 import com.appspot.twitteybot.datastore.Transact;
@@ -161,7 +162,7 @@ public class TransactionManager extends HttpServlet {
             txn.setNumberOfStatus(size);
             txn.setTxnState(Transact.TxnState.UNPAID);
             txn.setTwitterScreenName(screenName);
-            txn.setUnitPrice(Const.UNIT_PRICE);
+            txn.setUnitPrice(ApplicationProperty.getUnitPrice());
             txn.setUpdatedTime(new Date());        
             txn.setUser(UserServiceFactory.getUserService().getCurrentUser());
             txn.setAmount(size * txn.getUnitPrice());

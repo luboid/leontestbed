@@ -1,8 +1,11 @@
 package com.appspot.twitteybot.pay;
 
+import com.paypal.sdk.core.nvp.NVPDecoder;
+import com.paypal.sdk.core.nvp.NVPEncoder;
+import com.paypal.sdk.exceptions.PayPalException;
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -19,14 +22,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.paypal.sdk.core.nvp.NVPDecoder;
-import com.paypal.sdk.core.nvp.NVPEncoder;
-import com.paypal.sdk.exceptions.PayPalException;
-
 public class PaypalPayment extends Pay {
 	/**
 	 * 
 	 */
+    
+        private static final Logger log = Logger.getLogger(PaypalPayment.class.getName());
+    
 	    private String gv_APIUserName = "zouljs_api1.gmail.com";
 	    private String gv_APIPassword = "VAP2YMLNEHWT4ZZR";
 	    private String gv_APISignature = "AWzhH6wDJyDw0qOKzLtZlz5PeS4KAKIzhhcgcgE7kf6q3KD1QgNp2-cD";
@@ -47,7 +49,12 @@ public class PaypalPayment extends Pay {
 	    
 	    @Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	        
+	        String contextPath = req.getContextPath();
+	        String serverName = req.getServerName();
+	        int port = req.getServerPort();
+	        log.info("contextPath="+contextPath+", serverName="+serverName+", port="+port);
+	            
 	        // Use "request" to read incoming HTTP headers (e.g. cookies)
 	        // and HTML form data (e.g. data the user entered and submitted)
 	
@@ -83,7 +90,7 @@ public class PaypalPayment extends Pay {
 	        '------------------------------------
 	        */
 	
-	        String returnURL = " http://www.yourstore.com/OrderConfirmPage.xxx";
+	        String returnURL = " http://"+serverName+"/pages/paypal?action=";
 	
 	        /*
 	        '------------------------------------
@@ -93,7 +100,7 @@ public class PaypalPayment extends Pay {
 	        ' This is set to the value entered on the Integration Assistant
 	        '------------------------------------
 	        */
-	        String cancelURL = "http://www.yourstore.com/OrderConfirmPage.xxx";
+	        String cancelURL = "http://"+serverName+"/OrderConfirmPage.xxx";
 	
 	        /*
 	        '------------------------------------

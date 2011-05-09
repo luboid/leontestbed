@@ -19,10 +19,28 @@ import com.google.appengine.api.datastore.Key;
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class ApplicationProperty {
 
+    public static final String UNIT_PRICE = "unit_price";
+    public static final String PAYEE_ACCOUNT = "payee_account";
+    
+    
 	public static final String CONSUMER_KEY = "consumer_key";
 	public static final String CONSUMER_SECRET = "consumer_secret";
 	private static final String APPLICATION_PROPERTIES = "application_properties";
 
+	public static final double getUnitPrice() {
+	    
+	    String unitPriceStr = read(UNIT_PRICE);
+	    if(unitPriceStr==null) {
+	        return 0;
+	    }
+	    try {
+	        Double d = Double.parseDouble(unitPriceStr);
+	        return d;	        
+	    } catch (Exception ex) {
+	        return 0;
+	    }	    
+	}
+	
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key id;

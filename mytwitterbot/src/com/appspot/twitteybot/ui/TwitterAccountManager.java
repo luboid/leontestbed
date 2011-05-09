@@ -1,5 +1,12 @@
 package com.appspot.twitteybot.ui;
 
+import com.appspot.twitteybot.datastore.ApplicationProperty;
+import com.appspot.twitteybot.datastore.PMF;
+import com.appspot.twitteybot.datastore.TwitterAccount;
+import com.appspot.twitteybot.datastore.TwitterStatus;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserServiceFactory;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
@@ -16,13 +23,6 @@ import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.http.AccessToken;
 import twitter4j.http.RequestToken;
-
-import com.appspot.twitteybot.datastore.ApplicationProperty;
-import com.appspot.twitteybot.datastore.PMF;
-import com.appspot.twitteybot.datastore.TwitterAccount;
-import com.appspot.twitteybot.datastore.TwitterStatus;
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserServiceFactory;
 
 public class TwitterAccountManager extends HttpServlet {
 
@@ -71,6 +71,9 @@ public class TwitterAccountManager extends HttpServlet {
 					}
 				}
 				AccessToken accessToken = twitter.getOAuthAccessToken(token, tokenSecret);
+				if(accessToken==null) {
+				    log.warning("twitter token cann't be retrieved for token="+token+", secret="+tokenSecret);
+				}
 				this.saveToken(accessToken);
 				resp.sendRedirect(Pages.PAGE_MAIN);
 			} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_DELETE)) {
