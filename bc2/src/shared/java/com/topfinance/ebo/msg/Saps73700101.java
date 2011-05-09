@@ -6,8 +6,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -15,7 +18,7 @@ import javax.persistence.Table;
  */
  
 @Entity
-@Table(name = "T_MSG_SAPS_737_001_01__")
+@Table(name = "t_c2_saps_737_hdr")
 public class Saps73700101  implements java.io.Serializable {
 
     // Fields 
@@ -26,18 +29,18 @@ public class Saps73700101  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="balWorkDayChckngAppl.grpHdr.creDtTm")
-    private Date creDtTm;
+    private String creDtTm;
     
     @JaxbMapping(objPath="balWorkDayChckngAppl.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
     
-    @JaxbMapping(objPath="balWorkDayChckngAppl.grpHdr.instgPty.instgDrctPty")
+    @JaxbMapping(objPath="balWorkDayChckngAppl.grpHdr.instgPty.InstgPty")
     private String instgIndrctPty;
     
-    @JaxbMapping(objPath="balWorkDayChckngAppl.grpHdr.instgPty.instgDrctPty")
+    @JaxbMapping(objPath="balWorkDayChckngAppl.grpHdr.instdPty.instgDrctPty")
     private String instdDrctPty;
     
-    @JaxbMapping(objPath="balWorkDayChckngAppl.grpHdr.instdPty.instdDrctPty")
+    @JaxbMapping(objPath="balWorkDayChckngAppl.grpHdr.instdPty.instdPty")
     private String instdIndrctPty;
     
     @JaxbMapping(objPath="balWorkDayChckngAppl.grpHdr.sysCd")
@@ -64,8 +67,10 @@ public class Saps73700101  implements java.io.Serializable {
    * 
    * @return the id
    */
-  @Id
-    @Column(name = "ID")
+    @Id
+	@Column(name = "ID", unique = true, nullable = false, precision = 22, scale = 0)
+	@SequenceGenerator(name = "CFG_SEQUNCE_GEN", sequenceName = "S_CFG_SEQUNCE")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "CFG_SEQUNCE_GEN")
     public Integer getid() {
         return id;
     }	 
@@ -104,7 +109,7 @@ public class Saps73700101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public Date getCreDtTm() {
+    public String getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -114,7 +119,7 @@ public class Saps73700101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(Date newCreDtTm) {
+    public void  setCreDtTm(String newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -255,7 +260,7 @@ public class Saps73700101  implements java.io.Serializable {
    * 
    * @return the txList
    */
-  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
     public java.util.Set<Saps73700101TxList> getTxList() {
         return txList;
     }	 
