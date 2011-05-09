@@ -24,6 +24,7 @@
    	<jb:wiring beanIdRef="txList" />
   </jb:bean>
 	<jb:bean beanId="txList" class="com.topfinance.ebo.msg.Saps73700101TxList" createOnElement="/Document/BalWorkDayChckngAppl/BalWorkDayChckngApplInf/TxList">
+				<jb:wiring beanIdRef="target" property="fid"/>
 				<jb:value data="/Document/BalWorkDayChckngAppl/BalWorkDayChckngApplInf/TxList/MmbId" property="mmbId"/>    
 				<jb:value data="/Document/BalWorkDayChckngAppl/BalWorkDayChckngApplInf/TxList/InitlAmt" property="initlAmt"/>    
 	</jb:bean>  
