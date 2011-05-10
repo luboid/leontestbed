@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps72000101</param>
+  </params>
+  	<jb:bean beanId="ttlChckInfReq.grpHdr" class="com.xml.cnaps2.beps.v72000101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps72000101">
+    	<jb:wiring beanIdRef="ttlChckInfReq.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="ttlChckInfReq.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="msgId"  property="msgId"/>
+  		<jb:value data="creDtTm"  property="creDtTm"/>
+  		<jb:value data="sysCd"  property="sysCd"/>
+  		<jb:value data="rmk"  property="sysCd"/>
+  	</jb:bean>
+  	<jb:bean beanId="ttlChckInfReq.grpHdr.instgPty" class="com.xml.cnaps2.beps.v72000101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Beps72000101">
+  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.beps.v72000101.Document" createOnElement="com.topfinance.ebo.msg.Beps72000101">
+    	<jb:wiring beanIdRef="ttlChckInfReq" property="ttlChckInfReq"/>
+  	</jb:bean>
+  	<jb:bean beanId="ttlChckInfReq" class="com.xml.cnaps2.beps.v72000101.TotalCheckInformationRequest" createOnElement="com.topfinance.ebo.msg.Beps72000101">
+    	<jb:wiring beanIdRef="ttlChckInfReq.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="ttlChckInfReq.ttlChckInfReqInf" property="ttlChckInfReqInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="ttlChckInfReq.ttlChckInfReqInf" class="com.xml.cnaps2.beps.v72000101.TotalCheckInformationRequestInformation1" createOnElement="com.topfinance.ebo.msg.Beps72000101">
+  		<jb:value data="chckngDt"  property="chckDt"/>
+  	</jb:bean>
+  	<jb:bean beanId="ttlChckInfReq.grpHdr.instdPty" class="com.xml.cnaps2.beps.v72000101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Beps72000101">
+  		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
