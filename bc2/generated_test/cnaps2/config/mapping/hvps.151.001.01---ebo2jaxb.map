@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Hvps15100101</param>
+  </params>
+  	<jb:bean beanId="clrBkDrftAppl.clrBkDrftApplInf.actlSttlmAmt" class="com.xml.cnaps2.hvps.v15100101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps15100101">
+  		<jb:value data="actlSttlmAmt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.hvps.v15100101.Document" createOnElement="com.topfinance.ebo.msg.Hvps15100101">
+    	<jb:wiring beanIdRef="clrBkDrftAppl" property="clrBkDrftAppl"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftAppl.clrBkDrftApplInf.rmngAmt" class="com.xml.cnaps2.hvps.v15100101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps15100101">
+  		<jb:value data="rmngAmt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftAppl.clrBkDrftApplInf.drftInf" class="com.xml.cnaps2.hvps.v15100101.DrftInf1" createOnElement="com.topfinance.ebo.msg.Hvps15100101">
+    	<jb:wiring beanIdRef="clrBkDrftAppl.clrBkDrftApplInf.drftInf.amt" property="amt"/>
+  		<jb:value data="dt"  property="dt"/>
+  		<jb:value data="nb"  property="nb"/>
+  		<jb:value data="tstCd"  property="tstCd"/>
+  		<jb:value data="tp"  property="tp"/>
+  		<jb:value data="issrBk"  property="issrBk"/>
+  		<jb:value data="issrAcct"  property="issrAcct"/>
+  		<jb:value data="issrNm"  property="issrNm"/>
+  		<jb:value data="rcvrNm"  property="rcvrNm"/>
+  		<jb:value data="hldrBk"  property="hldrBk"/>
+  		<jb:value data="hldrAcct"  property="hldrAcct"/>
+  		<jb:value data="hldrNm"  property="hldrNm"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftAppl.grpHdr.instgPty" class="com.xml.cnaps2.hvps.v15100101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Hvps15100101">
+  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftAppl.clrBkDrftApplInf" class="com.xml.cnaps2.hvps.v15100101.ClrBkDrftApplInf1" createOnElement="com.topfinance.ebo.msg.Hvps15100101">
+    	<jb:wiring beanIdRef="clrBkDrftAppl.clrBkDrftApplInf.drftInf" property="drftInf"/>
+    	<jb:wiring beanIdRef="clrBkDrftAppl.clrBkDrftApplInf.rmngAmt" property="rmngAmt"/>
+    	<jb:wiring beanIdRef="clrBkDrftAppl.clrBkDrftApplInf.actlSttlmAmt" property="actlSttlmAmt"/>
+  		<jb:value data="rmndDtPmt"  property="rmndDtPmt"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftAppl.grpHdr.instdPty" class="com.xml.cnaps2.hvps.v15100101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Hvps15100101">
+  		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftAppl.clrBkDrftApplInf.drftInf.amt" class="com.xml.cnaps2.hvps.v15100101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps15100101">
+  		<jb:value data="amt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftAppl.grpHdr" class="com.xml.cnaps2.hvps.v15100101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Hvps15100101">
+    	<jb:wiring beanIdRef="clrBkDrftAppl.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="clrBkDrftAppl.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="msgId"  property="msgId"/>
+  		<jb:value data="creDtTm"  property="creDtTm"/>
+  		<jb:value data="sysCd"  property="sysCd"/>
+  		<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftAppl" class="com.xml.cnaps2.hvps.v15100101.ClrBkDrftApplV01" createOnElement="com.topfinance.ebo.msg.Hvps15100101">
+    	<jb:wiring beanIdRef="clrBkDrftAppl.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="clrBkDrftAppl.clrBkDrftApplInf" property="clrBkDrftApplInf"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
