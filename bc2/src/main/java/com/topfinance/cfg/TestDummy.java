@@ -99,6 +99,16 @@ public class TestDummy extends TestCase implements CfgConstants{
     public static String OPERATION_715 = "hvps.715.001.01";
     public static String OPERATION_716 = "hvps.716.001.01";
     public static String OPERATION_717 = "hvps.717.001.01";
+    public static String OPERATION_401 = "beps.401.001.01";
+    public static String OPERATION_402 = "beps.402.001.01";
+    public static String OPERATION_403 = "beps.403.001.01";
+    public static String OPERATION_413 = "beps.413.001.01";
+    public static String OPERATION_414 = "beps.414.001.01";
+    public static String OPERATION_415 = "beps.415.001.01";
+    public static String OPERATION_416 = "beps.416.001.01";
+    public static String OPERATION_417 = "beps.417.001.01";
+    public static String OPERATION_720= "beps.720.001.01";
+    public static String OPERATION_725 = "beps.725.001.01";
     
     //客户发起汇兑业务报文
     public static String OPERATION_111 = "hvps.111.001.01";
