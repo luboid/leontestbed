@@ -282,7 +282,7 @@ public class TestGenMap extends TestCase {
 		} else if (bizFldType.equalsIgnoreCase("ActiveCurrencyAndAmount")) {
 			clazz = "java.math.BigDecimal";
 		} else if (bizFldType.equalsIgnoreCase("ISODateTime")) {
-			clazz = "java.util.String";
+			clazz = "java.lang.String";
 		} else if (bizFldType.equalsIgnoreCase("ISODate")) {
 			clazz = "java.lang.Date";
 		} else if (bizFldType.equalsIgnoreCase("Any")) {
@@ -804,7 +804,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_715() throws Exception {
+	public void atestGenerated_715() throws Exception {
 		String msgCode = "hvps.715.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -828,6 +828,116 @@ public class TestGenMap extends TestCase {
 	
 	public void btestGenerated_717() throws Exception {
 		String msgCode = "hvps.717.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_401() throws Exception {
+		String msgCode = "beps.401.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_402() throws Exception {
+		String msgCode = "beps.402.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_403() throws Exception {
+		String msgCode = "beps.403.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_413() throws Exception {
+		String msgCode = "beps.413.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_414() throws Exception {
+		String msgCode = "beps.414.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_415() throws Exception {
+		String msgCode = "beps.415.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_416() throws Exception {
+		String msgCode = "beps.416.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_417() throws Exception {
+		String msgCode = "beps.417.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_720() throws Exception {
+		String msgCode = "beps.720.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_725() throws Exception {
+		String msgCode = "beps.725.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {
