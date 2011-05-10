@@ -289,8 +289,6 @@ public class TestGenMap extends TestCase {
 			clazz = "java.lang.String";
 		}  else if (bizFldType.equalsIgnoreCase("SystemStatus")) {
 			clazz = "java.lang.String";
-		} else if (bizFldType.equalsIgnoreCase("ActiveCurrencyAndAmount")){
-			clazz = "java.lang.Integer";
 		}
 
 		if (clazz != null) {
