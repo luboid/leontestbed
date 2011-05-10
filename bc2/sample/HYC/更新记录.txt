@@ -378,6 +378,25 @@ PATH = '/Document/CstmrPmtQryRspn/OrgnlGrpHdr/OrgnlMsgTp'
 T_C2_BIS_ELE_BSC表中,msg_code='beps.393.001.01'数据报文中
 camt.005.001.04.xsd文件中出name="TxRef"的unbounded修改为1
 
+6、beps.392.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.392.001.01'数据报文中
+PATH = '/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/OrgnlPmtInfId'
+PATH = '/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/StsId'
+PATH = '/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlInstrId'
+PATH = '/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlInstrId'
+PATH = '/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/StsRsnInf/Rsn/Prtry'
+PATH = '/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/StsRsnInf/AddtlInf'
+PATH = '/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlTxRef/IntrBkSttlmAmt'
+修改T_C2_BEPS_392表，修改业务拒绝原因字段名称为REJRSN，修改原明细标识号字段名称为ORGNLINSTRID，新增原支付信息标识号字段为ORGNLPMTINFID VARCHAR2(1)
+
+7、beps.391.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.391.001.01'数据报文中
+新增数据：
+beps.391.001.01	EqvtAmt	相当的金额		19		ActiveOrHistoricCurrencyAndAmount	20	Y
+beps.391.001.01	CcyOfTrf	金额编码		20		ActiveOrHistoricCurrencyCode	3	Y				
+	/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/Amt/InstdAmt/EqvtAmt/CcyOfTrf					
+	/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/Amt/InstdAmt/EqvtAmt/Amt 
+修改T_C2_BEPS_391表，新增相当金额字段为EqvtAmt NUMBER(20,2) not null,新增金额编码字段为CcyOfTrf VARCHAR2(3) not null
 
 
 yu:
@@ -479,6 +498,7 @@ T_C2_BIS_ELE_BSC表中,msg_code='ccms.906.001.01'数据报文中
 PATH = '/Document/BizClssTpMgmt/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/BizClssTpMgmt/GrpHdr/InstdPty/InstdPty'
 /Document/BizClssTpMgmt/GrpHdr/InstdPty/InstdDrctPty改为/Document/BizClssTpMgmt/GrpHdr/SysCd
+/Document/BizClssTpMgmt/ChngInf/MT改为/Document/BizClssTpMgmt/ChngInf/Mt
 
 T_C2_BIS_ELE_BSC表中,msg_code='ccms.913.001.01'数据报文中
 PATH = '/Document/CISAgcyChngNtfctn/GrpHdr/InstgPty/InstgPty'
@@ -494,10 +514,26 @@ T_C2_BIS_ELE_BSC表中,msg_code='ccms.803.001.02'数据报文中
 PATH = '/Document/TrblNtfctn/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/TrblNtfctn/GrpHdr/InstdPty/InstdDrctPty' 
 PATH = '/Document/TrblNtfctn/GrpHdr/InstdPty/InstdPty'
-
+PtyId的upseq改为12，sequn改为13，追加一条数据，sequn为12
 
 T_C2_BIS_ELE_BSC表中,msg_code='ccms.926.001.01'
 没有数据
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.992.001.01'
+/Document/ChckRspn/OrigSndNd改为/Document/ChckRspn/ChckRspnInf/OrigSndNd
+/Document/ChckRspn/OrigSndSvsrNm
+PATH = '/Document/ChckRspn/ChckRspnInf/OrigSndSvsrNm'
+PATH = '/Document/ChckRspn/ChckRspnInf/OrigSndSvsrNm'
+PATH = '/Document/ChckRspn/ChckRspnInf/RcvRoadNm'
+PATH = '/Document/ChckRspn/ChckRspnInf/OrigSndDt'
+PATH = '/Document/ChckRspn/ChckRspnInf/RspnSvcrNm'
+PATH = '/Document/ChckRspn/ChckRspnInf/RspnSvcrNm' 
+PATH = '/Document/ChckRspn/ChckRspnInf/RspnLineMgr'
+PATH = '/Document/ChckRspn/ChckRspnInf/RcvLineNm'
+PATH = "/Document/ChckRspn/LdFctrInf"
+PATH = '/Document/ChckRspn/LdFctrInf/RspnLclLineNm'
+PATH = '/Document/ChckRspn/LdFctrInf/LdFctr'
+
 
 T_C2_BIS_ELE_BSC表中,msg_code='ccms.921.001.01'数据报文中
 PATH = '/Document/CertDwnLdRspn/GrpHdr/InstgPty/InstgPty'
@@ -513,6 +549,7 @@ T_C2_BIS_ELE_BSC表中,msg_code='ccms.907.001.02'数据报文中
 PATH = '/Document/SysParamNtfctn/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/SysParamNtfctn/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/SysParamNtfctn/GrpHdr/InstdPty/InstdPty'
+ChngRcrdNb的type由ChngRcrdNb改为Max8NumericText
 
 T_C2_BIS_ELE_BSC表中,msg_code='ccms.916.001.01'数据报文中
 PATH = '/Document/BkCdChngNtfctn/GrpHdr/InstgPty/InstgPty'
@@ -532,9 +569,9 @@ PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstdPty/InstdPty'
 
 T_C2_BIS_ELE_BSC表中,msg_code='nets.356.001.01'数据报文中
-PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstgPty/InstgPty'
-PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstdPty/InstdDrctPty'
-PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/NetDbtLmtMgmtNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/NetDbtLmtMgmtNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/NetDbtLmtMgmtNtfctn/GrpHdr/InstdPty/InstdPty'
 
 T_C2_BIS_ELE_BSC表中,msg_code='nets.353.001.01'数据报文中
 PATH = '/Document/NetDbtLmtDstrbtnMgmt/GrpHdr/InstgPty/InstgPty'
