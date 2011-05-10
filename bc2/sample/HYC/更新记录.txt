@@ -339,3 +339,41 @@ hvps.716.001.01
 5、
 msg_code='hvps.144.001.01'
 PrcCd应为非必须项
+
+6、
+T_C2_BIS_ELE_BSC表中,msg_code='beps.397.001.01'数据报文中
+PATH = '/Document/ChckCdtForLd/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/ChckCdtForLd/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/ChckCdtForLd/OrgnlGrpHdr/OrgnlInstgPty'
+ELE_NAME = '出票行行号' 对应的ELE_ID修改为Bid
+
+2011-05-10
+1、beps.398.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.398.001.01'数据报文中
+PATH = '/Document/ChckCdtForLdRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/ChckCdtForLdRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/ChckCdtForLdRspn/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/ChckCdtForLdRspn/ChckCdtForLdRspnInf/RspsnInf/PrcPty'
+
+2、beps.386.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.386.001.01'数据报文中
+PATH = '/Document/ChckCdtForLdRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/ChckCdtForLdRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/ChckCdtForLdRspn/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/ChckCdtForLdRspn/ChckCdtForLdRspnInf/RspsnInf/PrcPty'
+pain.002.001.03.xsd文件中的unbounded修改为1
+
+3、beps.395.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.395.001.01'数据报文中
+PATH = '/Document/BkToCstmrDbtCdtNtfctn/GrpHdr/MsgId'
+
+4、beps.394.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.394.001.01'数据报文中
+PATH = '/Document/CstmrPmtQryRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/CstmrPmtQryRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/CstmrPmtQryRspn/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/CstmrPmtQryRspn/OrgnlGrpHdr/OrgnlMsgTp'
+
+5、beps.393.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.393.001.01'数据报文中
+camt.005.001.04.xsd文件中出name="TxRef"的unbounded修改为1
