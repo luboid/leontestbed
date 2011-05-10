@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps38600101</param>
+  </params>
+  	<jb:bean beanId="cstmrPmtStsRpt.grpHdr.initgPty" class="com.xml.cnaps2.beps.v38600101.PartyIdentification32" createOnElement="com.topfinance.ebo.msg.Beps38600101">
+  		<jb:value data="instgDrctPty"  property="nm"/>
+  	</jb:bean>
+  	<jb:bean beanId="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts" class="com.xml.cnaps2.beps.v38600101.PaymentTransactionInformation25" createOnElement="com.topfinance.ebo.msg.Beps38600101">
+  		<jb:value data="rejRsn"  property="stsId"/>
+  	</jb:bean>
+  	<jb:bean beanId="cstmrPmtStsRpt.grpHdr.fwdgAgt.finInstnId" class="com.xml.cnaps2.beps.v38600101.FinancialInstitutionIdentification7" createOnElement="com.topfinance.ebo.msg.Beps38600101">
+    	<jb:wiring beanIdRef="cstmrPmtStsRpt.grpHdr.fwdgAgt.finInstnId.clrSysMmbId" property="clrSysMmbId"/>
+  	</jb:bean>
+  	<jb:bean beanId="cstmrPmtStsRpt.grpHdr.fwdgAgt" class="com.xml.cnaps2.beps.v38600101.BranchAndFinancialInstitutionIdentification4" createOnElement="com.topfinance.ebo.msg.Beps38600101">
+    	<jb:wiring beanIdRef="cstmrPmtStsRpt.grpHdr.fwdgAgt.finInstnId" property="finInstnId"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.beps.v38600101.Document" createOnElement="com.topfinance.ebo.msg.Beps38600101">
+    	<jb:wiring beanIdRef="cstmrPmtStsRpt" property="cstmrPmtStsRpt"/>
+  	</jb:bean>
+  	<jb:bean beanId="cstmrPmtStsRpt" class="com.xml.cnaps2.beps.v38600101.CustomerPaymentStatusReportV03" createOnElement="com.topfinance.ebo.msg.Beps38600101">
+    	<jb:wiring beanIdRef="cstmrPmtStsRpt.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="cstmrPmtStsRpt.orgnlGrpInfAndSts" property="orgnlGrpInfAndSts"/>
+    	<jb:wiring beanIdRef="cstmrPmtStsRpt.orgnlPmtInfAndSts" property="orgnlPmtInfAndSts"/>
+  	</jb:bean>
+  	<jb:bean beanId="cstmrPmtStsRpt.grpHdr.fwdgAgt.finInstnId.clrSysMmbId" class="com.xml.cnaps2.beps.v38600101.ClearingSystemMemberIdentification2" createOnElement="com.topfinance.ebo.msg.Beps38600101">
+  		<jb:value data="mmbId"  property="mmbId"/>
+  	</jb:bean>
+  	<jb:bean beanId="cstmrPmtStsRpt.orgnlPmtInfAndSts" class="com.xml.cnaps2.beps.v38600101.OriginalPaymentInformation1" createOnElement="com.topfinance.ebo.msg.Beps38600101">
+    	<jb:wiring beanIdRef="cstmrPmtStsRpt.orgnlPmtInfAndSts.stsRsnInf" property="stsRsnInf"/>
+    	<jb:wiring beanIdRef="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts" property="txInfAndSts"/>
+  		<jb:value data="orgnlPmtInfId"  property="orgnlPmtInfId"/>
+  		<jb:value data="stsId"  property="orgnlPmtInfId"/>
+  	</jb:bean>
+  	<jb:bean beanId="cstmrPmtStsRpt.orgnlGrpInfAndSts" class="com.xml.cnaps2.beps.v38600101.OriginalGroupInformation20" createOnElement="com.topfinance.ebo.msg.Beps38600101">
+  		<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  		<jb:value data="orgnlMsgNmId"  property="orgnlMsgNmId"/>
+  	</jb:bean>
+  	<jb:bean beanId="cstmrPmtStsRpt.grpHdr" class="com.xml.cnaps2.beps.v38600101.GroupHeader36" createOnElement="com.topfinance.ebo.msg.Beps38600101">
+    	<jb:wiring beanIdRef="cstmrPmtStsRpt.grpHdr.initgPty" property="initgPty"/>
+    	<jb:wiring beanIdRef="cstmrPmtStsRpt.grpHdr.fwdgAgt" property="fwdgAgt"/>
+  		<jb:value data="msgId"  property="msgId"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
+  	</jb:bean>
+  	<jb:bean beanId="cstmrPmtStsRpt.orgnlPmtInfAndSts.stsRsnInf" class="com.xml.cnaps2.beps.v38600101.StatusReasonInformation8" createOnElement="com.topfinance.ebo.msg.Beps38600101">
+  		<jb:value data="orgnlMT"  property="addtlInf"/>
+  		<jb:value data="prtryRejCd"  property="addtlInf"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

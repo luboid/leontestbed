@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps39800101" createOnElement="Document">
+				<jb:value data="/Document/ChckCdtForLdRspn/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/GrpHdr/CreDtTm" property="creDtTm"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/OrgnlGrpHdr/OrgnlMsgTp" property="orgnlMT"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/ChckCdtForLdRspnInf/RspsnInf/Sts" property="sts"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/ChckCdtForLdRspnInf/RspsnInf/RjctCd" property="rjctCd"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/ChckCdtForLdRspnInf/RspsnInf/RjctInf" property="rjctInf"/>    
+				<jb:value data="/Document/ChckCdtForLdRspn/ChckCdtForLdRspnInf/RspsnInf/PrcPty" property="prcPty"/>    
+	</jb:bean>
+	
+
+
+</smooks-resource-list>  
+    

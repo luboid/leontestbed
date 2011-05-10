@@ -634,5 +634,41 @@
       	pathOpClass=""     	
       	>
       </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.397.001.01"
+      	name="beps.397.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/ChckCdtForLd/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/ChckCdtForLd/OrgnlGrpHdr/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.398.001.01"
+      	name="beps.398.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/ChckCdtForLdRspn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/ChckCdtForLdRspn/OrgnlGrpHdr/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.386.001.01"
+      	name="beps.386.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/CstmrPmtStsRpt/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/CstmrPmtStsRpt/OrgnlGrpHdr/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
    </list>
 </OperationDefinitions>
