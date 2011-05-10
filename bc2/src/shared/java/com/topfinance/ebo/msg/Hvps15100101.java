@@ -1,12 +1,14 @@
 package com.topfinance.ebo.msg;
 
 import com.topfinance.ebo.msg.JaxbMapping;
-import javax.persistence.GenerationType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.SequenceGenerator;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -24,8 +26,8 @@ public class Hvps15100101  implements java.io.Serializable {
     @JaxbMapping(objPath="clrBkDrftAppl.grpHdr.msgId")
     private String msgId;
     
-    @JaxbMapping(objPath="clrBkDrftAppl.grpHdr.msgId")
-    private String creDtTm;
+    @JaxbMapping(objPath="clrBkDrftAppl.grpHdr.creDtTm")
+    private Date creDtTm;
     
     @JaxbMapping(objPath="clrBkDrftAppl.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -57,7 +59,7 @@ public class Hvps15100101  implements java.io.Serializable {
     @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.drftInf.tp")
     private String tp;
     
-    @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.drftInf.amt")
+    @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.drftInf.amt.value")
     private Double amt;
     
     @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.drftInf.issrBk")
@@ -81,10 +83,10 @@ public class Hvps15100101  implements java.io.Serializable {
     @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.drftInf.hldrNm")
     private String hldrNm;
     
-    @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.rmngAmt")
+    @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.rmngAmt.value")
     private Double rmngAmt;
     
-    @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.actlSttlmAmt")
+    @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.actlSttlmAmt.value")
     private Double actlSttlmAmt;
     
     @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.rmndDtPmt")
@@ -144,7 +146,7 @@ public class Hvps15100101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -154,7 +156,7 @@ public class Hvps15100101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
