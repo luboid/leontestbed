@@ -35,7 +35,7 @@ public class TestGenMap extends TestCase {
 	public final static String DBSTORE = "E:/DevSpace/bc2/bin/runBC-A-config-DB.xml";
 
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean USE_DB = false;
+	public final static boolean USE_DB = true;
 	
 	// TODO change it to true when you are ready to connect to DB
 	public final static boolean TO_GENERATE = false;
@@ -282,13 +282,15 @@ public class TestGenMap extends TestCase {
 		} else if (bizFldType.equalsIgnoreCase("ActiveCurrencyAndAmount")) {
 			clazz = "java.math.BigDecimal";
 		} else if (bizFldType.equalsIgnoreCase("ISODateTime")) {
-			clazz = "java.util.Date";
+			clazz = "java.util.String";
 		} else if (bizFldType.equalsIgnoreCase("ISODate")) {
-			clazz = "java.lang.String";
+			clazz = "java.lang.Date";
 		} else if (bizFldType.equalsIgnoreCase("Any")) {
 			clazz = "java.lang.String";
-		} else {
+		}  else if (bizFldType.equalsIgnoreCase("SystemStatus")) {
 			clazz = "java.lang.String";
+		} else if (bizFldType.equalsIgnoreCase("ActiveCurrencyAndAmount")){
+			clazz = "java.lang.Integer";
 		}
 
 		if (clazz != null) {
@@ -299,7 +301,7 @@ public class TestGenMap extends TestCase {
 		return res;
 	}
 
-	public void testGenerated_990_001_02() throws Exception {
+	public void atestGenerated_990_001_02() throws Exception {
 		String msgCode = "ccms.990.001.02";
 		String tpCode = "";
 		String clsCode = "";
@@ -310,7 +312,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 
-	public void testGenerated_991() throws Exception {
+	public void atestGenerated_991() throws Exception {
 		String msgCode = "ccms.991.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -321,7 +323,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 
-	public void testGenerated_311() throws Exception {
+	public void atestGenerated_311() throws Exception {
 		String msgCode = "ccms.311.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -804,7 +806,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void atestGenerated_715() throws Exception {
+	public void testGenerated_715() throws Exception {
 		String msgCode = "hvps.715.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -837,7 +839,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_saps_737_001_01() throws Exception {
+	public void atestGenerated_saps_737_001_01() throws Exception {
 		String msgCode = "saps.737.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -939,11 +941,11 @@ public class TestGenMap extends TestCase {
 	}
 
 	
-	public void testMe() throws Exception{
+	public void atestMe() throws Exception{
 		try {
 //			testGenerated_311();
 			
-			testGenerated_saps_737_001_01();
+			//testGenerated_saps_737_001_01();
 //			Field f = InstgPty1.class.getDeclaredField("instgIndrctPty");
 //			debug("f="+f);
 		} catch (Exception ex) {
