@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Hvps15200101</param>
+  </params>
+  	<jb:bean beanId="clrBkDrftNtfctn.grpHdr" class="com.xml.cnaps2.hvps.v15200101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Hvps15200101">
+    	<jb:wiring beanIdRef="clrBkDrftNtfctn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="clrBkDrftNtfctn.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/msgId"  property="msgId"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/creDtTm"  property="creDtTm"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/sysCd"  property="sysCd"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftNtfctn.clrBkDrftNtfctnInf" class="com.xml.cnaps2.hvps.v15200101.ClrBkDrftNtfctnInf1" createOnElement="com.topfinance.ebo.msg.Hvps15200101">
+    	<jb:wiring beanIdRef="clrBkDrftNtfctn.clrBkDrftNtfctnInf.drftInf" property="drftInf"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/actlSttlmAmt"  property="actlSttlmAmt"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/rmndDtPmt"  property="rmndDtPmt"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.hvps.v15200101.Document" createOnElement="com.topfinance.ebo.msg.Hvps15200101">
+    	<jb:wiring beanIdRef="clrBkDrftNtfctn" property="clrBkDrftNtfctn"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftNtfctn.grpHdr.instgPty" class="com.xml.cnaps2.hvps.v15200101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Hvps15200101">
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftNtfctn.grpHdr.instdPty" class="com.xml.cnaps2.hvps.v15200101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Hvps15200101">
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftNtfctn.clrBkDrftNtfctnInf.drftInf" class="com.xml.cnaps2.hvps.v15200101.DrftInf1" createOnElement="com.topfinance.ebo.msg.Hvps15200101">
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/rcvrNm"  property="rcvrNm"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/hldrBk"  property="hldrBk"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/hldrAcct"  property="hldrAcct"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/hldrNm"  property="hldrNm"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/dt"  property="dt"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/nb"  property="nb"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/tstCd"  property="tstCd"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/tp"  property="tp"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/amt"  property="amt"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/issrBk"  property="issrBk"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/issrAcct"  property="issrAcct"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps15200101/issrNm"  property="issrNm"/>
+  	</jb:bean>
+  	<jb:bean beanId="clrBkDrftNtfctn" class="com.xml.cnaps2.hvps.v15200101.ClrBkDrftNtfctnV01" createOnElement="com.topfinance.ebo.msg.Hvps15200101">
+    	<jb:wiring beanIdRef="clrBkDrftNtfctn.clrBkDrftNtfctnInf" property="clrBkDrftNtfctnInf"/>
+    	<jb:wiring beanIdRef="clrBkDrftNtfctn.grpHdr" property="grpHdr"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

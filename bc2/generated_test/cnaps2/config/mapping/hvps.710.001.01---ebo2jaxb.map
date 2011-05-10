@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Hvps71000101</param>
+  </params>
+  	<jb:bean beanId="acctChckngReq.grpHdr" class="com.xml.cnaps2.hvps.v71000101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Hvps71000101">
+    	<jb:wiring beanIdRef="acctChckngReq.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="acctChckngReq.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps71000101/msgId"  property="msgId"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps71000101/creDtTm"  property="creDtTm"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps71000101/sysCd"  property="sysCd"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps71000101/rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.hvps.v71000101.Document" createOnElement="com.topfinance.ebo.msg.Hvps71000101">
+    	<jb:wiring beanIdRef="acctChckngReq" property="acctChckngReq"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctChckngReq.acctChckngReqInf" class="com.xml.cnaps2.hvps.v71000101.AcctChckngReqInf1" createOnElement="com.topfinance.ebo.msg.Hvps71000101">
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps71000101/chckngDt"  property="chckngDt"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctChckngReq.grpHdr.instgPty" class="com.xml.cnaps2.hvps.v71000101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Hvps71000101">
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps71000101/instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps71000101/instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctChckngReq.grpHdr.instdPty" class="com.xml.cnaps2.hvps.v71000101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Hvps71000101">
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps71000101/instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="/com.topfinance.ebo.msg.Hvps71000101/instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctChckngReq" class="com.xml.cnaps2.hvps.v71000101.AcctChckngReqV01" createOnElement="com.topfinance.ebo.msg.Hvps71000101">
+    	<jb:wiring beanIdRef="acctChckngReq.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="acctChckngReq.acctChckngReqInf" property="acctChckngReqInf"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

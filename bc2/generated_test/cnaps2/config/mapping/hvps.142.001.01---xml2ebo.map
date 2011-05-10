@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived">File:/E:/DevSpace/bc2/sample/Schema/hvps.142.001.01.xsd</param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Hvps14200101" createOnElement="Document">
+		<jb:value data="/Document/ImdtTrfNtfctn/GrpHdr/MsgId" property="msgId"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/GrpHdr/SysCd" property="sysCd"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/GrpHdr/Rmk" property="rmk"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/Dbtr/Nm" property="dbtrNm"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/DbtrAcct/Id/Othr/Id" property="dbtrAcctId"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/DbtrAcct/Id/Othr/Issr" property="dbtrAcctIssr"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/DbtrAgt/FiId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/DbtrAgt/BrnchId/Id" property="dbtrAgtBrnchId"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/CdtrAgt/FiId/ClrSysMmbId/MmbId" property="cdtrClrSysMmbId"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/CdtrAgt/BrnchId/Id" property="cdtrAgtBrnchId"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/Cdtr/Nm" property="cdtrNm"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/CdtrAcct/Id/Othr/Id" property="cdtrAcctId"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/CdtrAcct/Id/Othr/Issr" property="cdtrAcctIssr"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/Amt" property="intrBkSttlmAmt"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/PmtTpInf/CtgyPurp/Prtry" property="prtryTpCd"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/Purp/Prtry" property="prtryTcCd"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/NtceTp" property="ntceTp"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/ClrSysMmbId/MmbId" property="mmbId"/>    
+		<jb:value data="/Document/ImdtTrfNtfctn/ImdtTrfNtfctnInf/TxBtch" property="txBtch"/>    
+	</jb:bean>
+</smooks-resource-list>  
+    
