@@ -23,7 +23,7 @@
 		<OrgnlPmtInfAndSts>
 			<OrgnlPmtInfId>1</OrgnlPmtInfId>
 			<StsRsnInf>
-				<AddtlInf>测试测试测试测试测试测试测试测试</AddtlInf>
+				<AddtlInf>测试</AddtlInf>
 			</StsRsnInf>
 			<TxInfAndSts>
 				<StsId>PR05</StsId>

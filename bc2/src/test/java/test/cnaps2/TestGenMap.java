@@ -32,16 +32,16 @@ public class TestGenMap extends TestCase {
 
 	// TODO change the path
 	//public final static String DBSTORE = "D:/bankConnector/source/bin/runBC-A-config-DB.xml";
-	public final static String DBSTORE = "E:/DevSpace/bc2/bin/runBC-A-config-DB.xml";
+	public final static String DBSTORE = "D:/DEV.WORK/EBO/bc2/bin/runBC-A-config-DB.xml";
 
 	// TODO change it to true when you are ready to connect to DB
 	public final static boolean USE_DB = true;
 	
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean TO_GENERATE = false;
+	public final static boolean TO_GENERATE = true;
 	
 	//private static final String basePath = "D:/bankConnector/source/generated_test";
-	private static final String basePath = "E:/DevSpace/bc2/generated_test";
+	private static final String basePath = "D:/DEV.WORK/EBO/bc2/generated_test";
 
 	@Override
 	protected void setUp() throws Exception {
@@ -837,7 +837,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_401() throws Exception {
+	public void btestGenerated_401() throws Exception {
 		String msgCode = "beps.401.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -848,7 +848,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_402() throws Exception {
+	public void btestGenerated_402() throws Exception {
 		String msgCode = "beps.402.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -859,7 +859,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_403() throws Exception {
+	public void btestGenerated_403() throws Exception {
 		String msgCode = "beps.403.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -870,7 +870,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_413() throws Exception {
+	public void btestGenerated_413() throws Exception {
 		String msgCode = "beps.413.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -881,7 +881,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_414() throws Exception {
+	public void btestGenerated_414() throws Exception {
 		String msgCode = "beps.414.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -892,7 +892,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_415() throws Exception {
+	public void btestGenerated_415() throws Exception {
 		String msgCode = "beps.415.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -903,7 +903,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_416() throws Exception {
+	public void btestGenerated_416() throws Exception {
 		String msgCode = "beps.416.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -914,7 +914,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_417() throws Exception {
+	public void btestGenerated_417() throws Exception {
 		String msgCode = "beps.417.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -925,7 +925,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_720() throws Exception {
+	public void btestGenerated_720() throws Exception {
 		String msgCode = "beps.720.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -936,7 +936,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_725() throws Exception {
+	public void btestGenerated_725() throws Exception {
 		String msgCode = "beps.725.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -960,6 +960,61 @@ public class TestGenMap extends TestCase {
 	
 	public void atestGenerated_608() throws Exception {
 		String msgCode = "ccms.608.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void btestGenerated_397() throws Exception {
+		String msgCode = "beps.397.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_398() throws Exception {
+		String msgCode = "beps.398.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_386() throws Exception {
+		String msgCode = "beps.386.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void btestGenerated_395() throws Exception {
+		String msgCode = "beps.395.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_394() throws Exception {
+		String msgCode = "beps.394.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {

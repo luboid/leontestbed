@@ -218,7 +218,7 @@
         <xs:sequence>
             <xs:element name="GrpHdr" type="GroupHeader36"/>
             <xs:element name="OrgnlGrpInfAndSts" type="OriginalGroupInformation20"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="OrgnlPmtInfAndSts" type="OriginalPaymentInformation1"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="OrgnlPmtInfAndSts" type="OriginalPaymentInformation1"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="DateAndPlaceOfBirth">
@@ -518,7 +518,7 @@
     <xs:complexType name="OrganisationIdentification4">
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="BICOrBEI" type="AnyBICIdentifier"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Othr" type="GenericOrganisationIdentification1"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Othr" type="GenericOrganisationIdentification1"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="OrganisationIdentificationSchemeName1Choice">
@@ -537,8 +537,8 @@
             <xs:element maxOccurs="1" minOccurs="0" name="OrgnlNbOfTxs" type="Max15NumericText"/>
             <xs:element maxOccurs="1" minOccurs="0" name="OrgnlCtrlSum" type="DecimalNumber"/>
             <xs:element maxOccurs="1" minOccurs="0" name="GrpSts" type="TransactionGroupStatus3Code"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="StsRsnInf" type="StatusReasonInformation8"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="NbOfTxsPerSts" type="NumberOfTransactionsPerStatus3"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="StsRsnInf" type="StatusReasonInformation8"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="NbOfTxsPerSts" type="NumberOfTransactionsPerStatus3"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="OriginalPaymentInformation1">
@@ -547,9 +547,9 @@
             <xs:element maxOccurs="1" minOccurs="0" name="OrgnlNbOfTxs" type="Max15NumericText"/>
             <xs:element maxOccurs="1" minOccurs="0" name="OrgnlCtrlSum" type="DecimalNumber"/>
             <xs:element maxOccurs="1" minOccurs="0" name="PmtInfSts" type="TransactionGroupStatus3Code"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="StsRsnInf" type="StatusReasonInformation8"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="NbOfTxsPerSts" type="NumberOfTransactionsPerStatus3"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="TxInfAndSts" type="PaymentTransactionInformation25"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="StsRsnInf" type="StatusReasonInformation8"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="NbOfTxsPerSts" type="NumberOfTransactionsPerStatus3"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="TxInfAndSts" type="PaymentTransactionInformation25"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="OriginalTransactionReference13">
@@ -608,8 +608,8 @@
             <xs:element maxOccurs="1" minOccurs="0" name="OrgnlInstrId" type="Max35Text"/>
             <xs:element maxOccurs="1" minOccurs="0" name="OrgnlEndToEndId" type="Max35Text"/>
             <xs:element maxOccurs="1" minOccurs="0" name="TxSts" type="TransactionIndividualStatus3Code"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="StsRsnInf" type="StatusReasonInformation8"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="ChrgsInf" type="ChargesInformation5"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="StsRsnInf" type="StatusReasonInformation8"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="ChrgsInf" type="ChargesInformation5"/>
             <xs:element maxOccurs="1" minOccurs="0" name="AccptncDtTm" type="ISODateTime"/>
             <xs:element maxOccurs="1" minOccurs="0" name="AcctSvcrRef" type="Max35Text"/>
             <xs:element maxOccurs="1" minOccurs="0" name="ClrSysRef" type="Max35Text"/>
@@ -629,7 +629,7 @@
     <xs:complexType name="PersonIdentification5">
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="DtAndPlcOfBirth" type="DateAndPlaceOfBirth"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Othr" type="GenericPersonIdentification1"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Othr" type="GenericPersonIdentification1"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="PersonIdentificationSchemeName1Choice">
@@ -692,14 +692,14 @@
             <xs:element maxOccurs="1" minOccurs="0" name="DscntApldAmt" type="ActiveOrHistoricCurrencyAndAmount"/>
             <xs:element maxOccurs="1" minOccurs="0" name="CdtNoteAmt" type="ActiveOrHistoricCurrencyAndAmount"/>
             <xs:element maxOccurs="1" minOccurs="0" name="TaxAmt" type="ActiveOrHistoricCurrencyAndAmount"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="AdjstmntAmtAndRsn" type="DocumentAdjustment1"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="AdjstmntAmtAndRsn" type="DocumentAdjustment1"/>
             <xs:element maxOccurs="1" minOccurs="0" name="RmtdAmt" type="ActiveOrHistoricCurrencyAndAmount"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="RemittanceInformation5">
         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Ustrd" type="Max140Text"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Strd" type="StructuredRemittanceInformation7"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Ustrd" type="Max140Text"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Strd" type="StructuredRemittanceInformation7"/>
         </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="SequenceType1Code">
@@ -751,12 +751,12 @@
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="Orgtr" type="PartyIdentification32"/>
             <xs:element maxOccurs="1" minOccurs="0" name="Rsn" type="StatusReason6Choice"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="AddtlInf" type="Max105Text"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="AddtlInf" type="Max105Text"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="StructuredRemittanceInformation7">
         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="RfrdDocInf" type="ReferredDocumentInformation3"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="RfrdDocInf" type="ReferredDocumentInformation3"/>
             <xs:element maxOccurs="1" minOccurs="0" name="RfrdDocAmt" type="RemittanceAmount1"/>
             <xs:element maxOccurs="1" minOccurs="0" name="CdtrRefInf" type="CreditorReferenceInformation2"/>
             <xs:element maxOccurs="1" minOccurs="0" name="Invcr" type="PartyIdentification32"/>
