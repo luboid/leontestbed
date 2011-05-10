@@ -65,6 +65,10 @@
 				</PmtTpInf>
 				<Amt>
 					<InstdAmt Ccy="CNY">20000.00</InstdAmt>
+					<EqvtAmt>
+						<Amt Ccy="CNY">20000.00</Amt>
+						<CcyOfTrf>CNY</CcyOfTrf>
+					</EqvtAmt>
 				</Amt>
 				<CdtrAgt>
 					<FinInstnId>

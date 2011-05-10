@@ -109,7 +109,11 @@ public class TestDummy extends TestCase implements CfgConstants{
     public static String OPERATION_417 = "beps.417.001.01";
     public static String OPERATION_720= "beps.720.001.01";
     public static String OPERATION_725 = "beps.725.001.01";
+    public static String OPERATION_132 = "beps.132.001.01";
     public static String OPERATION_386 = "beps.386.001.01";
+    public static String OPERATION_391 = "beps.391.001.01";
+    public static String OPERATION_392 = "beps.392.001.01";
+    public static String OPERATION_393 = "beps.393.001.01";
     public static String OPERATION_394 = "beps.394.001.01";
     public static String OPERATION_395 = "beps.395.001.01";
     public static String OPERATION_397 = "beps.397.001.01";

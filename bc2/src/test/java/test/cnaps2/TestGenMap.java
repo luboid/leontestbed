@@ -279,6 +279,10 @@ public class TestGenMap extends TestCase {
 			clazz = "java.lang.String";
 		} else if (bizFldType.toLowerCase().contains("code")) {
 			clazz = "java.lang.String";
+		} else if (bizFldType.equalsIgnoreCase("DecimalNumber")) {
+			clazz = "java.math.BigDecimal";
+		} else if (bizFldType.equalsIgnoreCase("CurrencyAndAmount")) {
+			clazz = "java.math.BigDecimal";
 		} else if (bizFldType.equalsIgnoreCase("ActiveCurrencyAndAmount")) {
 			clazz = "java.math.BigDecimal";
 		} else if (bizFldType.equalsIgnoreCase("ISODateTime")) {
@@ -1013,8 +1017,52 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_394() throws Exception {
+	public void btestGenerated_394() throws Exception {
 		String msgCode = "beps.394.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void btestGenerated_393() throws Exception {
+		String msgCode = "beps.393.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_392() throws Exception {
+		String msgCode = "beps.392.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void btestGenerated_391() throws Exception {
+		String msgCode = "beps.391.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_132() throws Exception {
+		String msgCode = "beps.132.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {

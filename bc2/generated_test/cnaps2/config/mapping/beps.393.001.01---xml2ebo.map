@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps39300101" createOnElement="Document">
+				<jb:value data="/Document/GetTx/MsgId/Id" property="msgId"/>    
+				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[0]" property="senDerPId"/>    
+				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[1]" property="senInDerPId"/>    
+				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[2]" property="recDerPId"/>    
+				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[3]" property="bizTp"/>    
+				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[4]" property="fees"/>    
+				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[5]" property="enterpriseMark"/>    
+				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[6]" property="customMark"/>    
+	</jb:bean>
+	
+
+
+</smooks-resource-list>  
+    
