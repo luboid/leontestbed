@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pain.002.001.03" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CstmrPmtStsRpt>
+		<GrpHdr>
+			<MsgId>2010101000001274</MsgId>
+			<CreDtTm>2010-10-10T09:30:30</CreDtTm>
+			<InitgPty>
+				<Nm>103100000018</Nm>
+			</InitgPty>
+			<FwdgAgt>
+				<FinInstnId>
+					<ClrSysMmbId>
+						<MmbId>907100011301</MmbId>
+					</ClrSysMmbId>
+				</FinInstnId>
+			</FwdgAgt>
+		</GrpHdr>
+		<OrgnlGrpInfAndSts>
+			<OrgnlMsgId>2010101000001272</OrgnlMsgId>
+			<OrgnlMsgNmId>beps.391.001.01</OrgnlMsgNmId>
+		</OrgnlGrpInfAndSts>
+		<OrgnlPmtInfAndSts>
+			<OrgnlPmtInfId>1</OrgnlPmtInfId>
+			<TxInfAndSts>
+				<StsId>PR05</StsId>
+				<OrgnlInstrId>2010101000032001</OrgnlInstrId>
+				<OrgnlTxRef>
+					<IntrBkSttlmAmt Ccy="CNY">20000.00</IntrBkSttlmAmt>
+					<PmtTpInf>
+						<CtgyPurp>
+							<Prtry>C101</Prtry>
+						</CtgyPurp>
+					</PmtTpInf>
+					<RmtInf>
+						<Ustrd>测试测试册测试测试</Ustrd>
+					</RmtInf>
+					<DbtrAgt>
+						<FinInstnId>
+							<ClrSysMmbId>
+								<MmbId>103100000018</MmbId>
+							</ClrSysMmbId>
+						</FinInstnId>
+						<BrnchId>
+							<Id>103100000018</Id>
+						</BrnchId>
+					</DbtrAgt>
+					<CdtrAgt>
+						<FinInstnId>
+							<ClrSysMmbId>
+								<MmbId>308581000106</MmbId>
+							</ClrSysMmbId>
+						</FinInstnId>
+						<BrnchId>
+							<Id>308581000106</Id>
+						</BrnchId>
+					</CdtrAgt>
+				</OrgnlTxRef>
+			</TxInfAndSts>
+		</OrgnlPmtInfAndSts>
+	</CstmrPmtStsRpt>
+</Document>

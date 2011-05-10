@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:beps:2010:tech:xsd:beps.721.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<TtlChck>
+		<GrpHdr>
+			<MsgId>2010101000001254</MsgId>
+			<CreDtTm>2010-10-10T09:30:30</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>0000</InstgDrctPty>
+				<InstgPty>0000</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>308581000106</InstdDrctPty>
+				<InstdPty>308581000106</InstdPty>
+			</InstdPty>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试测试测试测试</Rmk>
+		</GrpHdr>
+		<Prttn>
+			<TtlNb>1</TtlNb>
+			<StartNb>1</StartNb>
+			<EndNb>1</EndNb>
+		</Prttn>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010101000001253</OrgnlMsgId>
+			<OrgnlInstgPty>308581000106</OrgnlInstgPty>
+			<OrgnlMsgTp>beps.720.001.01</OrgnlMsgTp>
+		</OrgnlGrpHdr>
+		<TtlChckInf>
+			<ChckDt>2010-10-10</ChckDt>
+			<ChckPmtInf>
+				<NbOfChckInf>1</NbOfChckInf>
+				<ChckPmtInfDtls>
+					<TxNetgDt>2010-10-10</TxNetgDt>
+					<TxNetgRnd>01</TxNetgRnd>
+					<MT>beps.121.001.01</MT>
+					<SndTtlCnt>20</SndTtlCnt>
+					<SndTtlAmt Ccy="CNY">300002000.50</SndTtlAmt>
+					<RcvTtlCnt>10</RcvTtlCnt>
+					<RcvTtlAmt Ccy="CNY">120000.00</RcvTtlAmt>
+					<PrcSts>PR04</PrcSts>
+				</ChckPmtInfDtls>
+			</ChckPmtInf>
+			<ChckMsg>
+				<NbOfChckInf>1</NbOfChckInf>
+				<ChckMsgDtls>
+					<MT>beps.127.001.01</MT>
+					<SndTtlCnt>12</SndTtlCnt>
+					<RcvTtlCnt>5</RcvTtlCnt>
+					<PrcSts>PR00</PrcSts>
+				</ChckMsgDtls>
+			</ChckMsg>
+		</TtlChckInf>
+	</TtlChck>
+</Document>

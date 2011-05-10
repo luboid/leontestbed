@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:ccms:2010:tech:xsd:ccms.315.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<BizRspn>
+		<GrpHdr>
+			<MsgId>2010101000001260</MsgId>
+			<CreDtTm>2001-12-17T09:30:47</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>103100000018</InstgDrctPty>
+				<InstgPty>104100004370</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>308581000106</InstdDrctPty>
+				<InstdPty>907100011301</InstdPty>
+			</InstdPty>
+			<SysCd>HVPS</SysCd>
+			<Rmk>备注备注备注</Rmk>
+		</GrpHdr>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010101000001460</OrgnlMsgId>
+			<OrgnlInstgDrctPty>308581000106</OrgnlInstgDrctPty>
+			<OrgnlMsgTp>ccms.314.001.01</OrgnlMsgTp>
+		</OrgnlGrpHdr>
+		<BizRspnInf>
+			<QryTp>QT00</QryTp>
+			<OrgnlInf>
+				<OrgnlGrpHdr>
+					<OrgnlMsgId>2010101000001560</OrgnlMsgId>
+					<OrgnlInstgPty>907100011301</OrgnlInstgPty>
+					<OrgnlMsgTp>hvps.111.001.01</OrgnlMsgTp>
+				</OrgnlGrpHdr>
+				<OrgnlTx>
+					<InstgIndrctPty>104100004370</InstgIndrctPty>
+					<InstdIndrctPty>907100011301</InstdIndrctPty>
+					<OrgnlTxId>2010020200000001</OrgnlTxId>
+					<OrgnlTxTpCd>A100</OrgnlTxTpCd>
+				</OrgnlTx>
+				<OrgnlAmt Ccy="CNY">100.00</OrgnlAmt>
+			</OrgnlInf>
+			<Cntt>查复内容查复内容查复内容查复内容</Cntt>
+		</BizRspnInf>
+	</BizRspn>
+</Document>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:beps:2010:tech:xsd:beps.398.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ChckCdtForLdRspn>
+		<GrpHdr>
+			<MsgId>2010092100001242</MsgId>
+			<CreDtTm>2001-12-17T09:30:47</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>104100004370</InstgDrctPty>
+				<InstgPty>104100004370</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>103100000018</InstdDrctPty>
+				<InstdPty>103100000018</InstdPty>
+			</InstdPty>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试测试</Rmk>
+		</GrpHdr>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010092100001241</OrgnlMsgId>
+			<OrgnlInstgPty>103100000018</OrgnlInstgPty>
+			<OrgnlMsgTp>beps.397.001.01</OrgnlMsgTp>
+		</OrgnlGrpHdr>
+		<ChckCdtForLdRspnInf>
+			<RspsnInf>
+				<Sts>PR09</Sts>
+				<RjctCd>RJ39</RjctCd>
+				<RjctInf>该票据没有圈存</RjctInf>
+			</RspsnInf>
+		</ChckCdtForLdRspnInf>
+	</ChckCdtForLdRspn>
+</Document>

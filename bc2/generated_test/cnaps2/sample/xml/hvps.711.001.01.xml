@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:cnaps:std:hvps:2010:tech:xsd:hvps.711.001.01">
+	<SummryFile>
+		<GrpHdr>
+			<MsgId>2010090500004321</MsgId>
+			<CreDtTm>2010-09-15T10:00:00</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>0000</InstgDrctPty>
+				<InstgPty>0000</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>103100000000</InstdDrctPty>
+				<InstdPty>103100000010</InstdPty>
+			</InstdPty>
+			<SysCd>HVPS</SysCd>
+			<Rmk>大额业务汇总核对报文</Rmk>
+		</GrpHdr>
+		<Prttn>
+			<TtlNb>400</TtlNb>
+			<StartNb>0</StartNb>
+			<EndNb>30</EndNb>
+		</Prttn>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010090500001234</OrgnlMsgId>
+			<OrgnlInstgPty>103100000000</OrgnlInstgPty>
+			<OrgnlMT>hvps.710.001.01</OrgnlMT>
+		</OrgnlGrpHdr>
+		<SummryFileInf>
+			<ChckDt>2010-09-15</ChckDt>
+			<TtlPmt>1</TtlPmt>
+			<ChckPmtInfDtls>
+				<TxTpCd>G002</TxTpCd>
+				<SndgNbOfTxs>1</SndgNbOfTxs>
+				<SndgCtrlSum Ccy="CNY">100.00</SndgCtrlSum>
+				<RcvgNbOfTxs>1</RcvgNbOfTxs>
+				<RcvgCtrlSum Ccy="CNY">100.00</RcvgCtrlSum>
+				<PrcSts>PR04</PrcSts>
+			</ChckPmtInfDtls>
+			<TtlMsg>1</TtlMsg>
+			<ChckMsg>
+				<TxTpCd>K002</TxTpCd>
+				<SndgNbOfTxs>1</SndgNbOfTxs>
+				<RcvgNbOfTxs>0</RcvgNbOfTxs>
+				<PrcSts>PR05</PrcSts>
+			</ChckMsg>
+		</SummryFileInf>
+	</SummryFile>
+</Document>

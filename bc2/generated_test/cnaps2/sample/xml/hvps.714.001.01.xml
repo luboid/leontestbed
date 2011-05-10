@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:cnaps:std:hvps:2010:tech:xsd:hvps.714.001.01">
+	<TxDwnldgReq>
+		<GrpHdr>
+			<MsgId>2010090500001234</MsgId>
+			<CreDtTm>2010-09-15T10:00:00</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>103100000000</InstgDrctPty>
+				<InstgPty>103100000010</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>0000</InstdDrctPty>
+				<InstdPty>0000</InstdPty>
+			</InstdPty>
+			<SysCd>HVPS</SysCd>
+			<Rmk>大额业务下载申请报文</Rmk>
+		</GrpHdr>
+		<TxDwnldgReqInf>
+			<NbOfTxs>1</NbOfTxs>
+			<TxsDtls>
+				<SndRcvTp>SR00</SndRcvTp>
+				<OrgnlGrpHdr>
+					<OrgnlMsgId>2010091500123456</OrgnlMsgId>
+					<OrgnlInstgPty>103100000010</OrgnlInstgPty>
+					<OrgnlMT>hvps.111.001.01</OrgnlMT>
+				</OrgnlGrpHdr>
+			</TxsDtls>
+		</TxDwnldgReqInf>
+	</TxDwnldgReq>
+</Document>

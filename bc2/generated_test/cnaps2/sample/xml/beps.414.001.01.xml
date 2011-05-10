@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:beps:2010:tech:xsd:beps.414.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<RealTmBizRvslRspn>
+		<GrpHdr>
+			<MsgId>2010101000001249</MsgId>
+			<CreDtTm>2010-10-10T09:30:30</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>0000</InstgDrctPty>
+				<InstgPty>0000</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>103100000018</InstdDrctPty>
+				<InstdPty>103100000018</InstdPty>
+			</InstdPty>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试测试</Rmk>
+		</GrpHdr>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010101000001248</OrgnlMsgId>
+			<OrgnlInstgPty>103100000018</OrgnlInstgPty>
+			<OrgnlMsgTp>beps.413.001.01</OrgnlMsgTp>
+		</OrgnlGrpHdr>
+		<RealTmBizRvslRspnInf>
+			<NPCPrcInf>
+				<PrcSts>PR22</PrcSts>
+				<PrcCd>CB1I0000</PrcCd>
+				<NetgDt>2010-10-10</NetgDt>
+				<NetgRnd>02</NetgRnd>
+				<RcvTm>2010-10-10T09:30:30</RcvTm>
+				<TrnsmtTm>2010-10-10T09:30:30</TrnsmtTm>
+			</NPCPrcInf>
+			<OrgnlTx>
+				<OrgnlGrpHdr>
+					<OrgnlMsgId>2010101000001201</OrgnlMsgId>
+					<OrgnlInstgPty>103100000018</OrgnlInstgPty>
+					<OrgnlMsgTp>beps.123.001.01</OrgnlMsgTp>
+				</OrgnlGrpHdr>
+			</OrgnlTx>
+		</RealTmBizRvslRspnInf>
+	</RealTmBizRvslRspn>
+</Document>

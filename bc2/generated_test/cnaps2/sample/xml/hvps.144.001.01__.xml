@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:cnaps:std:hvps:2010:tech:xsd:hvps.144.001.01">
+	<SttlAcctsRspn>
+		<GrpHdr>
+			<MsgId>2010090500001235</MsgId>
+			<CreDtTm>2010-09-15T10:00:00</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>108900000000</InstgDrctPty>
+				<InstgPty>108900000000</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>103100000000</InstdDrctPty>
+				<InstdPty>103100000010</InstdPty>
+			</InstdPty>
+			<SysCd>HVPS</SysCd>
+			<Rmk>PVP结算应答信息报文</Rmk>
+		</GrpHdr>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010090500001234</OrgnlMsgId>
+			<OrgnlInstgPty>103100000000</OrgnlInstgPty>
+			<OrgnlMT>hvps.143.001.01</OrgnlMT>
+		</OrgnlGrpHdr>
+		<RspnInf>
+			<PrcSts>PR05</PrcSts>
+			<PrcCd>CB1I0000</PrcCd>
+			<PrcDt>2010-09-15</PrcDt>
+		</RspnInf>
+	</SttlAcctsRspn>
+</Document>

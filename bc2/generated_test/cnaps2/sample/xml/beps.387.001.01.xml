@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:beps:2010:tech:xsd:beps.387.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<BtchCstmrsAcctQry>
+		<GrpHdr>
+			<MsgId>2010092100001236</MsgId>
+			<CreDtTm>2001-12-17T09:30:47</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>308581000106</InstgDrctPty>
+				<InstgPty>308581000106</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>104100004370</InstdDrctPty>
+				<InstdPty>104100004370</InstdPty>
+			</InstdPty>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试测试</Rmk>
+		</GrpHdr>
+		<BtchCstmrsAcctQryInf>
+			<AcctCnt>2</AcctCnt>
+			<AcctDtls>
+				<Id>2310230111201111210123100010231</Id>
+				<Nm>卡萨诺</Nm>
+				<InstgPty>907100011301</InstgPty>
+				<AcctBk>907100011301</AcctBk>
+			</AcctDtls>
+			<AcctDtls>
+				<Id>2310230111201111210123100010156</Id>
+				<Nm>吉拉迪诺</Nm>
+				<InstgPty>907100011301</InstgPty>
+				<AcctBk>907100011301</AcctBk>
+			</AcctDtls>
+		</BtchCstmrsAcctQryInf>
+	</BtchCstmrsAcctQry>
+</Document>

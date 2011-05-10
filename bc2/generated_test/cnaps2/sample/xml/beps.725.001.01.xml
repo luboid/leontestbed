@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:beps:2010:tech:xsd:beps.725.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<TxDwnldRspn>
+		<GrpHdr>
+			<MsgId>2010101000001258</MsgId>
+			<CreDtTm>2010-10-10T09:30:30</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>0000</InstgDrctPty>
+				<InstgPty>0000</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>308581000106</InstdDrctPty>
+				<InstdPty>308581000106</InstdPty>
+			</InstdPty>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试测试测试</Rmk>
+		</GrpHdr>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010101000001257</OrgnlMsgId>
+			<OrgnlInstgPty>308581000106</OrgnlInstgPty>
+			<OrgnlMsgTp>beps.724.001.01</OrgnlMsgTp>
+		</OrgnlGrpHdr>
+		<TxDwnldRspnInf>
+			<NPCPrcInf>
+				<PrcSts>PR05</PrcSts>
+				<PrcCd>CB1I0000</PrcCd>
+			</NPCPrcInf>
+			<OrgnlMsgSts>
+				<NPCPrcInf>
+				<PrcSts>PR04</PrcSts>
+				<PrcCd>CB1I0000</PrcCd>
+				<NetgDt>20101009</NetgDt>
+				<NetgRnd>3</NetgRnd>
+				<SttlmDt>20101009</SttlmDt>
+			</NPCPrcInf>
+			</OrgnlMsgSts>
+			<OrgnlMsgCnts>
+				<Cntt>dsfadfadfasdfwefewgfdgfdgtrhregregfadsfadfwefqewfrefwfqwefqew</Cntt>
+			</OrgnlMsgCnts>
+		</TxDwnldRspnInf>
+	</TxDwnldRspn>
+</Document>

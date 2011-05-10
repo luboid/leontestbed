@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:ccms:2010:tech:xsd:ccms.900.001.02" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CmonConf>
+		<GrpHdr>
+			<MsgId>2010101002000007</MsgId>
+			<CreDtTm>2010-10-10T09:30:47</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>0000</InstgDrctPty>
+				<InstgPty>104100004370</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>308581000106</InstdDrctPty>
+				<InstdPty>907100011301</InstdPty>
+			</InstdPty>
+			<SysCd>BEPS</SysCd>
+			<Rmk>测试测试测试测试</Rmk>
+		</GrpHdr>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010101000001260</OrgnlMsgId>
+			<OrgnlInstgPty>308581000106</OrgnlInstgPty>
+			<OrgnlMsgTp>beps.121.001.01.xml</OrgnlMsgTp>
+		</OrgnlGrpHdr>
+		<CmonConfInf>
+			<PrcSts>PR03</PrcSts>
+			<PrcCd>CB1I0000</PrcCd>
+			<PrcDt>2010-10-10</PrcDt>
+			<NetgRnd>03</NetgRnd>
+		</CmonConfInf>
+	</CmonConf>
+</Document>

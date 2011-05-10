@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:cnaps:std:hvps:2010:tech:xsd:hvps.713.001.01">
+	<DtlRspn>
+		<GrpHdr>
+			<MsgId>2010090500004321</MsgId>
+			<CreDtTm>2010-09-15T10:00:00</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>0000</InstgDrctPty>
+				<InstgPty>0000</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>103100000000</InstdDrctPty>
+				<InstdPty>103100000010</InstdPty>
+			</InstdPty>
+			<SysCd>HVPS</SysCd>
+			<Rmk>大额业务明细核对应答报文</Rmk>
+		</GrpHdr>
+		<Prttn>
+			<TtlNb>0</TtlNb>
+			<StartNb>0</StartNb>
+			<EndNb>0</EndNb>
+		</Prttn>
+		<OrgnlGrpHdr>
+			<OrgnlMsgId>2010090500001234</OrgnlMsgId>
+			<OrgnlInstgPty>103100000000</OrgnlInstgPty>
+			<OrgnlMT>hvps.712.001.01</OrgnlMT>
+		</OrgnlGrpHdr>
+		<DtlRspnInf>
+			<ChckDt>2010-09-15</ChckDt>
+			<NPCPrcInf>
+				<PrcSts>PR04</PrcSts>
+				<PrcCd>CB1I0000</PrcCd>
+				<SttlmDt>2010-09-15</SttlmDt>
+				<RcvTm>2010-09-15T10:00:01</RcvTm>
+				<TrnsmtTm>2010-09-15T10:00:02</TrnsmtTm>
+			</NPCPrcInf>
+			<TtlCnt>1</TtlCnt>
+			<Dtls>
+				<TxTpCd>G002</TxTpCd>
+				<SndgNbOfTxs>1</SndgNbOfTxs>
+				<SndgCtrlSum Ccy="CNY">100.00</SndgCtrlSum>
+				<RcvgNbOfTxs>1</RcvgNbOfTxs>
+				<RcvgCtrlSum Ccy="CNY">100.00</RcvgCtrlSum>
+				<ChckngDtlOfSndg>
+					<OrgnlGrpHdr>
+						<OrgnlMsgId>2010090500002321</OrgnlMsgId>
+						<OrgnlInstgPty>103100000010</OrgnlInstgPty>
+						<OrgnlMT>hvps.141.001.01</OrgnlMT>
+					</OrgnlGrpHdr>
+					<Amt Ccy="CNY">100.00</Amt>
+					<PrcSts>SR04</PrcSts>
+				</ChckngDtlOfSndg>
+				<ChckngDtlOfRcvg>
+					<OrgnlGrpHdr>
+						<OrgnlMsgId>2010090500002221</OrgnlMsgId>
+						<OrgnlInstgPty>104100000010</OrgnlInstgPty>
+						<OrgnlMT>hvps.141.001.01</OrgnlMT>
+					</OrgnlGrpHdr>
+					<Amt Ccy="CNY">100.00</Amt>
+					<PrcSts>PR05</PrcSts>
+				</ChckngDtlOfRcvg>
+			</Dtls>
+		</DtlRspnInf>
+	</DtlRspn>
+</Document>

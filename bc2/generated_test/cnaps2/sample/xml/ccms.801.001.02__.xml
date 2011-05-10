@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--示例 XML 文件由 XMLSpy v2006 U 创建 (http://www.altova.com)-->
+<Document xmlns="urn:cnaps:std:ccms:2010:tech:xsd:ccms.801.001.02" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<SysStsNtfctn>
+		<GrpHdr>
+			<MsgId>2</MsgId>
+			<CreDtTm>2010-10-10T09:30:47</CreDtTm>
+			<InstgPty>
+				<InstgDrctPty>0000</InstgDrctPty>
+				<InstgPty>104100004370</InstgPty>
+			</InstgPty>
+			<InstdPty>
+				<InstdDrctPty>308581000106</InstdDrctPty>
+				<InstdPty>308581000106</InstdPty>
+			</InstdPty>
+			<SysCd>CCMS</SysCd>
+			<Rmk>测试测试测试测试测试</Rmk>
+		</GrpHdr>
+		<SysStsInf>
+			<OrgnlSysDt>2010-10-10</OrgnlSysDt>
+			<OrgnlSysSts>10</OrgnlSysSts>
+			<CurSysDt>2010-10-10</CurSysDt>
+			<CurSysSts>20</CurSysSts>
+			<HldayFlg>HF01</HldayFlg>
+			<NxtSysDt>2010-10-11</NxtSysDt>
+			<BkChngNb>00000004</BkChngNb>
+			<BaseDataChngNb>00000002</BaseDataChngNb>
+			<CISChngNb>00000008</CISChngNb>
+			<ParamChngNb>00000004</ParamChngNb>
+		</SysStsInf>
+	</SysStsNtfctn>
+</Document>
