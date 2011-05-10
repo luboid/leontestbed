@@ -271,14 +271,14 @@ PATH = '/Document/AcstcbsAnlAcctg/AcstcbsAnlAcctgInf/AnlCdtrAmt'
 
 
 2、文字与格式字符串不匹配
+date类型：
 ccms.801.001.02
 ccms.806.001.02
 ccms.900.001.02
-saps.372.001.01
 saps.374.001.01
 saps.614.001.01
-
-分别将他们改为非必须的     
+必须项：
+saps.372.001.01    
 
 
 2011-05-09
@@ -377,3 +377,242 @@ PATH = '/Document/CstmrPmtQryRspn/OrgnlGrpHdr/OrgnlMsgTp'
 5、beps.393.001.01
 T_C2_BIS_ELE_BSC表中,msg_code='beps.393.001.01'数据报文中
 camt.005.001.04.xsd文件中出name="TxRef"的unbounded修改为1
+
+
+
+yu:
+1、T_C2_BIS_ELE_BSC表中,msg_code='beps.401.001.01'数据报文中
+PATH = '/Document/RealTmCstmrsAcctQry/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/RealTmCstmrsAcctQry/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/RealTmCstmrsAcctQry/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.402.001.01'数据报文中
+PATH = '/Document/RealTmCstmrsAcctQryRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/RealTmCstmrsAcctQryRspn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/RealTmCstmrsAcctQryRspn/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.402.001.01'数据报文中
+PATH = '/Document/InvcPrtApply/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/InvcPrtApply/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/RealTmCstmrsAcctQryRspn/OrgnlGrpHdr/OrgnlInstgPty'
+/Document/RealTmCstmrsAcctQryRspn/RealTmCstmrsAcctQryRspnInf/AccSts 改为/Document/RealTmCstmrsAcctQryRspn/RealTmCstmrsAcctQryRspnInf/AcctSts
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.414.001.01'数据报文中
+PATH = '/Document/RealTmBizRvslRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/RealTmBizRvslRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/RealTmBizRvslRspn/OrgnlGrpHdr/OrgnlInstgPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.415.001.01'数据报文中
+PATH = '/Document/RealTmBizRvslNtfy/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/RealTmBizRvslNtfy/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/RealTmBizRvslNtfy/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/RealTmBizRvslNtfy/OrgnlGrpHdr/OrgnlInstgPty'
+/Document/RealTmBizRvslNtfy/RealTmBizRvslNtfyInf/OrgnlGrpHdr/OrgnlInstgDrctPty改为/Document/RealTmBizRvslNtfy/RealTmBizRvslNtfyInf/OrgnlGrpHdr/OrgnlInstgPty
+/Document/RealTmBizRvslNtfy/RealTmBizRvslNtfyInf/OrgnlGrpHdr/OrgnlInstgDrctPty改为/Document/RealTmBizRvslNtfy/RealTmBizRvslNtfyInf/OrgnlGrpHdr/OrgnlMsgTp
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.417.001.01'数据报文中
+PATH = '/Document/RealTmInfRvslRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/RealTmInfRvslRspn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/RealTmInfRvslRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/RealTmInfRvslRspn/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/NpcPrcInf/PrcSts'
+PATH = '/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/NpcPrcInf/PrcCd'
+PATH = '/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/NpcPrcInf/RjctInf'
+PATH = '/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/NpcPrcInf/NetgDt'
+PATH = '/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/NpcPrcInf/NetgRnd'
+PATH = '/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/NpcPrcInf/SttlmDt'
+PATH = '/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/NpcPrcInf/RcvTm'
+PATH = '/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/NpcPrcInf/TrnsmtTm'
+PATH = '/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/OrgnlTx/OrgnlGrpHdr/OrgnlInstgPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.720.001.01'数据报文中
+PATH = '/Document/TtlChckInfReq/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/TtlChckInfReq/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.725.001.01'数据报文中
+PATH = '/Document/TxDwnldRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/TxDwnldRspn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/TxDwnldRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/TxDwnldRspn/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/TxDwnldRspn/TxDwnldRspnInf/NpcPrcInf/PrcSts'
+PATH = '/Document/TxDwnldRspn/TxDwnldRspnInf/NpcPrcInf/PrcCd'
+PATH = '/Document/TxDwnldRspn/TxDwnldRspnInf/NpcPrcInf/RjctInf'
+PATH = '/Document/TxDwnldRspn/TxDwnldRspnInf/NpcPrcInf/NetgDt'
+PATH = '/Document/TxDwnldRspn/TxDwnldRspnInf/NpcPrcInf/NetgRnd'
+PATH = '/Document/TxDwnldRspn/TxDwnldRspnInf/NpcPrcInf/SttlmDt'
+PATH = '/Document/TxDwnldRspn/TxDwnldRspnInf/NpcPrcInf/RcvTm'
+PATH = '/Document/TxDwnldRspn/TxDwnldRspnInf/NpcPrcInf/TrnsmtTm'
+
+多表：
+T_C2_BIS_ELE_BSC表中,msg_code='beps.412.001.01'数据报文中
+PATH = '/Document/StopPmtRspn/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/StopPmtRspn/StopPmtRspnInf/OrgnlInf/OrgnlGrpHdr/OrgnlInstgPty'_ROWSCN = '121841747'
+PATH = '/Document/StopPmtRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/StopPmtRspn/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.412.001.01'数据报文中
+PATH = '/Document/TxDwnldReq/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/TxDwnldReq/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/TxDwnldReq/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/TxDwnldReq/TxDwnldReqInf/DwnldReqTxsDtls/OrgnlGrpHdr/OrgnlInstgPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.384.001.01'数据报文中
+PATH = '/Document/BtchCstmrsCtrctMg/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BtchCstmrsCtrctMg/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.385.001.01'数据报文中
+PATH = '/Document/BtchCstmrsCtrctMgRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BtchCstmrsCtrctMgRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/BtchCstmrsCtrctMgRspn/OrgnlGrpHdr/OrgnlInstgPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.387.001.01'数据报文中
+PATH = '/Document/BtchCstmrsAcctQry/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BtchCstmrsAcctQry/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.388.001.01'数据报文中
+PATH = '/Document/BtchCstmrsAcctQryRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BtchCstmrsAcctQryRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/BtchCstmrsAcctQryRspn/OrgnlGrpHdr/OrgnlInstgPty'
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.906.001.01'数据报文中
+PATH = '/Document/BizClssTpMgmt/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BizClssTpMgmt/GrpHdr/InstdPty/InstdPty'
+/Document/BizClssTpMgmt/GrpHdr/InstdPty/InstdDrctPty改为/Document/BizClssTpMgmt/GrpHdr/SysCd
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.913.001.01'数据报文中
+PATH = '/Document/CISAgcyChngNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/CISAgcyChngNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/CISAgcyChngNtfctn/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.809.001.02'数据报文中
+PATH = '/Document/StopgNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/StopgNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/StopgNtfctn/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.803.001.02'数据报文中
+PATH = '/Document/TrblNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/TrblNtfctn/GrpHdr/InstdPty/InstdDrctPty' 
+PATH = '/Document/TrblNtfctn/GrpHdr/InstdPty/InstdPty'
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.926.001.01'
+没有数据
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.921.001.01'数据报文中
+PATH = '/Document/CertDwnLdRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/CertDwnLdRspn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/CertDwnLdRspn/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.919.001.01'数据报文中
+PATH = '/Document/CertDwnLdApply/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/CertDwnLdApply/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/CertDwnLdApply/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.907.001.02'数据报文中
+PATH = '/Document/SysParamNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/SysParamNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/SysParamNtfctn/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.916.001.01'数据报文中
+PATH = '/Document/BkCdChngNtfctn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BkCdChngNtfctn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/BkCdChngNtfctn/GrpHdr/InstdPty/InstdPty'
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.731.001.01'数据报文中
+PATH = '/Document/ACSABSSttlmDtlAppl/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/ACSABSSttlmDtlAppl/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/ACSABSSttlmDtlAppl/GrpHdr/InstdPty/InstdPty'
+ 
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.733.001.01'数据报文中
+PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='nets.356.001.01'数据报文中
+PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='nets.353.001.01'数据报文中
+PATH = '/Document/NetDbtLmtDstrbtnMgmt/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/NetDbtLmtDstrbtnMgmt/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/NetDbtLmtDstrbtnMgmt/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.610.001.01'数据报文中
+PATH = '/Document/IntraCityNetgQryRspn/GrpHdr/InstgPty/InstgPty' WHERE ROWID = '
+PATH = '/Document/IntraCityNetgQryRspn/GrpHdr/InstdPty/InstdPty' WHERE ROWID = '
+PATH = '/Document/IntraCityNetgQryRspn/OrgnlGrpHdr/OrgnlInstgPty' WHERE ROWID = '
+PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/OrgnlGrpHdr/OrgnlInstgPty' 
+PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/PrcSts'
+PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/PrcCd'
+PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/RjctInf'
+PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/NetgDt' 
+PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/NetgRnd'
+PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/SttlmDt'
+PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/RcvTm'
+PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/TrnsmtTm'
+
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.611.001.01'数据报文中
+PATH = '/Document/IntraCityNetgSttlm/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/IntraCityNetgSttlm/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.738.001.01'数据报文中
+PATH = '/Document/BalWorkDayChckngRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BalWorkDayChckngRspn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/BalWorkDayChckngRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/BalWorkDayChckngRspn/OrgnlGrpHdr/OrgnlInstgPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.364.001.01'数据报文中
+PATH = '/Document/QQryRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/QQryRspn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/QQryRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/QQryRspn/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/QQryRspn/QInf/QInstrInf/OrgnlGrpHdr/OrgnlInstgPty'
+还统一有大写的
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.367.001.01'数据报文中
+PATH = '/Document/AcctInfQryRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/AcctInfQryRspn/GrpHdr/InstdPtyInstdDrctPty'
+PATH = '/Document/AcctInfQryRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/AcctInfQryRspn/OrgnlGrpHdr/OrgnlInstgPty'
+
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.736.001.01'数据报文中
+PATH = '/Document/AcctgDailyDwnLd/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/AcctgDailyDwnLd/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/AcctgDailyDwnLd/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.373.001.01'数据报文中
+PATH = '/Document/FndsOfPoolMgmt/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/FndsOfPoolMgmt/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.357.001.01'数据报文中
+PATH = '/Document/PldgFincgMgmt/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/PldgFincgMgmt/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/PldgFincgMgmt/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='nets.618.001.01'数据报文中
+PATH = '/Document/BEPSNetgRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/BEPSNetgRspn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/BEPSNetgRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/BEPSNetgRspn/OrgnlGrpHdr/OrgnlInstgPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.616.001.01'数据报文中
+PATH = '/Document/NetgListDwnLd/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/NetgListDwnLd/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/NetgListDwnLd/GrpHdr/InstdPty/InstdPty'
+
+T_C2_BIS_ELE_BSC表中,msg_code='nets.406.001.01'数据报文中
+PATH = '/Document/NetgQQryRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/NetgQQryRspn/GrpHdr/InstdPty/InstdDrctPty'
+PATH = '/Document/NetgQQryRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/NetgQQryRspn/OrgnlGrpHdr/OrgnlInstgPty'
+PATH = '/Document/NetgQQryRspn/QInf/Dtls/OrgnlGrpHdr/OrgnlInstgPty'
+统一有大写的
