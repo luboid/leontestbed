@@ -69,7 +69,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_122)) {
 			pkgName = "com.xml.cnaps2.beps.v12200101";
 		} else if (mesgType.equals(TestDummy.OPERATION_123)) {
-			//Ô­À´ÊÇbeps.v12300101£¬¿ÉÄÜÓĞ´í
+			//åŸæ¥æ˜¯beps.v12300101ï¼Œå¯èƒ½æœ‰é”™
 			pkgName = "com.xml.cnaps2.pacs.v00800102";
 		} else if (mesgType.equals(TestDummy.OPERATION_124)) {
 			pkgName = "com.xml.cnaps2.pacs.v00200103";
@@ -84,7 +84,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_131)) {
 			pkgName = "com.xml.cnaps2.beps.v13100101";
 		} else if (mesgType.equals(TestDummy.OPERATION_132)) {
-			//Ô­À´beps.v13200101,¿ÉÄÜÓĞ´í
+			//åŸæ¥beps.v13200101,å¯èƒ½æœ‰é”™
 			pkgName = "com.xml.cnaps2.pacs.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_133)) {
 			pkgName = "com.xml.cnaps2.pacs.v00300102";
@@ -125,7 +125,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_316)) {
 			pkgName = "com.xml.cnaps2.camt.v00500104";
 		} else if (mesgType.equals(TestDummy.OPERATION_317)) {
-			//Ô­ÎÄccms.v31700101£¬¿ÉÄÜÓĞ´í
+			//åŸæ–‡ccms.v31700101ï¼Œå¯èƒ½æœ‰é”™
 			pkgName = "com.xml.cnaps2.camt.v00600104";
 		} else if (mesgType.equals(TestDummy.OPERATION_318)) {
 			pkgName = "com.xml.cnaps2.pacs.00400102";
@@ -134,12 +134,12 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_350)) {
 			pkgName = "com.xml.cnaps2.camt.v00900104";
 		} else if (mesgType.equals(TestDummy.OPERATION_351)) {
-			//¿ÉÄÜÓĞ´í
+			//å¯èƒ½æœ‰é”™
 			pkgName = "com.xml.cnaps2.saps.v35000101";
 		} else if (mesgType.equals(TestDummy.OPERATION_353)) {
 			pkgName = "com.xml.cnaps2.nets.v35300101";
 		} else if (mesgType.equals(TestDummy.OPERATION_354)) {
-			//¿ÉÄÜÓĞ´í
+			//å¯èƒ½æœ‰é”™
 			pkgName = "com.xml.cnaps2.saps.v35400101";
 		} else if (mesgType.equals(TestDummy.OPERATION_356)) {
 			pkgName = "com.xml.cnaps2.nets.v35600101";
@@ -226,7 +226,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_406)) {
 			pkgName = "com.xml.cnaps2.nets.v40600101";
 		} else if (mesgType.equals(TestDummy.OPERATION_407)) {
-			//¿ÉÄÜÓĞ´í 
+			//å¯èƒ½æœ‰é”™ 
 			pkgName = "com.xml.cnaps2.saps.v40700101";
 		} else if (mesgType.equals(TestDummy.OPERATION_411)) {
 			pkgName = "com.xml.cnaps2.camt.v05500101";
@@ -271,7 +271,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_616)) {
 			pkgName = "com.xml.cnaps2.saps.v61600101";
 		} else if (mesgType.equals(TestDummy.OPERATION_617)) {
-			//¿ÉÄÜÓĞ´í
+			//å¯èƒ½æœ‰é”™
 			pkgName = "com.xml.cnaps2.saps.v61700101";
 		} else if (mesgType.equals(TestDummy.OPERATION_618)) {
 			pkgName = "com.xml.cnaps2.nets.v61800101";
@@ -360,7 +360,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_921)) {
 			pkgName = "com.xml.cnaps2.ccms.v92100101";
 		} else if (mesgType.equals(TestDummy.OPERATION_926)) {
-			//Ã»ÓĞÕÒµ½¶ÔÓ¦
+			//æ²¡æœ‰æ‰¾åˆ°å¯¹åº”
 			pkgName = "com.xml.cnaps2.ccms.v92600101";
 		} else if (mesgType.equals(TestDummy.OPERATION_992)) {
 			pkgName = "com.xml.cnaps2.ccms.v99200101";
