@@ -119,6 +119,37 @@ public class TestDummy extends TestCase implements CfgConstants{
     public static String OPERATION_395 = "beps.395.001.01";
     public static String OPERATION_397 = "beps.397.001.01";
     public static String OPERATION_398 = "beps.398.001.01";
+    public static String OPERATION_412 = "beps.412.001.01";
+    public static String OPERATION_724 = "beps.724.001.01";
+    public static String OPERATION_384 = "beps.384.001.01";
+    public static String OPERATION_385 = "beps.385.001.01";
+    public static String OPERATION_387 = "beps.387.001.01";
+    public static String OPERATION_388 = "beps.388.001.01";
+    public static String OPERATION_913 = "ccms.913.001.01";
+    public static String OPERATION_906 = "ccms.906.001.01";
+    public static String OPERATION_809 = "ccms.809.001.02";
+    public static String OPERATION_803 = "ccms.803.001.02";
+    public static String OPERATION_992 = "ccms.992.001.01";
+    public static String OPERATION_921 = "ccms.921.001.01";
+    public static String OPERATION_919 = "ccms.919.001.01";
+    public static String OPERATION_907 = "ccms.907.001.02";
+    public static String OPERATION_916 = "ccms.916.001.01";
+    public static String OPERATION_731 = "saps.731.001.01";
+    public static String OPERATION_733 = "saps.733.001.01";
+    public static String OPERATION_356 = "nets.356.001.01";
+    public static String OPERATION_353 = "nets.353.001.01";
+    public static String OPERATION_610 = "saps.610.001.01";
+    public static String OPERATION_611 = "saps.611.001.01";
+    public static String OPERATION_738 = "saps.738.001.01";
+    public static String OPERATION_364 = "saps.364.001.01";
+    public static String OPERATION_367 = "saps.367.001.01";
+    public static String OPERATION_736 = "saps.736.001.01";
+    public static String OPERATION_373 = "saps.373.001.01";
+    public static String OPERATION_357 = "saps.357.001.01";
+    public static String OPERATION_618 = "nets.618.001.01";
+    public static String OPERATION_616 = "saps.616.001.01";
+    public static String OPERATION_406 = "nets.406.001.01";
+    public static String OPERATION_317 = "ccms.317.001.01";
     
     //客户发起汇兑业务报文
     public static String OPERATION_111 = "hvps.111.001.01";
