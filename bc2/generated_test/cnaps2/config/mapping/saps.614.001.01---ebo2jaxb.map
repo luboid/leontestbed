@@ -9,32 +9,33 @@
     	<jb:wiring beanIdRef="poolIntrBkLnQryAppl" property="poolIntrBkLnQryAppl"/>
   	</jb:bean>
   	<jb:bean beanId="poolIntrBkLnQryAppl.grpHdr.instgPty" class="com.xml.cnaps2.saps.v61400101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Saps61400101">
-  		<jb:value data="/com.topfinance.ebo.msg.Saps61400101/instgDrctPty"  property="instgDrctPty"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps61400101/instgIndrctPty"  property="instgPty"/>
+  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="instgIndrctPty"  property="instgPty"/>
   	</jb:bean>
   	<jb:bean beanId="poolIntrBkLnQryAppl.grpHdr" class="com.xml.cnaps2.saps.v61400101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps61400101">
     	<jb:wiring beanIdRef="poolIntrBkLnQryAppl.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="poolIntrBkLnQryAppl.grpHdr.instdPty" property="instdPty"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps61400101/msgId"  property="msgId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps61400101/creDtTm" decoder="Date" property="creDtTm">
-    		<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss.S z</jb:decodeParam>
+  		<jb:value data="msgId"  property="msgId"/>
+  		<jb:value data="creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
 	    </jb:value>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps61400101/sysCd"  property="sysCd"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps61400101/rmk"  property="sysCd"/>
+  		<jb:value data="sysCd"  property="sysCd"/>
+  		<jb:value data="rmk"  property="sysCd"/>
   	</jb:bean>
   	<jb:bean beanId="poolIntrBkLnQryAppl" class="com.xml.cnaps2.saps.v61400101.PoolIntrBkLnQryApplV01" createOnElement="com.topfinance.ebo.msg.Saps61400101">
     	<jb:wiring beanIdRef="poolIntrBkLnQryAppl.grpHdr" property="grpHdr"/>
     	<jb:wiring beanIdRef="poolIntrBkLnQryAppl.poolIntrBkLnQryApplInf" property="poolIntrBkLnQryApplInf"/>
   	</jb:bean>
   	<jb:bean beanId="poolIntrBkLnQryAppl.poolIntrBkLnQryApplInf" class="com.xml.cnaps2.saps.v61400101.PoolInterbankLoanQueryApplicationInformation1" createOnElement="com.topfinance.ebo.msg.Saps61400101">
-  		<jb:value data="/com.topfinance.ebo.msg.Saps61400101/qryTp"  property="qryTp"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps61400101/dt" decoder="Date" property="dt">
+  		<jb:value data="qryTp"  property="qryTp"/>
+  		<jb:value data="dt" decoder="Date" property="dt">
     		<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
 	    </jb:value>
   	</jb:bean>
   	<jb:bean beanId="poolIntrBkLnQryAppl.grpHdr.instdPty" class="com.xml.cnaps2.saps.v61400101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Saps61400101">
-  		<jb:value data="/com.topfinance.ebo.msg.Saps61400101/instdDrctPty"  property="instdDrctPty"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps61400101/instdIndrctPty"  property="instdPty"/>
+  		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="instdIndrctPty"  property="instdPty"/>
   	</jb:bean>
 </smooks-resource-list>  
     

@@ -4,23 +4,27 @@
     <param name="stream.filter.type">SAX</param>
     <param name="inputType">input.xsd</param>
     <param name="input.xsd.rootElement">Document</param>
-    <param name="input.xsd" type="input.type.actived">File:/E:/DevSpace/bc2/sample/Schema/saps.614.001.01.xsd</param>
+    <param name="input.xsd" type="input.type.actived"></param>
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps61400101" createOnElement="Document">
-		<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/MsgId" property="msgId"/>    
-		<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
 					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
-		</jb:value> 
-		<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
-		<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
-		<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
-		<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
-		<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/SysCd" property="sysCd"/>    
-		<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/SysCd" property="rmk"/>    
-		<jb:value data="/Document/PoolIntrBkLnQryAppl/PoolIntrBkLnQryApplInf/QryTp" property="qryTp"/>    
-		<jb:value data="/Document/PoolIntrBkLnQryAppl/PoolIntrBkLnQryApplInf/Dt" decoder="Date" property="dt">    
+		        </jb:value>
+				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/SysCd" property="rmk"/>    
+				<jb:value data="/Document/PoolIntrBkLnQryAppl/PoolIntrBkLnQryApplInf/QryTp" property="qryTp"/>    
+				<jb:value data="/Document/PoolIntrBkLnQryAppl/PoolIntrBkLnQryApplInf/Dt" property="dt"/> 
+				<jb:value data="/Document/PoolIntrBkLnQryAppl/PoolIntrBkLnQryApplInf/Dt" decoder="Date" property="dt">    
 					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
-		</jb:value>    
+		        </jb:value>   
 	</jb:bean>
+	
+
+
 </smooks-resource-list>  
     
