@@ -209,6 +209,68 @@ public class Cnaps2Constants {
             pkgName = "com.xml.cnaps2.beps.v39700101";                 
         } else if(mesgType.equals(TestDummy.OPERATION_398)) {
             pkgName = "com.xml.cnaps2.beps.v39800101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_412)) {
+            pkgName = "com.xml.cnaps2.beps.v41200101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_724)) {
+            pkgName = "com.xml.cnaps2.beps.v72400101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_384)) {
+            pkgName = "com.xml.cnaps2.beps.v38400101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_385)) {
+            pkgName = "com.xml.cnaps2.beps.v38500101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_387)) {
+            pkgName = "com.xml.cnaps2.beps.v38700101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_388)) {
+            pkgName = "com.xml.cnaps2.beps.v38800101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_913)) {
+            pkgName = "com.xml.cnaps2.ccms.v91300101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_906)) {
+            pkgName = "com.xml.cnaps2.ccms.v90600101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_809)) {
+            pkgName = "com.xml.cnaps2.ccms.v80900102";                 
+        }else if(mesgType.equals(TestDummy.OPERATION_803)) {
+            pkgName = "com.xml.cnaps2.ccms.v80300102";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_992)) {
+            pkgName = "com.xml.cnaps2.ccms.v99200101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_921)) {
+            pkgName = "com.xml.cnaps2.ccms.v92100101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_919)) {
+            pkgName = "com.xml.cnaps2.ccms.v91900101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_907)) {
+            pkgName = "com.xml.cnaps2.ccms.v90700102";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_916)) {
+            pkgName = "com.xml.cnaps2.ccms.v91600101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_731)) {
+            pkgName = "com.xml.cnaps2.saps.v73100101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_733)) {
+            pkgName = "com.xml.cnaps2.saps.v73300101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_356)) {
+            pkgName = "com.xml.cnaps2.nets.v35600101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_353)) {
+            pkgName = "com.xml.cnaps2.nets.v35300101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_610)) {
+            pkgName = "com.xml.cnaps2.saps.v61000101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_611)) {
+            pkgName = "com.xml.cnaps2.saps.v61100101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_738)) {
+            pkgName = "com.xml.cnaps2.saps.v73800101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_364)) {
+            pkgName = "com.xml.cnaps2.saps.v36400101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_367)) {
+            pkgName = "com.xml.cnaps2.saps.v36700101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_736)) {
+            pkgName = "com.xml.cnaps2.saps.v73600101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_373)) {
+            pkgName = "com.xml.cnaps2.saps.v37300101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_357)) {
+            pkgName = "com.xml.cnaps2.saps.v35700101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_618)) {
+            pkgName = "com.xml.cnaps2.nets.v61800101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_616)) {
+            pkgName = "com.xml.cnaps2.saps.v61600101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_406)) {
+            pkgName = "com.xml.cnaps2.nets.v40600101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_317)) {
+            pkgName = "com.xml.cnaps2.ccms.v31700101";                 
         }
         
         if(pkgName==null) {
