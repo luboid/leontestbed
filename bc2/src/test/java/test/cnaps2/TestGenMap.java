@@ -32,7 +32,7 @@ public class TestGenMap extends TestCase {
 
 	// TODO change the path
 	//public final static String DBSTORE = "D:/bankConnector/source/bin/runBC-A-config-DB.xml";
-	public final static String DBSTORE = "D:/DEV.WORK/EBO/bc2/bin/runBC-A-config-DB.xml";
+	public final static String DBSTORE = "E:/DevSpace/bc2/bin/runBC-A-config-DB.xml";
 
 	// TODO change it to true when you are ready to connect to DB
 	public final static boolean USE_DB = true;
@@ -41,7 +41,7 @@ public class TestGenMap extends TestCase {
 	public final static boolean TO_GENERATE = true;
 	
 	//private static final String basePath = "D:/bankConnector/source/generated_test";
-	private static final String basePath = "D:/DEV.WORK/EBO/bc2/generated_test";
+	private static final String basePath = "E:/DevSpace/bc2/generated_test";
 
 	@Override
 	protected void setUp() throws Exception {
@@ -286,9 +286,9 @@ public class TestGenMap extends TestCase {
 		} else if (bizFldType.equalsIgnoreCase("ActiveCurrencyAndAmount")) {
 			clazz = "java.math.BigDecimal";
 		} else if (bizFldType.equalsIgnoreCase("ISODateTime")) {
-			clazz = "java.lang.Date";
+			clazz = "java.util.Date";
 		} else if (bizFldType.equalsIgnoreCase("ISODate")) {
-			clazz = "java.lang.Date";
+			clazz = "java.util.Date";
 		} else if (bizFldType.equalsIgnoreCase("Any")) {
 			clazz = "java.lang.String";
 		}  else if (bizFldType.equalsIgnoreCase("SystemStatus")) {
@@ -973,7 +973,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void atestGenerated_724() throws Exception {
+	public void testGenerated_724() throws Exception {
 		String msgCode = "beps.724.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1403,7 +1403,7 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_132() throws Exception {
+	public void atestGenerated_132() throws Exception {
 		String msgCode = "beps.132.001.01";
 		String tpCode = "";
 		String clsCode = "";
