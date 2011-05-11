@@ -291,7 +291,7 @@
     <xs:complexType name="CustomerCreditTransferInitiationV03">
         <xs:sequence>
             <xs:element name="GrpHdr" type="GroupHeader32"/>
-            <xs:element maxOccurs="unbounded" minOccurs="1" name="PmtInf" type="PaymentInstructionInformation3"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="PmtInf" type="PaymentInstructionInformation3"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="DateAndPlaceOfBirth">
@@ -653,7 +653,7 @@
             <xs:element maxOccurs="1" minOccurs="0" name="ChrgBr" type="ChargeBearerType1Code"/>
             <xs:element maxOccurs="1" minOccurs="0" name="ChrgsAcct" type="CashAccount16"/>
             <xs:element maxOccurs="1" minOccurs="0" name="ChrgsAcctAgt" type="BranchAndFinancialInstitutionIdentification4"/>
-            <xs:element maxOccurs="unbounded" minOccurs="1" name="CdtTrfTxInf" type="CreditTransferTransactionInformation10"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="CdtTrfTxInf" type="CreditTransferTransactionInformation10"/>
         </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="PaymentMethod3Code">

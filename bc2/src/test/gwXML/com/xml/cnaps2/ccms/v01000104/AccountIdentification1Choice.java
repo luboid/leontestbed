@@ -5,7 +5,7 @@
 // Generated on: 2011.05.03 at 08:44:58 ���� CST 
 //
 
-package com.xml.cnaps2.ccms.v01000104;
+package com.xml.cnaps2.ccms.v30300104;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

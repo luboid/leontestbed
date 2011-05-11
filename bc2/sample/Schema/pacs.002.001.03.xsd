@@ -340,7 +340,7 @@
         <xs:sequence>
             <xs:element name="GrpHdr" type="GroupHeader37"/>
             <xs:element name="OrgnlGrpInfAndSts" type="OriginalGroupInformation20"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="TxInfAndSts" type="PaymentTransactionInformation26"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="TxInfAndSts" type="PaymentTransactionInformation26"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="FinancialIdentificationSchemeName1Choice">
@@ -535,7 +535,7 @@
             <xs:element maxOccurs="1" minOccurs="0" name="OrgnlNbOfTxs" type="Max15NumericText"/>
             <xs:element maxOccurs="1" minOccurs="0" name="OrgnlCtrlSum" type="DecimalNumber"/>
             <xs:element maxOccurs="1" minOccurs="0" name="GrpSts" type="TransactionGroupStatus3Code"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="StsRsnInf" type="StatusReasonInformation8"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="StsRsnInf" type="StatusReasonInformation8"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="NbOfTxsPerSts" type="NumberOfTransactionsPerStatus3"/>
         </xs:sequence>
     </xs:complexType>
@@ -596,7 +596,7 @@
             <xs:element maxOccurs="1" minOccurs="0" name="OrgnlEndToEndId" type="Max35Text"/>
             <xs:element maxOccurs="1" minOccurs="0" name="OrgnlTxId" type="Max35Text"/>
             <xs:element maxOccurs="1" minOccurs="0" name="TxSts" type="TransactionIndividualStatus3Code"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="StsRsnInf" type="StatusReasonInformation8"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="StsRsnInf" type="StatusReasonInformation8"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="ChrgsInf" type="ChargesInformation5"/>
             <xs:element maxOccurs="1" minOccurs="0" name="AccptncDtTm" type="ISODateTime"/>
             <xs:element maxOccurs="1" minOccurs="0" name="AcctSvcrRef" type="Max35Text"/>
@@ -688,7 +688,7 @@
     </xs:complexType>
     <xs:complexType name="RemittanceInformation5">
         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Ustrd" type="Max140Text"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Ustrd" type="Max140Text"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="Strd" type="StructuredRemittanceInformation7"/>
         </xs:sequence>
     </xs:complexType>
