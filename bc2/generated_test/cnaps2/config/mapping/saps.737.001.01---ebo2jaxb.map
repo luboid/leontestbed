@@ -20,7 +20,9 @@
     	<jb:wiring beanIdRef="balWorkDayChckngAppl.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="balWorkDayChckngAppl.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="msgId"  property="msgId"/>
-  		<jb:value data="creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
   		<jb:value data="sysCd"  property="sysCd"/>
   		<jb:value data="rmk"  property="rmk"/>
   	</jb:bean>

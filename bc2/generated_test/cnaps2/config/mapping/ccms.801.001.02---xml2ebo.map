@@ -8,19 +8,27 @@
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms80100102" createOnElement="Document">
 		<jb:value data="/Document/SysStsNtfctn/GrpHdr/MsgId" property="msgId"/>    
-		<jb:value data="/Document/SysStsNtfctn/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/SysStsNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+		</jb:value>   
 		<jb:value data="/Document/SysStsNtfctn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 		<jb:value data="/Document/SysStsNtfctn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 		<jb:value data="/Document/SysStsNtfctn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
 		<jb:value data="/Document/SysStsNtfctn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
 		<jb:value data="/Document/SysStsNtfctn/GrpHdr/SysCd" property="sysCd"/>    
-		<jb:value data="/Document/SysStsNtfctn/GrpHdr/Rmk" property="rmk"/>    
-		<jb:value data="/Document/SysStsNtfctn/SysStsInf/OrgnlSysDt" property="orgnlSysDt"/>    
-		<jb:value data="/Document/SysStsNtfctn/SysStsInf/OrgnlSysSts" property="orgnlSysSts"/>    
-		<jb:value data="/Document/SysStsNtfctn/SysStsInf/CurSysDt" property="curSysDt"/>    
+		<jb:value data="/Document/SysStsNtfctn/GrpHdr/Rmk" property="rmk"/>
+		<jb:value data="/Document/SysStsNtfctn/SysStsInf/OrgnlSysDt" decoder="Date" property="orgnlSysDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value>		
+		<jb:value data="/Document/SysStsNtfctn/SysStsInf/OrgnlSysSts" property="orgnlSysSts"/>       
+		<jb:value data="/Document/SysStsNtfctn/SysStsInf/CurSysDt" decoder="Date" property="curSysDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value>	
 		<jb:value data="/Document/SysStsNtfctn/SysStsInf/CurSysSts" property="curSysSts"/>    
 		<jb:value data="/Document/SysStsNtfctn/SysStsInf/HldayFlg" property="hldayFlg"/>    
-		<jb:value data="/Document/SysStsNtfctn/SysStsInf/NxtSysDt" property="nxtSysDt"/>    
+		<jb:value data="/Document/SysStsNtfctn/SysStsInf/NxtSysDt" decoder="Date" property="nxtSysDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value>	 
 		<jb:value data="/Document/SysStsNtfctn/SysStsInf/BkChngNb" property="bkChngNb"/>    
 		<jb:value data="/Document/SysStsNtfctn/SysStsInf/BaseDataChngNb" property="baseDataChngNb"/>    
 		<jb:value data="/Document/SysStsNtfctn/SysStsInf/CisChngNb" property="cISChngNb"/>    
