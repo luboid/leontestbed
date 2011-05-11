@@ -465,7 +465,7 @@ PATH = '/Document/TxDwnldRspn/TxDwnldRspnInf/NpcPrcInf/TrnsmtTm'
 多表：
 T_C2_BIS_ELE_BSC表中,msg_code='beps.412.001.01'数据报文中
 PATH = '/Document/StopPmtRspn/OrgnlGrpHdr/OrgnlInstgPty'
-PATH = '/Document/StopPmtRspn/StopPmtRspnInf/OrgnlInf/OrgnlGrpHdr/OrgnlInstgPty'_ROWSCN = '121841747'
+PATH = '/Document/StopPmtRspn/StopPmtRspnInf/OrgnlInf/OrgnlGrpHdr/OrgnlInstgPty'
 PATH = '/Document/StopPmtRspn/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/StopPmtRspn/GrpHdr/InstdPty/InstdPty'
 
@@ -483,6 +483,7 @@ T_C2_BIS_ELE_BSC表中,msg_code='beps.385.001.01'数据报文中
 PATH = '/Document/BtchCstmrsCtrctMgRspn/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/BtchCstmrsCtrctMgRspn/GrpHdr/InstdPty/InstdPty'
 PATH = '/Document/BtchCstmrsCtrctMgRspn/OrgnlGrpHdr/OrgnlInstgPty'
+加一行数据，使之成为父子表
 
 T_C2_BIS_ELE_BSC表中,msg_code='beps.387.001.01'数据报文中
 PATH = '/Document/BtchCstmrsAcctQry/GrpHdr/InstgPty/InstgPty'
@@ -509,6 +510,7 @@ T_C2_BIS_ELE_BSC表中,msg_code='ccms.809.001.02'数据报文中
 PATH = '/Document/StopgNtfctn/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/StopgNtfctn/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/StopgNtfctn/GrpHdr/InstdPty/InstdPty'
+加行数据，使之成为父子表
 
 T_C2_BIS_ELE_BSC表中,msg_code='ccms.803.001.02'数据报文中
 PATH = '/Document/TrblNtfctn/GrpHdr/InstgPty/InstgPty'
@@ -572,6 +574,7 @@ T_C2_BIS_ELE_BSC表中,msg_code='nets.356.001.01'数据报文中
 PATH = '/Document/NetDbtLmtMgmtNtfctn/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/NetDbtLmtMgmtNtfctn/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/NetDbtLmtMgmtNtfctn/GrpHdr/InstdPty/InstdPty'
+bsc表名字起重了，路径不正
 
 T_C2_BIS_ELE_BSC表中,msg_code='nets.353.001.01'数据报文中
 PATH = '/Document/NetDbtLmtDstrbtnMgmt/GrpHdr/InstgPty/InstgPty'
@@ -579,9 +582,9 @@ PATH = '/Document/NetDbtLmtDstrbtnMgmt/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/NetDbtLmtDstrbtnMgmt/GrpHdr/InstdPty/InstdPty'
 
 T_C2_BIS_ELE_BSC表中,msg_code='saps.610.001.01'数据报文中
-PATH = '/Document/IntraCityNetgQryRspn/GrpHdr/InstgPty/InstgPty' WHERE ROWID = '
-PATH = '/Document/IntraCityNetgQryRspn/GrpHdr/InstdPty/InstdPty' WHERE ROWID = '
-PATH = '/Document/IntraCityNetgQryRspn/OrgnlGrpHdr/OrgnlInstgPty' WHERE ROWID = '
+PATH = '/Document/IntraCityNetgQryRspn/GrpHdr/InstgPty/InstgPty'
+PATH = '/Document/IntraCityNetgQryRspn/GrpHdr/InstdPty/InstdPty'
+PATH = '/Document/IntraCityNetgQryRspn/OrgnlGrpHdr/OrgnlInstgPty'
 PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/OrgnlGrpHdr/OrgnlInstgPty' 
 PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/PrcSts'
 PATH = '/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/PrcCd'
@@ -603,6 +606,9 @@ PATH = '/Document/BalWorkDayChckngRspn/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/BalWorkDayChckngRspn/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/BalWorkDayChckngRspn/GrpHdr/InstdPty/InstdPty'
 PATH = '/Document/BalWorkDayChckngRspn/OrgnlGrpHdr/OrgnlInstgPty'
+/Document/BalWorkDayChckngRspn/BalWorkDayChckngRspnInf/UmtchdList/ACSInitlAmt改为/Document/BalWorkDayChckngRspn/BalWorkDayChckngRspnInf/UmtchdList/AcsInitlAmt
+/Document/BalWorkDayChckngRspn/BalWorkDayChckngRspnInf/UmtchdList/SAPSInitlAmt改为/Document/BalWorkDayChckngRspn/BalWorkDayChckngRspnInf/UmtchdList/SapsInitlAmt
+MmbId,ACSInitlAmt,SAPSInitlAmt的upseq的值改为17
 
 T_C2_BIS_ELE_BSC表中,msg_code='saps.364.001.01'数据报文中
 PATH = '/Document/QQryRspn/GrpHdr/InstgPty/InstgPty'
@@ -615,10 +621,13 @@ PATH = '/Document/QQryRspn/QInf/QInstrInf/OrgnlGrpHdr/OrgnlInstgPty'
 
 T_C2_BIS_ELE_BSC表中,msg_code='saps.367.001.01'数据报文中
 PATH = '/Document/AcctInfQryRspn/GrpHdr/InstgPty/InstgPty'
-PATH = '/Document/AcctInfQryRspn/GrpHdr/InstdPtyInstdDrctPty'
+PATH = '/Document/AcctInfQryRspn/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/AcctInfQryRspn/GrpHdr/InstdPty/InstdPty'
 PATH = '/Document/AcctInfQryRspn/OrgnlGrpHdr/OrgnlInstgPty'
-
+path中所有NPCPrcInf改为NpcPrcInf
+以下两项比xsd多了：
+/Document/AcctInfQryRspn/AcctInfQryRspnInf/AcctInf/DbtRstrctSts
+/Document/AcctInfQryRspn/AcctInfQryRspnInf/AcctInf/CdtRstrctSts
 
 
 T_C2_BIS_ELE_BSC表中,msg_code='saps.736.001.01'数据报文中
@@ -634,6 +643,7 @@ T_C2_BIS_ELE_BSC表中,msg_code='saps.357.001.01'数据报文中
 PATH = '/Document/PldgFincgMgmt/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/PldgFincgMgmt/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/PldgFincgMgmt/GrpHdr/InstdPty/InstdPty'
+加行数据，使之成为父子表
 
 T_C2_BIS_ELE_BSC表中,msg_code='nets.618.001.01'数据报文中
 PATH = '/Document/BEPSNetgRspn/GrpHdr/InstgPty/InstgPty'
@@ -653,3 +663,22 @@ PATH = '/Document/NetgQQryRspn/GrpHdr/InstdPty/InstdPty'
 PATH = '/Document/NetgQQryRspn/OrgnlGrpHdr/OrgnlInstgPty'
 PATH = '/Document/NetgQQryRspn/QInf/Dtls/OrgnlGrpHdr/OrgnlInstgPty'
 统一有大写的
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.4913.001.01'数据报文中
+/Document/CISAgcyChngNtfctn/GrpHdr/MsgId 改为/Document/CisAgcyChngNtfctn/GrpHdr/MsgId
+所有项目的path中CISAgcyChngNtfctn改为CisAgcyChngNtfctn
+ChngRcrdNb的type改为Max8NumericText
+
+T_C2_BIS_ELE_BSC表中,msg_code='nets.618.001.01'数据报文中
+/Document/BEPSNetgRspn/GrpHdr/InstgPty/InstgPty改为/Document/BepsNetgRspn/GrpHdr/InstgPty/InstgPty
+所有项目的path中BEPSNetgRspn改为BepsNetgRspn
+/Document/BepsNetgRspn/NPCPrcInf/PrcSts改为：/Document/BepsNetgRspn/NpcPrcInf/PrcSts
+path中带有NPCPrcInf的改为NpcPrcInf
+
+T_C2_BIS_ELE_BSC表中,msg_code='nets.406.001.01'数据报文中
+/Document/NetgQQryRspn/NPCPrcInf/PrcSts改为/Document/NetgQQryRspn/NpcPrcInf/PrcSts
+path中带有NPCPrcInf的改为NpcPrcInf
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.364.001.01'数据报文中
+/Document/QQryRspn/NPCPrcInf/PrcSts改为/Document/QQryRspn/NpcPrcInf/PrcSts
+path中带有NPCPrcInf的改为NpcPrcInf
