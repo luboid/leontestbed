@@ -1,5 +1,7 @@
 package com.topfinance.ebo.msg;
 
+import java.util.Date;
+
 import com.topfinance.ebo.msg.JaxbMapping;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +27,7 @@ public class Ccms80100102  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="sysStsNtfctn.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="sysStsNtfctn.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -46,13 +48,13 @@ public class Ccms80100102  implements java.io.Serializable {
     private String rmk;
     
     @JaxbMapping(objPath="sysStsNtfctn.sysStsInf.orgnlSysDt")
-    private String orgnlSysDt;
+    private Date orgnlSysDt;
     
     @JaxbMapping(objPath="sysStsNtfctn.sysStsInf.orgnlSysSts")
     private String orgnlSysSts;
     
     @JaxbMapping(objPath="sysStsNtfctn.sysStsInf.curSysDt")
-    private String curSysDt;
+    private Date curSysDt;
     
     @JaxbMapping(objPath="sysStsNtfctn.sysStsInf.curSysSts")
     private String curSysSts;
@@ -61,7 +63,7 @@ public class Ccms80100102  implements java.io.Serializable {
     private String hldayFlg;
     
     @JaxbMapping(objPath="sysStsNtfctn.sysStsInf.nxtSysDt")
-    private String nxtSysDt;
+    private Date nxtSysDt;
     
     @JaxbMapping(objPath="sysStsNtfctn.sysStsInf.bkChngNb")
     private String bkChngNb;
@@ -129,7 +131,7 @@ public class Ccms80100102  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -139,7 +141,7 @@ public class Ccms80100102  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -262,7 +264,7 @@ public class Ccms80100102  implements java.io.Serializable {
    * @return the orgnlSysDt
    */
     @Column(name = "ORGNLSYSDT")
-    public String getOrgnlSysDt() {
+    public Date getOrgnlSysDt() {
         return orgnlSysDt;
     }	 
      
@@ -272,7 +274,7 @@ public class Ccms80100102  implements java.io.Serializable {
    * @param newOrgnlSysDt the new orgnlSysDt
    */
 
-    public void  setOrgnlSysDt(String newOrgnlSysDt) {
+    public void  setOrgnlSysDt(Date newOrgnlSysDt) {
         orgnlSysDt = newOrgnlSysDt;
     }	  
   /**
@@ -300,7 +302,7 @@ public class Ccms80100102  implements java.io.Serializable {
    * @return the curSysDt
    */
     @Column(name = "CURSYSDT")
-    public String getCurSysDt() {
+    public Date getCurSysDt() {
         return curSysDt;
     }	 
      
@@ -310,7 +312,7 @@ public class Ccms80100102  implements java.io.Serializable {
    * @param newCurSysDt the new curSysDt
    */
 
-    public void  setCurSysDt(String newCurSysDt) {
+    public void  setCurSysDt(Date newCurSysDt) {
         curSysDt = newCurSysDt;
     }	  
   /**
@@ -357,7 +359,7 @@ public class Ccms80100102  implements java.io.Serializable {
    * @return the nxtSysDt
    */
     @Column(name = "NXTSYSDT")
-    public String getNxtSysDt() {
+    public Date getNxtSysDt() {
         return nxtSysDt;
     }	 
      
@@ -367,7 +369,7 @@ public class Ccms80100102  implements java.io.Serializable {
    * @param newNxtSysDt the new nxtSysDt
    */
 
-    public void  setNxtSysDt(String newNxtSysDt) {
+    public void  setNxtSysDt(Date newNxtSysDt) {
         nxtSysDt = newNxtSysDt;
     }	  
   /**
