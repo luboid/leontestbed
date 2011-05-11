@@ -513,7 +513,7 @@ T_C2_BIS_ELE_BSC表中,msg_code='ccms.809.001.02'数据报文中
 PATH = '/Document/StopgNtfctn/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/StopgNtfctn/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/StopgNtfctn/GrpHdr/InstdPty/InstdPty'
-加行数据，使之成为父子表
+NdCd该项的type和length的值删除
 
 T_C2_BIS_ELE_BSC表中,msg_code='ccms.803.001.02'数据报文中
 PATH = '/Document/TrblNtfctn/GrpHdr/InstgPty/InstgPty'
@@ -572,6 +572,8 @@ T_C2_BIS_ELE_BSC表中,msg_code='saps.733.001.01'数据报文中
 PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/ACSTCBSDailyAcctg/GrpHdr/InstdPty/InstdPty'
+path中含有ACSTCBSDailyAcctg改为AcstcbsDailyAcctg
+ACSTCBSDailyAcctgInf改为AcstcbsDailyAcctgInf
 
 T_C2_BIS_ELE_BSC表中,msg_code='nets.356.001.01'数据报文中
 PATH = '/Document/NetDbtLmtMgmtNtfctn/GrpHdr/InstgPty/InstgPty'
@@ -675,6 +677,58 @@ PATH = '/Document/NetgQQryRspn/QInf/Dtls/OrgnlGrpHdr/OrgnlInstgPty'
 /Document/NetgQQryRspn/NPCPrcInf/PrcSts改为/Document/NetgQQryRspn/NpcPrcInf/PrcSts
 path中带有NPCPrcInf的改为NpcPrcInf
 
+
+
+
+2011-05-11
+
 T_C2_BIS_ELE_BSC表中,msg_code='beps.724.001.01'数据报文中
 加一行数据，使之成为父子表
-prttn标签不存在，bsc里却有
+xsd和xml中prttn标签不存在，bsc里却有，文档里也有。该表中削除prttn所在字段
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.724.001.01'数据报文中
+加一行数据，使之成为父子表
+xsd和xml中prttn标签不存在，bsc里却有，文档里也有。该表中削除prttn所在字段
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.384.001.01'数据报文中
+xsd和xml中prttn标签不存在，bsc里却有，文档里也有。该表中削除prttn所在字段
+/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/DbtrAgt/FIId/ClrSysMmbId/MmbId改为/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/DbtrAgt/FiId/ClrSysMmbId/MmbId
+该字段FIId
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.387.001.01'数据报文中
+xsd和xml中prttn标签不存在，bsc里却有，文档里也有。该表中削除prttn所在字段
+upseq号也要跟着修改
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.385.001.01'数据报文中
+xsd和xml中prttn标签不存在，bsc里却有，文档里也有。该表中削除prttn所在字段
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.919.001.01'数据报文中
+xsd和xml中prttn标签不存在，bsc里却有，文档里也有。该表中削除prttn所在字段
+CertfctnList的path应有值
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.731.001.01'数据报文中
+ACSABSSttlmDtlAppl 改为AcsabsSttlmDtlAppl
+ACSABSSttlmDtlApplInf改为AcsabsSttlmDtlApplInf
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.733.001.01'数据报文中
+ACSTCBSDailyAcctg改为AcstcbsDailyAcctg
+ACSTCBSDailyAcctgInf改为AcstcbsDailyAcctgInf
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='saps.610.001.01'数据报文中
+NPC改为Npc
+
+T_C2_BIS_ELE_BSC表中,msg_code='nets.618.001.01'数据报文中
+BEPSNetgRspn改为BepsNetgRspn
+BEPSNetgRspnInf改为BepsNetgRspnInf
+TxList字段的path不可为空
+
+
+T_C2_BIS_ELE_BSC表中,msg_code='beps.388.001.01'数据报文中
+接收行行号的path由/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/InstgDrctPty改为/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/InstgPty
+
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.317.001.01'数据报文中
+/Document/RtrTx/OprlErr/Err/Desc改为/Document/RtrTx/OprlErr/Desc
+path中[1]去掉
