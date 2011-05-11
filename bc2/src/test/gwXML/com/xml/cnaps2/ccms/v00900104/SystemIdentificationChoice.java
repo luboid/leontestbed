@@ -6,7 +6,7 @@
 //
 
 
-package com.xml.cnaps2.camt.v00900104;
+package com.xml.cnaps2.ccms.v00900104;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

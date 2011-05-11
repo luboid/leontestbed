@@ -6,7 +6,7 @@
 //
 
 
-package com.xml.cnaps2.camt.v01000104;
+package com.xml.cnaps2.ccms.v01000104;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -17,7 +17,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the com.xml.cnaps2.camt.v01000104 package. 
+ * generated in the com.xml.cnaps2.ccms.v01000104 package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -34,7 +34,7 @@ public class ObjectFactory {
     private final static QName _Document_QNAME = new QName("urn:swift:xsd:camt.010.001.04", "Document");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.xml.cnaps2.camt.v01000104
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.xml.cnaps2.ccms.v01000104
      * 
      */
     public ObjectFactory() {

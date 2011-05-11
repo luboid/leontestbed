@@ -6,4 +6,4 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "urn:swift:xsd:camt.010.001.04", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package com.xml.cnaps2.camt.v01000104;
+package com.xml.cnaps2.ccms.v01000104;
