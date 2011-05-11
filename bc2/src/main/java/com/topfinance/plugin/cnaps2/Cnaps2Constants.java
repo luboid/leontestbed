@@ -189,6 +189,8 @@ public class Cnaps2Constants {
             pkgName = "com.xml.cnaps2.beps.v72000101";                 
         } else if(mesgType.equals(TestDummy.OPERATION_725)) {
             pkgName = "com.xml.cnaps2.beps.v72500101";                 
+        } else if(mesgType.equals(TestDummy.OPERATION_123)) {
+            pkgName = "com.xml.cnaps2.beps.v12300101";                 
         } else if(mesgType.equals(TestDummy.OPERATION_132)) {
             pkgName = "com.xml.cnaps2.beps.v13200101";                 
         } else if(mesgType.equals(TestDummy.OPERATION_386)) {

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps39500101" createOnElement="Document">
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+				<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+			    </jb:value>
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/GrpHdr/MsgRcpt/Id/PrvtId/Othr/Id" property="recDeId"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/GrpHdr/MsgRcpt/Id/PrvtId/Othr/Issr" property="issr"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Id" property="feesId"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryRef" property="ntryRef"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/Amt/Value" property="amt"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdPties/Dbtr/Nm" property="dbtrNm"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdPties/Dbtr/Id/PrvtId/Othr/Id" property="customId"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdPties/DbtrAcct/Id/Othr/Id" property="dbtrAcctId"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdPties/DbtrAcct/Id/Othr/Issr" property="dbtrAcctIssr"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdPties/Cdtr/Nm" property="cdtrNm"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdPties/Cdtr/Id/PrvtId/Othr/Id" property="enterpriseId"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdPties/CdtrAcct/Id/Othr/Id" property="cdtrAcctId"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdPties/CdtrAcct/Id/Othr/Issr" property="cdtrAcctIssr"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdAgts/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdAgts/DbtrAgt/BrnchId/Id" property="dbtrAgtBrnchId"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdAgts/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="cdtrClrSysMmbId"/>    
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdAgts/CdtrAgt/BrnchId/Id" property="cdtrAgtBrnchId"/>          
+				<jb:value data="/Document/BkToCstmrDbtCdtNtfctn/Ntfctn/Ntry/NtryDtls/TxDtls/RltdDts/TradDt" decoder="Date" property="tradDt">
+				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+			    </jb:value>
+	</jb:bean>
+	
+
+
+</smooks-resource-list>  
+    

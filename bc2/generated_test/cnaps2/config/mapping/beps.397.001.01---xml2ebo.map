@@ -7,8 +7,10 @@
     <param name="input.xsd" type="input.type.actived"></param>
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps39700101" createOnElement="Document">
-				<jb:value data="/Document/ChckCdtForLd/GrpHdr/MsgId" property="msgId"/>    
-				<jb:value data="/Document/ChckCdtForLd/GrpHdr/CreDtTm" property="creDtTm"/>    
+				<jb:value data="/Document/ChckCdtForLd/GrpHdr/MsgId" property="msgId"/>     
+				<jb:value data="/Document/ChckCdtForLd/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+				<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+			    </jb:value>
 				<jb:value data="/Document/ChckCdtForLd/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 				<jb:value data="/Document/ChckCdtForLd/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 				<jb:value data="/Document/ChckCdtForLd/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
@@ -19,7 +21,9 @@
 				<jb:value data="/Document/ChckCdtForLd/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
 				<jb:value data="/Document/ChckCdtForLd/OrgnlGrpHdr/OrgnlMsgTp" property="orgnlMT"/>    
 				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/ApplyOrCclTp" property="applyOrCclTp"/>    
-				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/IsseDt" property="isseDt"/>    
+				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/IsseDt" decoder="Date" property="isseDt">
+				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+			    </jb:value>
 				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/Nb" property="nb"/>    
 				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/Id" property="bid"/>    
 				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/AcctNb" property="acctNb"/>    

@@ -9,7 +9,9 @@
     	<jb:wiring beanIdRef="chckCdtForLd.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="chckCdtForLd.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="msgId"  property="msgId"/>
-  		<jb:value data="creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+	    </jb:value>
   		<jb:value data="sysCd"  property="sysCd"/>
   		<jb:value data="rmk"  property="rmk"/>
   	</jb:bean>
@@ -29,9 +31,11 @@
   	<jb:bean beanId="chckCdtForLd.chckCdtForLdInf" class="com.xml.cnaps2.beps.v39700101.CheckCreditForLoadInformation1" createOnElement="com.topfinance.ebo.msg.Beps39700101">
     	<jb:wiring beanIdRef="chckCdtForLd.chckCdtForLdInf.amt" property="amt"/>
   		<jb:value data="applyOrCclTp"  property="applyOrCclTp"/>
-  		<jb:value data="isseDt"  property="isseDt"/>
+  		<jb:value data="isseDt" decoder="Date" property="isseDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+	    </jb:value>
   		<jb:value data="nb"  property="nb"/>
-  		<jb:value data="bid"  property="bid"/>
+  		<jb:value data="id"  property="bid"/>
   		<jb:value data="acctNb"  property="acctNb"/>
   		<jb:value data="chckMd"  property="chckMd"/>
   		<jb:value data="chckCd"  property="chckCd"/>

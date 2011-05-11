@@ -31,7 +31,7 @@
             <xs:element maxOccurs="1" minOccurs="0" name="RltdAcct" type="CashAccount16"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="Intrst" type="AccountInterest2"/>
             <xs:element maxOccurs="1" minOccurs="0" name="TxsSummry" type="TotalTransactions2"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Ntry" type="ReportEntry2"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Ntry" type="ReportEntry2"/>
             <xs:element maxOccurs="1" minOccurs="0" name="AddtlNtfctnInf" type="Max500Text"/>
         </xs:sequence>
     </xs:complexType>
@@ -119,7 +119,7 @@
     <xs:complexType name="BankToCustomerDebitCreditNotificationV02">
         <xs:sequence>
             <xs:element name="GrpHdr" type="GroupHeader42"/>
-            <xs:element maxOccurs="unbounded" minOccurs="1" name="Ntfctn" type="AccountNotification2"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="Ntfctn" type="AccountNotification2"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="BankTransactionCodeStructure4">
@@ -429,7 +429,7 @@
     <xs:complexType name="EntryDetails1">
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="Btch" type="BatchInformation2"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="TxDtls" type="EntryTransaction2"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="TxDtls" type="EntryTransaction2"/>
         </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="EntryStatus2Code">
@@ -813,7 +813,7 @@
     <xs:complexType name="PersonIdentification5">
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="DtAndPlcOfBirth" type="DateAndPlaceOfBirth"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Othr" type="GenericPersonIdentification1"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Othr" type="GenericPersonIdentification1"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="PersonIdentificationSchemeName1Choice">
@@ -980,7 +980,7 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" name="Chrgs" type="ChargesInformation6"/>
             <xs:element maxOccurs="1" minOccurs="0" name="TechInptChanl" type="TechnicalInputChannel1Choice"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="Intrst" type="TransactionInterest2"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="NtryDtls" type="EntryDetails1"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="NtryDtls" type="EntryDetails1"/>
             <xs:element maxOccurs="1" minOccurs="0" name="AddtlNtryInf" type="Max500Text"/>
         </xs:sequence>
     </xs:complexType>

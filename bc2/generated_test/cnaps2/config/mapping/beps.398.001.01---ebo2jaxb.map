@@ -38,8 +38,10 @@
   	<jb:bean beanId="chckCdtForLdRspn.grpHdr" class="com.xml.cnaps2.beps.v39800101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps39800101">
     	<jb:wiring beanIdRef="chckCdtForLdRspn.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="chckCdtForLdRspn.grpHdr.instdPty" property="instdPty"/>
-  		<jb:value data="msgId"  property="msgId"/>
-  		<jb:value data="creDtTm" property="creDtTm"/>
+  		<jb:value data="msgId"  property="msgId"/>	
+		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+	    </jb:value>
   		<jb:value data="sysCd"  property="sysCd"/>
   		<jb:value data="rmk"  property="rmk"/>
   	</jb:bean>

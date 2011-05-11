@@ -222,7 +222,7 @@
             <xs:element maxOccurs="1" minOccurs="0" name="InstdAmt" type="ActiveOrHistoricCurrencyAndAmount"/>
             <xs:element maxOccurs="1" minOccurs="0" name="XchgRate" type="BaseOneRate"/>
             <xs:element name="ChrgBr" type="ChargeBearerType1Code"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="ChrgsInf" type="ChargesInformation5"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="ChrgsInf" type="ChargesInformation5"/>
             <xs:element maxOccurs="1" minOccurs="0" name="PrvsInstgAgt" type="BranchAndFinancialInstitutionIdentification4"/>
             <xs:element maxOccurs="1" minOccurs="0" name="PrvsInstgAgtAcct" type="CashAccount16"/>
             <xs:element maxOccurs="1" minOccurs="0" name="InstgAgt" type="BranchAndFinancialInstitutionIdentification4"/>
@@ -244,8 +244,8 @@
             <xs:element name="Cdtr" type="PartyIdentification32"/>
             <xs:element maxOccurs="1" minOccurs="0" name="CdtrAcct" type="CashAccount16"/>
             <xs:element maxOccurs="1" minOccurs="0" name="UltmtCdtr" type="PartyIdentification32"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="InstrForCdtrAgt" type="InstructionForCreditorAgent1"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="InstrForNxtAgt" type="InstructionForNextAgent1"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="InstrForCdtrAgt" type="InstructionForCreditorAgent1"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="InstrForNxtAgt" type="InstructionForNextAgent1"/>
             <xs:element maxOccurs="1" minOccurs="0" name="Purp" type="Purpose2Choice"/>
             <xs:element maxOccurs="10" minOccurs="0" name="RgltryRptg" type="RegulatoryReporting3"/>
             <xs:element maxOccurs="10" minOccurs="0" name="RltdRmtInf" type="RemittanceLocation2"/>
@@ -391,7 +391,7 @@
     <xs:complexType name="FIToFICustomerCreditTransferV02">
         <xs:sequence>
             <xs:element name="GrpHdr" type="GroupHeader33"/>
-            <xs:element maxOccurs="unbounded" minOccurs="1" name="CdtTrfTxInf" type="CreditTransferTransactionInformation11"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="CdtTrfTxInf" type="CreditTransferTransactionInformation11"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="FinancialIdentificationSchemeName1Choice">

@@ -32,7 +32,7 @@ public class Beps39700101  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="chckCdtForLd.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="chckCdtForLd.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -65,12 +65,12 @@ public class Beps39700101  implements java.io.Serializable {
     private String applyOrCclTp;
     
     @JaxbMapping(objPath="chckCdtForLd.chckCdtForLdInf.isseDt")
-    private String isseDt;
+    private Date isseDt;
     
     @JaxbMapping(objPath="chckCdtForLd.chckCdtForLdInf.nb")
     private String nb;
     
-    @JaxbMapping(objPath="chckCdtForLd.ChckCdtForLdInf.id")
+    @JaxbMapping(objPath="chckCdtForLd.chckCdtForLdInf.id")
     private String bid;
     
     @JaxbMapping(objPath="chckCdtForLd.chckCdtForLdInf.acctNb")
@@ -103,8 +103,8 @@ public class Beps39700101  implements java.io.Serializable {
    * 
    * @return the id
    */
-    @Id
-  	@Column(name = "ID", unique = true, nullable = false, precision = 22, scale = 0)
+	@Id
+	@Column(name = "ID", unique = true, nullable = false, precision = 22, scale = 0)
 	@SequenceGenerator(name = "CFG_SEQUNCE_GEN", sequenceName = "S_CFG_SEQUNCE")
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "CFG_SEQUNCE_GEN")
     public Integer getid() {
@@ -145,7 +145,7 @@ public class Beps39700101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -155,7 +155,7 @@ public class Beps39700101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -354,7 +354,7 @@ public class Beps39700101  implements java.io.Serializable {
    * @return the isseDt
    */
     @Column(name = "ISSEDT")
-    public String getIsseDt() {
+    public Date getIsseDt() {
         return isseDt;
     }	 
      
@@ -364,7 +364,7 @@ public class Beps39700101  implements java.io.Serializable {
    * @param newIsseDt the new isseDt
    */
 
-    public void  setIsseDt(String newIsseDt) {
+    public void  setIsseDt(Date newIsseDt) {
         isseDt = newIsseDt;
     }	  
   /**

@@ -36,9 +36,9 @@
             <xs:element name="Acct" type="CashAccount20"/>
             <xs:element maxOccurs="1" minOccurs="0" name="RltdAcct" type="CashAccount16"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="Intrst" type="AccountInterest2"/>
-            <xs:element maxOccurs="unbounded" minOccurs="1" name="Bal" type="CashBalance3"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="Bal" type="CashBalance3"/>
             <xs:element maxOccurs="1" minOccurs="0" name="TxsSummry" type="TotalTransactions2"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Ntry" type="ReportEntry2"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Ntry" type="ReportEntry2"/>
             <xs:element maxOccurs="1" minOccurs="0" name="AddtlStmtInf" type="Max500Text"/>
         </xs:sequence>
     </xs:complexType>
@@ -154,7 +154,7 @@
     <xs:complexType name="BankToCustomerStatementV02">
         <xs:sequence>
             <xs:element name="GrpHdr" type="GroupHeader42"/>
-            <xs:element maxOccurs="unbounded" minOccurs="1" name="Stmt" type="AccountStatement2"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="Stmt" type="AccountStatement2"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="BankTransactionCodeStructure4">
