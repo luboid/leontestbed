@@ -505,6 +505,9 @@ T_C2_BIS_ELE_BSC表中,msg_code='ccms.913.001.01'数据报文中
 PATH = '/Document/CISAgcyChngNtfctn/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/CISAgcyChngNtfctn/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/CISAgcyChngNtfctn/GrpHdr/InstdPty/InstdPty'
+/Document/CISAgcyChngNtfctn/GrpHdr/MsgId 改为/Document/CisAgcyChngNtfctn/GrpHdr/MsgId
+所有项目的path中CISAgcyChngNtfctn改为CisAgcyChngNtfctn
+ChngRcrdNb的type改为Max8NumericText
 
 T_C2_BIS_ELE_BSC表中,msg_code='ccms.809.001.02'数据报文中
 PATH = '/Document/StopgNtfctn/GrpHdr/InstgPty/InstgPty'
@@ -616,7 +619,9 @@ PATH = '/Document/QQryRspn/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/QQryRspn/GrpHdr/InstdPty/InstdPty'
 PATH = '/Document/QQryRspn/OrgnlGrpHdr/OrgnlInstgPty'
 PATH = '/Document/QQryRspn/QInf/QInstrInf/OrgnlGrpHdr/OrgnlInstgPty'
-还统一有大写的
+还统一有大写的:
+/Document/QQryRspn/NPCPrcInf/PrcSts改为/Document/QQryRspn/NpcPrcInf/PrcSts
+path中带有NPCPrcInf的改为NpcPrcInf
 
 
 T_C2_BIS_ELE_BSC表中,msg_code='saps.367.001.01'数据报文中
@@ -650,6 +655,10 @@ PATH = '/Document/BEPSNetgRspn/GrpHdr/InstgPty/InstgPty'
 PATH = '/Document/BEPSNetgRspn/GrpHdr/InstdPty/InstdDrctPty'
 PATH = '/Document/BEPSNetgRspn/GrpHdr/InstdPty/InstdPty'
 PATH = '/Document/BEPSNetgRspn/OrgnlGrpHdr/OrgnlInstgPty'
+/Document/BEPSNetgRspn/GrpHdr/InstgPty/InstgPty改为/Document/BepsNetgRspn/GrpHdr/InstgPty/InstgPty
+所有项目的path中BEPSNetgRspn改为BepsNetgRspn
+/Document/BepsNetgRspn/NPCPrcInf/PrcSts改为：/Document/BepsNetgRspn/NpcPrcInf/PrcSts
+path中带有NPCPrcInf的改为NpcPrcInf
 
 T_C2_BIS_ELE_BSC表中,msg_code='saps.616.001.01'数据报文中
 PATH = '/Document/NetgListDwnLd/GrpHdr/InstgPty/InstgPty'
@@ -663,22 +672,9 @@ PATH = '/Document/NetgQQryRspn/GrpHdr/InstdPty/InstdPty'
 PATH = '/Document/NetgQQryRspn/OrgnlGrpHdr/OrgnlInstgPty'
 PATH = '/Document/NetgQQryRspn/QInf/Dtls/OrgnlGrpHdr/OrgnlInstgPty'
 统一有大写的
-
-T_C2_BIS_ELE_BSC表中,msg_code='ccms.4913.001.01'数据报文中
-/Document/CISAgcyChngNtfctn/GrpHdr/MsgId 改为/Document/CisAgcyChngNtfctn/GrpHdr/MsgId
-所有项目的path中CISAgcyChngNtfctn改为CisAgcyChngNtfctn
-ChngRcrdNb的type改为Max8NumericText
-
-T_C2_BIS_ELE_BSC表中,msg_code='nets.618.001.01'数据报文中
-/Document/BEPSNetgRspn/GrpHdr/InstgPty/InstgPty改为/Document/BepsNetgRspn/GrpHdr/InstgPty/InstgPty
-所有项目的path中BEPSNetgRspn改为BepsNetgRspn
-/Document/BepsNetgRspn/NPCPrcInf/PrcSts改为：/Document/BepsNetgRspn/NpcPrcInf/PrcSts
-path中带有NPCPrcInf的改为NpcPrcInf
-
-T_C2_BIS_ELE_BSC表中,msg_code='nets.406.001.01'数据报文中
 /Document/NetgQQryRspn/NPCPrcInf/PrcSts改为/Document/NetgQQryRspn/NpcPrcInf/PrcSts
 path中带有NPCPrcInf的改为NpcPrcInf
 
-T_C2_BIS_ELE_BSC表中,msg_code='saps.364.001.01'数据报文中
-/Document/QQryRspn/NPCPrcInf/PrcSts改为/Document/QQryRspn/NpcPrcInf/PrcSts
-path中带有NPCPrcInf的改为NpcPrcInf
+T_C2_BIS_ELE_BSC表中,msg_code='beps.724.001.01'数据报文中
+加一行数据，使之成为父子表
+prttn标签不存在，bsc里却有
