@@ -1,5 +1,7 @@
 package com.topfinance.ebo.msg;
 
+import java.util.Date;
+
 import com.topfinance.ebo.msg.JaxbMapping;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +27,7 @@ public class Saps60400101  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="sttlmRtrRct.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="sttlmRtrRct.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -64,19 +66,19 @@ public class Saps60400101  implements java.io.Serializable {
     private String rjctInf;
     
     @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.netgDt")
-    private String netgDt;
+    private Date netgDt;
     
     @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.netgRnd")
     private String netgRnd;
     
     @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.sttlmDt")
-    private String sttlmDt;
+    private Date sttlmDt;
     
     @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.rcvTm")
-    private String rcvTm;
+    private Date rcvTm;
     
     @JaxbMapping(objPath="sttlmRtrRct.npcPrcInf.trnsmtTm")
-    private String trnsmtTm;
+    private Date trnsmtTm;
     
     @JaxbMapping(objPath="sttlmRtrRct.acctInf.bal")
     private String bal;
@@ -135,7 +137,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -145,7 +147,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -382,7 +384,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @return the netgDt
    */
     @Column(name = "NETGDT")
-    public String getNetgDt() {
+    public Date getNetgDt() {
         return netgDt;
     }	 
      
@@ -392,7 +394,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @param newNetgDt the new netgDt
    */
 
-    public void  setNetgDt(String newNetgDt) {
+    public void  setNetgDt(Date newNetgDt) {
         netgDt = newNetgDt;
     }	  
   /**
@@ -420,7 +422,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @return the sttlmDt
    */
     @Column(name = "STTLMDT")
-    public String getSttlmDt() {
+    public Date getSttlmDt() {
         return sttlmDt;
     }	 
      
@@ -430,7 +432,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @param newSttlmDt the new sttlmDt
    */
 
-    public void  setSttlmDt(String newSttlmDt) {
+    public void  setSttlmDt(Date newSttlmDt) {
         sttlmDt = newSttlmDt;
     }	  
   /**
@@ -439,7 +441,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @return the rcvTm
    */
     @Column(name = "RCVTM")
-    public String getRcvTm() {
+    public Date getRcvTm() {
         return rcvTm;
     }	 
      
@@ -449,7 +451,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @param newRcvTm the new rcvTm
    */
 
-    public void  setRcvTm(String newRcvTm) {
+    public void  setRcvTm(Date newRcvTm) {
         rcvTm = newRcvTm;
     }	  
   /**
@@ -458,7 +460,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @return the trnsmtTm
    */
     @Column(name = "TRNSMTTM")
-    public String getTrnsmtTm() {
+    public Date getTrnsmtTm() {
         return trnsmtTm;
     }	 
      
@@ -468,7 +470,7 @@ public class Saps60400101  implements java.io.Serializable {
    * @param newTrnsmtTm the new trnsmtTm
    */
 
-    public void  setTrnsmtTm(String newTrnsmtTm) {
+    public void  setTrnsmtTm(Date newTrnsmtTm) {
         trnsmtTm = newTrnsmtTm;
     }	  
   /**

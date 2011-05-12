@@ -1,5 +1,7 @@
 package com.topfinance.ebo.msg;
 
+import java.util.Date;
+
 import com.topfinance.ebo.msg.JaxbMapping;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +27,7 @@ public class Saps61400101  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="poolIntrBkLnQryAppl.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="poolIntrBkLnQryAppl.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -49,7 +51,7 @@ public class Saps61400101  implements java.io.Serializable {
     private String qryTp;
     
     @JaxbMapping(objPath="poolIntrBkLnQryAppl.poolIntrBkLnQryApplInf.dt")
-    private String dt;
+    private Date dt;
     
     
 	
@@ -105,7 +107,7 @@ public class Saps61400101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -115,7 +117,7 @@ public class Saps61400101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -257,7 +259,7 @@ public class Saps61400101  implements java.io.Serializable {
    * @return the dt
    */
     @Column(name = "DT")
-    public String getDt() {
+    public Date getDt() {
         return dt;
     }	 
      
@@ -267,7 +269,7 @@ public class Saps61400101  implements java.io.Serializable {
    * @param newDt the new dt
    */
 
-    public void  setDt(String newDt) {
+    public void  setDt(Date newDt) {
         dt = newDt;
     }	  
     
