@@ -38,7 +38,7 @@ public class TestGenMap extends TestCase {
 	public final static boolean USE_DB = true;
 	
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean TO_GENERATE = false;
+	public final static boolean TO_GENERATE = true;
 	
 	//private static final String basePath = "D:/bankConnector/source/generated_test";
 	private static final String basePath = "D:/DEV.WORK/EBO/bc2/generated_test";
@@ -1568,8 +1568,30 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_351() throws Exception {
+	public void atestGenerated_351() throws Exception {
 		String msgCode = "nets.351.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_413() throws Exception {
+		String msgCode = "beps.413.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_416() throws Exception {
+		String msgCode = "beps.416.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {

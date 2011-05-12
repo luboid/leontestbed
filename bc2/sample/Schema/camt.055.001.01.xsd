@@ -114,7 +114,7 @@
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="Orgtr" type="PartyIdentification32"/>
             <xs:element maxOccurs="1" minOccurs="0" name="Rsn" type="CancellationReason2Choice"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="AddtlInf" type="Max105Text"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="AddtlInf" type="Max105Text"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="Case2">
@@ -259,7 +259,7 @@
             <xs:element name="Assgnmt" type="CaseAssignment2"/>
             <xs:element maxOccurs="1" minOccurs="0" name="Case" type="Case2"/>
             <xs:element maxOccurs="1" minOccurs="0" name="CtrlData" type="ControlData1"/>
-            <xs:element maxOccurs="unbounded" minOccurs="1" name="Undrlyg" type="UnderlyingTransaction1"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="Undrlyg" type="UnderlyingTransaction1"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="DateAndPlaceOfBirth">
@@ -560,7 +560,7 @@
             <xs:element maxOccurs="1" minOccurs="0" name="NbOfTxs" type="Max15NumericText"/>
             <xs:element maxOccurs="1" minOccurs="0" name="CtrlSum" type="DecimalNumber"/>
             <xs:element maxOccurs="1" minOccurs="0" name="GrpCxl" type="GroupCancellationIndicator"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="CxlRsnInf" type="CancellationReasonInformation3"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="CxlRsnInf" type="CancellationReasonInformation3"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="OriginalGroupInformation3">
@@ -580,7 +580,7 @@
             <xs:element maxOccurs="1" minOccurs="0" name="CtrlSum" type="DecimalNumber"/>
             <xs:element maxOccurs="1" minOccurs="0" name="PmtInfCxl" type="GroupCancellationIndicator"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="CxlRsnInf" type="CancellationReasonInformation3"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="TxInf" type="PaymentTransactionInformation30"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="TxInf" type="PaymentTransactionInformation30"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="OriginalTransactionReference13">
@@ -736,7 +736,7 @@
     </xs:complexType>
     <xs:complexType name="RemittanceInformation5">
         <xs:sequence>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Ustrd" type="Max140Text"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Ustrd" type="Max140Text"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="Strd" type="StructuredRemittanceInformation7"/>
         </xs:sequence>
     </xs:complexType>

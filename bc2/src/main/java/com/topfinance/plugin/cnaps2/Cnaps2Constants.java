@@ -227,13 +227,13 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_412)) {
 			pkgName = "com.xml.cnaps2.beps.v41200101";
 		} else if (mesgType.equals(TestDummy.OPERATION_413)) {
-			pkgName = "com.xml.cnaps2.beps.v41300101";
+			pkgName = "com.xml.iso20022.camt.v05500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_414)) {
 			pkgName = "com.xml.cnaps2.beps.v41400101";
 		} else if (mesgType.equals(TestDummy.OPERATION_415)) {
 			pkgName = "com.xml.cnaps2.beps.v41500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_416)) {
-			pkgName = "com.xml.cnaps2.beps.v41600101";
+			pkgName = "com.xml.iso20022.camt.v05500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_417)) {
 			pkgName = "com.xml.cnaps2.beps.v41700101";
 		} else if (mesgType.equals(TestDummy.OPERATION_601)) {
