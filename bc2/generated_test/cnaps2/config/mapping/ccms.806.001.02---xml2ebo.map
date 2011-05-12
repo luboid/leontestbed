@@ -7,8 +7,10 @@
     <param name="input.xsd" type="input.type.actived">File:/E:/DevSpace/bc2/sample/Schema/ccms.806.001.02.xsd</param>
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms80600102" createOnElement="Document">
-		<jb:value data="/Document/LoginRspn/GrpHdr/MsgId" property="msgId"/>    
-		<jb:value data="/Document/LoginRspn/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/LoginRspn/GrpHdr/MsgId" property="msgId"/>       
+		<jb:value data="/Document/LoginRspn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+		</jb:value>
 		<jb:value data="/Document/LoginRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 		<jb:value data="/Document/LoginRspn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 		<jb:value data="/Document/LoginRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
@@ -16,8 +18,10 @@
 		<jb:value data="/Document/LoginRspn/GrpHdr/SysCd" property="sysCd"/>    
 		<jb:value data="/Document/LoginRspn/GrpHdr/Rmk" property="rmk"/>    
 		<jb:value data="/Document/LoginRspn/OrgnlGrpInf/OrgnlMsgId" property="orgnlMsgId"/>    
-		<jb:value data="/Document/LoginRspn/LoginRspnInf/LoginOprTp" property="loginOprTp"/>    
-		<jb:value data="/Document/LoginRspn/LoginRspnInf/CurSysDt" property="curSysDt"/>    
+		<jb:value data="/Document/LoginRspn/LoginRspnInf/LoginOprTp" property="loginOprTp"/>      
+		<jb:value data="/Document/LoginRspn/LoginRspnInf/CurSysDt" decoder="Date" property="curSysDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value> 
 		<jb:value data="/Document/LoginRspn/LoginRspnInf/CurSysSts" property="curSysSts"/>    
 		<jb:value data="/Document/LoginRspn/LoginRspnInf/PrcSts" property="prcSts"/>    
 		<jb:value data="/Document/LoginRspn/LoginRspnInf/PrcCd" property="prcCd"/>    

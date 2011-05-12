@@ -19,7 +19,9 @@
     	<jb:wiring beanIdRef="logoutNtfctn.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="logoutNtfctn.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/msgId"  property="msgId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/sysCd"  property="sysCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Ccms80700102/rmk"  property="rmk"/>
   	</jb:bean>
