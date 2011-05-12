@@ -375,7 +375,7 @@
     <xs:complexType name="FinancialInstitutionCreditTransferV02">
         <xs:sequence>
             <xs:element name="GrpHdr" type="GroupHeader35"/>
-            <xs:element maxOccurs="unbounded" minOccurs="1" name="CdtTrfTxInf" type="CreditTransferTransactionInformation13"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="CdtTrfTxInf" type="CreditTransferTransactionInformation13"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="FinancialInstitutionIdentification7">

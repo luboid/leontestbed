@@ -166,7 +166,7 @@
     <xs:complexType name="LimitCriteria2">
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="NewQryNm" type="Max35Text"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="SchCrit" type="LimitSearchCriteria2"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="SchCrit" type="LimitSearchCriteria2"/>
             <xs:element maxOccurs="1" minOccurs="0" name="RtrCrit" type="LimitReturnCriteria"/>
         </xs:sequence>
     </xs:complexType>

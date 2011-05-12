@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Nets37700101</param>
+  </params>
+  	<jb:bean beanId="lqdtyDbtTfr.dbtAcct.id.dmstAcct" class="com.xml.iso20022.camt.v05100102.SimpleIdentificationInformation" createOnElement="com.topfinance.ebo.msg.Nets37700101">
+  		<jb:value data="instgDrctPty"  property="id"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.iso20022.camt.v05100102.Document" createOnElement="com.topfinance.ebo.msg.Nets37700101">
+    	<jb:wiring beanIdRef="lqdtyDbtTfr" property="lqdtyDbtTfr"/>
+  	</jb:bean>
+  	<jb:bean beanId="lqdtyDbtTfr.trfdAmt" class="com.xml.iso20022.camt.v05100102.AmountChoice" createOnElement="com.topfinance.ebo.msg.Nets37700101">
+    	<jb:wiring beanIdRef="lqdtyDbtTfr.trfdAmt.amtWthCcy" property="amtWthCcy"/>
+  	</jb:bean>
+  	<jb:bean beanId="lqdtyDbtTfr.dbtAcct" class="com.xml.iso20022.camt.v05100102.AccountIdentificationDetails" createOnElement="com.topfinance.ebo.msg.Nets37700101">
+    	<jb:wiring beanIdRef="lqdtyDbtTfr.dbtAcct.id" property="id"/>
+  	</jb:bean>
+  	<jb:bean beanId="lqdtyDbtTfr.trfdAmt.amtWthCcy" class="com.xml.iso20022.camt.v05100102.CurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets37700101">
+  		<jb:value data="amtWthCcy" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="lqdtyDbtTfr" class="com.xml.iso20022.camt.v05100102.LiquidityDebitTransferV02" createOnElement="com.topfinance.ebo.msg.Nets37700101">
+    	<jb:wiring beanIdRef="lqdtyDbtTfr.msgId" property="msgId"/>
+    	<jb:wiring beanIdRef="lqdtyDbtTfr.trfdAmt" property="trfdAmt"/>
+    	<jb:wiring beanIdRef="lqdtyDbtTfr.dbtAcct" property="dbtAcct"/>
+  	</jb:bean>
+  	<jb:bean beanId="lqdtyDbtTfr.dbtAcct.id" class="com.xml.iso20022.camt.v05100102.AccountIdentification1Choice" createOnElement="com.topfinance.ebo.msg.Nets37700101">
+    	<jb:wiring beanIdRef="lqdtyDbtTfr.dbtAcct.id.dmstAcct" property="dmstAcct"/>
+  	</jb:bean>
+  	<jb:bean beanId="lqdtyDbtTfr.msgId" class="com.xml.iso20022.camt.v05100102.MessageIdentification" createOnElement="com.topfinance.ebo.msg.Nets37700101">
+  		<jb:value data="msgId"  property="id"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

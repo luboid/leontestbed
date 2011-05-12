@@ -32,7 +32,7 @@
             <xs:element maxOccurs="unbounded" minOccurs="0" name="Intrst" type="AccountInterest2"/>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="Bal" type="CashBalance3"/>
             <xs:element maxOccurs="1" minOccurs="0" name="TxsSummry" type="TotalTransactions2"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Ntry" type="ReportEntry2"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Ntry" type="ReportEntry2"/>
             <xs:element maxOccurs="1" minOccurs="0" name="AddtlRptInf" type="Max500Text"/>
         </xs:sequence>
     </xs:complexType>
@@ -156,7 +156,7 @@
     <xs:complexType name="BankToCustomerAccountReportV02">
         <xs:sequence>
             <xs:element name="GrpHdr" type="GroupHeader42"/>
-            <xs:element maxOccurs="unbounded" minOccurs="1" name="Rpt" type="AccountReport11"/>
+            <xs:element maxOccurs="1" minOccurs="1" name="Rpt" type="AccountReport11"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="BankTransactionCodeStructure4">
@@ -829,7 +829,7 @@
     <xs:complexType name="OrganisationIdentification4">
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="BICOrBEI" type="AnyBICIdentifier"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Othr" type="GenericOrganisationIdentification1"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Othr" type="GenericOrganisationIdentification1"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="OrganisationIdentificationSchemeName1Choice">
@@ -872,7 +872,7 @@
     <xs:complexType name="PersonIdentification5">
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="DtAndPlcOfBirth" type="DateAndPlaceOfBirth"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Othr" type="GenericPersonIdentification1"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Othr" type="GenericPersonIdentification1"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="PersonIdentificationSchemeName1Choice">

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms30800102" createOnElement="Document">
+				<jb:value data="/Document/FiToFiPmtStsRpt/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+				<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+			    </jb:value>
+				<jb:value data="/Document/FiToFiPmtStsRpt/GrpHdr/InstgAgt/FinInstnId/Othr/Id" property="senPId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/GrpHdr/InstdAgt/FinInstnId/Othr/Id" property="recPId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgNmId" property="orgnlMsgNmId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf" property="prcCd"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf" property="nPCPrc"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/StsId" property="stsId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlInstrId" property="orgnlInstrId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/ClrSysRef" decoder="Date" property="clrSysRef">
+				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+			    </jb:value>
+	</jb:bean>
+	
+
+
+</smooks-resource-list>  
+    

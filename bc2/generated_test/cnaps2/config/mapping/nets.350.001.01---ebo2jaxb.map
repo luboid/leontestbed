@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Nets35000101</param>
+  </params>
+  	<jb:bean beanId="getLmt.msgId" class="com.xml.iso20022.camt.v00900104.MessageIdentification" createOnElement="com.topfinance.ebo.msg.Nets35000101">
+  		<jb:value data="msgId"  property="id"/>
+  	</jb:bean>
+  	<jb:bean beanId="getLmt" class="com.xml.iso20022.camt.v00900104.GetLimitV04" createOnElement="com.topfinance.ebo.msg.Nets35000101">
+    	<jb:wiring beanIdRef="getLmt.msgId" property="msgId"/>
+    	<jb:wiring beanIdRef="getLmt.lmtQryDef" property="lmtQryDef"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.iso20022.camt.v00900104.Document" createOnElement="com.topfinance.ebo.msg.Nets35000101">
+    	<jb:wiring beanIdRef="getLmt" property="getLmt"/>
+  	</jb:bean>
+  	<jb:bean beanId="getLmt.lmtQryDef" class="com.xml.iso20022.camt.v00900104.LimitQueryDefinition3" createOnElement="com.topfinance.ebo.msg.Nets35000101">
+    	<jb:wiring beanIdRef="getLmt.lmtQryDef.lmtCrit" property="lmtCrit"/>
+  	</jb:bean>
+  	<jb:bean beanId="getLmt.lmtQryDef.lmtCrit.newCrit.schCrit" class="com.xml.iso20022.camt.v00900104.LimitSearchCriteria2" createOnElement="com.topfinance.ebo.msg.Nets35000101">
+    	<jb:wiring beanIdRef="getLmt.lmtQryDef.lmtCrit.newCrit.schCrit.acctId" property="acctId"/>
+  	</jb:bean>
+  	<jb:bean beanId="getLmt.lmtQryDef.lmtCrit.newCrit" class="com.xml.iso20022.camt.v00900104.LimitCriteria2" createOnElement="com.topfinance.ebo.msg.Nets35000101">
+    	<jb:wiring beanIdRef="getLmt.lmtQryDef.lmtCrit.newCrit.schCrit" property="schCrit"/>
+  	</jb:bean>
+  	<jb:bean beanId="getLmt.lmtQryDef.lmtCrit.newCrit.schCrit.acctId.dmstAcct" class="com.xml.iso20022.camt.v00900104.SimpleIdentificationInformation" createOnElement="com.topfinance.ebo.msg.Nets35000101">
+  		<jb:value data="instgDrctPty"  property="id"/>
+  	</jb:bean>
+  	<jb:bean beanId="getLmt.lmtQryDef.lmtCrit.newCrit.schCrit.acctId" class="com.xml.iso20022.camt.v00900104.AccountIdentification1Choice" createOnElement="com.topfinance.ebo.msg.Nets35000101">
+    	<jb:wiring beanIdRef="getLmt.lmtQryDef.lmtCrit.newCrit.schCrit.acctId.dmstAcct" property="dmstAcct"/>
+  	</jb:bean>
+  	<jb:bean beanId="getLmt.lmtQryDef.lmtCrit" class="com.xml.iso20022.camt.v00900104.LimitCriteriaDefinition2Choice" createOnElement="com.topfinance.ebo.msg.Nets35000101">
+    	<jb:wiring beanIdRef="getLmt.lmtQryDef.lmtCrit.newCrit" property="newCrit"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

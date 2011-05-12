@@ -15,11 +15,11 @@
     <xs:complexType name="AccountCashEntrySearch2">
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="AcctId" type="AccountIdentificationSearchCriteriaChoice"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="NtryAmt" type="AmountRangeChoice"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="NtryAmtCcy" type="CurrencyCode"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="NtryAmt" type="AmountRangeChoice"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="NtryAmtCcy" type="CurrencyCode"/>
             <xs:element maxOccurs="1" minOccurs="0" name="CdtDbtInd" type="CreditDebitCode"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="NtrySts" type="EntryStatus1Code"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="NtryDt" type="DateAndDateTimeSearchChoice"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="NtrySts" type="EntryStatus1Code"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="NtryDt" type="DateAndDateTimeSearchChoice"/>
             <xs:element maxOccurs="1" minOccurs="0" name="AcctOwnr" type="AnyBICIdentifier"/>
             <xs:element maxOccurs="1" minOccurs="0" name="AcctSvcr" type="BICIdentifier"/>
         </xs:sequence>
@@ -488,22 +488,22 @@
     <xs:complexType name="PaymentSearch3">
         <xs:sequence>
             <xs:element maxOccurs="unbounded" minOccurs="0" name="TxRef" type="Max35Text"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="TrfValDt" type="DateAndDateTimeSearchChoice"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="InstrRef" type="PaymentIdentification3Choice"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="InstrSts" type="InstructionStatusSearch3"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="InstdAmt" type="AmountRangeChoice"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="InstdAmtCcy" type="CurrencyCode"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="TrfValDt" type="DateAndDateTimeSearchChoice"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="InstrRef" type="PaymentIdentification3Choice"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="InstrSts" type="InstructionStatusSearch3"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="InstdAmt" type="AmountRangeChoice"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="InstdAmtCcy" type="CurrencyCode"/>
             <xs:element maxOccurs="1" minOccurs="0" name="CdtDbtInd" type="CreditDebitCode"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="IntrBkSttlmAmt" type="AmountRangeChoice"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="IntrBkSttlmAmtCcy" type="CurrencyCode"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="PmtMtd" type="PaymentOrigin1Choice"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="Prty" type="PriorityCodeChoice"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="PrcgVldtyTm" type="DateTimePeriodChoice"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="Instr" type="Instruction1Code"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="PmtTp" type="PaymentType2Choice"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="PmtInstrRef" type="Max35Text"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="IntrBkValDt" type="ISODate"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="RltdRef" type="Max35Text"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="IntrBkSttlmAmt" type="AmountRangeChoice"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="IntrBkSttlmAmtCcy" type="CurrencyCode"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="PmtMtd" type="PaymentOrigin1Choice"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Prty" type="PriorityCodeChoice"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="PrcgVldtyTm" type="DateTimePeriodChoice"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="Instr" type="Instruction1Code"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="PmtTp" type="PaymentType2Choice"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="PmtInstrRef" type="Max35Text"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="IntrBkValDt" type="ISODate"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="RltdRef" type="Max35Text"/>
             <xs:element maxOccurs="1" minOccurs="0" name="PmtTxPty" type="PaymentTransactionParty"/>
         </xs:sequence>
     </xs:complexType>
@@ -698,8 +698,8 @@
     </xs:complexType>
     <xs:complexType name="SystemSearch2">
         <xs:sequence>
-            <xs:element maxOccurs="1" minOccurs="0" name="SysId" type="CashClearingSystem1Code"/>
-            <xs:element maxOccurs="1" minOccurs="0" name="MmbId" type="MemberIdentificationChoice"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="SysId" type="CashClearingSystem1Code"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="MmbId" type="MemberIdentificationChoice"/>
             <xs:element maxOccurs="1" minOccurs="0" name="Ctry" type="CountryCode"/>
             <xs:element maxOccurs="1" minOccurs="0" name="AcctId" type="AccountIdentification1Choice"/>
         </xs:sequence>

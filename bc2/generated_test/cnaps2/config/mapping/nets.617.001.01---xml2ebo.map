@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Nets61700101" createOnElement="Document">
+				<jb:value data="/Document/BepsNetgQry/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/BepsNetgQry/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+				<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+			    </jb:value>
+				<jb:value data="/Document/BepsNetgQry/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/BepsNetgQry/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/BepsNetgQry/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/BepsNetgQry/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/BepsNetgQry/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/BepsNetgQry/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/BepsNetgQry/BepsNetgQryInf/NetgDt" decoder="Date" property="netgDt">
+				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+			    </jb:value>
+				<jb:value data="/Document/BepsNetgQry/BepsNetgQryInf/NetgRnd" property="netgRnd"/>    
+				<jb:value data="/Document/BepsNetgQry/BepsNetgQryInf/QryTp" property="qryTp"/>    
+				<jb:value data="/Document/BepsNetgQry/BepsNetgQryInf/MmbId" property="mmbId"/>    
+	</jb:bean>
+	
+
+
+</smooks-resource-list>  
+    

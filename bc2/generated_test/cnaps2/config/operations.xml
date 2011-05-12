@@ -814,5 +814,125 @@
       	pathOpClass=""     	
       	>
       </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="nets.377.001.01"
+      	name="nets.377.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/LqdtyDbtTfr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="nets.376.001.01"
+      	name="nets.376.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/LqdtyCdtTfr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="saps.360.001.01"
+      	name="saps.360.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/BkToCstmrAcctRpt/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="nets.350.001.01"
+      	name="nets.350.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/GetLmt/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="ccms.317.001.01"
+      	name="ccms.317.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/RtrTx/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="ccms.316.001.01"
+      	name="ccms.316.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/GetTx/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="ccms.308.001.02"
+      	name="ccms.308.001.02" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/FIToFIPmtStsRpt/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/FIToFIPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="ccms.307.001.02"
+      	name="ccms.307.001.02" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/FIToFIPmtCxlReq/Assgnmt/Id/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="hvps.141.001.01"
+      	name="hvps.141.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/FinInstnCdtTrf/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="nets.617.001.01"
+      	name="nets.617.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/BEPSNetgQry/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
    </list>
 </OperationDefinitions>

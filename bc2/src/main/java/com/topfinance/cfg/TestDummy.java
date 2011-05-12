@@ -149,7 +149,7 @@ public class TestDummy extends TestCase implements CfgConstants {
 
 	// 6
 	public static String OPERATION_601 = "saps.601.001.01";
-	public static String OPERATION_603 = "saps.601.001.02";
+	public static String OPERATION_603 = "saps.603.001.02";
 	// 清算回执报文<saps.604.001.01>
 	public static String OPERATION_604 = "saps.604.001.01";
 	public static String OPERATION_606 = "saps.606.001.01";
