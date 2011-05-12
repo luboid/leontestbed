@@ -6,7 +6,7 @@
     <param name="input.xsd.rootElement">Document</param>
     <param name="input.xsd" type="input.type.actived"></param>
   </params>
-  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps41200101" createOnElement="Document">
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps41200101Hdr" createOnElement="Document">
 				<jb:value data="/Document/StopPmtRspn/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
 				<jb:value data="/Document/StopPmtRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
 				<jb:value data="/Document/StopPmtRspn/OrgnlGrpHdr/OrgnlMsgTp" property="orgnlMT"/>    
@@ -32,7 +32,7 @@
   <jb:bean beanId="orgnlTx[0]" class="java.util.HashSet" createOnElement="Document">
    	<jb:wiring beanIdRef="orgnlTx" />
   </jb:bean>
-	<jb:bean beanId="orgnlTx" class="com.topfinance.ebo.msg.Beps41200101OrgnlTx" createOnElement="/Document/StopPmtRspn/StopPmtRspnInf/OrgnlInf/OrgnlTx">
+	<jb:bean beanId="orgnlTx" class="com.topfinance.ebo.msg.Beps41200101" createOnElement="/Document/StopPmtRspn/StopPmtRspnInf/OrgnlInf/OrgnlTx">
 		<jb:wiring beanIdRef="target" property="fid"/>
 				<jb:value data="/Document/StopPmtRspn/StopPmtRspnInf/OrgnlInf/OrgnlTx/InstgIndrctPty" property="instgIndrctPty"/>    
 				<jb:value data="/Document/StopPmtRspn/StopPmtRspnInf/OrgnlInf/OrgnlTx/InstdIndrctPty" property="instdIndrctPty"/>    

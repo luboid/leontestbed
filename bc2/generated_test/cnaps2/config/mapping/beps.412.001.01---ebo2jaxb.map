@@ -3,29 +3,29 @@
   <params>
     <param name="stream.filter.type">SAX</param>
     <param name="inputType">input.java</param>
-    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps41200101</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps41200101Hdr</param>
   </params>
-  	<jb:bean beanId="stopPmtRspn.stopPmtRspnInf.orgnlInf.orgnlTx[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps41200101/orgnlTx">
+  	<jb:bean beanId="stopPmtRspn.stopPmtRspnInf.orgnlInf.orgnlTx[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps41200101Hdr/orgnlTx">
     	<jb:wiring beanIdRef="stopPmtRspn.stopPmtRspnInf.orgnlInf.orgnlTx[0].xxx" />
   	</jb:bean>
-  	<jb:bean beanId="stopPmtRspn.orgnlGrpHdr" class="com.xml.cnaps2.beps.v41200101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps41200101">
+  	<jb:bean beanId="stopPmtRspn.orgnlGrpHdr" class="com.xml.cnaps2.beps.v41200101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps41200101Hdr">
   		<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
   		<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
   		<jb:value data="orgnlMT"  property="orgnlMsgTp"/>
   	</jb:bean>
-  	<jb:bean beanId="target" class="com.xml.cnaps2.beps.v41200101.Document" createOnElement="com.topfinance.ebo.msg.Beps41200101">
+  	<jb:bean beanId="target" class="com.xml.cnaps2.beps.v41200101.Document" createOnElement="com.topfinance.ebo.msg.Beps41200101Hdr">
     	<jb:wiring beanIdRef="stopPmtRspn" property="stopPmtRspn"/>
   	</jb:bean>
-  	<jb:bean beanId="stopPmtRspn.stopPmtRspnInf.orgnlInf" class="com.xml.cnaps2.beps.v41200101.OriginalInformation1" createOnElement="com.topfinance.ebo.msg.Beps41200101">
+  	<jb:bean beanId="stopPmtRspn.stopPmtRspnInf.orgnlInf" class="com.xml.cnaps2.beps.v41200101.OriginalInformation1" createOnElement="com.topfinance.ebo.msg.Beps41200101Hdr">
     	<jb:wiring beanIdRef="stopPmtRspn.stopPmtRspnInf.orgnlInf.orgnlGrpHdr" property="orgnlGrpHdr"/>
     	<jb:wiring beanIdRef="stopPmtRspn.stopPmtRspnInf.orgnlInf.orgnlTx[0]" property="orgnlTx"/>
   	</jb:bean>
-  	<jb:bean beanId="stopPmtRspn.stopPmtRspnInf.orgnlInf.orgnlGrpHdr" class="com.xml.cnaps2.beps.v41200101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps41200101">
+  	<jb:bean beanId="stopPmtRspn.stopPmtRspnInf.orgnlInf.orgnlGrpHdr" class="com.xml.cnaps2.beps.v41200101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps41200101Hdr">
   		<jb:value data="stopOrgnlMsgId"  property="orgnlMsgId"/>
   		<jb:value data="stopOrgnlInstgDrctPty"  property="orgnlInstgPty"/>
   		<jb:value data="stopOrgnlMT"  property="orgnlMsgTp"/>
   	</jb:bean>
-  	<jb:bean beanId="stopPmtRspn.grpHdr" class="com.xml.cnaps2.beps.v41200101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps41200101">
+  	<jb:bean beanId="stopPmtRspn.grpHdr" class="com.xml.cnaps2.beps.v41200101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps41200101Hdr">
     	<jb:wiring beanIdRef="stopPmtRspn.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="stopPmtRspn.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="msgId"  property="msgId"/>
@@ -35,25 +35,25 @@
   		<jb:value data="sysCd"  property="sysCd"/>
   		<jb:value data="rmk"  property="rmk"/>
   	</jb:bean>
-  	<jb:bean beanId="stopPmtRspn.stopPmtRspnInf" class="com.xml.cnaps2.beps.v41200101.StopPaymentResponsionInformation1" createOnElement="com.topfinance.ebo.msg.Beps41200101">
+  	<jb:bean beanId="stopPmtRspn.stopPmtRspnInf" class="com.xml.cnaps2.beps.v41200101.StopPaymentResponsionInformation1" createOnElement="com.topfinance.ebo.msg.Beps41200101Hdr">
     	<jb:wiring beanIdRef="stopPmtRspn.stopPmtRspnInf.orgnlInf" property="orgnlInf"/>
   		<jb:value data="stopPmtTp"  property="stopPmtTp"/>
   		<jb:value data="stopPmtSts"  property="stopPmtSts"/>
   	</jb:bean>
-  	<jb:bean beanId="stopPmtRspn" class="com.xml.cnaps2.beps.v41200101.StopPaymentResponsion" createOnElement="com.topfinance.ebo.msg.Beps41200101">
+  	<jb:bean beanId="stopPmtRspn" class="com.xml.cnaps2.beps.v41200101.StopPaymentResponsion" createOnElement="com.topfinance.ebo.msg.Beps41200101Hdr">
     	<jb:wiring beanIdRef="stopPmtRspn.orgnlGrpHdr" property="orgnlGrpHdr"/>
     	<jb:wiring beanIdRef="stopPmtRspn.stopPmtRspnInf" property="stopPmtRspnInf"/>
     	<jb:wiring beanIdRef="stopPmtRspn.grpHdr" property="grpHdr"/>
   	</jb:bean>
-  	<jb:bean beanId="stopPmtRspn.grpHdr.instgPty" class="com.xml.cnaps2.beps.v41200101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Beps41200101">
+  	<jb:bean beanId="stopPmtRspn.grpHdr.instgPty" class="com.xml.cnaps2.beps.v41200101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Beps41200101Hdr">
   		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
   		<jb:value data="instgIndrctPty1"  property="instgPty"/>
   	</jb:bean>
-  	<jb:bean beanId="stopPmtRspn.grpHdr.instdPty" class="com.xml.cnaps2.beps.v41200101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Beps41200101">
+  	<jb:bean beanId="stopPmtRspn.grpHdr.instdPty" class="com.xml.cnaps2.beps.v41200101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Beps41200101Hdr">
   		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
   		<jb:value data="instdIndrctPty1"  property="instdPty"/>
   	</jb:bean>
-  	<jb:bean beanId="stopPmtRspn.stopPmtRspnInf.orgnlInf.orgnlTx[0].xxx" class="com.xml.cnaps2.beps.v41200101.OriginalTransaction1" createOnElement="com.topfinance.ebo.msg.Beps41200101OrgnlTx">
+  	<jb:bean beanId="stopPmtRspn.stopPmtRspnInf.orgnlInf.orgnlTx[0].xxx" class="com.xml.cnaps2.beps.v41200101.OriginalTransaction1" createOnElement="com.topfinance.ebo.msg.Beps41200101">
   		<jb:value data="instgIndrctPty"  property="instgIndrctPty"/>
   		<jb:value data="instdIndrctPty"  property="instdIndrctPty"/>
   		<jb:value data="orgnlTxId"  property="orgnlTxId"/>
