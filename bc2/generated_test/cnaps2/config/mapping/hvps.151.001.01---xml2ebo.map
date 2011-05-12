@@ -7,15 +7,19 @@
     <param name="input.xsd" type="input.type.actived"></param>
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Hvps15100101" createOnElement="Document">
-				<jb:value data="/Document/ClrBkDrftAppl/GrpHdr/MsgId" property="msgId"/>    
-				<jb:value data="/Document/ClrBkDrftAppl/GrpHdr/MsgId" property="creDtTm"/>    
+				<jb:value data="/Document/ClrBkDrftAppl/GrpHdr/MsgId" property="msgId"/>       
+				<jb:value data="/Document/ClrBkDrftAppl/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>
 				<jb:value data="/Document/ClrBkDrftAppl/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 				<jb:value data="/Document/ClrBkDrftAppl/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 				<jb:value data="/Document/ClrBkDrftAppl/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
 				<jb:value data="/Document/ClrBkDrftAppl/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
 				<jb:value data="/Document/ClrBkDrftAppl/GrpHdr/SysCd" property="sysCd"/>    
 				<jb:value data="/Document/ClrBkDrftAppl/GrpHdr/Rmk" property="rmk"/>    
-				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/DrftInf/Dt" property="dt"/>    
+				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/DrftInf/Dt" decoder="Date" property="dt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		        </jb:value>  
 				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/DrftInf/Nb" property="nb"/>    
 				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/DrftInf/TstCd" property="tstCd"/>    
 				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/DrftInf/Tp" property="tp"/>    
@@ -28,8 +32,10 @@
 				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/DrftInf/HldrAcct" property="hldrAcct"/>    
 				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/DrftInf/HldrNm" property="hldrNm"/>    
 				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/RmngAmt/Value" property="rmngAmt"/>    
-				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/ActlSttlmAmt/Value" property="actlSttlmAmt"/>    
-				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/RmndDtPmt" property="rmndDtPmt"/>    
+				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/ActlSttlmAmt/Value" property="actlSttlmAmt"/>     
+				<jb:value data="/Document/ClrBkDrftAppl/ClrBkDrftApplInf/RmndDtPmt" decoder="Date" property="rmndDtPmt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		        </jb:value>
 	</jb:bean>
 	
 

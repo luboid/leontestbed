@@ -13,7 +13,9 @@
     	<jb:wiring beanIdRef="rtrgBkDrftCptlAppl" property="rtrgBkDrftCptlAppl"/>
   	</jb:bean>
   	<jb:bean beanId="rtrgBkDrftCptlAppl.rtrgBkDrftCptlApplInf.drftInf" class="com.xml.cnaps2.hvps.v15300101.DrftInf1" createOnElement="com.topfinance.ebo.msg.Hvps15300101">
-  		<jb:value data="/com.topfinance.ebo.msg.Hvps15300101/dt"  property="dt"/>
+  		<jb:value data="dt" decoder="Date" property="dt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps15300101/nb"  property="nb"/>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps15300101/tstCd"  property="tstCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps15300101/tp"  property="tp"/>
@@ -38,7 +40,9 @@
     	<jb:wiring beanIdRef="rtrgBkDrftCptlAppl.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="rtrgBkDrftCptlAppl.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps15300101/msgId"  property="msgId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Hvps15300101/creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps15300101/sysCd"  property="sysCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps15300101/rmk"  property="rmk"/>
   	</jb:bean>

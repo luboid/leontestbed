@@ -7,15 +7,19 @@
     <param name="input.xsd" type="input.type.actived">File:/E:/DevSpace/bc2/sample/Schema/hvps.710.001.01.xsd</param>
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Hvps71000101" createOnElement="Document">
-		<jb:value data="/Document/AcctChckngReq/GrpHdr/MsgId" property="msgId"/>    
-		<jb:value data="/Document/AcctChckngReq/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/AcctChckngReq/GrpHdr/MsgId" property="msgId"/>     
+		<jb:value data="/Document/AcctChckngReq/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+		</jb:value> 
 		<jb:value data="/Document/AcctChckngReq/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 		<jb:value data="/Document/AcctChckngReq/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 		<jb:value data="/Document/AcctChckngReq/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
 		<jb:value data="/Document/AcctChckngReq/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
 		<jb:value data="/Document/AcctChckngReq/GrpHdr/SysCd" property="sysCd"/>    
 		<jb:value data="/Document/AcctChckngReq/GrpHdr/Rmk" property="rmk"/>    
-		<jb:value data="/Document/AcctChckngReq/AcctChckngReqInf/ChckngDt" property="chckngDt"/>    
+		<jb:value data="/Document/AcctChckngReq/AcctChckngReqInf/ChckngDt" decoder="Date" property="chckngDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value>  
 	</jb:bean>
 </smooks-resource-list>  
     

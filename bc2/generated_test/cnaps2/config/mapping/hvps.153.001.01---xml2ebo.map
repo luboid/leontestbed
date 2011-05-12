@@ -8,14 +8,18 @@
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Hvps15300101" createOnElement="Document">
 		<jb:value data="/Document/RtrgBkDrftCptlAppl/GrpHdr/MsgId" property="msgId"/>    
-		<jb:value data="/Document/RtrgBkDrftCptlAppl/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/RtrgBkDrftCptlAppl/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+		</jb:value>
 		<jb:value data="/Document/RtrgBkDrftCptlAppl/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 		<jb:value data="/Document/RtrgBkDrftCptlAppl/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 		<jb:value data="/Document/RtrgBkDrftCptlAppl/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
 		<jb:value data="/Document/RtrgBkDrftCptlAppl/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
 		<jb:value data="/Document/RtrgBkDrftCptlAppl/GrpHdr/SysCd" property="sysCd"/>    
 		<jb:value data="/Document/RtrgBkDrftCptlAppl/GrpHdr/Rmk" property="rmk"/>    
-		<jb:value data="/Document/RtrgBkDrftCptlAppl/RtrgBkDrftCptlApplInf/DrftInf/Dt" property="dt"/>    
+		<jb:value data="/Document/RtrgBkDrftCptlAppl/RtrgBkDrftCptlApplInf/DrftInf/Dt" decoder="Date" property="dt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value>    
 		<jb:value data="/Document/RtrgBkDrftCptlAppl/RtrgBkDrftCptlApplInf/DrftInf/Nb" property="nb"/>    
 		<jb:value data="/Document/RtrgBkDrftCptlAppl/RtrgBkDrftCptlApplInf/DrftInf/TstCd" property="tstCd"/>    
 		<jb:value data="/Document/RtrgBkDrftCptlAppl/RtrgBkDrftCptlApplInf/DrftInf/Tp" property="tp"/>    

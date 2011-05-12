@@ -12,16 +12,22 @@
 		<jb:value data="/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/DrftInf/HldrAcct" property="hldrAcct"/>    
 		<jb:value data="/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/DrftInf/HldrNm" property="hldrNm"/>    
 		<jb:value data="/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/ActlSttlmAmt" property="actlSttlmAmt"/>    
-		<jb:value data="/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/RmndDtPmt" property="rmndDtPmt"/>    
+		<jb:value data="/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/RmndDtPmt" decoder="Date" property="rmndDtPmt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value>    
 		<jb:value data="/Document/ClrBkDrftNtfctn/GrpHdr/MsgId" property="msgId"/>    
-		<jb:value data="/Document/ClrBkDrftNtfctn/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/ClrBkDrftNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+		</jb:value>    
 		<jb:value data="/Document/ClrBkDrftNtfctn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 		<jb:value data="/Document/ClrBkDrftNtfctn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 		<jb:value data="/Document/ClrBkDrftNtfctn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
 		<jb:value data="/Document/ClrBkDrftNtfctn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
 		<jb:value data="/Document/ClrBkDrftNtfctn/GrpHdr/SysCd" property="sysCd"/>    
 		<jb:value data="/Document/ClrBkDrftNtfctn/GrpHdr/Rmk" property="rmk"/>    
-		<jb:value data="/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/DrftInf/Dt" property="dt"/>    
+		<jb:value data="/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/DrftInf/Dt" decoder="Date" property="dt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value>   
 		<jb:value data="/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/DrftInf/Nb" property="nb"/>    
 		<jb:value data="/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/DrftInf/TstCd" property="tstCd"/>    
 		<jb:value data="/Document/ClrBkDrftNtfctn/ClrBkDrftNtfctnInf/DrftInf/Tp" property="tp"/>    
