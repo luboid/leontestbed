@@ -1101,3 +1101,12 @@ T_C2_BIS_ELE_BSC表中,msg_code='nets.351.001.01'数据报文中
 /Document/NetDbtLmtQryRspn/NetDbtLmtInf/CdtXtnsnLmt
 /Document/NetDbtLmtQryRspn/NetDbtLmtInf/NetDbtLmt
 /Document/NetDbtLmtQryRspn/NetDbtLmtInf/AvlblNetDbt
+
+13、beps.413.001.01
+camt.055.001.01.xsd文件中name="Undrlyg" type="UnderlyingTransaction1"的unbounded修改为1
+camt.055.001.01.xsd文件中name="CxlRsnInf" type="CancellationReasonInformation3"的unbounded修改为1
+camt.055.001.01.xsd文件中name="AddtlInf" type="Max105Text"的unbounded修改为1
+camt.055.001.01.xsd文件中name="TxInf" type="PaymentTransactionInformation30"的unbounded修改为1
+camt.055.001.01.xsd文件中name="Ustrd" type="Max140Text"的unbounded修改为1
+T_C2_BIS_ELE_BSC表中,msg_code='hvps.141.001.01'数据报文中
+PATH = '/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/Nm'
