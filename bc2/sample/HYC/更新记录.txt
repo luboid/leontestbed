@@ -901,3 +901,146 @@ T_C2_BIS_ELE_BSC表中,msg_code=saps.603.001.02'数据报文中
 修改ID名称为SID
 PATH = '/Documen
 修改T_C2_SAPS_603表，修改Column_4字段为SID
+
+2011-05-12 sunhuazhong
+1、saps.360.001.01
+修改T_C2_SAPS_360表，修改Column_4字段为CREDTTMS DATE类型，修改COLUMN_5字段为BID
+camt.052.001.02.xsd文件中name="Othr" type="GenericPersonIdentification1"对应的maxOccurs = "1"
+camt.052.001.02.xsd文件中name="Rpt" type="AccountReport11"对应的maxOccurs = "1"
+camt.052.001.02.xsd文件中name="Ntry" type="ReportEntry2"对应的maxOccurs = "1"
+
+2、nets.350.001.01
+camt.009.001.04.xsd文件中name="SchCrit" type="LimitSearchCriteria2"对应的maxOccurs = "1"
+
+2、ccms.317.001.01
+camt.006.001.04.xsd文件中name="TxRpt" type="TransactionReportDetails5"对应的maxOccurs = "1"
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.317.001.01'数据报文中
+PATH = '/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/InstrSts/PmtInstrStsRsn/PrtryRjctnRsn/PrtryStsRsn'
+PATH = '/Document/RtrTx/OprlErr/Desc'
+删除表T_C2_CCMS_317，因为使用了oracle的关键字DESC，导致逐句无法保存，新建表结构
+CREATE TABLE "T_C2_CCMS_317"  (
+   ID                   INTEGER                         NOT NULL,
+   "MSGID"              VARCHAR2(35),
+   "ORGNLMSGID"         VARCHAR2(35),
+   "ORGNLINSTGDRCTPTY"  VARCHAR2(14),
+   "PMTINSTRREF"        VARCHAR2(35),
+   "FRMORGNLINSTGDRCTPTY" VARCHAR2(35),
+   "FRMORGNLMSGID"      VARCHAR2(35),
+   "STTLMDT"            DATE,
+   "PRCSTS"             VARCHAR2(4),
+   "PRTRYSTSRSN"        VARCHAR2(4),
+   "RJCTINF"            VARCHAR2(105),
+   "NETGRND"            VARCHAR2(2),
+   "RCVTM"              DATE,
+   "TRNSMTTM"           DATE,
+   "INTRBKVALDT"        DATE,
+   "PRTRY"              VARCHAR2(4),
+   "PRTRYCD"               VARCHAR2(8),
+   CONSTRAINT PK_T_C2_CCMS_317 PRIMARY KEY (ID)
+);
+
+COMMENT ON TABLE "T_C2_CCMS_317" IS
+'C-业务状态查询答复';
+
+COMMENT ON COLUMN "T_C2_CCMS_317".ID IS
+'ID';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."MSGID" IS
+'报文标识号';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."ORGNLMSGID" IS
+'原报文标识号';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."ORGNLINSTGDRCTPTY" IS
+'原发起参与机构';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."PMTINSTRREF" IS
+'PaymentInstructionReference';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."FRMORGNLINSTGDRCTPTY" IS
+'Frm原发起参与机构';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."FRMORGNLMSGID" IS
+'Frm原报文标识号';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."STTLMDT" IS
+'NPC清算日期/终态日期';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."PRCSTS" IS
+'NPC处理状态';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."PRTRYSTSRSN" IS
+'ProprietaryStatusReason';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."RJCTINF" IS
+'NPC拒绝信息';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."NETGRND" IS
+'NPC轧差场次';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."RCVTM" IS
+'NPC接收时间';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."TRNSMTTM" IS
+'NPC转发时间';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."INTRBKVALDT" IS
+'NPC轧差日期';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."PRTRY" IS
+'原申请报文的拒绝状态';
+
+COMMENT ON COLUMN "T_C2_CCMS_317"."PRTRYCD" IS
+'原申请报文的拒绝码';
+
+6、ccms.316.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.316.001.01'数据报文中
+camt.005.001.04.xsd文件中name="NtryAmt" type="AmountRangeChoice"的1修改为unbounded
+camt.005.001.04.xsd文件中name="name="NtryAmtCcy" type="CurrencyCode"的1修改为unbounded
+camt.005.001.04.xsd文件中name="NtrySts" type="EntryStatus1Code"的1修改为unbounded
+camt.005.001.04.xsd文件中 name="NtryDt" type="DateAndDateTimeSearchChoice"的1修改为unbounded
+camt.005.001.04.xsd文件中name="TrfValDt" type="DateAndDateTimeSearchChoice"的1修改为unbounded
+camt.005.001.04.xsd文件中name="InstrRef" type="PaymentIdentification3Choice"的1修改为unbounded
+camt.005.001.04.xsd文件中name="InstrSts" type="InstructionStatusSearch3"的1修改为unbounded
+camt.005.001.04.xsd文件中name="InstdAmt" type="AmountRangeChoice"的1修改为unbounded
+camt.005.001.04.xsd文件中name="InstdAmtCcy" type="CurrencyCode"的1修改为unbounded
+camt.005.001.04.xsd文件中name="IntrBkSttlmAmt" type="AmountRangeChoice"的1修改为unbounded
+camt.005.001.04.xsd文件中name="IntrBkSttlmAmtCcy" type="CurrencyCode"的1修改为unbounded
+camt.005.001.04.xsd文件中name="PmtMtd" type="PaymentOrigin1Choice"的1修改为unbounded
+camt.005.001.04.xsd文件中name="Prty" type="PriorityCodeChoice"的1修改为unbounded
+camt.005.001.04.xsd文件中name="PrcgVldtyTm" type="DateTimePeriodChoice"的1修改为unbounded
+camt.005.001.04.xsd文件中name="Instr" type="Instruction1Code"的1修改为unbounded
+camt.005.001.04.xsd文件中name="PmtTp" type="PaymentType2Choice"的1修改为unbounded
+camt.005.001.04.xsd文件中name="PmtInstrRef" type="Max35Text"的1修改为unbounded
+camt.005.001.04.xsd文件中name="IntrBkValDt" type="ISODate"的1修改为unbounded
+camt.005.001.04.xsd文件中name="RltdRef" type="Max35Text"的1修改为unbounded
+camt.005.001.04.xsd文件中name="SysId" type="CashClearingSystem1Code"的1修改为unbounded
+camt.005.001.04.xsd文件中name="MmbId" type="MemberIdentificationChoice"的1修改为unbounded
+camt.005.001.04.xsd文件中name="TxRef" type="Max35Text"的1修改为unbounded
+camt.005.001.04.xsd文件中name="SchCrit" type="TransactionSearchCriteria3"的unbounded修改为1
+camt.005.001.04.xsd文件中name="AcctId" type="AccountIdentificationSearchCriteriaChoice"的unbounded修改为1
+
+7、ccms.308.001.02
+camt.005.001.04.xsd文件中name="StsRsnInf" type="StatusReasonInformation8"的unbounded修改为1
+pacs.002.001.03.xsd文件中 name="Ustrd" type="Max140Text"的1修改为unbounded
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.308.001.02'数据报文中
+PATH = '/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf'
+PATH = '/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf'
+
+8、ccms.307.001.02
+camt.056.001.01.xsd文件中name="Undrlyg" type="UnderlyingTransaction2"的unbounded修改为1
+camt.056.001.01.xsd文件中name="CxlRsnInf" type="CancellationReasonInformation3"的unbounded修改为1
+camt.056.001.01.xsd文件中name="AddtlInf" type="Max105Text"的unbounded修改为1
+
+9、hvps.141.001.01
+pacs.009.001.02.xsd文件中name="CdtTrfTxInf" type="CreditTransferTransactionInformation13"的unbounded修改为1
+T_C2_BIS_ELE_BSC表中,msg_code='hvps.141.001.01'数据报文中
+PATH = '/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/Nm'
+PATH = '/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/PstlAdr/AdrLine'
+PATH = '/Document/FinInstnCdtTrf/CdtTrfTxInf/DbtrAgt/BrnchId'
+PATH = '/Document/FinInstnCdtTrf/CdtTrfTxInf/DbtrAgt/BrnchId/Id'
+PATH = '/Document/FinInstnCdtTrf/CdtTrfTxInf/DbtrAcct/Id/Othr/Id'
+PATH = '/Document/FinInstnCdtTrf/CdtTrfTxInf/DbtrAcct/Id/Othr/Issr'
+PATH = '/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd'
+PATH = '/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd'
+PATH = '/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd'
