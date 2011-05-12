@@ -54,7 +54,7 @@ public class Ccms31000101  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="cmonNotSgntrInfBiz.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="cmonNotSgntrInfBiz.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -290,7 +290,7 @@ public class Ccms31000101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -300,7 +300,7 @@ public class Ccms31000101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
