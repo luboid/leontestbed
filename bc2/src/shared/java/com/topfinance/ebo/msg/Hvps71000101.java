@@ -1,5 +1,7 @@
 package com.topfinance.ebo.msg;
 
+import java.util.Date;
+
 import com.topfinance.ebo.msg.JaxbMapping;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +27,7 @@ public class Hvps71000101  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="acctChckngReq.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="acctChckngReq.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -46,7 +48,7 @@ public class Hvps71000101  implements java.io.Serializable {
     private String rmk;
     
     @JaxbMapping(objPath="acctChckngReq.acctChckngReqInf.chckngDt")
-    private String chckngDt;
+    private Date chckngDt;
     
     
 	
@@ -102,7 +104,7 @@ public class Hvps71000101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -112,7 +114,7 @@ public class Hvps71000101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -235,7 +237,7 @@ public class Hvps71000101  implements java.io.Serializable {
    * @return the chckngDt
    */
     @Column(name = "CHCKNGDT")
-    public String getChckngDt() {
+    public Date getChckngDt() {
         return chckngDt;
     }	 
      
@@ -245,7 +247,7 @@ public class Hvps71000101  implements java.io.Serializable {
    * @param newChckngDt the new chckngDt
    */
 
-    public void  setChckngDt(String newChckngDt) {
+    public void  setChckngDt(Date newChckngDt) {
         chckngDt = newChckngDt;
     }	  
     

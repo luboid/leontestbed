@@ -1,5 +1,7 @@
 package com.topfinance.ebo.msg;
 
+import java.util.Date;
+
 import com.topfinance.ebo.msg.JaxbMapping;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
@@ -37,13 +39,13 @@ public class Hvps15200101  implements java.io.Serializable {
     private Double actlSttlmAmt;
     
     @JaxbMapping(objPath="clrBkDrftNtfctn.clrBkDrftNtfctnInf.rmndDtPmt")
-    private String rmndDtPmt;
+    private Date rmndDtPmt;
     
     @JaxbMapping(objPath="clrBkDrftNtfctn.grpHdr.msgId")
     private String msgId;
     
     @JaxbMapping(objPath="clrBkDrftNtfctn.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="clrBkDrftNtfctn.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -64,7 +66,7 @@ public class Hvps15200101  implements java.io.Serializable {
     private String rmk;
     
     @JaxbMapping(objPath="clrBkDrftNtfctn.clrBkDrftNtfctnInf.drftInf.dt")
-    private String dt;
+    private Date dt;
     
     @JaxbMapping(objPath="clrBkDrftNtfctn.clrBkDrftNtfctnInf.drftInf.nb")
     private String nb;
@@ -217,7 +219,7 @@ public class Hvps15200101  implements java.io.Serializable {
    * @return the rmndDtPmt
    */
     @Column(name = "RMNDDTPMT")
-    public String getRmndDtPmt() {
+    public Date getRmndDtPmt() {
         return rmndDtPmt;
     }	 
      
@@ -227,7 +229,7 @@ public class Hvps15200101  implements java.io.Serializable {
    * @param newRmndDtPmt the new rmndDtPmt
    */
 
-    public void  setRmndDtPmt(String newRmndDtPmt) {
+    public void  setRmndDtPmt(Date newRmndDtPmt) {
         rmndDtPmt = newRmndDtPmt;
     }	  
   /**
@@ -255,7 +257,7 @@ public class Hvps15200101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -265,7 +267,7 @@ public class Hvps15200101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -388,7 +390,7 @@ public class Hvps15200101  implements java.io.Serializable {
    * @return the dt
    */
     @Column(name = "DT")
-    public String getDt() {
+    public Date getDt() {
         return dt;
     }	 
      
@@ -398,7 +400,7 @@ public class Hvps15200101  implements java.io.Serializable {
    * @param newDt the new dt
    */
 
-    public void  setDt(String newDt) {
+    public void  setDt(Date newDt) {
         dt = newDt;
     }	  
   /**

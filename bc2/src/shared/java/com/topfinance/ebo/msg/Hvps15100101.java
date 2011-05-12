@@ -48,7 +48,7 @@ public class Hvps15100101  implements java.io.Serializable {
     private String rmk;
     
     @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.drftInf.dt")
-    private String dt;
+    private Date dt;
     
     @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.drftInf.nb")
     private String nb;
@@ -90,7 +90,7 @@ public class Hvps15100101  implements java.io.Serializable {
     private Double actlSttlmAmt;
     
     @JaxbMapping(objPath="clrBkDrftAppl.clrBkDrftApplInf.rmndDtPmt")
-    private String rmndDtPmt;
+    private Date rmndDtPmt;
     
     
 	
@@ -279,7 +279,7 @@ public class Hvps15100101  implements java.io.Serializable {
    * @return the dt
    */
     @Column(name = "DT")
-    public String getDt() {
+    public Date getDt() {
         return dt;
     }	 
      
@@ -289,7 +289,7 @@ public class Hvps15100101  implements java.io.Serializable {
    * @param newDt the new dt
    */
 
-    public void  setDt(String newDt) {
+    public void  setDt(Date newDt) {
         dt = newDt;
     }	  
   /**
@@ -545,7 +545,7 @@ public class Hvps15100101  implements java.io.Serializable {
    * @return the rmndDtPmt
    */
     @Column(name = "RMNDDTPMT")
-    public String getRmndDtPmt() {
+    public Date getRmndDtPmt() {
         return rmndDtPmt;
     }	 
      
@@ -555,7 +555,7 @@ public class Hvps15100101  implements java.io.Serializable {
    * @param newRmndDtPmt the new rmndDtPmt
    */
 
-    public void  setRmndDtPmt(String newRmndDtPmt) {
+    public void  setRmndDtPmt(Date newRmndDtPmt) {
         rmndDtPmt = newRmndDtPmt;
     }	  
     
