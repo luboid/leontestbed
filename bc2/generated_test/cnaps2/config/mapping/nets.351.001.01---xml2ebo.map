@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Nets35100101" createOnElement="Document">
+				<jb:value data="/Document/NetDbtLmtQryRspn/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+				<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+			    </jb:value>
+				<jb:value data="/Document/NetDbtLmtQryRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/OrgnlGrpHdr/OrgnlMT" property="orgnlMT"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/NpcPrcInf/PrcSts" property="prcSts"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/NpcPrcInf/PrcCd" property="prcCd"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/NpcPrcInf/RjctInf" property="rjctInf"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/NpcPrcInf/NetgDt" decoder="Date" property="netgDt">
+				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+			    </jb:value>
+				<jb:value data="/Document/NetDbtLmtQryRspn/NpcPrcInf/NetgRnd" property="netgRnd"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/NpcPrcInf/SttlmDt" decoder="Date" property="sttlmDt">
+				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+			    </jb:value>
+				<jb:value data="/Document/NetDbtLmtQryRspn/NpcPrcInf/RcvTm" decoder="Date" property="rcvTm">
+				<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+			    </jb:value>
+				<jb:value data="/Document/NetDbtLmtQryRspn/NpcPrcInf/TrnsmtTm" decoder="Date" property="trnsmtTm">
+				<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+			    </jb:value>
+				<jb:value data="/Document/NetDbtLmtQryRspn/NetDbtLmtInf/MmbId" property="mmbId"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/NetDbtLmtInf/CdtLd/Value" property="cdtLd"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/NetDbtLmtInf/TtlPldgVal/Value" property="ttlPldgVal"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/NetDbtLmtInf/CdtXtnsnLmt/Value" property="cdtXtnsnLmt"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/NetDbtLmtInf/NetDbtLmt/Value" property="netDbtLmt"/>    
+				<jb:value data="/Document/NetDbtLmtQryRspn/NetDbtLmtInf/AvlblNetDbt/Value" property="avlblNetDbt"/>    
+	</jb:bean>
+	
+
+
+</smooks-resource-list>  
+    

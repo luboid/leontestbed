@@ -1535,8 +1535,41 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
-	public void testGenerated_617() throws Exception {
+	public void atestGenerated_617() throws Exception {
 		String msgCode = "nets.617.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_407() throws Exception {
+		String msgCode = "nets.407.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_354() throws Exception {
+		String msgCode = "nets.354.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_351() throws Exception {
+		String msgCode = "nets.351.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {
