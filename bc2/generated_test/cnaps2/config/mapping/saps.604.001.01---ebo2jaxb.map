@@ -22,7 +22,7 @@
     	<jb:wiring beanIdRef="sttlmRtrRct.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="sttlmRtrRct.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps60400101/msgId"  property="msgId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps60400101/creDtTm" decoder="Date" property="creDtTm">
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
     		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
 			</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Saps60400101/sysCd"  property="sysCd"/>
@@ -41,17 +41,17 @@
   		<jb:value data="/com.topfinance.ebo.msg.Saps60400101/prcSts"  property="prcSts"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps60400101/prcCd"  property="prcCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps60400101/rjctInf"  property="rjctInf"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps60400101/netgDt" decoder="Date" property="netgDt">
+  		<jb:value data="netgDt" decoder="Date" property="netgDt">
     		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
 			</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Saps60400101/netgRnd"  property="netgRnd"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps60400101/sttlmDt" decoder="Date" property="sttlmDt">
+  		<jb:value data="sttlmDt" decoder="Date" property="sttlmDt">
     		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
 			</jb:value>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps60400101/rcvTm" decoder="Date" property="rcvTm">
+  		<jb:value data="rcvTm" decoder="Date" property="rcvTm">
     		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
 			</jb:value>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps60400101/trnsmtTm" decoder="Date" property="trnsmtTm">
+  		<jb:value data="trnsmtTm" decoder="Date" property="trnsmtTm">
     		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
 			</jb:value>
   	</jb:bean>

@@ -35,7 +35,9 @@
     	<jb:wiring beanIdRef="acctBookgNtfctn.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="acctBookgNtfctn.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/msgId"  property="msgId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/sysCd"  property="sysCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/rmk"  property="rmk"/>
   	</jb:bean>
@@ -43,11 +45,19 @@
   		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/prcSts"  property="prcSts"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/prcCd"  property="prcCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/rjctInf"  property="rjctInf"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/netgDt"  property="netgDt"/>
+  		<jb:value data="netgDt" decoder="Date" property="netgDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/npcNetgRnd"  property="netgRnd"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/sttlmDt"  property="sttlmDt"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/rcvTm"  property="rcvTm"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/trnsmtTm"  property="trnsmtTm"/>
+  		<jb:value data="sttlmDt" decoder="Date" property="sttlmDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
+  		<jb:value data="rcvTm" decoder="Date" property="rcvTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
+  		<jb:value data="trnsmtTm" decoder="Date" property="trnsmtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
   	</jb:bean>
   	<jb:bean beanId="acctBookgNtfctn.grpHdr.instgPty" class="com.xml.cnaps2.saps.v60600101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Saps60600101">
   		<jb:value data="/com.topfinance.ebo.msg.Saps60600101/instgDrctPty"  property="instgDrctPty"/>

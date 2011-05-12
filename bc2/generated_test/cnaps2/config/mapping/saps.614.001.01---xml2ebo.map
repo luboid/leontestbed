@@ -9,7 +9,7 @@
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps61400101" createOnElement="Document">
 				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/MsgId" property="msgId"/>    
 				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
-					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss.S z</jb:decodeParam>
 		        </jb:value>
 				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
@@ -18,7 +18,6 @@
 				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/SysCd" property="sysCd"/>    
 				<jb:value data="/Document/PoolIntrBkLnQryAppl/GrpHdr/SysCd" property="rmk"/>    
 				<jb:value data="/Document/PoolIntrBkLnQryAppl/PoolIntrBkLnQryApplInf/QryTp" property="qryTp"/>    
-				<jb:value data="/Document/PoolIntrBkLnQryAppl/PoolIntrBkLnQryApplInf/Dt" property="dt"/> 
 				<jb:value data="/Document/PoolIntrBkLnQryAppl/PoolIntrBkLnQryApplInf/Dt" decoder="Date" property="dt">    
 					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
 		        </jb:value>   
