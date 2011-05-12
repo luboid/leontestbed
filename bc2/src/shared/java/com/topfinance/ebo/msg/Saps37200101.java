@@ -1,5 +1,7 @@
 package com.topfinance.ebo.msg;
 
+import java.util.Date;
+
 import com.topfinance.ebo.msg.JaxbMapping;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +27,7 @@ public class Saps37200101  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="acctMgmtNtfctn.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="acctMgmtNtfctn.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -55,7 +57,7 @@ public class Saps37200101  implements java.io.Serializable {
     private String ptyCtgy;
     
     @JaxbMapping(objPath="acctMgmtNtfctn.ntfctnCntt.sttlmAcctSts.fctvDt")
-    private String ntFctvDt;
+    private Date ntFctvDt;
     
     @JaxbMapping(objPath="acctMgmtNtfctn.ntfctnCntt.sttlmAcctSts.acctSts")
     private String acctSts;
@@ -85,7 +87,7 @@ public class Saps37200101  implements java.io.Serializable {
     private String cdtRstrctSetng;
     
     @JaxbMapping(objPath="acctMgmtNtfctn.ntfctnCntt.fndsOfPoolMgmt.fctvDt")
-    private String fctvDt;
+    private Date fctvDt;
     
     @JaxbMapping(objPath="acctMgmtNtfctn.ntfctnCntt.fndsOfPoolMgmt.swtchTp")
     private String swtchPoolTp;
@@ -177,7 +179,7 @@ public class Saps37200101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -187,7 +189,7 @@ public class Saps37200101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -367,7 +369,7 @@ public class Saps37200101  implements java.io.Serializable {
    * @return the ntFctvDt
    */
     @Column(name = "NTFCTVDT")
-    public String getNtFctvDt() {
+    public Date getNtFctvDt() {
         return ntFctvDt;
     }	 
      
@@ -377,7 +379,7 @@ public class Saps37200101  implements java.io.Serializable {
    * @param newNtFctvDt the new ntFctvDt
    */
 
-    public void  setNtFctvDt(String newNtFctvDt) {
+    public void  setNtFctvDt(Date newNtFctvDt) {
         ntFctvDt = newNtFctvDt;
     }	  
   /**
@@ -557,7 +559,7 @@ public class Saps37200101  implements java.io.Serializable {
    * @return the fctvDt
    */
     @Column(name = "FCTVDT")
-    public String getFctvDt() {
+    public Date getFctvDt() {
         return fctvDt;
     }	 
      
@@ -567,7 +569,7 @@ public class Saps37200101  implements java.io.Serializable {
    * @param newFctvDt the new fctvDt
    */
 
-    public void  setFctvDt(String newFctvDt) {
+    public void  setFctvDt(Date newFctvDt) {
         fctvDt = newFctvDt;
     }	  
   /**

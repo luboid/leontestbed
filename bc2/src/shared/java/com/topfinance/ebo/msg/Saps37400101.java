@@ -1,5 +1,7 @@
 package com.topfinance.ebo.msg;
 
+import java.util.Date;
+
 import com.topfinance.ebo.msg.JaxbMapping;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +27,7 @@ public class Saps37400101  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="intrBkLnMgmtAppl.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="intrBkLnMgmtAppl.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -64,10 +66,10 @@ public class Saps37400101  implements java.io.Serializable {
     private Double intrBkLnUpperLmt;
     
     @JaxbMapping(objPath="intrBkLnMgmtAppl.intrBkLnMgmtApplInf.prtcolFctvDt")
-    private String prtcolFctvDt;
+    private Date prtcolFctvDt;
     
     @JaxbMapping(objPath="intrBkLnMgmtAppl.intrBkLnMgmtApplInf.prtcolXprtnDt")
-    private String prtcolXprtnDt;
+    private Date prtcolXprtnDt;
     
     @JaxbMapping(objPath="intrBkLnMgmtAppl.intrBkLnMgmtApplInf.amt")
     private Double amt;
@@ -126,7 +128,7 @@ public class Saps37400101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -136,7 +138,7 @@ public class Saps37400101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -373,7 +375,7 @@ public class Saps37400101  implements java.io.Serializable {
    * @return the prtcolFctvDt
    */
     @Column(name = "PRTCOLFCTVDT")
-    public String getPrtcolFctvDt() {
+    public Date getPrtcolFctvDt() {
         return prtcolFctvDt;
     }	 
      
@@ -383,7 +385,7 @@ public class Saps37400101  implements java.io.Serializable {
    * @param newPrtcolFctvDt the new prtcolFctvDt
    */
 
-    public void  setPrtcolFctvDt(String newPrtcolFctvDt) {
+    public void  setPrtcolFctvDt(Date newPrtcolFctvDt) {
         prtcolFctvDt = newPrtcolFctvDt;
     }	  
   /**
@@ -392,7 +394,7 @@ public class Saps37400101  implements java.io.Serializable {
    * @return the prtcolXprtnDt
    */
     @Column(name = "PRTCOLXPRTNDT")
-    public String getPrtcolXprtnDt() {
+    public Date getPrtcolXprtnDt() {
         return prtcolXprtnDt;
     }	 
      
@@ -402,7 +404,7 @@ public class Saps37400101  implements java.io.Serializable {
    * @param newPrtcolXprtnDt the new prtcolXprtnDt
    */
 
-    public void  setPrtcolXprtnDt(String newPrtcolXprtnDt) {
+    public void  setPrtcolXprtnDt(Date newPrtcolXprtnDt) {
         prtcolXprtnDt = newPrtcolXprtnDt;
     }	  
   /**
