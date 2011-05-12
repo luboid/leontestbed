@@ -26,7 +26,9 @@
     	<jb:wiring beanIdRef="txDwnldgRspn.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="txDwnldgRspn.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/msgId"  property="msgId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/sysCd"  property="sysCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/rmk"  property="rmk"/>
   	</jb:bean>
@@ -46,11 +48,19 @@
   		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/nPCPrcSts"  property="prcSts"/>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/nPCPrcCd"  property="prcCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/nPCRjctInf"  property="rjctInf"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/nPCNetgDt"  property="netgDt"/>
+  		<jb:value data="nPCNetgDt" decoder="Date" property="netgDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/nPCNetgRnd"  property="netgRnd"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/nPCSttlmDt"  property="sttlmDt"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/nPCRcvTm"  property="rcvTm"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Hvps71500101/nPCTrnsmtTm"  property="trnsmtTm"/>
+  		<jb:value data="nPCSttlmDt" decoder="Date" property="sttlmDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
+  		<jb:value data="nPCRcvTm" decoder="Date" property="rcvTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
+  		<jb:value data="nPCTrnsmtTm" decoder="Date" property="trnsmtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
   	</jb:bean>
 </smooks-resource-list>  
     
