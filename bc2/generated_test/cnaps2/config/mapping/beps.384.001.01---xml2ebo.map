@@ -6,7 +6,7 @@
     <param name="input.xsd.rootElement">Document</param>
     <param name="input.xsd" type="input.type.actived"></param>
   </params>
-  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps38400101" createOnElement="Document">
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps38400101Hdr" createOnElement="Document">
 				<jb:value data="/Document/BtchCstmrsCtrctMg/GrpHdr/MsgId" property="msgId"/>       
 				<jb:value data="/Document/BtchCstmrsCtrctMg/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
 					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
@@ -27,7 +27,7 @@
   <jb:bean beanId="agrmtDtls[0]" class="java.util.HashSet" createOnElement="Document">
    	<jb:wiring beanIdRef="agrmtDtls" />
   </jb:bean>
-	<jb:bean beanId="agrmtDtls" class="com.topfinance.ebo.msg.Beps38400101AgrmtDtls" createOnElement="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls">
+	<jb:bean beanId="agrmtDtls" class="com.topfinance.ebo.msg.Beps38400101" createOnElement="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls">
 		<jb:wiring beanIdRef="target" property="fid"/>
 				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/ChngTpCd" property="chngTp"/>    
 				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/AgrmtNb" property="agrmtNb"/>    

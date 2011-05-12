@@ -3,36 +3,36 @@
   <params>
     <param name="stream.filter.type">SAX</param>
     <param name="inputType">input.java</param>
-    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps38400101</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps38400101Hdr</param>
   </params>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt" class="com.xml.cnaps2.beps.v38400101.DebtorAgent1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt" class="com.xml.cnaps2.beps.v38400101.DebtorAgent1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt.fiId" property="fiId"/>
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt.brnchId" property="brnchId"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt.brnchId" class="com.xml.cnaps2.beps.v38400101.BranchIdentification1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt.brnchId" class="com.xml.cnaps2.beps.v38400101.BranchIdentification1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
   		<jb:value data="dbtrAgtBrnchId"  property="id"/>
   	</jb:bean>
-  	<jb:bean beanId="target" class="com.xml.cnaps2.beps.v38400101.Document" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="target" class="com.xml.cnaps2.beps.v38400101.Document" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg" property="btchCstmrsCtrctMg"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAcct" class="com.xml.cnaps2.beps.v38400101.DebtorAccount1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAcct" class="com.xml.cnaps2.beps.v38400101.DebtorAccount1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAcct.id" property="id"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.grpHdr.instdPty" class="com.xml.cnaps2.beps.v38400101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.grpHdr.instdPty" class="com.xml.cnaps2.beps.v38400101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
   		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
   		<jb:value data="instdIndrctPty"  property="instdPty"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAcct.id" class="com.xml.cnaps2.beps.v38400101.Identification1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAcct.id" class="com.xml.cnaps2.beps.v38400101.Identification1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAcct.id.othr" property="othr"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg" class="com.xml.cnaps2.beps.v38400101.BatchCustomersContractManage" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg" class="com.xml.cnaps2.beps.v38400101.BatchCustomersContractManage" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.grpHdr" property="grpHdr"/>
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf" property="btchCstmrsCtrctMgInf"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtr" class="com.xml.cnaps2.beps.v38400101.Debtor1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtr" class="com.xml.cnaps2.beps.v38400101.Debtor1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
   		<jb:value data="dbtrNm"  property="nm"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.grpHdr" class="com.xml.cnaps2.beps.v38400101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.grpHdr" class="com.xml.cnaps2.beps.v38400101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="msgId"  property="msgId"/>
@@ -42,7 +42,7 @@
   		<jb:value data="sysCd"  property="sysCd"/>
   		<jb:value data="rmk"  property="rmk"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx" class="com.xml.cnaps2.beps.v38400101.AgreementDetails1" createOnElement="com.topfinance.ebo.msg.Beps38400101AgrmtDtls">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx" class="com.xml.cnaps2.beps.v38400101.AgreementDetails1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtr" property="dbtr"/>
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAcct" property="dbtrAcct"/>
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt" property="dbtrAgt"/>
@@ -50,30 +50,30 @@
   		<jb:value data="chngTp"  property="chngTpCd"/>
   		<jb:value data="agrmtNb"  property="agrmtNb"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf" class="com.xml.cnaps2.beps.v38400101.BatchCustomersContractManageInformation1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf" class="com.xml.cnaps2.beps.v38400101.BatchCustomersContractManageInformation1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0]" property="agrmtDtls"/>
   		<jb:value data="qryOrOprTp"  property="qryOrOprTp"/>
   		<jb:value data="ctrctAgrmtTp"  property="ctrctAgrmtTp"/>
   		<jb:value data="nbOfAgrmt"  property="nbOfAgrmt"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps38400101/agrmtDtls">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr/agrmtDtls">
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx" />
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.cdtr" class="com.xml.cnaps2.beps.v38400101.Creditor1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.cdtr" class="com.xml.cnaps2.beps.v38400101.Creditor1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
   		<jb:value data="cdtrNm"  property="nm"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.grpHdr.instgPty" class="com.xml.cnaps2.beps.v38400101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.grpHdr.instgPty" class="com.xml.cnaps2.beps.v38400101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
   		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
   		<jb:value data="instgIndrctPty"  property="instgPty"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt.fiId.clrSysMmbId" class="com.xml.cnaps2.beps.v38400101.ClearingSystemMemberIdentification1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt.fiId.clrSysMmbId" class="com.xml.cnaps2.beps.v38400101.ClearingSystemMemberIdentification1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
   		<jb:value data="dbtrClrSysMmbId"  property="mmbId"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAcct.id.othr" class="com.xml.cnaps2.beps.v38400101.Other1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAcct.id.othr" class="com.xml.cnaps2.beps.v38400101.Other1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
   		<jb:value data="dbtrAcctId"  property="id"/>
   		<jb:value data="dbtrAcctIssr"  property="issr"/>
   	</jb:bean>
-  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt.fiId" class="com.xml.cnaps2.beps.v38400101.FinancialInstitutionIdentification1" createOnElement="com.topfinance.ebo.msg.Beps38400101">
+  	<jb:bean beanId="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt.fiId" class="com.xml.cnaps2.beps.v38400101.FinancialInstitutionIdentification1" createOnElement="com.topfinance.ebo.msg.Beps38400101Hdr">
     	<jb:wiring beanIdRef="btchCstmrsCtrctMg.btchCstmrsCtrctMgInf.agrmtDtls[0].xxx.dbtrAgt.fiId.clrSysMmbId" property="clrSysMmbId"/>
   	</jb:bean>
 </smooks-resource-list>  
