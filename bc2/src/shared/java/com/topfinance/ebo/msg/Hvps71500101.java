@@ -1,5 +1,7 @@
 package com.topfinance.ebo.msg;
 
+import java.util.Date;
+
 import com.topfinance.ebo.msg.JaxbMapping;
 import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +27,7 @@ public class Hvps71500101  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="txDwnldgRspn.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="txDwnldgRspn.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -64,19 +66,19 @@ public class Hvps71500101  implements java.io.Serializable {
     private String nPCRjctInf;
     
     @JaxbMapping(objPath="txDwnldgRspn.txDwnldgRspnInf.npcPrcInf.netgDt")
-    private String nPCNetgDt;
+    private Date nPCNetgDt;
     
     @JaxbMapping(objPath="txDwnldgRspn.txDwnldgRspnInf.npcPrcInf.netgRnd")
     private String nPCNetgRnd;
     
     @JaxbMapping(objPath="txDwnldgRspn.txDwnldgRspnInf.npcPrcInf.sttlmDt")
-    private String nPCSttlmDt;
+    private Date nPCSttlmDt;
     
     @JaxbMapping(objPath="txDwnldgRspn.txDwnldgRspnInf.npcPrcInf.rcvTm")
-    private String nPCRcvTm;
+    private Date nPCRcvTm;
     
     @JaxbMapping(objPath="txDwnldgRspn.txDwnldgRspnInf.npcPrcInf.trnsmtTm")
-    private String nPCTrnsmtTm;
+    private Date nPCTrnsmtTm;
     
     @JaxbMapping(objPath="txDwnldgRspn.txDwnldgRspnInf.orgnlMsgCntt.cntt")
     private String cntt;
@@ -138,7 +140,7 @@ public class Hvps71500101  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -148,7 +150,7 @@ public class Hvps71500101  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -385,7 +387,7 @@ public class Hvps71500101  implements java.io.Serializable {
    * @return the nPCNetgDt
    */
     @Column(name = "NPCNETGDT")
-    public String getNPCNetgDt() {
+    public Date getNPCNetgDt() {
         return nPCNetgDt;
     }	 
      
@@ -395,7 +397,7 @@ public class Hvps71500101  implements java.io.Serializable {
    * @param newNPCNetgDt the new nPCNetgDt
    */
 
-    public void  setNPCNetgDt(String newNPCNetgDt) {
+    public void  setNPCNetgDt(Date newNPCNetgDt) {
         nPCNetgDt = newNPCNetgDt;
     }	  
   /**
@@ -423,7 +425,7 @@ public class Hvps71500101  implements java.io.Serializable {
    * @return the nPCSttlmDt
    */
     @Column(name = "NPCSTTLMDT")
-    public String getNPCSttlmDt() {
+    public Date getNPCSttlmDt() {
         return nPCSttlmDt;
     }	 
      
@@ -433,7 +435,7 @@ public class Hvps71500101  implements java.io.Serializable {
    * @param newNPCSttlmDt the new nPCSttlmDt
    */
 
-    public void  setNPCSttlmDt(String newNPCSttlmDt) {
+    public void  setNPCSttlmDt(Date newNPCSttlmDt) {
         nPCSttlmDt = newNPCSttlmDt;
     }	  
   /**
@@ -442,7 +444,7 @@ public class Hvps71500101  implements java.io.Serializable {
    * @return the nPCRcvTm
    */
     @Column(name = "NPCRCVTM")
-    public String getNPCRcvTm() {
+    public Date getNPCRcvTm() {
         return nPCRcvTm;
     }	 
      
@@ -452,7 +454,7 @@ public class Hvps71500101  implements java.io.Serializable {
    * @param newNPCRcvTm the new nPCRcvTm
    */
 
-    public void  setNPCRcvTm(String newNPCRcvTm) {
+    public void  setNPCRcvTm(Date newNPCRcvTm) {
         nPCRcvTm = newNPCRcvTm;
     }	  
   /**
@@ -461,7 +463,7 @@ public class Hvps71500101  implements java.io.Serializable {
    * @return the nPCTrnsmtTm
    */
     @Column(name = "NPCTRNSMTTM")
-    public String getNPCTrnsmtTm() {
+    public Date getNPCTrnsmtTm() {
         return nPCTrnsmtTm;
     }	 
      
@@ -471,7 +473,7 @@ public class Hvps71500101  implements java.io.Serializable {
    * @param newNPCTrnsmtTm the new nPCTrnsmtTm
    */
 
-    public void  setNPCTrnsmtTm(String newNPCTrnsmtTm) {
+    public void  setNPCTrnsmtTm(Date newNPCTrnsmtTm) {
         nPCTrnsmtTm = newNPCTrnsmtTm;
     }	  
   /**
