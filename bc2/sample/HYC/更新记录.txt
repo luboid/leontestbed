@@ -390,13 +390,12 @@ PATH = '/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlTxRef/IntrBk
 修改T_C2_BEPS_392表，修改业务拒绝原因字段名称为REJRSN，修改原明细标识号字段名称为ORGNLINSTRID，新增原支付信息标识号字段为ORGNLPMTINFID VARCHAR2(1)
 
 7、beps.391.001.01
-T_C2_BIS_ELE_BSC表中,msg_code='beps.391.001.01'数据报文中
-新增数据：
-beps.391.001.01	EqvtAmt	相当的金额		19		ActiveOrHistoricCurrencyAndAmount	20	Y
-beps.391.001.01	CcyOfTrf	金额编码		20		ActiveOrHistoricCurrencyCode	3	Y				
-	/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/Amt/InstdAmt/EqvtAmt/CcyOfTrf					
-	/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/Amt/InstdAmt/EqvtAmt/Amt 
-修改T_C2_BEPS_391表，新增相当金额字段为EqvtAmt NUMBER(20,2) not null,新增金额编码字段为CcyOfTrf VARCHAR2(3) not null
+pain.001.001.03.xsd文件中出name="PmtInf" type="PaymentInstructionInformation3"的unbounded修改为1
+pain.001.001.03.xsd文件中出name="CdtTrfTxInf" type="CreditTransferTransactionInformation10"的unbounded修改为1
+T_C2_BIS_ELE_BSC表中,msg_code='beps.392.001.01'数据报文中
+ELE_ID = 'UstrdAddInfo' 设置 DEF_VALUE = '/H01/value'
+ELE_ID = 'UstrdCtractId' 设置 DEF_VALUE = '/E40/value'
+ELE_ID = 'CheckMark' 设置 DEF_VALUE = '/K33/value'
 
 
 yu:
@@ -680,7 +679,7 @@ path中带有NPCPrcInf的改为NpcPrcInf
 
 
 
-2011-05-11
+2011-05-11 yuhaichao
 
 T_C2_BIS_ELE_BSC表中,msg_code='beps.724.001.01'数据报文中
 加一行数据，使之成为父子表
@@ -732,3 +731,173 @@ T_C2_BIS_ELE_BSC表中,msg_code='beps.388.001.01'数据报文中
 T_C2_BIS_ELE_BSC表中,msg_code='ccms.317.001.01'数据报文中
 /Document/RtrTx/OprlErr/Err/Desc改为/Document/RtrTx/OprlErr/Desc
 path中[1]去掉
+
+2011-05-11 sunhuazhong
+1、beps.123.001.01
+CREATE TABLE "T_C2_BEPS_123"  (
+   ID                   INTEGER                         NOT NULL,
+   MSGID                VARCHAR2(35)                    NOT NULL,
+   "CREDTTM"           DATE,
+   "NBOFTXS"            VARCHAR2(15),
+   "CTRLSUM"            VARCHAR2(18),
+   "ENDTOENDID"         VARCHAR2(35),
+   "TXID"               VARCHAR2(16),
+   "PRTRY"              VARCHAR2(4),
+   "INTRBKSTTLMAMT"     NUMBER(20,2),
+   "DBTRNM"             VARCHAR2(60),
+   "DBTRACCTID"         VARCHAR2(32),
+   "DBTRACCTISSR"       VARCHAR2(14),
+   "DBTRCLRSYSMMBID"    VARCHAR2(14),
+   "DBTRAGTBRNCHID"     VARCHAR2(14),
+   "CDTRCLRSYSMMBID"    VARCHAR2(14),
+   "CDTRAGTBRNCHID"     VARCHAR2(14),
+   "CDTRNM"             VARCHAR2(60),
+   "CDTRACCTID"         VARCHAR2(32),
+   "CDTRACCTISSR"       VARCHAR2(14),
+   "BIZCD"              VARCHAR2(5),
+   "ADDINFO"            VARCHAR2(140),
+   "RMK"                VARCHAR2(140),
+   "STRD"                VARCHAR2(140),
+   "CHRGBR"              VARCHAR2(4),
+   "STTLMMTD"              VARCHAR2(4),
+   "ORGNLMSGID"         VARCHAR2(35),
+   "ORGNLSENID"         VARCHAR2(14),
+   "ORGNLTPCD"          VARCHAR2(35),
+   "AGRMTNB"            VARCHAR2(60),
+   "RECACCTP"           VARCHAR2(4),
+   "PYACCTP"            VARCHAR2(4),
+   CONSTRAINT PK_T_C2_BEPS_123 PRIMARY KEY (ID)
+);
+
+COMMENT ON TABLE "T_C2_BEPS_123" IS
+'实时贷记业务报文，合并了几个附表';
+
+COMMENT ON COLUMN "T_C2_BEPS_123".ID IS
+'ID';
+
+COMMENT ON COLUMN "T_C2_BEPS_123".MSGID IS
+'MSGID';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."CREDTTM" IS
+'报文发送时间';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."NBOFTXS" IS
+'明细业务总笔数';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."CTRLSUM" IS
+'明细业务总金额';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."ENDTOENDID" IS
+'端到端标识号';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."TXID" IS
+'明细标识号';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."PRTRY" IS
+'业务类型编码';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."INTRBKSTTLMAMT" IS
+'货币符号、结算金额';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."DBTRNM" IS
+'付款人户名';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."DBTRACCTID" IS
+'付款人账号';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."DBTRACCTISSR" IS
+'付款人开户行行号';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."DBTRCLRSYSMMBID" IS
+'付款清算行行号';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."DBTRAGTBRNCHID" IS
+'付款行行号';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."CDTRCLRSYSMMBID" IS
+'收款清算行行号';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."CDTRAGTBRNCHID" IS
+'收款行行号';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."CDTRNM" IS
+'收款人名称';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."CDTRACCTID" IS
+'收款人账号';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."CDTRACCTISSR" IS
+'收款人开户行行号';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."BIZCD" IS
+'业务种类编码';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."ADDINFO" IS
+'附言';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."RMK" IS
+'备注';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."STRD" IS
+'附加数据域';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."ORGNLMSGID" IS
+'b)	业务类型为“实时代付业务”时';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."ORGNLSENID" IS
+'b)	业务类型为“实时代付业务”时';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."ORGNLTPCD" IS
+'b)	业务类型为“实时代付业务”时';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."AGRMTNB" IS
+'b)	业务类型为“实时代付业务”时';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."RECACCTP" IS
+'c)	业务类型为“个人储蓄通存业务”时';
+
+COMMENT ON COLUMN "T_C2_BEPS_123"."PYACCTP" IS
+'c)	业务类型为“个人储蓄通存业务”时';
+T_C2_BIS_ELE_BSC表中,msg_code='beps.123.001.01'数据报文中
+PATH = '/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd' DEF_VALUE = '/H01/value'
+PATH = '/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd' DEF_VALUE = '/HA1/value'
+修改PDM文件T_C2_BEPS_123中RECACCTP与PYACCTP的类型为VARCHAR2(4)
+添加字段STRD VARCHAR2(140) 附加数据域，添加字段CHRGBR VARCHAR2(4) 固定填写DEBT，添加字段STTLMMTD  VARCHAR2(4) 固定填写CLRG
+pacs.008.001.02.xsd文件中name="CdtTrfTxInf"对应的maxOccurs = "1"
+
+2、saps.603.001.02
+camt.053.001.02.xsd文件中name="Stmt" type="AccountStatement2"对应的maxOccurs = "1"
+camt.053.001.02.xsd文件中name="Bal" type="CashBalance3"对应的maxOccurs = "1"
+camt.053.001.02.xsd文件中name="Ntry" type="ReportEntry2"对应的maxOccurs = "1"
+camt.053.001.02.xsd文件中name="NtryDtls" type="EntryDetails1"对应的maxOccurs = "1"
+camt.053.001.02.xsd文件中name="TxDtls" type="EntryTransaction2"对应的maxOccurs = "1"
+
+3、beps.395.001.01
+camt.054.001.02.xsd文件中name="Othr" type="GenericPersonIdentification1"对应的maxOccurs = "1"
+camt.054.001.02.xsd文件中name="Ntfctn" type="AccountNotification2"对应的maxOccurs = "1"
+camt.054.001.02.xsd文件中name="Ntry" type="ReportEntry2"对应的maxOccurs = "1"
+camt.054.001.02.xsd文件中name="NtryDtls" type="EntryDetails1"对应的maxOccurs = "1"
+camt.054.001.02.xsd文件中name="TxDtls" type="EntryTransaction2"对应的maxOccurs = "1"
+
+4、beps.132.001.01
+pacs.002.001.03.xsd文件中name="StsRsnInf" type="StatusReasonInformation8"对应的maxOccurs = "1"
+pacs.002.001.03.xsd文件中name="TxInfAndSts" type="PaymentTransactionInformation26"对应的maxOccurs = "1"
+pacs.002.001.03.xsd文件中name="StsRsnInf" type="StatusReasonInformation8"对应的maxOccurs = "1"
+pacs.002.001.03.xsd文件中 name="Ustrd" type="Max140Text"对应的maxOccurs = "1"
+T_C2_BIS_ELE_BSC表中,msg_code='beps.132.001.01'数据报文中
+PATH = '/Document/FIToFIPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf'
+PATH = '/Document/FIToFIPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf'
+PATH = '/Document/FIToFIPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf'
+PATH = '/Document/FIToFIPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf'
+PATH = '/Document/FIToFIPmtStsRpt/TxInfAndSts/StsRsnInf/AddtlInf'
+修改T_C2_BEPS_132表，新增字段为PRTRY VARCHAR2(1) 固定填写1
+beps.132.001.01__.xml<RmtInf>处修改为：
+<RmtInf>
+	<Ustrd>20.00</Ustrd>
+</RmtInf>
+
+5、saps.603.001.02
+T_C2_BIS_ELE_BSC表中,msg_code=saps.603.001.02'数据报文中
+修改ID名称为SID
+PATH = '/Documen
+修改T_C2_SAPS_603表，修改Column_4字段为SID
