@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps38400101" createOnElement="Document">
+				<jb:value data="/Document/BtchCstmrsCtrctMg/GrpHdr/MsgId" property="msgId"/>       
+				<jb:value data="/Document/BtchCstmrsCtrctMg/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value> 
+				<jb:value data="/Document/BtchCstmrsCtrctMg/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/QryOrOprTp" property="qryOrOprTp"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/CtrctAgrmtTp" property="ctrctAgrmtTp"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/NbOfAgrmt" property="nbOfAgrmt"/>    
+    		<jb:wiring beanIdRef="agrmtDtls[0]" property="agrmtDtls"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="agrmtDtls[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="agrmtDtls" />
+  </jb:bean>
+	<jb:bean beanId="agrmtDtls" class="com.topfinance.ebo.msg.Beps38400101AgrmtDtls" createOnElement="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/ChngTpCd" property="chngTp"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/AgrmtNb" property="agrmtNb"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/Dbtr/Nm" property="dbtrNm"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/DbtrAcct/Id/Othr/Id" property="dbtrAcctId"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/DbtrAcct/Id/Othr/Issr" property="dbtrAcctIssr"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/DbtrAgt/FiId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/DbtrAgt/BrnchId/Id" property="dbtrAgtBrnchId"/>    
+				<jb:value data="/Document/BtchCstmrsCtrctMg/BtchCstmrsCtrctMgInf/AgrmtDtls/Cdtr/Nm" property="cdtrNm"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
