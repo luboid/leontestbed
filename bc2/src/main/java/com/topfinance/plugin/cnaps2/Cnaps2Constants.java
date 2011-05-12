@@ -69,29 +69,27 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_122)) {
 			pkgName = "com.xml.cnaps2.beps.v12200101";
 		} else if (mesgType.equals(TestDummy.OPERATION_123)) {
-			//原来是beps.v12300101，可能有错
-			pkgName = "com.xml.cnaps2.pacs.v00800102";
+			pkgName = "com.xml.iso20022.pacs.v00800102";
 		} else if (mesgType.equals(TestDummy.OPERATION_124)) {
-			pkgName = "com.xml.cnaps2.pacs.v00200103";
+			pkgName = "com.xml.iso20022.pacs.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_125)) {
-			pkgName = "com.xml.cnaps2.pacs.v00800102";
+			pkgName = "com.xml.iso20022.pacs.v00800102";
 		} else if (mesgType.equals(TestDummy.OPERATION_127)) {
 			pkgName = "com.xml.cnaps2.beps.v12700101";
 		} else if (mesgType.equals(TestDummy.OPERATION_128)) {
-			pkgName = "com.xml.cnaps2.pacs.v00200103";
+			pkgName = "com.xml.iso20022.pacs.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_130)) {
-			pkgName = "com.xml.cnaps2.pacs.v00800102";
+			pkgName = "com.xml.iso20022.pacs.v00800102";
 		} else if (mesgType.equals(TestDummy.OPERATION_131)) {
 			pkgName = "com.xml.cnaps2.beps.v13100101";
 		} else if (mesgType.equals(TestDummy.OPERATION_132)) {
-			//原来beps.v13200101,可能有错
-			pkgName = "com.xml.cnaps2.pacs.v00200103";
+			pkgName = "com.xml.iso20022.pacs.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_133)) {
-			pkgName = "com.xml.cnaps2.pacs.v00300102";
+			pkgName = "com.xml.iso20022.pacs.v00300102";
 		} else if (mesgType.equals(TestDummy.OPERATION_134)) {
-			pkgName = "com.xml.cnaps2.pacs.v0020102";
+			pkgName = "com.xml.iso20022.pacs.v0020103";
 		} else if (mesgType.equals(TestDummy.OPERATION_141)) {
-			pkgName = "com.xml.cnaps2.pacs.v00900102";
+			pkgName = "com.xml.iso20022.pacs.v00900102";
 		} else if (mesgType.equals(TestDummy.OPERATION_142)) {
 			pkgName = "com.xml.cnaps2.hvps.v14200101";
 		} else if (mesgType.equals(TestDummy.OPERATION_143)) {
@@ -107,9 +105,9 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_303)) {
 			pkgName = "com.xml.cnaps2.ccms.v30300102";
 		} else if (mesgType.equals(TestDummy.OPERATION_307)) {
-			pkgName = "com.xml.cnaps2.camt.v05600101";
+			pkgName = "com.xml.iso20022.camt.v05600101";
 		} else if (mesgType.equals(TestDummy.OPERATION_308)) {
-			pkgName = "com.xml.cnaps2.pacs.v00200103";
+			pkgName = "com.xml.iso20022.pacs.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_310)) {
 			pkgName = "com.xml.cnaps2.ccms.v31000101";
 		} else if (mesgType.equals(TestDummy.OPERATION_311)) {
@@ -123,24 +121,21 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_315)) {
 			pkgName = "com.xml.cnaps2.ccms.v31500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_316)) {
-			pkgName = "com.xml.cnaps2.camt.v00500104";
+			pkgName = "com.xml.iso20022.camt.v00500104";
 		} else if (mesgType.equals(TestDummy.OPERATION_317)) {
-			//原文ccms.v31700101，可能有错
-			pkgName = "com.xml.cnaps2.camt.v00600104";
+			pkgName = "com.xml.iso20022.camt.v00600104";
 		} else if (mesgType.equals(TestDummy.OPERATION_318)) {
-			pkgName = "com.xml.cnaps2.pacs.00400102";
+			pkgName = "com.xml.iso20022.pacs.00400102";
 		} else if (mesgType.equals(TestDummy.OPERATION_319)) {
-			pkgName = "com.xml.cnaps2.pacs.v00200103";
+			pkgName = "com.xml.iso20022.pacs.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_350)) {
-			pkgName = "com.xml.cnaps2.camt.v00900104";
+			pkgName = "com.xml.iso20022.camt.v00900104";
 		} else if (mesgType.equals(TestDummy.OPERATION_351)) {
-			//可能有错
-			pkgName = "com.xml.cnaps2.saps.v35000101";
+			pkgName = "com.xml.cnaps2.nets.v35100101";
 		} else if (mesgType.equals(TestDummy.OPERATION_353)) {
 			pkgName = "com.xml.cnaps2.nets.v35300101";
 		} else if (mesgType.equals(TestDummy.OPERATION_354)) {
-			//可能有错
-			pkgName = "com.xml.cnaps2.saps.v35400101";
+			pkgName = "com.xml.cnaps2.nets.v35400101";
 		} else if (mesgType.equals(TestDummy.OPERATION_356)) {
 			pkgName = "com.xml.cnaps2.nets.v35600101";
 		} else if (mesgType.equals(TestDummy.OPERATION_357)) {
@@ -150,7 +145,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_359)) {
 			pkgName = "com.xml.cnaps2.saps.v35900101";
 		} else if (mesgType.equals(TestDummy.OPERATION_360)) {
-			pkgName = "com.xml.cnaps2.camt.v05200102";
+			pkgName = "com.xml.iso20022.camt.v05200102";
 		} else if (mesgType.equals(TestDummy.OPERATION_361)) {
 			pkgName = "com.xml.cnaps2.saps.v36100101";
 		} else if (mesgType.equals(TestDummy.OPERATION_362)) {
@@ -182,35 +177,35 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_375)) {
 			pkgName = "com.xml.cnaps2.saps.v37500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_376)) {
-			pkgName = "com.xml.cnaps2.camt.v05000102";
+			pkgName = "com.xml.iso20022.camt.v05000102";
 		} else if (mesgType.equals(TestDummy.OPERATION_377)) {
-			pkgName = "com.xml.cnaps2.camt.v05000102";
+			pkgName = "com.xml.iso20022.camt.v05000102";
 		} else if (mesgType.equals(TestDummy.OPERATION_381)) {
-			pkgName = "com.xml.cnaps2.camt.v00500104";
+			pkgName = "com.xml.iso20022.pain.v00100103";
 		} else if (mesgType.equals(TestDummy.OPERATION_382)) {
-			pkgName = "com.xml.cnaps2.pain.v00200103";
+			pkgName = "com.xml.iso20022.pain.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_383)) {
-			pkgName = "com.xml.cnaps2.camt.v05500101";
+			pkgName = "com.xml.iso20022.camt.v05500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_384)) {
 			pkgName = "com.xml.cnaps2.beps.v38400101";
 		} else if (mesgType.equals(TestDummy.OPERATION_385)) {
 			pkgName = "com.xml.cnaps2.beps.v38500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_386)) {
-			pkgName = "com.xml.cnaps2.beps.v38600101";
+			pkgName = "com.xml.iso20022.pain.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_387)) {
 			pkgName = "com.xml.cnaps2.beps.v38700101";
 		} else if (mesgType.equals(TestDummy.OPERATION_388)) {
 			pkgName = "com.xml.cnaps2.beps.v38800101";
 		} else if (mesgType.equals(TestDummy.OPERATION_391)) {
-			pkgName = "com.xml.cnaps2.beps.v39100101";
+			pkgName = "com.xml.iso20022.pain.v00100103";
 		} else if (mesgType.equals(TestDummy.OPERATION_392)) {
-			pkgName = "com.xml.cnaps2.beps.v39200101";
+			pkgName = "com.xml.iso20022.pain.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_393)) {
-			pkgName = "com.xml.cnaps2.beps.v39300101";
+			pkgName = "com.xml.iso20022.v00500104";
 		} else if (mesgType.equals(TestDummy.OPERATION_394)) {
 			pkgName = "com.xml.cnaps2.beps.v39400101";
 		} else if (mesgType.equals(TestDummy.OPERATION_395)) {
-			pkgName = "com.xml.cnaps2.beps.v39500101";
+			pkgName = "com.xml.iso20022.camt.v05400102";
 		} else if (mesgType.equals(TestDummy.OPERATION_397)) {
 			pkgName = "com.xml.cnaps2.beps.v39700101";
 		} else if (mesgType.equals(TestDummy.OPERATION_398)) {
@@ -222,36 +217,35 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_403)) {
 			pkgName = "com.xml.cnaps2.beps.v40300101";
 		} else if (mesgType.equals(TestDummy.OPERATION_405)) {
-			pkgName = "com.xml.cnaps2.camt.v00500104";
+			pkgName = "com.xml.iso20022.camt.v00500104";
 		} else if (mesgType.equals(TestDummy.OPERATION_406)) {
 			pkgName = "com.xml.cnaps2.nets.v40600101";
 		} else if (mesgType.equals(TestDummy.OPERATION_407)) {
-			//可能有错 
-			pkgName = "com.xml.cnaps2.saps.v40700101";
+			pkgName = "com.xml.cnaps2.nets.v40700101";
 		} else if (mesgType.equals(TestDummy.OPERATION_411)) {
-			pkgName = "com.xml.cnaps2.camt.v05500101";
+			pkgName = "com.xml.iso20022.camt.v05500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_412)) {
 			pkgName = "com.xml.cnaps2.beps.v41200101";
 		} else if (mesgType.equals(TestDummy.OPERATION_413)) {
-			pkgName = "com.xml.cnaps2.beps.v41300101";
+			pkgName = "com.xml.iso20022.camt.v05500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_414)) {
 			pkgName = "com.xml.cnaps2.beps.v41400101";
 		} else if (mesgType.equals(TestDummy.OPERATION_415)) {
 			pkgName = "com.xml.cnaps2.beps.v41500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_416)) {
-			pkgName = "com.xml.cnaps2.beps.v41600101";
+			pkgName = "com.xml.iso20022.camt.v05500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_417)) {
 			pkgName = "com.xml.cnaps2.beps.v41700101";
 		} else if (mesgType.equals(TestDummy.OPERATION_601)) {
 			pkgName = "com.xml.iso20022.camt.v05400102";
 		} else if (mesgType.equals(TestDummy.OPERATION_603)) {
-			pkgName = "com.xml.cnaps2.camt.v05300102";
+			pkgName = "com.xml.iso20022.camt.v05300102";
 		} else if (mesgType.equals(TestDummy.OPERATION_604)) {
 			pkgName = "com.xml.iso20022.saps.v60400101";
 		} else if (mesgType.equals(TestDummy.OPERATION_606)) {
 			pkgName = "com.xml.cnaps2.saps.v60600101";
 		} else if (mesgType.equals(TestDummy.OPERATION_607)) {
-			pkgName = "com.xml.cnaps2.camt.v05300102";
+			pkgName = "com.xml.iso20022.camt.v05300102";
 		} else if (mesgType.equals(TestDummy.OPERATION_608)) {
 			pkgName = "com.xml.cnaps2.pbcs.v60800101";
 		} else if (mesgType.equals(TestDummy.OPERATION_609)) {
@@ -271,8 +265,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_616)) {
 			pkgName = "com.xml.cnaps2.saps.v61600101";
 		} else if (mesgType.equals(TestDummy.OPERATION_617)) {
-			//可能有错
-			pkgName = "com.xml.cnaps2.saps.v61700101";
+			pkgName = "com.xml.cnaps2.nets.v61700101";
 		} else if (mesgType.equals(TestDummy.OPERATION_618)) {
 			pkgName = "com.xml.cnaps2.nets.v61800101";
 		} else if (mesgType.equals(TestDummy.OPERATION_710)) {
