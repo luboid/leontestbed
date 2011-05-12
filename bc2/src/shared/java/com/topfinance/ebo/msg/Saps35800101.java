@@ -1,6 +1,6 @@
 package com.topfinance.ebo.msg;
 
-import java.sql.Date;
+import java.util.Date;
 
 import com.topfinance.ebo.msg.JaxbMapping;
 import javax.persistence.GeneratedValue;
