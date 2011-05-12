@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps41700101" createOnElement="Document">
+				<jb:value data="/Document/RealTmInfRvslRspn/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>   
+				<jb:value data="/Document/RealTmInfRvslRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/OrgnlGrpHdr/OrgnlMsgTp" property="orgnlMT"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/RspsnInf/Sts" property="sts"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/RspsnInf/RjctCd" property="rjctCd"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/RspsnInf/RjctInf" property="rjctInf"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/RspsnInf/PrcPty" property="prcPty"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/OrgnlTx/OrgnlGrpHdr/OrgnlMsgId" property="pendOrgnlMsgId"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/OrgnlTx/OrgnlGrpHdr/OrgnlInstgPty" property="pendOrgnlInstgDrctPty"/>    
+				<jb:value data="/Document/RealTmInfRvslRspn/RealTmInfRvslRspnInf/OrgnlTx/OrgnlGrpHdr/OrgnlMsgTp" property="pendOrgnlMT"/>    
+	</jb:bean>
+	
+
+
+</smooks-resource-list>  
+    

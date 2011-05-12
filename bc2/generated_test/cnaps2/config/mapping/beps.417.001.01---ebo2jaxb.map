@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps41700101</param>
+  </params>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.beps.v41700101.Document" createOnElement="com.topfinance.ebo.msg.Beps41700101">
+    	<jb:wiring beanIdRef="realTmInfRvslRspn" property="realTmInfRvslRspn"/>
+  	</jb:bean>
+  	<jb:bean beanId="realTmInfRvslRspn.realTmInfRvslRspnInf.orgnlTx.orgnlGrpHdr" class="com.xml.cnaps2.beps.v41700101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps41700101">
+  		<jb:value data="pendOrgnlMsgId"  property="orgnlMsgId"/>
+  		<jb:value data="pendOrgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  		<jb:value data="pendOrgnlMT"  property="orgnlMsgTp"/>
+  	</jb:bean>
+  	<jb:bean beanId="realTmInfRvslRspn.realTmInfRvslRspnInf.orgnlTx" class="com.xml.cnaps2.beps.v41700101.OriginalTransaction1" createOnElement="com.topfinance.ebo.msg.Beps41700101">
+    	<jb:wiring beanIdRef="realTmInfRvslRspn.realTmInfRvslRspnInf.orgnlTx.orgnlGrpHdr" property="orgnlGrpHdr"/>
+  	</jb:bean>
+  	<jb:bean beanId="realTmInfRvslRspn.grpHdr.instdPty" class="com.xml.cnaps2.beps.v41700101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Beps41700101">
+  		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="realTmInfRvslRspn.realTmInfRvslRspnInf.rspsnInf" class="com.xml.cnaps2.beps.v41700101.ResponsionInformation1" createOnElement="com.topfinance.ebo.msg.Beps41700101">
+  		<jb:value data="sts"  property="sts"/>
+  		<jb:value data="rjctCd"  property="rjctCd"/>
+  		<jb:value data="rjctInf"  property="rjctInf"/>
+  		<jb:value data="prcPty"  property="prcPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="realTmInfRvslRspn.orgnlGrpHdr" class="com.xml.cnaps2.beps.v41700101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps41700101">
+  		<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  		<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  		<jb:value data="orgnlMT"  property="orgnlMsgTp"/>
+  	</jb:bean>
+  	<jb:bean beanId="realTmInfRvslRspn.grpHdr.instgPty" class="com.xml.cnaps2.beps.v41700101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Beps41700101">
+  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="realTmInfRvslRspn" class="com.xml.cnaps2.beps.v41700101.RealTimeInformationReversalResponese" createOnElement="com.topfinance.ebo.msg.Beps41700101">
+    	<jb:wiring beanIdRef="realTmInfRvslRspn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="realTmInfRvslRspn.orgnlGrpHdr" property="orgnlGrpHdr"/>
+    	<jb:wiring beanIdRef="realTmInfRvslRspn.realTmInfRvslRspnInf" property="realTmInfRvslRspnInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="realTmInfRvslRspn.realTmInfRvslRspnInf" class="com.xml.cnaps2.beps.v41700101.RealTimeInformationReversalResponeseInformation1" createOnElement="com.topfinance.ebo.msg.Beps41700101">
+    	<jb:wiring beanIdRef="realTmInfRvslRspn.realTmInfRvslRspnInf.rspsnInf" property="rspsnInf"/>
+    	<jb:wiring beanIdRef="realTmInfRvslRspn.realTmInfRvslRspnInf.orgnlTx" property="orgnlTx"/>
+  	</jb:bean>
+  	<jb:bean beanId="realTmInfRvslRspn.grpHdr" class="com.xml.cnaps2.beps.v41700101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps41700101">
+    	<jb:wiring beanIdRef="realTmInfRvslRspn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="realTmInfRvslRspn.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="msgId"  property="msgId"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
+  		<jb:value data="sysCd"  property="sysCd"/>
+  		<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
