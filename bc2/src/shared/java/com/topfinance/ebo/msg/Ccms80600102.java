@@ -54,7 +54,7 @@ public class Ccms80600102  implements java.io.Serializable {
     private String loginOprTp;
     
     @JaxbMapping(objPath="loginRspn.loginRspnInf.curSysDt")
-    private String curSysDt;
+    private Date curSysDt;
     
     @JaxbMapping(objPath="loginRspn.loginRspnInf.curSysSts")
     private String curSysSts;
@@ -293,7 +293,7 @@ public class Ccms80600102  implements java.io.Serializable {
    * @return the curSysDt
    */
     @Column(name = "CURSYSDT")
-    public String getCurSysDt() {
+    public Date getCurSysDt() {
         return curSysDt;
     }	 
      
@@ -303,7 +303,7 @@ public class Ccms80600102  implements java.io.Serializable {
    * @param newCurSysDt the new curSysDt
    */
 
-    public void  setCurSysDt(String newCurSysDt) {
+    public void  setCurSysDt(Date newCurSysDt) {
         curSysDt = newCurSysDt;
     }	  
   /**
