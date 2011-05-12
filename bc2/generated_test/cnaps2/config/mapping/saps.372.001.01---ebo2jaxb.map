@@ -30,7 +30,9 @@
     	<jb:wiring beanIdRef="acctMgmtNtfctn.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="acctMgmtNtfctn.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/msgId"  property="msgId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/sysCd"  property="sysCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/rmk"  property="rmk"/>
   	</jb:bean>
@@ -68,13 +70,17 @@
   	<jb:bean beanId="acctMgmtNtfctn.ntfctnCntt.sttlmAcctSts" class="com.xml.cnaps2.saps.v37200101.SettlementAccountStatus1" createOnElement="com.topfinance.ebo.msg.Saps37200101">
   		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/ntMmbId"  property="mmbId"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/ptyCtgy"  property="ptyCtgy"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/ntFctvDt"  property="fctvDt"/>
+  		<jb:value data="ntFctvDt" decoder="Date" property="fctvDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/acctSts"  property="acctSts"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/bal"  property="bal"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/rstrctAmtLwrLmt"  property="rstrctAmtLwrLmt"/>
   	</jb:bean>
   	<jb:bean beanId="acctMgmtNtfctn.ntfctnCntt.fndsOfPoolMgmt" class="com.xml.cnaps2.saps.v37200101.FundsOfPoolManagement1" createOnElement="com.topfinance.ebo.msg.Saps37200101">
-  		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/fctvDt"  property="fctvDt"/>
+  		<jb:value data="fctvDt" decoder="Date" property="fctvDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Saps37200101/swtchPoolTp"  property="swtchTp"/>
   	</jb:bean>
 </smooks-resource-list>  

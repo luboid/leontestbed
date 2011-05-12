@@ -8,7 +8,9 @@
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps37200101" createOnElement="Document">
 		<jb:value data="/Document/AcctMgmtNtfctn/GrpHdr/MsgId" property="msgId"/>    
-		<jb:value data="/Document/AcctMgmtNtfctn/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/AcctMgmtNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+		</jb:value>
 		<jb:value data="/Document/AcctMgmtNtfctn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 		<jb:value data="/Document/AcctMgmtNtfctn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 		<jb:value data="/Document/AcctMgmtNtfctn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
@@ -18,7 +20,9 @@
 		<jb:value data="/Document/AcctMgmtNtfctn/AcctMgmtNtfctnInf/NtfctnTp" property="ntfctnTp"/>    
 		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/SttlmAcctSts/MmbId" property="ntMmbId"/>    
 		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/SttlmAcctSts/PtyCtgy" property="ptyCtgy"/>    
-		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/SttlmAcctSts/FctvDt" property="ntFctvDt"/>    
+		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/SttlmAcctSts/FctvDt" decoder="Date" property="ntFctvDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value>   
 		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/SttlmAcctSts/AcctSts" property="acctSts"/>    
 		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/SttlmAcctSts/Bal" property="bal"/>    
 		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/SttlmAcctSts/RstrctAmtLwrLmt" property="rstrctAmtLwrLmt"/>    
@@ -27,8 +31,10 @@
 		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/AcctMntncAppl/OverdrftUpperLmt" property="overdrftUpperLmt"/>    
 		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/AcctMntncAppl/RstrctAmtLwrLmt" property="ntRstrctAmtLwrLmt"/>    
 		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/AcctMntncAppl/DbtRstrctSetng" property="dbtRstrctSetng"/>    
-		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/AcctMntncAppl/CdtRstrctSetng" property="cdtRstrctSetng"/>    
-		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/FndsOfPoolMgmt/FctvDt" property="fctvDt"/>    
+		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/AcctMntncAppl/CdtRstrctSetng" property="cdtRstrctSetng"/>     
+		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/FndsOfPoolMgmt/FctvDt" decoder="Date" property="fctvDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value>  
 		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/FndsOfPoolMgmt/SwtchTp" property="swtchPoolTp"/>    
 		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/AmtWrngSetng/SwtchTp" property="swtchTp"/>    
 		<jb:value data="/Document/AcctMgmtNtfctn/NtfctnCntt/AmtWrngSetng/MmbId" property="wtchMmbId"/>    

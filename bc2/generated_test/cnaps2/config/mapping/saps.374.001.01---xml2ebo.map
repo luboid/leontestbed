@@ -8,7 +8,9 @@
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps37400101" createOnElement="Document">
 		<jb:value data="/Document/IntrBkLnMgmtAppl/GrpHdr/MsgId" property="msgId"/>    
-		<jb:value data="/Document/IntrBkLnMgmtAppl/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/IntrBkLnMgmtAppl/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+		</jb:value>  
 		<jb:value data="/Document/IntrBkLnMgmtAppl/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 		<jb:value data="/Document/IntrBkLnMgmtAppl/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 		<jb:value data="/Document/IntrBkLnMgmtAppl/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
@@ -21,8 +23,12 @@
 		<jb:value data="/Document/IntrBkLnMgmtAppl/IntrBkLnMgmtApplInf/PrtcolNb" property="prtcolNb"/>    
 		<jb:value data="/Document/IntrBkLnMgmtAppl/IntrBkLnMgmtApplInf/IntrBkLnLwrLmt" property="intrBkLnLwrLmt"/>    
 		<jb:value data="/Document/IntrBkLnMgmtAppl/IntrBkLnMgmtApplInf/IntrBkLnUpperLmt" property="intrBkLnUpperLmt"/>    
-		<jb:value data="/Document/IntrBkLnMgmtAppl/IntrBkLnMgmtApplInf/PrtcolFctvDt" property="prtcolFctvDt"/>    
-		<jb:value data="/Document/IntrBkLnMgmtAppl/IntrBkLnMgmtApplInf/PrtcolXprtnDt" property="prtcolXprtnDt"/>    
+		<jb:value data="/Document/IntrBkLnMgmtAppl/IntrBkLnMgmtApplInf/PrtcolFctvDt" decoder="Date" property="prtcolFctvDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value>   
+		<jb:value data="/Document/IntrBkLnMgmtAppl/IntrBkLnMgmtApplInf/PrtcolXprtnDt" decoder="Date" property="prtcolXprtnDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		</jb:value> 
 		<jb:value data="/Document/IntrBkLnMgmtAppl/IntrBkLnMgmtApplInf/Amt" property="amt"/>    
 	</jb:bean>
 </smooks-resource-list>  

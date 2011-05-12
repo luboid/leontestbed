@@ -26,7 +26,9 @@
   		<jb:value data="/com.topfinance.ebo.msg.Saps36200101/sysCd"  property="sysCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps36200101/rmk"  property="rmk"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps36200101/msgId"  property="msgId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps36200101/creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
   	</jb:bean>
   	<jb:bean beanId="balWrngNtfctn.grpHdr.instgPty" class="com.xml.cnaps2.saps.v36200101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Saps36200101">
   		<jb:value data="/com.topfinance.ebo.msg.Saps36200101/instgIndrctPty"  property="instgPty"/>

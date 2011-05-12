@@ -19,7 +19,9 @@
 		<jb:value data="/Document/BalWrngNtfctn/BalWrngNtfctnInf/CurBal" property="curBal"/>    
 		<jb:value data="/Document/BalWrngNtfctn/BalWrngNtfctnInf/PlusMnsTp" property="plusMnsTp"/>    
 		<jb:value data="/Document/BalWrngNtfctn/GrpHdr/MsgId" property="msgId"/>    
-		<jb:value data="/Document/BalWrngNtfctn/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/BalWrngNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+		</jb:value> 
 		<jb:value data="/Document/BalWrngNtfctn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 	</jb:bean>
 </smooks-resource-list>  

@@ -8,7 +8,9 @@
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps36600101" createOnElement="Document">
 		<jb:value data="/Document/AcctInfQryAppl/GrpHdr/MsgId" property="msgId"/>    
-		<jb:value data="/Document/AcctInfQryAppl/GrpHdr/CreDtTm" property="creDtTm"/>    
+		<jb:value data="/Document/AcctInfQryAppl/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+		</jb:value>   
 		<jb:value data="/Document/AcctInfQryAppl/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 		<jb:value data="/Document/AcctInfQryAppl/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 		<jb:value data="/Document/AcctInfQryAppl/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    

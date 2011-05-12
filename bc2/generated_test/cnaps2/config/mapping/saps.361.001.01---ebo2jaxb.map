@@ -18,7 +18,9 @@
     	<jb:wiring beanIdRef="balWrngSetng.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="balWrngSetng.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps36100101/msgId"  property="msgId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps36100101/creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Saps36100101/sysCd"  property="sysCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps36100101/rmk"  property="rmk"/>
   	</jb:bean>
