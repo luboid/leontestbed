@@ -9,7 +9,9 @@
     	<jb:wiring beanIdRef="cmonConf.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="cmonConf.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="/com.topfinance.ebo.msg.Ccms90000102/msgId"  property="msgId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Ccms90000102/creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Ccms90000102/sysCd"  property="sysCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Ccms90000102/rmk"  property="rmk"/>
   	</jb:bean>
@@ -34,7 +36,9 @@
   		<jb:value data="/com.topfinance.ebo.msg.Ccms90000102/ptyId"  property="ptyId"/>
   		<jb:value data="/com.topfinance.ebo.msg.Ccms90000102/ptyPrcCd"  property="ptyPrcCd"/>
   		<jb:value data="/com.topfinance.ebo.msg.Ccms90000102/rjctInf"  property="rjctInf"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Ccms90000102/prcDt"  property="prcDt"/>
+  		<jb:value data="prcDt" decoder="Date" property="prcDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
   		<jb:value data="/com.topfinance.ebo.msg.Ccms90000102/netgRnd"  property="netgRnd"/>
   	</jb:bean>
 </smooks-resource-list>  
