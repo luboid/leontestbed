@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
@@ -74,8 +77,10 @@ public class Beps38400101  implements java.io.Serializable {
    * 
    * @return the id
    */
-  @Id
-    @Column(name = "ID")
+	@Id
+	@Column(name = "ID", unique = true, nullable = false, precision = 22, scale = 0)
+	@SequenceGenerator(name = "CFG_SEQUNCE_GEN", sequenceName = "S_CFG_SEQUNCE")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "CFG_SEQUNCE_GEN")
     public Integer getid() {
         return id;
     }	 
