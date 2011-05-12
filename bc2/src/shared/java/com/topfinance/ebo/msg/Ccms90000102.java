@@ -1,5 +1,7 @@
 package com.topfinance.ebo.msg;
 
+import java.util.Date;
+
 import com.topfinance.ebo.msg.JaxbMapping;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +27,7 @@ public class Ccms90000102  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="cmonConf.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="cmonConf.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -61,7 +63,7 @@ public class Ccms90000102  implements java.io.Serializable {
     private String rjctInf;
     
     @JaxbMapping(objPath="cmonConf.cmonConfInf.prcDt")
-    private String prcDt;
+    private Date prcDt;
     
     @JaxbMapping(objPath="cmonConf.cmonConfInf.netgRnd")
     private String netgRnd;
@@ -120,7 +122,7 @@ public class Ccms90000102  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -130,7 +132,7 @@ public class Ccms90000102  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
@@ -348,7 +350,7 @@ public class Ccms90000102  implements java.io.Serializable {
    * @return the prcDt
    */
     @Column(name = "PRCDT")
-    public String getPrcDt() {
+    public Date getPrcDt() {
         return prcDt;
     }	 
      
@@ -358,7 +360,7 @@ public class Ccms90000102  implements java.io.Serializable {
    * @param newPrcDt the new prcDt
    */
 
-    public void  setPrcDt(String newPrcDt) {
+    public void  setPrcDt(Date newPrcDt) {
         prcDt = newPrcDt;
     }	  
   /**
