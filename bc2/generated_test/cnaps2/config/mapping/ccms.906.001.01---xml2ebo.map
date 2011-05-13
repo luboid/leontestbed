@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms90600101Hdr" createOnElement="Document">
+				<jb:value data="/Document/BizClssTpMgmt/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/BizClssTpMgmt/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>  
+				<jb:value data="/Document/BizClssTpMgmt/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/BizClssTpMgmt/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/BizClssTpMgmt/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/BizClssTpMgmt/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/BizClssTpMgmt/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/BizClssTpMgmt/GrpHdr/Rmk" property="rmk"/>    
+    		<jb:wiring beanIdRef="chngInf[0]" property="chngInf"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="chngInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="chngInf" />
+  </jb:bean>
+	<jb:bean beanId="chngInf" class="com.topfinance.ebo.msg.Ccms90600101" createOnElement="/Document/BizClssTpMgmt/ChngInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/BizClssTpMgmt/ChngInf/ChgTp/ChngTp" property="chngTp"/>    
+				<jb:value data="/Document/BizClssTpMgmt/ChngInf/ChgTp/FctvTp" property="fctvTp"/>    
+				<jb:value data="/Document/BizClssTpMgmt/ChngInf/ChgTp/FctvDt" decoder="Date" property="fctvDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		        </jb:value>  
+				<jb:value data="/Document/BizClssTpMgmt/ChngInf/ChgTp/IfctvDt" decoder="Date" property="ifctvDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		        </jb:value>  
+				<jb:value data="/Document/BizClssTpMgmt/ChngInf/Mt" property="mT"/>    
+				<jb:value data="/Document/BizClssTpMgmt/ChngInf/MsgNm" property="msgNm"/>    
+				<jb:value data="/Document/BizClssTpMgmt/ChngInf/TxTpCd" property="txTpCd"/>    
+				<jb:value data="/Document/BizClssTpMgmt/ChngInf/TxTpNm" property="txTpNm"/>    
+				<jb:value data="/Document/BizClssTpMgmt/ChngInf/CtgyPurpCd" property="ctgyPurpCd"/>    
+				<jb:value data="/Document/BizClssTpMgmt/ChngInf/CtgyPurpNm" property="ctgyPurpNm"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
