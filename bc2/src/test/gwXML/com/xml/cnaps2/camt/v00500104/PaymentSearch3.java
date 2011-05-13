@@ -627,4 +627,68 @@ public class PaymentSearch3 {
         this.pmtTxPty = value;
     }
 
+	public void setTxRef(List<String> txRef) {
+		this.txRef = txRef;
+	}
+
+	public void setTrfValDt(List<DateAndDateTimeSearchChoice> trfValDt) {
+		this.trfValDt = trfValDt;
+	}
+
+	public void setInstrRef(List<PaymentIdentification3Choice> instrRef) {
+		this.instrRef = instrRef;
+	}
+
+	public void setInstrSts(List<InstructionStatusSearch3> instrSts) {
+		this.instrSts = instrSts;
+	}
+
+	public void setInstdAmt(List<AmountRangeChoice> instdAmt) {
+		this.instdAmt = instdAmt;
+	}
+
+	public void setInstdAmtCcy(List<String> instdAmtCcy) {
+		this.instdAmtCcy = instdAmtCcy;
+	}
+
+	public void setIntrBkSttlmAmt(List<AmountRangeChoice> intrBkSttlmAmt) {
+		this.intrBkSttlmAmt = intrBkSttlmAmt;
+	}
+
+	public void setIntrBkSttlmAmtCcy(List<String> intrBkSttlmAmtCcy) {
+		this.intrBkSttlmAmtCcy = intrBkSttlmAmtCcy;
+	}
+
+	public void setPmtMtd(List<PaymentOrigin1Choice> pmtMtd) {
+		this.pmtMtd = pmtMtd;
+	}
+
+	public void setPrty(List<PriorityCodeChoice> prty) {
+		this.prty = prty;
+	}
+
+	public void setPrcgVldtyTm(List<DateTimePeriodChoice> prcgVldtyTm) {
+		this.prcgVldtyTm = prcgVldtyTm;
+	}
+
+	public void setInstr(List<String> instr) {
+		this.instr = instr;
+	}
+
+	public void setPmtTp(List<PaymentType2Choice> pmtTp) {
+		this.pmtTp = pmtTp;
+	}
+
+	public void setPmtInstrRef(List<String> pmtInstrRef) {
+		this.pmtInstrRef = pmtInstrRef;
+	}
+
+	public void setIntrBkValDt(List<Date> intrBkValDt) {
+		this.intrBkValDt = intrBkValDt;
+	}
+
+	public void setRltdRef(List<String> rltdRef) {
+		this.rltdRef = rltdRef;
+	}
+
 }

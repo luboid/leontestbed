@@ -5,29 +5,29 @@
     <param name="inputType">input.java</param>
     <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps39300101</param>
   </params>
-  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit.pmtSch" class="com.xml.cnaps2.camt.v00500104.PaymentSearch3" createOnElement="com.topfinance.ebo.msg.Beps39300101">
+  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit.pmtSch" class="com.xml.iso20022.camt.v00500104.PaymentSearch3" createOnElement="com.topfinance.ebo.msg.Beps39300101">
     	<jb:wiring beanIdRef="getTx.txQryDef.txCrit.newCrit.schCrit.pmtSch.txRef[0]" property="txRef"/>
   	</jb:bean>
-  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit" class="com.xml.cnaps2.camt.v00500104.TransactionSearchCriteria3" createOnElement="com.topfinance.ebo.msg.Beps39300101">
+  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit" class="com.xml.iso20022.camt.v00500104.TransactionSearchCriteria3" createOnElement="com.topfinance.ebo.msg.Beps39300101">
     	<jb:wiring beanIdRef="getTx.txQryDef.txCrit.newCrit.schCrit.pmtSch" property="pmtSch"/>
   	</jb:bean>
-  	<jb:bean beanId="getTx.txQryDef.txCrit" class="com.xml.cnaps2.camt.v00500104.TransactionCriteriaDefinition3Choice" createOnElement="com.topfinance.ebo.msg.Beps39300101">
+  	<jb:bean beanId="getTx.txQryDef.txCrit" class="com.xml.iso20022.camt.v00500104.TransactionCriteriaDefinition3Choice" createOnElement="com.topfinance.ebo.msg.Beps39300101">
     	<jb:wiring beanIdRef="getTx.txQryDef.txCrit.newCrit" property="newCrit"/>
   	</jb:bean>
-  	<jb:bean beanId="target" class="com.xml.cnaps2.camt.v00500104.Document" createOnElement="com.topfinance.ebo.msg.Beps39300101">
+  	<jb:bean beanId="target" class="com.xml.iso20022.camt.v00500104.Document" createOnElement="com.topfinance.ebo.msg.Beps39300101">
     	<jb:wiring beanIdRef="getTx" property="getTx"/>
   	</jb:bean>
-  	<jb:bean beanId="getTx.txQryDef" class="com.xml.cnaps2.camt.v00500104.TransactionQueryDefinition4" createOnElement="com.topfinance.ebo.msg.Beps39300101">
+  	<jb:bean beanId="getTx.txQryDef" class="com.xml.iso20022.camt.v00500104.TransactionQueryDefinition4" createOnElement="com.topfinance.ebo.msg.Beps39300101">
     	<jb:wiring beanIdRef="getTx.txQryDef.txCrit" property="txCrit"/>
   	</jb:bean>
-  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit" class="com.xml.cnaps2.camt.v00500104.TransactionCriteria3" createOnElement="com.topfinance.ebo.msg.Beps39300101">
+  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit" class="com.xml.iso20022.camt.v00500104.TransactionCriteria3" createOnElement="com.topfinance.ebo.msg.Beps39300101">
     	<jb:wiring beanIdRef="getTx.txQryDef.txCrit.newCrit.schCrit" property="schCrit"/>
   	</jb:bean>
-  	<jb:bean beanId="getTx" class="com.xml.cnaps2.camt.v00500104.GetTransactionV04" createOnElement="com.topfinance.ebo.msg.Beps39300101">
+  	<jb:bean beanId="getTx" class="com.xml.iso20022.camt.v00500104.GetTransactionV04" createOnElement="com.topfinance.ebo.msg.Beps39300101">
     	<jb:wiring beanIdRef="getTx.msgId" property="msgId"/>
     	<jb:wiring beanIdRef="getTx.txQryDef" property="txQryDef"/>
   	</jb:bean>
-  	<jb:bean beanId="getTx.msgId" class="com.xml.cnaps2.camt.v00500104.MessageIdentification" createOnElement="com.topfinance.ebo.msg.Beps39300101">
+  	<jb:bean beanId="getTx.msgId" class="com.xml.iso20022.camt.v00500104.MessageIdentification" createOnElement="com.topfinance.ebo.msg.Beps39300101">
   				<jb:value data="msgId"  property="id"/>
   	</jb:bean>
   	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit.pmtSch.txRef[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps39300101">
