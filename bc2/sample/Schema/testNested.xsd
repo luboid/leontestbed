@@ -13,6 +13,7 @@
 						<xs:attribute name="author"/>
 					</xs:complexType>
 				</xs:element>
+				<xs:element maxOccurs="unbounded" minOccurs="0" name="Ustrd" type="xs:string"/>
 			</xs:sequence>
 			<xs:attribute name="name"/>
 		</xs:complexType>
