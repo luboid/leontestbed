@@ -28,19 +28,19 @@ import com.topfinance.util.ParseSampleXml.DataEle;
 public class TestGenMapLeon extends TestCase {
 
 	// TODO change the path
-	public final static String DBSTORE = "D:/bankConnector/source/bin/runBC-A-config-DB.xml";
+	public final static String DBSTORE = "D:/DEV.WORK/EBO/bc2/bin/runBC-A-config-DB.xml";
 
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean USE_DB = false;
+	public final static boolean USE_DB = true;
 	
 	public final static boolean LIST_META_ONLY = false;
 	
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean TO_GENERATE = true;
+	public final static boolean TO_GENERATE = false;
 	
 	public final static boolean TEST_XML2EBO_ONLY = false;
 	
-	private static final String basePath = "D:/bankConnector/source/generated_test";
+	private static final String basePath = "D:/DEV.WORK/EBO/bc2/generated_test";
 
 	
 	
@@ -76,7 +76,7 @@ public class TestGenMapLeon extends TestCase {
 		try {
 			OpInfo op = new OpInfo(msgCode, tpCode, clsCode);
 //			String fn = "D:/bankConnector/data/mydata"; // for 737
-			String fn = "D:/bankConnector/data/mydata"+op.toString(); // for 393			
+			String fn = "D:/DEV.WORK/EBO/bc2/generated_test/cnaps2/sample/xml/"+op.toString(); // for 393			
 			// This need to be changed to fetch set of (bisEle+extEle) for a
 			// {msgCode, tpCode, clsCode}
 			if (USE_DB) {
@@ -211,7 +211,7 @@ public class TestGenMapLeon extends TestCase {
 
 
 	
-	public void test_beps_123_001_01() throws Exception {
+	public void atest_beps_123_001_01() throws Exception {
 		String msgCode = "beps.123.001.01";
 		String tpCode = "C";
 //		String tpCode = "C101";		
@@ -224,7 +224,7 @@ public class TestGenMapLeon extends TestCase {
 		}
 	}
 	
-	public void test_beps_393_001_01() throws Exception {
+	public void atest_beps_393_001_01() throws Exception {
 		String msgCode = "beps.393.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -235,7 +235,7 @@ public class TestGenMapLeon extends TestCase {
 		}
 	}
 	
-	public void test_saps_737_001_01() throws Exception {
+	public void atest_saps_737_001_01() throws Exception {
 		String msgCode = "saps.737.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -261,7 +261,7 @@ public class TestGenMapLeon extends TestCase {
 		
 	}
 
-	public void testNested() throws Exception {
+	public void atestNested() throws Exception {
 		String msgCode = "testNested";
 		String tpCode = "";
 		String clsCode = "";
@@ -340,11 +340,11 @@ public class TestGenMapLeon extends TestCase {
 	}
 
 	
-	public void testMe() throws Exception{
+	public void atestMe() throws Exception{
 		try {
 //			testGenerated_311();
 			
-			test_saps_737_001_01();
+			atest_saps_737_001_01();
 			
 //			test_beps_123_001_01();
 //			test_beps_393_001_01();

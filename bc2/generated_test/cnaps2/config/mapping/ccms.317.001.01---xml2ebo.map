@@ -13,22 +13,22 @@
 				<jb:value data="/Document/RtrTx/BizRpt/TxRpt/InstrRef/PmtInstrRef" property="pmtInstrRef"/>    
 				<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/PmtFr/AcctId/DmstAcct/Id" property="frmOrgnlInstgDrctPty"/>    
 				<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/TxRef" property="frmOrgnlMsgId"/>    
-				<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/TrfValDt/Dt" decoder="Date" property="sttlmDt">
-				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
-			    </jb:value>
+  			<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/TrfValDt/Dt" decoder="Date" property="sttlmDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
 				<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/InstrSts/PmtInstrSts/PrtrySts" property="prcSts"/>    
 				<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/InstrSts/PmtInstrStsRsn/PrtryRjctnRsn/PrtryStsRsn" property="prtryStsRsn"/>    
 				<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/InstrSts/PmtInstrStsRsn/PrtryRjctnRsn/Rsn" property="rjctInf"/>    
 				<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/Prty/PrtryCd" property="netgRnd"/>    
-				<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/PrcgVldtyTm/DtTmRg/FrDtTm" decoder="Date" property="rcvTm">
-				<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
-			    </jb:value>
-				<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/PrcgVldtyTm/DtTmRg/ToDtTm" decoder="Date" property="trnsmtTm">
-				<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
-			    </jb:value>
-				<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/IntrBkValDt" decoder="Date" property="intrBkValDt">
-				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
-			    </jb:value>
+  			<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/PrcgVldtyTm/DtTmRg/FrDtTm" decoder="Date" property="rcvTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+  			<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/PrcgVldtyTm/DtTmRg/ToDtTm" decoder="Date" property="trnsmtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+  			<jb:value data="/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/IntrBkValDt" decoder="Date" property="intrBkValDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
 				<jb:value data="/Document/RtrTx/OprlErr/Err/Prtry" property="prtry"/>    
 				<jb:value data="/Document/RtrTx/OprlErr/Desc" property="desc"/>    
 	</jb:bean>

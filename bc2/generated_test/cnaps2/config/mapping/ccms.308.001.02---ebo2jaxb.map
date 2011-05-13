@@ -18,16 +18,14 @@
     	<jb:wiring beanIdRef="fiToFiPmtStsRpt.grpHdr.instdAgt.finInstnId.othr" property="othr"/>
   	</jb:bean>
   	<jb:bean beanId="fiToFiPmtStsRpt.txInfAndSts" class="com.xml.iso20022.pacs.v00200103.PaymentTransactionInformation26" createOnElement="com.topfinance.ebo.msg.Ccms30800102">
-  		<jb:value data="stsId"  property="stsId"/>
-  		<jb:value data="orgnlInstrId"  property="orgnlInstrId"/>
-  		<jb:value data="clrSysRef" decoder="Date" property="clrSysRef">
-    		<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
-	    </jb:value>
+  				<jb:value data="stsId"  property="stsId"/>
+  				<jb:value data="orgnlInstrId"  property="orgnlInstrId"/>
+  				<jb:value data="clrSysRef"  property="clrSysRef"/>
   	</jb:bean>
   	<jb:bean beanId="fiToFiPmtStsRpt.orgnlGrpInfAndSts" class="com.xml.iso20022.pacs.v00200103.OriginalGroupInformation20" createOnElement="com.topfinance.ebo.msg.Ccms30800102">
     	<jb:wiring beanIdRef="fiToFiPmtStsRpt.orgnlGrpInfAndSts.stsRsnInf" property="stsRsnInf"/>
-  		<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
-  		<jb:value data="orgnlMsgNmId"  property="orgnlMsgNmId"/>
+  				<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  				<jb:value data="orgnlMsgNmId"  property="orgnlMsgNmId"/>
   	</jb:bean>
   	<jb:bean beanId="fiToFiPmtStsRpt" class="com.xml.iso20022.pacs.v00200103.FIToFIPaymentStatusReportV03" createOnElement="com.topfinance.ebo.msg.Ccms30800102">
     	<jb:wiring beanIdRef="fiToFiPmtStsRpt.grpHdr" property="grpHdr"/>
@@ -35,25 +33,25 @@
     	<jb:wiring beanIdRef="fiToFiPmtStsRpt.txInfAndSts" property="txInfAndSts"/>
   	</jb:bean>
   	<jb:bean beanId="fiToFiPmtStsRpt.grpHdr.instgAgt.finInstnId.othr" class="com.xml.iso20022.pacs.v00200103.GenericFinancialIdentification1" createOnElement="com.topfinance.ebo.msg.Ccms30800102">
-  		<jb:value data="senPId"  property="id"/>
+  				<jb:value data="senPId"  property="id"/>
   	</jb:bean>
   	<jb:bean beanId="fiToFiPmtStsRpt.grpHdr.instdAgt.finInstnId.othr" class="com.xml.iso20022.pacs.v00200103.GenericFinancialIdentification1" createOnElement="com.topfinance.ebo.msg.Ccms30800102">
-  		<jb:value data="recPId"  property="id"/>
+  				<jb:value data="recPId"  property="id"/>
   	</jb:bean>
   	<jb:bean beanId="fiToFiPmtStsRpt.orgnlGrpInfAndSts.stsRsnInf" class="com.xml.iso20022.pacs.v00200103.StatusReasonInformation8" createOnElement="com.topfinance.ebo.msg.Ccms30800102">
     	<jb:wiring beanIdRef="fiToFiPmtStsRpt.orgnlGrpInfAndSts.stsRsnInf.addtlInf[0]" property="addtlInf"/>
     	<jb:wiring beanIdRef="fiToFiPmtStsRpt.orgnlGrpInfAndSts.stsRsnInf.addtlInf[0]" property="addtlInf"/>
   	</jb:bean>
   	<jb:bean beanId="fiToFiPmtStsRpt.orgnlGrpInfAndSts.stsRsnInf.addtlInf[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Ccms30800102">
-  		<jb:value data="/com.topfinance.ebo.msg.Ccms30800102/nPCPrc"  />
+  				<jb:value data="/com.topfinance.ebo.msg.Ccms30800102/nPCPrc"  />
   	</jb:bean>
   	<jb:bean beanId="fiToFiPmtStsRpt.grpHdr" class="com.xml.iso20022.pacs.v00200103.GroupHeader37" createOnElement="com.topfinance.ebo.msg.Ccms30800102">
     	<jb:wiring beanIdRef="fiToFiPmtStsRpt.grpHdr.instgAgt" property="instgAgt"/>
     	<jb:wiring beanIdRef="fiToFiPmtStsRpt.grpHdr.instdAgt" property="instdAgt"/>
-  		<jb:value data="msgId"  property="msgId"/>
-  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
-    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
-			</jb:value>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
   	</jb:bean>
   	<jb:bean beanId="fiToFiPmtStsRpt.grpHdr.instgAgt" class="com.xml.iso20022.pacs.v00200103.BranchAndFinancialInstitutionIdentification4" createOnElement="com.topfinance.ebo.msg.Ccms30800102">
     	<jb:wiring beanIdRef="fiToFiPmtStsRpt.grpHdr.instgAgt.finInstnId" property="finInstnId"/>

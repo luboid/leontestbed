@@ -6,8 +6,8 @@
     <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ccms31700101</param>
   </params>
   	<jb:bean beanId="rtrTx.bizRpt.txRpt.tx.pmt.instrSts.pmtInstrStsRsn[0].xxx.prtryRjctnRsn" class="com.xml.iso20022.camt.v00600104.ProprietaryStatusJustification" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
-  		<jb:value data="prtryStsRsn"  property="prtryStsRsn"/>
-  		<jb:value data="rjctInf"  property="rsn"/>
+  				<jb:value data="prtryStsRsn"  property="prtryStsRsn"/>
+  				<jb:value data="rjctInf"  property="rsn"/>
   	</jb:bean>
   	<jb:bean beanId="target" class="com.xml.iso20022.camt.v00600104.Document" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
     	<jb:wiring beanIdRef="rtrTx" property="rtrTx"/>
@@ -17,15 +17,15 @@
     	<jb:wiring beanIdRef="rtrTx.bizRpt.txRpt.tx.pmt.instrSts" property="instrSts"/>
     	<jb:wiring beanIdRef="rtrTx.bizRpt.txRpt.tx.pmt.prty" property="prty"/>
     	<jb:wiring beanIdRef="rtrTx.bizRpt.txRpt.tx.pmt.prcgVldtyTm" property="prcgVldtyTm"/>
-  		<jb:value data="frmOrgnlMsgId"  property="txRef"/>
-  		<jb:value data="intrBkValDt" decoder="Date" property="intrBkValDt">
-    		<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
-			</jb:value>
+  				<jb:value data="frmOrgnlMsgId"  property="txRef"/>
+  				<jb:value data="intrBkValDt" decoder="Date" property="intrBkValDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizRpt.txRpt.tx.pmt.trfValDt" class="com.xml.iso20022.camt.v00600104.DateAndDateTimeChoice" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
-  		<jb:value data="sttlmDt" decoder="Date" property="dt">
-    		<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
-			</jb:value>
+  				<jb:value data="sttlmDt" decoder="Date" property="dt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizRpt.txRpt.tx.pmtFr.acctId" class="com.xml.iso20022.camt.v00600104.AccountIdentification1Choice" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
     	<jb:wiring beanIdRef="rtrTx.bizRpt.txRpt.tx.pmtFr.acctId.dmstAcct" property="dmstAcct"/>
@@ -48,10 +48,10 @@
     	<jb:wiring beanIdRef="rtrTx.bizRpt.txRpt.tx.pmt.instrSts.pmtInstrStsRsn[0]" property="pmtInstrStsRsn"/>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizRpt.txRpt.tx.pmt.instrSts.pmtInstrSts" class="com.xml.iso20022.camt.v00600104.PaymentStatusCode4Choice" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
-  		<jb:value data="prcSts"  property="prtrySts"/>
+  				<jb:value data="prcSts"  property="prtrySts"/>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizRpt.txRpt.tx.pmt.prty" class="com.xml.iso20022.camt.v00600104.PriorityCodeChoice" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
-  		<jb:value data="netgRnd"  property="prtryCd"/>
+  				<jb:value data="netgRnd"  property="prtryCd"/>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizRpt" class="com.xml.iso20022.camt.v00600104.Transactions4" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
     	<jb:wiring beanIdRef="rtrTx.bizRpt.txRpt" property="txRpt"/>
@@ -61,41 +61,41 @@
   	</jb:bean>
   	<jb:bean beanId="rtrTx.oprlErr" class="com.xml.iso20022.camt.v00600104.ErrorHandling3" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
     	<jb:wiring beanIdRef="rtrTx.oprlErr.err" property="err"/>
-  		<jb:value data="desc"  property="desc"/>
+  				<jb:value data="desc"  property="desc"/>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizRpt.txRpt.tx.pmt.prcgVldtyTm.dtTmRg" class="com.xml.iso20022.camt.v00600104.DateTimePeriodDetails" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
-  		<jb:value data="rcvTm" decoder="Date" property="frDtTm">
-    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
-			</jb:value>
-  		<jb:value data="trnsmtTm" decoder="Date" property="toDtTm">
-    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
-			</jb:value>
+  				<jb:value data="rcvTm" decoder="Date" property="frDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="trnsmtTm" decoder="Date" property="toDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizRpt.txRpt.tx" class="com.xml.iso20022.camt.v00600104.Transaction5" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
     	<jb:wiring beanIdRef="rtrTx.bizRpt.txRpt.tx.pmtFr" property="pmtFr"/>
     	<jb:wiring beanIdRef="rtrTx.bizRpt.txRpt.tx.pmt" property="pmt"/>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizQryRef" class="com.xml.iso20022.camt.v00600104.QueryReference" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
-  		<jb:value data="orgnlMsgId"  property="qryRef"/>
-  		<jb:value data="orgnlInstgDrctPty"  property="qryNm"/>
+  				<jb:value data="orgnlMsgId"  property="qryRef"/>
+  				<jb:value data="orgnlInstgDrctPty"  property="qryNm"/>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizRpt.txRpt.tx.pmt.instrSts.pmtInstrStsRsn[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
     	<jb:wiring beanIdRef="rtrTx.bizRpt.txRpt.tx.pmt.instrSts.pmtInstrStsRsn[0].xxx" />
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizRpt.txRpt.tx.pmtFr.acctId.dmstAcct" class="com.xml.iso20022.camt.v00600104.SimpleIdentificationInformation" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
-  		<jb:value data="frmOrgnlInstgDrctPty"  property="id"/>
+  				<jb:value data="frmOrgnlInstgDrctPty"  property="id"/>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizRpt.txRpt.tx.pmt.instrSts.pmtInstrStsRsn[0].xxx" class="com.xml.iso20022.camt.v00600104.PaymentStatusReasonCode4Choice" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
     	<jb:wiring beanIdRef="rtrTx.bizRpt.txRpt.tx.pmt.instrSts.pmtInstrStsRsn[0].xxx.prtryRjctnRsn" property="prtryRjctnRsn"/>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.oprlErr.err" class="com.xml.iso20022.camt.v00600104.ErrorHandling1Choice" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
-  		<jb:value data="prtry"  property="prtry"/>
+  				<jb:value data="prtry"  property="prtry"/>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.msgId" class="com.xml.iso20022.camt.v00600104.MessageIdentification" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
-  		<jb:value data="msgId"  property="id"/>
+  				<jb:value data="msgId"  property="id"/>
   	</jb:bean>
   	<jb:bean beanId="rtrTx.bizRpt.txRpt.instrRef" class="com.xml.iso20022.camt.v00600104.PaymentIdentification3Choice" createOnElement="com.topfinance.ebo.msg.Ccms31700101">
-  		<jb:value data="pmtInstrRef"  property="pmtInstrRef"/>
+  				<jb:value data="pmtInstrRef"  property="pmtInstrRef"/>
   	</jb:bean>
 </smooks-resource-list>  
     

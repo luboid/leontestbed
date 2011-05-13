@@ -100,7 +100,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_131)) {
 			pkgName = "XXXX";
 		} else if (mesgType.equals(TestDummy.OPERATION_132)) {
-			pkgName = "com.xml.cnaps2.beps.v13200101";
+			pkgName = "com.xml.iso20022.pacs.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_133)) {
 			pkgName = "XXXX";
 		} else if (mesgType.equals(TestDummy.OPERATION_134)) {
