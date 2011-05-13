@@ -53,8 +53,27 @@ public class Cnaps2Constants {
 		// it should be sth like "type" of operation which is enumeration value
 
 		String pkgName = null;
-		if (mesgType.equals("testNested")) {
-			pkgName = "com.xml.testNested";
+
+
+	
+////////////////////////////////////////////////////
+	// dev test, do not delete
+    if(mesgType.equals("testNested")) {
+    	pkgName="com.xml.testNested";
+    } 
+    else if(mesgType.equals("saps.737.001.01")) {
+    	pkgName = "com.xml.cnaps2.saps.v73700101";
+    }
+    else if(mesgType.equals("beps.123.001.01")) {
+    	// reuse this
+    	pkgName = JAXB_ISO_PACS_v00800102;
+    }    
+    else if(mesgType.equals("beps.393.001.01")) {
+    	// reuse this
+    	pkgName = "com.xml.cnaps2.camt.v00500104";
+////////////////////////////////////////////////////    	
+    	
+    	
 		} else if (mesgType.equals(TestDummy.OPERATION_101)) {
 			// pkgName = "com.topfinance.plugin.cnaps2.v00800102";
 			pkgName = JAXB_ISO_PACS_v00800102;

@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 
 import javax.xml.transform.stream.StreamSource;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.milyn.Smooks;
 import org.milyn.container.ExecutionContext;
@@ -18,12 +19,26 @@ import com.topfinance.util.PerfUtil;
 
 public class SmooksTransformer {
 	
+	public static class Splitter {
+		public String split(String s, String v) {
+			logger.info("s="+s+", v="+v);
+
+			if(v.contains(s)) {
+				return v;
+			} else {
+				return "xxxx";
+			}
+		}
+	}
+	
 	private static Logger logger = Logger.getLogger(SmooksTransformer.class);
 	public static final String ROOT_BEAN_ID = "target";
 	
 //	public static Object java2Java(Object src, InputStream mapping) {
 //		return java2Java(null, src, mapping);
 //	}
+	
+	
 	
 	public static Map<String, Smooks> cachedSmooks = new ConcurrentSkipListMap<String, Smooks>();
 	
@@ -47,7 +62,7 @@ public class SmooksTransformer {
 			}
 			
 			ExecutionContext executionContext = smooks.createExecutionContext();
-
+			
 			// Transform the source Order to the target LineOrder via a
 			// JavaSource and JavaResult instance...
 			JavaSource source = new JavaSource(src);
@@ -81,7 +96,8 @@ public class SmooksTransformer {
 			smooks = new Smooks(mapping);
 
             ExecutionContext executionContext = smooks.createExecutionContext();
-
+            Splitter s = new Splitter();
+            executionContext.getBeanContext().addBean("splitter", s);
             // Transform the source Order to the target LineOrder via a
             // JavaSource and JavaResult instance...
             StreamSource source = new StreamSource(new ByteArrayInputStream(src.getBytes()));

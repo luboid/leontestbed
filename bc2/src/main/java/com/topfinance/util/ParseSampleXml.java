@@ -59,31 +59,42 @@ public class ParseSampleXml{
     public static class DataEle {
     	
     	public boolean isList() {
-    		return jaxbType == null;
+    		return type == null;
     	}
     	
-        public DataEle(String key, String value, Class jaxbType) {
+        public DataEle(String key, String value, String type, String prefix) {
             super();
             this.key = key;
             this.value = value;
-            this.jaxbType = jaxbType;
+            this.type = type;
+            this.prefix = prefix;
         }
         // key is the xpath replaced / with .
         public String key;
         
         public String value;
-        public Class jaxbType;
+        
+        // This used to be jaxbType, becoz it was initially get from parsing the sample xml and traverse the path in jaxb classes to get the type
+        // however now we can get it from metadata tables.
+        // so now this is a generic type that need to be mapped to any text in template
+        public String type;
 
+        // like A01
+        public String prefix;
+        
+        
         public String eboFldName;
         
         public List<DataEle> leaves = new ArrayList<DataEle>();
 
 		@Override
 		public String toString() {
-			return "DataEle [key=" + key + ", value=" + value + ", jaxbType="
-					+ jaxbType + ", eboFldName=" + eboFldName + ", leaves="
-					+ leaves + "]";
+			return "DataEle [key=" + key + ", value=" + value + ", type="
+					+ type + ", prefix=" + prefix + ", eboFldName="
+					+ eboFldName + ", leaves=" + leaves + "]";
 		}
+
+
 
 
         
@@ -245,6 +256,12 @@ public class ParseSampleXml{
             }
             
             debug("parentClass="+parentClass.getName()+", name="+name);
+            
+            // array
+            if(name.contains("[")) {
+            	name = name.substring(0, name.indexOf("["));
+            }
+            
             Field thisField = parentClass.getDeclaredField(name);
             debug("thisField="+thisField.getName());
             res = thisField;
@@ -324,16 +341,9 @@ public class ParseSampleXml{
     
     
     private void handleElement(Element ele, Stack<String> pathStack) throws Exception{
-        String name = getJavaName(ele.getName());
         
-        // special case to handle
-        if(name.equals("fIToFICstmrCdtTrf")) {
-            // for 101 
-            name = "fiToFICstmrCdtTrf";
-        } else if(name.equals("fIToFIPmtStsRpt")) {
-            // for 102
-            name = "fiToFIPmtStsRpt";
-        }
+        
+        String name = ParseSampleXmlHelper.xpath2opath(ele.getName());
         
         Field thisField = findThisField(pathStack, name);
         Class thisClass = thisField.getType();
@@ -408,10 +418,22 @@ public class ParseSampleXml{
         }
         
     }
+
+
     
     private void addToParsed(String key, String value, Class type) {
+    	// now don't use this route (to parse sample xml)
+    	// if used, need map the type in jaxb classes to the generic types
+    	 
     	debug("addedToParsed: key="+key+", value="+value+", type="+type.getSimpleName());
-        parsed.add(new DataEle(key, value, type));
+    	
+    	// e.g. (TO DO) 
+//    	String genericType = getTypeFromJaxbType(type);
+    	// this is to overcome compile but not is wrong
+    	String genericType = type.getSimpleName();
+    	// TODO
+    	String prefix = "dummy";
+        parsed.add(new DataEle(key, value, genericType, prefix));
     }
     
     public static String printStack(Stack<String> stack) {
@@ -676,138 +698,140 @@ public class ParseSampleXml{
         }
     }
     
-    // mapping of jaxbType to EboType
-    private String getEboTypeFromJaxbType(DataEle pp, EboInfo subEbo) {
-    	Class jaxbType = pp.jaxbType;
-    	if(pp.isList()) {
-    		return "java.util.Set<"+subEbo.getDestinationClassName()+">";
-    	}
-    	
-        String res = "";
-        if(jaxbType.getName().startsWith(JAXB_PKG_PREFIX)) {
-            // one of the enumeration class?
-            if(jaxbType.isEnum()) {
-                // use String instead
-                res = "String";
-            }else {
-                // what is it? 
-                throw new RuntimeException("==============getEboTypeFromJaxbType(): "+jaxbType.getName());
-            }
-            
-        } else if(jaxbType.equals(BigDecimal.class)) {
-            // TODO maybe we should not use bigdecimal even in jaxb class
-            res = "Double";
-        } else if(jaxbType.equals(XMLGregorianCalendar.class)) {
-            res = "java.util.Date";
-        } else if(jaxbType.equals(Boolean.class)) {
-            // todo how to map boolean to db? 
-            res = "Boolean";
-        } else {
-            res = jaxbType.getSimpleName();
-        }
+    // mapping of type to EboType
+//    private String getEboTypeFromJaxbType(DataEle pp, EboInfo subEbo) {
+//    	if(pp.isList()) {
+//    		return "java.util.Set<"+subEbo.getDestinationClassName()+">";
+//    	}
+//
+//        String res = "";
         
-        return res;
-    }
+        
+//    	Class jaxbType = pp.type;
+//        if(jaxbType.getName().startsWith(JAXB_PKG_PREFIX)) {
+//            // one of the enumeration class?
+//            if(jaxbType.isEnum()) {
+//                // use String instead
+//                res = "String";
+//            }else {
+//                // what is it? 
+//                throw new RuntimeException("==============getEboTypeFromJaxbType(): "+jaxbType.getName());
+//            }
+//            
+//        } else if(jaxbType.equals(BigDecimal.class)) {
+//            // TODO maybe we should not use bigdecimal even in jaxb class
+//            res = "Double";
+//        } else if(jaxbType.equals(XMLGregorianCalendar.class)) {
+//            res = "java.util.Date";
+//        } else if(jaxbType.equals(Boolean.class)) {
+//            // todo how to map boolean to db? 
+//            res = "Boolean";
+//        } else {
+//            res = jaxbType.getSimpleName();
+//        }
+        
+//        return res;
+//    }
     
-    // mapping of jaxbType to DbType
-    private String getOracleDbTypeFromJaxbType(DataEle pp) {
-    	
-    	if(pp.isList()) {
-    		return "";
-    	}
-    	Class jaxbType = pp.jaxbType;
-        String DB_BOOLEAN = "CHAR(1)";
-        String DB_SHORT_STRING = "VARCHAR2(20)";
-        String DB_STRING = "VARCHAR2(200)";
-        String DB_DATE = "DATE";
-        String DB_NUMBER = "NUMBER";
-        
-        
-        String res = "";
-        if(jaxbType.getName().startsWith(JAXB_PKG_PREFIX)) {
-            // one of the enumeration class?
-            if(jaxbType.isEnum()) {
-                // use String instead
-                res = DB_SHORT_STRING;
-            }else {
-                // what is it? 
-                throw new RuntimeException("==============getEboTypeFromJaxbType(): "+jaxbType.getName());
-            }
-            
-        } else if(jaxbType.equals(BigDecimal.class)) {
-            // TODO maybe we should not use bigdecimal even in jaxb class
-            res = DB_NUMBER;
-        } else if(jaxbType.equals(Double.class)) {
-            res = DB_NUMBER;            
-        } else if(jaxbType.equals(Float.class)) {
-            res = DB_NUMBER;
-        } else if(jaxbType.equals(Integer.class)) {
-            res = DB_NUMBER;
-        } else if(jaxbType.equals(Long.class)) {
-            res = DB_NUMBER;                                                
-        } else if(jaxbType.equals(XMLGregorianCalendar.class)) {
-            res = DB_DATE;
-        } else if(jaxbType.equals(Date.class)) {
-            res = DB_DATE;            
-        } else if(jaxbType.equals(Boolean.class)) {
-            res = DB_BOOLEAN;
-        } else if(jaxbType.equals(String.class)) {
-            res = DB_STRING;
-        } else {
-            // what is it? 
-            throw new RuntimeException("==============getEboTypeFromJaxbType(): "+jaxbType.getName());
-        }
-        return res;
-    }
-    private String getMysqlDbTypeFromJaxbType(DataEle pp) {
-    	Class jaxbType = pp.jaxbType;
-    	if(pp.isList()) {
-    		return "";
-    	}
-    	
-        String DB_BOOLEAN = "CHAR(1)";
-        String DB_SHORT_STRING = "VARCHAR(20)";
-        String DB_STRING = "VARCHAR(200)";
-        String DB_DATE = "DATE";
-        String DB_NUMBER = "DOUBLE";
-        
-        
-        String res = "";
-        if(jaxbType.getName().startsWith(JAXB_PKG_PREFIX)) {
-            // one of the enumeration class?
-            if(jaxbType.isEnum()) {
-                // use String instead
-                res = DB_SHORT_STRING;
-            }else {
-                // what is it? 
-                throw new RuntimeException("==============getEboTypeFromJaxbType(): "+jaxbType.getName());
-            }
-            
-        } else if(jaxbType.equals(BigDecimal.class)) {
-            // TODO maybe we should not use bigdecimal even in jaxb class
-            res = DB_NUMBER;
-        } else if(jaxbType.equals(Double.class)) {
-            res = DB_NUMBER;            
-        } else if(jaxbType.equals(Float.class)) {
-            res = DB_NUMBER;
-        } else if(jaxbType.equals(Integer.class)) {
-            res = DB_NUMBER;
-        } else if(jaxbType.equals(Long.class)) {
-            res = DB_NUMBER;                                                
-        } else if(jaxbType.equals(XMLGregorianCalendar.class)) {
-            res = DB_DATE;
-        } else if(jaxbType.equals(Date.class)) {
-            res = DB_DATE;                        
-        } else if(jaxbType.equals(Boolean.class)) {
-            res = DB_BOOLEAN;
-        } else if(jaxbType.equals(String.class)) {
-            res = DB_STRING;
-        } else {
-            // what is it? 
-            throw new RuntimeException("==============getEboTypeFromJaxbType(): "+jaxbType.getName());
-        }
-        return res;
-    }
+    // mapping of type to DbType
+//    private String getOracleDbTypeFromJaxbType(DataEle pp) {
+//    	
+//    	if(pp.isList()) {
+//    		return "";
+//    	}
+//    	Class jaxbType = pp.type;
+//        String DB_BOOLEAN = "CHAR(1)";
+//        String DB_SHORT_STRING = "VARCHAR2(20)";
+//        String DB_STRING = "VARCHAR2(200)";
+//        String DB_DATE = "DATE";
+//        String DB_NUMBER = "NUMBER";
+//        
+//        
+//        String res = "";
+//        if(jaxbType.getName().startsWith(JAXB_PKG_PREFIX)) {
+//            // one of the enumeration class?
+//            if(jaxbType.isEnum()) {
+//                // use String instead
+//                res = DB_SHORT_STRING;
+//            }else {
+//                // what is it? 
+//                throw new RuntimeException("==============getEboTypeFromJaxbType(): "+jaxbType.getName());
+//            }
+//            
+//        } else if(jaxbType.equals(BigDecimal.class)) {
+//            // TODO maybe we should not use bigdecimal even in jaxb class
+//            res = DB_NUMBER;
+//        } else if(jaxbType.equals(Double.class)) {
+//            res = DB_NUMBER;            
+//        } else if(jaxbType.equals(Float.class)) {
+//            res = DB_NUMBER;
+//        } else if(jaxbType.equals(Integer.class)) {
+//            res = DB_NUMBER;
+//        } else if(jaxbType.equals(Long.class)) {
+//            res = DB_NUMBER;                                                
+//        } else if(jaxbType.equals(XMLGregorianCalendar.class)) {
+//            res = DB_DATE;
+//        } else if(jaxbType.equals(Date.class)) {
+//            res = DB_DATE;            
+//        } else if(jaxbType.equals(Boolean.class)) {
+//            res = DB_BOOLEAN;
+//        } else if(jaxbType.equals(String.class)) {
+//            res = DB_STRING;
+//        } else {
+//            // what is it? 
+//            throw new RuntimeException("==============getEboTypeFromJaxbType(): "+jaxbType.getName());
+//        }
+//        return res;
+//    }
+//    private String getMysqlDbTypeFromJaxbType(DataEle pp) {
+//    	Class jaxbType = pp.type;
+//    	if(pp.isList()) {
+//    		return "";
+//    	}
+//    	
+//        String DB_BOOLEAN = "CHAR(1)";
+//        String DB_SHORT_STRING = "VARCHAR(20)";
+//        String DB_STRING = "VARCHAR(200)";
+//        String DB_DATE = "DATE";
+//        String DB_NUMBER = "DOUBLE";
+//        
+//        
+//        String res = "";
+//        if(jaxbType.getName().startsWith(JAXB_PKG_PREFIX)) {
+//            // one of the enumeration class?
+//            if(jaxbType.isEnum()) {
+//                // use String instead
+//                res = DB_SHORT_STRING;
+//            }else {
+//                // what is it? 
+//                throw new RuntimeException("==============getEboTypeFromJaxbType(): "+jaxbType.getName());
+//            }
+//            
+//        } else if(jaxbType.equals(BigDecimal.class)) {
+//            // TODO maybe we should not use bigdecimal even in jaxb class
+//            res = DB_NUMBER;
+//        } else if(jaxbType.equals(Double.class)) {
+//            res = DB_NUMBER;            
+//        } else if(jaxbType.equals(Float.class)) {
+//            res = DB_NUMBER;
+//        } else if(jaxbType.equals(Integer.class)) {
+//            res = DB_NUMBER;
+//        } else if(jaxbType.equals(Long.class)) {
+//            res = DB_NUMBER;                                                
+//        } else if(jaxbType.equals(XMLGregorianCalendar.class)) {
+//            res = DB_DATE;
+//        } else if(jaxbType.equals(Date.class)) {
+//            res = DB_DATE;                        
+//        } else if(jaxbType.equals(Boolean.class)) {
+//            res = DB_BOOLEAN;
+//        } else if(jaxbType.equals(String.class)) {
+//            res = DB_STRING;
+//        } else {
+//            // what is it? 
+//            throw new RuntimeException("==============getEboTypeFromJaxbType(): "+jaxbType.getName());
+//        }
+//        return res;
+//    }
     // get a meaningful Java name from full opath (while keep reasonably short)  
     private void getEboVariableNameFromJaxbOPath(StringBuffer javaNameBuf, StringBuffer dbNameBuf, DataEle dataEle) {
     	
@@ -870,7 +894,8 @@ public class ParseSampleXml{
     	
         String key = pp.key;
         String value = pp.value;
-        Class jaxbType = pp.jaxbType;
+        String metaType = pp.type;
+        String prefix = pp.prefix;
         EboInfo.Column column = new EboInfo.Column();
         StringBuffer javaNameBuf = new StringBuffer();
         StringBuffer dbNameBuf = new StringBuffer();
@@ -895,9 +920,9 @@ public class ParseSampleXml{
         String varName = StringUtils.uncapitalize(capitizedJavaName);
         
         
-        //key=fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.instrPrty, value=NORM, jaxbType=class java.lang.String
+        //key=fiToFICstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.instrPrty, value=NORM, type=class java.lang.String
         debug("");
-        debug("key="+key+", value="+value+", jaxbType="+jaxbType+", varName="+varName);
+        debug("=========key="+key+", value="+value+", type="+metaType+", varName="+varName+", prefix="+prefix);
 
 
 
@@ -944,6 +969,40 @@ public class ParseSampleXml{
             	}
             	
             	if(eName.contains("[")) {
+            		
+            		if(StringUtils.isNotEmpty(pp.prefix) ) {
+            			// handle prefix style fields
+            			// now we tell by prefix
+            			// maybe can also tell by eName if we see in the jaxb class it is List<String> instead of List<Object>
+            			debug("*************prefix="+pp.prefix);
+            			MetaJaxbElement meta = path2Meta.get(path);
+            			if(meta==null) {
+            				// the first time, create the parent wiring
+            				meta = new MetaJaxbElement();
+                        	meta.setBeanClass("java.util.ArrayList");
+                        	meta.setBeanId(beanId);
+                        	meta.setCreateOn(eboPkgName+"."+eboClassName);
+                        	path2Meta.put(path, meta);
+                        	
+                        	// add wiring to parent
+                        	Wiring w = new Wiring();
+                        	w.setBeanIdRef(beanId);
+                        	w.setProperty(eName.substring(0, eName.indexOf("[")));
+                        	parentMeta.getWirings().add(w);
+            			}
+            			
+                    	// value
+                    	Value v = new Value();
+                    	v.setProperty("NULL");
+                    	v.setData("/"+eboPkgName+"."+eboClassName+"/"+varName);
+                    	v.setDecoder("NULL");
+                    	v.setPrefix(pp.prefix);
+                    	// TODO decoder?
+                    	meta.getValues().add(v);
+            			
+            			
+            		}
+            		else {
             		// array of values
             		MetaJaxbElement meta = new MetaJaxbElement();
 //                	meta.setEboPkgName(eboPkgName);
@@ -968,6 +1027,7 @@ public class ParseSampleXml{
                 	w.setBeanIdRef(beanId);
                 	w.setProperty(eName.substring(0, eName.indexOf("[")));
                 	parentMeta.getWirings().add(w);
+            		}
             	}
             	
             	else {
@@ -1285,7 +1345,8 @@ public class ParseSampleXml{
 		for (DataEle pp : elements) {
 		    String key = pp.key;
 		    String value = pp.value;
-		    Class jaxbType = pp.jaxbType;
+		    String metaType = pp.type;
+		    String prefix = pp.prefix;
 		    
 		    EboInfo subEbo = null;
 		    if(pp.isList()) {
@@ -1294,7 +1355,7 @@ public class ParseSampleXml{
 
 		    }
 		    
-		    debug("key="+key+", value="+value+", jaxbType="+ (jaxbType==null ? "NULL" : jaxbType.getName()) );
+		    debug("key="+key+", value="+value+", type="+ (metaType==null ? "NULL" : metaType) );
 		    
 		    EboInfo.Column column = new EboInfo.Column();
 		    if(pp.isList()) {
@@ -1320,14 +1381,14 @@ public class ParseSampleXml{
 //                    capitizedJavaName+=oldCount;
 //                    
 //                }
-
+		    column.setPrefix(prefix);
 		    column.setCapitalisedVariableName(capitizedJavaName);
 		    column.setVariableName(StringUtils.uncapitalize(capitizedJavaName));
-		    column.setJavaType(getEboTypeFromJaxbType(pp, subEbo));
+		    column.setJavaType(ParseSampleXmlHelper.getEboTypeFromMetaType(pp, subEbo));
 
 		    column.setDbName(dbName);
-		    column.setDbTypeOracle(getOracleDbTypeFromJaxbType(pp));
-		    column.setDbTypeMysql(getMysqlDbTypeFromJaxbType(pp));
+		    column.setDbTypeOracle(ParseSampleXmlHelper.getOracleDbTypeFromJaxbType(pp));
+		    column.setDbTypeMysql(ParseSampleXmlHelper.getMysqlDbTypeFromJaxbType(pp));
 		    
 		    column.setObjPath(key);
 		     
@@ -1336,15 +1397,9 @@ public class ParseSampleXml{
 		    xmlPaths.add("Document");
 		    String[] ss = StringUtils.split(key, ".");
 		    for(String s: ss) {
-		    	String xmlPath=s;
-
-		     // special case to handle
-		    	if("fiToFICstmrCdtTrf".equals(s)) {
-		    		xmlPath="FIToFICstmrCdtTrf";
-		    	}else if("fiToFIPmtStsRpt".equals(s)) {
-		    		xmlPath="FIToFIPmtStsRpt";
-		    	}
-		    	else if(s.startsWith("@")) {
+		    	String xmlPath = ParseSampleXmlHelper.opath2xpath(s);
+		    	
+		    	if(s.startsWith("@")) {
 		    		xmlPath="@"+StringUtils.capitalize(s.substring(1));
 		    	}
 		    	else {
@@ -1584,4 +1639,136 @@ public class ParseSampleXml{
 //        OpInfo oi = OpInfo.fromString(s);
 //        debug("oi="+oi);
     }
+    
+    
+    
+    /**
+     * This is to get the opath from blzFldPath, based on information from jaxb package
+     * The opath contains [0] to indicate this is a List
+     * 
+     * @param xpath
+     * @param op
+     * @return
+     * @throws Exception
+     */
+	public static String getKeyFromBizFldPath(String xpath, OpInfo op) throws Exception {
+		
+		
+		String res = "";
+		
+		
+		String[] tokens = StringUtils.split(xpath, "/");
+		
+//		String key = null;
+//		StringBuffer buf = new StringBuffer();
+//		for (int i = 1; i < tokens.length; i++) {
+//			if (i != 1) {
+//				buf.append(".");
+//			}
+//			String oPath = "";
+//			if (tokens[i].equalsIgnoreCase("FIToFICstmrCdtTrf")) {
+//				oPath = "fiToFICstmrCdtTrf";
+//			} else if (tokens[i].equalsIgnoreCase("cdtTrfTxInf")) {
+//				// in com.cnaps2.xml.iso20022.pacs.v00800102.FIToFICustomerCreditTransferV02
+//				oPath = "cdtTrfTxInf[0]";
+//			} else {
+//				oPath = StringUtils.uncapitalize(tokens[i]);
+//			}
+//			buf.append(oPath);
+//		}
+//		return buf.toString();
+		
+		
+		Stack<String> pathStack = new Stack<String>();
+		String jaxbPkgName = Cnaps2Constants.getPackageName(op.getMesgType());
+		Class parentClass = Class.forName(jaxbPkgName + ".Document");
+		for (int i = 1; i < tokens.length; i++) {
+//			debug("tokens["+i+"]="+tokens[i]);
+//			String name = ParseSampleXml.getJavaName(tokens[i]);
+			String name = ParseSampleXmlHelper.xpath2opath(tokens[i]);
+			
+//			if(i==1) {
+//				pathStack.push(name);
+//				// skip Document which is root
+//				continue;
+//			}
+			
+			Field thisField = ParseSampleXml.findField(pathStack, name, parentClass);
+			Class thisClass = thisField.getType();
+			if(i!=tokens.length-1) {
+				// not leaf
+				if(ParseSampleXml.isCollection(thisClass)) {
+	                // TODO probably [1][2].. ???
+	                name =name+"[0]";
+	                pathStack.push(name);
+	            }else {
+	    			pathStack.push(name);
+	            }
+			}
+			else {
+				// leaf
+	            boolean needAppendValue = false;
+	            Class valueClass = null;
+	            // test if collection is here
+	            if(ParseSampleXml.isCollection(thisClass)) {
+	                // TODO probably [1][2].. ???
+	            	name =name+"[0]";
+	                valueClass = Iso8583ToXml.getCollectionGenericType(thisField);
+	            } else {
+	                valueClass = ParseSampleXml.getValueClassIfHave(thisClass);
+	                if(valueClass==null) {
+	                    valueClass = thisClass;
+	                }
+	                else {
+	                    needAppendValue = true;
+	                }
+	            }
+	            
+	            String xmlPath = ParseSampleXml.printStack(pathStack);
+//	            String value = guessDateValue(name, ele.getText());
+	            String elementPath = xmlPath+"."+name;
+	            
+	            res = needAppendValue? elementPath+".value" : elementPath;				
+			}
+			
+			
+
+
+		}
+		
+		return res;
+
+	}
+	
+	
+	// not in use. used to be in TestGenMap
+	private Class getJaxbTypeFromBizFldType(String bizFldType) throws Exception {
+		String clazz = null;
+		Class res = null;
+
+		if(StringUtils.isEmpty(bizFldType)) {
+			return null;
+			
+		}
+		else if (bizFldType.contains("Text")) {
+			clazz = "java.lang.String";
+		} else if (bizFldType.toLowerCase().contains("code")) {
+			clazz = "java.lang.String";
+		} else if (bizFldType.equalsIgnoreCase("ActiveCurrencyAndAmount")) {
+			clazz = "java.math.BigDecimal";
+		} else if (bizFldType.equalsIgnoreCase("DecimalNumber") ||
+				bizFldType.equalsIgnoreCase("CurrencyAndAmount")) {
+			clazz = "java.lang.Double";
+			
+		} else if (bizFldType.equalsIgnoreCase("ISODateTime")) {
+			clazz = "java.util.Date";
+		}
+
+		if (clazz != null) {
+			res = Class.forName(clazz);
+		} else {
+			throw new RuntimeException("no clazz matched for bizFldType= " + bizFldType);
+		}
+		return res;
+	}
 }

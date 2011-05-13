@@ -67,6 +67,7 @@ public class MetaJaxbElement {
 		String data;
 		String property;
 		String decoder;
+		String prefix;
 		
 		public String getData() {
 			return data;
@@ -87,11 +88,19 @@ public class MetaJaxbElement {
 		public void setDecoder(String decoder) {
 			this.decoder = decoder;
 		}
+		
 		@Override
 		public String toString() {
 			return "Value [data=" + data + ", property=" + property
-					+ ", decoder=" + decoder + "]";
+					+ ", decoder=" + decoder + ", prefix=" + prefix + "]";
 		}
+		public String getPrefix() {
+			return prefix;
+		}
+		public void setPrefix(String prefix) {
+			this.prefix = prefix;
+		}
+
 		
 		
 	}

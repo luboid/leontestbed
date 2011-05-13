@@ -23,7 +23,7 @@ public class EboInfo {
     
     public static class Column {
     	
-
+    	String prefix;
     	boolean isNested;
     	
         String variableName;
@@ -136,6 +136,14 @@ public class EboInfo {
 
 		public void setNested(boolean isNested) {
 			this.isNested = isNested;
+		}
+
+		public String getPrefix() {
+			return prefix;
+		}
+
+		public void setPrefix(String prefix) {
+			this.prefix = prefix;
 		}
 
 
