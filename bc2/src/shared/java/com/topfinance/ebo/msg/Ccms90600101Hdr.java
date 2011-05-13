@@ -31,7 +31,7 @@ public class Ccms90600101Hdr  implements java.io.Serializable {
     private String msgId;
     
     @JaxbMapping(objPath="bizClssTpMgmt.grpHdr.creDtTm")
-    private String creDtTm;
+    private Date creDtTm;
     
     @JaxbMapping(objPath="bizClssTpMgmt.grpHdr.instgPty.instgDrctPty")
     private String instgDrctPty;
@@ -108,7 +108,7 @@ public class Ccms90600101Hdr  implements java.io.Serializable {
    * @return the creDtTm
    */
     @Column(name = "CREDTTM")
-    public String getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }	 
      
@@ -118,7 +118,7 @@ public class Ccms90600101Hdr  implements java.io.Serializable {
    * @param newCreDtTm the new creDtTm
    */
 
-    public void  setCreDtTm(String newCreDtTm) {
+    public void  setCreDtTm(Date newCreDtTm) {
         creDtTm = newCreDtTm;
     }	  
   /**
