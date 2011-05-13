@@ -32,7 +32,7 @@ public class Ccms99000102  implements java.io.Serializable {
     @JaxbMapping(objPath="comConf.confInf.origSndDt")
     private String mT;
     
-    @JaxbMapping(objPath="comConf.confInf.msgId")
+    @JaxbMapping(objPath="comConf.confInf.mt")
     private String msgId;
     
     @JaxbMapping(objPath="comConf.confInf.msgRefId")
