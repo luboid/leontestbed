@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ccms99200101Hdr</param>
+  </params>
+  	<jb:bean beanId="chckRspn.chckRspnInf" class="com.xml.cnaps2.ccms.v99200101.ChckRspnInf1" createOnElement="com.topfinance.ebo.msg.Ccms99200101Hdr">
+  		<jb:value data="origSndNd"  property="origSndNd"/>
+  		<jb:value data="origSndSvsrNm"  property="origSndSvsrNm"/>
+  		<jb:value data="origSndSvsrNm1"  property="origSndSvsrNm"/>
+  		<jb:value data="rcvRoadNm"  property="rcvRoadNm"/>
+  		<jb:value data="origSndDt"  property="origSndDt"/>
+  		<jb:value data="rspnSvcrNm"  property="rspnSvcrNm"/>
+  		<jb:value data="rspnSvcrNm1"  property="rspnSvcrNm"/>
+  		<jb:value data="rspnLineMgr"  property="rspnLineMgr"/>
+  		<jb:value data="rcvLineNm"  property="rcvLineNm"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.ccms.v99200101.Document" createOnElement="com.topfinance.ebo.msg.Ccms99200101Hdr">
+    	<jb:wiring beanIdRef="chckRspn" property="chckRspn"/>
+  	</jb:bean>
+  	<jb:bean beanId="chckRspn" class="com.xml.cnaps2.ccms.v99200101.ChckRspnV01" createOnElement="com.topfinance.ebo.msg.Ccms99200101Hdr">
+    	<jb:wiring beanIdRef="chckRspn.chckRspnInf" property="chckRspnInf"/>
+    	<jb:wiring beanIdRef="chckRspn.ldFctrInf[0]" property="ldFctrInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="chckRspn.ldFctrInf[0].xxx" class="com.xml.cnaps2.ccms.v99200101.LdFctrInf1" createOnElement="com.topfinance.ebo.msg.Acms99200101">
+  		<jb:value data="rspnLclLineNm"  property="rspnLclLineNm"/>
+  		<jb:value data="ldFctr"  property="ldFctr"/>
+  	</jb:bean>
+  	<jb:bean beanId="chckRspn.ldFctrInf[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Ccms99200101Hdr/ldFctrInf">
+    	<jb:wiring beanIdRef="chckRspn.ldFctrInf[0].xxx" />
+  	</jb:bean>
+</smooks-resource-list>  
+    

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms99200101Hdr" createOnElement="Document">
+				<jb:value data="/Document/ChckRspn/ChckRspnInf/OrigSndNd" property="origSndNd"/>    
+				<jb:value data="/Document/ChckRspn/ChckRspnInf/OrigSndSvsrNm" property="origSndSvsrNm"/>    
+				<jb:value data="/Document/ChckRspn/ChckRspnInf/OrigSndSvsrNm" property="origSndSvsrNm1"/>    
+				<jb:value data="/Document/ChckRspn/ChckRspnInf/RcvRoadNm" property="rcvRoadNm"/>    
+				<jb:value data="/Document/ChckRspn/ChckRspnInf/OrigSndDt" property="origSndDt"/>    
+				<jb:value data="/Document/ChckRspn/ChckRspnInf/RspnSvcrNm" property="rspnSvcrNm"/>    
+				<jb:value data="/Document/ChckRspn/ChckRspnInf/RspnSvcrNm" property="rspnSvcrNm1"/>    
+				<jb:value data="/Document/ChckRspn/ChckRspnInf/RspnLineMgr" property="rspnLineMgr"/>    
+				<jb:value data="/Document/ChckRspn/ChckRspnInf/RcvLineNm" property="rcvLineNm"/>    
+    		<jb:wiring beanIdRef="ldFctrInf[0]" property="ldFctrInf"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="ldFctrInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="ldFctrInf" />
+  </jb:bean>
+	<jb:bean beanId="ldFctrInf" class="com.topfinance.ebo.msg.Ccms99200101" createOnElement="/Document/ChckRspn/LdFctrInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/ChckRspn/LdFctrInf/RspnLclLineNm" property="rspnLclLineNm"/>    
+				<jb:value data="/Document/ChckRspn/LdFctrInf/LdFctr" property="ldFctr"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
