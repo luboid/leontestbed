@@ -5,7 +5,7 @@
     <param name="inputType">input.java</param>
     <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ccms92100101Hdr</param>
   </params>
-  	<jb:bean beanId="certDwnLdRspn.certfctnList[0].xxx" class="com.xml.cnaps2.ccms.v92100101.CertfctnList1" createOnElement="com.topfinance.ebo.msg.Acms92100101CertfctnList">
+  	<jb:bean beanId="certDwnLdRspn.certfctnList[0].xxx" class="com.xml.cnaps2.ccms.v92100101.CertfctnList1" createOnElement="com.topfinance.ebo.msg.Ccms92100101">
   		<jb:value data="mmbCd"  property="mmbCd"/>
   		<jb:value data="dgtlSgntr"  property="dgtlSgntr"/>
   	</jb:bean>
