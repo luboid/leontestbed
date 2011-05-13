@@ -3,7 +3,7 @@
   <params>
     <param name="stream.filter.type">SAX</param>
     <param name="inputType">input.java</param>
-    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps38700101HdrHdr</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps38700101Hdr</param>
   </params>
   	<jb:bean beanId="btchCstmrsAcctQry.grpHdr.instdPty" class="com.xml.cnaps2.beps.v38700101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Beps38700101Hdr">
   		<jb:value data="instdDrctPty"  property="instdDrctPty"/>

@@ -27,7 +27,7 @@
   </jb:bean>
 	<jb:bean beanId="acctDtls" class="com.topfinance.ebo.msg.Beps38700101" createOnElement="/Document/BtchCstmrsAcctQry/BtchCstmrsAcctQryInf/AcctDtls">
 		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/BtchCstmrsAcctQry/BtchCstmrsAcctQryInf/AcctDtls/Id" property="id"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQry/BtchCstmrsAcctQryInf/AcctDtls/Id" property="bid"/>    
 				<jb:value data="/Document/BtchCstmrsAcctQry/BtchCstmrsAcctQryInf/AcctDtls/Nm" property="nm"/>    
 				<jb:value data="/Document/BtchCstmrsAcctQry/BtchCstmrsAcctQryInf/AcctDtls/InstgPty" property="instgPty"/>    
 				<jb:value data="/Document/BtchCstmrsAcctQry/BtchCstmrsAcctQryInf/AcctDtls/AcctBk" property="acctBk"/>    

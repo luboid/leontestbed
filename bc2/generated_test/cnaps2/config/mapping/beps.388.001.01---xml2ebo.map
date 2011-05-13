@@ -30,12 +30,12 @@
   </jb:bean>
 	<jb:bean beanId="acctDtls" class="com.topfinance.ebo.msg.Beps38800101" createOnElement="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls">
 		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/Id" property="id"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/Id" property="bid"/>    
 				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/Nm" property="nm"/>    
 				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/RspsnSts" property="rspsnSts"/>    
 				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/AcctSts" property="acctSts"/>    
 				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/InstgPty" property="instgDrctPty"/>    
-				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls" property="acctDtls"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/AcctBk" property="acctDtls"/>    
 	</jb:bean>  
 
 
