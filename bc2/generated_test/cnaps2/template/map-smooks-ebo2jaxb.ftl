@@ -11,12 +11,16 @@
     	<jb:wiring beanIdRef="${wiring.beanIdRef}" <#if ("NULL"!=wiring.property)>property="${wiring.property}"</#if>/>
     	</#list>
   		<#list meta.values as val> 
-  			<#if ("Date"==val.decoder)>
-  		<jb:value data="${val.data}" decoder="Date" property="${val.property}">
-    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
-			</jb:value>
+  			<#if (""!=val.prefix) >
+					<jb:expression execOnElement="${val.data}">
+      			return "/${val.prefix}/"+_VALUE;
+    			</jb:expression>  				
+  			<#elseif ("Date"==val.decoder)>
+  				<jb:value data="${val.data}" decoder="Date" property="${val.property}">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
   			<#else>
-  		<jb:value data="${val.data}" <#if ("NULL"!=val.decoder)>decoder="${val.decoder}"</#if> <#if ("NULL"!=val.property)>property="${val.property}"</#if>/>
+  				<jb:value data="${val.data}" <#if ("NULL"!=val.decoder)>decoder="${val.decoder}"</#if> <#if ("NULL"!=val.property)>property="${val.property}"</#if>/>
   			</#if>
     	</#list>    	
   	</jb:bean>
