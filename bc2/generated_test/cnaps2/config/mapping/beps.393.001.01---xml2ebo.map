@@ -8,13 +8,55 @@
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps39300101" createOnElement="Document">
 				<jb:value data="/Document/GetTx/MsgId/Id" property="msgId"/>    
-				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[0]" property="senDerPId"/>    
-				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[1]" property="senInDerPId"/>    
-				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[2]" property="recDerPId"/>    
-				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[3]" property="bizTp"/>    
-				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[4]" property="fees"/>    
-				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[5]" property="enterpriseMark"/>    
-				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef[6]" property="customMark"/>    
+				<jb:expression property="senDerPId" execOnElement="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef">
+					if (_VALUE contains "A00") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/A00/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
+				<jb:expression property="senInDerPId" execOnElement="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef">
+					if (_VALUE contains "A22") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/A22/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
+				<jb:expression property="recDerPId" execOnElement="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef">
+					if (_VALUE contains "A01") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/A01/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
+				<jb:expression property="bizTp" execOnElement="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef">
+					if (_VALUE contains "FA5") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/FA5/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
+				<jb:expression property="fees" execOnElement="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef">
+					if (_VALUE contains "K35") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/K35/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
+				<jb:expression property="enterpriseMark" execOnElement="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef">
+					if (_VALUE contains "K37") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/K37/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
+				<jb:expression property="customMark" execOnElement="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/TxRef">
+					if (_VALUE contains "K36") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/K36/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
 	</jb:bean>
 	
 

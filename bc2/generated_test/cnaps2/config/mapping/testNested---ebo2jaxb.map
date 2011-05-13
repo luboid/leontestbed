@@ -6,9 +6,15 @@
     <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.TestNested</param>
   </params>
   	<jb:bean beanId="target" class="com.xml.testNested.Document" createOnElement="com.topfinance.ebo.msg.TestNested">
+  		<jb:wiring beanIdRef="usList" property="ustrd"/>
     	<jb:wiring beanIdRef="bookList" property="book"/>
     	<jb:value data="com.topfinance.ebo.msg.TestNested/name" property="name"/>
   	</jb:bean>
+  	<jb:bean beanId="usList" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.TestNested">
+  		<jb:value data="fldNull" />
+   		<jb:value data="fld1" />
+   		<jb:value data="fld2" />
+  	</jb:bean>  	
   	<jb:bean beanId="bookList" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.TestNested/books">
    		<jb:wiring beanIdRef="book" />
   	</jb:bean>

@@ -32,6 +32,9 @@
 		<jb:expression execOnElement="/Document/Ustrd">
 			return _VALUE+"xxx";
     </jb:expression>
+		<jb:expression execOnElement="/Document/AB">
+			return null;
+    </jb:expression>    
    	<jb:value data="/Document/Ustrd" />
 		<jb:value data="/Document/AB" />
   </jb:bean>
