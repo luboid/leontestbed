@@ -19,9 +19,13 @@ rem 604
 rem call %JAXB_HOME%\bin\xjc -b %BC2_HOME%\test\jaxb\saps.604.001.01.jxb -d %GEN_HOME%\cnaps2\java %BC2_HOME%\sample\Schema\saps.604.001.01.xsd
 
 rem testnested
-rem call %JAXB_HOME%\bin\xjc -b %BC2_HOME%\test\jaxb\testNested.jxb -d %GEN_HOME%\cnaps2\java %BC2_HOME%\sample\Schema\testNested.xsd
+call %JAXB_HOME%\bin\xjc -b %BC2_HOME%\test\jaxb\testNested.jxb -d %GEN_HOME%\cnaps2\java %BC2_HOME%\sample\Schema\testNested.xsd
 
 rem saps.737.001.01
-call %JAXB_HOME%\bin\xjc -b %BC2_HOME%\test\jaxb\saps.737.001.01.jxb -d %GEN_HOME%\cnaps2\java %BC2_HOME%\sample\Schema\saps.737.001.01.xsd
+rem call %JAXB_HOME%\bin\xjc -b %BC2_HOME%\test\jaxb\saps.737.001.01.jxb -d %GEN_HOME%\cnaps2\java %BC2_HOME%\sample\Schema\saps.737.001.01.xsd
+
+rem beps.393.001.01
+rem call %JAXB_HOME%\bin\xjc -b %BC2_HOME%\test\jaxb\camt.005.001.04.jxb -d %GEN_HOME%\cnaps2\java %BC2_HOME%\sample\Schema\camt.005.001.04.xsd
+
 
 pause

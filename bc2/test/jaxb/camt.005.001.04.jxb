@@ -1,8 +1,9 @@
 <jxb:bindings version="1.0" 
                xmlns:jxb="http://java.sun.com/xml/ns/jaxb" 
                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:abc="urn:swift:xsd:camt.005.001.04"
                > 
-   <jxb:bindings schemaLocation="file:../../sample/Schema/testNested.xsd" node="/xs:schema">   
+   <jxb:bindings schemaLocation="file:../../sample/Schema/camt.005.001.04.xsd" node="/xs:schema">   
           
    <jxb:globalBindings 
          fixedAttributeAsConstantProperty="false" 
@@ -14,9 +15,18 @@
          generateIsSetMethod="false" 
          underscoreBinding="asCharInWord"> 
          
+   		<jxb:javaType name="java.util.Date" xmlType="abc:ISODateTime" 
+   		hasNsContext = "true"
+   		parseMethod="com.xml.bind.Cnaps2DataTypeConverter.parseDateTime"
+   		printMethod="com.xml.bind.Cnaps2DataTypeConverter.printDateTime"
+   		/>
+   		<jxb:javaType name="java.util.Date" xmlType="abc:ISODate" 
+   		parseMethod="com.xml.bind.Cnaps2DataTypeConverter.parseDate"
+   		printMethod="com.xml.bind.Cnaps2DataTypeConverter.printDate"
+   		/>         
    </jxb:globalBindings>
    <jxb:schemaBindings> 
-      <jxb:package name="com.xml.testNested"> 
+      <jxb:package name="com.xml.cnaps2.camt.v00500104"> 
         <jxb:javadoc><![CDATA[<body>Package level documentation for generated package com.topfinance.plugin.cnaps2.</body>]]> 
         </jxb:javadoc> 
       </jxb:package> 
