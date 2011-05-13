@@ -1601,6 +1601,28 @@ public class TestGenMap extends TestCase {
 		}
 	}
 	
+		public void atestGenerated_303() throws Exception {
+		String msgCode = "ccms.303.001.02";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_310() throws Exception {
+		String msgCode = "ccms.310.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
 	public void atestNested() throws Exception {
 		String msgCode = "testNested";
 		String tpCode = "";
