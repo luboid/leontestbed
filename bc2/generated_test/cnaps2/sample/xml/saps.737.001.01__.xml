@@ -20,7 +20,7 @@
 			<NbOfTx>1</NbOfTx>
 			<TxList>
 				<MmbId>907100011301</MmbId>
-				<InitlAmt>CNY+100.00</InitlAmt>
+				<InitlAmt>100.00</InitlAmt>
 			</TxList>
 		</BalWorkDayChckngApplInf>
 	</BalWorkDayChckngAppl>

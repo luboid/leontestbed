@@ -7,18 +7,18 @@
 			<CreDtTm>2010-09-09T09:30:47</CreDtTm>
 			<InstgPty>
 				<InstgDrctPty>0000</InstgDrctPty>
-				<InstgIndrctPty>0000</InstgIndrctPty>
+				<InstgPty>0000</InstgPty>
 			</InstgPty>
 			<InstdPty>
 				<InstdDrctPty>308581000106</InstdDrctPty>
-				<InstdIndrctPty>308581000106</InstdIndrctPty>
+				<InstdPty>308581000106</InstdPty>
 			</InstdPty>
 			<SysCd>SAPS</SysCd>
 			<Rmk>a</Rmk>
 		</GrpHdr>
 		<OrgnlGrpHdr>
 			<OrgnlMsgId>2010090912275609</OrgnlMsgId>
-			<OrgnlInstgDrctPty>308581000106</OrgnlInstgDrctPty>
+			<OrgnlInstgPty>308581000106</OrgnlInstgPty>
 			<OrgnlMT>308581000106</OrgnlMT>
 		</OrgnlGrpHdr>
 		<NPCPrcInf>
@@ -28,7 +28,7 @@
 		<IntraCityNetgQryRspnInf>
 			<OrgnlGrpHdr>
 				<OrgnlMsgId>2010090912555609</OrgnlMsgId>
-				<OrgnlInstgDrctPty>308581000106</OrgnlInstgDrctPty>
+				<OrgnlInstgPty>308581000106</OrgnlInstgPty>
 				<OrgnlMT>saps.611.001.01</OrgnlMT>
 			</OrgnlGrpHdr>
 			<RspnSts>PR04</RspnSts>
