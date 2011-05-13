@@ -1110,3 +1110,209 @@ camt.055.001.01.xsd文件中name="TxInf" type="PaymentTransactionInformation30"的un
 camt.055.001.01.xsd文件中name="Ustrd" type="Max140Text"的unbounded修改为1
 T_C2_BIS_ELE_BSC表中,msg_code='hvps.141.001.01'数据报文中
 PATH = '/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/Nm'
+
+2011-05-13 sunhuazhong
+1、beps.125.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.125.001.01'数据报文中
+/Document/FiToFiCstmrCdtTrf/GrpHdr/MsgId
+/Document/FiToFiCstmrCdtTrf/GrpHdr/CreDtTm
+/Document/FiToFiCstmrCdtTrf/GrpHdr/NbOfTxs
+/Document/FiToFiCstmrCdtTrf/GrpHdr/CtrlSum
+/Document/FiToFiCstmrCdtTrf/GrpHdr/SttlmInf/SttlmMtd
+/Document/FiToFiCstmrCdtTrf/GrpHdr/PmtTpInf/CtgyPurp/Prtry
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/PmtId/EndToEndId
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/PmtId/TxId
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/PmtId/ClrSysRef
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/IntrBkSttlmAmt
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/ChrgBr
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/Dbtr/Nm
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/DbtrAcct/Id/Othr/Id
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/DbtrAcct/Id/Othr/Issr
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/DbtrAgt/BrnchId/Id
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/Cdtr/Nm
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/CdtrAgt/BrnchId/Id
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/CdtrAcct/Id/Othr/Id
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/CdtrAcct/Id/Othr/Issr
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/Purp/Prtry
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+
+2、beps.383.001.01
+支付平台-2GMsg-v1.2.pdm中无对应的DIAGRAM
+CREATE TABLE "T_C2_BEPS_383"  (
+   ID                   INTEGER                         NOT NULL,
+   "MSGID"              VARCHAR2(35),
+   "INSTGDRCTPTY"       VARCHAR2(14),
+   "INSTDDRCTPTY"       VARCHAR2(14),
+   "CREDTTM"            DATE,
+   "BID"                VARCHAR2(35),
+   "MMBID"              VARCHAR2(14),
+   "ORGNLMSGID"         VARCHAR2(35),
+   "ORGNLMSGNMID"       VARCHAR2(35),
+   "ADDTLINF"           VARCHAR2(105),
+   CONSTRAINT PK_T_C2_BEPS_383 PRIMARY KEY (ID)
+);
+
+COMMENT ON TABLE "T_C2_BEPS_383" IS
+'B-批量代收代付撤销申请';
+
+COMMENT ON COLUMN "T_C2_BEPS_383".ID IS
+'ID';
+
+COMMENT ON COLUMN "T_C2_BEPS_383"."MSGID" IS
+'报文标识号';
+
+COMMENT ON COLUMN "T_C2_BEPS_383"."INSTGDRCTPTY" IS
+'发起直接参与机构';
+
+COMMENT ON COLUMN "T_C2_BEPS_383"."INSTDDRCTPTY" IS
+'接收直接参与机构';
+
+COMMENT ON COLUMN "T_C2_BEPS_383"."CREDTTM" IS
+'报文发送时间';
+
+COMMENT ON COLUMN "T_C2_BEPS_383"."BID" IS
+'Identification';
+
+COMMENT ON COLUMN "T_C2_BEPS_383"."MMBID" IS
+'原发起直接参与机构';
+
+COMMENT ON COLUMN "T_C2_BEPS_383"."ORGNLMSGID" IS
+'原报文标识号';
+
+COMMENT ON COLUMN "T_C2_BEPS_383"."ORGNLMSGNMID" IS
+'原报文类型号';
+
+COMMENT ON COLUMN "T_C2_BEPS_383"."ADDTLINF" IS
+'附言';
+
+3、beps.404.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.404.001.01'数据报文中
+/Document/InvcPrtRspn/GrpHdr/MsgId
+/Document/InvcPrtRspn/GrpHdr/CreDtTm
+/Document/InvcPrtRspn/GrpHdr/InstgPty/InstgDrctPty
+/Document/InvcPrtRspn/GrpHdr/InstgPty/InstgPty
+/Document/InvcPrtRspn/GrpHdr/InstdPty/InstdDrctPty
+/Document/InvcPrtRspn/GrpHdr/InstdPty/InstdPty
+/Document/InvcPrtRspn/GrpHdr/SysCd
+/Document/InvcPrtRspn/GrpHdr/Rmk
+/Document/InvcPrtRspn/OrgnlGrpHdr/OrgnlMsgId
+/Document/InvcPrtRspn/OrgnlGrpHdr/OrgnlInstgPty
+/Document/InvcPrtRspn/OrgnlGrpHdr/OrgnlMsgTp
+/Document/InvcPrtRspn/InvcPrtRspnInf/RspsnInf/Sts
+/Document/InvcPrtRspn/InvcPrtRspnInf/RspsnInf/RjctCd
+/Document/InvcPrtRspn/InvcPrtRspnInf/RspsnInf/RjctInf
+/Document/InvcPrtRspn/InvcPrtRspnInf/RspsnInf/PrcPty
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/StartTm
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/EndTm
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/PrtCnt
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/NbOfItms
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/ItmDtls
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/ItmDtls/Nm
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/ItmDtls/Amt
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/NbOfFldItms
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/FldItmDtls
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/FldItmDtls/Nm
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/FldItmDtls/Val
+/Document/InvcPrtRspn/InvcPrtRspnInf/InvcInf/Rmk
+
+4、beps.134.001.01
+pacs.002.001.03.xsd文件中name="Ustrd" type="Max140Text"maxOccurs = "1"修改为maxOccurs="unbounded"
+T_C2_BIS_ELE_BSC表中,msg_code=beps.134.001.01'数据报文中
+
+5、beps.123.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.123.001.01'数据报文中
+/Document/FiToFiCstmrCdtTrf/GrpHdr/MsgId
+/Document/FiToFiCstmrCdtTrf/GrpHdr/CreDtTm
+/Document/FiToFiCstmrCdtTrf/GrpHdr/NbOfTxs
+/Document/FiToFiCstmrCdtTrf/GrpHdr/CtrlSum
+/Document/FiToFiCstmrCdtTrf/GrpHdr/SttlmInf/SttlmMtd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/PmtId/EndToEndId
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/PmtId/TxId
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/PmtTpInf/CtgyPurp/Prtry
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/IntrBkSttlmAmt
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/ChrgBr
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/Dbtr/Nm
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/DbtrAcct/Id/Othr/Id
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/DbtrAcct/Id/Othr/Issr
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/DbtrAgt/BrnchId/Id
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/CdtrAgt/BrnchId/Id
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/Cdtr/Nm
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/CdtrAcct/Id/Othr/Id
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/CdtrAcct/Id/Othr/Issr
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/Purp/Prtry
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Strd
+
+6、ccms.308.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.308.001.01'数据报文中
+/Document/FiToFiPmtStsRpt/GrpHdr/MsgId
+/Document/FiToFiPmtStsRpt/GrpHdr/CreDtTm
+/Document/FiToFiPmtStsRpt/GrpHdr/InstgAgt/FinInstnId/Othr/Id
+/Document/FiToFiPmtStsRpt/GrpHdr/InstdAgt/FinInstnId/Othr/Id
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgId
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgNmId
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/TxInfAndSts/StsId
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlInstrId
+/Document/FiToFiPmtStsRpt/TxInfAndSts/ClrSysRef
+
+7、beps.132.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.132.001.01'数据报文中
+/Document/FiToFiPmtStsRpt/GrpHdr/MsgId
+/Document/FiToFiPmtStsRpt/GrpHdr/CreDtTm
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgId
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgNmId
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/Rsn/Prtry
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/TxInfAndSts/StsId
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxId
+/Document/FiToFiPmtStsRpt/TxInfAndSts/StsRsnInf/Rsn/Prtry
+/Document/FiToFiPmtStsRpt/TxInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/IntrBkSttlmAmt
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/PmtTpInf/CtgyPurp/Prtry
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/MndtRltdInf/AmdmntInfDtls/OrgnlCdtrAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/MndtRltdInf/AmdmntInfDtls/OrgnlCdtrAgt/BrnchId/Id
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/RmtInf/Ustrd
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/DbtrAgt/BrnchId/Id
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/CdtrAgt/BrnchId/Id
+
+8、ccms.317.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.317.001.01'数据报文中
+/Document/RtrTx/MsgId/Id
+/Document/RtrTx/BizQryRef/QryRef
+/Document/RtrTx/BizQryRef/QryNm
+/Document/RtrTx/BizRpt/TxRpt/InstrRef/PmtInstrRef
+/Document/RtrTx/BizRpt/TxRpt/Tx/PmtFr/AcctId/DmstAcct/Id
+/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/TxRef
+/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/TrfValDt/Dt
+/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/InstrSts/PmtInstrSts/PrtrySts
+/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/InstrSts/PmtInstrStsRsn/PrtryRjctnRsn/PrtryStsRsn
+/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/InstrSts/PmtInstrStsRsn/PrtryRjctnRsn/Rsn
+/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/Prty/PrtryCd
+/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/PrcgVldtyTm/DtTmRg/FrDtTm
+/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/PrcgVldtyTm/DtTmRg/ToDtTm
+/Document/RtrTx/BizRpt/TxRpt/Tx/Pmt/IntrBkValDt
+/Document/RtrTx/OprlErr/Err/Prtry
+/Document/RtrTx/OprlErr/Desc
