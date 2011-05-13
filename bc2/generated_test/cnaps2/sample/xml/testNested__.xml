@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Document name="Doc1">
+	<AB>AB</AB>
+	<Ustrd>/a01/abc</Ustrd>
+	<Ustrd id="abc">/b02/xyz</Ustrd>
 	<Book author="Author1" name="Book1"/>
 	<Book author="Author2" name="Book2"/>
 </Document>
