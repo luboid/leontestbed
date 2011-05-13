@@ -9,8 +9,33 @@
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.TestNested" createOnElement="Document">
 		<jb:value data="/Document/@name" property="name"/>  
 		<jb:wiring beanIdRef="books" property="books"/>  
+		<jb:expression property="fld1" execOnElement="/Document/Ustrd">
+			if (_VALUE contains "a01") {
+        //splitter.split("a01", _VALUE)
+        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/a01/");
+        //return _VALUE;
+        
+      }else {
+      	return null;
+      }
+    </jb:expression>	
+		<jb:expression property="fld2" execOnElement="/Document/Ustrd">
+			if (_VALUE contains "b02") {
+        splitter.split("b02", _VALUE)
+      }
+    </jb:expression>    	
+		<jb:wiring beanIdRef="ustrds" property="ustrds"/>  
 	</jb:bean>
 	
+	
+	<jb:bean beanId="ustrds" class="com.topfinance.ebo.msg.MyList" createOnElement="/Document">
+		<jb:expression execOnElement="/Document/Ustrd">
+			return _VALUE+"xxx";
+    </jb:expression>
+   	<jb:value data="/Document/Ustrd" />
+		<jb:value data="/Document/AB" />
+  </jb:bean>
+  
   <jb:bean beanId="books" class="java.util.ArrayList" createOnElement="Document">
    	<jb:wiring beanIdRef="book" />
   </jb:bean>
