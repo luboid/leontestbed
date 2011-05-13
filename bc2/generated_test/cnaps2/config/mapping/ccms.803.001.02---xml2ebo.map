@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms80300102Hdr" createOnElement="Document">
+    		<jb:wiring beanIdRef="interm[0]" property="interm"/>
+
+				<jb:value data="/Document/TrblNtfctn/GrpHdr/MsgId" property="msgId"/>     
+				<jb:value data="/Document/TrblNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>  
+				<jb:value data="/Document/TrblNtfctn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/TrblNtfctn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/TrblNtfctn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/TrblNtfctn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/TrblNtfctn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/TrblNtfctn/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/TrblNtfctn/StsInf/Tp" property="tp"/>    
+				<jb:value data="/Document/TrblNtfctn/StsInf/PtyTp" property="ptyTp"/>    
+				<jb:value data="/Document/TrblNtfctn/NdInf/NdCd" property="ndCd"/>    
+	</jb:bean>
+	
+  <jb:bean beanId="interm[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="interm" />
+  </jb:bean>
+	<jb:bean beanId="interm" class="com.topfinance.ebo.msg.Ccms80300102" createOnElement="/Document/TrblNtfctn/NdInf/NdCd">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/TrblNtfctn/NdInf/PtyId" property="ptyId"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
