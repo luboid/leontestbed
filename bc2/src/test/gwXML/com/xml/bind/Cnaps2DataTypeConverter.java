@@ -14,7 +14,7 @@ public class Cnaps2DataTypeConverter {
      
     // see 附件一，3.2 数据类型
     private static final String PATTERN_DATE = "yyyy-MM-dd";
-    private static final String PATTERN_DATE_TIME = "yyyy-MM-dd'T'HH:mm:SS";
+    private static final String PATTERN_DATE_TIME = "yyyy-MM-dd'T'HH:mm:ss";
     
     
  // TODO timezone or locale??

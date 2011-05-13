@@ -8,8 +8,10 @@
 
 package com.xml.testNested;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -50,13 +52,18 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
+	"ustrd",		
     "book"
 })
 @XmlRootElement(name = "Document")
 public class Document {
 
+
+	
     @XmlElement(name = "Book")
     protected List<Book> book = new Vector<Book>();
+    @XmlElement(name = "Ustrd")
+    protected List<String> ustrd = new Vector<String>();    
     @XmlAttribute(name = "name")
     @XmlSchemaType(name = "anySimpleType")
     protected String name;
@@ -117,6 +124,20 @@ public class Document {
 	public void setBook(List<Book> book) {
 		this.book = book;
 	}
+
+	public List<String> getUstrd() {
+		if(ustrd==null) {
+			ustrd = new ArrayList<String>();
+		}
+		return ustrd;
+	}
+
+	public void setUstrd(List<String> ustrd) {
+		this.ustrd = ustrd;
+	}
+
+
+
 
 
 
