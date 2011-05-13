@@ -5,11 +5,6 @@
     <param name="inputType">input.java</param>
     <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps12300101</param>
   </params>
-  	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf.rmtInf.ustrd[2][0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps12300101">
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12300101/rmk">
-      			return "/HA1/"+_VALUE;
-    			</jb:expression>  				
-  	</jb:bean>
   	<jb:bean beanId="fiToFiCstmrCdtTrf" class="com.xml.iso20022.pacs.v00800102.FIToFICustomerCreditTransferV02" createOnElement="com.topfinance.ebo.msg.Beps12300101">
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.grpHdr" property="grpHdr"/>
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf" property="cdtTrfTxInf"/>
@@ -62,6 +57,14 @@
   	<jb:bean beanId="fiToFiCstmrCdtTrf.grpHdr.sttlmInf" class="com.xml.iso20022.pacs.v00800102.SettlementInformation13" createOnElement="com.topfinance.ebo.msg.Beps12300101">
   				<jb:value data="settlementMethod"  property="sttlmMtd"/>
   	</jb:bean>
+  	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf.rmtInf.ustrd[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps12300101">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12300101/addInfo">
+      			return "/H01/"+_VALUE;
+    			</jb:expression>  				
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12300101/rmk">
+      			return "/HA1/"+_VALUE;
+    			</jb:expression>  				
+  	</jb:bean>
   	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf.cdtrAgt.finInstnId.clrSysMmbId" class="com.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="com.topfinance.ebo.msg.Beps12300101">
   				<jb:value data="cdtrClrSysMmbId"  property="mmbId"/>
   	</jb:bean>
@@ -69,8 +72,7 @@
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf" property="fiToFiCstmrCdtTrf"/>
   	</jb:bean>
   	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf.rmtInf" class="com.xml.iso20022.pacs.v00800102.RemittanceInformation5" createOnElement="com.topfinance.ebo.msg.Beps12300101">
-    	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf.rmtInf.ustrd[1][0]" property="ustrd"/>
-    	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf.rmtInf.ustrd[2][0]" property="ustrd"/>
+    	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf.rmtInf.ustrd[0]" property="ustrd"/>
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf.rmtInf.strd[0]" property="strd"/>
   	</jb:bean>
   	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf.dbtrAgt.finInstnId.clrSysMmbId" class="com.xml.iso20022.pacs.v00800102.ClearingSystemMemberIdentification2" createOnElement="com.topfinance.ebo.msg.Beps12300101">
@@ -115,11 +117,6 @@
   	</jb:bean>
   	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf.cdtrAcct.id" class="com.xml.iso20022.pacs.v00800102.AccountIdentification4Choice" createOnElement="com.topfinance.ebo.msg.Beps12300101">
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf.cdtrAcct.id.othr" property="othr"/>
-  	</jb:bean>
-  	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf.rmtInf.ustrd[1][0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps12300101">
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12300101/addInfo">
-      			return "/H01/"+_VALUE;
-    			</jb:expression>  				
   	</jb:bean>
   	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf.pmtTpInf" class="com.xml.iso20022.pacs.v00800102.PaymentTypeInformation21" createOnElement="com.topfinance.ebo.msg.Beps12300101">
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf.pmtTpInf.ctgyPurp" property="ctgyPurp"/>
