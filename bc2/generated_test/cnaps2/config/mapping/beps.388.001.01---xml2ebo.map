@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps38800101Hdr" createOnElement="Document">
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/OrgnlGrpHdr/OrgnlMsgTp" property="orgnlMT"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctCnt" property="acctCnt"/>    
+    		<jb:wiring beanIdRef="acctDtls[0]" property="acctDtls"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="acctDtls[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="acctDtls" />
+  </jb:bean>
+	<jb:bean beanId="acctDtls" class="com.topfinance.ebo.msg.Beps38800101" createOnElement="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/Id" property="id"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/Nm" property="nm"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/RspsnSts" property="rspsnSts"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/AcctSts" property="acctSts"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/InstgPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls" property="acctDtls"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
