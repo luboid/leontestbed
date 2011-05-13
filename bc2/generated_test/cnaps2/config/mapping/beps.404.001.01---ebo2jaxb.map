@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps40400101</param>
+  </params>
+  	<jb:bean beanId="invcPrtRspn.invcPrtRspnInf.invcInf.itmDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps40400101/itmDtls">
+    	<jb:wiring beanIdRef="invcPrtRspn.invcPrtRspnInf.invcInf.itmDtls[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.beps.v40400101.Document" createOnElement="com.topfinance.ebo.msg.Beps40400101">
+    	<jb:wiring beanIdRef="invcPrtRspn" property="invcPrtRspn"/>
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn.invcPrtRspnInf.invcInf.itmDtls[0].xxx" class="com.xml.cnaps2.beps.v40400101.ItemDetails1" createOnElement="com.topfinance.ebo.msg.Beps40400101ItmDtls">
+    	<jb:wiring beanIdRef="invcPrtRspn.invcPrtRspnInf.invcInf.itmDtls[0].xxx.amt" property="amt"/>
+  		<jb:value data="nm"  property="nm"/>
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn.invcPrtRspnInf.invcInf.fldItmDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps40400101/fldItmDtls">
+    	<jb:wiring beanIdRef="invcPrtRspn.invcPrtRspnInf.invcInf.fldItmDtls[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn.invcPrtRspnInf" class="com.xml.cnaps2.beps.v40400101.InvoicePrintResponsionInformation1" createOnElement="com.topfinance.ebo.msg.Beps40400101">
+    	<jb:wiring beanIdRef="invcPrtRspn.invcPrtRspnInf.rspsnInf" property="rspsnInf"/>
+    	<jb:wiring beanIdRef="invcPrtRspn.invcPrtRspnInf.invcInf" property="invcInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn.invcPrtRspnInf.invcInf" class="com.xml.cnaps2.beps.v40400101.InvoiceInformation1" createOnElement="com.topfinance.ebo.msg.Beps40400101">
+    	<jb:wiring beanIdRef="invcPrtRspn.invcPrtRspnInf.invcInf.itmDtls[0]" property="itmDtls"/>
+    	<jb:wiring beanIdRef="invcPrtRspn.invcPrtRspnInf.invcInf.fldItmDtls[0]" property="fldItmDtls"/>
+  		<jb:value data="startTm" decoder="Date" property="startTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+	    </jb:value>
+  		<jb:value data="endTm" decoder="Date" property="endTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+	    </jb:value>
+  		<jb:value data="prtCnt"  property="prtCnt"/>
+  		<jb:value data="nbOfItms"  property="nbOfItms"/>
+  		<jb:value data="nbOfFldItms"  property="nbOfFldItms"/>
+  		<jb:value data="rmk1"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn.orgnlGrpHdr" class="com.xml.cnaps2.beps.v40400101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps40400101">
+  		<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  		<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  		<jb:value data="orgnlMT"  property="orgnlMsgTp"/>
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn.invcPrtRspnInf.invcInf.fldItmDtls[0].xxx" class="com.xml.cnaps2.beps.v40400101.FieldItemDetails1" createOnElement="com.topfinance.ebo.msg.Beps40400101FldItmDtls">
+  		<jb:value data="fNm"  property="nm"/>
+  		<jb:value data="val"  property="val"/>
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn.grpHdr" class="com.xml.cnaps2.beps.v40400101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps40400101">
+    	<jb:wiring beanIdRef="invcPrtRspn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="invcPrtRspn.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="msgId"  property="msgId"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+	    </jb:value>
+  		<jb:value data="sysCd"  property="sysCd"/>
+  		<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn.grpHdr.instdPty" class="com.xml.cnaps2.beps.v40400101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Beps40400101">
+  		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn.grpHdr.instgPty" class="com.xml.cnaps2.beps.v40400101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Beps40400101">
+  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn" class="com.xml.cnaps2.beps.v40400101.InvoicePrintResponsion" createOnElement="com.topfinance.ebo.msg.Beps40400101">
+    	<jb:wiring beanIdRef="invcPrtRspn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="invcPrtRspn.orgnlGrpHdr" property="orgnlGrpHdr"/>
+    	<jb:wiring beanIdRef="invcPrtRspn.invcPrtRspnInf" property="invcPrtRspnInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn.invcPrtRspnInf.invcInf.itmDtls[0].xxx.amt" class="com.xml.cnaps2.beps.v40400101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Beps40400101">
+  		<jb:value data="amt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="invcPrtRspn.invcPrtRspnInf.rspsnInf" class="com.xml.cnaps2.beps.v40400101.ResponsionInformation1" createOnElement="com.topfinance.ebo.msg.Beps40400101">
+  		<jb:value data="sts"  property="sts"/>
+  		<jb:value data="rjctCd"  property="rjctCd"/>
+  		<jb:value data="rjctInf"  property="rjctInf"/>
+  		<jb:value data="prcPty"  property="prcPty"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
