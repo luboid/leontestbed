@@ -55,7 +55,7 @@ public class ${table.destinationClassName}  implements java.io.Serializable {
   <#else>
   	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
   </#if>
-    public ${column.javaType} get${column.capitalisedVariableName}() {
+    public <#if ("DateTime"==column.javaType)>Date<#else>${column.javaType}</#if> get${column.capitalisedVariableName}() {
         return ${column.variableName};
     }	 
      
@@ -65,7 +65,7 @@ public class ${table.destinationClassName}  implements java.io.Serializable {
    * @param new${column.capitalisedVariableName} the new ${column.variableName}
    */
 
-    public void  set${column.capitalisedVariableName}(${column.javaType} new${column.capitalisedVariableName}) {
+    public void  set${column.capitalisedVariableName}(<#if ("DateTime"==column.javaType)>Date<#else>${column.javaType}</#if> new${column.capitalisedVariableName}) {
         ${column.variableName} = new${column.capitalisedVariableName};
     }	  
 </#list>  

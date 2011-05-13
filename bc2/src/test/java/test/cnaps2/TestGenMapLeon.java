@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +36,7 @@ public class TestGenMapLeon extends TestCase {
 	public final static boolean LIST_META_ONLY = false;
 	
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean TO_GENERATE = false;
+	public final static boolean TO_GENERATE = true;
 	
 	public final static boolean TEST_XML2EBO_ONLY = false;
 	
@@ -75,15 +74,23 @@ public class TestGenMapLeon extends TestCase {
 
 	private List<TC2BisEleBscEbo> getBizEle(String msgCode, String tpCode, String clsCode) {
 		try {
+			OpInfo op = new OpInfo(msgCode, tpCode, clsCode);
+//			String fn = "D:/bankConnector/data/mydata"; // for 737
+			String fn = "D:/bankConnector/data/mydata"+op.toString(); // for 393			
 			// This need to be changed to fetch set of (bisEle+extEle) for a
 			// {msgCode, tpCode, clsCode}
 			if (USE_DB) {
 				try {
-					return UIBizHelper.getInstance().getBizFields(msgCode, tpCode, clsCode);
+					List<TC2BisEleBscEbo> list = UIBizHelper.getInstance().getBizFields(msgCode, tpCode, clsCode);
+					ObjectOutputStream oo = new ObjectOutputStream(new FileOutputStream(fn));
+					oo.writeObject(list);
+					oo.close();
+					return list;
 				} catch (AppException e) {
 					e.printStackTrace();
+					throw new RuntimeException(e);
 				}
-				return null;
+				
 				// String hql = "from " + TC2BisEleBscEbo.class.getSimpleName()
 				// + " where msgCode=?";
 				// Object[] paras = new Object[] { msgCode };
@@ -93,14 +100,15 @@ public class TestGenMapLeon extends TestCase {
 
 			else {
 				// now we just mock-up without querying DB
-				List<TC2BisEleBscEbo> list = new ArrayList<TC2BisEleBscEbo>();
-				TC2BisEleBscEbo ebo1 = new TC2BisEleBscEbo();
-				ebo1.setPath("/Document/FIToFICstmrCdtTrf/GrpHdr/MsgId");
-				ebo1.setEleId("MsgId");
-				ebo1.setType("Max35Text");
-
-				list.add(ebo1);
-
+//				List<TC2BisEleBscEbo> list = new ArrayList<TC2BisEleBscEbo>();
+//				TC2BisEleBscEbo ebo1 = new TC2BisEleBscEbo();
+//				ebo1.setPath("/Document/FIToFICstmrCdtTrf/GrpHdr/MsgId");
+//				ebo1.setEleId("MsgId");
+//				ebo1.setType("Max35Text");
+//				list.add(ebo1);
+//				return list;
+				ObjectInputStream in = new ObjectInputStream(new FileInputStream(fn));
+				List<TC2BisEleBscEbo> list = (List<TC2BisEleBscEbo>)in.readObject();
 				return list;
 			}
 		} catch (Exception ex) {
@@ -271,19 +279,7 @@ public class TestGenMapLeon extends TestCase {
 			
 			Map<Integer, DataEle> hookPoints = new HashMap<Integer, DataEle>();
 			
-			
-//			String fn = "D:/bankConnector/data/mydata"; // for 737
-			String fn = "D:/bankConnector/data/mydata393"; // for 393
-			
-//			List<TC2BisEleBscEbo> list1 = getBizEle(msgCode, tpCode, clsCode);
-//			ObjectOutputStream oo = new ObjectOutputStream(new FileOutputStream(fn));
-//			oo.writeObject(list1);
-//			oo.close();
-			
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(fn));
-			List<TC2BisEleBscEbo> list = (List<TC2BisEleBscEbo>)in.readObject();
-				
-//			List<TC2BisEleBscEbo> list = getBizEle(msgCode, tpCode, clsCode);
+			List<TC2BisEleBscEbo> list = getBizEle(msgCode, tpCode, clsCode);
 			
 			ParseSampleXml main = new ParseSampleXml(getBasePath(), op);
 			
@@ -348,11 +344,11 @@ public class TestGenMapLeon extends TestCase {
 		try {
 //			testGenerated_311();
 			
-//			testGenerated_saps_737_001_01();
+			test_saps_737_001_01();
 			
 //			test_beps_123_001_01();
 //			test_beps_393_001_01();
-			testNested();
+//			testNested();
 			
 //			Field f = InstgPty1.class.getDeclaredField("instgIndrctPty");
 //			debug("f="+f);
