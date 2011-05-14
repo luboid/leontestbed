@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ccms91900101Hdr</param>
+  </params>
+  	<jb:bean beanId="certDwnLdApply.grpHdr.instgPty" class="com.xml.cnaps2.ccms.v91900101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Ccms91900101Hdr">
+  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="certDwnLdApply.grpHdr" class="com.xml.cnaps2.ccms.v91900101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Ccms91900101Hdr">
+    	<jb:wiring beanIdRef="certDwnLdApply.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="certDwnLdApply.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="msgId"  property="msgId"/>
+  		<jb:value data="creDtTm"  property="creDtTm"/>
+  		<jb:value data="sysCd"  property="sysCd"/>
+  		<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="certDwnLdApply.grpHdr.instdPty" class="com.xml.cnaps2.ccms.v91900101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Ccms91900101Hdr">
+  		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.ccms.v91900101.Document" createOnElement="com.topfinance.ebo.msg.Ccms91900101Hdr">
+    	<jb:wiring beanIdRef="certDwnLdApply" property="certDwnLdApply"/>
+  	</jb:bean>
+  	<jb:bean beanId="certDwnLdApply" class="com.xml.cnaps2.ccms.v91900101.CertDwnLdApplyV01" createOnElement="com.topfinance.ebo.msg.Ccms91900101Hdr">
+    	<jb:wiring beanIdRef="certDwnLdApply.certfctnList" property="certfctnList"/>
+    	<jb:wiring beanIdRef="certDwnLdApply.grpHdr" property="grpHdr"/>
+  	</jb:bean>
+  	<jb:bean beanId="certDwnLdApply.certfctnList.mmbCd[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Ccms91900101Hdr">
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms91900101Hdr/mmbCd"  />
+  	</jb:bean>
+  	<jb:bean beanId="certDwnLdApply.certfctnList" class="com.xml.cnaps2.ccms.v91900101.CertfctnList1" createOnElement="com.topfinance.ebo.msg.Ccms91900101Hdr">
+    	<jb:wiring beanIdRef="certDwnLdApply.certfctnList.mmbCd[0]" property="mmbCd"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
