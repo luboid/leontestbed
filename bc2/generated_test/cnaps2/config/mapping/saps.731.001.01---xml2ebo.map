@@ -16,8 +16,7 @@
 				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
 				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
 				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/SysCd" property="sysCd"/>    
-				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/Rmk" property="rmk"/>    
-				<jb:value data="/Document/AcsabsSttlmDtlAppl/AcsabsSttlmDtlApplInf/ChckngDt" property="chckngDt"/>    
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/Rmk" property="rmk"/>      
 				<jb:value data="/Document/AcsabsSttlmDtlAppl/AcsabsSttlmDtlApplInf/ChckngDt" decoder="Date" property="chckngDt">    
 					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
 		        </jb:value>
