@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps73600101Hdr" createOnElement="Document">
+				<jb:value data="/Document/AcctgDailyDwnLd/GrpHdr/MsgId" property="msgId"/>       
+				<jb:value data="/Document/AcctgDailyDwnLd/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/AcctgDailyDwnLd/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/WorkDt" decoder="Date" property="workDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		        </jb:value> 
+				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/InitlAmt" property="initlAmt"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/DailyDbtrAmt" property="dailyDbtrAmt"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/DailyCdtrAmt" property="dailyCdtrAmt"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/FnlAmt" property="fnlAmt"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/NbOfTx" property="nbOfTxs"/>    
+    		<jb:wiring beanIdRef="txList[0]" property="txList"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="txList[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="txList" />
+  </jb:bean>
+	<jb:bean beanId="txList" class="com.topfinance.ebo.msg.Saps73600101" createOnElement="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/TxList">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/TxList/TxTp" property="txTp"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/TxList/DailyDbtrAmt" property="dailyDbtrAmt"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/TxList/DailyCdtrAmt" property="dailyCdtrAmt"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
