@@ -33,6 +33,7 @@
   </jb:bean>
 	<jb:bean beanId="ndCd" class="com.topfinance.ebo.msg.Ccms80900102" createOnElement="/Document/StopgNtfctn/NdInf/NdCd">
 		<jb:wiring beanIdRef="target" property="fid"/>
+		<jb:value data="/Document/StopgNtfctn/NdInf/NdCd" property="ndCd"/> 
 				<jb:value data="/Document/StopgNtfctn/NdInf/PtyId" property="ptyId"/>    
 	</jb:bean>  
 

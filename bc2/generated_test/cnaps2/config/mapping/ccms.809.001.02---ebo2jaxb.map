@@ -30,6 +30,7 @@
   		<jb:value data="instdIndrctPty"  property="instdPty"/>
   	</jb:bean>
   	<jb:bean beanId="stopgNtfctn.ndInf" class="com.xml.cnaps2.ccms.v80900102.NdInf1" createOnElement="com.topfinance.ebo.msg.Ccms80900102Hdr">
+    	<jb:wiring beanIdRef="stopgNtfctn.ndInf.ndCd[0]" property="ndCd"/>
     	<jb:wiring beanIdRef="stopgNtfctn.ndInf.ptyId[0]" property="ptyId"/>
   	</jb:bean>
   	<jb:bean beanId="stopgNtfctn.grpHdr.instgPty" class="com.xml.cnaps2.ccms.v80900102.InstgPty1" createOnElement="com.topfinance.ebo.msg.Ccms80900102Hdr">
