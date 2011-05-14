@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps73100101Hdr" createOnElement="Document">
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value> 
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/AcsabsSttlmDtlApplInf/ChckngDt" property="chckngDt"/>    
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/AcsabsSttlmDtlApplInf/ChckngDt" decoder="Date" property="chckngDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		        </jb:value>
+    		<jb:wiring beanIdRef="qryInf[0]" property="qryInf"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="qryInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="qryInf" />
+  </jb:bean>
+	<jb:bean beanId="qryInf" class="com.topfinance.ebo.msg.Saps73100101" createOnElement="/Document/AcsabsSttlmDtlAppl/AcsabsSttlmDtlApplInf/QryInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/AcsabsSttlmDtlApplInf/QryInf/QryCtgy" property="qryCtgy"/>    
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/AcsabsSttlmDtlApplInf/QryInf/QryTp/RspnSts" property="rspnSts"/>    
+				<jb:value data="/Document/AcsabsSttlmDtlAppl/AcsabsSttlmDtlApplInf/QryInf/QryTp/MsgId" property="msgId"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
