@@ -22,7 +22,7 @@ import javax.persistence.OneToMany;
  */
  
 @Entity
-@Table(name = "T_C2_NETS_351")
+@Table(name = "T_C2_NETS_353")
 public class Nets35300101  implements java.io.Serializable {
 
     // Fields 
