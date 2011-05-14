@@ -34,7 +34,7 @@
 		<jb:wiring beanIdRef="target" property="fid"/>
 				<jb:value data="/Document/IntraCityNetgSttlm/IntraCityNetgSttlmInf/BookgList/BookgId" property="bookgId"/>    
 				<jb:value data="/Document/IntraCityNetgSttlm/IntraCityNetgSttlmInf/BookgList/DbtCdtId" property="dbtCdtId"/>    
-				<jb:value data="/Document/IntraCityNetgSttlm/IntraCityNetgSttlmInf/BookgList/Amt/Value" property="amt"/>    
+				<jb:value data="/Document/IntraCityNetgSttlm/IntraCityNetgSttlmInf/BookgList/Amt" property="amt"/>    
 	</jb:bean>  
 
 
