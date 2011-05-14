@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Saps37300101Hdr</param>
+  </params>
+  	<jb:bean beanId="fndsOfPoolMgmt.grpHdr.instdPty" class="com.xml.cnaps2.saps.v37300101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Saps37300101Hdr">
+  		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="fndsOfPoolMgmt.grpHdr.instgPty" class="com.xml.cnaps2.saps.v37300101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Saps37300101Hdr">
+  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="fndsOfPoolMgmt" class="com.xml.cnaps2.saps.v37300101.FudsOfPoolMgmtV01" createOnElement="com.topfinance.ebo.msg.Saps37300101Hdr">
+    	<jb:wiring beanIdRef="fndsOfPoolMgmt.fndsOfPoolMgmtInf" property="fndsOfPoolMgmtInf"/>
+    	<jb:wiring beanIdRef="fndsOfPoolMgmt.grpHdr" property="grpHdr"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.saps.v37300101.Document" createOnElement="com.topfinance.ebo.msg.Saps37300101Hdr">
+    	<jb:wiring beanIdRef="fndsOfPoolMgmt" property="fndsOfPoolMgmt"/>
+  	</jb:bean>
+  	<jb:bean beanId="fndsOfPoolMgmt.fndsOfPoolMgmtInf" class="com.xml.cnaps2.saps.v37300101.FundsOfPoolManagementInformation1" createOnElement="com.topfinance.ebo.msg.Saps37300101Hdr">
+    	<jb:wiring beanIdRef="fndsOfPoolMgmt.fndsOfPoolMgmtInf.brnchList[0]" property="brnchList"/>
+  		<jb:value data="mgrId"  property="mgrId"/>
+  		<jb:value data="fndsOfPoolMgmtTp"  property="fndsOfPoolMgmtTp"/>
+  		<jb:value data="fctvDt"  property="fctvDt"/>
+  		<jb:value data="brnchQty"  property="brnchQty"/>
+  	</jb:bean>
+  	<jb:bean beanId="fndsOfPoolMgmt.fndsOfPoolMgmtInf.brnchList[0].xxx" class="com.xml.cnaps2.saps.v37300101.BranchList1" createOnElement="com.topfinance.ebo.msg.Saps37300101">
+  		<jb:value data="mmbId"  property="mmbId"/>
+  	</jb:bean>
+  	<jb:bean beanId="fndsOfPoolMgmt.fndsOfPoolMgmtInf.brnchList[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps37300101Hdr/brnchList">
+    	<jb:wiring beanIdRef="fndsOfPoolMgmt.fndsOfPoolMgmtInf.brnchList[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="fndsOfPoolMgmt.grpHdr" class="com.xml.cnaps2.saps.v37300101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps37300101Hdr">
+    	<jb:wiring beanIdRef="fndsOfPoolMgmt.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="fndsOfPoolMgmt.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="msgId"  property="msgId"/>
+  		<jb:value data="creDtTm"  property="creDtTm"/>
+  		<jb:value data="sysCd"  property="sysCd"/>
+  		<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
