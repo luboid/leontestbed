@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ccms80900102Hdr</param>
+  </params>
+  	<jb:bean beanId="stopgNtfctn.stsInf" class="com.xml.cnaps2.ccms.v80900102.StsInf1" createOnElement="com.topfinance.ebo.msg.Ccms80900102Hdr">
+  		<jb:value data="newSts"  property="newSts"/>
+  		<jb:value data="fctvDt" decoder="Date" property="fctvDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
+  		<jb:value data="estmtdStartSvc" decoder="Date" property="estmtdStartSvc">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
+  	</jb:bean>
+  	<jb:bean beanId="stopgNtfctn" class="com.xml.cnaps2.ccms.v80900102.StopgNtfctnV01" createOnElement="com.topfinance.ebo.msg.Ccms80900102Hdr">
+    	<jb:wiring beanIdRef="stopgNtfctn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="stopgNtfctn.stsInf" property="stsInf"/>
+    	<jb:wiring beanIdRef="stopgNtfctn.ndInf" property="ndInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.ccms.v80900102.Document" createOnElement="com.topfinance.ebo.msg.Ccms80900102Hdr">
+    	<jb:wiring beanIdRef="stopgNtfctn" property="stopgNtfctn"/>
+  	</jb:bean>
+  	<jb:bean beanId="stopgNtfctn.ndInf.ptyId[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Ccms80900102Hdr">
+  		<jb:value data="/com.topfinance.ebo.msg.Ccms80900102Hdr/ptyId"  />
+  	</jb:bean>
+  	<jb:bean beanId="stopgNtfctn.grpHdr.instdPty" class="com.xml.cnaps2.ccms.v80900102.InstdPty1" createOnElement="com.topfinance.ebo.msg.Ccms80900102Hdr">
+  		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="stopgNtfctn.ndInf" class="com.xml.cnaps2.ccms.v80900102.NdInf1" createOnElement="com.topfinance.ebo.msg.Ccms80900102Hdr">
+    	<jb:wiring beanIdRef="stopgNtfctn.ndInf.ptyId[0]" property="ptyId"/>
+  	</jb:bean>
+  	<jb:bean beanId="stopgNtfctn.grpHdr.instgPty" class="com.xml.cnaps2.ccms.v80900102.InstgPty1" createOnElement="com.topfinance.ebo.msg.Ccms80900102Hdr">
+  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="stopgNtfctn.grpHdr" class="com.xml.cnaps2.ccms.v80900102.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Ccms80900102Hdr">
+    	<jb:wiring beanIdRef="stopgNtfctn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="stopgNtfctn.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="msgId"  property="msgId"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
+  		<jb:value data="sysCd"  property="sysCd"/>
+  		<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
