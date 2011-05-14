@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms91600101Hdr" createOnElement="Document">
+				<jb:value data="/Document/BkCdChngNtfctn/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>  
+				<jb:value data="/Document/BkCdChngNtfctn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/Prttn/TtlNb" property="ttlNb"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/Prttn/StartNb" property="startNb"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/Prttn/EndNb" property="endNb"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/NbInf/ChngNb" property="chngNb"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/NbInf/ChngRcrdNb" property="chngRcrdNb"/>    
+    		<jb:wiring beanIdRef="chngInf[0]" property="chngInf"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="chngInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="chngInf" />
+  </jb:bean>
+	<jb:bean beanId="chngInf" class="com.topfinance.ebo.msg.Ccms91600101" createOnElement="/Document/BkCdChngNtfctn/ChngInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/ChngCtrl/ChngTp" property="chngTp"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/ChngCtrl/FctvTp" property="fctvTp"/>     
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/ChngCtrl/FctvDt" decoder="Date" property="fctvDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		        </jb:value>   
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/ChngCtrl/IfctvDtt" decoder="Date" property="ifctvDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		        </jb:value> 
+		 		<jb:value data="/Document/BkCdChngNtfctn/ChngInf/BkCd" property="bkCd"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/PtcptTp" property="ptcptTp"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/BkCtgyCd" property="bkCtgyCd"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/DrctBkCd" property="drctBkCd"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/LglPrsn" property="lglPrsn"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/HghPtcpt" property="hghPtcpt"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/BrBkCd" property="brBkCd"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/ChrgBkCd" property="chrgBkCd"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/CityCd" property="cityCd"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/CityCd" property="cityCd1"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/PtcptNm" property="ptcptNm"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/PtcptShrtNm" property="ptcptShrtNm"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/Sgn" property="sgn"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/Adr" property="adr"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/PstCd" property="pstCd"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/Email" property="email"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/Email" property="tel"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/RmkInf" property="rmkInf"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
