@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps73300101Hdr" createOnElement="Document">
+				<jb:value data="/Document/AcstcbsDailyAcctg/GrpHdr/MsgId" property="msgId"/>     
+				<jb:value data="/Document/AcstcbsDailyAcctg/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value> 
+				<jb:value data="/Document/AcstcbsDailyAcctg/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/Prttn/TtlNb" property="ttlNb"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/Prttn/StartNb" property="startNb"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/Prttn/StartNb" property="endNb"/>      
+				<jb:value data="/Document/AcstcbsDailyAcctg/AcstcbsDailyAcctgInf/WorkDt" decoder="Date" property="workDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		        </jb:value>
+				<jb:value data="/Document/AcstcbsDailyAcctg/AcstcbsDailyAcctgInf/NbOfTx" property="nbOfTxs"/>    
+    		<jb:wiring beanIdRef="chckngList[0]" property="chckngList"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="chckngList[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="chckngList" />
+  </jb:bean>
+	<jb:bean beanId="chckngList" class="com.topfinance.ebo.msg.Saps73300101" createOnElement="/Document/AcstcbsDailyAcctg/AcstcbsDailyAcctgInf/ChckngList">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/AcstcbsDailyAcctg/AcstcbsDailyAcctgInf/ChckngList/AcctTp" property="acctTp"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/AcstcbsDailyAcctgInf/ChckngList/Acct" property="acct"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/AcstcbsDailyAcctgInf/ChckngList/InitlAmt" property="initlAmt"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/AcstcbsDailyAcctgInf/ChckngList/FnlAmt" property="fnlAmt"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/AcstcbsDailyAcctgInf/ChckngList/DbtrAmt" property="hVPSDbtrAmt"/>    
+				<jb:value data="/Document/AcstcbsDailyAcctg/AcstcbsDailyAcctgInf/ChckngList/CdtrAmt" property="hVPSCdtrAmt"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
