@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps35700101Hdr" createOnElement="Document">
+    		<jb:wiring beanIdRef="sttlmList[0]" property="sttlmList"/>
+
+				<jb:value data="/Document/PldgFincgMgmt/GrpHdr/MsgId" property="msgId"/>        
+				<jb:value data="/Document/PldgFincgMgmt/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/PldgFincgMgmt/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/PldgFincgMgmt/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/PldgFincgMgmt/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/PldgFincgMgmt/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/PldgFincgMgmt/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/PldgFincgMgmt/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/PldgFincgMgmt/PldgFincgMgmtInf/NbOfMmb" property="nbOfMmb"/>    
+	</jb:bean>
+	
+  <jb:bean beanId="sttlmList[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="sttlmList" />
+  </jb:bean>
+	<jb:bean beanId="sttlmList" class="com.topfinance.ebo.msg.Saps35700101" createOnElement="/Document/PldgFincgMgmt/PldgFincgMgmtInf/SttlmList/MmbId">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/PldgFincgMgmt/PldgFincgMgmtInf/SttlmList/MmbId" property="mmbId"/>    
+				<jb:value data="/Document/PldgFincgMgmt/PldgFincgMgmtInf/SttlmList/PldgFincgId" property="pldgFincgId"/>    
+				<jb:value data="/Document/PldgFincgMgmt/PldgFincgMgmtInf/SttlmList/StartgPt/Value" property="startgPt"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
