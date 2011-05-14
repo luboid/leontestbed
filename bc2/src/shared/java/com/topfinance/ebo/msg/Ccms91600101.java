@@ -65,7 +65,7 @@ public class Ccms91600101  implements java.io.Serializable {
     @JaxbMapping(objPath="bkCdChngNtfctn.chngInf[0].chrgBkCd")
     private String chrgBkCd;
     
-    @JaxbMapping(objPath="bkCdChngNtfctn.chngInf[0].cityCd")
+    @JaxbMapping(objPath="bkCdChngNtfctn.chngInf[0].ndCd")
     private String ndCd;
     
     @JaxbMapping(objPath="bkCdChngNtfctn.chngInf[0].cityCd")
@@ -370,7 +370,7 @@ public class Ccms91600101  implements java.io.Serializable {
    * @return the ndCd
    */
     @Column(name = "NDCD")
-    public String getNdcd() {
+    public String getNdCd() {
         return ndCd;
     }	 
      
@@ -381,7 +381,7 @@ public class Ccms91600101  implements java.io.Serializable {
    */
 
     public void  setNdCd(String newNdCd) {
-        cityCd = newNdCd;
+        ndCd = newNdCd;
     }	  
   /**
    * Returns the cityCd
