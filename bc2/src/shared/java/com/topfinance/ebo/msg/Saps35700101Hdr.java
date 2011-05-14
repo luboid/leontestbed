@@ -20,7 +20,7 @@ import javax.persistence.OneToMany;
  */
  
 @Entity
-@Table(name = "T_C2_SAPS_357_HDR")
+@Table(name = "T_C2_NETS_357_HDR")
 public class Saps35700101Hdr  implements java.io.Serializable {
 
     // Fields 
