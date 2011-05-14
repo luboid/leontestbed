@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Saps73800101Hdr</param>
+  </params>
+  	<jb:bean beanId="balWorkDayChckngRspn.grpHdr.instdPty" class="com.xml.cnaps2.saps.v73800101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Saps73800101Hdr">
+  		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.saps.v73800101.Document" createOnElement="com.topfinance.ebo.msg.Saps73800101Hdr">
+    	<jb:wiring beanIdRef="balWorkDayChckngRspn" property="balWorkDayChckngRspn"/>
+  	</jb:bean>
+  	<jb:bean beanId="balWorkDayChckngRspn.grpHdr.instgPty" class="com.xml.cnaps2.saps.v73800101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Saps73800101Hdr">
+  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="balWorkDayChckngRspn.prttn" class="com.xml.cnaps2.saps.v73800101.Partition1" createOnElement="com.topfinance.ebo.msg.Saps73800101Hdr">
+  		<jb:value data="ttlNb"  property="ttlNb"/>
+  		<jb:value data="startNb"  property="startNb"/>
+  		<jb:value data="endNb"  property="endNb"/>
+  	</jb:bean>
+  	<jb:bean beanId="balWorkDayChckngRspn.balWorkDayChckngRspnInf.umtchdList[0].xxx" class="com.xml.cnaps2.saps.v73800101.UmtchdList1" createOnElement="com.topfinance.ebo.msg.Saps73800101">
+  		<jb:value data="mmbId"  property="mmbId"/>
+  		<jb:value data="aCSInitlAmt"  property="acsInitlAmt"/>
+  		<jb:value data="sAPSInitlAmt"  property="sapsInitlAmt"/>
+  	</jb:bean>
+  	<jb:bean beanId="balWorkDayChckngRspn.balWorkDayChckngRspnInf" class="com.xml.cnaps2.saps.v73800101.BalanceWorkDayCheckingResponseInformation1" createOnElement="com.topfinance.ebo.msg.Saps73800101Hdr">
+    	<jb:wiring beanIdRef="balWorkDayChckngRspn.balWorkDayChckngRspnInf.umtchdList[0]" property="umtchdList"/>
+  		<jb:value data="chckngRslt"  property="chckngRslt"/>
+  		<jb:value data="nbOfUmtchd"  property="chckngRslt"/>
+  	</jb:bean>
+  	<jb:bean beanId="balWorkDayChckngRspn.grpHdr" class="com.xml.cnaps2.saps.v73800101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps73800101Hdr">
+    	<jb:wiring beanIdRef="balWorkDayChckngRspn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="balWorkDayChckngRspn.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="msgId"  property="msgId"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
+  		<jb:value data="sysCd"  property="sysCd"/>
+  		<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="balWorkDayChckngRspn" class="com.xml.cnaps2.saps.v73800101.BalWorkDayChckngRspnlV01" createOnElement="com.topfinance.ebo.msg.Saps73800101Hdr">
+    	<jb:wiring beanIdRef="balWorkDayChckngRspn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="balWorkDayChckngRspn.prttn" property="prttn"/>
+    	<jb:wiring beanIdRef="balWorkDayChckngRspn.orgnlGrpHdr" property="orgnlGrpHdr"/>
+    	<jb:wiring beanIdRef="balWorkDayChckngRspn.balWorkDayChckngRspnInf" property="balWorkDayChckngRspnInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="balWorkDayChckngRspn.balWorkDayChckngRspnInf.umtchdList[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps73800101Hdr/nbOfUmtchd">
+    	<jb:wiring beanIdRef="balWorkDayChckngRspn.balWorkDayChckngRspnInf.umtchdList[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="balWorkDayChckngRspn.orgnlGrpHdr" class="com.xml.cnaps2.saps.v73800101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps73800101Hdr">
+  		<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  		<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  		<jb:value data="orgnlMT"  property="orgnlMT"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
