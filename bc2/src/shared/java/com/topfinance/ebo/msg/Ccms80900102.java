@@ -29,7 +29,10 @@ public class Ccms80900102  implements java.io.Serializable {
     @JaxbMapping(objPath="")
     private Integer id;
     
-    @JaxbMapping(objPath="stopgNtfctn.ndInf.ptyId[0]")
+    @JaxbMapping(objPath="stopgNtfctn.ndInf.ndCd[0]")
+    private String ndCd;
+
+	@JaxbMapping(objPath="stopgNtfctn.ndInf.ptyId[0]")
     private String ptyId;
     
     private Ccms80900102Hdr fid;
@@ -72,7 +75,27 @@ public class Ccms80900102  implements java.io.Serializable {
 
     public void  setid(Integer newid) {
         id = newid;
-    }	  
+    }	
+    
+    /**
+     * Returns the ndCd
+     * 
+     * @return the ndCd
+     */
+      @Column(name = "NDCD")
+    public String getNdCd() {
+		return ndCd;
+	}
+
+      /**
+       * Sets the ndCd
+       *
+       * @param newNdCd the new ndCd
+       */
+	public void setNdCd(String newNdCd) {
+		this.ndCd = newNdCd;
+	}
+	
   /**
    * Returns the ptyId
    * 
