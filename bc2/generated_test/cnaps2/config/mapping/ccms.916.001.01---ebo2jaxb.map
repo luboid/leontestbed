@@ -15,8 +15,8 @@
   		<jb:value data="hghPtcpt"  property="hghPtcpt"/>
   		<jb:value data="brBkCd"  property="brBkCd"/>
   		<jb:value data="chrgBkCd"  property="chrgBkCd"/>
+  		<jb:value data="ndCd"  property="ndCd"/>
   		<jb:value data="cityCd"  property="cityCd"/>
-  		<jb:value data="cityCd1"  property="cityCd"/>
   		<jb:value data="ptcptNm"  property="ptcptNm"/>
   		<jb:value data="ptcptShrtNm"  property="ptcptShrtNm"/>
   		<jb:value data="sgn"  property="sgn"/>

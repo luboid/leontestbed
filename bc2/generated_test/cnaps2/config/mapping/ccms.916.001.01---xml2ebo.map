@@ -47,8 +47,8 @@
 				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/HghPtcpt" property="hghPtcpt"/>    
 				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/BrBkCd" property="brBkCd"/>    
 				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/ChrgBkCd" property="chrgBkCd"/>    
+				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/NdCd" property="ndCd"/>    
 				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/CityCd" property="cityCd"/>    
-				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/CityCd" property="cityCd1"/>    
 				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/PtcptNm" property="ptcptNm"/>    
 				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/PtcptShrtNm" property="ptcptShrtNm"/>    
 				<jb:value data="/Document/BkCdChngNtfctn/ChngInf/Sgn" property="sgn"/>    
