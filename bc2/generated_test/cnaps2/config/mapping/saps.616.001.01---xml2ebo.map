@@ -19,7 +19,7 @@
 				<jb:value data="/Document/NetgListDwnLd/GrpHdr/Rmk" property="rmk"/>    
 				<jb:value data="/Document/NetgListDwnLd/NetgListDwnLdInf/MgrId" property="mgrId"/>    
 				<jb:value data="/Document/NetgListDwnLd/NetgListDwnLdInf/NbOfTx" property="nbOfTx"/>    
-				<jb:value data="/Document/NetgListDwnLd/NetgListDwnLdInf/TtlAmt/Value" property="ttlAmt"/>    
+				<jb:value data="/Document/NetgListDwnLd/NetgListDwnLdInf/TtlAmt" property="ttlAmt"/>    
     		<jb:wiring beanIdRef="txList[0]" property="txList"/>
 
 	</jb:bean>
@@ -35,7 +35,7 @@
 				<jb:value data="/Document/NetgListDwnLd/NetgListDwnLdInf/TxList/NetgRnd" property="netgRnd"/>    
 				<jb:value data="/Document/NetgListDwnLd/NetgListDwnLdInf/TxList/MmbId" property="mmbId"/>    
 				<jb:value data="/Document/NetgListDwnLd/NetgListDwnLdInf/TxList/DbtCdtId" property="dbtCdtId"/>    
-				<jb:value data="/Document/NetgListDwnLd/NetgListDwnLdInf/TxList/Amt/Value" property="amt"/>    
+				<jb:value data="/Document/NetgListDwnLd/NetgListDwnLdInf/TxList/Amt" property="amt"/>    
 				<jb:value data="/Document/NetgListDwnLd/NetgListDwnLdInf/TxList/SttlmDt" decoder="Date" property="sttlmDt">    
 					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
 		        </jb:value>
