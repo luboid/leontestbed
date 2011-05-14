@@ -52,7 +52,7 @@
 				<jb:value data="/Document/NetgQQryRspn/QInf/Dtls/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
 				<jb:value data="/Document/NetgQQryRspn/QInf/Dtls/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
 				<jb:value data="/Document/NetgQQryRspn/QInf/Dtls/OrgnlGrpHdr/OrgnlMT" property="orgnlMT"/>    
-				<jb:value data="/Document/NetgQQryRspn/QInf/Dtls/Amt/Value" property="amt"/>    
+				<jb:value data="/Document/NetgQQryRspn/QInf/Dtls/Amt" property="amt"/>    
 				<jb:value data="/Document/NetgQQryRspn/QInf/Dtls/SeqNb" property="seqNb"/>    
 	</jb:bean>  
 
