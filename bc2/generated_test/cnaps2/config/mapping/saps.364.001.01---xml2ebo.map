@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps36400101Hdr" createOnElement="Document">
+				<jb:value data="/Document/QQryRspn/GrpHdr/MsgId" property="msgId"/>        
+				<jb:value data="/Document/QQryRspn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/QQryRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/QQryRspn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/QQryRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/QQryRspn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/QQryRspn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/QQryRspn/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/QQryRspn/Prttn/TtlNb" property="ttlNb"/>    
+				<jb:value data="/Document/QQryRspn/Prttn/StartNb" property="startNb"/>    
+				<jb:value data="/Document/QQryRspn/Prttn/EndNb" property="endNb"/>    
+				<jb:value data="/Document/QQryRspn/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/QQryRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+				<jb:value data="/Document/QQryRspn/OrgnlGrpHdr/OrgnlMT" property="orgnlMT"/>    
+				<jb:value data="/Document/QQryRspn/NpcPrcInf/PrcSts" property="prcSts"/>    
+				<jb:value data="/Document/QQryRspn/NpcPrcInf/PrcCd" property="prcCd"/>    
+				<jb:value data="/Document/QQryRspn/NpcPrcInf/RjctInf" property="rjctInf"/>    
+				<jb:value data="/Document/QQryRspn/NpcPrcInf/NetgDt" property="netgDt"/>    
+				<jb:value data="/Document/QQryRspn/NpcPrcInf/NetgRnd" property="netgRnd"/>    
+				<jb:value data="/Document/QQryRspn/NpcPrcInf/SttlmDt" property="sttlmDt"/>    
+				<jb:value data="/Document/QQryRspn/NpcPrcInf/RcvTm" decoder="Date" property="rcvTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value> 
+				<jb:value data="/Document/QQryRspn/NpcPrcInf/TrnsmtTm" decoder="Date" property="trnsmtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>   
+				<jb:value data="/Document/QQryRspn/QInf/NbOfTxs" property="nbOfTxs"/>    
+    		<jb:wiring beanIdRef="orgnlGrpHdr[0]" property="orgnlGrpHdr"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="orgnlGrpHdr[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="orgnlGrpHdr" />
+  </jb:bean>
+	<jb:bean beanId="orgnlGrpHdr" class="com.topfinance.ebo.msg.Saps36400101" createOnElement="/Document/QQryRspn/QInf/QInstrInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/QQryRspn/QInf/QInstrInf/MmbId" property="mmbId"/>    
+				<jb:value data="/Document/QQryRspn/QInf/QInstrInf/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/QQryRspn/QInf/QInstrInf/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+				<jb:value data="/Document/QQryRspn/QInf/QInstrInf/OrgnlGrpHdr/OrgnlMT" property="orgnlMT"/>    
+				<jb:value data="/Document/QQryRspn/QInf/QInstrInf/QInstrTp" property="qInstrTp"/>    
+				<jb:value data="/Document/QQryRspn/QInf/QInstrInf/Amt/Value" property="amt"/>    
+				<jb:value data="/Document/QQryRspn/QInf/QInstrInf/SeqNb" property="seqNb"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
