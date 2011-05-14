@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Saps61000101Hdr</param>
+  </params>
+  	<jb:bean beanId="intraCityNetgQryRspn.grpHdr.instgPty" class="com.xml.cnaps2.saps.v61000101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr">
+  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  		<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="intraCityNetgQryRspn.intraCityNetgQryRspnInf.bookgList[0].xxx.amt" class="com.xml.cnaps2.saps.v61000101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr">
+  		<jb:value data="amt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.saps.v61000101.Document" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr">
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn" property="intraCityNetgQryRspn"/>
+  	</jb:bean>
+  	<jb:bean beanId="intraCityNetgQryRspn.intraCityNetgQryRspnInf.bookgList[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr/bookgList">
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn.intraCityNetgQryRspnInf.bookgList[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="intraCityNetgQryRspn.orgnlGrpHdr" class="com.xml.cnaps2.saps.v61000101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr">
+  		<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  		<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  		<jb:value data="orgnlMT"  property="orgnlMT"/>
+  	</jb:bean>
+  	<jb:bean beanId="intraCityNetgQryRspn" class="com.xml.cnaps2.saps.v61000101.IntraCityNetgQryRspnV01" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr">
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn.orgnlGrpHdr" property="orgnlGrpHdr"/>
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn.npcPrcInf" property="npcPrcInf"/>
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn.intraCityNetgQryRspnInf" property="intraCityNetgQryRspnInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="intraCityNetgQryRspn.intraCityNetgQryRspnInf.bookgList[0].xxx" class="com.xml.cnaps2.saps.v61000101.BookingList1" createOnElement="com.topfinance.ebo.msg.Saps61000101">
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn.intraCityNetgQryRspnInf.bookgList[0].xxx.amt" property="amt"/>
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn.intraCityNetgQryRspnInf.bookgList[0].xxx.npcPrcInf" property="npcPrcInf"/>
+  		<jb:value data="mmbId"  property="mmbId"/>
+  		<jb:value data="dbtCdtId"  property="dbtCdtId"/>
+  	</jb:bean>
+  	<jb:bean beanId="intraCityNetgQryRspn.grpHdr" class="com.xml.cnaps2.saps.v61000101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr">
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn.grpHdr.instdPty" property="instdPty"/>
+  		<jb:value data="msgId"  property="msgId"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
+  		<jb:value data="sysCd"  property="sysCd"/>
+  		<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="intraCityNetgQryRspn.intraCityNetgQryRspnInf" class="com.xml.cnaps2.saps.v61000101.IntraCityNettingQueryResponseInformation1" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr">
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn.intraCityNetgQryRspnInf.orgnlGrpHdr" property="orgnlGrpHdr"/>
+    	<jb:wiring beanIdRef="intraCityNetgQryRspn.intraCityNetgQryRspnInf.bookgList[0]" property="bookgList"/>
+  		<jb:value data="rspnSts"  property="rspnSts"/>
+  		<jb:value data="nbOfMmb"  property="nbOfMmb"/>
+  	</jb:bean>
+  	<jb:bean beanId="intraCityNetgQryRspn.npcPrcInf" class="com.xml.cnaps2.saps.v61000101.NPCProcessInformation1" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr">
+  		<jb:value data="prcSts"  property="prcSts"/>
+  		<jb:value data="prcCd"  property="prcCd"/>
+  		<jb:value data="rjctInf"  property="rjctInf"/>
+  		<jb:value data="netgDt" decoder="Date" property="netgDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
+  		<jb:value data="netgRnd"  property="netgRnd"/>
+  		<jb:value data="sttlmDt" decoder="Date" property="sttlmDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
+  		<jb:value data="rcvTm" decoder="Date" property="rcvTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
+  		<jb:value data="trnsmtTm" decoder="Date" property="trnsmtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
+  	</jb:bean>
+  	<jb:bean beanId="intraCityNetgQryRspn.intraCityNetgQryRspnInf.orgnlGrpHdr" class="com.xml.cnaps2.saps.v61000101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr">
+  		<jb:value data="respOrgnlMsgId"  property="orgnlMsgId"/>
+  		<jb:value data="respOrgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  		<jb:value data="respOrgnlMT"  property="orgnlMT"/>
+  	</jb:bean>
+  	<jb:bean beanId="intraCityNetgQryRspn.grpHdr.instdPty" class="com.xml.cnaps2.saps.v61000101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr">
+  		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  		<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="intraCityNetgQryRspn.intraCityNetgQryRspnInf.bookgList[0].xxx.npcPrcInf" class="com.xml.cnaps2.saps.v61000101.NPCProcessInformation1" createOnElement="com.topfinance.ebo.msg.Saps61000101Hdr">
+  		<jb:value data="prcSts1"  property="prcSts"/>
+  		<jb:value data="prcCd1"  property="prcCd"/>
+  		<jb:value data="rjctInf1"  property="rjctInf"/>
+  		<jb:value data="netgDt1" decoder="Date" property="netgDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
+  		<jb:value data="netgRnd1"  property="netgRnd"/>
+  		<jb:value data="sttlmDt1" decoder="Date" property="sttlmDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
+  		<jb:value data="rcvTm1" decoder="Date" property="rcvTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
+  		<jb:value data="trnsmtTm1" decoder="Date" property="trnsmtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+			</jb:value>
+  	</jb:bean>
+</smooks-resource-list>  
+    

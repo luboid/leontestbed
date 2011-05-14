@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps61000101Hdr" createOnElement="Document">
+				<jb:value data="/Document/IntraCityNetgQryRspn/GrpHdr/MsgId" property="msgId"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/OrgnlGrpHdr/OrgnlMT" property="orgnlMT"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/NpcPrcInf/PrcSts" property="prcSts"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/NpcPrcInf/PrcCd" property="prcCd"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/NpcPrcInf/RjctInf" property="rjctInf"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/NpcPrcInf/NetgDt" property="netgDt"/>   
+				 <jb:value data="/Document/IntraCityNetgQryRspn/NpcPrcInf/NetgDt" decoder="Date" property="netgDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		        </jb:value>
+				<jb:value data="/Document/IntraCityNetgQryRspn/NpcPrcInf/NetgRnd" property="netgRnd"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/NpcPrcInf/SttlmDt" decoder="Date" property="sttlmDt">    
+					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+		        </jb:value>
+				<jb:value data="/Document/IntraCityNetgQryRspn/NpcPrcInf/RcvTm" decoder="Date" property="rcvTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>  
+				<jb:value data="/Document/IntraCityNetgQryRspn/NpcPrcInf/TrnsmtTm" decoder="Date" property="trnsmtTm">    
+					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/OrgnlGrpHdr/OrgnlMsgId" property="respOrgnlMsgId"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/OrgnlGrpHdr/OrgnlInstgPty" property="respOrgnlInstgDrctPty"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/OrgnlGrpHdr/OrgnlMT" property="respOrgnlMT"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/RspnSts" property="rspnSts"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/NbOfMmb" property="nbOfMmb"/>    
+    		<jb:wiring beanIdRef="bookgList[0]" property="bookgList"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="bookgList[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="bookgList" />
+  </jb:bean>
+	<jb:bean beanId="bookgList" class="com.topfinance.ebo.msg.Saps61000101" createOnElement="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/MmbId" property="mmbId"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/DbtCdtId" property="dbtCdtId"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/Amt/Value" property="amt"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/PrcSts" property="prcSts"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/PrcCd" property="prcCd"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/RjctInf" property="rjctInf"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/NetgDt" property="netgDt"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/NetgRnd" property="netgRnd"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/SttlmDt" property="sttlmDt"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/RcvTm" property="rcvTm"/>    
+				<jb:value data="/Document/IntraCityNetgQryRspn/IntraCityNetgQryRspnInf/BookgList/NpcPrcInf/TrnsmtTm" property="trnsmtTm"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
