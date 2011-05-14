@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Pbcs60800101Hdr" createOnElement="Document">
+				<jb:value data="/Document/ChrgAndRtrList/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/ChrgAndRtrList/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/ChrgAndRtrList/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/ChrgAndRtrList/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/ChrgAndRtrList/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/ChrgAndRtrList/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/ChrgAndRtrList/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/ChrgAndRtrList/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/ChrgAndRtrList/ChrgAndRtrListInf/ChrgTp" property="chrgTp"/>    
+				<jb:value data="/Document/ChrgAndRtrList/ChrgAndRtrListInf/ChrgPtcpt" property="chrgPtcpt"/>    
+				<jb:value data="/Document/ChrgAndRtrList/ChrgAndRtrListInf/ChrgMnth" property="chrgMnth"/>    
+  			<jb:value data="/Document/ChrgAndRtrList/ChrgAndRtrListInf/StartDt" decoder="Date" property="startDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+  			<jb:value data="/Document/ChrgAndRtrList/ChrgAndRtrListInf/EndDt" decoder="Date" property="endDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/ChrgAndRtrList/ChrgAndRtrListInf/TtlAmt" property="ttlAmt"/>    
+				<jb:value data="/Document/ChrgAndRtrList/ChrgAndRtrListInf/NbOfSys" property="nbOfSys"/>    
+    		<jb:wiring beanIdRef="chrgInf[0]" property="chrgInf"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="chrgInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="chrgInf" />
+  </jb:bean>
+	<jb:bean beanId="chrgInf" class="com.topfinance.ebo.msg.Pbcs60800101" createOnElement="/Document/ChrgAndRtrList/ChrgAndRtrListInf/ChrgInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/ChrgAndRtrList/ChrgAndRtrListInf/ChrgInf/ChrgSys" property="chrgSys"/>    
+				<jb:value data="/Document/ChrgAndRtrList/ChrgAndRtrListInf/ChrgInf/Amt" property="amt"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    

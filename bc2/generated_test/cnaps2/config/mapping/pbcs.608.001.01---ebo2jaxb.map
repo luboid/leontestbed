@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Pbcs60800101Hdr</param>
+  </params>
+  	<jb:bean beanId="chrgAndRtrList.grpHdr.instdPty" class="com.xml.cnaps2.pbcs.v60800101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Pbcs60800101Hdr">
+  				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  				<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="chrgAndRtrList.chrgAndRtrListInf.ttlAmt" class="com.xml.cnaps2.pbcs.v60800101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Pbcs60800101Hdr">
+  				<jb:value data="ttlAmt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="chrgAndRtrList.chrgAndRtrListInf.chrgInf[0].xxx.amt" class="com.xml.cnaps2.pbcs.v60800101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Pbcs60800101Hdr">
+  				<jb:value data="amt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="chrgAndRtrList.grpHdr.instgPty" class="com.xml.cnaps2.pbcs.v60800101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Pbcs60800101Hdr">
+  				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  				<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.pbcs.v60800101.Document" createOnElement="com.topfinance.ebo.msg.Pbcs60800101Hdr">
+    	<jb:wiring beanIdRef="chrgAndRtrList" property="chrgAndRtrList"/>
+  	</jb:bean>
+  	<jb:bean beanId="chrgAndRtrList.chrgAndRtrListInf.chrgInf[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Pbcs60800101Hdr/chrgInf">
+    	<jb:wiring beanIdRef="chrgAndRtrList.chrgAndRtrListInf.chrgInf[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="chrgAndRtrList.grpHdr" class="com.xml.cnaps2.pbcs.v60800101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Pbcs60800101Hdr">
+    	<jb:wiring beanIdRef="chrgAndRtrList.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="chrgAndRtrList.grpHdr.instdPty" property="instdPty"/>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="sysCd"  property="sysCd"/>
+  				<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="chrgAndRtrList" class="com.xml.cnaps2.pbcs.v60800101.ChrgAndRtrListV01" createOnElement="com.topfinance.ebo.msg.Pbcs60800101Hdr">
+    	<jb:wiring beanIdRef="chrgAndRtrList.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="chrgAndRtrList.chrgAndRtrListInf" property="chrgAndRtrListInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="chrgAndRtrList.chrgAndRtrListInf" class="com.xml.cnaps2.pbcs.v60800101.ChargeAndReturnListInformation1" createOnElement="com.topfinance.ebo.msg.Pbcs60800101Hdr">
+    	<jb:wiring beanIdRef="chrgAndRtrList.chrgAndRtrListInf.ttlAmt" property="ttlAmt"/>
+    	<jb:wiring beanIdRef="chrgAndRtrList.chrgAndRtrListInf.chrgInf[0]" property="chrgInf"/>
+  				<jb:value data="chrgTp"  property="chrgTp"/>
+  				<jb:value data="chrgPtcpt"  property="chrgPtcpt"/>
+  				<jb:value data="chrgMnth"  property="chrgMnth"/>
+  				<jb:value data="startDt" decoder="Date" property="startDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="endDt" decoder="Date" property="endDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="nbOfSys"  property="nbOfSys"/>
+  	</jb:bean>
+  	<jb:bean beanId="chrgAndRtrList.chrgAndRtrListInf.chrgInf[0].xxx" class="com.xml.cnaps2.pbcs.v60800101.ChargeInformation1" createOnElement="com.topfinance.ebo.msg.Pbcs60800101">
+    	<jb:wiring beanIdRef="chrgAndRtrList.chrgAndRtrListInf.chrgInf[0].xxx.amt" property="amt"/>
+  				<jb:value data="chrgSys"  property="chrgSys"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
