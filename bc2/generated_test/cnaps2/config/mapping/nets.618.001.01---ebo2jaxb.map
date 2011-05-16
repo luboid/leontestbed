@@ -57,7 +57,7 @@
   				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
   				<jb:value data="instgIndrctPty"  property="instgPty"/>
   	</jb:bean>
-  	<jb:bean beanId="bepsNetgRspn.bepsNetgRspnInf.txList[0].xxx" class="com.xml.cnaps2.nets.v61800101.TransactionList1" createOnElement="com.topfinance.ebo.msg.Aets61800101TxList">
+  	<jb:bean beanId="bepsNetgRspn.bepsNetgRspnInf.txList[0].xxx" class="com.xml.cnaps2.nets.v61800101.TransactionList1" createOnElement="com.topfinance.ebo.msg.Nets61800101">
     	<jb:wiring beanIdRef="bepsNetgRspn.bepsNetgRspnInf.txList[0].xxx.amt" property="amt"/>
   				<jb:value data="netgRnd"  property="netgRnd"/>
   				<jb:value data="netgTp"  property="netgTp"/>
