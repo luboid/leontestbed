@@ -1403,5 +1403,17 @@
       	pathOpClass=""     	
       	>
       </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="ccms.926.001.01"
+      	name="ccms.926.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/TxAmtUpperLmt/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
    </list>
 </OperationDefinitions>
