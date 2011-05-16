@@ -8,12 +8,12 @@
   	<jb:bean beanId="chckCdtForLd.grpHdr" class="com.xml.cnaps2.beps.v39700101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps39700101">
     	<jb:wiring beanIdRef="chckCdtForLd.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="chckCdtForLd.grpHdr.instdPty" property="instdPty"/>
-  		<jb:value data="msgId"  property="msgId"/>
-  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
-    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
-	    </jb:value>
-  		<jb:value data="sysCd"  property="sysCd"/>
-  		<jb:value data="rmk"  property="rmk"/>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="sysCd"  property="sysCd"/>
+  				<jb:value data="rmk"  property="rmk"/>
   	</jb:bean>
   	<jb:bean beanId="target" class="com.xml.cnaps2.beps.v39700101.Document" createOnElement="com.topfinance.ebo.msg.Beps39700101">
     	<jb:wiring beanIdRef="chckCdtForLd" property="chckCdtForLd"/>
@@ -24,34 +24,32 @@
     	<jb:wiring beanIdRef="chckCdtForLd.chckCdtForLdInf" property="chckCdtForLdInf"/>
   	</jb:bean>
   	<jb:bean beanId="chckCdtForLd.orgnlGrpHdr" class="com.xml.cnaps2.beps.v39700101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps39700101">
-  		<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
-  		<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
-  		<jb:value data="orgnlMT"  property="orgnlMsgTp"/>
+  				<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  				<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  				<jb:value data="orgnlMT"  property="orgnlMsgTp"/>
   	</jb:bean>
   	<jb:bean beanId="chckCdtForLd.chckCdtForLdInf" class="com.xml.cnaps2.beps.v39700101.CheckCreditForLoadInformation1" createOnElement="com.topfinance.ebo.msg.Beps39700101">
     	<jb:wiring beanIdRef="chckCdtForLd.chckCdtForLdInf.amt" property="amt"/>
-  		<jb:value data="applyOrCclTp"  property="applyOrCclTp"/>
-  		<jb:value data="isseDt" decoder="Date" property="isseDt">
-    		<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
-	    </jb:value>
-  		<jb:value data="nb"  property="nb"/>
-  		<jb:value data="id"  property="bid"/>
-  		<jb:value data="acctNb"  property="acctNb"/>
-  		<jb:value data="chckMd"  property="chckMd"/>
-  		<jb:value data="chckCd"  property="chckCd"/>
-  		<jb:value data="imgFrntLen"  property="imgFrntLen"/>
-  		<jb:value data="cntt"  property="cntt"/>
+  				<jb:value data="applyOrCclTp"  property="applyOrCclTp"/>
+  				<jb:value data="isseDt"  property="isseDt"/>
+  				<jb:value data="nb"  property="nb"/>
+  				<jb:value data="bid"  property="id"/>
+  				<jb:value data="acctNb"  property="acctNb"/>
+  				<jb:value data="chckMd"  property="chckMd"/>
+  				<jb:value data="chckCd"  property="chckCd"/>
+  				<jb:value data="imgFrntLen"  property="imgFrntLen"/>
+  				<jb:value data="cntt"  property="cntt"/>
   	</jb:bean>
   	<jb:bean beanId="chckCdtForLd.chckCdtForLdInf.amt" class="com.xml.cnaps2.beps.v39700101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Beps39700101">
-  		<jb:value data="amt" decoder="BigDecimal" property="value"/>
+  				<jb:value data="amt" decoder="BigDecimal" property="value"/>
   	</jb:bean>
   	<jb:bean beanId="chckCdtForLd.grpHdr.instdPty" class="com.xml.cnaps2.beps.v39700101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Beps39700101">
-  		<jb:value data="instdDrctPty"  property="instdDrctPty"/>
-  		<jb:value data="instdIndrctPty"  property="instdPty"/>
+  				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  				<jb:value data="instdIndrctPty"  property="instdPty"/>
   	</jb:bean>
   	<jb:bean beanId="chckCdtForLd.grpHdr.instgPty" class="com.xml.cnaps2.beps.v39700101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Beps39700101">
-  		<jb:value data="instgDrctPty"  property="instgDrctPty"/>
-  		<jb:value data="instgIndrctPty"  property="instgPty"/>
+  				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  				<jb:value data="instgIndrctPty"  property="instgPty"/>
   	</jb:bean>
 </smooks-resource-list>  
     

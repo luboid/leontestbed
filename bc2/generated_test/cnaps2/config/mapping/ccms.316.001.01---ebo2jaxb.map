@@ -17,14 +17,19 @@
   	<jb:bean beanId="target" class="com.xml.iso20022.camt.v00500104.Document" createOnElement="com.topfinance.ebo.msg.Ccms31600101">
     	<jb:wiring beanIdRef="getTx" property="getTx"/>
   	</jb:bean>
-  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit.pmtSch.instrRef[0].xxx" class="com.xml.iso20022.camt.v00500104.PaymentIdentification3Choice" createOnElement="com.topfinance.ebo.msg.Ccms31600101">
-  		<jb:value data="orgnlMsgId"  property="pmtInstrRef"/>
-  		<jb:value data="orgnlInstgDrctPty"  property="prtryRef"/>
-  		<jb:value data="orgnlMT"  property="prtryRef"/>
+
+	  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit.pmtSch.instrRef[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Ccms31600101">
+			<jb:expression execOnElement="/com.topfinance.ebo.msg.Ccms31600101/orgnlMsgId">
+      			return _VALUE;
+    			</jb:expression>
+			<jb:expression execOnElement="/com.topfinance.ebo.msg.Ccms31600101/orgnlInstgDrctPty">
+      			return "/A70/"+_VALUE;
+    			</jb:expression>  				
+			<jb:expression execOnElement="/com.topfinance.ebo.msg.Ccms31600101/orgnlMT">
+      			return "/F26/"+_VALUE;
+    			</jb:expression>  		
   	</jb:bean>
-  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit.pmtSch.instrRef[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Ccms31600101">
-    	<jb:wiring beanIdRef="getTx.txQryDef.txCrit.newCrit.schCrit.pmtSch.instrRef[0].xxx" />
-  	</jb:bean>
+
   	<jb:bean beanId="getTx.txQryDef" class="com.xml.iso20022.camt.v00500104.TransactionQueryDefinition4" createOnElement="com.topfinance.ebo.msg.Ccms31600101">
     	<jb:wiring beanIdRef="getTx.txQryDef.txCrit" property="txCrit"/>
   	</jb:bean>
@@ -36,7 +41,7 @@
     	<jb:wiring beanIdRef="getTx.txQryDef" property="txQryDef"/>
   	</jb:bean>
   	<jb:bean beanId="getTx.msgId" class="com.xml.iso20022.camt.v00500104.MessageIdentification" createOnElement="com.topfinance.ebo.msg.Ccms31600101">
-  		<jb:value data="msgId"  property="id"/>
+  				<jb:value data="msgId"  property="id"/>
   	</jb:bean>
 </smooks-resource-list>  
     

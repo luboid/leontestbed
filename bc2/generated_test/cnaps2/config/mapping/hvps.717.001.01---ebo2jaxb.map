@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Hvps71700101</param>
+  </params>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.hvps.v71700101.Document" createOnElement="com.topfinance.ebo.msg.Hvps71700101">
+    	<jb:wiring beanIdRef="intrBkLnDwnld" property="intrBkLnDwnld"/>
+  	</jb:bean>
+  	<jb:bean beanId="intrBkLnDwnld.intrBkLnDwnldInf" class="com.xml.cnaps2.hvps.v71700101.IntrBkLnDwnldInf1" createOnElement="com.topfinance.ebo.msg.Hvps71700101">
+    	<jb:wiring beanIdRef="intrBkLnDwnld.intrBkLnDwnldInf.ttlAmt" property="ttlAmt"/>
+    	<jb:wiring beanIdRef="intrBkLnDwnld.intrBkLnDwnldInf.dtls[0]" property="dtls"/>
+  				<jb:value data="ttlCnt"  property="ttlCnt"/>
+  	</jb:bean>
+  	<jb:bean beanId="intrBkLnDwnld.prttn" class="com.xml.cnaps2.hvps.v71700101.Prttn1" createOnElement="com.topfinance.ebo.msg.Hvps71700101">
+  				<jb:value data="ttlNb"  property="ttlNb"/>
+  				<jb:value data="startNb"  property="startNb"/>
+  				<jb:value data="endNb"  property="endNb"/>
+  	</jb:bean>
+  	<jb:bean beanId="intrBkLnDwnld.intrBkLnDwnldInf.dtls[0].xxx.amt" class="com.xml.cnaps2.hvps.v71700101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps71700101">
+  				<jb:value data="intrBkSttlmAmt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="intrBkLnDwnld.intrBkLnDwnldInf.dtls[0].xxx" class="com.xml.cnaps2.hvps.v71700101.Dtls4" createOnElement="com.topfinance.ebo.msg.Hvps71700101Dtls">
+    	<jb:wiring beanIdRef="intrBkLnDwnld.intrBkLnDwnldInf.dtls[0].xxx.amt" property="amt"/>
+  				<jb:value data="instgClrSysMmb"  property="instgClrSysMmb"/>
+  				<jb:value data="instgBrnchId"  property="instgBrnchId"/>
+  				<jb:value data="instdClrSysMmb"  property="instdClrSysMmb"/>
+  				<jb:value data="instdBrnchId"  property="instdBrnchId"/>
+  				<jb:value data="txTp"  property="txTp"/>
+  				<jb:value data="ctgyPurpCd"  property="ctgyPurpCd"/>
+  				<jb:value data="intrBkLnRate"  property="intrBkLnRate"/>
+  				<jb:value data="intrBkLmt"  property="intrBkLmt"/>
+  				<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  				<jb:value data="addInfo"  property="addtlInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="intrBkLnDwnld.grpHdr" class="com.xml.cnaps2.hvps.v71700101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Hvps71700101">
+    	<jb:wiring beanIdRef="intrBkLnDwnld.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="intrBkLnDwnld.grpHdr.instdPty" property="instdPty"/>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="sysCd"  property="sysCd"/>
+  				<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="intrBkLnDwnld.grpHdr.instdPty" class="com.xml.cnaps2.hvps.v71700101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Hvps71700101">
+  				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  				<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="intrBkLnDwnld.intrBkLnDwnldInf.dtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71700101/dtls">
+    	<jb:wiring beanIdRef="intrBkLnDwnld.intrBkLnDwnldInf.dtls[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="intrBkLnDwnld" class="com.xml.cnaps2.hvps.v71700101.IntrBkLnDwnldV01" createOnElement="com.topfinance.ebo.msg.Hvps71700101">
+    	<jb:wiring beanIdRef="intrBkLnDwnld.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="intrBkLnDwnld.prttn" property="prttn"/>
+    	<jb:wiring beanIdRef="intrBkLnDwnld.intrBkLnDwnldInf" property="intrBkLnDwnldInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="intrBkLnDwnld.intrBkLnDwnldInf.ttlAmt" class="com.xml.cnaps2.hvps.v71700101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps71700101">
+  				<jb:value data="ttlAmt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="intrBkLnDwnld.grpHdr.instgPty" class="com.xml.cnaps2.hvps.v71700101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Hvps71700101">
+  				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  				<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

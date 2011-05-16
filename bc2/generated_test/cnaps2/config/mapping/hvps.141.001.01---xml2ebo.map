@@ -8,18 +8,24 @@
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Hvps14100101" createOnElement="Document">
 				<jb:value data="/Document/FinInstnCdtTrf/GrpHdr/MsgId" property="msgId"/>    
-				<jb:value data="/Document/FinInstnCdtTrf/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
-				<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
-			    </jb:value>
+  			<jb:value data="/Document/FinInstnCdtTrf/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
 				<jb:value data="/Document/FinInstnCdtTrf/GrpHdr/NbOfTxs" property="nbOfTxs"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/GrpHdr/SttlmInf/SttlmMtd" property="sttlmMtd"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/GrpHdr/InstgAgt/FinInstnId/ClrSysMmbId/MmbId" property="speMmbId"/>    
-				<jb:value data="/Document/FinInstnCdtTrf/GrpHdr/InstgAgt/FinInstnId/ClrSysMmbId/MmbId" property="cNAPS2MmbId"/>    
+				<jb:value data="/Document/FinInstnCdtTrf/GrpHdr/InstdAgt/FinInstnId/ClrSysMmbId/MmbId" property="cNAPS2MmbId"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/PmtId/EndToEndId" property="endToEndId"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/PmtId/TxId" property="txId"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/PmtTpInf/SvcLvl/Prtry" property="prtry"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/IntrBkSttlmAmt/Value" property="intrBkSttlmAmt"/>    
-				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/SttlmPrty" property="sttlmPrty"/>    
+				<jb:expression property="sttlmPrty" execOnElement="/Document/FinInstnCdtTrf/CdtTrfTxInf/SttlmPrty">
+					if (_VALUE contains "NORM") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/NORM/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/Nm" property="dbtrNm"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/PstlAdr/AdrLine" property="pyAdrLine"/>    

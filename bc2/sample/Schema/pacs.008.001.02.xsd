@@ -391,7 +391,7 @@
     <xs:complexType name="FIToFICustomerCreditTransferV02">
         <xs:sequence>
             <xs:element name="GrpHdr" type="GroupHeader33"/>
-            <xs:element maxOccurs="1" minOccurs="1" name="CdtTrfTxInf" type="CreditTransferTransactionInformation11"/>
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="CdtTrfTxInf" type="CreditTransferTransactionInformation11"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="FinancialIdentificationSchemeName1Choice">

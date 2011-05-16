@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Nets40500101</param>
+  </params>
+  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit" class="com.xml.iso20022.camt.v00500104.TransactionSearchCriteria3" createOnElement="com.topfinance.ebo.msg.Nets40500101">
+    	<jb:wiring beanIdRef="getTx.txQryDef.txCrit.newCrit.schCrit.acctNtrySch" property="acctNtrySch"/>
+  	</jb:bean>
+  	<jb:bean beanId="getTx.txQryDef.txCrit" class="com.xml.iso20022.camt.v00500104.TransactionCriteriaDefinition3Choice" createOnElement="com.topfinance.ebo.msg.Nets40500101">
+    	<jb:wiring beanIdRef="getTx.txQryDef.txCrit.newCrit" property="newCrit"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.iso20022.camt.v00500104.Document" createOnElement="com.topfinance.ebo.msg.Nets40500101">
+    	<jb:wiring beanIdRef="getTx" property="getTx"/>
+  	</jb:bean>
+  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit.acctNtrySch.acctId" class="com.xml.iso20022.camt.v00500104.AccountIdentificationSearchCriteriaChoice" createOnElement="com.topfinance.ebo.msg.Nets40500101">
+    	<jb:wiring beanIdRef="getTx.txQryDef.txCrit.newCrit.schCrit.acctNtrySch.acctId.eQ" property="eQ"/>
+  	</jb:bean>
+  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit.acctNtrySch.acctId.eQ.dmstAcct" class="com.xml.iso20022.camt.v00500104.SimpleIdentificationInformation" createOnElement="com.topfinance.ebo.msg.Nets40500101">
+  				<jb:value data="instgDrctPty"  property="id"/>
+  	</jb:bean>
+  	<jb:bean beanId="getTx.txQryDef" class="com.xml.iso20022.camt.v00500104.TransactionQueryDefinition4" createOnElement="com.topfinance.ebo.msg.Nets40500101">
+    	<jb:wiring beanIdRef="getTx.txQryDef.txCrit" property="txCrit"/>
+  	</jb:bean>
+  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit.acctNtrySch.acctId.eQ" class="com.xml.iso20022.camt.v00500104.AccountIdentification1Choice" createOnElement="com.topfinance.ebo.msg.Nets40500101">
+    	<jb:wiring beanIdRef="getTx.txQryDef.txCrit.newCrit.schCrit.acctNtrySch.acctId.eQ.dmstAcct" property="dmstAcct"/>
+  	</jb:bean>
+  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit" class="com.xml.iso20022.camt.v00500104.TransactionCriteria3" createOnElement="com.topfinance.ebo.msg.Nets40500101">
+    	<jb:wiring beanIdRef="getTx.txQryDef.txCrit.newCrit.schCrit" property="schCrit"/>
+  	</jb:bean>
+  	<jb:bean beanId="getTx.txQryDef.txCrit.newCrit.schCrit.acctNtrySch" class="com.xml.iso20022.camt.v00500104.AccountCashEntrySearch2" createOnElement="com.topfinance.ebo.msg.Nets40500101">
+    	<jb:wiring beanIdRef="getTx.txQryDef.txCrit.newCrit.schCrit.acctNtrySch.acctId" property="acctId"/>
+  	</jb:bean>
+  	<jb:bean beanId="getTx" class="com.xml.iso20022.camt.v00500104.GetTransactionV04" createOnElement="com.topfinance.ebo.msg.Nets40500101">
+    	<jb:wiring beanIdRef="getTx.msgId" property="msgId"/>
+    	<jb:wiring beanIdRef="getTx.txQryDef" property="txQryDef"/>
+  	</jb:bean>
+  	<jb:bean beanId="getTx.msgId" class="com.xml.iso20022.camt.v00500104.MessageIdentification" createOnElement="com.topfinance.ebo.msg.Nets40500101">
+  				<jb:value data="msgId"  property="id"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

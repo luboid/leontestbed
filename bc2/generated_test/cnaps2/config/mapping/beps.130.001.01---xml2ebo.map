@@ -8,9 +8,9 @@
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps13000101" createOnElement="Document">
 				<jb:value data="/Document/FiToFiCstmrCdtTrf/GrpHdr/MsgId" property="msgId"/>    
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
-					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
-				</jb:value>
+  			<jb:value data="/Document/FiToFiCstmrCdtTrf/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
 				<jb:value data="/Document/FiToFiCstmrCdtTrf/GrpHdr/NbOfTxs" property="nbOfTxs"/>    
 				<jb:value data="/Document/FiToFiCstmrCdtTrf/GrpHdr/CtrlSum" property="ctrlSum"/>    
 				<jb:value data="/Document/FiToFiCstmrCdtTrf/GrpHdr/SttlmInf/SttlmMtd" property="sttlmMtd"/>    
@@ -37,19 +37,84 @@
 				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/Cdtr/Nm" property="cdtrNm"/>    
 				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/CdtrAcct/Id/Othr/Id" property="cdtrAcctId"/>    
 				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/CdtrAcct/Id/Othr/Issr" property="cdtrAcctIssr"/>    
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/Purp/Prtry" property="tcCd"/>    
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="addInfo"/>    
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="rmk"/>      
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="orgnlCISDate"/>    
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="orgnlCISId"/>    
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="orgnlCISMsgId"/>    
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="reponsSts"/>    
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="bizRejPrcCd"/>    
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="bizRejInfo"/>    
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="prcSts"/>     
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="netgDt"/> 
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="netgRnd"/>      
-				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="sttlmDt"/>  
+				<jb:value data="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/Purp/Prtry" property="tcCd"/>    				
+				<jb:expression property="addInfo" execOnElement="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "H01") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/H01/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+				<jb:expression property="rmk" execOnElement="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "HA1") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/HA1/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+				<jb:expression property="orgnlCISId" execOnElement="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "EA2") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/EA2/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+				<jb:expression property="orgnlCISMsgId" execOnElement="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "E45") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/E45/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+				<jb:expression property="reponsSts" execOnElement="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "F60") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/F60/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression> 
+				<jb:expression property="bizRejPrcCd" execOnElement="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "G00") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/G00/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+				<jb:expression property="bizRejInfo" execOnElement="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "H06") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/H06/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+				<jb:expression property="prcSts" execOnElement="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "F61") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/F61/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+				<jb:expression property="netgDt" execOnElement="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "C01") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/C01/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+				<jb:expression property="netgRnd" execOnElement="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "E05") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/E05/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+				<jb:expression property="sttlmDt" execOnElement="/Document/FiToFiCstmrCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "C00") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/C00/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
 	</jb:bean>  
 
 

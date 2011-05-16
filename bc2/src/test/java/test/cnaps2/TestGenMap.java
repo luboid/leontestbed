@@ -557,7 +557,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void btestGenerated_717() throws Exception {
+	public void atestGenerated_717() throws Exception {
 		String msgCode = "hvps.717.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1119,6 +1119,17 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
+	public void atestGenerated_382() throws Exception {
+		String msgCode = "beps.382.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
 	public void btestGenerated_391() throws Exception {
 		String msgCode = "beps.391.001.01";
 		String tpCode = "";
@@ -1207,7 +1218,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_317() throws Exception {
+	public void atestGenerated_317() throws Exception {
 		String msgCode = "ccms.317.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1218,8 +1229,19 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void btestGenerated_316() throws Exception {
+	public void atestGenerated_316() throws Exception {
 		String msgCode = "ccms.316.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void btestGenerated_405() throws Exception {
+		String msgCode = "nets.405.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {
@@ -1253,6 +1275,17 @@ public class TestGenMap extends TestGenMapLeon {
 	
 	public void btestGenerated_141() throws Exception {
 		String msgCode = "hvps.141.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_112() throws Exception {
+		String msgCode = "hvps.112.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {
@@ -1350,7 +1383,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void btestGenerated_130() throws Exception {
+	public void testGenerated_130() throws Exception {
 		String msgCode = "beps.130.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1396,6 +1429,28 @@ public class TestGenMap extends TestGenMapLeon {
 	
 	public void atestGenerated_404() throws Exception {
 		String msgCode = "beps.404.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void btestGenerated_381() throws Exception {
+		String msgCode = "beps.381.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_391() throws Exception {
+		String msgCode = "beps.391.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {

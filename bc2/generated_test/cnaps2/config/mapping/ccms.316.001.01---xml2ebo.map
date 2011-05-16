@@ -9,8 +9,20 @@
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms31600101" createOnElement="Document">
 				<jb:value data="/Document/GetTx/MsgId/Id" property="msgId"/>    
 				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/InstrRef/PmtInstrRef" property="orgnlMsgId"/>    
-				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/InstrRef[starts-with(PrtryRef,'/A70/']" property="orgnlInstgDrctPty"/>    
-				<jb:value data="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/InstrRef[starts-with(PrtryRef,'/F26/']" property="orgnlMT"/>    
+				<jb:expression property="orgnlInstgDrctPty" execOnElement="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/InstrRef/PrtryRef">
+					if (_VALUE contains "A70") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/A70/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>		
+				<jb:expression property="orgnlMT" execOnElement="/Document/GetTx/TxQryDef/TxCrit/NewCrit/SchCrit/PmtSch/InstrRef/PrtryRef">
+					if (_VALUE contains "F26") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/F26/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
 	</jb:bean>
 	
 

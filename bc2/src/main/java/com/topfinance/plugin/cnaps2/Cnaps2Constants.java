@@ -82,7 +82,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_111)) {
 			pkgName = JAXB_ISO_PACS_v00800102;
 		} else if (mesgType.equals(TestDummy.OPERATION_112)) {
-			pkgName = "XXXX";
+			pkgName = "com.xml.iso20022.pacs.v00900102";
 		} else if (mesgType.equals(TestDummy.OPERATION_121)) {
 			pkgName = "XXXX";
 		} else if (mesgType.equals(TestDummy.OPERATION_122)) {
@@ -198,9 +198,9 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_377)) {
 			pkgName = "com.xml.iso20022.camt.v05100102";
 		} else if (mesgType.equals(TestDummy.OPERATION_381)) {
-			pkgName = "XXXX";
+			pkgName = "com.xml.iso20022.pain.v00100103";
 		} else if (mesgType.equals(TestDummy.OPERATION_382)) {
-			pkgName = "XXXX";
+			pkgName = "com.xml.iso20022.pain.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_383)) {
 			pkgName = "com.xml.iso20022.camt.v05500101";
 		} else if (mesgType.equals(TestDummy.OPERATION_384)) {
@@ -214,9 +214,9 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_388)) {
 			pkgName = "com.xml.cnaps2.beps.v38800101";
 		} else if (mesgType.equals(TestDummy.OPERATION_391)) {
-			pkgName = "com.xml.cnaps2.beps.v39100101";
+			pkgName = "com.xml.iso20022.pain.v00100103";
 		} else if (mesgType.equals(TestDummy.OPERATION_392)) {
-			pkgName = "com.xml.cnaps2.beps.v39200101";
+			pkgName = "com.xml.iso20022.pain.v00200103";
 		} else if (mesgType.equals(TestDummy.OPERATION_394)) {
 			pkgName = "com.xml.cnaps2.beps.v39400101";
 		} else if (mesgType.equals(TestDummy.OPERATION_395)) {
@@ -234,7 +234,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_404)) {
 			pkgName = "com.xml.cnaps2.beps.v40400101";
 		} else if (mesgType.equals(TestDummy.OPERATION_405)) {
-			pkgName = "XXXX";
+			pkgName = "com.xml.iso20022.camt.v00500104";
 		} else if (mesgType.equals(TestDummy.OPERATION_406)) {
 			pkgName = "com.xml.cnaps2.nets.v40600101";
 		} else if (mesgType.equals(TestDummy.OPERATION_407)) {

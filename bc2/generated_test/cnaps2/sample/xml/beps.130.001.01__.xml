@@ -140,7 +140,6 @@ C:\工作\二代支付系统相关\02_XML格式报文schema\pacs.008.001.02.xsd"
 			<RmtInf>
 				<Ustrd>/H01/测试测试测试测试测试</Ustrd>
 				<Ustrd>/HA1/备注测试测试测试册测试</Ustrd>
-				<Ustrd>/C14/2010-09-09</Ustrd>
 				<Ustrd>/EA2/12300011</Ustrd>
 				<Ustrd>/E45/77762761273</Ustrd>
 				<Ustrd>/F60/PR09</Ustrd>
