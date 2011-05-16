@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps72400101Hdr</param>
+  </params>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.beps.v72400101.Document" createOnElement="com.topfinance.ebo.msg.Beps72400101Hdr">
+    	<jb:wiring beanIdRef="txDwnldReq" property="txDwnldReq"/>
+  	</jb:bean>
+  	<jb:bean beanId="txDwnldReq.grpHdr.instdPty" class="com.xml.cnaps2.beps.v72400101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Beps72400101Hdr">
+  				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  				<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="txDwnldReq.txDwnldReqInf.dwnldReqTxsDtls[0].xxx" class="com.xml.cnaps2.beps.v72400101.DownloadRequestTransactionsDetails1" createOnElement="com.topfinance.ebo.msg.Beps72400101">
+    	<jb:wiring beanIdRef="txDwnldReq.txDwnldReqInf.dwnldReqTxsDtls[0].xxx.orgnlGrpHdr" property="orgnlGrpHdr"/>
+  				<jb:value data="sndRcvTp"  property="sndRcvIp"/>
+  	</jb:bean>
+  	<jb:bean beanId="txDwnldReq" class="com.xml.cnaps2.beps.v72400101.TransactionDownloadRequest" createOnElement="com.topfinance.ebo.msg.Beps72400101Hdr">
+    	<jb:wiring beanIdRef="txDwnldReq.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="txDwnldReq.txDwnldReqInf" property="txDwnldReqInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="txDwnldReq.grpHdr.instgPty" class="com.xml.cnaps2.beps.v72400101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Beps72400101Hdr">
+  				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  				<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="txDwnldReq.txDwnldReqInf.dwnldReqTxsDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps72400101Hdr/fakeNode">
+    	<jb:wiring beanIdRef="txDwnldReq.txDwnldReqInf.dwnldReqTxsDtls[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="txDwnldReq.grpHdr" class="com.xml.cnaps2.beps.v72400101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps72400101Hdr">
+    	<jb:wiring beanIdRef="txDwnldReq.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="txDwnldReq.grpHdr.instdPty" property="instdPty"/>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="sysCd"  property="sysCd"/>
+  				<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="txDwnldReq.txDwnldReqInf" class="com.xml.cnaps2.beps.v72400101.TransactionDownloadRequestInformation1" createOnElement="com.topfinance.ebo.msg.Beps72400101Hdr">
+    	<jb:wiring beanIdRef="txDwnldReq.txDwnldReqInf.dwnldReqTxsDtls[0]" property="dwnldReqTxsDtls"/>
+  				<jb:value data="nbOfTxs"  property="nbOfTxs"/>
+  	</jb:bean>
+  	<jb:bean beanId="txDwnldReq.txDwnldReqInf.dwnldReqTxsDtls[0].xxx.orgnlGrpHdr" class="com.xml.cnaps2.beps.v72400101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps72400101Hdr">
+  				<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  				<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  				<jb:value data="orgnlMT"  property="orgnlMsgTp"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

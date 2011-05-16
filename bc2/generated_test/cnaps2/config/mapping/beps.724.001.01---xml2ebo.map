@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps72400101Hdr" createOnElement="Document">
+				<jb:value data="/Document/TxDwnldReq/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/TxDwnldReq/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/TxDwnldReq/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/TxDwnldReq/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/TxDwnldReq/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/TxDwnldReq/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/TxDwnldReq/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/TxDwnldReq/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/TxDwnldReq/TxDwnldReqInf/NbOfTxs" property="nbOfTxs"/>    
+    		<jb:wiring beanIdRef="fakeNode[0]" property="fakeNode"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="fakeNode[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="fakeNode" />
+  </jb:bean>
+	<jb:bean beanId="fakeNode" class="com.topfinance.ebo.msg.Beps72400101" createOnElement="/Document/TxDwnldReq/TxDwnldReqInf/NbOfTxs">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/TxDwnldReq/TxDwnldReqInf/DwnldReqTxsDtls/SndRcvIp" property="sndRcvTp"/>    
+				<jb:value data="/Document/TxDwnldReq/TxDwnldReqInf/DwnldReqTxsDtls/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/TxDwnldReq/TxDwnldReqInf/DwnldReqTxsDtls/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+				<jb:value data="/Document/TxDwnldReq/TxDwnldReqInf/DwnldReqTxsDtls/OrgnlGrpHdr/OrgnlMsgTp" property="orgnlMT"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
