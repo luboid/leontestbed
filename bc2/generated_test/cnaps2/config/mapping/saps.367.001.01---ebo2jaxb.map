@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Saps36700101Hdr</param>
+  </params>
+  	<jb:bean beanId="acctInfQryRspn.grpHdr.instgPty" class="com.xml.cnaps2.saps.v36700101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr">
+  				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  				<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.saps.v36700101.Document" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr">
+    	<jb:wiring beanIdRef="acctInfQryRspn" property="acctInfQryRspn"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctInfQryRspn" class="com.xml.cnaps2.saps.v36700101.AcctInfQryRspnV1" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr">
+    	<jb:wiring beanIdRef="acctInfQryRspn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="acctInfQryRspn.prttn" property="prttn"/>
+    	<jb:wiring beanIdRef="acctInfQryRspn.orgnlGrpHdr" property="orgnlGrpHdr"/>
+    	<jb:wiring beanIdRef="acctInfQryRspn.npcPrcInf" property="npcPrcInf"/>
+    	<jb:wiring beanIdRef="acctInfQryRspn.acctInfQryRspnInf" property="acctInfQryRspnInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctInfQryRspn.orgnlGrpHdr" class="com.xml.cnaps2.saps.v36700101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr">
+  				<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  				<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  				<jb:value data="orgnlMT"  property="orgnlMT"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctInfQryRspn.npcPrcInf" class="com.xml.cnaps2.saps.v36700101.NPCProcessInformation1" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr">
+  				<jb:value data="prcSts"  property="prcSts"/>
+  				<jb:value data="prcCd"  property="prcCd"/>
+  				<jb:value data="rjctInf"  property="rjctInf"/>
+  				<jb:value data="netgDt"  property="netgDt"/>
+  				<jb:value data="netgRnd"  property="netgRnd"/>
+  				<jb:value data="sttlmDt"  property="sttlmDt"/>
+  				<jb:value data="rcvTm"  property="rcvTm"/>
+  				<jb:value data="trnsmtTm"  property="trnsmtTm"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctInfQryRspn.acctInfQryRspnInf" class="com.xml.cnaps2.saps.v36700101.AccountInformationQueryResponseInformation1" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr">
+    	<jb:wiring beanIdRef="acctInfQryRspn.acctInfQryRspnInf.acctInf[0]" property="acctInf"/>
+  				<jb:value data="nbOfAcct"  property="nbOfAcct"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctInfQryRspn.acctInfQryRspnInf.acctInf[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr/acctInf">
+    	<jb:wiring beanIdRef="acctInfQryRspn.acctInfQryRspnInf.acctInf[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="acctInfQryRspn.acctInfQryRspnInf.acctInf[0].xxx" class="com.xml.cnaps2.saps.v36700101.AccountInformation1" createOnElement="com.topfinance.ebo.msg.Saps36700101">
+    	<jb:wiring beanIdRef="acctInfQryRspn.acctInfQryRspnInf.acctInf[0].xxx.overdrftLmt" property="overdrftLmt"/>
+    	<jb:wiring beanIdRef="acctInfQryRspn.acctInfQryRspnInf.acctInf[0].xxx.cdtLd" property="cdtLd"/>
+  				<jb:value data="ptyCtgy"  property="ptyCtgy"/>
+  				<jb:value data="mmbId"  property="mmbId"/>
+  				<jb:value data="issr"  property="issr"/>
+  				<jb:value data="acctSts"  property="acctSts"/>
+  				<jb:value data="pldgFincgId"  property="pldgFincgId"/>
+  				<jb:value data="bal"  property="bal"/>
+  				<jb:value data="rstrctAmtLwrLmt"  property="rstrctAmtLwrLmt"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctInfQryRspn.acctInfQryRspnInf.acctInf[0].xxx.overdrftLmt" class="com.xml.cnaps2.saps.v36700101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr">
+  				<jb:value data="overdrftLmt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctInfQryRspn.acctInfQryRspnInf.acctInf[0].xxx.cdtLd" class="com.xml.cnaps2.saps.v36700101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr">
+  				<jb:value data="cdtLd" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctInfQryRspn.grpHdr.instdPty" class="com.xml.cnaps2.saps.v36700101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr">
+  				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  				<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctInfQryRspn.grpHdr" class="com.xml.cnaps2.saps.v36700101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr">
+    	<jb:wiring beanIdRef="acctInfQryRspn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="acctInfQryRspn.grpHdr.instdPty" property="instdPty"/>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="sysCd"  property="sysCd"/>
+  				<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctInfQryRspn.prttn" class="com.xml.cnaps2.saps.v36700101.Partition1" createOnElement="com.topfinance.ebo.msg.Saps36700101Hdr">
+  				<jb:value data="ttlNb"  property="ttlNb"/>
+  				<jb:value data="startNb"  property="startNb"/>
+  				<jb:value data="endNb"  property="endNb"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
