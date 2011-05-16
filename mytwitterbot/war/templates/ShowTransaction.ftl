@@ -37,7 +37,8 @@
                         | 
                     </span>                                		
                     <!--a href="/pages/paypal?Payment_Amount=${item.amount}" >Pay with Paypal</a-->
-                    <a href="#" onClick="javascript: top.TwitteyBot.goPaypal(${item.amount});">Pay with Paypal</a>
+                    <!--a href="#" onClick="javascript: top.TwitteyBot.goPaypal(${item.amount});">Pay with Paypal</a-->
+                    ${item.paypalButton!""}
                 </span>                    
                 <span>
                     <span style ="color : #000000">

@@ -1,5 +1,10 @@
 package com.appspot.twitteybot.ui;
 
+import com.appspot.twitteybot.datastore.PMF;
+import com.appspot.twitteybot.datastore.TwitterAccount;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserServiceFactory;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,11 +19,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.appspot.twitteybot.datastore.PMF;
-import com.appspot.twitteybot.datastore.TwitterAccount;
-import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserServiceFactory;
-
 public class MainPage extends HttpServlet {
 
 	private static final long serialVersionUID = 9148447220528278458L;
@@ -29,6 +29,10 @@ public class MainPage extends HttpServlet {
 			IOException {
 
 		User user = UserServiceFactory.getUserService().getCurrentUser();
+//	    User user = OpenIdServlet.getCurrentUser(req);
+		if(user==null) {
+		    user= new User("abc", "def");
+		}
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		log.info("Working for user " + user.getEmail());
 		Query query = pm.newQuery(TwitterAccount.class);

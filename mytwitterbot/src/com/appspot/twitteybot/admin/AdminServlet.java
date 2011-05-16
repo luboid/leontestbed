@@ -3,6 +3,7 @@ package com.appspot.twitteybot.admin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.jdo.PersistenceManager;
@@ -12,7 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.appspot.twitteybot.datastore.ApplicationProperty;
+import com.appspot.twitteybot.datastore.DashBoard;
+import com.appspot.twitteybot.datastore.DsHelper;
 import com.appspot.twitteybot.datastore.PMF;
+import com.appspot.twitteybot.datastore.UserSummary;
 import com.appspot.twitteybot.ui.FreeMarkerConfiguration;
 import com.appspot.twitteybot.ui.Pages;
 
@@ -72,6 +76,13 @@ public class AdminServlet extends HttpServlet {
 		templateValues.put(ApplicationProperty.PAYEE_ACCOUNT, payeeAccount);
 		
 		templateValues.put("error", error);
+		
+		List<UserSummary> res = DsHelper.getUserSummaries();
+		templateValues.put("usList", res);
+		
+		DashBoard db = DsHelper.getDashBoard();
+	    templateValues.put("db", db);
+	    
 		FreeMarkerConfiguration.writeResponse(templateValues, Pages.TEMPLATE_ADMINPAGE, w);
 
 	}

@@ -1,0 +1,14 @@
+
+Admin area where I can see who uses the app , how many twitter accoundts they have and how many tweets they sent .
+
+and also be able to set the price per message sent from the admin area, or edit a user (delete, suspend, set password.)
+
+improve the login alternativewith OpendID or signup(username + password)
+
+make it properly fetch content from rss feeds.
+
+everytime a user upload a tweet file, before confirmation, the system compute the number of tweets message with the cost per tweet
+
+and then redirect the user to paypal for payment, after payment, user is redirected back to the user admin panel and everything's fine to go.
+  
+that's pretty much it.

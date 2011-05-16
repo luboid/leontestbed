@@ -1,4 +1,5 @@
 <div class='setting'>
+<B>${error!""}</B>
 <form method = "POST" action="/admin?action=add">
 <!--div class='header'>
     Unit-Price Setting
@@ -18,7 +19,7 @@
                 Unit-Price (Doller per tweet)
             </td>
             <td>
-                $<input name = "unitPrice" style="width:360px;" value = '0.01'>
+                $<input name = "unit_price" style="width:360px;" value = '${unit_price!""}'>
             </td>
         </tr>
         <tr height='30px'>
@@ -26,7 +27,7 @@
                 Owner's paypal account
             </td>
             <td>
-                <input name = "accountId" style="width:360px;" value = 'myPaypalAccountId'>
+                <input name = "payee_account" style="width:360px;" value = '${payee_account!""}'>
             </td>
         </tr>
 	
@@ -45,7 +46,7 @@
                 Consumer Key
             </td>
             <td>
-                <input name = "consumer_key" style="width:360px;" value = '${consumer_key!""}'>
+                <input name = "consumer_key" style="width:360px;" value = '${consumer_key!"zPK00Krdr67O1dLJhbtphw"}'>
             </td>
         </tr>
         <tr height='30px'>
@@ -53,10 +54,17 @@
                 Consumer Secret
             </td>
             <td>
-                <input name = "consumer_secret" style="width:360px;" value = '${consumer_secret!""}'>
+                <input name = "consumer_secret" style="width:360px;" value = '${consumer_secret!"DG1OrxZZq8UJtsVPwoth5y8n03mKBmI8EFaXnovTg"}'>
             </td>
         </tr>
-	
+        <tr height='30px'>
+            <td>
+                Is Testing
+            </td>
+            <td>
+                <input name = "is_test" style="width:360px;" value = '${is_test!"false"}'>
+            </td>
+        </tr>	
     </table>
        
 </div>

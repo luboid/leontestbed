@@ -6,8 +6,10 @@ import com.appspot.twitteybot.datastore.PMF;
 import com.appspot.twitteybot.datastore.Transact;
 import com.appspot.twitteybot.datastore.TwitterStatus;
 import com.appspot.twitteybot.datastore.Transact.TxnState;
+import com.appspot.twitteybot.pay.PaypalStandard;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
+import freemarker.template.TemplateException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,6 +59,12 @@ public class TransactionManager extends HttpServlet {
             this.processCancel(req, resp);      
         } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_PAYTXN)) {
             this.processPayTxn(req, resp);                      
+//        } else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_DELETE ) || action.equalsIgnoreCase(Pages.PARAM_ACTION_UPDATE) ) {
+//            // forwarded to here when submitting from StatusManage with txnId
+//            // recalculate the txn amount and show the statusOftxn page
+//            this.processUpdateTxn(req, resp);
+        } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_CONFIRM_PAYPAL)) {
+            this.processConfirmPayTxn(req, resp);           
         } else {
             resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
         }
@@ -74,7 +82,15 @@ public class TransactionManager extends HttpServlet {
             end = Long.parseLong(req.getParameter(Pages.PARAM_END));
         } catch (NumberFormatException e) {
         }
-        this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, start, end),
+        List<Transact> list = DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, start, end);
+        try {
+            PaypalStandard.renderPaypalButton(list, req.getServerName());
+        } catch (TemplateException e) {
+            log.log(Level.WARNING, "PaypalStandard.renderPaypalButton", e);
+            e.printStackTrace(resp.getWriter());
+        }
+        
+        this.constructResponse(list,
                 "Showing " + (end - start) + " transactions", LEVEL_INFO, resp, start, end);
         pm.close();
     }
@@ -91,11 +107,43 @@ public class TransactionManager extends HttpServlet {
         transact.setTxnState(TxnState.PAID);
         pm.makePersistent(transact);
         
+        log.info("transaction="+txnId+" is paid and confirmed.");
+        
         this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE),
                 "Showing " + PAGE_SIZE + " transactions", LEVEL_INFO, resp, 0, PAGE_SIZE);
         pm.close();
         
     }
+    
+    private void processConfirmPayTxn(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        
+        
+        long txnId = -1;
+        try {
+            txnId = Long.parseLong(req.getParameter(Pages.PARAM_TXN_ID));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        PersistenceManager pm = PMF.get().getPersistenceManager();
+        Transact transact = DsHelper.getTransact(txnId, pm);
+        if(transact!=null) {
+            transact.setTxnState(TxnState.PAID);
+            pm.makePersistent(transact);
+            log.warning("transaction="+txnId+" is paid and confirmed. queryString="+req.getQueryString());
+        }
+        
+        showConfirmPage(transact, resp);
+        pm.close();
+        
+    }
+    private void showConfirmPage(Transact transact, HttpServletResponse resp) throws IOException {
+        log.info("showConfirmPage!!!!!!");
+        Map<String, Object> templateValues = new HashMap<String, Object>();
+        templateValues.put(Pages.FTLVAR_TWITTER_TXN, transact);
+        FreeMarkerConfiguration.writeResponse(templateValues, Pages.TEMPLATE_CONFIRM_PAYPAL, resp.getWriter());
+    }    
+    
     private void processCancel(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         long txnId = -1;
         try {

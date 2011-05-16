@@ -8,6 +8,7 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -51,7 +52,7 @@ public class TwitterAccountManager extends HttpServlet {
 		log.warning("action="+action+", Using consumer key " + ApplicationProperty.read(ApplicationProperty.CONSUMER_KEY)+", isTesting()="+ApplicationProperty.isTesting());
 		try {
 		    if(ApplicationProperty.isTesting() && action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
-		        saveToken("token", "tokenSecret", "papaya");
+		        saveToken("token", "tokenSecret", "papaya_"+(new Date().getTime()));
 		        resp.sendRedirect(Pages.PAGE_MAIN);
 		    }
 		    else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {

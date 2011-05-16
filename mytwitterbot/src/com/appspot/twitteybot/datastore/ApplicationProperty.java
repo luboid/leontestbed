@@ -42,7 +42,9 @@ public class ApplicationProperty {
 	            throw new RuntimeException(ex);
 	        }       
 	    }
-	   
+	public static final String getPayeeAccount() {
+	    return read(PAYEE_ACCOUNT);
+	}
 	public static final double getUnitPrice() {
 	    
 	    String unitPriceStr = read(UNIT_PRICE);

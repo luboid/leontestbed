@@ -4,12 +4,17 @@ public class Pages {
     
 //    public static final boolean LOCAL_TEST = true;
     
+    public static final String TEMPLATE_SIGNUPPAGE="SignUp.ftl";
+    
+    public static final String TEMPLATE_CONFIRM_PAYPAL= "ConfirmPaypal.ftl";
+    public static final String TEMPLATE_PAYPALBUTTON= "paypalButton.ftl";
     public static final String TEMPLATE_TXNPAGE= "ShowTransaction.ftl";
     
     public static final String PARAM_TXN_ACTION_ADD = "Add";
     public static final String PARAM_TXN_ACTION_SHOW = "Show";
     public static final String PARAM_TXN_ACTION_CANCEL = "CancelTxn";
     public static final String PARAM_TXN_ACTION_PAYTXN = "PayTxn";
+    public static final String PARAM_TXN_ACTION_CONFIRM_PAYPAL = "ConfirmPaypal";
     public static final String FTLVAR_TXN = "txnList";
     public static final String FTLVAR_TXN_MESSAGE = "message";
     public static final String FTLVAR_TXN_LEVEL = "level";
@@ -39,6 +44,15 @@ public class Pages {
 	// leon
 	public static final String PARAM_ACTION_SHOW_TWEET_OF_TXN = "ShowTweetOfTxn";
 	
+	public static final String PARAM_ACTION_SIGNUP = "signup";
+	public static final String PARAM_ACTION_SIGNIN = "signin";
+	
+	public static final String PARAM_ACTION_SHOWSIGNUP = "showsignup";
+    public static final String PARAM_ACTION_SHOWSIGNIN = "showsignin";
+	
+	// signup
+	public static final String PARAM_SIGNUP_NAME = "sign_up_name";
+	public static final String PARAM_SIGNUP_PASSWORD = "sign_up_password";
 	
 	public static final String PARAM_STATUS_CANADD = "item_";
 	public static final String PARAM_TOTAL_ITEMS = "totalItems";

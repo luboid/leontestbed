@@ -611,5 +611,20 @@ var AppAdmin = {
     			$(panes[index]).show();
     		});
     	});
+    	/*
+    	alert('here 1');
+            $("#UserManagement").click(function(){
+            	alert('here!!!!');
+                $("#resultFrame").attr("src", "/admin?action=user);
+
+            });    	
+            */
     }
+    
+    /*
+            this.onUserLoad = function(content, txnId){
+            	alert('onUserLoad!!!');
+                $("#adminArea").html(content);
+            };
+            */
 }

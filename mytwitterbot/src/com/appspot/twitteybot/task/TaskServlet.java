@@ -62,6 +62,7 @@ public class TaskServlet extends HttpServlet {
 				// TODO Catch DeadlineExceededException
 				String key = req.getParameter(Pages.PARAM_STATUS_KEY);
 				// TODO Add logic to delete this key
+				
 				log.log(Level.FINE, "Key of this twitter, that can be deleted is " + key);
 			} catch (CacheException e) {
 				throw new ServletException(e);

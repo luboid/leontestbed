@@ -16,7 +16,10 @@
             <div class = "nav">
                 <ul>
                     <li>
-                        <a href = "#" class='selected'>User Management</a>
+                        <a href = "#" class='selected'>Dashboard</a>
+                    </li>                
+                    <li>
+                        <a href = "#" >User Details</a>
                     </li>
                      <li>
                         <a href = "#">Parameters Setting</a>
@@ -24,19 +27,25 @@
                 </ul>
             </div>
             <div class = "admin-content">
-                <div id='users' class="main">
+                <div id='db' class="main">
+                   <#include 'dashboard.ftl'/>
+                </div>           
+                <div id='users' style='display:none'>
                    <#include 'user.ftl'/>
                 </div>
                 <div id='setting' style='display:none'>
                    <#include 'setting.ftl'/>
                </div>
+               
+                <!--div id = "adminArea">
+								</div--> 
             </div>
              <div id = "footer"></div>
         </div>
         <iframe id = "resultFrame" name = "resultFrame" style ="width : 100%; display:none">
         </iframe>
     </body>
-    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type = "text/javascript">
+    <script src = "/js/jquery.min.js" type = "text/javascript">
     </script>
     <script src = "/js/date.js" type = "text/javascript">
     </script>

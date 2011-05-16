@@ -4,10 +4,12 @@ import com.appspot.twitteybot.datastore.DsHelper;
 import com.appspot.twitteybot.datastore.PMF;
 import com.appspot.twitteybot.datastore.Transact;
 import com.appspot.twitteybot.datastore.TwitterStatus;
+import com.appspot.twitteybot.pay.PaypalStandard;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserServiceFactory;
+import freemarker.template.TemplateException;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -29,7 +31,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -71,6 +72,7 @@ public class StatusManager extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getParameter(Pages.PARAM_ACTION);
+		
 		if (action == null) {
 			resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_UPLOAD)) {
@@ -82,7 +84,7 @@ public class StatusManager extends HttpServlet {
 //		    throw new RuntimeException("add txn should not come here");
 		    req.getRequestDispatcher("/pages/transaction").forward(req, resp);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_DELETE)) {
-			this.processUpdate(req, resp, true);
+		    this.processUpdate(req, resp, true);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_UPDATE)) {
 			this.processUpdate(req, resp, false);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_SHOW)) {
@@ -141,13 +143,21 @@ public class StatusManager extends HttpServlet {
         Transact txn = null;
         if(txnId!=NO_TXN) {
             txn = DsHelper.getTransact(txnId, pm);
+            try {
+                PaypalStandard.renderPaypalButton(txn, req.getServerName());
+            } catch (TemplateException e) {
+                log.log(Level.WARNING, "PaypalStandard.renderPaypalButton", e);
+                e.printStackTrace(resp.getWriter());
+            }            
         }
         this.constructResponse(txn, DsHelper.getTwitterStatus(txnId, pm, start, end),
                 "Showing " + (end - start) + " tweets", LEVEL_INFO, resp, start, end);
         pm.close();
     }
     
-	private void processUpdate(HttpServletRequest req, HttpServletResponse resp, boolean delete) throws IOException {
+	private void processUpdate(HttpServletRequest req, HttpServletResponse resp, boolean delete) throws IOException, ServletException {
+	    
+	    
 		int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		User user = UserServiceFactory.getUserService().getCurrentUser();
@@ -203,13 +213,40 @@ public class StatusManager extends HttpServlet {
 
 		pm.close();
 		pm = PMF.get().getPersistenceManager();
-		this.constructResponse(this.getTwitterStatus(req.getParameter(Pages.PARAM_SCREENNAME), pm), message, level,
-				resp);
-
 		pm.close();
+		
+		String txnId = req.getParameter(Pages.PARAM_TXN_ID);
+		log.info("txnId="+txnId);
+        if("".equals(txnId)) {
+            this.constructResponse(this.getTwitterStatus(req.getParameter(Pages.PARAM_SCREENNAME), pm), message, level,
+                    resp);            
+        }else {
+            // recalculate this txn
+            recalculateTxn(txnId);
+            processShowTweetsOfTxn(req,resp);
+        }
+
+
+		
 	}
 
-
+	private void recalculateTxn(String txnIdStr) {
+	    try {
+	        PersistenceManager pm = PMF.get().getPersistenceManager();
+	        Long txnId = Long.valueOf(txnIdStr);
+	        Transact transact = DsHelper.getTransact(txnId, pm);
+	        // TODO get size via query
+	        List<TwitterStatus> list = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
+	        int size = list.size();
+	        transact.setNumberOfStatus(size);
+	        transact.setAmount(transact.getUnitPrice()*size);
+	        pm.makePersistent(transact);
+	        pm.close();
+	        
+	    } catch (Exception e){
+	        log.log(Level.SEVERE, "recalculateTxn", e);
+	    }
+	}
 
 	private void processFetch(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String twitterScreenName = req.getParameter(Pages.PARAM_SCREENNAME);
