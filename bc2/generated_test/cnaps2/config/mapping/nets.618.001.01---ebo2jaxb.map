@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Nets61800101Hdr</param>
+  </params>
+  	<jb:bean beanId="bepsNetgRspn.npcPrcInf" class="com.xml.cnaps2.nets.v61800101.NPCProcessInformation1" createOnElement="com.topfinance.ebo.msg.Nets61800101Hdr">
+  				<jb:value data="nPCPrcSts"  property="prcSts"/>
+  				<jb:value data="nPCPrcCd"  property="prcCd"/>
+  				<jb:value data="nPCRjctInf"  property="rjctInf"/>
+  				<jb:value data="nPCNetgDt" decoder="Date" property="netgDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="nPCNetgRnd"  property="netgRnd"/>
+  				<jb:value data="nPCSttlmDt" decoder="Date" property="sttlmDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="nPCRcvTm" decoder="Date" property="rcvTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="nPCTrnsmtTm" decoder="Date" property="trnsmtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  	</jb:bean>
+  	<jb:bean beanId="bepsNetgRspn.orgnlGrpHdr" class="com.xml.cnaps2.nets.v61800101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Nets61800101Hdr">
+  				<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  				<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  				<jb:value data="orgnlMT"  property="orgnlMT"/>
+  	</jb:bean>
+  	<jb:bean beanId="bepsNetgRspn.grpHdr.instdPty" class="com.xml.cnaps2.nets.v61800101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Nets61800101Hdr">
+  				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  				<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.nets.v61800101.Document" createOnElement="com.topfinance.ebo.msg.Nets61800101Hdr">
+    	<jb:wiring beanIdRef="bepsNetgRspn" property="bepsNetgRspn"/>
+  	</jb:bean>
+  	<jb:bean beanId="bepsNetgRspn.bepsNetgRspnInf.txList[0].xxx.amt" class="com.xml.cnaps2.nets.v61800101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets61800101Hdr">
+  				<jb:value data="amt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="bepsNetgRspn.bepsNetgRspnInf.txList[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Nets61800101Hdr/txList">
+    	<jb:wiring beanIdRef="bepsNetgRspn.bepsNetgRspnInf.txList[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="bepsNetgRspn" class="com.xml.cnaps2.nets.v61800101.BEPSNettingResponse" createOnElement="com.topfinance.ebo.msg.Nets61800101Hdr">
+    	<jb:wiring beanIdRef="bepsNetgRspn.bepsNetgRspnInf" property="bepsNetgRspnInf"/>
+    	<jb:wiring beanIdRef="bepsNetgRspn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="bepsNetgRspn.prttn" property="prttn"/>
+    	<jb:wiring beanIdRef="bepsNetgRspn.orgnlGrpHdr" property="orgnlGrpHdr"/>
+    	<jb:wiring beanIdRef="bepsNetgRspn.npcPrcInf" property="npcPrcInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="bepsNetgRspn.prttn" class="com.xml.cnaps2.nets.v61800101.Partition1" createOnElement="com.topfinance.ebo.msg.Nets61800101Hdr">
+  				<jb:value data="ttlNb"  property="ttlNb"/>
+  				<jb:value data="startNb"  property="startNb"/>
+  				<jb:value data="endNb"  property="endNb"/>
+  	</jb:bean>
+  	<jb:bean beanId="bepsNetgRspn.grpHdr.instgPty" class="com.xml.cnaps2.nets.v61800101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Nets61800101Hdr">
+  				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  				<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="bepsNetgRspn.bepsNetgRspnInf.txList[0].xxx" class="com.xml.cnaps2.nets.v61800101.TransactionList1" createOnElement="com.topfinance.ebo.msg.Aets61800101TxList">
+    	<jb:wiring beanIdRef="bepsNetgRspn.bepsNetgRspnInf.txList[0].xxx.amt" property="amt"/>
+  				<jb:value data="netgRnd"  property="netgRnd"/>
+  				<jb:value data="netgTp"  property="netgTp"/>
+  				<jb:value data="mmbId"  property="mmbId"/>
+  				<jb:value data="dbtCdtId"  property="dbtCdtId"/>
+  				<jb:value data="rspnSts"  property="rspnSts"/>
+  				<jb:value data="sttlmDt" decoder="Date" property="sttlmDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  	</jb:bean>
+  	<jb:bean beanId="bepsNetgRspn.grpHdr" class="com.xml.cnaps2.nets.v61800101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Nets61800101Hdr">
+    	<jb:wiring beanIdRef="bepsNetgRspn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="bepsNetgRspn.grpHdr.instdPty" property="instdPty"/>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="sysCd"  property="sysCd"/>
+  				<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="bepsNetgRspn.bepsNetgRspnInf" class="com.xml.cnaps2.nets.v61800101.BEPSNettingResponseInformation1" createOnElement="com.topfinance.ebo.msg.Nets61800101Hdr">
+    	<jb:wiring beanIdRef="bepsNetgRspn.bepsNetgRspnInf.txList[0]" property="txList"/>
+  				<jb:value data="resNetgDt" decoder="Date" property="netgDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="nbOfTx"  property="nbOfTx"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    
