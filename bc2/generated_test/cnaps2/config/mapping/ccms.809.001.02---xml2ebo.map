@@ -7,10 +7,10 @@
     <param name="input.xsd" type="input.type.actived"></param>
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms80900102Hdr" createOnElement="Document">
-				<jb:value data="/Document/StopgNtfctn/GrpHdr/MsgId" property="msgId"/>     
-				<jb:value data="/Document/StopgNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
-					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
-				</jb:value>
+				<jb:value data="/Document/StopgNtfctn/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/StopgNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
 				<jb:value data="/Document/StopgNtfctn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 				<jb:value data="/Document/StopgNtfctn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 				<jb:value data="/Document/StopgNtfctn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
@@ -18,22 +18,22 @@
 				<jb:value data="/Document/StopgNtfctn/GrpHdr/SysCd" property="sysCd"/>    
 				<jb:value data="/Document/StopgNtfctn/GrpHdr/Rmk" property="rmk"/>    
 				<jb:value data="/Document/StopgNtfctn/StsInf/NewSts" property="newSts"/>    
-				<jb:value data="/Document/StopgNtfctn/StsInf/FctvDt" decoder="Date" property="fctvDt">    
-					<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
-		        </jb:value> 
-				<jb:value data="/Document/StopgNtfctn/StsInf/EstmtdStartSvc" decoder="Date" property="estmtdStartSvc">    
-					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
-				</jb:value>  
-    		<jb:wiring beanIdRef="ndCd[0]" property="ndCd"/>
+  			<jb:value data="/Document/StopgNtfctn/StsInf/FctvDt" decoder="Date" property="fctvDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+  			<jb:value data="/Document/StopgNtfctn/StsInf/EstmtdStartSvc" decoder="Date" property="estmtdStartSvc">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/StopgNtfctn/NdInf/NdCd" property="ndCd"/>    
+    		<jb:wiring beanIdRef="fakeNode[0]" property="fakeNode"/>
 
 	</jb:bean>
 	
-  <jb:bean beanId="ndCd[0]" class="java.util.HashSet" createOnElement="Document">
-   	<jb:wiring beanIdRef="ndCd" />
+  <jb:bean beanId="fakeNode[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="fakeNode" />
   </jb:bean>
-	<jb:bean beanId="ndCd" class="com.topfinance.ebo.msg.Ccms80900102" createOnElement="/Document/StopgNtfctn/NdInf/NdCd">
+	<jb:bean beanId="fakeNode" class="com.topfinance.ebo.msg.Ccms80900102" createOnElement="/Document/StopgNtfctn/NdInf/NdCd">
 		<jb:wiring beanIdRef="target" property="fid"/>
-		<jb:value data="/Document/StopgNtfctn/NdInf/NdCd" property="ndCd"/> 
 				<jb:value data="/Document/StopgNtfctn/NdInf/PtyId" property="ptyId"/>    
 	</jb:bean>  
 
