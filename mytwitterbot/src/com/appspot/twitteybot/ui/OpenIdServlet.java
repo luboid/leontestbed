@@ -32,18 +32,7 @@ public class OpenIdServlet extends HttpServlet {
     }
 
     
-    public static User getCurrentUser(HttpServletRequest req) {
-        UserService userService = UserServiceFactory.getUserService();
-        User user = userService.getCurrentUser();
-        if(user==null) {
-            AppUser u1 = (AppUser)req.getSession(true).getAttribute("user");
-            if(u1!=null) {
-                // to avoid duplication with openId accounts
-                user = new User(u1.getUserName()+"@registered", "thisapp");
-            }
-        }
-        return user;
-    }
+
     
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
