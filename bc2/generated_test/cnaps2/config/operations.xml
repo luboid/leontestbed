@@ -1391,7 +1391,6 @@
       	pathOpClass=""     	
       	>
       </OperationDefinition>
-      </OperationDefinition>
       
       <OperationDefinition
       	class="com.topfinance.runtime.OperationDefinition" id="ccms.926.001.01"
