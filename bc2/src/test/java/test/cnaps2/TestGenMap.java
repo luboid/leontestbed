@@ -1383,7 +1383,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_130() throws Exception {
+	public void atestGenerated_130() throws Exception {
 		String msgCode = "beps.130.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1451,6 +1451,28 @@ public class TestGenMap extends TestGenMapLeon {
 	
 	public void atestGenerated_391() throws Exception {
 		String msgCode = "beps.391.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void btestGenerated_128() throws Exception {
+		String msgCode = "beps.128.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_134() throws Exception {
+		String msgCode = "beps.134.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {

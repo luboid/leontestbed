@@ -145,7 +145,11 @@
     			<value>com.topfinance.ebo.msg.Beps38200101</value>   			
     			<value>com.topfinance.ebo.msg.Beps38200101TxInfAndSts</value>		
     			<value>com.topfinance.ebo.msg.Hvps71700101</value>		
-    			<value>com.topfinance.ebo.msg.Hvps71700101Dtls</value>
+    			<value>com.topfinance.ebo.msg.Hvps71700101Dtls</value>	
+    			<value>com.topfinance.ebo.msg.Beps12800101</value>		
+    			<value>com.topfinance.ebo.msg.Beps12800101TxInfAndSts</value>
+    			<value>com.topfinance.ebo.msg.Beps13400101</value>		
+    			<value>com.topfinance.ebo.msg.Beps13400101TxInfAndSts</value>
     			
 			</list>
 		</property>
@@ -153,7 +157,7 @@
 			<props>				
 				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
 				<!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>-->
-				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.cache.use_query_cache">true</prop>
 			</props>

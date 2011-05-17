@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps13400101" createOnElement="Document">
+				<jb:value data="/Document/FiToFiPmtStsRpt/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/FiToFiPmtStsRpt/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgNmId" property="orgnlMsgNmId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlNbOfTxs" property="orgnlNbOfTxs"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlCtrlSum" property="orgnlCtrlSum"/>    
+				<jb:expression property="addtlInfPrcSts" execOnElement="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf">
+					if (_VALUE contains "F61") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/F61/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
+				<jb:expression property="netgDt" execOnElement="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf">
+					if (_VALUE contains "C01") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/C01/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
+				<jb:expression property="netgRnd" execOnElement="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf">
+					if (_VALUE contains "E05") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/E05/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
+				<jb:expression property="sttlmDt" execOnElement="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf">
+					if (_VALUE contains "C00") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/C00/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
+				<jb:value data="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/NbOfTxsPerSts/DtldNbOfTxs" property="dtldNbOfTxs"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/NbOfTxsPerSts/DtldSts" property="dtldSts"/>    
+    		<jb:wiring beanIdRef="txInfAndSts[0]" property="txInfAndSts"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="txInfAndSts[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="txInfAndSts" />
+  </jb:bean>
+	<jb:bean beanId="txInfAndSts" class="com.topfinance.ebo.msg.Beps13400101TxInfAndSts" createOnElement="/Document/FiToFiPmtStsRpt/TxInfAndSts">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/StsId" property="stsId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxId" property="orgnlTxId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/StsRsnInf/Rsn/Prtry" property="prtryRejCd"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/StsRsnInf/AddtlInf" property="prtryRejRsn"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/IntrBkSttlmAmt/Value" property="intrBkSttlmAmt"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/PmtTpInf/CtgyPurp/Prtry" property="ctgyPurp"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/MndtRltdInf/AmdmntInfDtls/OrgnlCdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="clrSysMmbId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/MndtRltdInf/AmdmntInfDtls/OrgnlCdtrAgt/BrnchId/Id" property="brnchId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/RmtInf/Ustrd" property="rmtInf"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/DbtrAgt/BrnchId/Id" property="dbtrAgtBrnchId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="cdtrClrSysMmbId"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/CdtrAgt/BrnchId/Id" property="cdtrAgtBrnchId"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
