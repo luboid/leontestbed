@@ -95,9 +95,18 @@
     			<value>com.topfinance.ebo.msg.Hvps15300101</value>
     			<value>com.topfinance.ebo.msg.Hvps71000101</value>
     			<value>com.topfinance.ebo.msg.Hvps71500101</value>
-    			<value>com.topfinance.ebo.msg.Saps73700101</value>
+    			
+    			<value>com.topfinance.ebo.msg.Beps40100101</value>
+    			<value>com.topfinance.ebo.msg.Beps40200101</value>
+    			<value>com.topfinance.ebo.msg.Beps40300101</value>
+    			<value>com.topfinance.ebo.msg.Beps41500101</value>
+    			<value>com.topfinance.ebo.msg.Beps72000101</value>
+
+    			<value>com.topfinance.ebo.msg.Beps41200101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Beps41200101</value>
+    			
     			<value>com.topfinance.ebo.msg.Saps73700101Hdr</value>
-    			<value>com.topfinance.ebo.msg.Saps73700101TxList</value>
+    			<value>com.topfinance.ebo.msg.Saps73700101</value>
     			<value>com.topfinance.ebo.msg.Beps12300101</value>
     			<value>com.topfinance.ebo.msg.Beps13200101</value>
     			<value>com.topfinance.ebo.msg.Beps38600101</value>
@@ -108,6 +117,7 @@
     			<value>com.topfinance.ebo.msg.Beps39700101</value>
     			<value>com.topfinance.ebo.msg.Beps39800101</value>
     			<value>com.topfinance.ebo.msg.Saps60300102</value>
+    			
     			<value>com.topfinance.ebo.msg.Nets37700101</value>
     			<value>com.topfinance.ebo.msg.Nets37600101</value>
     			<value>com.topfinance.ebo.msg.Saps36000101</value>
@@ -129,7 +139,8 @@
     			<value>com.topfinance.ebo.msg.Beps40400101ItmDtls</value>
     			<value>com.topfinance.ebo.msg.Hvps11200101</value>
     			<value>com.topfinance.ebo.msg.Hvps11200101RmtInf</value>
-    			<value>com.topfinance.ebo.msg.Nets40500101</value>   			
+    			<value>com.topfinance.ebo.msg.Nets40500101</value>  
+    			 			
     			<value>com.topfinance.ebo.msg.Beps41400101</value>
     			<value>com.topfinance.ebo.msg.Beps41700101</value>
     			<value>com.topfinance.ebo.msg.Beps72500101</value>
@@ -138,7 +149,8 @@
     			<value>com.topfinance.ebo.msg.Beps38700101Hdr</value>
     			<value>com.topfinance.ebo.msg.Beps38700101</value>
     			<value>com.topfinance.ebo.msg.Beps38800101Hdr</value>
-    			<value>com.topfinance.ebo.msg.Beps38800101</value>  			
+    			<value>com.topfinance.ebo.msg.Beps38800101</value>  
+    						
     			<value>com.topfinance.ebo.msg.Beps38100101</value>
     			<value>com.topfinance.ebo.msg.Beps38100101PmtInf</value>    			
     			<value>com.topfinance.ebo.msg.Beps39100101</value>   			
@@ -151,6 +163,60 @@
     			<value>com.topfinance.ebo.msg.Beps13400101</value>		
     			<value>com.topfinance.ebo.msg.Beps13400101TxInfAndSts</value>
     			
+    			<value>com.topfinance.ebo.msg.Ccms91300101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Ccms91300101</value>
+    			<value>com.topfinance.ebo.msg.Ccms90600101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Ccms90600101</value>
+    			<value>com.topfinance.ebo.msg.Ccms99200101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Ccms99200101</value>
+    			<value>com.topfinance.ebo.msg.Ccms92100101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Ccms92100101</value>
+    			<value>com.topfinance.ebo.msg.Ccms80300102Hdr</value>
+    			<value>com.topfinance.ebo.msg.Ccms80300102</value>
+    			<value>com.topfinance.ebo.msg.Ccms91900101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Ccms91900101</value>
+    			<value>com.topfinance.ebo.msg.Ccms90700102Hdr</value>
+    			<value>com.topfinance.ebo.msg.Ccms90700102</value>
+    			<value>com.topfinance.ebo.msg.Ccms91600101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Ccms91600101</value>
+    			<value>com.topfinance.ebo.msg.Saps73100101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps73100101</value>
+    			<value>com.topfinance.ebo.msg.Saps73300101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps73300101</value>
+    			<value>com.topfinance.ebo.msg.Saps61000101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps61000101</value>
+    			<value>com.topfinance.ebo.msg.Saps61100101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps61100101</value>
+    			<value>com.topfinance.ebo.msg.Saps73800101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps73800101</value>
+    			<value>com.topfinance.ebo.msg.Saps73600101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps73600101</value>
+    			<value>com.topfinance.ebo.msg.Saps37300101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps37300101</value>
+    			<value>com.topfinance.ebo.msg.Saps35700101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps35700101</value>
+    			<value>com.topfinance.ebo.msg.Saps61600101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps61600101</value>
+    			<value>com.topfinance.ebo.msg.Saps36400101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps36400101</value>
+    			<value>com.topfinance.ebo.msg.Nets40600101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Nets40600101</value>
+    			<value>com.topfinance.ebo.msg.Nets35300101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Nets35300101</value>
+    			<value>com.topfinance.ebo.msg.Ccms80900102Hdr</value>
+    			<value>com.topfinance.ebo.msg.Ccms80900102</value>
+    			<value>com.topfinance.ebo.msg.Pbcs60800101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Pbcs60800101</value>
+    			<value>com.topfinance.ebo.msg.Ccms92600101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Ccms92600101</value>
+    			<value>com.topfinance.ebo.msg.Beps38500101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Beps38500101</value>
+    			<value>com.topfinance.ebo.msg.Beps72400101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Beps72400101</value>
+    			<value>com.topfinance.ebo.msg.Saps36700101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps36700101</value>
+    			<value>com.topfinance.ebo.msg.Nets61800101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Nets61800101</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
