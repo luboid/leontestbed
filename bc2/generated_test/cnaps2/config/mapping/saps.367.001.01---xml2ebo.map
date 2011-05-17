@@ -54,9 +54,9 @@
 				<jb:value data="/Document/AcctInfQryRspn/AcctInfQryRspnInf/AcctInf/Issr" property="issr"/>    
 				<jb:value data="/Document/AcctInfQryRspn/AcctInfQryRspnInf/AcctInf/AcctSts" property="acctSts"/>    
 				<jb:value data="/Document/AcctInfQryRspn/AcctInfQryRspnInf/AcctInf/PldgFincgId" property="pldgFincgId"/>    
-				<jb:value data="/Document/AcctInfQryRspn/AcctInfQryRspnInf/AcctInf/OverdrftLmt/Value" property="overdrftLmt"/>    
+				<jb:value data="/Document/AcctInfQryRspn/AcctInfQryRspnInf/AcctInf/OverdrftLmt" property="overdrftLmt"/>    
 				<jb:value data="/Document/AcctInfQryRspn/AcctInfQryRspnInf/AcctInf/Bal" property="bal"/>    
-				<jb:value data="/Document/AcctInfQryRspn/AcctInfQryRspnInf/AcctInf/CdtLd/Value" property="cdtLd"/>    
+				<jb:value data="/Document/AcctInfQryRspn/AcctInfQryRspnInf/AcctInf/CdtLd" property="cdtLd"/>    
 				<jb:value data="/Document/AcctInfQryRspn/AcctInfQryRspnInf/AcctInf/RstrctAmtLwrLmt" property="rstrctAmtLwrLmt"/>    
 	</jb:bean>  
 
