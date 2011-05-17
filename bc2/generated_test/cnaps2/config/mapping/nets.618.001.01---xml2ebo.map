@@ -56,9 +56,11 @@
 				<jb:value data="/Document/BepsNetgRspn/BepsNetgRspnInf/TxList/NetgTp" property="netgTp"/>    
 				<jb:value data="/Document/BepsNetgRspn/BepsNetgRspnInf/TxList/MmbId" property="mmbId"/>    
 				<jb:value data="/Document/BepsNetgRspn/BepsNetgRspnInf/TxList/DbtCdtId" property="dbtCdtId"/>    
-				<jb:value data="/Document/BepsNetgRspn/BepsNetgRspnInf/TxList/Amt/Value" property="amt"/>    
-				<jb:value data="/Document/BepsNetgRspn/BepsNetgRspnInf/TxList/RspnSts" property="rspnSts"/>    
-				<jb:value data="/Document/BepsNetgRspn/BepsNetgRspnInf/TxList/SttlmDt" property="sttlmDt"/>    
+				<jb:value data="/Document/BepsNetgRspn/BepsNetgRspnInf/TxList/Amt" property="amt"/>    
+				<jb:value data="/Document/BepsNetgRspn/BepsNetgRspnInf/TxList/RspnSts" property="rspnSts"/>     
+				<jb:value data="/Document/BepsNetgRspn/BepsNetgRspnInf/TxList/SttlmDt" decoder="Date" property="sttlmDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>  
 	</jb:bean>  
 
 
