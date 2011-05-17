@@ -65,19 +65,19 @@ public class Nets35600101Hdr  implements java.io.Serializable {
     @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.mmbId")
     private String nmMmbId;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.cdtLd.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.cdtLd")
     private Double nmCdtLd;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.ttlPldgVal.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.ttlPldgVal")
     private Double nmTtlPldgVal;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.cdtXtnsnLmt.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.cdtXtnsnLmt")
     private Double nmCdtXtnsnLmt;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.netDbtLmt.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.netDbtLmt")
     private Double nmNetDbtLmt;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.avlblNetDbt.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.avlblNetDbt")
     private Double nmAvlblNetDbt;
     
     @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtWrngSetng.swtchTp")
@@ -89,10 +89,10 @@ public class Nets35600101Hdr  implements java.io.Serializable {
     @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.rclmPldg.mmbId")
     private String rpMmbId;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtWrngSetng.avlblNetDbtWrngVal.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtWrngSetng.avlblNetDbtWrngVal")
     private Double nwAvlblNetDbtWrngVal;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.rclmPldg.dstrbtnPldgVal.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.rclmPldg.dstrbtnPldgVal")
     private Double rpDstrbtnPldgVal;
     
     @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.mgrId")
@@ -101,28 +101,28 @@ public class Nets35600101Hdr  implements java.io.Serializable {
     @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.ntfctnTp")
     private String cmNtfctnTp;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.orgnlNotDstrbtn.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.orgnlNotDstrbtn")
     private Double cmOrgnlNotDstrbtn;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.orgnlIsDstrbtn.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.orgnlIsDstrbtn")
     private Double cmOrgnlIsDstrbtn;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.notDstrbtn.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.notDstrbtn")
     private Double cmNotDstrbtn;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.isDstrbtn.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.isDstrbtn")
     private Double cmIsDstrbtn;
     
     @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.mgrId")
     private String fdMgrId;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.orgnlNotDstrbtn.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.orgnlNotDstrbtn")
     private Double fdOrgnlNotDstrbtn;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.orgnlIsDstrbtn.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.orgnlIsDstrbtn")
     private Double fdOrgnlIsDstrbtn;
     
-    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.forceDwn.value")
+    @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.forceDwn")
     private Double fdForceDwn;
     
     @JaxbMapping(objPath="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.brnchQty")
