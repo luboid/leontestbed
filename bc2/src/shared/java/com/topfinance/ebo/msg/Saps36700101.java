@@ -58,16 +58,16 @@ public class Saps36700101  implements java.io.Serializable {
     @JaxbMapping(objPath="acctInfQryRspn.acctInfQryRspnInf.acctInf[0].rstrctAmtLwrLmt")
     private String rstrctAmtLwrLmt;
     
-    private Saps37300101Hdr fid;
+    private Saps36700101Hdr fid;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="FID", nullable=false, updatable=false)
-    public Saps37300101Hdr getFid() {
+    public Saps36700101Hdr getFid() {
 		return fid;
 	}
 
 
-	public void setFid(Saps37300101Hdr fid) {
+	public void setFid(Saps36700101Hdr fid) {
 		this.fid = fid;
 	}
 
