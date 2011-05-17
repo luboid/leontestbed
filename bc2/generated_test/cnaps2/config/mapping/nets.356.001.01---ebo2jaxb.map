@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Nets35600101Hdr</param>
+  </params>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.dstrbtnList[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr/fdDstrbtnList">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.dstrbtnList[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.grpHdr.instdPty" class="com.xml.cnaps2.nets.v35600101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  				<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.orgnlNotDstrbtn" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="fdOrgnlNotDstrbtn" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.cdtXtnsnLmt" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="nmCdtXtnsnLmt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.ttlPldgVal" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="nmTtlPldgVal" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.dstrbtnList[0].xxx.dstrbtnAmt" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="fdDstrbtnAmt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.grpHdr" class="com.xml.cnaps2.nets.v35600101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.grpHdr.instdPty" property="instdPty"/>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="sysCd"  property="sysCd"/>
+  				<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt" class="com.xml.cnaps2.nets.v35600101.CreditExtensionManagement1" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.orgnlNotDstrbtn" property="orgnlNotDstrbtn"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.orgnlIsDstrbtn" property="orgnlIsDstrbtn"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.notDstrbtn" property="notDstrbtn"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.isDstrbtn" property="isDstrbtn"/>
+  				<jb:value data="cmMgrId"  property="mgrId"/>
+  				<jb:value data="cmNtfctnTp"  property="ntfctnTp"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.orgnlIsDstrbtn" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="fdOrgnlIsDstrbtn" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtWrngSetng" class="com.xml.cnaps2.nets.v35600101.NetDebitWarningSetting1" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtWrngSetng.avlblNetDbtWrngVal" property="avlblNetDbtWrngVal"/>
+  				<jb:value data="nwSwtchTp"  property="swtchTp"/>
+  				<jb:value data="mmbId"  property="mmbId"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr" class="com.xml.cnaps2.nets.v35600101.ForceDownError1" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.orgnlNotDstrbtn" property="orgnlNotDstrbtn"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.orgnlIsDstrbtn" property="orgnlIsDstrbtn"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.forceDwn" property="forceDwn"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.dstrbtnList[0]" property="dstrbtnList"/>
+  				<jb:value data="fdMgrId"  property="mgrId"/>
+  				<jb:value data="fdBrnchQty"  property="brnchQty"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.grpHdr.instgPty" class="com.xml.cnaps2.nets.v35600101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  				<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.rclmPldg" class="com.xml.cnaps2.nets.v35600101.ReclaimPledge1" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.rclmPldg.dstrbtnPldgVal" property="dstrbtnPldgVal"/>
+  				<jb:value data="rpMmbId"  property="mmbId"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtWrngSetng.avlblNetDbtWrngVal" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="nwAvlblNetDbtWrngVal" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf" class="com.xml.cnaps2.nets.v35600101.NetDebitLimitInformation1" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.cdtLd" property="cdtLd"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.ttlPldgVal" property="ttlPldgVal"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.cdtXtnsnLmt" property="cdtXtnsnLmt"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.netDbtLmt" property="netDbtLmt"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.avlblNetDbt" property="avlblNetDbt"/>
+  				<jb:value data="nmMmbId"  property="mmbId"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.rclmPldg.dstrbtnPldgVal" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="rpDstrbtnPldgVal" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.nets.v35600101.Document" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn" property="netDbtLmtMgmtNtfctn"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.notDstrbtn" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="cmNotDstrbtn" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt" class="com.xml.cnaps2.nets.v35600101.NetDebitManagement1" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf" property="netDbtLmtInf"/>
+  				<jb:value data="nmOprClss"  property="oprClss"/>
+  				<jb:value data="nmOprTp"  property="oprTp"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.avlblNetDbt" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="nmAvlblNetDbt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.dstrbtnList[0].xxx" class="com.xml.cnaps2.nets.v35600101.DistributionList1" createOnElement="com.topfinance.ebo.msg.Nets35600101">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.dstrbtnList[0].xxx.dstrbtnAmt" property="dstrbtnAmt"/>
+  				<jb:value data="fdMmbId"  property="mmbId"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.netDbtLmt" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="nmNetDbtLmt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.orgnlNotDstrbtn" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="cmOrgnlNotDstrbtn" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt.netDbtLmtInf.cdtLd" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="nmCdtLd" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.netDbtLmtMgmtNtfctnInf" class="com.xml.cnaps2.nets.v35600101.NetDebitLimitManagementNotificationInformation1" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="ntfctnTp"  property="ntfctnTp"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt" class="com.xml.cnaps2.nets.v35600101.NotificationContent1" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtMgmt" property="netDbtMgmt"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.netDbtWrngSetng" property="netDbtWrngSetng"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.rclmPldg" property="rclmPldg"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt" property="cdtXtnsnMgmt"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr" property="forceDwnErr"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.forceDwnErr.forceDwn" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="fdForceDwn" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.isDstrbtn" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="cmIsDstrbtn" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn.ntfctnCntt.cdtXtnsnMgmt.orgnlIsDstrbtn" class="com.xml.cnaps2.nets.v35600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+  				<jb:value data="cmOrgnlIsDstrbtn" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="netDbtLmtMgmtNtfctn" class="com.xml.cnaps2.nets.v35600101.NetDbtLmtMgmtNtfctnV01" createOnElement="com.topfinance.ebo.msg.Nets35600101Hdr">
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.netDbtLmtMgmtNtfctnInf" property="netDbtLmtMgmtNtfctnInf"/>
+    	<jb:wiring beanIdRef="netDbtLmtMgmtNtfctn.ntfctnCntt" property="ntfctnCntt"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

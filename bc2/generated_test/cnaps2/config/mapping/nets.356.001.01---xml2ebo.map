@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Nets35600101Hdr" createOnElement="Document">
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/NetDbtLmtMgmtNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NetDbtLmtMgmtNtfctnInf/NtfctnTp" property="ntfctnTp"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/NetDbtMgmt/OprClss" property="nmOprClss"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/NetDbtMgmt/OprTp" property="nmOprTp"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/NetDbtMgmt/NetDbtLmtInf/MmbId" property="nmMmbId"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/NetDbtMgmt/NetDbtLmtInf/CdtLd" property="nmCdtLd"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/NetDbtMgmt/NetDbtLmtInf/TtlPldgVal" property="nmTtlPldgVal"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/NetDbtMgmt/NetDbtLmtInf/CdtXtnsnLmt" property="nmCdtXtnsnLmt"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/NetDbtMgmt/NetDbtLmtInf/NetDbtLmt" property="nmNetDbtLmt"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/NetDbtMgmt/NetDbtLmtInf/AvlblNetDbt" property="nmAvlblNetDbt"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/NetDbtWrngSetng/SwtchTp" property="nwSwtchTp"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/NetDbtWrngSetng/MmbId" property="mmbId"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/RclmPldg/MmbId" property="rpMmbId"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/NetDbtWrngSetng/AvlblNetDbtWrngVal" property="nwAvlblNetDbtWrngVal"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/RclmPldg/DstrbtnPldgVal" property="rpDstrbtnPldgVal"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/CdtXtnsnMgmt/MgrId" property="cmMgrId"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/CdtXtnsnMgmt/NtfctnTp" property="cmNtfctnTp"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/CdtXtnsnMgmt/OrgnlNotDstrbtn" property="cmOrgnlNotDstrbtn"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/CdtXtnsnMgmt/OrgnlIsDstrbtn" property="cmOrgnlIsDstrbtn"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/CdtXtnsnMgmt/NotDstrbtn" property="cmNotDstrbtn"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/CdtXtnsnMgmt/IsDstrbtn" property="cmIsDstrbtn"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/ForceDwnErr/MgrId" property="fdMgrId"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/ForceDwnErr/OrgnlNotDstrbtn" property="fdOrgnlNotDstrbtn"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/ForceDwnErr/OrgnlIsDstrbtn" property="fdOrgnlIsDstrbtn"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/ForceDwnErr/ForceDwn" property="fdForceDwn"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/ForceDwnErr/BrnchQty" property="fdBrnchQty"/>    
+    		<jb:wiring beanIdRef="fdDstrbtnList[0]" property="fdDstrbtnList"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="fdDstrbtnList[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="fdDstrbtnList" />
+  </jb:bean>
+	<jb:bean beanId="fdDstrbtnList" class="com.topfinance.ebo.msg.Nets35600101" createOnElement="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/ForceDwnErr/DstrbtnList">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/ForceDwnErr/DstrbtnList/MmbId" property="fdMmbId"/>    
+				<jb:value data="/Document/NetDbtLmtMgmtNtfctn/NtfctnCntt/ForceDwnErr/DstrbtnList/DstrbtnAmt" property="fdDstrbtnAmt"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
