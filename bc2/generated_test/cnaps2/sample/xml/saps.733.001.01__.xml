@@ -33,6 +33,14 @@
 				<DbtrAmt>CNY+1000.00</DbtrAmt>
 				<CdtrAmt>CNY+1000.00</CdtrAmt>
 			</ChckngList>
+			<ChckngList>
+				<AcctTp>AT00</AcctTp>
+				<Acct>1234308581000106</Acct>
+				<InitlAmt>CNY+1000.00</InitlAmt>
+				<FnlAmt>CNY+1000.00</FnlAmt>
+				<DbtrAmt>CNY+1000.00</DbtrAmt>
+				<CdtrAmt>CNY+1000.00</CdtrAmt>
+			</ChckngList>
 		</ACSTCBSDailyAcctgInf>
 	</ACSTCBSDailyAcctg>
 </Document>
