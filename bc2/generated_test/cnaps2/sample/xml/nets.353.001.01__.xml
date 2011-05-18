@@ -25,6 +25,10 @@
 				<MmbId>104100004371</MmbId>
 				<Amt Ccy="CNY">100.00</Amt>
 			</DstrbtnList>
+			<DstrbtnList>
+				<MmbId>104100004371</MmbId>
+				<Amt Ccy="CNY">100.00</Amt>
+			</DstrbtnList>
 		</NetDbtLmtDstrbtnMgmtInf>
 	</NetDbtLmtDstrbtnMgmt>
 </Document>
