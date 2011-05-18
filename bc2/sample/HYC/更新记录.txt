@@ -1643,3 +1643,27 @@ T_C2_BIS_ELE_BSC表中,msg_code='beps.133.001.01'数据报文中
 /Document/FIToFICstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd
 /Document/FIToFICstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd
 /Document/FIToFICstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd
+
+5、hvps.141.001.01
+create table T_C2_HVPS_141_RMTINF
+(
+  ID          INTEGER not null,
+  FID         INTEGER,
+  BIZTCCD     VARCHAR2(5),
+  BIZNUM      VARCHAR2(8),
+  RMK         VARCHAR2(135)
+);
+
+alter table T_C2_HVPS_141_RMTINF
+  add constraint FK_T_C2_BEP_REFERENCE_T_C2_141 foreign key (FID)
+  references T_C2_HVPS_141 (ID);
+
+6、beps.130.001.01
+表T_C2_BEPS_130修改字段PRTRYTPCD的长度为	VARCHAR2(35)
+T_C2_BIS_ELE_BSC表中,msg_code='beps.130.001.01'数据报文中修改ELE_ID="PrtryTpCd"的TYPE为"Max35Text"，LENGTH为"35"
+
+7、beps.134.001.01
+表T_C2_BEPS_134新增字段DTLDSTS	VARCHAR2(4)	Y			固定填写ACCP
+
+8、beps.381.001.01
+修改表T_C2_BEPS_381，字段DBTRACCTISSR 类型为VARCHAR2(16)  
