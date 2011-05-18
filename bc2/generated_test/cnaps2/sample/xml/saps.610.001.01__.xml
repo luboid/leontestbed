@@ -42,6 +42,15 @@
 					<PrcCd>CB1I0000</PrcCd>
 				</NPCPrcInf>
 			</BookgList>
+			<BookgList>
+				<MmbId>907100011301</MmbId>
+				<DbtCdtId>CRDT</DbtCdtId>
+				<Amt Ccy="CNY">100.00</Amt>
+				<NPCPrcInf>
+					<PrcSts>PR04</PrcSts>
+					<PrcCd>CB1I0000</PrcCd>
+				</NPCPrcInf>
+			</BookgList>
 		</IntraCityNetgQryRspnInf>
 	</IntraCityNetgQryRspn>
 </Document>
