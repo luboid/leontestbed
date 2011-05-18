@@ -29,6 +29,11 @@
 				<DailyDbtrAmt>CNY+100.00</DailyDbtrAmt>
 				<DailyCdtrAmt>CNY+100.00</DailyCdtrAmt>
 			</TxList>
+			<TxList>
+				<TxTp>A100</TxTp>
+				<DailyDbtrAmt>CNY+100.00</DailyDbtrAmt>
+				<DailyCdtrAmt>CNY+100.00</DailyCdtrAmt>
+			</TxList>
 		</AcctgDailyDwnLdInf>
 	</AcctgDailyDwnLd>
 </Document>

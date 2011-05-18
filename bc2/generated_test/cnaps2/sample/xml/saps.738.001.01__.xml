@@ -34,6 +34,11 @@
 				<ACSInitlAmt>CNY+100.00</ACSInitlAmt>
 				<SAPSInitlAmt>CNY+101.00</SAPSInitlAmt>
 			</UmtchdList>
+			<UmtchdList>
+				<MmbId>907100011301</MmbId>
+				<ACSInitlAmt>CNY+100.00</ACSInitlAmt>
+				<SAPSInitlAmt>CNY+101.00</SAPSInitlAmt>
+			</UmtchdList>
 		</BalWorkDayChckngRspnInf>
 	</BalWorkDayChckngRspn>
 </Document>
