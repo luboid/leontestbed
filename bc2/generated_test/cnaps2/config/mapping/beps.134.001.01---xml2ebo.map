@@ -58,7 +58,7 @@
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxId" property="orgnlTxId"/>    
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/StsRsnInf/Rsn/Prtry" property="prtryRejCd"/>    
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/StsRsnInf/AddtlInf" property="prtryRejRsn"/>    
-				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/IntrBkSttlmAmt/Value" property="intrBkSttlmAmt"/>    
+				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/IntrBkSttlmAmt" property="intrBkSttlmAmt"/>    
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/PmtTpInf/CtgyPurp/Prtry" property="ctgyPurp"/>    
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/MndtRltdInf/AmdmntInfDtls/OrgnlCdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="clrSysMmbId"/>    
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/MndtRltdInf/AmdmntInfDtls/OrgnlCdtrAgt/BrnchId/Id" property="brnchId"/>    

@@ -11,7 +11,7 @@ public class TestGenMap extends TestGenMapLeon {
 	public final static boolean USE_DB = true;
 	
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean TO_GENERATE = false;
+	public final static boolean TO_GENERATE = true;
 	
 	//private static final String basePath = "D:/bankConnector/source/generated_test";
 	private static final String basePath = "D:/DEV.WORK/EBO/bc2/generated_test";
@@ -1053,7 +1053,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void btestGenerated_397() throws Exception {
+	public void atestGenerated_397() throws Exception {
 		String msgCode = "beps.397.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1108,7 +1108,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void btestGenerated_392() throws Exception {
+	public void atestGenerated_392() throws Exception {
 		String msgCode = "beps.392.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1438,7 +1438,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void btestGenerated_381() throws Exception {
+	public void testGenerated_381() throws Exception {
 		String msgCode = "beps.381.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1471,7 +1471,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void btestGenerated_134() throws Exception {
+	public void atestGenerated_134() throws Exception {
 		String msgCode = "beps.134.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1493,7 +1493,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_133() throws Exception {
+	public void atestGenerated_133() throws Exception {
 		String msgCode = "beps.133.001.01";
 		String tpCode = "";
 		String clsCode = "";

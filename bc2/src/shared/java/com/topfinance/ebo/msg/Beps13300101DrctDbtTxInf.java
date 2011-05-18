@@ -40,7 +40,7 @@ public class Beps13300101DrctDbtTxInf  implements java.io.Serializable {
     @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].pmtId.clrSysRef")
     private String clrSysRef;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].intrBkSttlmAmt.value")
+    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].intrBkSttlmAmt")
     private Double intrBkSttlmAmt;
     
     @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].cdtr.nm")

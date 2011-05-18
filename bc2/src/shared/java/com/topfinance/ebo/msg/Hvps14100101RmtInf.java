@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
@@ -22,7 +24,7 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_MSG_HVPS_141_001_01___RmtInf")
+@Table(name = "T_C2_HVPS_141_RMTINF")
 public class Hvps14100101RmtInf  implements java.io.Serializable {
 
     // Fields 
@@ -39,8 +41,6 @@ public class Hvps14100101RmtInf  implements java.io.Serializable {
     private String rmk;
     
     private Hvps14100101 fid;
-    
-    
 	
     /** default constructor */
     public Hvps14100101RmtInf() {
@@ -125,7 +125,18 @@ public class Hvps14100101RmtInf  implements java.io.Serializable {
 
     public void  setRmk(String newRmk) {
         rmk = newRmk;
-    }	  
+    }
+
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+	public Hvps14100101 getFid() {
+		return fid;
+	}
+	
+	
+	public void setFid(Hvps14100101 fid) {
+		this.fid = fid;
+	}	  
     
     
 }    

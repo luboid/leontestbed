@@ -43,7 +43,7 @@ public class Beps13400101TxInfAndSts  implements java.io.Serializable {
     @JaxbMapping(objPath="fiToFiPmtStsRpt.txInfAndSts.stsRsnInf.addtlInf[0]")
     private String prtryRejRsn;
     
-    @JaxbMapping(objPath="fiToFiPmtStsRpt.txInfAndSts.orgnlTxRef.intrBkSttlmAmt.value")
+    @JaxbMapping(objPath="fiToFiPmtStsRpt.txInfAndSts.orgnlTxRef.intrBkSttlmAmt")
     private Double intrBkSttlmAmt;
     
     @JaxbMapping(objPath="fiToFiPmtStsRpt.txInfAndSts.orgnlTxRef.pmtTpInf.ctgyPurp.prtry")

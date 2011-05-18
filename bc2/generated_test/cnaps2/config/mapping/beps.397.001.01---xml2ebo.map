@@ -27,7 +27,7 @@
 				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/Nb" property="nb"/>    
 				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/Id" property="bid"/>    
 				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/AcctNb" property="acctNb"/>    
-				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/Amt/Value" property="amt"/>    
+				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/Amt" property="amt"/>    
 				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/ChckMd" property="chckMd"/>    
 				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/ChckCd" property="chckCd"/>    
 				<jb:value data="/Document/ChckCdtForLd/ChckCdtForLdInf/ImgFrntLen" property="imgFrntLen"/>    

@@ -27,7 +27,7 @@
 				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/PmtId/EndToEndId" property="endToEndId"/>    
 				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/PmtId/TxId" property="txId"/>    
 				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/PmtId/ClrSysRef" property="clrSysRef"/>    
-				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/IntrBkSttlmAmt/Value" property="intrBkSttlmAmt"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/IntrBkSttlmAmt" property="intrBkSttlmAmt"/>    
 				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/Cdtr/Nm" property="nm"/>    
 				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/CdtrAcct/Id/Othr/Id" property="cdtrAcctId"/>    
 				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/CdtrAcct/Id/Othr/Issr" property="issr"/>    

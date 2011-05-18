@@ -17,14 +17,14 @@
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.cdtrAcct" class="com.xml.iso20022.pacs.v00900102.CashAccount16" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.cdtrAcct.id" property="id"/>
   	</jb:bean>
-  	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0].xxx.ustrd[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Hvps14100101/bizTcCd">
+  	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0].xxx.ustrd[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps14100101RmtInf">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Hvps14100101RmtInf/bizTcCd">
       			return "/F25/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Hvps14100101/bizNum">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Hvps14100101RmtInf/bizNum">
       			return "/E48/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Hvps14100101/rmk">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Hvps14100101RmtInf/rmk">
       			return "/H01/"+_VALUE;
     			</jb:expression>  				
   	</jb:bean>
@@ -34,8 +34,12 @@
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.cdtr.brnchId" class="com.xml.iso20022.pacs.v00900102.BranchData2" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
   				<jb:value data="cdtrAgtBrnchId"  property="id"/>
   	</jb:bean>
+	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.dbtr.brnchId" class="com.xml.iso20022.pacs.v00900102.BranchData2" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
+  				<jb:value data="cdtrAgtBrnchId"  property="id"/>
+  	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.dbtr" class="com.xml.iso20022.pacs.v00900102.BranchAndFinancialInstitutionIdentification4" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.dbtr.finInstnId" property="finInstnId"/>
+	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.dbtr.brnchId" property="brnchId"/>
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.dbtr.finInstnId" class="com.xml.iso20022.pacs.v00900102.FinancialInstitutionIdentification7" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.dbtr.finInstnId.clrSysMmbId" property="clrSysMmbId"/>
@@ -48,7 +52,6 @@
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.cdtr" class="com.xml.iso20022.pacs.v00900102.BranchAndFinancialInstitutionIdentification4" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.cdtr.finInstnId" property="finInstnId"/>
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.cdtr.brnchId" property="brnchId"/>
-  				<jb:value data="cdtrBrnchId"  property="brnchId"/>
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.grpHdr.instdAgt" class="com.xml.iso20022.pacs.v00900102.BranchAndFinancialInstitutionIdentification4" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf.grpHdr.instdAgt.finInstnId" property="finInstnId"/>
@@ -64,6 +67,8 @@
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0].xxx" class="com.xml.iso20022.pacs.v00900102.RemittanceInformation2" createOnElement="com.topfinance.ebo.msg.Hvps14100101RmtInf">
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0].xxx.ustrd[0]" property="ustrd"/>
+	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0].xxx.ustrd[0]" property="ustrd"/>
+	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0].xxx.ustrd[0]" property="ustrd"/>
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.cdtrAcct.id" class="com.xml.iso20022.pacs.v00900102.AccountIdentification4Choice" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.cdtrAcct.id.othr" property="othr"/>
@@ -83,10 +88,6 @@
   	<jb:bean beanId="target" class="com.xml.iso20022.pacs.v00900102.Document" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf" property="finInstnCdtTrf"/>
   	</jb:bean>
-  	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.dbtrAgt" class="com.xml.iso20022.pacs.v00900102.BranchAndFinancialInstitutionIdentification4" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
-    	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.dbtrAgt.brnchId" property="brnchId"/>
-  				<jb:value data="dbtrBrnchId"  property="brnchId"/>
-  	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.grpHdr.instdAgt.finInstnId" class="com.xml.iso20022.pacs.v00900102.FinancialInstitutionIdentification7" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf.grpHdr.instdAgt.finInstnId.clrSysMmbId" property="clrSysMmbId"/>
   	</jb:bean>
@@ -99,13 +100,12 @@
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.pmtTpInf" property="pmtTpInf"/>
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.intrBkSttlmAmt" property="intrBkSttlmAmt"/>
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.dbtr" property="dbtr"/>
-    	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.dbtrAgt" property="dbtrAgt"/>
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.dbtrAcct" property="dbtrAcct"/>
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.cdtr" property="cdtr"/>
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.cdtrAcct" property="cdtrAcct"/>
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.ultmtCdtr" property="ultmtCdtr"/>
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0]" property="rmtInf"/>
-  				<jb:value data="sttlmPrty"  property="sttlmPrty"/>
+  	<jb:value data="sttlmPrty"  property="sttlmPrty"/>
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.pmtTpInf.svcLvl" class="com.xml.iso20022.pacs.v00900102.ServiceLevel8Choice" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
   				<jb:value data="prtry"  property="prtry"/>
@@ -129,9 +129,6 @@
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.cdtrAcct.id.othr" class="com.xml.iso20022.pacs.v00900102.GenericAccountIdentification1" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
   				<jb:value data="cdtrAcctId"  property="id"/>
   				<jb:value data="cdtrAcctIssr"  property="issr"/>
-  	</jb:bean>
-  	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.dbtrAgt.brnchId" class="com.xml.iso20022.pacs.v00900102.BranchData2" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
-  				<jb:value data="dbtrAgtBrnchId"  property="id"/>
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.pmtTpInf" class="com.xml.iso20022.pacs.v00900102.PaymentTypeInformation23" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.pmtTpInf.svcLvl" property="svcLvl"/>

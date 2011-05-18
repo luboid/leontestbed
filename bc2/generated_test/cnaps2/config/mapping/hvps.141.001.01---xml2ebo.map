@@ -18,14 +18,8 @@
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/PmtId/EndToEndId" property="endToEndId"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/PmtId/TxId" property="txId"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/PmtTpInf/SvcLvl/Prtry" property="prtry"/>    
-				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/IntrBkSttlmAmt/Value" property="intrBkSttlmAmt"/>    
-				<jb:expression property="sttlmPrty" execOnElement="/Document/FinInstnCdtTrf/CdtTrfTxInf/SttlmPrty">
-					if (_VALUE contains "NORM") {
-		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/NORM/");
-		      }else {
-    		  	return null;
-      		}
-    		</jb:expression>					
+				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/IntrBkSttlmAmt" property="intrBkSttlmAmt"/>
+				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/SttlmPrty" property="sttlmPrty"/>
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/Nm" property="dbtrNm"/>    
 				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/PstlAdr/AdrLine" property="pyAdrLine"/>    
@@ -50,9 +44,27 @@
   </jb:bean>
 	<jb:bean beanId="rmtInf" class="com.topfinance.ebo.msg.Hvps14100101RmtInf" createOnElement="/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf">
 		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="bizTcCd"/>    
-				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="bizNum"/>    
-				<jb:value data="/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd" property="rmk"/>    
+		<jb:expression property="bizTcCd" execOnElement="/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "F25") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/F25/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+		<jb:expression property="bizNum" execOnElement="/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "E48") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/E48/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>  
+		<jb:expression property="rmk" execOnElement="/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "H01") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/H01/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
 	</jb:bean>  
 
 

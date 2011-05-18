@@ -35,12 +35,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Document", propOrder = {
-    "fIToFICstmrDrctDbt"
+    "fiToFiCstmrDrctDbt"
 })
 public class Document {
 
     @XmlElement(name = "FIToFICstmrDrctDbt", required = true)
-    protected FIToFICustomerDirectDebitV02 fIToFICstmrDrctDbt;
+    protected FIToFICustomerDirectDebitV02 fiToFiCstmrDrctDbt;
 
     /**
      * Gets the value of the fiToFICstmrDrctDbt property.
@@ -50,8 +50,8 @@ public class Document {
      *     {@link FIToFICustomerDirectDebitV02 }
      *     
      */
-    public FIToFICustomerDirectDebitV02 getFIToFICstmrDrctDbt() {
-        return fIToFICstmrDrctDbt;
+    public FIToFICustomerDirectDebitV02 getFiToFiCstmrDrctDbt() {
+        return fiToFiCstmrDrctDbt;
     }
 
     /**
@@ -62,8 +62,8 @@ public class Document {
      *     {@link FIToFICustomerDirectDebitV02 }
      *     
      */
-    public void setFIToFICstmrDrctDbt(FIToFICustomerDirectDebitV02 value) {
-        this.fIToFICstmrDrctDbt = value;
+    public void setFiToFiCstmrDrctDbt(FIToFICustomerDirectDebitV02 value) {
+        this.fiToFiCstmrDrctDbt = value;
     }
 
 }

@@ -56,7 +56,7 @@ public class Hvps14100101  implements java.io.Serializable {
     @JaxbMapping(objPath="finInstnCdtTrf.cdtTrfTxInf.pmtTpInf.svcLvl.prtry")
     private String prtry;
     
-    @JaxbMapping(objPath="finInstnCdtTrf.cdtTrfTxInf.intrBkSttlmAmt.value")
+    @JaxbMapping(objPath="finInstnCdtTrf.cdtTrfTxInf.intrBkSttlmAmt")
     private Double intrBkSttlmAmt;
     
     @JaxbMapping(objPath="finInstnCdtTrf.cdtTrfTxInf.sttlmPrty")
@@ -638,7 +638,7 @@ public class Hvps14100101  implements java.io.Serializable {
    * 
    * @return the rmtInf
    */
-  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
     public java.util.Set<Hvps14100101RmtInf> getRmtInf() {
         return rmtInf;
     }	 

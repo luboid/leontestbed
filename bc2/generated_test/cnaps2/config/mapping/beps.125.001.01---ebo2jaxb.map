@@ -98,37 +98,37 @@
   				<jb:value data="cdtrAgtBrnchId"  property="id"/>
   	</jb:bean>
   	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx.rmtInf.ustrd[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps12500101">
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101CdtTrfTxInf/ustrdAddInfo">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101/ustrdAddInfo">
       			return "/H01/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101CdtTrfTxInf/rmk">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101/rmk">
       			return "/HA1/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101CdtTrfTxInf/orgnlMsgNmId">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101/orgnlMsgNmId">
       			return "/F26/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101CdtTrfTxInf/orgnlMsgNmPId">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101/orgnlMsgNmPId">
       			return "/A70/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101CdtTrfTxInf/orgnlMsgId">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101/orgnlMsgId">
       			return "/E50/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101CdtTrfTxInf/orgnlTp">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101/orgnlTp">
       			return "/F24/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101CdtTrfTxInf/contactCd">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101/contactCd">
       			return "/E40/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101CdtTrfTxInf/prcSts">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101/prcSts">
       			return "/F61/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101CdtTrfTxInf/netgDt">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101/netgDt">
       			return "/C01/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101CdtTrfTxInf/netgRnd">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101/netgRnd">
       			return "/E05/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101CdtTrfTxInf/sttlmDt">
+					<jb:expression execOnElement="/com.topfinance.ebo.msg.Beps12500101/sttlmDt">
       			return "/C00/"+_VALUE;
     			</jb:expression>  				
   	</jb:bean>
