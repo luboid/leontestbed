@@ -9,11 +9,11 @@
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms99200101Hdr" createOnElement="Document">
 				<jb:value data="/Document/ChckRspn/ChckRspnInf/OrigSndNd" property="origSndNd"/>    
 				<jb:value data="/Document/ChckRspn/ChckRspnInf/OrigSndSvsrNm" property="origSndSvsrNm"/>    
-				<jb:value data="/Document/ChckRspn/ChckRspnInf/OrigSndSvsrNm" property="origSndSvsrNm1"/>    
+				<jb:value data="/Document/ChckRspn/ChckRspnInf/OrigSndLineMgrNm" property="origSndLineMgrNm"/>    
 				<jb:value data="/Document/ChckRspn/ChckRspnInf/RcvRoadNm" property="rcvRoadNm"/>    
 				<jb:value data="/Document/ChckRspn/ChckRspnInf/OrigSndDt" property="origSndDt"/>    
+				<jb:value data="/Document/ChckRspn/ChckRspnInf/RspnNd" property="rspnNd"/>    
 				<jb:value data="/Document/ChckRspn/ChckRspnInf/RspnSvcrNm" property="rspnSvcrNm"/>    
-				<jb:value data="/Document/ChckRspn/ChckRspnInf/RspnSvcrNm" property="rspnSvcrNm1"/>    
 				<jb:value data="/Document/ChckRspn/ChckRspnInf/RspnLineMgr" property="rspnLineMgr"/>    
 				<jb:value data="/Document/ChckRspn/ChckRspnInf/RcvLineNm" property="rcvLineNm"/>    
     		<jb:wiring beanIdRef="ldFctrInf[0]" property="ldFctrInf"/>

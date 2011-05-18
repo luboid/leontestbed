@@ -8,11 +8,11 @@
   	<jb:bean beanId="chckRspn.chckRspnInf" class="com.xml.cnaps2.ccms.v99200101.ChckRspnInf1" createOnElement="com.topfinance.ebo.msg.Ccms99200101Hdr">
   		<jb:value data="origSndNd"  property="origSndNd"/>
   		<jb:value data="origSndSvsrNm"  property="origSndSvsrNm"/>
-  		<jb:value data="origSndSvsrNm1"  property="origSndSvsrNm"/>
+  		<jb:value data="origSndLineMgrNm"  property="origSndLineMgrNm"/>
   		<jb:value data="rcvRoadNm"  property="rcvRoadNm"/>
   		<jb:value data="origSndDt"  property="origSndDt"/>
+  		<jb:value data="rspnNd"  property="rspnNd"/>
   		<jb:value data="rspnSvcrNm"  property="rspnSvcrNm"/>
-  		<jb:value data="rspnSvcrNm1"  property="rspnSvcrNm"/>
   		<jb:value data="rspnLineMgr"  property="rspnLineMgr"/>
   		<jb:value data="rcvLineNm"  property="rcvLineNm"/>
   	</jb:bean>
