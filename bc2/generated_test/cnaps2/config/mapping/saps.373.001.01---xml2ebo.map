@@ -30,7 +30,7 @@
   <jb:bean beanId="brnchList[0]" class="java.util.HashSet" createOnElement="Document">
    	<jb:wiring beanIdRef="brnchList" />
   </jb:bean>
-	<jb:bean beanId="brnchList" class="com.topfinance.ebo.msg.Saps37300101" createOnElement="/Document/FndsOfPoolMgmt/FndsOfPoolMgmtInf/BrnchList">
+	<jb:bean beanId="brnchList" class="com.topfinance.ebo.msg.Saps37300101" createOnElement="/Document/FndsOfPoolMgmt/FndsOfPoolMgmtInf/BrnchList/MmbId">
 		<jb:wiring beanIdRef="target" property="fid"/>
 				<jb:value data="/Document/FndsOfPoolMgmt/FndsOfPoolMgmtInf/BrnchList/MmbId" property="mmbId"/>    
 	</jb:bean>  
