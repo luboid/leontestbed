@@ -24,7 +24,9 @@
     	<jb:wiring beanIdRef="fndsOfPoolMgmt.fndsOfPoolMgmtInf.brnchList[0]" property="brnchList"/>
   		<jb:value data="mgrId"  property="mgrId"/>
   		<jb:value data="fndsOfPoolMgmtTp"  property="fndsOfPoolMgmtTp"/>
-  		<jb:value data="fctvDt"  property="fctvDt"/>
+  		<jb:value data="fctvDt" decoder="Date" property="fctvDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
   		<jb:value data="brnchQty"  property="brnchQty"/>
   	</jb:bean>
   	<jb:bean beanId="fndsOfPoolMgmt.fndsOfPoolMgmtInf.brnchList[0].xxx" class="com.xml.cnaps2.saps.v37300101.BranchList1" createOnElement="com.topfinance.ebo.msg.Saps37300101">
@@ -37,7 +39,9 @@
     	<jb:wiring beanIdRef="fndsOfPoolMgmt.grpHdr.instgPty" property="instgPty"/>
     	<jb:wiring beanIdRef="fndsOfPoolMgmt.grpHdr.instdPty" property="instdPty"/>
   		<jb:value data="msgId"  property="msgId"/>
-  		<jb:value data="creDtTm"  property="creDtTm"/>
+  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+		</jb:value>
   		<jb:value data="sysCd"  property="sysCd"/>
   		<jb:value data="rmk"  property="rmk"/>
   	</jb:bean>
