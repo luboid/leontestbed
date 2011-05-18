@@ -70,5 +70,29 @@
 				</BrnchId>
 			</InstdAgt>			
 		</TxInf>
+		<TxInf>
+			<OrgnlTxId>String</OrgnlTxId>
+			<RtrdIntrBkSttlmAmt Ccy="CNY">200.00</RtrdIntrBkSttlmAmt>
+			<InstgAgt>
+				<FinInstnId>
+					<ClrSysMmbId>
+						<MmbId>103100000018</MmbId>
+					</ClrSysMmbId>
+				</FinInstnId>
+				<BrnchId>
+					<Id>104100004370</Id>
+				</BrnchId>
+			</InstgAgt>
+			<InstdAgt>
+				<FinInstnId>
+					<ClrSysMmbId>
+						<MmbId>308581000106</MmbId>
+					</ClrSysMmbId>
+				</FinInstnId>
+				<BrnchId>
+					<Id>907100011301</Id>
+				</BrnchId>
+			</InstdAgt>			
+		</TxInf>
 	</PmtRtr>
 </Document>
