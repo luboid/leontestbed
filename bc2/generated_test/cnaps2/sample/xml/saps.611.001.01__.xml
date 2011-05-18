@@ -28,6 +28,11 @@
 				<DbtCdtId>CRDT</DbtCdtId>
 				<Amt Ccy="CNY">100.00</Amt>
 			</BookgList>
+			<BookgList>
+				<BookgId>907100011301</BookgId>
+				<DbtCdtId>CRDT</DbtCdtId>
+				<Amt Ccy="CNY">100.00</Amt>
+			</BookgList>
 		</IntraCityNetgSttlmInf>
 	</IntraCityNetgSttlm>
 </Document>
