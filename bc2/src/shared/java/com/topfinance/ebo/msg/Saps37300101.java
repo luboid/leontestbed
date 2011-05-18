@@ -33,17 +33,6 @@ public class Saps37300101  implements java.io.Serializable {
     private String mmbId;
     
     private Saps37300101Hdr fid;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="FID", nullable=false, updatable=false)
-    public Saps37300101Hdr getFid() {
-		return fid;
-	}
-
-
-	public void setFid(Saps37300101Hdr fid) {
-		this.fid = fid;
-	}
 
 
 	/** default constructor */
@@ -93,6 +82,16 @@ public class Saps37300101  implements java.io.Serializable {
         mmbId = newMmbId;
     }	  
     
-    
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Saps37300101Hdr getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Saps37300101Hdr fid) {
+		this.fid = fid;
+	}
+	
 }    
     
