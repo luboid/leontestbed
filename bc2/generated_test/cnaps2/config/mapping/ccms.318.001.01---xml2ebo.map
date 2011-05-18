@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms31800101Hdr" createOnElement="Document">
+				<jb:value data="/Document/PmtRtr/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/PmtRtr/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/PmtRtr/GrpHdr/NbOfTxs" property="nbOfTxs"/>    
+				<jb:value data="/Document/PmtRtr/GrpHdr/SttlmInf/SttlmMtd" property="sttlmMtd"/>    
+				<jb:value data="/Document/PmtRtr/GrpHdr/InstgAgt/FinInstnId/ClrSysMmbId/MmbId" property="sDMmbId"/>    
+				<jb:value data="/Document/PmtRtr/GrpHdr/InstgAgt/BrnchId/Id" property="sInDId"/>    
+				<jb:value data="/Document/PmtRtr/GrpHdr/InstdAgt/FinInstnId/ClrSysMmbId/MmbId" property="rDMmbId"/>    
+				<jb:value data="/Document/PmtRtr/GrpHdr/InstdAgt/BrnchId/Id" property="rInDId"/>    
+				<jb:value data="/Document/PmtRtr/OrgnlGrpInf/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/PmtRtr/OrgnlGrpInf/OrgnlMsgNmId" property="orgnlMsgNmId"/>    
+				<jb:value data="/Document/PmtRtr/OrgnlGrpInf/RtrRsnInf/Orgtr/Id/OrgId/Othr/Id" property="orgnlSen"/>    
+				<jb:value data="/Document/PmtRtr/OrgnlGrpInf/RtrRsnInf/AddtlInf" property="reTp"/>    
+    		<jb:wiring beanIdRef="txInf[0]" property="txInf"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="txInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="txInf" />
+  </jb:bean>
+	<jb:bean beanId="txInf" class="com.topfinance.ebo.msg.Ccms31800101" createOnElement="/Document/PmtRtr/TxInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/PmtRtr/TxInf/OrgnlTxId" property="orgnlTxId"/>    
+				<jb:value data="/Document/PmtRtr/TxInf/RtrdIntrBkSttlmAmt" property="rtrdIntrBkSttlmAmt"/>    
+				<jb:value data="/Document/PmtRtr/TxInf/InstgAgt/FinInstnId/ClrSysMmbId/MmbId" property="sDMmbId"/>    
+				<jb:value data="/Document/PmtRtr/TxInf/InstgAgt/BrnchId/Id" property="sInDId"/>    
+				<jb:value data="/Document/PmtRtr/TxInf/InstdAgt/FinInstnId/ClrSysMmbId/MmbId" property="rDMmbId"/>    
+				<jb:value data="/Document/PmtRtr/TxInf/InstdAgt/BrnchId/Id" property="rInDId"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
