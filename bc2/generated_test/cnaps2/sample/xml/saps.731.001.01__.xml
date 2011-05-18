@@ -24,6 +24,12 @@
 					<RspnSts>PR04</RspnSts>
 				</QryTp>
 			</QryInf>
+			<QryInf>
+				<QryCtgy>H004</QryCtgy>
+				<QryTp>
+					<RspnSts>PR04</RspnSts>
+				</QryTp>
+			</QryInf>
 		</ACSABSSttlmDtlApplInf>
 	</ACSABSSttlmDtlAppl>
 </Document>
