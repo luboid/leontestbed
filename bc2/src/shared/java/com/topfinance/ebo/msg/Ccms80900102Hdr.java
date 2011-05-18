@@ -65,7 +65,7 @@ public class Ccms80900102Hdr  implements java.io.Serializable {
     @JaxbMapping(objPath="stopgNtfctn.ndInf.ndCd")
     private String ndCd;
     
-    @JaxbMapping(objPath="stopgNtfctn.ndInf.ndCd")
+    @JaxbMapping(objPath="stopgNtfctn.ndInf.ptyId")
     private java.util.Set<Ccms80900102> fakeNode;
     
     
