@@ -42,11 +42,11 @@ public class Ccms99200101Hdr  implements java.io.Serializable {
     @JaxbMapping(objPath="chckRspn.chckRspnInf.origSndDt")
     private String origSndDt;
     
-    @JaxbMapping(objPath="chckRspn.chckRspnInf.rspnSvcrNm")
-    private String rspnSvcrNm;
+    @JaxbMapping(objPath="chckRspn.chckRspnInf.rspnNd")
+    private String rspnNd;
     
     @JaxbMapping(objPath="chckRspn.chckRspnInf.rspnSvcrNm")
-    private String rspnSvcrNm1;
+    private String rspnSvcrNm;
     
     @JaxbMapping(objPath="chckRspn.chckRspnInf.rspnLineMgr")
     private String rspnLineMgr;
@@ -182,6 +182,25 @@ public class Ccms99200101Hdr  implements java.io.Serializable {
         origSndDt = newOrigSndDt;
     }	  
   /**
+   * Returns the rspnNd
+   * 
+   * @return the rspnNd
+   */
+    @Column(name = "RSPNND")
+    public String getRspnNd() {
+        return rspnNd;
+    }	 
+     
+  /**
+   * Sets the rspnNd
+   *
+   * @param newRspnNd the new rspnNd
+   */
+
+    public void  setRspnNd(String newRspnNd) {
+    	rspnNd = newRspnNd;
+    }	  
+  /**
    * Returns the rspnSvcrNm
    * 
    * @return the rspnSvcrNm
@@ -199,25 +218,6 @@ public class Ccms99200101Hdr  implements java.io.Serializable {
 
     public void  setRspnSvcrNm(String newRspnSvcrNm) {
         rspnSvcrNm = newRspnSvcrNm;
-    }	  
-  /**
-   * Returns the rspnSvcrNm1
-   * 
-   * @return the rspnSvcrNm1
-   */
-    @Column(name = "RSPNSVCRNM1")
-    public String getRspnSvcrNm1() {
-        return rspnSvcrNm1;
-    }	 
-     
-  /**
-   * Sets the rspnSvcrNm1
-   *
-   * @param newRspnSvcrNm1 the new rspnSvcrNm1
-   */
-
-    public void  setRspnSvcrNm1(String newRspnSvcrNm1) {
-        rspnSvcrNm1 = newRspnSvcrNm1;
     }	  
   /**
    * Returns the rspnLineMgr
