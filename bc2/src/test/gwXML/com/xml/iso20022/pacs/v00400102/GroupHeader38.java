@@ -9,6 +9,7 @@
 package com.xml.iso20022.pacs.v00400102;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -68,7 +69,7 @@ public class GroupHeader38 {
     @XmlElement(name = "MsgId", required = true)
     protected String msgId;
     @XmlElement(name = "CreDtTm", required = true)
-    protected XMLGregorianCalendar creDtTm;
+    protected Date creDtTm;
     @XmlElement(name = "Authstn")
     protected List<Authorisation1Choice> authstn = new Vector<Authorisation1Choice>();
     @XmlElement(name = "BtchBookg")
@@ -122,7 +123,7 @@ public class GroupHeader38 {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public XMLGregorianCalendar getCreDtTm() {
+    public Date getCreDtTm() {
         return creDtTm;
     }
 
@@ -134,7 +135,7 @@ public class GroupHeader38 {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setCreDtTm(XMLGregorianCalendar value) {
+    public void setCreDtTm(Date value) {
         this.creDtTm = value;
     }
 
