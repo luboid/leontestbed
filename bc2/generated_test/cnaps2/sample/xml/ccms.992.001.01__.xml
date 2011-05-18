@@ -17,5 +17,9 @@
 			<RspnLclLineNm>1000.2900</RspnLclLineNm>
 			<LdFctr>12</LdFctr>
 		</LdFctrInf>
+		<LdFctrInf>
+			<RspnLclLineNm>1000.2900</RspnLclLineNm>
+			<LdFctr>12</LdFctr>
+		</LdFctrInf>
 	</ChckRspn>
 </Document>
