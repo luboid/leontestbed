@@ -32,7 +32,7 @@
   <jb:bean beanId="fakeNode[0]" class="java.util.HashSet" createOnElement="Document">
    	<jb:wiring beanIdRef="fakeNode" />
   </jb:bean>
-	<jb:bean beanId="fakeNode" class="com.topfinance.ebo.msg.Ccms80900102" createOnElement="/Document/StopgNtfctn/NdInf/NdCd">
+	<jb:bean beanId="fakeNode" class="com.topfinance.ebo.msg.Ccms80900102" createOnElement="/Document/StopgNtfctn/NdInf/PtyId">
 		<jb:wiring beanIdRef="target" property="fid"/>
 				<jb:value data="/Document/StopgNtfctn/NdInf/PtyId" property="ptyId"/>    
 	</jb:bean>  
