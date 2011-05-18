@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps13300101" createOnElement="Document">
+				<jb:value data="/Document/FIToFICstmrDrctDbt/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/FIToFICstmrDrctDbt/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/FIToFICstmrDrctDbt/GrpHdr/NbOfTxs" property="nbOfTxs"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/GrpHdr/CtrlSum" property="ctrlSum"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/GrpHdr/PmtTpInf/LclInstrm/Prtry" property="prtryTpCd"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/GrpHdr/PmtTpInf/CtgyPurp/Prtry" property="prtryPeriod"/>    
+    		<jb:wiring beanIdRef="drctDbtTxInf[0]" property="drctDbtTxInf"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="drctDbtTxInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="drctDbtTxInf" />
+  </jb:bean>
+	<jb:bean beanId="drctDbtTxInf" class="com.topfinance.ebo.msg.Beps13300101DrctDbtTxInf" createOnElement="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/PmtId/EndToEndId" property="endToEndId"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/PmtId/TxId" property="txId"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/PmtId/ClrSysRef" property="clrSysRef"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/IntrBkSttlmAmt/Value" property="intrBkSttlmAmt"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/Cdtr/Nm" property="nm"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/CdtrAcct/Id/Othr/Id" property="cdtrAcctId"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/CdtrAcct/Id/Othr/Issr" property="issr"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="cdtrClrSysMmbId"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/CdtrAgt/BrnchId/Id" property="cdtrAgtBrnchId"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/Dbtr/Nm" property="dbtrNm"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/DbtrAcct/Id/Othr/Id" property="dbtrAcctId"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/DbtrAcct/Id/Othr/Issr" property="dbtrAcctIssr"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/DbtrAgt/BrnchId/Id" property="dbtrAgtBrnchId"/>    
+				<jb:value data="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/Purp/Prtry" property="prtryTcCd"/>    
+						<jb:expression property="addInfo" execOnElement="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "H01") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/H01/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+						<jb:expression property="rmk" execOnElement="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "HA1") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/HA1/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+		<jb:expression property="ustrdContractId" execOnElement="/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd">
+					if (_VALUE contains "E47") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/E47/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    

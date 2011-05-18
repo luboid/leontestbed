@@ -61,8 +61,20 @@
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/PmtTpInf/CtgyPurp/Prtry" property="orgnlTpCd"/>    
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/MndtRltdInf/AmdmntInfDtls/OrgnlCdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="mmbId"/>    
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/MndtRltdInf/AmdmntInfDtls/OrgnlCdtrAgt/BrnchId/Id" property="brnchId"/>    
-				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/RmtInf/Ustrd" property="rmtInf"/>    
-				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/RmtInf/Ustrd" property="ustrdFees"/>    
+				<jb:expression property="rmtInf" execOnElement="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/RmtInf/Ustrd">
+					if (_VALUE contains "H01") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/H01/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
+				<jb:expression property="ustrdFees" execOnElement="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/RmtInf/Ustrd">
+					if (_VALUE contains "D14") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/D14/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>    
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/DbtrAgt/BrnchId/Id" property="dbtrAgtBrnchId"/>    
 				<jb:value data="/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="cdtrClrSysMmbId"/>    
