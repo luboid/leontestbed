@@ -50,17 +50,6 @@ public class Beps38500101  implements java.io.Serializable {
     private String acctSts;
     
     private Beps38500101Hdr fid;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="FID", nullable=false, updatable=false)
-    public Beps38500101Hdr getFid() {
-		return fid;
-	}
-
-
-	public void setFid(Beps38500101Hdr fid) {
-		this.fid = fid;
-	}
 
 
 	/** default constructor */
@@ -205,6 +194,16 @@ public class Beps38500101  implements java.io.Serializable {
         acctSts = newAcctSts;
     }	  
     
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps38500101Hdr getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps38500101Hdr fid) {
+		this.fid = fid;
+	}
     
 }    
     
