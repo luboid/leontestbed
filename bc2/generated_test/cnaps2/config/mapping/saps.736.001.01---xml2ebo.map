@@ -35,8 +35,8 @@
 	<jb:bean beanId="txList" class="com.topfinance.ebo.msg.Saps73600101" createOnElement="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/TxList">
 		<jb:wiring beanIdRef="target" property="fid"/>
 				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/TxList/TxTp" property="txTp"/>    
-				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/TxList/DailyDbtrAmt" property="dailyDbtrAmt"/>    
-				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/TxList/DailyCdtrAmt" property="dailyCdtrAmt"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/TxList/DailyDbtrAmt" property="dedailyDbtrAmt"/>    
+				<jb:value data="/Document/AcctgDailyDwnLd/AcctgDailyDwnLdInf/TxList/DailyCdtrAmt" property="dedailyCdtrAmt"/>    
 	</jb:bean>  
 
 

@@ -14,8 +14,8 @@
   	</jb:bean>
   	<jb:bean beanId="acctgDailyDwnLd.acctgDailyDwnLdInf.txList[0].xxx" class="com.xml.cnaps2.saps.v73600101.TransactionList1" createOnElement="com.topfinance.ebo.msg.Saps73600101">
   		<jb:value data="txTp"  property="txTp"/>
-  		<jb:value data="dailyDbtrAmt1"  property="dailyDbtrAmt"/>
-  		<jb:value data="dailyCdtrAmt1"  property="dailyCdtrAmt"/>
+  		<jb:value data="dailyDbtrAmt1"  property="dedailyDbtrAmt"/>
+  		<jb:value data="dailyCdtrAmt1"  property="dedailyCdtrAmt"/>
   	</jb:bean>
   	<jb:bean beanId="acctgDailyDwnLd.acctgDailyDwnLdInf" class="com.xml.cnaps2.saps.v73600101.AccountingDailyDownLoadInformation1" createOnElement="com.topfinance.ebo.msg.Saps73600101Hdr">
     	<jb:wiring beanIdRef="acctgDailyDwnLd.acctgDailyDwnLdInf.txList[0]" property="txList"/>
