@@ -27,7 +27,7 @@
   <jb:bean beanId="fakeNode[0]" class="java.util.HashSet" createOnElement="Document">
    	<jb:wiring beanIdRef="fakeNode" />
   </jb:bean>
-	<jb:bean beanId="fakeNode" class="com.topfinance.ebo.msg.Ccms80300102" createOnElement="/Document/TrblNtfctn/NdInf/NdCd">
+	<jb:bean beanId="fakeNode" class="com.topfinance.ebo.msg.Ccms80300102" createOnElement="/Document/TrblNtfctn/NdInf/PtyId">
 		<jb:wiring beanIdRef="target" property="fid"/>
 				<jb:value data="/Document/TrblNtfctn/NdInf/PtyId" property="ptyId"/>    
 	</jb:bean>  
