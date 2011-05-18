@@ -33,8 +33,8 @@ public class Ccms99200101Hdr  implements java.io.Serializable {
     @JaxbMapping(objPath="chckRspn.chckRspnInf.origSndSvsrNm")
     private String origSndSvsrNm;
     
-    @JaxbMapping(objPath="chckRspn.chckRspnInf.origSndSvsrNm")
-    private String origSndSvsrNm1;
+    @JaxbMapping(objPath="chckRspn.chckRspnInf.origSndLineMgrNm")
+    private String origSndLineMgrNm;
     
     @JaxbMapping(objPath="chckRspn.chckRspnInf.rcvRoadNm")
     private String rcvRoadNm;
@@ -125,23 +125,23 @@ public class Ccms99200101Hdr  implements java.io.Serializable {
         origSndSvsrNm = newOrigSndSvsrNm;
     }	  
   /**
-   * Returns the origSndSvsrNm1
+   * Returns the origSndLineMgrNm
    * 
-   * @return the origSndSvsrNm1
+   * @return the origSndLineMgrNm
    */
-    @Column(name = "ORIGSNDSVSRNM1")
-    public String getOrigSndSvsrNm1() {
-        return origSndSvsrNm1;
+    @Column(name = "ORIGSNDLINEMGRNM")
+    public String getOrigSndLineMgrNm() {
+        return origSndLineMgrNm;
     }	 
      
   /**
-   * Sets the origSndSvsrNm1
+   * Sets the origSndLineMgrNm
    *
-   * @param newOrigSndSvsrNm1 the new origSndSvsrNm1
+   * @param newOrigSndLineMgrNm the new origSndLineMgrNm
    */
 
-    public void  setOrigSndSvsrNm1(String newOrigSndSvsrNm1) {
-        origSndSvsrNm1 = newOrigSndSvsrNm1;
+    public void  setOrigSndLineMgrNm(String newOrigSndLineMgrNm) {
+    	origSndLineMgrNm = newOrigSndLineMgrNm;
     }	  
   /**
    * Returns the rcvRoadNm
