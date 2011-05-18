@@ -25,7 +25,7 @@
   <jb:bean beanId="sttlmList[0]" class="java.util.HashSet" createOnElement="Document">
    	<jb:wiring beanIdRef="sttlmList" />
   </jb:bean>
-	<jb:bean beanId="sttlmList" class="com.topfinance.ebo.msg.Saps35700101" createOnElement="/Document/PldgFincgMgmt/PldgFincgMgmtInf/SttlmList/MmbId">
+	<jb:bean beanId="sttlmList" class="com.topfinance.ebo.msg.Saps35700101" createOnElement="/Document/PldgFincgMgmt/PldgFincgMgmtInf/SttlmList">
 		<jb:wiring beanIdRef="target" property="fid"/>
 				<jb:value data="/Document/PldgFincgMgmt/PldgFincgMgmtInf/SttlmList/MmbId" property="mmbId"/>    
 				<jb:value data="/Document/PldgFincgMgmt/PldgFincgMgmtInf/SttlmList/PldgFincgId" property="pldgFincgId"/>    
