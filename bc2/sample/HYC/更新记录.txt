@@ -1524,9 +1524,9 @@ T_C2_BIS_ELE_BSC表中,msg_code='beps.125.001.01数据报文中
 6、beps.130.001.01
 表T_C2_BEPS_130新增字段PRTRYTPCD	VARCHAR2(35)	Y	端到端标识号
 
-2011-05-17 sunhuazhong
+2011-05-18 sunhuazhong
 1、beps.128.001.01
-T_C2_BIS_ELE_BSC表中,msg_code='beps.128.001.01数据报文中
+T_C2_BIS_ELE_BSC表中,msg_code='beps.128.001.01'数据报文中
 /Document/FiToFiPmtStsRpt/GrpHdr/MsgId
 /Document/FiToFiPmtStsRpt/GrpHdr/CreDtTm
 /Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgId
@@ -1553,9 +1553,19 @@ T_C2_BIS_ELE_BSC表中,msg_code='beps.128.001.01数据报文中
 /Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/DbtrAgt/BrnchId/Id
 /Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId
 /Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/CdtrAgt/BrnchId/Id
+beps.128.001.01__.xml中				
+<RmtInf>
+	<Ustrd>/H01/测试测试测试测试测试测试</Ustrd>
+	<Ustrd>/D14/CNY20.00</Ustrd>
+</RmtInf>
+修改为
+<RmtInf>
+	<Ustrd>/H01/测试测试测试测试测试测试</Ustrd>
+	<Ustrd>/D14/20.00</Ustrd>
+</RmtInf>
 
 2、beps.134.001.01
-T_C2_BIS_ELE_BSC表中,msg_code='beps.134.001.01数据报文中
+T_C2_BIS_ELE_BSC表中,msg_code='beps.134.001.01'数据报文中
 /Document/FiToFiPmtStsRpt/GrpHdr/MsgId
 /Document/FiToFiPmtStsRpt/GrpHdr/CreDtTm
 /Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgId
@@ -1582,3 +1592,54 @@ T_C2_BIS_ELE_BSC表中,msg_code='beps.134.001.01数据报文中
 /Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/DbtrAgt/BrnchId/Id
 /Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId
 /Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/CdtrAgt/BrnchId/Id
+表T_C2_BEPS_134_HDR新增字段DTLDSTS	VARCHAR2(4)	Y			固定填写ACCP
+
+3、ccms.319.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='ccms.319.001.01'数据报文中
+/Document/FiToFiPmtStsRpt/GrpHdr/MsgId
+/Document/FiToFiPmtStsRpt/GrpHdr/CreDtTm
+/Document/FiToFiPmtStsRpt/GrpHdr/InstgAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FiToFiPmtStsRpt/GrpHdr/InstgAgt/BrnchId/Id
+/Document/FiToFiPmtStsRpt/GrpHdr/InstdAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FiToFiPmtStsRpt/GrpHdr/InstdAgt/BrnchId/Id
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgId
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgNmId
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/TxInfAndSts
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlInstrId
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxId
+/Document/FiToFiPmtStsRpt/TxInfAndSts/InstgAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FiToFiPmtStsRpt/TxInfAndSts/InstgAgt/BrnchId/Id
+/Document/FiToFiPmtStsRpt/TxInfAndSts/InstdAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FiToFiPmtStsRpt/TxInfAndSts/InstdAgt/BrnchId/Id
+/Document/FiToFiPmtStsRpt/TxInfAndSts/OrgnlTxRef/PmtTpInf/CtgyPurp/Prtry
+表T_C2_CCMS_319修改字段COLUMN_4为ORGNLINDEID1	VARCHAR2(14)
+
+4、beps.133.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.133.001.01'数据报文中
+/Document/FIToFICstmrDrctDbt/GrpHdr/MsgId
+/Document/FIToFICstmrDrctDbt/GrpHdr/CreDtTm
+/Document/FIToFICstmrDrctDbt/GrpHdr/NbOfTxs
+/Document/FIToFICstmrDrctDbt/GrpHdr/CtrlSum
+/Document/FIToFICstmrDrctDbt/GrpHdr/PmtTpInf/LclInstrm/Prtry
+/Document/FIToFICstmrDrctDbt/GrpHdr/PmtTpInf/CtgyPurp/Prtry
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/PmtId/EndToEndId
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/PmtId/TxId
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/PmtId/ClrSysRef
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/IntrBkSttlmAmt
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/Cdtr/Nm
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/CdtrAcct/Id/Othr/Id
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/CdtrAcct/Id/Othr/Issr
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/CdtrAgt/BrnchId/Id
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/Dbtr/Nm
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/DbtrAcct/Id/Othr/Id
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/DbtrAcct/Id/Othr/Issr
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/DbtrAgt/BrnchId/Id
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/Purp/Prtry
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd
+/Document/FIToFICstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd
