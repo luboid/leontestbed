@@ -33,10 +33,10 @@ public class Saps73600101  implements java.io.Serializable {
     private String txTp;
     
     @JaxbMapping(objPath="acctgDailyDwnLd.acctgDailyDwnLdInf.txList[0].dailyDbtrAmt")
-    private String dailyDbtrAmt;
+    private String deDailyDbtrAmt;
     
     @JaxbMapping(objPath="acctgDailyDwnLd.acctgDailyDwnLdInf.txList[0].dailyCdtrAmt")
-    private String dailyCdtrAmt;
+    private String deDailyCdtrAmt;
     
     private Saps73600101Hdr fid;
 	
@@ -99,42 +99,42 @@ public class Saps73600101  implements java.io.Serializable {
         txTp = newTxTp;
     }	  
   /**
-   * Returns the dailyDbtrAmt
+   * Returns the deDailyDbtrAmt
    * 
-   * @return the dailyDbtrAmt
+   * @return the deDailyDbtrAmt
    */
-    @Column(name = "DAILYDBTRAMT")
-    public String getDailyDbtrAmt() {
-        return dailyDbtrAmt;
+    @Column(name = "DEDAILYDBTRAMT")
+    public String getDeDailyDbtrAmt() {
+        return deDailyDbtrAmt;
     }	 
      
   /**
-   * Sets the dailyDbtrAmt
+   * Sets the dedailyDbtrAmt
    *
-   * @param newDailyDbtrAmt the new dailyDbtrAmt
+   * @param newDeDailyDbtrAmt the new dedailyDbtrAmt
    */
 
-    public void  setDailyDbtrAmt(String newDailyDbtrAmt) {
-        dailyDbtrAmt = newDailyDbtrAmt;
+    public void  setDeDailyDbtrAmt(String newDeDailyDbtrAmt) {
+    	deDailyDbtrAmt = newDeDailyDbtrAmt;
     }	  
   /**
-   * Returns the dailyCdtrAmt
+   * Returns the deDailyCdtrAmt
    * 
-   * @return the dailyCdtrAmt
+   * @return the deDailyCdtrAmt
    */
-    @Column(name = "DAILYCDTRAMT")
-    public String getDailyCdtrAmt() {
-        return dailyCdtrAmt;
+    @Column(name = "DEDAILYCDTRAMT")
+    public String getDeDailyCdtrAmt() {
+        return deDailyCdtrAmt;
     }	 
      
   /**
-   * Sets the dailyCdtrAmt
+   * Sets the deDailyCdtrAmt
    *
-   * @param newDailyCdtrAmt the new dailyCdtrAmt
+   * @param newDeDailyCdtrAmt the new deDailyCdtrAmt
    */
 
-    public void  setDailyCdtrAmt(String newDailyCdtrAmt) {
-        dailyCdtrAmt = newDailyCdtrAmt;
+    public void  setDeDailyCdtrAmt(String newDeDailyCdtrAmt) {
+    	deDailyCdtrAmt = newDeDailyCdtrAmt;
     }	  
     
     
