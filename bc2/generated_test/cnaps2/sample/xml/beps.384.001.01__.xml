@@ -48,6 +48,34 @@
 					<Nm>武贾西奇</Nm>
 				</Cdtr>
 			</AgrmtDtls>
+						<AgrmtDtls>
+				<ChngTpCd>CC00</ChngTpCd>
+				<AgrmtNb>GT012030001</AgrmtNb>
+				<Dbtr>
+					<Nm>卡卡</Nm>
+				</Dbtr>
+				<DbtrAcct>
+					<Id>
+						<Othr>
+							<Id>2310230111201111210123100010231</Id>
+							<Issr>103100000018</Issr>
+						</Othr>
+					</Id>
+				</DbtrAcct>
+				<DbtrAgt>
+					<FIId>
+						<ClrSysMmbId>
+							<MmbId>103100000018</MmbId>
+						</ClrSysMmbId>
+					</FIId>
+					<BrnchId>
+						<Id>103100000018</Id>
+					</BrnchId>
+				</DbtrAgt>
+				<Cdtr>
+					<Nm>武贾西奇</Nm>
+				</Cdtr>
+			</AgrmtDtls>
 		</BtchCstmrsCtrctMgInf>
 	</BtchCstmrsCtrctMg>
 </Document>
