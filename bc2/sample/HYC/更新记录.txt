@@ -1667,3 +1667,37 @@ T_C2_BIS_ELE_BSC±íÖĞ,msg_code='beps.130.001.01'Êı¾İ±¨ÎÄÖĞĞŞ¸ÄELE_ID="PrtryTpCd"µ
 
 8¡¢beps.381.001.01
 ĞŞ¸Ä±íT_C2_BEPS_381£¬×Ö¶ÎDBTRACCTISSR ÀàĞÍÎªVARCHAR2(16)  
+
+
+
+
+2011-05-18£º
+1¡¢ParseSampleXmlHelper.java
+PercentageRateÕâÖÖÇé¿ö×·¼Ó£¬Á½´¦
+2¡¢
+Cnaps2ConstantsµÄ°æ±¾±»ÈË¸øÅªÂÒÁË£¬°Ñ°æ±¾ÕûºÃ£¬
+¼°926×·¼Ó
+Cnaps2Constants.javaÖĞpacs.00400102¸ÄÎªpacs.v00400102
+pkgName = "com.xml.cnaps2.ccms.v99200101";
+
+3¡¢
+´óĞ¡Ğ´Í³Ò»ÎÊÌâ£¬ÏÖÔÚÁ½¸öÈË×öµÄ²»Ò»ÖÂ£¬Ó¦¸ÃÍ³Ò»ÆğÀ´
+
+4,¹ØÓÚ¶à×éÊıÖµÊ±£¬¸¸×Ó±íÁ¬½Ó×Ö¶ÎµÄpathÉèÖÃ
+beps.724.001.01
+/Document/TxDwnldReq/TxDwnldReqInf/DwnldReqTxsDtls
+
+saps.357.001.01
+/Document/PldgFincgMgmt/PldgFincgMgmtInf/SttlmList
+
+ccms.809.001.02
+/Document/StopgNtfctn/NdInf/PtyId
+
+ccms.803.001.02
+/Document/TrblNtfctn/NdInf/PtyId
+
+ccms.919.001.01
+/Document/CertDwnLdApply/CertfctnList/MmbCd
+
+saps.373.001.01
+/Document/FndsOfPoolMgmt/FndsOfPoolMgmtInf/BrnchList/MmbId
