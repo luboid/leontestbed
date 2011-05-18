@@ -24,7 +24,7 @@
   <jb:bean beanId="certfctnList[0]" class="java.util.HashSet" createOnElement="Document">
    	<jb:wiring beanIdRef="certfctnList" />
   </jb:bean>
-	<jb:bean beanId="certfctnList" class="com.topfinance.ebo.msg.Ccms91900101" createOnElement="/Document/CertDwnLdApply/GrpHdr/MsgId">
+	<jb:bean beanId="certfctnList" class="com.topfinance.ebo.msg.Ccms91900101" createOnElement="/Document/CertDwnLdApply/CertfctnList/MmbCd">
 		<jb:wiring beanIdRef="target" property="fid"/>
 				<jb:value data="/Document/CertDwnLdApply/CertfctnList/MmbCd" property="mmbCd"/>    
 	</jb:bean>  
