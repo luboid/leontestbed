@@ -44,17 +44,6 @@ public class Beps72400101  implements java.io.Serializable {
     private String orgnlMT;
     
     private Beps72400101Hdr fid;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="FID", nullable=false, updatable=false)
-    public Beps72400101Hdr getFid() {
-		return fid;
-	}
-
-
-	public void setFid(Beps72400101Hdr fid) {
-		this.fid = fid;
-	}
 
 
 	/** default constructor */
@@ -161,6 +150,16 @@ public class Beps72400101  implements java.io.Serializable {
         orgnlMT = newOrgnlMT;
     }	  
     
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps72400101Hdr getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps72400101Hdr fid) {
+		this.fid = fid;
+	}
     
 }    
     

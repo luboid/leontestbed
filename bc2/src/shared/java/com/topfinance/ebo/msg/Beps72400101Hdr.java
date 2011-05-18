@@ -56,7 +56,7 @@ public class Beps72400101Hdr  implements java.io.Serializable {
     @JaxbMapping(objPath="txDwnldReq.txDwnldReqInf.nbOfTxs")
     private String nbOfTxs;
     
-    @JaxbMapping(objPath="txDwnldReq.txDwnldReqInf.nbOfTxs")
+    @JaxbMapping(objPath="txDwnldReq.txDwnldReqInf.dwnldReqTxsDtls[0]")
     private java.util.Set<Beps72400101> fakeNode;
     
     
