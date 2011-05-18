@@ -48,7 +48,8 @@ public class OrganisationIdentification4 {
     @XmlElement(name = "Othr")
     protected List<GenericOrganisationIdentification1> othr = new Vector<GenericOrganisationIdentification1>();
 
-    /**
+
+	/**
      * Gets the value of the bicOrBEI property.
      * 
      * @return
@@ -101,4 +102,8 @@ public class OrganisationIdentification4 {
         return this.othr;
     }
 
+    public void setOthr(List<GenericOrganisationIdentification1> othr) {
+		this.othr = othr;
+	}
+    
 }

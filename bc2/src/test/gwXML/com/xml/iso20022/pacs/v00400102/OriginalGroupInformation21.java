@@ -57,7 +57,7 @@ public class OriginalGroupInformation21 {
     @XmlElement(name = "RtrRsnInf")
     protected List<ReturnReasonInformation9> rtrRsnInf = new Vector<ReturnReasonInformation9>();
 
-    /**
+	/**
      * Gets the value of the orgnlMsgId property.
      * 
      * @return
@@ -158,4 +158,8 @@ public class OriginalGroupInformation21 {
         return this.rtrRsnInf;
     }
 
+    public void setRtrRsnInf(List<ReturnReasonInformation9> rtrRsnInf) {
+		this.rtrRsnInf = rtrRsnInf;
+	}
+    
 }

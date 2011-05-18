@@ -52,7 +52,8 @@ public class ReturnReasonInformation9 {
     @XmlElement(name = "AddtlInf")
     protected List<String> addtlInf = new Vector<String>();
 
-    /**
+
+	/**
      * Gets the value of the orgtr property.
      * 
      * @return
@@ -129,4 +130,8 @@ public class ReturnReasonInformation9 {
         return this.addtlInf;
     }
 
+    public void setAddtlInf(List<String> addtlInf) {
+		this.addtlInf = addtlInf;
+	}
+    
 }
