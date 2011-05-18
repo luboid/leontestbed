@@ -53,17 +53,6 @@ public class Ccms92600101  implements java.io.Serializable {
     private Double amtUpperLmt;
     
     private Ccms92600101Hdr fid;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="FID", nullable=false, updatable=false)
-    public Ccms92600101Hdr getFid() {
-		return fid;
-	}
-
-
-	public void setFid(Ccms92600101Hdr fid) {
-		this.fid = fid;
-	}
 
 
 	/** default constructor */
@@ -227,6 +216,16 @@ public class Ccms92600101  implements java.io.Serializable {
         amtUpperLmt = newAmtUpperLmt;
     }	  
     
-    
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Ccms92600101Hdr getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Ccms92600101Hdr fid) {
+		this.fid = fid;
+	}
+	
 }    
     
