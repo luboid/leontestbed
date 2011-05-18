@@ -33,17 +33,6 @@ public class Ccms91900101  implements java.io.Serializable {
     private String mmbCd;
     
     private Ccms91900101Hdr fid;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="FID", nullable=false, updatable=false)
-    public Ccms91900101Hdr getFid() {
-		return fid;
-	}
-
-
-	public void setFid(Ccms91900101Hdr fid) {
-		this.fid = fid;
-	}
 
 
 	/** default constructor */
@@ -93,6 +82,16 @@ public class Ccms91900101  implements java.io.Serializable {
         mmbCd = newMmbCd;
     }	  
     
-    
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Ccms91900101Hdr getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Ccms91900101Hdr fid) {
+		this.fid = fid;
+	}
+	
 }    
     

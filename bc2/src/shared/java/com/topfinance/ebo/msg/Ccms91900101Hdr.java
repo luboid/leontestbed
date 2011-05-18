@@ -27,7 +27,7 @@ public class Ccms91900101Hdr  implements java.io.Serializable {
     @JaxbMapping(objPath="")
     private Integer id;
     
-    @JaxbMapping(objPath="certDwnLdApply.grpHdr.msgId")
+    @JaxbMapping(objPath="certDwnLdApply.certfctnList.mmbCd")
     private java.util.Set<Ccms91900101> certfctnList;
     
     @JaxbMapping(objPath="certDwnLdApply.grpHdr.msgId")
