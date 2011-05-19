@@ -105,7 +105,8 @@ public class ParseSampleXmlHelper {
 		} else if (metaType.equalsIgnoreCase("ActiveCurrencyAndAmount")) {
 			res = DB_NUMBER;
 		} else if (metaType.equalsIgnoreCase("DecimalNumber") ||
-				metaType.equalsIgnoreCase("CurrencyAndAmount")) {
+				metaType.equalsIgnoreCase("CurrencyAndAmount")||
+				metaType.equalsIgnoreCase("PercentageRate")) {
 			res = DB_NUMBER;
 			
 		} else if (metaType.equalsIgnoreCase("ISODateTime")) {
@@ -143,7 +144,8 @@ public class ParseSampleXmlHelper {
 		} else if (metaType.equalsIgnoreCase("ActiveCurrencyAndAmount")) {
 			res = DB_NUMBER;
 		} else if (metaType.equalsIgnoreCase("DecimalNumber") ||
-				metaType.equalsIgnoreCase("CurrencyAndAmount")) {
+				metaType.equalsIgnoreCase("CurrencyAndAmount")||
+				metaType.equalsIgnoreCase("PercentageRate")) {
 			res = DB_NUMBER;
 			
 		} else if (metaType.equalsIgnoreCase("ISODateTime")) {

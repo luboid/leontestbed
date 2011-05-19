@@ -665,7 +665,7 @@ public class Beps12500101CdtTrfTxInf  implements java.io.Serializable {
 	public void setFid(Beps12500101 fid) {
 		this.fid = fid;
 	}	  
-	    
+    
     
 }    
     

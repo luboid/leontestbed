@@ -46,41 +46,38 @@ public class Beps39200101  implements java.io.Serializable {
     @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlGrpInfAndSts.orgnlMsgNmId")
     private String orgnlMsgNmId;
     
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts.stsId")
+    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts[0].stsId")
     private String stsId;
     
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts.orgnlInstrId")
-    private String orgnlInstrId;
+    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts[0].orgnlInstrId")
+    private String orgnlPmtInfId;
     
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts.stsRsnInf.rsn.prtry")
+    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts[0].stsRsnInf.rsn.prtry")
     private String rejCd;
     
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts.stsRsnInf.addtlInf")
-    private String rejRsn;
+    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts[0].stsRsnInf.addtlInf")
+    private String orgnlInstrId;
     
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts.orgnlTxRef.intrBkSttlmAmt.value")
+    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts[0].orgnlTxRef.intrBkSttlmAmt")
     private Double intrBkSttlmAmt;
     
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts.orgnlTxRef.pmtTpInf.ctgyPurp.prtry")
+    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts[0].orgnlTxRef.pmtTpInf.ctgyPurp.prtry")
     private String orgnlTpCd;
     
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts.orgnlTxRef.rmtInf.ustrd")
+    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts[0].orgnlTxRef.rmtInf.ustrd")
     private String ustrdAddinfo;
     
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts.orgnlTxRef.dbtrAgt.finInstnId.clrSysMmbId.mmbId")
+    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts[0].orgnlTxRef.dbtrAgt.finInstnId.clrSysMmbId.mmbId")
     private String dbtrClrSysMmbId;
     
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts.orgnlTxRef.dbtrAgt.brnchId.id")
+    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts[0].orgnlTxRef.dbtrAgt.brnchId.id")
     private String dbtrAgtBrnchId;
     
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts.orgnlTxRef.cdtrAgt.finInstnId.clrSysMmbId.mmbId")
+    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts[0].orgnlTxRef.cdtrAgt.finInstnId.clrSysMmbId.mmbId")
     private String cdtrClrSysMmbId;
     
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts.orgnlTxRef.cdtrAgt.brnchId.id")
+    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.txInfAndSts[0].orgnlTxRef.cdtrAgt.brnchId.id")
     private String cdtrAgtBrnchId;
-    
-    @JaxbMapping(objPath="cstmrPmtStsRpt.orgnlPmtInfAndSts.orgnlPmtInfId")
-    private String orgnlPmtInfId;
     
     
 	
@@ -245,23 +242,23 @@ public class Beps39200101  implements java.io.Serializable {
         stsId = newStsId;
     }	  
   /**
-   * Returns the orgnlInstrId
+   * Returns the orgnlPmtInfId
    * 
-   * @return the orgnlInstrId
+   * @return the orgnlPmtInfId
    */
-    @Column(name = "ORGNLINSTRID")
-    public String getOrgnlInstrId() {
-        return orgnlInstrId;
+    @Column(name = "ORGNLPMTINFID")
+    public String getOrgnlPmtInfId() {
+        return orgnlPmtInfId;
     }	 
      
   /**
-   * Sets the orgnlInstrId
+   * Sets the orgnlPmtInfId
    *
-   * @param newOrgnlInstrId the new orgnlInstrId
+   * @param newOrgnlPmtInfId the new orgnlPmtInfId
    */
 
-    public void  setOrgnlInstrId(String newOrgnlInstrId) {
-        orgnlInstrId = newOrgnlInstrId;
+    public void  setOrgnlPmtInfId(String newOrgnlPmtInfId) {
+        orgnlPmtInfId = newOrgnlPmtInfId;
     }	  
   /**
    * Returns the rejCd
@@ -283,23 +280,23 @@ public class Beps39200101  implements java.io.Serializable {
         rejCd = newRejCd;
     }	  
   /**
-   * Returns the rejRsn
+   * Returns the orgnlInstrId
    * 
-   * @return the rejRsn
+   * @return the orgnlInstrId
    */
-    @Column(name = "REJRSN")
-    public String getRejRsn() {
-        return rejRsn;
+    @Column(name = "ORGNLINSTRID")
+    public String getOrgnlInstrId() {
+        return orgnlInstrId;
     }	 
      
   /**
-   * Sets the rejRsn
+   * Sets the orgnlInstrId
    *
-   * @param newRejRsn the new rejRsn
+   * @param newOrgnlInstrId the new orgnlInstrId
    */
 
-    public void  setRejRsn(String newRejRsn) {
-        rejRsn = newRejRsn;
+    public void  setOrgnlInstrId(String newOrgnlInstrId) {
+        orgnlInstrId = newOrgnlInstrId;
     }	  
   /**
    * Returns the intrBkSttlmAmt
@@ -433,25 +430,6 @@ public class Beps39200101  implements java.io.Serializable {
 
     public void  setCdtrAgtBrnchId(String newCdtrAgtBrnchId) {
         cdtrAgtBrnchId = newCdtrAgtBrnchId;
-    }	  
-  /**
-   * Returns the orgnlPmtInfId
-   * 
-   * @return the orgnlPmtInfId
-   */
-    @Column(name = "ORGNLPMTINFID")
-    public String getOrgnlPmtInfId() {
-        return orgnlPmtInfId;
-    }	 
-     
-  /**
-   * Sets the orgnlPmtInfId
-   *
-   * @param newOrgnlPmtInfId the new orgnlPmtInfId
-   */
-
-    public void  setOrgnlPmtInfId(String newOrgnlPmtInfId) {
-        orgnlPmtInfId = newOrgnlPmtInfId;
     }	  
     
     

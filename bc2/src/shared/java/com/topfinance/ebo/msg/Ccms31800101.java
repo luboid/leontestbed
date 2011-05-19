@@ -24,35 +24,55 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_C2_CCMS_318")
+@Table(name = "T_C2_CCMS_318_HDR")
 public class Ccms31800101  implements java.io.Serializable {
 
     // Fields 
     @JaxbMapping(objPath="")
     private Integer id;
     
-    @JaxbMapping(objPath="pmtRtr.txInf[0].orgnlTxId")
-    private String orgnlTxId;
+    @JaxbMapping(objPath="pmtRtr.grpHdr.msgId")
+    private String msgId;
     
-    @JaxbMapping(objPath="pmtRtr.txInf[0].rtrdIntrBkSttlmAmt")
-    private Double rtrdIntrBkSttlmAmt;
+    @JaxbMapping(objPath="pmtRtr.grpHdr.creDtTm")
+    private Date creDtTm;
     
-    @JaxbMapping(objPath="pmtRtr.txInf[0].instgAgt.finInstnId.clrSysMmbId.mmbId")
+    @JaxbMapping(objPath="pmtRtr.grpHdr.nbOfTxs")
+    private String nbOfTxs;
+    
+    @JaxbMapping(objPath="pmtRtr.grpHdr.sttlmInf.sttlmMtd")
+    private String sttlmMtd;
+    
+    @JaxbMapping(objPath="pmtRtr.grpHdr.instgAgt.finInstnId.clrSysMmbId.mmbId")
     private String sDMmbId;
     
-    @JaxbMapping(objPath="pmtRtr.txInf[0].instgAgt.brnchId.id")
+    @JaxbMapping(objPath="pmtRtr.grpHdr.instgAgt.brnchId.id")
     private String sInDId;
     
-    @JaxbMapping(objPath="pmtRtr.txInf[0].instdAgt.finInstnId.clrSysMmbId.mmbId")
+    @JaxbMapping(objPath="pmtRtr.grpHdr.instdAgt.finInstnId.clrSysMmbId.mmbId")
     private String rDMmbId;
     
-    @JaxbMapping(objPath="pmtRtr.txInf[0].instdAgt.brnchId.id")
+    @JaxbMapping(objPath="pmtRtr.grpHdr.instdAgt.brnchId.id")
     private String rInDId;
     
-    private Ccms31800101Hdr fid;
-
-
-	/** default constructor */
+    @JaxbMapping(objPath="pmtRtr.orgnlGrpInf.orgnlMsgId")
+    private String orgnlMsgId;
+    
+    @JaxbMapping(objPath="pmtRtr.orgnlGrpInf.orgnlMsgNmId")
+    private String orgnlMsgNmId;
+    
+    @JaxbMapping(objPath="pmtRtr.orgnlGrpInf.rtrRsnInf.orgtr.id.orgId.othr.id")
+    private String orgnlSen;
+    
+    @JaxbMapping(objPath="pmtRtr.orgnlGrpInf.rtrRsnInf.addtlInf")
+    private String reTp;
+    
+    @JaxbMapping(objPath="pmtRtr.txInf[0]")
+    private java.util.Set<Ccms31800101TxInf> txInf;
+    
+    
+	
+    /** default constructor */
     public Ccms31800101() {
     }
 	
@@ -80,42 +100,80 @@ public class Ccms31800101  implements java.io.Serializable {
         id = newid;
     }	  
   /**
-   * Returns the orgnlTxId
+   * Returns the msgId
    * 
-   * @return the orgnlTxId
+   * @return the msgId
    */
-    @Column(name = "ORGNLTXID")
-    public String getOrgnlTxId() {
-        return orgnlTxId;
+    @Column(name = "MSGID")
+    public String getMsgId() {
+        return msgId;
     }	 
      
   /**
-   * Sets the orgnlTxId
+   * Sets the msgId
    *
-   * @param newOrgnlTxId the new orgnlTxId
+   * @param newMsgId the new msgId
    */
 
-    public void  setOrgnlTxId(String newOrgnlTxId) {
-        orgnlTxId = newOrgnlTxId;
+    public void  setMsgId(String newMsgId) {
+        msgId = newMsgId;
     }	  
   /**
-   * Returns the rtrdIntrBkSttlmAmt
+   * Returns the creDtTm
    * 
-   * @return the rtrdIntrBkSttlmAmt
+   * @return the creDtTm
    */
-    @Column(name = "RTRDINTRBKSTTLMAMT")
-    public Double getRtrdIntrBkSttlmAmt() {
-        return rtrdIntrBkSttlmAmt;
+    @Column(name = "CREDTTM")
+    public Date getCreDtTm() {
+        return creDtTm;
     }	 
      
   /**
-   * Sets the rtrdIntrBkSttlmAmt
+   * Sets the creDtTm
    *
-   * @param newRtrdIntrBkSttlmAmt the new rtrdIntrBkSttlmAmt
+   * @param newCreDtTm the new creDtTm
    */
 
-    public void  setRtrdIntrBkSttlmAmt(Double newRtrdIntrBkSttlmAmt) {
-        rtrdIntrBkSttlmAmt = newRtrdIntrBkSttlmAmt;
+    public void  setCreDtTm(Date newCreDtTm) {
+        creDtTm = newCreDtTm;
+    }	  
+  /**
+   * Returns the nbOfTxs
+   * 
+   * @return the nbOfTxs
+   */
+    @Column(name = "NBOFTXS")
+    public String getNbOfTxs() {
+        return nbOfTxs;
+    }	 
+     
+  /**
+   * Sets the nbOfTxs
+   *
+   * @param newNbOfTxs the new nbOfTxs
+   */
+
+    public void  setNbOfTxs(String newNbOfTxs) {
+        nbOfTxs = newNbOfTxs;
+    }	  
+  /**
+   * Returns the sttlmMtd
+   * 
+   * @return the sttlmMtd
+   */
+    @Column(name = "STTLMMTD")
+    public String getSttlmMtd() {
+        return sttlmMtd;
+    }	 
+     
+  /**
+   * Sets the sttlmMtd
+   *
+   * @param newSttlmMtd the new sttlmMtd
+   */
+
+    public void  setSttlmMtd(String newSttlmMtd) {
+        sttlmMtd = newSttlmMtd;
     }	  
   /**
    * Returns the sDMmbId
@@ -193,16 +251,102 @@ public class Ccms31800101  implements java.io.Serializable {
     public void  setRInDId(String newRInDId) {
         rInDId = newRInDId;
     }	  
+  /**
+   * Returns the orgnlMsgId
+   * 
+   * @return the orgnlMsgId
+   */
+    @Column(name = "ORGNLMSGID")
+    public String getOrgnlMsgId() {
+        return orgnlMsgId;
+    }	 
+     
+  /**
+   * Sets the orgnlMsgId
+   *
+   * @param newOrgnlMsgId the new orgnlMsgId
+   */
+
+    public void  setOrgnlMsgId(String newOrgnlMsgId) {
+        orgnlMsgId = newOrgnlMsgId;
+    }	  
+  /**
+   * Returns the orgnlMsgNmId
+   * 
+   * @return the orgnlMsgNmId
+   */
+    @Column(name = "ORGNLMSGNMID")
+    public String getOrgnlMsgNmId() {
+        return orgnlMsgNmId;
+    }	 
+     
+  /**
+   * Sets the orgnlMsgNmId
+   *
+   * @param newOrgnlMsgNmId the new orgnlMsgNmId
+   */
+
+    public void  setOrgnlMsgNmId(String newOrgnlMsgNmId) {
+        orgnlMsgNmId = newOrgnlMsgNmId;
+    }	  
+  /**
+   * Returns the orgnlSen
+   * 
+   * @return the orgnlSen
+   */
+    @Column(name = "ORGNLSEN")
+    public String getOrgnlSen() {
+        return orgnlSen;
+    }	 
+     
+  /**
+   * Sets the orgnlSen
+   *
+   * @param newOrgnlSen the new orgnlSen
+   */
+
+    public void  setOrgnlSen(String newOrgnlSen) {
+        orgnlSen = newOrgnlSen;
+    }	  
+  /**
+   * Returns the reTp
+   * 
+   * @return the reTp
+   */
+    @Column(name = "RETP")
+    public String getReTp() {
+        return reTp;
+    }	 
+     
+  /**
+   * Sets the reTp
+   *
+   * @param newReTp the new reTp
+   */
+
+    public void  setReTp(String newReTp) {
+        reTp = newReTp;
+    }	  
+  /**
+   * Returns the txInf
+   * 
+   * @return the txInf
+   */
+  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
+    public java.util.Set<Ccms31800101TxInf> getTxInf() {
+        return txInf;
+    }	 
+     
+  /**
+   * Sets the txInf
+   *
+   * @param newTxInf the new txInf
+   */
+
+    public void  setTxInf(java.util.Set<Ccms31800101TxInf> newTxInf) {
+        txInf = newTxInf;
+    }	  
     
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="FID", nullable=false, updatable=false)
-		public Ccms31800101Hdr getFid() {
-		return fid;
-	}
-
-
-	public void setFid(Ccms31800101Hdr fid) {
-		this.fid = fid;
-	}
+    
 }    
     

@@ -47,6 +47,9 @@
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx.cdtrAgt.finInstnId" property="finInstnId"/>
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx.cdtrAgt.brnchId" property="brnchId"/>
   	</jb:bean>
+  	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx.intrBkSttlmAmt" class="com.xml.iso20022.pacs.v00800102.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Beps13000101">
+  				<jb:value data="amt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
   	<jb:bean beanId="fiToFiCstmrCdtTrf.grpHdr.sttlmInf" class="com.xml.iso20022.pacs.v00800102.SettlementInformation13" createOnElement="com.topfinance.ebo.msg.Beps13000101">
   				<jb:value data="sttlmMtd"  property="sttlmMtd"/>
   				<jb:value data="endToEndId"  property="sttlmMtd"/>
@@ -68,6 +71,7 @@
   	</jb:bean>
   	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx" class="com.xml.iso20022.pacs.v00800102.CreditTransferTransactionInformation11" createOnElement="com.topfinance.ebo.msg.Beps13000101CdtTrfTxInf">
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx.pmtId" property="pmtId"/>
+    	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx.intrBkSttlmAmt" property="intrBkSttlmAmt"/>
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx.pmtTpInf" property="pmtTpInf"/>
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx.dbtrAcct" property="dbtrAcct"/>
     	<jb:wiring beanIdRef="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx.dbtrAgt" property="dbtrAgt"/>
@@ -83,7 +87,6 @@
   	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx.pmtId" class="com.xml.iso20022.pacs.v00800102.PaymentIdentification3" createOnElement="com.topfinance.ebo.msg.Beps13000101">
   				<jb:value data="txId"  property="txId"/>
   				<jb:value data="prtryTpCd"  property="endToEndId"/>
-  				<jb:value data="amt"  property="txId"/>
   	</jb:bean>
   	<jb:bean beanId="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].xxx.cdtrAgt.brnchId" class="com.xml.iso20022.pacs.v00800102.BranchData2" createOnElement="com.topfinance.ebo.msg.Beps13000101">
   				<jb:value data="cdtrAgtBrnchId"  property="id"/>

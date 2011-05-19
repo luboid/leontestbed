@@ -8,25 +8,24 @@
   </params>
   <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps39200101" createOnElement="Document">
 				<jb:value data="/Document/CstmrPmtStsRpt/GrpHdr/MsgId" property="msgId"/>    
-				<jb:value data="/Document/CstmrPmtStsRpt/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
-				<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
-			    </jb:value>
+  			<jb:value data="/Document/CstmrPmtStsRpt/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
 				<jb:value data="/Document/CstmrPmtStsRpt/GrpHdr/InitgPty/Nm" property="instgDrctPty"/>    
 				<jb:value data="/Document/CstmrPmtStsRpt/GrpHdr/FwdgAgt/FinInstnId/ClrSysMmbId/MmbId" property="instdDrctPty"/>    
 				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgId" property="orgnlMsgId"/>    
 				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgNmId" property="orgnlMsgNmId"/>    
 				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/StsId" property="stsId"/>    
-				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlInstrId" property="orgnlInstrId"/>    
+				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlInstrId" property="orgnlPmtInfId"/>    
 				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/StsRsnInf/Rsn/Prtry" property="rejCd"/>    
-				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/StsRsnInf/AddtlInf" property="rejRsn"/>    
-				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlTxRef/IntrBkSttlmAmt/Value" property="intrBkSttlmAmt"/>    
+				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/StsRsnInf/AddtlInf" property="orgnlInstrId"/>    
+				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlTxRef/IntrBkSttlmAmt" property="intrBkSttlmAmt"/>    
 				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlTxRef/PmtTpInf/CtgyPurp/Prtry" property="orgnlTpCd"/>    
 				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlTxRef/RmtInf/Ustrd" property="ustrdAddinfo"/>    
 				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlTxRef/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>    
 				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlTxRef/DbtrAgt/BrnchId/Id" property="dbtrAgtBrnchId"/>    
 				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlTxRef/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="cdtrClrSysMmbId"/>    
 				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/TxInfAndSts/OrgnlTxRef/CdtrAgt/BrnchId/Id" property="cdtrAgtBrnchId"/>    
-				<jb:value data="/Document/CstmrPmtStsRpt/OrgnlPmtInfAndSts/OrgnlPmtInfId" property="orgnlPmtInfId"/>    
 	</jb:bean>
 	
 

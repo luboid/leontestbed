@@ -40,7 +40,7 @@ public class Beps13000101CdtTrfTxInf  implements java.io.Serializable {
     @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId")
     private String prtryTpCd;
     
-    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtId.txId")
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmAmt")
     private Double amt;
     
     @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.ctgyPurp.prtry")
@@ -113,8 +113,6 @@ public class Beps13000101CdtTrfTxInf  implements java.io.Serializable {
     private Date sttlmDt;
     
     private Beps13000101 fid;
-    
-    
 	
     /** default constructor */
     public Beps13000101CdtTrfTxInf() {
@@ -655,7 +653,7 @@ public class Beps13000101CdtTrfTxInf  implements java.io.Serializable {
 
     public void  setSttlmDt(Date newSttlmDt) {
         sttlmDt = newSttlmDt;
-    }
+    }	
 
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="FID", nullable=false, updatable=false)

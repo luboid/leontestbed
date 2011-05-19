@@ -31,58 +31,58 @@ public class Beps13300101DrctDbtTxInf  implements java.io.Serializable {
     @JaxbMapping(objPath="")
     private Integer id;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].pmtId.endToEndId")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].pmtId.endToEndId")
     private String endToEndId;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].pmtId.txId")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].pmtId.txId")
     private String txId;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].pmtId.clrSysRef")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].pmtId.clrSysRef")
     private String clrSysRef;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].intrBkSttlmAmt")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].intrBkSttlmAmt")
     private Double intrBkSttlmAmt;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].cdtr.nm")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].cdtr.nm")
     private String nm;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].cdtrAcct.id.othr.id")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].cdtrAcct.id.othr.id")
     private String cdtrAcctId;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].cdtrAcct.id.othr.issr")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].cdtrAcct.id.othr.issr")
     private String issr;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].cdtrAgt.finInstnId.clrSysMmbId.mmbId")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].cdtrAgt.finInstnId.clrSysMmbId.mmbId")
     private String cdtrClrSysMmbId;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].cdtrAgt.brnchId.id")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].cdtrAgt.brnchId.id")
     private String cdtrAgtBrnchId;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].dbtr.nm")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].dbtr.nm")
     private String dbtrNm;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].dbtrAcct.id.othr.id")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].dbtrAcct.id.othr.id")
     private String dbtrAcctId;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].dbtrAcct.id.othr.issr")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].dbtrAcct.id.othr.issr")
     private String dbtrAcctIssr;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].dbtrAgt.finInstnId.clrSysMmbId.mmbId")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].dbtrAgt.finInstnId.clrSysMmbId.mmbId")
     private String dbtrClrSysMmbId;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].dbtrAgt.brnchId.id")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].dbtrAgt.brnchId.id")
     private String dbtrAgtBrnchId;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].purp.prtry")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].purp.prtry")
     private String prtryTcCd;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].rmtInf.ustrd[0]")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].rmtInf.ustrd[0]")
     private String addInfo;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].rmtInf.ustrd[0]")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].rmtInf.ustrd[0]")
     private String rmk;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0].rmtInf.ustrd[0]")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].rmtInf.ustrd[0]")
     private String ustrdContractId;
     
     private Beps13300101 fid;
@@ -455,7 +455,7 @@ public class Beps13300101DrctDbtTxInf  implements java.io.Serializable {
 
     public void  setUstrdContractId(String newUstrdContractId) {
         ustrdContractId = newUstrdContractId;
-    }
+    }	  
 
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="FID", nullable=false, updatable=false)
@@ -466,7 +466,7 @@ public class Beps13300101DrctDbtTxInf  implements java.io.Serializable {
 	
 	public void setFid(Beps13300101 fid) {
 		this.fid = fid;
-	}	  
+	}
     
     
 }    

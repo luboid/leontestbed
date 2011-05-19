@@ -568,7 +568,7 @@
     <xs:complexType name="OrganisationIdentification4">
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="BICOrBEI" type="AnyBICIdentifier"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="Othr" type="GenericOrganisationIdentification1"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="Othr" type="GenericOrganisationIdentification1"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="OrganisationIdentificationSchemeName1Choice">
@@ -584,7 +584,7 @@
             <xs:element name="OrgnlMsgId" type="Max35Text"/>
             <xs:element name="OrgnlMsgNmId" type="Max35Text"/>
             <xs:element maxOccurs="1" minOccurs="0" name="OrgnlCreDtTm" type="ISODateTime"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="RtrRsnInf" type="ReturnReasonInformation9"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="RtrRsnInf" type="ReturnReasonInformation9"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="OriginalGroupInformation3">
@@ -771,7 +771,7 @@
         <xs:sequence>
             <xs:element maxOccurs="1" minOccurs="0" name="Orgtr" type="PartyIdentification32"/>
             <xs:element maxOccurs="1" minOccurs="0" name="Rsn" type="ReturnReason5Choice"/>
-            <xs:element maxOccurs="unbounded" minOccurs="0" name="AddtlInf" type="Max105Text"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="AddtlInf" type="Max105Text"/>
         </xs:sequence>
     </xs:complexType>
     <xs:simpleType name="SequenceType1Code">

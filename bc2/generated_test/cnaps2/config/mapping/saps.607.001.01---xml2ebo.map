@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps60700101" createOnElement="Document">
+				<jb:value data="/Document/BkToCstmrStmt/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/BkToCstmrStmt/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/BkToCstmrStmt/GrpHdr/MsgRcpt/Id/OrgId/Othr/Id" property="recPId"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Id" property="bid"/>    
+  			<jb:value data="/Document/BkToCstmrStmt/Stmt/CreDtTm" decoder="Date" property="staCreDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Acct/Id" property="accId"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Acct/Id/Othr/Id" property="bankId"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Bal/Tp/CdOrPrtry/Prtry" property="prtry"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Bal/Amt" property="blanceAmt"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Bal/CdtDbtInd" property="cdtDbtInd"/>    
+  			<jb:value data="/Document/BkToCstmrStmt/Stmt/Bal/Dt/Dt" decoder="Date" property="dt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/TxsSummry/TtlNtries/NbOfNtries" property="nbOfNtries"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/TxsSummry/TtlNtries/TtlNetNtryAmt" property="ttlNetNtryAmt"/>    
+    		<jb:wiring beanIdRef="ntry[0]" property="ntry"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="ntry[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="ntry" />
+  </jb:bean>
+	<jb:bean beanId="ntry" class="com.topfinance.ebo.msg.Saps60700101Ntry" createOnElement="/Document/BkToCstmrStmt/Stmt/Ntry">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Amt" property="ntrAmt"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/CdtDbtInd" property="entryCdtDbtInd"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Sts" property="sts"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/BkTxCd" property="bkTxCd"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Amt/Value" property="intrstAmt"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/CdtDbtInd" property="intrstCdtDbtInd"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/Rate/Tp/Pctg" property="pctg"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/FrToDt/FrDtTm" property="frDtTm"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/FrToDt/ToDtTm" property="toDtTm"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    

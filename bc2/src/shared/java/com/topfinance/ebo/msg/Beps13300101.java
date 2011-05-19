@@ -29,25 +29,25 @@ public class Beps13300101  implements java.io.Serializable {
     @JaxbMapping(objPath="")
     private Integer id;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.grpHdr.msgId")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.grpHdr.msgId")
     private String msgId;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.grpHdr.creDtTm")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.grpHdr.creDtTm")
     private Date creDtTm;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.grpHdr.nbOfTxs")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.grpHdr.nbOfTxs")
     private String nbOfTxs;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.grpHdr.ctrlSum")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.grpHdr.ctrlSum")
     private Double ctrlSum;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.grpHdr.pmtTpInf.lclInstrm.prtry")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.grpHdr.pmtTpInf.lclInstrm.prtry")
     private String prtryTpCd;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.grpHdr.pmtTpInf.ctgyPurp.prtry")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.grpHdr.pmtTpInf.ctgyPurp.prtry")
     private String prtryPeriod;
     
-    @JaxbMapping(objPath="fIToFICstmrDrctDbt.drctDbtTxInf[0]")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0]")
     private java.util.Set<Beps13300101DrctDbtTxInf> drctDbtTxInf;
     
     
