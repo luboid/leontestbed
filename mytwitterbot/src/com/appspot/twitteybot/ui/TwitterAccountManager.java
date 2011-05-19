@@ -51,8 +51,10 @@ public class TwitterAccountManager extends HttpServlet {
 				.read(ApplicationProperty.CONSUMER_SECRET));
 		log.warning("action="+action+", Using consumer key " + ApplicationProperty.read(ApplicationProperty.CONSUMER_KEY)+", isTesting()="+ApplicationProperty.isTesting());
 		try {
+            User user = AuthFilter.getCurrentUser(req);
+            
 		    if(ApplicationProperty.isTesting() && action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
-		        saveToken("token", "tokenSecret", "papaya_"+(new Date().getTime()));
+		        saveToken("token", "tokenSecret", "papaya_"+(new Date().getTime()), user);
 		        resp.sendRedirect(Pages.PAGE_MAIN);
 		    }
 		    else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
@@ -77,10 +79,11 @@ public class TwitterAccountManager extends HttpServlet {
 				if(accessToken==null) {
 				    log.warning("twitter token cann't be retrieved for token="+token+", secret="+tokenSecret);
 				}
-				this.saveToken(accessToken);
+
+				this.saveToken(accessToken, user);
 				resp.sendRedirect(Pages.PAGE_MAIN);
 			} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_DELETE)) {
-				this.deleteToken(req.getParameter(Pages.PARAM_SCREENNAME));
+				this.deleteToken(req.getParameter(Pages.PARAM_SCREENNAME), user);
 				resp.getWriter().write("Delete Successful");
 			} else {
 				resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
@@ -92,12 +95,12 @@ public class TwitterAccountManager extends HttpServlet {
 		}
 	}
 	
-	private void saveToken(AccessToken token) {
-	    saveToken(token.getToken(), token.getTokenSecret(), token.getScreenName());
+	private void saveToken(AccessToken token, User user) {
+	    saveToken(token.getToken(), token.getTokenSecret(), token.getScreenName(), user);
 	}
-	private void saveToken(String token, String tokenSecret, String screenName) {
+	private void saveToken(String token, String tokenSecret, String screenName, User user) {
 		TwitterAccount twitterAccount = new TwitterAccount();
-		twitterAccount.setUser(UserServiceFactory.getUserService().getCurrentUser());
+		twitterAccount.setUser(user);
 		twitterAccount.setToken(token);
 		twitterAccount.setSecret(tokenSecret);
 		twitterAccount.setTwitterScreenName(screenName);
@@ -106,8 +109,7 @@ public class TwitterAccountManager extends HttpServlet {
 		pm.close();
 	}
 
-	private void deleteToken(String screenName) {
-		User user = UserServiceFactory.getUserService().getCurrentUser();
+	private void deleteToken(String screenName, User user) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Query query = pm.newQuery(TwitterAccount.class);
 		query.setFilter("twitterScreenName == screenVar && user == userVar");

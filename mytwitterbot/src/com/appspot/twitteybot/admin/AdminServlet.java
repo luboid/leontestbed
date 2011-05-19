@@ -1,24 +1,24 @@
 package com.appspot.twitteybot.admin;
 
+import com.appspot.twitteybot.datastore.ApplicationProperty;
+import com.appspot.twitteybot.datastore.DashBoard;
+import com.appspot.twitteybot.datastore.DsHelper;
+import com.appspot.twitteybot.datastore.UserSummary;
+import com.appspot.twitteybot.ui.FreeMarkerConfiguration;
+import com.appspot.twitteybot.ui.Pages;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserServiceFactory;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.jdo.PersistenceManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.appspot.twitteybot.datastore.ApplicationProperty;
-import com.appspot.twitteybot.datastore.DashBoard;
-import com.appspot.twitteybot.datastore.DsHelper;
-import com.appspot.twitteybot.datastore.PMF;
-import com.appspot.twitteybot.datastore.UserSummary;
-import com.appspot.twitteybot.ui.FreeMarkerConfiguration;
-import com.appspot.twitteybot.ui.Pages;
 
 public class AdminServlet extends HttpServlet {
 
@@ -54,7 +54,7 @@ public class AdminServlet extends HttpServlet {
                     .getParameter(ApplicationProperty.UNIT_PRICE));	
             ApplicationProperty.write(ApplicationProperty.PAYEE_ACCOUNT, req
                     .getParameter(ApplicationProperty.PAYEE_ACCOUNT));             
-			resp.getWriter().write("Properties added");
+			resp.getWriter().write("Properties added<br><a href=\"/admin\">Back</a>");
 		} else {
 			this.wrieAdminForm(resp.getWriter(), null);
 		}
@@ -83,6 +83,9 @@ public class AdminServlet extends HttpServlet {
 		DashBoard db = DsHelper.getDashBoard();
 	    templateValues.put("db", db);
 	    
+	    User user = UserServiceFactory.getUserService().getCurrentUser();
+	    templateValues.put("username", user==null? "" : user.getEmail());
+	    templateValues.put("logouturl", UserServiceFactory.getUserService().createLogoutURL("/admin"));
 		FreeMarkerConfiguration.writeResponse(templateValues, Pages.TEMPLATE_ADMINPAGE, w);
 
 	}

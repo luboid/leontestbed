@@ -4,6 +4,7 @@ public class Pages {
     
 //    public static final boolean LOCAL_TEST = true;
     
+    public static final String TEMPLATE_SIGNINPAGE="SignIn.ftl";
     public static final String TEMPLATE_SIGNUPPAGE="SignUp.ftl";
     
     public static final String TEMPLATE_CONFIRM_PAYPAL= "ConfirmPaypal.ftl";
@@ -26,6 +27,8 @@ public class Pages {
 	public static final String TEMPLATE_STATUSPAGE = "ShowStatus.ftl";
 	public static final String TEMPLATE_ADMINPAGE = "Admin.ftl";
 	
+	public static final String TEMPLATE_LOGIN_REQ_PAGE = "loginrequired.ftl";
+	
 	
 	
 	public static final String PARAM_SEPARATOR = "separator";
@@ -44,6 +47,7 @@ public class Pages {
 	// leon
 	public static final String PARAM_ACTION_SHOW_TWEET_OF_TXN = "ShowTweetOfTxn";
 	
+	public static final String PARAM_ACTION_SIGNOUT = "signout";
 	public static final String PARAM_ACTION_SIGNUP = "signup";
 	public static final String PARAM_ACTION_SIGNIN = "signin";
 	
@@ -77,6 +81,7 @@ public class Pages {
 
 	public static final String PAGE_HOME = "/?";
 	public static final String PAGE_MAIN = "/pages/main?";
+	public static final String PAGE_ADMIN = "/admin";
 	public static final String PAGE_TASK_QUEUE = "/task/status";
 
 	// leon

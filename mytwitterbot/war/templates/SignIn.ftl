@@ -7,7 +7,7 @@
     <#include "logo.ftl"/>
     <a href="/">Back to Home</a>
     <div>
-        <form action="/user?action=signup" method="post">
+        <form action="/user" method="post">
            <div>
                <span>User Name</span>
                <input type='text' name='sign_up_name' value='${userName!""}'/>
@@ -17,22 +17,7 @@
                <span>Password</span>
                <input type='password' name='sign_up_password' value='${password!""}'/>
            </div>
-           <div>    
-               <span>Repeat Password</span>
-               <input type='password' name='repeat_sign_up_password' value=''/>
-           </div>           
-           <input type='button' name="a" value="signup" onclick="javascript: onSubmit();"/>
+           <input type='submit' name="action" value="signin"/>
         </form>
     </div>
     </body>
-    
-<script>
-    function onSubmit() {
-    		if( document.forms[0].sign_up_password.value!=document.forms[0].repeat_sign_up_password.value) {
-    			alert('password not match!');
-    			return false;
-    		}else {
-    			document.forms[0].submit();
-    		}
-    }
-</script>

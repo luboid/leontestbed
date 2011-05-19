@@ -1,28 +1,29 @@
 package com.appspot.twitteybot.ui;
 
+import com.appspot.twitteybot.datastore.AppUser;
+import com.appspot.twitteybot.datastore.PMF;
+
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
-import javax.jdo.Query;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.appspot.twitteybot.datastore.AppUser;
-import com.appspot.twitteybot.datastore.PMF;
-
-public class SignUpManager extends HttpServlet{
+public class RegUserManager extends HttpServlet{
 	
 	/**
 	 * sign up an user
 	 */
 	private static final long serialVersionUID = 1146087434539278009L;
-	private static final Logger log = Logger.getLogger(SignUpManager.class.getName());
+	private static final Logger log = Logger.getLogger(RegUserManager.class.getName());
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,8 +33,20 @@ public class SignUpManager extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getParameter(Pages.PARAM_ACTION);
+//		String encoded = URLEncoder.encode("/pages/main", "UTF-8");
+//		log.info("===================encoded="+encoded);
 		Map<String, Object> templateValues = new HashMap<String, Object>();
-		if(action.equals(Pages.PARAM_ACTION_SHOWSIGNUP)){
+		if(action.equals(Pages.PARAM_ACTION_SIGNOUT)){
+		    
+		    AuthFilter.removeRegUser(req);
+		    
+		    // TODO get returnUrl and forward? 
+		    
+		    // to simplify, always signout to the homepage...
+		    req.getRequestDispatcher("/").forward(req, resp);
+		   
+		}
+		else if(action.equals(Pages.PARAM_ACTION_SHOWSIGNUP)){
 		    templateValues.put("errorMessage", "Please Sign Up.");
 		    templateValues.put("action", Pages.PARAM_ACTION_SIGNUP);
 			FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNUPPAGE,resp.getWriter());
@@ -41,7 +54,7 @@ public class SignUpManager extends HttpServlet{
 		else if(action.equals(Pages.PARAM_ACTION_SHOWSIGNIN)){
 		    templateValues.put("errorMessage", "Please Sign In.");
 		    templateValues.put("action", Pages.PARAM_ACTION_SIGNIN);
-            FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNUPPAGE,resp.getWriter());
+            FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNINPAGE,resp.getWriter());
         }		
 		else if(action.equals(Pages.PARAM_ACTION_SIGNUP)){
 			AppUser user = new AppUser();
@@ -51,7 +64,7 @@ public class SignUpManager extends HttpServlet{
 			user.setPassword(pwd);
 			if(isUnique(user)){
 				signUp(user);
-				req.getSession(true).setAttribute("user", user);
+				AuthFilter.setRegUser(req, user);
 				resp.sendRedirect(Pages.PAGE_MAIN);
 			}
 			else {
@@ -63,17 +76,20 @@ public class SignUpManager extends HttpServlet{
 			
 		}
 		else if(action.equals(Pages.PARAM_ACTION_SIGNIN)){
-            AppUser user = new AppUser();
+            
             String name =  req.getParameter(Pages.PARAM_SIGNUP_NAME);
-            String pwd =  req.getParameter(Pages.PARAM_SIGNUP_PASSWORD);		    
+            String pwd =  req.getParameter(Pages.PARAM_SIGNUP_PASSWORD);
+            AppUser user = new AppUser();
+            user.setUserName(name);
+            user.setPassword(pwd);
 		    if(login(user)) {
-	              req.getSession(true).setAttribute("user", user);
+	              AuthFilter.setRegUser(req, user);
 	              resp.sendRedirect(Pages.PAGE_MAIN);
 		    } else {
                 templateValues.put("errorMessage", "Username and password is incorrect, please change another name ");
                 templateValues.put("userName",name);
                 templateValues.put("password",pwd);
-                FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNUPPAGE , resp.getWriter());
+                FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNINPAGE , resp.getWriter());
 		    }
 		}
 	}

@@ -34,22 +34,21 @@ public class DsHelper {
          return twitterStatuses;
     }
     
-    public static List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm, long start, long end) {
+    public static List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm, long start, long end, User user) {
         Query query = pm.newQuery(TwitterStatus.class);
         query.setFilter("twitterScreenName == twitterScreenNameVar && user == userVar");
         query.declareParameters("String twitterScreenNameVar, com.google.appengine.api.users.User userVar");
         query.setOrdering("updatedTime asc");
         query.setRange(start, end);
         @SuppressWarnings("unchecked")
-        List<TwitterStatus> twitterStatuses = (List<TwitterStatus>) query.execute(screenName, UserServiceFactory
-                .getUserService().getCurrentUser());
+        List<TwitterStatus> twitterStatuses = (List<TwitterStatus>) query.execute(screenName, user);
         return twitterStatuses;
     }
     
     
 
     
-    public static List<Transact> getTransactList(boolean getpaid, String screenName, PersistenceManager pm, long start, long end) {
+    public static List<Transact> getTransactList(boolean getpaid, String screenName, PersistenceManager pm, long start, long end, User user) {
         Query query = pm.newQuery(Transact.class);
         query.setFilter("txnState == txnStateVar && twitterScreenName == twitterScreenNameVar && user == userVar");
         query.declareParameters("String txnStateVar, String twitterScreenNameVar, com.google.appengine.api.users.User userVar");
@@ -60,8 +59,7 @@ public class DsHelper {
             query.setRange(start, end);
         }
         @SuppressWarnings("unchecked")
-        List<Transact> unPaidTransact = (List<Transact>) query.execute(getpaid? TxnState.PAID : TxnState.UNPAID, screenName, UserServiceFactory
-                .getUserService().getCurrentUser());
+        List<Transact> unPaidTransact = (List<Transact>) query.execute(getpaid? TxnState.PAID : TxnState.UNPAID, screenName, user);
         return unPaidTransact;
     }
     

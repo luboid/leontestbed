@@ -21,7 +21,7 @@
 	
 	<servlet>
         <servlet-name>OpenIdServlet</servlet-name>
-        <servlet-class>com.appspot.twitteybot.ui.OpenIdServlet</servlet-class>
+        <servlet-class>com.appspot.twitteybot.ui.OpenIdManager</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>OpenIdServlet</servlet-name>
@@ -39,7 +39,7 @@
 
 	<servlet>
 		<servlet-name>SignUpManager</servlet-name>
-		<servlet-class>com.appspot.twitteybot.ui.SignUpManager</servlet-class>
+		<servlet-class>com.appspot.twitteybot.ui.RegUserManager</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SignUpManager</servlet-name>

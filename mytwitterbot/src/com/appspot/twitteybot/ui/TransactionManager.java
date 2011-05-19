@@ -82,7 +82,8 @@ public class TransactionManager extends HttpServlet {
             end = Long.parseLong(req.getParameter(Pages.PARAM_END));
         } catch (NumberFormatException e) {
         }
-        List<Transact> list = DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, start, end);
+        User user = AuthFilter.getCurrentUser(req);
+        List<Transact> list = DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, start, end, user);
         try {
             PaypalStandard.renderPaypalButton(list, req.getServerName());
         } catch (TemplateException e) {
@@ -102,6 +103,7 @@ public class TransactionManager extends HttpServlet {
             ex.printStackTrace();
         }
         
+        User user = AuthFilter.getCurrentUser(req);
         PersistenceManager pm = PMF.get().getPersistenceManager();
         Transact transact = DsHelper.getTransact(txnId, pm);
         transact.setTxnState(TxnState.PAID);
@@ -109,7 +111,7 @@ public class TransactionManager extends HttpServlet {
         
         log.info("transaction="+txnId+" is paid and confirmed.");
         
-        this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE),
+        this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE, user),
                 "Showing " + PAGE_SIZE + " transactions", LEVEL_INFO, resp, 0, PAGE_SIZE);
         pm.close();
         
@@ -151,14 +153,14 @@ public class TransactionManager extends HttpServlet {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        
+        User user = AuthFilter.getCurrentUser(req);
         PersistenceManager pm = PMF.get().getPersistenceManager();
         Transact transact = DsHelper.getTransact(txnId, pm);
         List<TwitterStatus> tweets = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
         pm.deletePersistentAll(tweets);
         pm.deletePersistent(transact);
         
-        this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE),
+        this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE, user),
                 "Showing " + PAGE_SIZE + " transactions", LEVEL_INFO, resp, 0, PAGE_SIZE);
         pm.close();
         
@@ -167,7 +169,7 @@ public class TransactionManager extends HttpServlet {
         int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
         PersistenceManager pm = PMF.get().getPersistenceManager();
         String screenName = req.getParameter(Pages.PARAM_SCREENNAME);
-        User user = UserServiceFactory.getUserService().getCurrentUser();
+        User user = AuthFilter.getCurrentUser(req);
 
         String message = null;
         String level = LEVEL_INFO;
@@ -212,7 +214,7 @@ public class TransactionManager extends HttpServlet {
             txn.setTwitterScreenName(screenName);
             txn.setUnitPrice(ApplicationProperty.getUnitPrice());
             txn.setUpdatedTime(new Date());        
-            txn.setUser(UserServiceFactory.getUserService().getCurrentUser());
+            txn.setUser(user);
             txn.setAmount(size * txn.getUnitPrice());
             
             pm.makePersistent(txn);
@@ -228,7 +230,7 @@ public class TransactionManager extends HttpServlet {
             pm.makePersistentAll(twitterStatuses);
         }
         
-        List<Transact> unPaidTransact = getTransactList(false, screenName, pm);
+        List<Transact> unPaidTransact = getTransactList(false, screenName, pm, user);
 //        this.constructResponse(this.getTwitterStatus(screenName, pm), message, level, resp);
         this.constructResponse(unPaidTransact, message, level, resp);
         pm.close();
@@ -258,7 +260,7 @@ public class TransactionManager extends HttpServlet {
         }
     }
     
-    private List<Transact> getTransactList(boolean getpaid, String screenName, PersistenceManager pm) {
-        return DsHelper.getTransactList(getpaid, screenName, pm, 0, PAGE_SIZE);
+    private List<Transact> getTransactList(boolean getpaid, String screenName, PersistenceManager pm, User user) {
+        return DsHelper.getTransactList(getpaid, screenName, pm, 0, PAGE_SIZE, user);
     }
 }

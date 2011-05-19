@@ -1,6 +1,5 @@
 package com.appspot.twitteybot.ui;
 
-import com.appspot.twitteybot.datastore.AppUser;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -18,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
-public class OpenIdServlet extends HttpServlet {
-    private static final Logger log = Logger.getLogger(OpenIdServlet.class.getName());
+public class OpenIdManager extends HttpServlet {
+    private static final Logger log = Logger.getLogger(OpenIdManager.class.getName());
     
     private static final Map<String, String> openIdProviders;
     static {
@@ -47,20 +46,56 @@ public class OpenIdServlet extends HttpServlet {
         String serverName = req.getServerName();
         String homePage="http://"+serverName;
         
+
+        log.warning("raw returnUrl="+returnUrl);
+        if(returnUrl==null) {
+            returnUrl=Pages.PAGE_HOME;
+        }   
         log.warning("qSt="+queryString+", returnUrl="+returnUrl+", homePage="+homePage);
         
-
+        
+//         always go to main page after logon
+//        returnUrl = Pages.PAGE_MAIN;
         
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
 
         if (user != null) {
-            out.println("Hello <i>" + user.getNickname() + "</i>!");
-            out.println("[<a href=\""
-                    + userService.createLogoutURL(homePage)
-                    + "\">sign out</a>]");
+            
+            // won't come here!!!
+//            throw new RuntimeException("shouldn't come to openId logon again...");
+            
+            // will happen if user didn't logout lastime, and click login(openId) link again
+            resp.sendRedirect(returnUrl);
+            
+//            out.println("Hello <i>" + user.getNickname() + "</i>!");
+//            out.println("[<a href=\""
+//                    + userService.createLogoutURL(homePage)
+//                    + "\">sign out</a>]");
+            
+//            resp.sendRedirect(Pages.PAGE_MAIN);
         } else {
-            out.println("Hello world! Sign in at: ");
+     
+            
+            if(returnUrl.contains(Pages.PAGE_ADMIN)) {
+                out.println("Sign in as Administrator at: ");
+            }else {
+                out.println("Sign in at: ");
+            }
+            
+            
+            
+            if(returnUrl.contains("http://")) {
+                // do nothing  
+            } else {
+                // added server name
+                if(!returnUrl.startsWith("/")) {
+                    returnUrl = "/"+returnUrl;
+                }
+                returnUrl = "http://"+req.getServerName()+returnUrl;
+            }
+            
+            
             for (String providerName : openIdProviders.keySet()) {
                 String providerUrl = openIdProviders.get(providerName);
                 String loginUrl = userService.createLoginURL(returnUrl, null, providerUrl, attributes);

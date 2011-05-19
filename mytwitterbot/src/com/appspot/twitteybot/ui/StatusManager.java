@@ -8,7 +8,6 @@ import com.appspot.twitteybot.pay.PaypalStandard;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserServiceFactory;
 import freemarker.template.TemplateException;
 
 import java.io.BufferedReader;
@@ -110,8 +109,9 @@ public class StatusManager extends HttpServlet {
 		}
 		String screenName = req.getParameter(Pages.PARAM_SCREENNAME);
 		
+		User user = AuthFilter.getCurrentUser(req);
 		List<TwitterStatus> statuss = new ArrayList<TwitterStatus>();
-		List<Transact> paidTxns = DsHelper.getTransactList(true,screenName, pm, -1, -1);
+		List<Transact> paidTxns = DsHelper.getTransactList(true,screenName, pm, -1, -1, user);
 		for(Transact txn : paidTxns) {
 		    List<TwitterStatus> s = DsHelper.getTwitterStatus(txn.getKeyId(), pm, start, end);
 		    statuss.addAll(s);
@@ -160,7 +160,7 @@ public class StatusManager extends HttpServlet {
 	    
 		int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-		User user = UserServiceFactory.getUserService().getCurrentUser();
+		User user = AuthFilter.getCurrentUser(req);
 		List<TwitterStatus> twitterStatuses = new ArrayList<TwitterStatus>();
 		List<TwitterStatus> toAddStatuses = new ArrayList<TwitterStatus>();
 		String message = null;
@@ -171,7 +171,7 @@ public class StatusManager extends HttpServlet {
 				TwitterStatus twitterStatus = null;
 				if (id.equals("")) {
 					twitterStatus = new TwitterStatus();
-					twitterStatus.setUser(UserServiceFactory.getUserService().getCurrentUser());
+					twitterStatus.setUser(AuthFilter.getCurrentUser(req));
 					twitterStatus.setCanDelete(true);
 					twitterStatus.setTwitterScreenName(req.getParameter(Pages.PARAM_SCREENNAME));
 					twitterStatus.setState(TwitterStatus.State.SCHEDULED);
@@ -218,8 +218,8 @@ public class StatusManager extends HttpServlet {
 		String txnId = req.getParameter(Pages.PARAM_TXN_ID);
 		log.info("txnId="+txnId);
         if("".equals(txnId)) {
-            this.constructResponse(this.getTwitterStatus(req.getParameter(Pages.PARAM_SCREENNAME), pm), message, level,
-                    resp);            
+            this.constructResponse(this.getTwitterStatus(req.getParameter(Pages.PARAM_SCREENNAME), pm, user), 
+                    message, level, resp);            
         }else {
             // recalculate this txn
             recalculateTxn(txnId);
@@ -253,7 +253,7 @@ public class StatusManager extends HttpServlet {
 		String fileLocation = req.getParameter(Pages.PARAM_STATUS_SOURCE);
 		String message = null;
 		String level = LEVEL_INFO;
-		User user = UserServiceFactory.getUserService().getCurrentUser();
+		User user = AuthFilter.getCurrentUser(req);
 		Date startDate = new Date();
 		List<TwitterStatus> statuses = new ArrayList<TwitterStatus>();
 		try {
@@ -288,7 +288,7 @@ public class StatusManager extends HttpServlet {
 		boolean isCSVFile = req.getParameter(Pages.PARAM_CSVFILE) != null ? true : false;
 		ServletFileUpload upload = new ServletFileUpload();
 		String separator = "\n";
-		User user = UserServiceFactory.getUserService().getCurrentUser();
+		User user = AuthFilter.getCurrentUser(req);
 		Date startDate = new Date();
 		String message = null, level = LEVEL_INFO;
 		List<TwitterStatus> statuses = new ArrayList<TwitterStatus>();
@@ -401,8 +401,8 @@ public class StatusManager extends HttpServlet {
 	
 	
 
-    private List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm) {
-        return DsHelper.getTwitterStatus(screenName, pm, 0, PAGE_SIZE);
+    private List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm, User user) {
+        return DsHelper.getTwitterStatus(screenName, pm, 0, PAGE_SIZE, user);
     }
 
 	private boolean getBoolFromParam(String param, String trueValue) {

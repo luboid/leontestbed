@@ -11,6 +11,7 @@
             </div>
             <div class = "clear"></div>
         </div>
+        <div> Hello ${username}   &nbsp;&nbsp;<a href="${logouturl!"#"}">logout</a></div>
         <div style='height:18px;padding:4px 34px;color:#36c;font-weight:bold;background:#E5ECF9;'>Admin</div>
         <div class = "main-area">
             <div class = "nav">
