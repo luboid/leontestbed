@@ -229,6 +229,7 @@
     			<value>com.topfinance.ebo.msg.Ccms31800101TxInf</value>
     			<value>com.topfinance.ebo.msg.Saps60700101</value>
     			<value>com.topfinance.ebo.msg.Saps60700101Ntry</value>
+    			<value>com.topfinance.ebo.msg.Nets40500101</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

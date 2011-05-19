@@ -69,7 +69,7 @@ public class Nets40500101  implements java.io.Serializable {
    * 
    * @return the msgId
    */
-    @Column(name = "FID")
+    @Column(name = "MSGID")
     public String getMsgId() {
         return msgId;
     }	 
