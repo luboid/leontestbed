@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps72200101" createOnElement="Document">
+				<jb:value data="/Document/DtlChckReq/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/DtlChckReq/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/DtlChckReq/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/DtlChckReq/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/DtlChckReq/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/DtlChckReq/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/DtlChckReq/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/DtlChckReq/GrpHdr/Rmk" property="rmk"/>    
+  			<jb:value data="/Document/DtlChckReq/DtlChckReqInf/ChckDt" decoder="Date" property="chckngDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/NbOfTxs" property="nbOfTxs"/>    
+    		<jb:wiring beanIdRef="dtlChckPmtDtls[0]" property="dtlChckPmtDtls"/>
+
+    		<jb:wiring beanIdRef="dtlChckMsgDtls[0]" property="dtlChckMsgDtls"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="dtlChckPmtDtls[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="dtlChckPmtDtls" />
+  </jb:bean>
+	<jb:bean beanId="dtlChckPmtDtls" class="com.topfinance.ebo.msg.Beps72200101DtlChckPmtDtls" createOnElement="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/SndRcvTp" property="bizSndRcvTp"/>    
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/TxNetgDt" decoder="Date" property="bizTxNetgDt">
+				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+					</jb:value>
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/TxNetgRnd" property="bizTxNetgRnd"/>    
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/Mt" property="bizMT"/>    
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckMsg/NbOfTxs" property="bizNbOfTxs"/>    
+	</jb:bean>  
+  <jb:bean beanId="dtlChckMsgDtls[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="dtlChckMsgDtls" />
+  </jb:bean>
+	<jb:bean beanId="dtlChckMsgDtls" class="com.topfinance.ebo.msg.Beps72200101DtlChckMsgDtls" createOnElement="/Document/DtlChckReq/DtlChckReqInf/DtlChckMsg/DtlChckMsgDtls">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckMsg/DtlChckMsgDtls/SndRcvTp" property="infoSndRcvTp"/>    
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckMsg/DtlChckMsgDtls/Mt" property="infoMT"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    

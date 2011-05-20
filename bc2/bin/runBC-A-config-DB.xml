@@ -12,7 +12,7 @@
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@10.60.108.35:1521:tibcodev"/>
 		<property name="username" value="paygw"/>
-		<property name="password" value="1234"/>
+		<property name="password" value="12345"/>
 		
 		<!--<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/bankA3?setUnicode=true&amp;characterEncoding=UTF-8"/>
@@ -230,6 +230,14 @@
     			<value>com.topfinance.ebo.msg.Saps60700101</value>
     			<value>com.topfinance.ebo.msg.Saps60700101Ntry</value>
     			<value>com.topfinance.ebo.msg.Nets40500101</value>
+    			<value>com.topfinance.ebo.msg.Beps13100101</value>
+    			<value>com.topfinance.ebo.msg.Beps13100101EndrsrDtls</value>
+    			<value>com.topfinance.ebo.msg.Beps13100101RealTmBllInf</value>
+    			<value>com.topfinance.ebo.msg.Beps13100101RealTmColltnInf</value>
+    			<value>com.topfinance.ebo.msg.Beps13100101WthdrwngInf</value>
+    			<value>com.topfinance.ebo.msg.Beps72200101</value>
+    			<value>com.topfinance.ebo.msg.Beps72200101DtlChckMsgDtls</value>
+    			<value>com.topfinance.ebo.msg.Beps72200101DtlChckPmtDtls</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

@@ -1559,5 +1559,29 @@
       	pathOpClass=""     	
       	>
       </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.131.001.01"
+      	name="beps.131.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/RealTmCstmrDrctDbt/PKGGrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.722.001.01"
+      	name="beps.722.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/RealTmCstmrDrctDbt/PKGGrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
    </list>
 </OperationDefinitions>

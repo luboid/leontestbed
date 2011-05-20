@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps13100101" createOnElement="Document">
+				<jb:value data="/Document/RealTmCstmrDrctDbt/PKGGrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/RealTmCstmrDrctDbt/PKGGrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/RealTmCstmrDrctDbt/PKGGrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/PKGGrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/PKGGrpHdr/NbOfTxs" property="nbOfTxs"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/PKGGrpHdr/CtrlSum" property="ctrlSum"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/PKGGrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/PKGGrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/EndToEndId" property="endToEndId"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/TxId" property="txId"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/Dbtr/Nm" property="dbtrNm"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/DbtrAcct/Id/Othr/Id" property="dbtrAcctId"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/DbtrAcct/Id/Othr/Issr" property="dbtrAcctIssr"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/DbtrAgt/BrnchId/Id" property="dbtrAgtBrnchId"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/CdtrAgt/BrnchId/Id" property="cdtrAgtBrnchId"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/Cdtr/Nm" property="cdtrNm"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/CdtrAcct/Id/Othr/Id" property="cdtrAcctId"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/CdtrAcct/Id/Othr/Issr" property="cdtrAcctIssr"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/Amt" property="intrBkSttlmAmt"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/PmtTpInf/CtgyPurp/Prtry" property="prtryTpCd"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/Purp/Prtry" property="prtryTcCd"/>    
+    		<jb:wiring beanIdRef="wthdrwngInf[0]" property="wthdrwngInf"/>
+
+    		<jb:wiring beanIdRef="realTmBllInf[0]" property="realTmBllInf"/>
+
+    		<jb:wiring beanIdRef="realTmColltnInf[0]" property="realTmColltnInf"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="wthdrwngInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="wthdrwngInf" />
+  </jb:bean>
+	<jb:bean beanId="wthdrwngInf" class="com.topfinance.ebo.msg.Beps13100101WthdrwngInf" createOnElement="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/WthdrwngInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/WthdrwngInf/DbtrAcctTp/AcctPmtTp" property="acctPmtTp"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/WthdrwngInf/CdtrAcctTp/AcctPmtTp" property="recAcctPmtTp"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/WthdrwngInf/ChckMd" property="chckMd"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/WthdrwngInf/ChckCdLen" property="chckCdLen"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/WthdrwngInf/ChckCd/Cntt" property="cntt"/>    
+	</jb:bean>  
+  <jb:bean beanId="realTmBllInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="realTmBllInf" />
+  </jb:bean>
+	<jb:bean beanId="realTmBllInf" class="com.topfinance.ebo.msg.Beps13100101RealTmBllInf" createOnElement="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/IsseDt" property="isseDt"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/Amt" property="amt"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/PayDT" property="payDT"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/Nb" property="nb"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/PmtPswd" property="pmtPswd"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/MtrtyDt" property="mtrtyDt"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/Seal" property="seal"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/AccptncAgrmtNb" property="accptncAgrmtNb"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/AccptncDt" property="accptncDt"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/AccptncNm" property="accptncNm"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/TxlCtrctNb" property="txlCtrctNb"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/Purp" property="purp"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/NbOfEndrsr" property="nbOfEndrsr"/>    
+		<jb:wiring beanIdRef="endrsrDtls[0]" property="endrsrDtls"/>
+	</jb:bean>  
+  <jb:bean beanId="endrsrDtls[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="endrsrDtls" />
+  </jb:bean>
+	<jb:bean beanId="endrsrDtls" class="com.topfinance.ebo.msg.Beps13100101EndrsrDtls" createOnElement="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/EndrsrDtls">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmBllInf/EndrsrDtls/Nm" property="nm"/>    
+	</jb:bean>  
+  <jb:bean beanId="realTmColltnInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="realTmColltnInf" />
+  </jb:bean>
+	<jb:bean beanId="realTmColltnInf" class="com.topfinance.ebo.msg.Beps13100101RealTmColltnInf" createOnElement="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmColltnInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmColltnInf/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmColltnInf/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmColltnInf/OrgnlGrpHdr/OrgnlMsgTp" property="orgnlMT"/>    
+				<jb:value data="/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/RealTmCstmrDrctDbtAddtlInf/RealTmColltnInf/CtrctNb" property="ctrctNb"/>    
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
