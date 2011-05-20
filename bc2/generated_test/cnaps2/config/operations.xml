@@ -1583,5 +1583,17 @@
       	pathOpClass=""     	
       	>
       </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="hvps.711.001.01"
+      	name="hvps.711.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/SummryFile/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/SummryFile/OrgnlGrpHdr/MsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
    </list>
 </OperationDefinitions>

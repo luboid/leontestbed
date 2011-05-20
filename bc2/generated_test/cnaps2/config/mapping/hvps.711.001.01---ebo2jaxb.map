@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Hvps71100101</param>
+  </params>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.hvps.v71100101.Document" createOnElement="com.topfinance.ebo.msg.Hvps71100101">
+    	<jb:wiring beanIdRef="summryFile" property="summryFile"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.prttn" class="com.xml.cnaps2.hvps.v71100101.Prttn1" createOnElement="com.topfinance.ebo.msg.Hvps71100101">
+  				<jb:value data="ttlNb"  property="ttlNb"/>
+  				<jb:value data="startNb"  property="startNb"/>
+  				<jb:value data="endNb"  property="endNb"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.grpHdr.instgPty" class="com.xml.cnaps2.hvps.v71100101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Hvps71100101">
+  				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  				<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.summryFileInf.chckPmtInfDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71100101/chckPmtInfDtls">
+    	<jb:wiring beanIdRef="summryFile.summryFileInf.chckPmtInfDtls[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.orgnlGrpHdr" class="com.xml.cnaps2.hvps.v71100101.OrgnlGrpHdr1" createOnElement="com.topfinance.ebo.msg.Hvps71100101">
+  				<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  				<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  				<jb:value data="orgnlMT"  property="orgnlMT"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.grpHdr" class="com.xml.cnaps2.hvps.v71100101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Hvps71100101">
+    	<jb:wiring beanIdRef="summryFile.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="summryFile.grpHdr.instdPty" property="instdPty"/>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="sysCd"  property="sysCd"/>
+  				<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.grpHdr.instdPty" class="com.xml.cnaps2.hvps.v71100101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Hvps71100101">
+  				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  				<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.summryFileInf.chckMsg[0].xxx" class="com.xml.cnaps2.hvps.v71100101.ChckMsg1" createOnElement="com.topfinance.ebo.msg.Hvps71100101ChckMsg">
+  				<jb:value data="infoTpCd"  property="txTpCd"/>
+  				<jb:value data="infoSndgNbOfTxs"  property="sndgNbOfTxs"/>
+  				<jb:value data="infoRcvgNbOfTxs"  property="rcvgNbOfTxs"/>
+  				<jb:value data="infoPrcSts"  property="prcSts"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.summryFileInf.chckPmtInfDtls[0].xxx.sndgCtrlSum" class="com.xml.cnaps2.hvps.v71100101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps71100101ChckPmtInfDtls">
+  				<jb:value data="bizSndgCtrlSum" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile" class="com.xml.cnaps2.hvps.v71100101.SummryFileV01" createOnElement="com.topfinance.ebo.msg.Hvps71100101">
+    	<jb:wiring beanIdRef="summryFile.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="summryFile.prttn" property="prttn"/>
+    	<jb:wiring beanIdRef="summryFile.orgnlGrpHdr" property="orgnlGrpHdr"/>
+    	<jb:wiring beanIdRef="summryFile.summryFileInf" property="summryFileInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.summryFileInf" class="com.xml.cnaps2.hvps.v71100101.SummryFileInf1" createOnElement="com.topfinance.ebo.msg.Hvps71100101">
+    	<jb:wiring beanIdRef="summryFile.summryFileInf.chckPmtInfDtls[0]" property="chckPmtInfDtls"/>
+    	<jb:wiring beanIdRef="summryFile.summryFileInf.chckMsg[0]" property="chckMsg"/>
+  				<jb:value data="chckngDt" decoder="Date" property="chckDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="ttlPmt"  property="ttlPmt"/>
+  				<jb:value data="ttlMsg"  property="ttlMsg"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.summryFileInf.chckPmtInfDtls[0].xxx" class="com.xml.cnaps2.hvps.v71100101.ChckPmtInfDtls1" createOnElement="com.topfinance.ebo.msg.Hvps71100101ChckPmtInfDtls">
+    	<jb:wiring beanIdRef="summryFile.summryFileInf.chckPmtInfDtls[0].xxx.sndgCtrlSum" property="sndgCtrlSum"/>
+    	<jb:wiring beanIdRef="summryFile.summryFileInf.chckPmtInfDtls[0].xxx.rcvgCtrlSum" property="rcvgCtrlSum"/>
+  				<jb:value data="bizTpCd"  property="txTpCd"/>
+  				<jb:value data="bizSndgNbOfTxs"  property="sndgNbOfTxs"/>
+  				<jb:value data="bizRcvgNbOfTxs"  property="rcvgNbOfTxs"/>
+  				<jb:value data="bizPrcSts"  property="prcSts"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.summryFileInf.chckPmtInfDtls[0].xxx.rcvgCtrlSum" class="com.xml.cnaps2.hvps.v71100101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps71100101ChckPmtInfDtls">
+  				<jb:value data="bizRcvgCtrlSum" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="summryFile.summryFileInf.chckMsg[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71100101/chckMsg">
+    	<jb:wiring beanIdRef="summryFile.summryFileInf.chckMsg[0].xxx" />
+  	</jb:bean>
+</smooks-resource-list>  
+    

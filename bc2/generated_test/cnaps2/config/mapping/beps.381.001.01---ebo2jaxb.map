@@ -15,7 +15,7 @@
   	<jb:bean beanId="cstmrCdtTrfInitn.pmtInf[0].xxx.cdtTrfTxInf.amt" class="com.xml.iso20022.pain.v00100103.AmountType3Choice" createOnElement="com.topfinance.ebo.msg.Beps38100101">
     	<jb:wiring beanIdRef="cstmrCdtTrfInitn.pmtInf[0].xxx.cdtTrfTxInf.amt.instdAmt" property="instdAmt"/>
   	</jb:bean>
-  	<jb:bean beanId="cstmrCdtTrfInitn.pmtInf[0].xxx" class="com.xml.iso20022.pain.v00100103.PaymentInstructionInformation3" createOnElement="com.topfinance.ebo.msg.Beps38100101">
+  	<jb:bean beanId="cstmrCdtTrfInitn.pmtInf[0].xxx" class="com.xml.iso20022.pain.v00100103.PaymentInstructionInformation3" createOnElement="com.topfinance.ebo.msg.Beps38100101PmtInf">
     	<jb:wiring beanIdRef="cstmrCdtTrfInitn.pmtInf[0].xxx.pmtTpInf" property="pmtTpInf"/>
     	<jb:wiring beanIdRef="cstmrCdtTrfInitn.pmtInf[0].xxx.cdtTrfTxInf" property="cdtTrfTxInf"/>
     	<jb:wiring beanIdRef="cstmrCdtTrfInitn.pmtInf[0].xxx.dbtr" property="dbtr"/>
@@ -39,7 +39,7 @@
   	<jb:bean beanId="target" class="com.xml.iso20022.pain.v00100103.Document" createOnElement="com.topfinance.ebo.msg.Beps38100101">
     	<jb:wiring beanIdRef="cstmrCdtTrfInitn" property="cstmrCdtTrfInitn"/>
   	</jb:bean>
-  	<jb:bean beanId="cstmrCdtTrfInitn.pmtInf[0].xxx.pmtTpInf" class="com.xml.iso20022.pain.v00100103.PaymentTypeInformation19" createOnElement="com.topfinance.ebo.msg.Beps38100101">
+  	<jb:bean beanId="cstmrCdtTrfInitn.pmtInf[0].xxx.pmtTpInf" class="com.xml.iso20022.pain.v00100103.PaymentTypeInformation19" createOnElement="com.topfinance.ebo.msg.Beps38100101PmtInf">
     	<jb:wiring beanIdRef="cstmrCdtTrfInitn.pmtInf[0].xxx.pmtTpInf.lclInstrm" property="lclInstrm"/>
     	<jb:wiring beanIdRef="cstmrCdtTrfInitn.pmtInf[0].xxx.pmtTpInf.ctgyPurp" property="ctgyPurp"/>
   	</jb:bean>

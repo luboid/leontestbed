@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Hvps71100101" createOnElement="Document">
+				<jb:value data="/Document/SummryFile/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/SummryFile/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/SummryFile/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/SummryFile/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/SummryFile/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/SummryFile/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/SummryFile/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/SummryFile/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/SummryFile/Prttn/TtlNb" property="ttlNb"/>    
+				<jb:value data="/Document/SummryFile/Prttn/StartNb" property="startNb"/>    
+				<jb:value data="/Document/SummryFile/Prttn/EndNb" property="endNb"/>    
+				<jb:value data="/Document/SummryFile/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/SummryFile/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+				<jb:value data="/Document/SummryFile/OrgnlGrpHdr/OrgnlMT" property="orgnlMT"/>    
+  			<jb:value data="/Document/SummryFile/SummryFileInf/ChckDt" decoder="Date" property="chckngDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/SummryFile/SummryFileInf/TtlPmt" property="ttlPmt"/>    
+    		<jb:wiring beanIdRef="chckPmtInfDtls[0]" property="chckPmtInfDtls"/>
+
+				<jb:value data="/Document/SummryFile/SummryFileInf/TtlMsg" property="ttlMsg"/>    
+    		<jb:wiring beanIdRef="chckMsg[0]" property="chckMsg"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="chckPmtInfDtls[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="chckPmtInfDtls" />
+  </jb:bean>
+	<jb:bean beanId="chckPmtInfDtls" class="com.topfinance.ebo.msg.Hvps71100101ChckPmtInfDtls" createOnElement="/Document/SummryFile/SummryFileInf/ChckPmtInfDtls">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/SummryFile/SummryFileInf/ChckPmtInfDtls/TxTpCd" property="bizTpCd"/>
+				<jb:value data="/Document/SummryFile/SummryFileInf/ChckPmtInfDtls/SndgNbOfTxs" property="bizSndgNbOfTxs"/>
+				<jb:value data="/Document/SummryFile/SummryFileInf/ChckPmtInfDtls/SndgCtrlSum" property="bizSndgCtrlSum"/>
+				<jb:value data="/Document/SummryFile/SummryFileInf/ChckPmtInfDtls/RcvgNbOfTxs" property="bizRcvgNbOfTxs"/>
+				<jb:value data="/Document/SummryFile/SummryFileInf/ChckPmtInfDtls/RcvgCtrlSum" property="bizRcvgCtrlSum"/>
+				<jb:value data="/Document/SummryFile/SummryFileInf/ChckPmtInfDtls/PrcSts" property="bizPrcSts"/>
+	</jb:bean>  
+  <jb:bean beanId="chckMsg[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="chckMsg" />
+  </jb:bean>
+	<jb:bean beanId="chckMsg" class="com.topfinance.ebo.msg.Hvps71100101ChckMsg" createOnElement="/Document/SummryFile/SummryFileInf/ChckMsg">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/SummryFile/SummryFileInf/ChckMsg/TxTpCd" property="infoTpCd"/>
+				<jb:value data="/Document/SummryFile/SummryFileInf/ChckMsg/SndgNbOfTxs" property="infoSndgNbOfTxs"/>
+				<jb:value data="/Document/SummryFile/SummryFileInf/ChckMsg/RcvgNbOfTxs" property="infoRcvgNbOfTxs"/>
+				<jb:value data="/Document/SummryFile/SummryFileInf/ChckMsg/PrcSts" property="infoPrcSts"/>
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    

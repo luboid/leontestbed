@@ -1559,6 +1559,28 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
+	public void atestGenerated_111() throws Exception {
+		String msgCode = "hvps.111.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_711() throws Exception {
+		String msgCode = "hvps.711.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
 	public void atestNested() throws Exception {
 		String msgCode = "testNested";
 		String tpCode = "";

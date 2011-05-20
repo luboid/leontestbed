@@ -208,7 +208,7 @@ public class TestGenMapLeon extends TestCase {
 
 
 
-	public void test_beps_133_001_01() throws Exception {
+	public void atest_beps_133_001_01() throws Exception {
 		String msgCode = "beps.133.001.01";
 		String tpCode = "";
 		String clsCode = "";		
@@ -357,7 +357,7 @@ public class TestGenMapLeon extends TestCase {
 //			testGenerated_311();
 			
 
-			test_beps_133_001_01();
+			atest_beps_133_001_01();
 //			test_saps_737_001_01();
 
 			

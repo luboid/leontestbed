@@ -11,6 +11,7 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@10.60.108.35:1521:tibcodev"/>
+		<!--  <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:ORCL"/>-->
 		<property name="username" value="paygw"/>
 		<property name="password" value="12345"/>
 		
@@ -238,6 +239,9 @@
     			<value>com.topfinance.ebo.msg.Beps72200101</value>
     			<value>com.topfinance.ebo.msg.Beps72200101DtlChckMsgDtls</value>
     			<value>com.topfinance.ebo.msg.Beps72200101DtlChckPmtDtls</value>
+    			<value>com.topfinance.ebo.msg.Hvps71100101</value>
+    			<value>com.topfinance.ebo.msg.Hvps71100101ChckMsg</value>
+    			<value>com.topfinance.ebo.msg.Hvps71100101ChckPmtInfDtls</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
