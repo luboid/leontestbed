@@ -208,7 +208,19 @@ public class TestGenMapLeon extends TestCase {
 
 
 
+	public void test_beps_133_001_01() throws Exception {
+		String msgCode = "beps.133.001.01";
+		String tpCode = "";
+		String clsCode = "";		
+//		String tpCode = "C101";		
+//		String clsCode = "00100";
 
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
 
 	
 	public void atest_beps_123_001_01() throws Exception {
@@ -344,7 +356,10 @@ public class TestGenMapLeon extends TestCase {
 		try {
 //			testGenerated_311();
 			
-			atest_saps_737_001_01();
+
+			test_beps_133_001_01();
+//			test_saps_737_001_01();
+
 			
 //			test_beps_123_001_01();
 //			test_beps_393_001_01();

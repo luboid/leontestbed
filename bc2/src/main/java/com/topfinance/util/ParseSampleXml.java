@@ -981,7 +981,14 @@ public class ParseSampleXml{
             				meta = new MetaJaxbElement();
                         	meta.setBeanClass("java.util.ArrayList");
                         	meta.setBeanId(beanId);
-                        	meta.setCreateOn(eboPkgName+"."+eboClassName);
+                        	if(parent==null) {
+                        		// is list but only occur once
+                        		meta.setCreateOn(eboPkgName+"."+eboClassName);
+                        	}
+                        	else {
+                        		// nested
+                        		meta.setCreateOn(eboPkgName+"."+eboClassName+parent.eboFldName);
+                        	}                        	
                         	path2Meta.put(path, meta);
                         	
                         	// add wiring to parent
@@ -994,7 +1001,10 @@ public class ParseSampleXml{
                     	// value
                     	Value v = new Value();
                     	v.setProperty("NULL");
-                    	v.setData("/"+eboPkgName+"."+eboClassName+"/"+varName);
+                    	// this is not necessary
+//                    	v.setData("/"+eboPkgName+"."+eboClassName+"/"+varName);
+                    	v.setData(varName);
+                    	
                     	v.setDecoder("NULL");
                     	v.setPrefix(pp.prefix);
                     	// TODO decoder?
@@ -1151,7 +1161,13 @@ public class ParseSampleXml{
                 	meta.setBeanClass(thisClass.getName());
                 	meta.setBeanId(beanId);
 //                	meta.setPath(path);
-                	meta.setCreateOn(eboPkgName+"."+eboClassName);
+                	if(parent==null) {
+                		// is list but only occur once
+                		meta.setCreateOn(eboPkgName+"."+eboClassName);
+                	}
+                	else {
+                		meta.setCreateOn(eboPkgName+"."+eboClassName+parent.eboFldName);
+                	}
                 	path2Meta.put(path, meta);
                 	
                 	// add wiring for parent element
@@ -1355,7 +1371,7 @@ public class ParseSampleXml{
 
 		    }
 		    
-		    debug("key="+key+", value="+value+", type="+ (metaType==null ? "NULL" : metaType) );
+		    debug("in [renderEboInfo]: key="+key+", value="+value+", type="+ (metaType==null ? "NULL" : metaType)+", prefix="+prefix );
 		    
 		    EboInfo.Column column = new EboInfo.Column();
 		    if(pp.isList()) {
@@ -1410,7 +1426,7 @@ public class ParseSampleXml{
 		    		xmlPath=xmlPath.substring(0, xmlPath.indexOf("["));
 		    	}
 		    	
-		    	if("value".equals(xmlPath)) {
+		    	if("value".equalsIgnoreCase(xmlPath)) {
 		    		continue;
 		    	}
 		    	xmlPaths.add(xmlPath);
@@ -1432,7 +1448,7 @@ public class ParseSampleXml{
 		}
 		
 		renderDdlAndEbo(eboInfo, opInfo);
-		
+		debug("end of [renderEboInfo]: eboInfo="+eboInfo);
 		return eboInfo;
 	}
     

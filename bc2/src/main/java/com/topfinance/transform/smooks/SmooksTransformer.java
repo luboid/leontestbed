@@ -7,7 +7,6 @@ import java.util.concurrent.ConcurrentSkipListMap;
 
 import javax.xml.transform.stream.StreamSource;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.milyn.Smooks;
 import org.milyn.container.ExecutionContext;
@@ -78,6 +77,19 @@ public class SmooksTransformer {
 			smooks.filterSource(executionContext, source, result);
 			long e2 = PerfUtil.time();
 	        PerfUtil.perfLog(" cost "+(e2-e1)+", end filterSource" );
+	        
+	        // debug only 
+	        try {
+//	        	Object rmtInf = result.getBean("fiToFiCstmrDrctDbt.drctDbtTxInf[0].xxx.rmtInf");
+//	        	
+//	        	Object ustrdList = result.getBean("fiToFiCstmrDrctDbt.drctDbtTxInf[0].xxx.rmtInf.ustrd[0]");
+//	        	
+//	        	logger.debug("rmtInf"+rmtInf+", ustrdList="+ustrdList);
+	        	
+	        } catch (Exception ex) {
+	        	ex.printStackTrace();
+	        }
+	        
 			return result.getBean(ROOT_BEAN_ID);
 		} catch (Exception ex) {
 			ex.printStackTrace();

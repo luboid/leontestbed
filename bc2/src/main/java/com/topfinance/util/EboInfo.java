@@ -146,6 +146,18 @@ public class EboInfo {
 			this.prefix = prefix;
 		}
 
+		@Override
+		public String toString() {
+			return "Column [prefix=" + prefix + ", isNested=" + isNested
+					+ ", variableName=" + variableName
+					+ ", capitalisedVariableName=" + capitalisedVariableName
+					+ ", javaType=" + javaType + ", dbName=" + dbName
+					+ ", dbTypeOracle=" + dbTypeOracle + ", dbTypeMysql="
+					+ dbTypeMysql + ", dbExtraOracle=" + dbExtraOracle
+					+ ", dbExtraMysql=" + dbExtraMysql + ", objPath=" + objPath
+					+ ", xmlPath=" + xmlPath + "]";
+		}
+
 
 
 
@@ -238,6 +250,17 @@ public class EboInfo {
 
 	public void setWiringXmlPath(String wiringXmlPath) {
 		this.wiringXmlPath = wiringXmlPath;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "EboInfo [pkgName=" + pkgName + ", destinationClassName="
+				+ destinationClassName + ", tableName=" + tableName
+				+ ", basicColumns=" + basicColumns + ", nestedEbo=" + nestedEbo
+				+ ", wiringColumnName=" + wiringColumnName + ", wiringXmlPath="
+				+ wiringXmlPath + "]";
 	}
 
 

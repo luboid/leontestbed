@@ -21,7 +21,7 @@ public class ParseSampleXmlHelper {
         } else if(name.equals("fIToFIPmtStsRpt")) {
             // for 102
             name = "fiToFIPmtStsRpt";
-        } else if(name.equals("fIToFiCstmrDrctDbt")) {
+        } else if(name.equals("fIToFICstmrDrctDbt")) {
             // for beps.133
             name = "fiToFiCstmrDrctDbt";            
         }
@@ -36,7 +36,7 @@ public class ParseSampleXmlHelper {
     		xmlPath="FIToFIPmtStsRpt";
     	}else if("fiToFiCstmrDrctDbt".equals(jaxb)) {
             // for beps.133    		
-    		xmlPath="FIToFiCstmrDrctDbt";    		
+    		xmlPath="FIToFICstmrDrctDbt";    		
     	} else {
     		xmlPath = jaxb;
     	}
