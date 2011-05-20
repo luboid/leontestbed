@@ -84,5 +84,70 @@
 				<Ustrd>/E47/QP000101110222223131</Ustrd>
 			</RmtInf>
 		</DrctDbtTxInf>
+		<DrctDbtTxInf>
+			<PmtId>
+				<EndToEndId>787878787878</EndToEndId>
+				<TxId>2010101066001001</TxId>
+				<ClrSysRef>10221210000011001001</ClrSysRef>
+			</PmtId>
+			<IntrBkSttlmAmt Ccy="CNY">111.00</IntrBkSttlmAmt>
+			<ChrgBr>CRED</ChrgBr>
+			<Cdtr>
+				<Nm>吕</Nm>
+				<PstlAdr>
+					<AdrLine>地址地址地址</AdrLine>	
+				</PstlAdr>
+			</Cdtr>
+			<CdtrAcct>
+				<Id>
+					<Othr>
+						<Id>343242123123123423323</Id>
+						<Issr>308581000106</Issr>
+					</Othr>
+				</Id>
+			</CdtrAcct>
+			<CdtrAgt>
+				<FinInstnId>
+					<ClrSysMmbId>
+						<MmbId>30866666106</MmbId>
+					</ClrSysMmbId>
+				</FinInstnId>
+				<BrnchId>
+					<Id>308581000106</Id>
+				</BrnchId>
+			</CdtrAgt>
+			<Dbtr>
+				<Nm>郑</Nm>
+				<PstlAdr>
+					<AdrLine>地址zzzz地址</AdrLine>	
+				</PstlAdr>
+			</Dbtr>
+			<DbtrAcct>
+				<Id>
+					<Othr>
+						<Id>3432423423435454353423423423323</Id>
+						<Issr>104100004370</Issr>
+					</Othr>
+				</Id>
+			</DbtrAcct>
+			<DbtrAgt>
+				<FinInstnId>
+					<ClrSysMmbId>
+						<MmbId>104100004370</MmbId>
+					</ClrSysMmbId>
+				</FinInstnId>
+				<BrnchId>
+					<Id>104100004370</Id>
+				</BrnchId>
+			</DbtrAgt>
+			<Purp>
+				<Prtry>09001</Prtry>
+			</Purp>
+			<RmtInf>
+				<Ustrd>/H01/测试11111测试</Ustrd>
+				<Ustrd>/HA1/测试22222测试</Ustrd>
+				<Ustrd>/E47/QP0033333131</Ustrd>
+			</RmtInf>
+		</DrctDbtTxInf>		
 	</FIToFICstmrDrctDbt>
 </Document>
