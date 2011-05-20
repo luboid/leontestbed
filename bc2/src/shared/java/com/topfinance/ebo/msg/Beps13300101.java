@@ -211,7 +211,16 @@ public class Beps13300101  implements java.io.Serializable {
 
     public void  setDrctDbtTxInf(java.util.Set<Beps13300101DrctDbtTxInf> newDrctDbtTxInf) {
         drctDbtTxInf = newDrctDbtTxInf;
-    }	  
+    }
+
+
+@Override
+public String toString() {
+	return "Beps13300101 [id=" + id + ", msgId=" + msgId + ", creDtTm="
+			+ creDtTm + ", nbOfTxs=" + nbOfTxs + ", ctrlSum=" + ctrlSum
+			+ ", prtryTpCd=" + prtryTpCd + ", prtryPeriod=" + prtryPeriod
+			+ ", drctDbtTxInf=" + drctDbtTxInf + "]";
+}	  
     
     
 }    

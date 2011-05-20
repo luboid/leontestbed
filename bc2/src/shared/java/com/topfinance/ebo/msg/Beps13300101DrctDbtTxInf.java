@@ -467,6 +467,22 @@ public class Beps13300101DrctDbtTxInf  implements java.io.Serializable {
 	public void setFid(Beps13300101 fid) {
 		this.fid = fid;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Beps13300101DrctDbtTxInf [id=" + id + ", endToEndId="
+				+ endToEndId + ", txId=" + txId + ", clrSysRef=" + clrSysRef
+				+ ", intrBkSttlmAmt=" + intrBkSttlmAmt + ", nm=" + nm
+				+ ", cdtrAcctId=" + cdtrAcctId + ", issr=" + issr
+				+ ", cdtrClrSysMmbId=" + cdtrClrSysMmbId + ", cdtrAgtBrnchId="
+				+ cdtrAgtBrnchId + ", dbtrNm=" + dbtrNm + ", dbtrAcctId="
+				+ dbtrAcctId + ", dbtrAcctIssr=" + dbtrAcctIssr
+				+ ", dbtrClrSysMmbId=" + dbtrClrSysMmbId + ", dbtrAgtBrnchId="
+				+ dbtrAgtBrnchId + ", prtryTcCd=" + prtryTcCd + ", addInfo="
+				+ addInfo + ", rmk=" + rmk + ", ustrdContractId="
+				+ ustrdContractId + ", fid=" + fid.getid() + "]";
+	}
     
     
 }    
