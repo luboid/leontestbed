@@ -41,13 +41,30 @@
   </jb:bean>
 	<jb:bean beanId="${ebo.wiringColumnName}" class="${table.pkgName}.${ebo.destinationClassName}" createOnElement="${ebo.wiringXmlPath}">
 		<jb:wiring beanIdRef="target" property="fid"/>
-		<#list ebo.basicColumns as column>    
-    	<#if (column.nested) >
-    		<jb:wiring beanIdRef="${column.variableName}" property="${column.variableName}"/>
-
-			<#elseif (""!=column.xmlPath)>
-				<jb:value data="${column.xmlPath}" property="${column.variableName}"/>    
+		<#list ebo.basicColumns as column>
+    <#if (column.nested) >
+    		<jb:wiring beanIdRef="${column.variableName}[0]" property="${column.variableName}"/>
+		<#elseif (""!=column.xmlPath)>
+			<#if (""!=column.prefix) >
+				<jb:expression property="${column.variableName}" execOnElement="${column.xmlPath}">
+					if (_VALUE contains "${column.prefix}") {
+		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/${column.prefix}/");
+		      }else {
+    		  	return null;
+      		}
+    		</jb:expression>					
+			<#elseif ("Date"==column.javaType)>
+  			<jb:value data="${column.xmlPath}" decoder="Date" property="${column.variableName}">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+			<#elseif ("DateTime"==column.javaType)>				
+  			<jb:value data="${column.xmlPath}" decoder="Date" property="${column.variableName}">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+			<#else>
+				<jb:value data="${column.xmlPath}" property="${column.variableName}"/>
 			</#if>
+		</#if>
 		</#list>
 	</jb:bean>  
 </#list> 
