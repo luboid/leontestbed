@@ -24,42 +24,42 @@
   </jb:bean>
 	<jb:bean beanId="drctDbtTxInf" class="com.topfinance.ebo.msg.Beps13300101DrctDbtTxInf" createOnElement="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf">
 		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/PmtId/EndToEndId" property="endToEndId"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/PmtId/TxId" property="txId"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/PmtId/ClrSysRef" property="clrSysRef"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/IntrBkSttlmAmt" property="intrBkSttlmAmt"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/Cdtr/Nm" property="nm"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/CdtrAcct/Id/Othr/Id" property="cdtrAcctId"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/CdtrAcct/Id/Othr/Issr" property="issr"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="cdtrClrSysMmbId"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/CdtrAgt/BrnchId/Id" property="cdtrAgtBrnchId"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/Dbtr/Nm" property="dbtrNm"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/DbtrAcct/Id/Othr/Id" property="dbtrAcctId"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/DbtrAcct/Id/Othr/Issr" property="dbtrAcctIssr"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/DbtrAgt/BrnchId/Id" property="dbtrAgtBrnchId"/>    
-				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/Purp/Prtry" property="prtryTcCd"/>    
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/PmtId/EndToEndId" property="endToEndId"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/PmtId/TxId" property="txId"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/PmtId/ClrSysRef" property="clrSysRef"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/IntrBkSttlmAmt" property="intrBkSttlmAmt"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/Cdtr/Nm" property="nm"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/CdtrAcct/Id/Othr/Id" property="cdtrAcctId"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/CdtrAcct/Id/Othr/Issr" property="issr"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="cdtrClrSysMmbId"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/CdtrAgt/BrnchId/Id" property="cdtrAgtBrnchId"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/Dbtr/Nm" property="dbtrNm"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/DbtrAcct/Id/Othr/Id" property="dbtrAcctId"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/DbtrAcct/Id/Othr/Issr" property="dbtrAcctIssr"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/DbtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/DbtrAgt/BrnchId/Id" property="dbtrAgtBrnchId"/>
+				<jb:value data="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/Purp/Prtry" property="prtryTcCd"/>
 				<jb:expression property="addInfo" execOnElement="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd">
 					if (_VALUE contains "H01") {
 		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/H01/");
 		      }else {
     		  	return null;
       		}
-    		</jb:expression>
+    		</jb:expression>					
 				<jb:expression property="rmk" execOnElement="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd">
 					if (_VALUE contains "HA1") {
 		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/HA1/");
 		      }else {
     		  	return null;
       		}
-    		</jb:expression>
-		<jb:expression property="ustrdContractId" execOnElement="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd">
+    		</jb:expression>					
+				<jb:expression property="ustrdContractId" execOnElement="/Document/FiToFiCstmrDrctDbt/DrctDbtTxInf/RmtInf/Ustrd">
 					if (_VALUE contains "E47") {
 		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/E47/");
 		      }else {
     		  	return null;
       		}
-    		</jb:expression> 
+    		</jb:expression>					
 	</jb:bean>  
 
 
