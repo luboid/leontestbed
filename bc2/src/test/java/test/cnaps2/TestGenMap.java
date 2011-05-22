@@ -1537,17 +1537,6 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void atestGenerated_723() throws Exception {
-		String msgCode = "beps.723.001.01";
-		String tpCode = "";
-		String clsCode = "";
-		if(TO_GENERATE) {
-			_testGenPublicMap(msgCode, tpCode, clsCode);
-		} else {
-			_testGenerated(msgCode, tpCode, clsCode);
-		}
-	}
-	
 	public void atestGenerated_722() throws Exception {
 		String msgCode = "beps.722.001.01";
 		String tpCode = "";
@@ -1570,8 +1559,206 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_711() throws Exception {
+	public void atestGenerated_711() throws Exception {
 		String msgCode = "hvps.711.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void testGenerated_712() throws Exception {
+		String msgCode = "hvps.712.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_713() throws Exception {
+		String msgCode = "hvps.713.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_714() throws Exception {
+		String msgCode = "hvps.714.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_716() throws Exception {
+		String msgCode = "hvps.716.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_121() throws Exception {
+		String msgCode = "beps.121.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_122() throws Exception {
+		String msgCode = "beps.122.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_127() throws Exception {
+		String msgCode = "beps.127.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_721() throws Exception {
+		String msgCode = "beps.721.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_723() throws Exception {
+		String msgCode = "beps.723.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_726() throws Exception {
+		String msgCode = "beps.726.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_355() throws Exception {
+		String msgCode = "nets.355.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_369() throws Exception {
+		String msgCode = "saps.369.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_615() throws Exception {
+		String msgCode = "saps.615.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_730() throws Exception {
+		String msgCode = "saps.730.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_732() throws Exception {
+		String msgCode = "saps.732.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_735() throws Exception {
+		String msgCode = "saps.735.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_915() throws Exception {
+		String msgCode = "ccms.915.001.01";
+		String tpCode = "";
+		String clsCode = "";
+		if(TO_GENERATE) {
+			_testGenPublicMap(msgCode, tpCode, clsCode);
+		} else {
+			_testGenerated(msgCode, tpCode, clsCode);
+		}
+	}
+	
+	public void atestGenerated_917() throws Exception {
+		String msgCode = "ccms.917.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {
