@@ -66,7 +66,7 @@
                                 </td>
                                 <td>
                                     send tweets in intervals of 
-                                    <input type = "text" id = "scheduleInterval" style ="width:90%" value = "1 hour and 10 minutes"/>
+                                    <input type = "text" id = "scheduleInterval" style ="width:90%" value = "40 minutes"/>
                                 </td>
                             </tr>
                             <tr>
@@ -108,30 +108,30 @@
                         </div>
                         <div class = "right-pane" style ="width : 64%">
                             <ul id = "actionList">
-                            		<ul>
-                                <li>
-                                    Upload Tweets from a file on
-                                </li>
-                                <li>
-                                    <a href = "#fetchFileForm" id="actionFetchFile">the internet</a>
-                                </li>
-                                <li>
-                                    &nbsp;|&nbsp;<a href = "#uploadFileForm" id="actionUploadFile"> your computer</a>
-                                </li>
-																<li>
-																		&nbsp;&nbsp;<input type = "button" id = "OneTweet" value = "Schedule One Tweet" class = "button"/>
-																</li>
-																</ul>
-																<ul>
-																<li>
-																		&nbsp;|&nbsp;<a href = "/pages/transaction?action=showTxns" id = "showTxnsLink">Unpaid Transactions </a>  
-																</li>
-																<li>
-																		&nbsp;|&nbsp;<a href = "/pages/status?action=Show" id = "showPaidTweetsLink">My Messages </a>  
-																</li>																
-																</ul>
+                            	<ul>
+	                                <li>
+	                                    Upload Tweets from a file on
+	                                </li>
+	                                <li>
+	                                    <a href = "#fetchFileForm" id="actionFetchFile">the internet</a>
+	                                </li>
+	                                <li>
+	                                    &nbsp;|&nbsp;<a href = "#uploadFileForm" id="actionUploadFile"> your computer</a>
+	                                </li>
+									<li>
+											&nbsp;&nbsp;<input type = "button" id = "OneTweet" value = "Schedule One Tweet" class = "button"/>
+									</li>
+						       </ul>
+							   <ul>
+									<li>
+											&nbsp;|&nbsp;<a href = "/pages/transaction?action=showTxns" id = "showTxnsLink">Unpaid Transactions </a>  
+									</li>
+									<li>
+											&nbsp;|&nbsp;<a href = "/pages/status?action=Show" id = "showPaidTweetsLink">My Messages </a>  
+									</li>																
+							   </ul>
                             </ul>
-                            <div id = "fetchFileForm">
+                            <div id = "fetchFileForm" style="display:none">
                                 <form target = "resultFrame" action = "#" method = "POST" name = "uploadFile">
                                     <input type = "text" name = "source_" class = "button" value = "http://time2tweet.appspot.com/tweets.txt"/>
                                     &nbsp;
@@ -140,7 +140,7 @@
                                     <input type = "reset" value = "Cancel" class = "button"/>
                                 </form>
                             </div>
-                            <div id = "uploadFileForm">
+                            <div id = "uploadFileForm" style="display:none">
                                 <form target = "resultFrame" action = "#" method = "POST" name = "uploadFile" encType="multipart/form-data">
                                     <input type = "file" name = "fileName" class = "button"/>
                                     &nbsp;
@@ -151,7 +151,7 @@
                                     <input type = "reset" value = "Cancel" class = "button"/>
                                 </form>
                             </div>
-                            <div id = "deleteAccountForm">
+                            <div id = "deleteAccountForm" style="display:none">
                                 <form action = "#/pages/manageTwitterAccount" method = "POST" name = "deleteTwitterAccount">
                                     Are you sure you want to unlink this account ?
                                     <input type = "submit" value = "Yes" class = "button"/>
