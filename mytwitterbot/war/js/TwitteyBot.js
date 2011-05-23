@@ -111,11 +111,7 @@ var TwitteyBot = (function(){
             		// leon
                 me.showTweets(true);
                 return false;
-            });
-
-	
-						
-						
+            });				
             $("#sampleTweets").click(function(){
                 $("#resultFrame").attr("src", "/pages/status?action=fetch&source_=" + TwitteyBot.__BASE__ +  "tweets.txt&screenName=" +
                 $("#twitterScreenName").html());
@@ -241,9 +237,12 @@ var TwitteyBot = (function(){
                 else {
                     $(this).attr("value", duration + " minutes").css("border", "")
                 }
+            }).click(function(){  	
+                  $(this).css("border", "SOLID #999 1px");
             });
             
             $("#scheduler form").submit(function(){
+            	debugger;
                 $("#scheduler input[type=text]").blur();
                 var total = parseInt($("#totalItems").val(), 10) + 1;
                 var interval = 0;
