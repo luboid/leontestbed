@@ -211,9 +211,9 @@ public class StatusManager extends HttpServlet {
 			}
 		}
 
-		pm.close();
-		pm = PMF.get().getPersistenceManager();
-		pm.close();
+//		pm.close();
+//		pm = PMF.get().getPersistenceManager();
+//		pm.close();
 		
 		String txnId = req.getParameter(Pages.PARAM_TXN_ID);
 		log.info("txnId="+txnId);
