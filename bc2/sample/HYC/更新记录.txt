@@ -1771,3 +1771,20 @@ pacs.004.001.02.xsd文件中name="AddtlInf" type="Max105Text"的unbounded修改为1
 
 5、saps.607.001.01
 camt.053.001.02.xsd文件中name="Ntry" type="ReportEntry2"的1修改为unbounded
+
+2011-05-20 sunhuazhong
+1、beps.131.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.131.001.01'数据报文中
+/Document/RealTmCstmrDrctDbt/PKGGrpHdr/CtrlSum
+/Document/RealTmCstmrDrctDbt/RealTmCstmrDrctDbtInf/EndToEndId
+表T_C2_BEPS_131_APX_CXTD中字段CNTT 类型长度修改为VARCHAR2(256)，字段MSGID用不到，建议删除
+
+2、beps.723.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.723.001.01'数据报文中
+/Document/DtlChckRspn/DtlChckRspnInf/ChckDt
+
+2、hvps.711.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='hvps.711.001.01'数据报文中
+/Document/SummryFile/OrgnlGrpHdr/OrgnlMT
+/Document/SummryFile/SummryFileInf/ChckPmtInfDtls/SndgCtrlSum
+/Document/SummryFile/SummryFileInf/ChckPmtInfDtls/RcvgCtrlSum
