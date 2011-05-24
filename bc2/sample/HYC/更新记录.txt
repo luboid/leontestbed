@@ -1921,3 +1921,27 @@ ALTER TABLE "T_C2_SAPS_615"
 12、saps.732.001.01
 T_C2_BIS_ELE_BSC表中,msg_code='saps.732.001.01'数据报文中	
 /Document/AcsAbsSttlmDtlRspn/OrgnlGrpHdr/OrgnlMT
+
+2011-05-24 sunhuazhong
+1、ccms.917.001.01
+表T_C2_CCMS_917_APX_BSC修改字段COLUMN_8名称为TPCD
+表T_C2_CCMS_917_APX_BSC修改字段COLUMN_9名称为TPNM
+
+2、beps.124.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.124.001.01'数据报文中
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+/Document/FiToFiPmtStsRpt/OrgnlGrpInfAndSts/StsRsnInf/AddtlInf
+
+3、beps.121.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.121.001.01'数据报文中
+/Document/CstmrCdtTrf/NPCPrcInf/PrcSts
+/Document/CstmrCdtTrf/NPCPrcInf/PrcCd
+/Document/CstmrCdtTrf/NPCPrcInf/RjctInf
+/Document/CstmrCdtTrf/NPCPrcInf/NetgDt
+/Document/CstmrCdtTrf/NPCPrcInf/NetgRnd
+/Document/CstmrCdtTrf/NPCPrcInf/SttlmDt
+/Document/CstmrCdtTrf/NPCPrcInf/RcvTm
+/Document/CstmrCdtTrf/NPCPrcInf/TrnsmtTm
+/Document/CstmrCdtTrf/CstmrCdtTrfInf/CstmrCdtTrfAddtlInf/RtrInf/Cnts
