@@ -129,7 +129,7 @@ public class CheckPaymentInformationDetails1 {
      *     {@link String }
      *     
      */
-    public String getMT() {
+    public String getMt() {
         return mt;
     }
 
@@ -141,7 +141,7 @@ public class CheckPaymentInformationDetails1 {
      *     {@link String }
      *     
      */
-    public void setMT(String value) {
+    public void setMt(String value) {
         this.mt = value;
     }
 

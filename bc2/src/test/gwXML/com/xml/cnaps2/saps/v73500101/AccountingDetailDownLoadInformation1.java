@@ -132,4 +132,8 @@ public class AccountingDetailDownLoadInformation1 {
         return this.acctList;
     }
 
+	public void setAcctList(List<AccountList1> acctList) {
+		this.acctList = acctList;
+	}
+
 }

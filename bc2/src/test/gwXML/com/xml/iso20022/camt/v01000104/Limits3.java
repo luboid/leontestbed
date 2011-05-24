@@ -106,4 +106,12 @@ public class Limits3 {
         return this.dfltLmt;
     }
 
+	public void setCurLmt(List<LimitReport3> curLmt) {
+		this.curLmt = curLmt;
+	}
+
+	public void setDfltLmt(List<LimitReport3> dfltLmt) {
+		this.dfltLmt = dfltLmt;
+	}
+
 }

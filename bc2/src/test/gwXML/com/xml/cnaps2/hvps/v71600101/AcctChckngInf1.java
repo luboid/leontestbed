@@ -132,4 +132,8 @@ public class AcctChckngInf1 {
         return this.dtls;
     }
 
+	public void setDtls(List<Dtls3> dtls) {
+		this.dtls = dtls;
+	}
+
 }

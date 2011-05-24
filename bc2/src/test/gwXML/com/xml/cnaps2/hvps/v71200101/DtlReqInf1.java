@@ -132,4 +132,8 @@ public class DtlReqInf1 {
         return this.dtls;
     }
 
+	public void setDtls(List<Dtls1> dtls) {
+		this.dtls = dtls;
+	}
+
 }
