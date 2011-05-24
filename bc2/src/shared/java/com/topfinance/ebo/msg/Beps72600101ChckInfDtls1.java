@@ -24,7 +24,7 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_MSG_BEPS_726_001_01___ChckInfDtls1")
+@Table(name = "T_C2_BEPS_726_APX_YW")
 public class Beps72600101ChckInfDtls1  implements java.io.Serializable {
 
     // Fields 
@@ -37,13 +37,13 @@ public class Beps72600101ChckInfDtls1  implements java.io.Serializable {
     @JaxbMapping(objPath="acctChck.acctChckInf.chckInfDtls1[0].sndTtlCnt")
     private String bizCheckSndgNbOfTxs;
     
-    @JaxbMapping(objPath="acctChck.acctChckInf.chckInfDtls1[0].sndTtlAmt.value")
+    @JaxbMapping(objPath="acctChck.acctChckInf.chckInfDtls1[0].sndTtlAmt")
     private Double bizCheckSndgCtrlSum;
     
     @JaxbMapping(objPath="acctChck.acctChckInf.chckInfDtls1[0].rcvTtlCnt")
     private String bizCheckRcvgNbOfTxs;
     
-    @JaxbMapping(objPath="acctChck.acctChckInf.chckInfDtls1[0].rcvTtlAmt.value")
+    @JaxbMapping(objPath="acctChck.acctChckInf.chckInfDtls1[0].rcvTtlAmt")
     private Double bizCheckRcvgCtrlSum;
     
     @JaxbMapping(objPath="acctChck.acctChckInf.chckInfDtls1[0].sndDtls1[0]")
@@ -193,7 +193,7 @@ public class Beps72600101ChckInfDtls1  implements java.io.Serializable {
    * 
    * @return the sndDtls1
    */
-  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
     public java.util.Set<Beps72600101SndDtls1> getSndDtls1() {
         return sndDtls1;
     }	 
@@ -212,7 +212,7 @@ public class Beps72600101ChckInfDtls1  implements java.io.Serializable {
    * 
    * @return the rcvDtls1
    */
-  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
     public java.util.Set<Beps72600101RcvDtls1> getRcvDtls1() {
         return rcvDtls1;
     }	 

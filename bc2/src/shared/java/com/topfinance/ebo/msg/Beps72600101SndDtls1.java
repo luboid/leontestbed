@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
@@ -22,7 +24,7 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_C2_BEPS_726_APX_YW")
+@Table(name = "T_C2_BEPS_726_APX_YW_S")
 public class Beps72600101SndDtls1  implements java.io.Serializable {
 
     // Fields 
@@ -41,15 +43,27 @@ public class Beps72600101SndDtls1  implements java.io.Serializable {
     @JaxbMapping(objPath="acctChck.acctChckInf.chckInfDtls1[0].sndDtls1[0].ttlCnt")
     private String bizCheckSenTtlCnt;
     
-    @JaxbMapping(objPath="acctChck.acctChckInf.chckInfDtls1[0].sndDtls1[0].ctrlSum.value")
+    @JaxbMapping(objPath="acctChck.acctChckInf.chckInfDtls1[0].sndDtls1[0].ctrlSum")
     private Double bizCheckSenCtrlSum;
     
     @JaxbMapping(objPath="acctChck.acctChckInf.chckInfDtls1[0].sndDtls1[0].prcSts")
     private String bizCheckSenPrcSts;
     
+    private Beps72600101ChckInfDtls1 fid;
     
-	
-    /** default constructor */
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps72600101ChckInfDtls1 getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps72600101ChckInfDtls1 fid) {
+		this.fid = fid;
+	}
+
+
+	/** default constructor */
     public Beps72600101SndDtls1() {
     }
 	

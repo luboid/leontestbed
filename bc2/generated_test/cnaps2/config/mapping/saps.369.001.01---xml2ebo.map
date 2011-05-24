@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps36900101" createOnElement="Document">
+				<jb:value data="/Document/LqdtyQryRspn/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/LqdtyQryRspn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/LqdtyQryRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/LqdtyQryRspn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/LqdtyQryRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/LqdtyQryRspn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/LqdtyQryRspn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/LqdtyQryRspn/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/LqdtyQryRspn/Prttn/TtlNb" property="ttlNb"/>    
+				<jb:value data="/Document/LqdtyQryRspn/Prttn/StartNb" property="startNb"/>    
+				<jb:value data="/Document/LqdtyQryRspn/Prttn/EndNb" property="endNb"/>    
+				<jb:value data="/Document/LqdtyQryRspn/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/LqdtyQryRspn/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>    
+				<jb:value data="/Document/LqdtyQryRspn/OrgnlGrpHdr/OrgnlMT" property="orgnlMT"/>    
+				<jb:value data="/Document/LqdtyQryRspn/RspnInf/PrcSts" property="prcSts"/>    
+				<jb:value data="/Document/LqdtyQryRspn/RspnInf/PrcCd" property="prcCd"/>    
+				<jb:value data="/Document/LqdtyQryRspn/RspnInf/PtyId" property="ptyId"/>    
+				<jb:value data="/Document/LqdtyQryRspn/RspnInf/PtyPrcCd" property="ptyPrcCd"/>    
+				<jb:value data="/Document/LqdtyQryRspn/RspnInf/RjctInf" property="rjctInf"/>    
+  			<jb:value data="/Document/LqdtyQryRspn/RspnInf/PrcDt" decoder="Date" property="prcDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/TtlAcct" property="ttlAcct"/>    
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/TtlBal" property="ttlBal"/>    
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/TtlCurAmt" property="ttlCurAmt"/>    
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/TtlXpctdAmt" property="ttlXpctdAmt"/>    
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/NbOfSttlmAcct" property="nbOfSttlmAcct"/>    
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmBal" property="sttlmBal"/>    
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmCurAmt" property="sttlmCurAmt"/>    
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmXpctdAmt" property="sttlmXpctdAmt"/>    
+    		<jb:wiring beanIdRef="sttlmAcctInf[0]" property="sttlmAcctInf"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="sttlmAcctInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="sttlmAcctInf" />
+  </jb:bean>
+	<jb:bean beanId="sttlmAcctInf" class="com.topfinance.ebo.msg.Saps36900101SttlmAcctInf" createOnElement="/Document/LqdtyQryRspn/LqdtyInf/SttlmAcctInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmAcctInf/MmbId" property="mmbId"/>
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmAcctInf/SttlmAcctNm" property="sttlmAcctNm"/>
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmAcctInf/Bal" property="bal"/>
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmAcctInf/CurAmt" property="curAmt"/>
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmAcctInf/XpctdAmt" property="xpctdAmt"/>
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmAcctInf/DbtAmt" property="dbtAmt"/>
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmAcctInf/CdtAmt" property="cdtAmt"/>
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmAcctInf/NbOfMmb" property="nbOfMmb"/>
+				<jb:value data="/Document/LqdtyQryRspn/LqdtyInf/SttlmAcctInf/OthrAcctBal" property="othrAcctBal"/>
+    		<jb:wiring beanIdRef="othrAcctInf[0]" property="othrAcctInf"/>
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    

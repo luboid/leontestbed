@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Saps73500101</param>
+  </params>
+  	<jb:bean beanId="acctgDtlDwnLd.grpHdr.instgPty" class="com.xml.cnaps2.saps.v73500101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Saps73500101">
+  				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  				<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.saps.v73500101.Document" createOnElement="com.topfinance.ebo.msg.Saps73500101">
+    	<jb:wiring beanIdRef="acctgDtlDwnLd" property="acctgDtlDwnLd"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctgDtlDwnLd.acctgDtlDwnLdInf.acctList[0].xxx" class="com.xml.cnaps2.saps.v73500101.AccountList1" createOnElement="com.topfinance.ebo.msg.Saps73500101AcctList">
+    	<jb:wiring beanIdRef="acctgDtlDwnLd.acctgDtlDwnLdInf.acctList[0].xxx.bookgList[0]" property="bookgList"/>
+  				<jb:value data="acctTp"  property="acctTp"/>
+  				<jb:value data="acct"  property="acct"/>
+  				<jb:value data="nbOfBookg"  property="nbOfBookg"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctgDtlDwnLd.prttn" class="com.xml.cnaps2.saps.v73500101.Partition1" createOnElement="com.topfinance.ebo.msg.Saps73500101">
+  				<jb:value data="ttlNb"  property="ttlNb"/>
+  				<jb:value data="startNb"  property="startNb"/>
+  				<jb:value data="endNb"  property="endNb"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctgDtlDwnLd.grpHdr" class="com.xml.cnaps2.saps.v73500101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps73500101">
+    	<jb:wiring beanIdRef="acctgDtlDwnLd.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="acctgDtlDwnLd.grpHdr.instdPty" property="instdPty"/>
+  				<jb:value data="msgId1"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="sysCd"  property="sysCd"/>
+  				<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctgDtlDwnLd.acctgDtlDwnLdInf.acctList[0].xxx.bookgList[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps73500101AcctList/bookgList">
+    	<jb:wiring beanIdRef="acctgDtlDwnLd.acctgDtlDwnLdInf.acctList[0].xxx.bookgList[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="acctgDtlDwnLd.grpHdr.instdPty" class="com.xml.cnaps2.saps.v73500101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Saps73500101">
+  				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  				<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctgDtlDwnLd.acctgDtlDwnLdInf.acctList[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps73500101/acctList">
+    	<jb:wiring beanIdRef="acctgDtlDwnLd.acctgDtlDwnLdInf.acctList[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="acctgDtlDwnLd.acctgDtlDwnLdInf.acctList[0].xxx.bookgList[0].xxx.amt" class="com.xml.cnaps2.saps.v73500101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Saps73500101BookgList">
+  				<jb:value data="amt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctgDtlDwnLd.acctgDtlDwnLdInf" class="com.xml.cnaps2.saps.v73500101.AccountingDetailDownLoadInformation1" createOnElement="com.topfinance.ebo.msg.Saps73500101">
+    	<jb:wiring beanIdRef="acctgDtlDwnLd.acctgDtlDwnLdInf.acctList[0]" property="acctList"/>
+  				<jb:value data="chckngDt" decoder="Date" property="chckngDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="nbOfAcct"  property="nbOfAcct"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctgDtlDwnLd.acctgDtlDwnLdInf.acctList[0].xxx.bookgList[0].xxx" class="com.xml.cnaps2.saps.v73500101.BookingList1" createOnElement="com.topfinance.ebo.msg.Saps73500101BookgList">
+    	<jb:wiring beanIdRef="acctgDtlDwnLd.acctgDtlDwnLdInf.acctList[0].xxx.bookgList[0].xxx.amt" property="amt"/>
+  				<jb:value data="msgCd"  property="msgCd"/>
+  				<jb:value data="instgPty"  property="instgPty"/>
+  				<jb:value data="netgDt" decoder="Date" property="netgDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="txTp"  property="txTp"/>
+  				<jb:value data="ctgyPurpCd"  property="ctgyPurpCd"/>
+  				<jb:value data="dbtr"  property="dbtr"/>
+  				<jb:value data="cdtr"  property="cdtr"/>
+  				<jb:value data="dbtCdtId"  property="dbtCdtId"/>
+  				<jb:value data="plusMnsTp"  property="plusMnsTp"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctgDtlDwnLd" class="com.xml.cnaps2.saps.v73500101.AccountingDetailDownLoad" createOnElement="com.topfinance.ebo.msg.Saps73500101">
+    	<jb:wiring beanIdRef="acctgDtlDwnLd.acctgDtlDwnLdInf" property="acctgDtlDwnLdInf"/>
+    	<jb:wiring beanIdRef="acctgDtlDwnLd.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="acctgDtlDwnLd.prttn" property="prttn"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

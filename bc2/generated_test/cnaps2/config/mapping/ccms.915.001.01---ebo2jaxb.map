@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Ccms91500101</param>
+  </params>
+  	<jb:bean beanId="authrtyChngNtfctn.authrtyInf[0].xxx.bizAuthrtyInf[0].xxx" class="com.xml.cnaps2.ccms.v91500101.BizAuthrtyInf1" createOnElement="com.topfinance.ebo.msg.Ccms91500101BizAuthrtyInf">
+  				<jb:value data="mT"  property="mt"/>
+  				<jb:value data="txTpCd"  property="txTpCd"/>
+  				<jb:value data="authrtySgnCd"  property="authrtySgnCd"/>
+  				<jb:value data="authrtyWght"  property="authrtyWght"/>
+  	</jb:bean>
+  	<jb:bean beanId="authrtyChngNtfctn.authrtyInf[0].xxx.bizAuthrtyInf[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Ccms91500101AuthrtyInf/bizAuthrtyInf">
+    	<jb:wiring beanIdRef="authrtyChngNtfctn.authrtyInf[0].xxx.bizAuthrtyInf[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="authrtyChngNtfctn.authrtyInf[0].xxx.chngCtrl" class="com.xml.cnaps2.ccms.v91500101.ChngCtrl1" createOnElement="com.topfinance.ebo.msg.Ccms91500101AuthrtyInf">
+  				<jb:value data="chngTp"  property="chngTp"/>
+  				<jb:value data="fctvTp"  property="fctvTp"/>
+  				<jb:value data="fctvDt" decoder="Date" property="fctvDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="ifctvDt" decoder="Date" property="ifctvDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  	</jb:bean>
+  	<jb:bean beanId="authrtyChngNtfctn.grpHdr" class="com.xml.cnaps2.ccms.v91500101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Ccms91500101">
+    	<jb:wiring beanIdRef="authrtyChngNtfctn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="authrtyChngNtfctn.grpHdr.instdPty" property="instdPty"/>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="sysCd"  property="sysCd"/>
+  				<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.ccms.v91500101.Document" createOnElement="com.topfinance.ebo.msg.Ccms91500101">
+    	<jb:wiring beanIdRef="authrtyChngNtfctn" property="authrtyChngNtfctn"/>
+  	</jb:bean>
+  	<jb:bean beanId="authrtyChngNtfctn" class="com.xml.cnaps2.ccms.v91500101.AuthrtyChngNtfctnV01" createOnElement="com.topfinance.ebo.msg.Ccms91500101">
+    	<jb:wiring beanIdRef="authrtyChngNtfctn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="authrtyChngNtfctn.authrtyInf[0]" property="authrtyInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="authrtyChngNtfctn.grpHdr.instgPty" class="com.xml.cnaps2.ccms.v91500101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Ccms91500101">
+  				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  				<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="authrtyChngNtfctn.authrtyInf[0].xxx" class="com.xml.cnaps2.ccms.v91500101.AuthrtyInf1" createOnElement="com.topfinance.ebo.msg.Ccms91500101AuthrtyInf">
+    	<jb:wiring beanIdRef="authrtyChngNtfctn.authrtyInf[0].xxx.chngCtrl" property="chngCtrl"/>
+    	<jb:wiring beanIdRef="authrtyChngNtfctn.authrtyInf[0].xxx.bizAuthrtyInf[0]" property="bizAuthrtyInf"/>
+  				<jb:value data="initPtcpt"  property="initPtcpt"/>
+  				<jb:value data="rcvPtcpt"  property="rcvPtcpt"/>
+  	</jb:bean>
+  	<jb:bean beanId="authrtyChngNtfctn.grpHdr.instdPty" class="com.xml.cnaps2.ccms.v91500101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Ccms91500101">
+  				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  				<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="authrtyChngNtfctn.authrtyInf[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Ccms91500101/authrtyInf">
+    	<jb:wiring beanIdRef="authrtyChngNtfctn.authrtyInf[0].xxx" />
+  	</jb:bean>
+</smooks-resource-list>  
+    

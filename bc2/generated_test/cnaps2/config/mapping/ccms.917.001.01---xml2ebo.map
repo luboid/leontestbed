@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms91700101" createOnElement="Document">
+				<jb:value data="/Document/BsisChngNtfctn/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/BsisChngNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/BsisChngNtfctn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/BsisChngNtfctn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/BsisChngNtfctn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/BsisChngNtfctn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/BsisChngNtfctn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/BsisChngNtfctn/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/BsisChngNtfctn/Prttn/TtlNb" property="ttlNb"/>    
+				<jb:value data="/Document/BsisChngNtfctn/Prttn/StartNb" property="startNb"/>    
+				<jb:value data="/Document/BsisChngNtfctn/Prttn/EndNb" property="endNb"/>    
+				<jb:value data="/Document/BsisChngNtfctn/NbInf/ChngNb" property="chngNb"/>    
+				<jb:value data="/Document/BsisChngNtfctn/NbInf/ChngRcrdNb" property="chngRcrdNb"/>    
+				<jb:value data="/Document/BsisChngNtfctn/RcrdNbInf/BkTpChngNb" property="bkTpChngNb"/>    
+				<jb:value data="/Document/BsisChngNtfctn/RcrdNbInf/CcpcChngNb" property="cCPCChngNb"/>    
+				<jb:value data="/Document/BsisChngNtfctn/RcrdNbInf/CityChngNb" property="cityChngNb"/>    
+    		<jb:wiring beanIdRef="bkTpChngInf[0]" property="bkTpChngInf"/>
+
+    		<jb:wiring beanIdRef="cCPCChngInf[0]" property="cCPCChngInf"/>
+
+    		<jb:wiring beanIdRef="cityChngInf[0]" property="cityChngInf"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="bkTpChngInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="bkTpChngInf" />
+  </jb:bean>
+	<jb:bean beanId="bkTpChngInf" class="com.topfinance.ebo.msg.Ccms91700101BkTpChngInf" createOnElement="/Document/BsisChngNtfctn/BkTpChngInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/BsisChngNtfctn/BkTpChngInf/ChngCtrl/ChngTp" property="bkChngTp"/>
+				<jb:value data="/Document/BsisChngNtfctn/BkTpChngInf/ChngCtrl/FctvTp" property="bkFctvTp"/>
+  			<jb:value data="/Document/BsisChngNtfctn/BkTpChngInf/ChngCtrl/FctvDt" decoder="Date" property="bkFctvDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+  			<jb:value data="/Document/BsisChngNtfctn/BkTpChngInf/ChngCtrl/IfctvDt" decoder="Date" property="bkIfctvDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/BsisChngNtfctn/BkTpChngInf/BkTpCd" property="bkTpCd"/>
+				<jb:value data="/Document/BsisChngNtfctn/BkTpChngInf/BkTpNm" property="bkTpNm"/>
+				<jb:value data="/Document/BsisChngNtfctn/BkTpChngInf/TpCd" property="bkTpCd1"/>
+				<jb:value data="/Document/BsisChngNtfctn/BkTpChngInf/TpNm" property="bkTpNm1"/>
+	</jb:bean>  
+  <jb:bean beanId="cCPCChngInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="cCPCChngInf" />
+  </jb:bean>
+	<jb:bean beanId="cCPCChngInf" class="com.topfinance.ebo.msg.Ccms91700101CCPCChngInf" createOnElement="/Document/BsisChngNtfctn/CcpcChngInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/BsisChngNtfctn/CcpcChngInf/ChngCtrl/ChngTp" property="ccpcChngTp"/>
+				<jb:value data="/Document/BsisChngNtfctn/CcpcChngInf/ChngCtrl/FctvTp" property="ccpcFctvTp"/>
+  			<jb:value data="/Document/BsisChngNtfctn/CcpcChngInf/ChngCtrl/FctvDt" decoder="Date" property="ccpcFctvDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+  			<jb:value data="/Document/BsisChngNtfctn/CcpcChngInf/ChngCtrl/IfctvDt" decoder="Date" property="ccpcIfctvDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/BsisChngNtfctn/CcpcChngInf/NdCd" property="ccpcNdCd"/>
+				<jb:value data="/Document/BsisChngNtfctn/CcpcChngInf/NdNm" property="ccpcNdNm"/>
+				<jb:value data="/Document/BsisChngNtfctn/CcpcChngInf/NdTp" property="ccpcNdTp"/>
+				<jb:value data="/Document/BsisChngNtfctn/CcpcChngInf/CityCd" property="ccpcCityCd"/>
+	</jb:bean>  
+  <jb:bean beanId="cityChngInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="cityChngInf" />
+  </jb:bean>
+	<jb:bean beanId="cityChngInf" class="com.topfinance.ebo.msg.Ccms91700101CityChngInf" createOnElement="/Document/BsisChngNtfctn/CityChngInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/BsisChngNtfctn/CityChngInf/ChngCtrl/ChngTp" property="cyChngTp"/>
+				<jb:value data="/Document/BsisChngNtfctn/CityChngInf/ChngCtrl/FctvTp" property="cyFctvTp"/>
+  			<jb:value data="/Document/BsisChngNtfctn/CityChngInf/ChngCtrl/FctvDt" decoder="Date" property="cyFctvDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+  			<jb:value data="/Document/BsisChngNtfctn/CityChngInf/ChngCtrl/IfctvDt" decoder="Date" property="cyIfctvDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/BsisChngNtfctn/CityChngInf/CityCd" property="cyCityCd"/>
+				<jb:value data="/Document/BsisChngNtfctn/CityChngInf/CityNm" property="cyCityNm"/>
+				<jb:value data="/Document/BsisChngNtfctn/CityChngInf/CityTp" property="cyCityTp"/>
+				<jb:value data="/Document/BsisChngNtfctn/CityChngInf/NdCd" property="cyNdCd"/>
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    

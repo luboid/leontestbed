@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Saps73500101" createOnElement="Document">
+  			<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/ChckngDt" decoder="Date" property="chckngDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/NbOfAcct" property="nbOfAcct"/>    
+    		<jb:wiring beanIdRef="acctList[0]" property="acctList"/>
+
+				<jb:value data="/Document/AcctgDtlDwnLd/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/AcctgDtlDwnLd/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/AcctgDtlDwnLd/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/AcctgDtlDwnLd/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/AcctgDtlDwnLd/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/AcctgDtlDwnLd/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/AcctgDtlDwnLd/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/AcctgDtlDwnLd/GrpHdr/Rmk" property="rmk"/>    
+				<jb:value data="/Document/AcctgDtlDwnLd/Prttn/TtlNb" property="ttlNb"/>    
+				<jb:value data="/Document/AcctgDtlDwnLd/Prttn/StartNb" property="startNb"/>    
+				<jb:value data="/Document/AcctgDtlDwnLd/Prttn/EndNb" property="endNb"/>    
+	</jb:bean>
+	
+  <jb:bean beanId="acctList[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="acctList" />
+  </jb:bean>
+	<jb:bean beanId="acctList" class="com.topfinance.ebo.msg.Saps73500101AcctList" createOnElement="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/AcctTp" property="acctTp"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/Acct" property="acct"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/NbOfBookg" property="nbOfBookg"/>
+    				<jb:wiring beanIdRef="bookgList[0]" property="bookgList"/>
+	</jb:bean>  
+  <jb:bean beanId="bookgList[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="bookgList" />
+  </jb:bean>
+	<jb:bean beanId="bookgList" class="com.topfinance.ebo.msg.Saps73500101BookgList" createOnElement="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList">
+		<jb:wiring beanIdRef="acctList" property="fid"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList/MsgCd" property="msgCd"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList/InstgPty" property="instgPty"/>
+  			<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList/NetgDt" decoder="Date" property="netgDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList/MsgId" property="msgId"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList/TxTp" property="txTp"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList/CtgyPurpCd" property="ctgyPurpCd"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList/Dbtr" property="dbtr"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList/Cdtr" property="cdtr"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList/DbtCdtId" property="dbtCdtId"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList/Amt" property="amt"/>
+				<jb:value data="/Document/AcctgDtlDwnLd/AcctgDtlDwnLdInf/AcctList/BookgList/PlusMnsTp" property="plusMnsTp"/>
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    

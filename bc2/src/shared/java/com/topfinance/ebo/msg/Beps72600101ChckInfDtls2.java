@@ -150,7 +150,7 @@ public class Beps72600101ChckInfDtls2  implements java.io.Serializable {
    * 
    * @return the sndDtls2
    */
-  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
     public java.util.Set<Beps72600101SndDtls2> getSndDtls2() {
         return sndDtls2;
     }	 
@@ -169,7 +169,7 @@ public class Beps72600101ChckInfDtls2  implements java.io.Serializable {
    * 
    * @return the rcvDtls2
    */
-  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
     public java.util.Set<Beps72600101RcvDtls2> getRcvDtls2() {
         return rcvDtls2;
     }	 

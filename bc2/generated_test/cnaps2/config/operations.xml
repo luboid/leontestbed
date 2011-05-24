@@ -42,8 +42,8 @@
       	downIsEnabled="T" downReplyType="N" downIsReply="F" downAckType="ASYNC"  
       	pathDocId="/Document/FIToFICstmrCdtTrf/GrpHdr/MsgId/text()" 
       	pathOrigDocId="" 
-      	pathOpType="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtTpInf/CtgyPurp/Prtry/text()" 
-      	pathOpClass="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/Purp/Prtry/text()"     	
+      	pathOpType="" 
+      	pathOpClass=""     	
       	>
       </OperationDefinition>
       
@@ -1669,18 +1669,6 @@
       </OperationDefinition>
       
       <OperationDefinition
-      	class="com.topfinance.runtime.OperationDefinition" id="beps.726.001.01"
-      	name="beps.721.001.01" 
-      	upIsEnabled="F" 
-      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
-      	pathDocId="/Document/AcctChck/GrpHdr/MsgId/text()" 
-      	pathOrigDocId=""
-      	pathOpType="" 
-      	pathOpClass=""     	
-      	>
-      </OperationDefinition>
-      
-      <OperationDefinition
       	class="com.topfinance.runtime.OperationDefinition" id="beps.121.001.01"
       	name="beps.121.001.01" 
       	upIsEnabled="F" 
@@ -1806,6 +1794,30 @@
       	upIsEnabled="F" 
       	downIsEnabled="T" downReplyType="N" downIsReply="T"  
       	pathDocId="/Document/BsisChngNtfctn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.124.001.01"
+      	name="beps.124.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/FIToFIPmtStsRpt/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/FIToFIPmtStsRpt/OrgnlGrpInfAndSts/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.726.001.01"
+      	name="beps.726.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/AcctChck/GrpHdr/MsgId/text()" 
       	pathOrigDocId=""
       	pathOpType="" 
       	pathOpClass=""     	

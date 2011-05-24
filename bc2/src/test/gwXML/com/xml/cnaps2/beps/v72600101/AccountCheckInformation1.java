@@ -193,4 +193,12 @@ public class AccountCheckInformation1 {
         return this.chckInfDtls2;
     }
 
+	public void setChckInfDtls1(List<CheckInformationDetails1> chckInfDtls1) {
+		this.chckInfDtls1 = chckInfDtls1;
+	}
+
+	public void setChckInfDtls2(List<CheckInformationDetails2> chckInfDtls2) {
+		this.chckInfDtls2 = chckInfDtls2;
+	}
+
 }

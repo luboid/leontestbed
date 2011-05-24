@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Nets35500101</param>
+  </params>
+  	<jb:bean beanId="rtrLmt.bizRpt.dfltLmt[0].xxx.lmt.amt.amtWthCcy" class="com.xml.iso20022.camt.v01000104.CurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+  				<jb:value data="amtWthCcy1" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.iso20022.camt.v01000104.Document" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt" property="rtrLmt"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.curLmt[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.curLmt[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.curLmt[0].xxx.lmt" class="com.xml.iso20022.camt.v01000104.LimitDetails3" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.curLmt[0].xxx.lmt.amt" property="amt"/>
+  				<jb:value data="cdtDbtInd"  property="cdtDbtInd"/>
+  				<jb:value data="sts"  property="sts"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.dfltLmt[0].xxx" class="com.xml.iso20022.camt.v01000104.LimitReport3" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.dfltLmt[0].xxx.lmtId" property="lmtId"/>
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.dfltLmt[0].xxx.lmt" property="lmt"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.curLmt[0].xxx.lmtId" class="com.xml.iso20022.camt.v01000104.LimitIdentificationDetails2" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.curLmt[0].xxx.lmtId.acctId" property="acctId"/>
+  				<jb:value data="limitTp"  property="tp"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.dfltLmt[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.dfltLmt[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.curLmt[0].xxx.lmt.amt.amtWthCcy" class="com.xml.iso20022.camt.v01000104.CurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+  				<jb:value data="amtWthCcy" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.curLmt[0].xxx.lmtId.acctId" class="com.xml.iso20022.camt.v01000104.AccountIdentification1Choice" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.curLmt[0].xxx.lmtId.acctId.dmstAcct" property="dmstAcct"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt" class="com.xml.iso20022.camt.v01000104.Limits3" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.curLmt[0]" property="curLmt"/>
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.dfltLmt[0]" property="dfltLmt"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.curLmt[0].xxx" class="com.xml.iso20022.camt.v01000104.LimitReport3" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.curLmt[0].xxx.lmtId" property="lmtId"/>
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.curLmt[0].xxx.lmt" property="lmt"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.dfltLmt[0].xxx.lmt.amt" class="com.xml.iso20022.camt.v01000104.AmountChoice" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.dfltLmt[0].xxx.lmt.amt.amtWthCcy" property="amtWthCcy"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.dfltLmt[0].xxx.lmt" class="com.xml.iso20022.camt.v01000104.LimitDetails3" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.dfltLmt[0].xxx.lmt.amt" property="amt"/>
+  				<jb:value data="lmtCdtDbtInd"  property="cdtDbtInd"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.dfltLmt[0].xxx.lmtId" class="com.xml.iso20022.camt.v01000104.LimitIdentificationDetails2" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+  				<jb:value data="lmtIdTp"  property="tp"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt" class="com.xml.iso20022.camt.v01000104.ReturnLimitV04" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt" property="bizRpt"/>
+    	<jb:wiring beanIdRef="rtrLmt.msgId" property="msgId"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.curLmt[0].xxx.lmt.amt" class="com.xml.iso20022.camt.v01000104.AmountChoice" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+    	<jb:wiring beanIdRef="rtrLmt.bizRpt.curLmt[0].xxx.lmt.amt.amtWthCcy" property="amtWthCcy"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.msgId" class="com.xml.iso20022.camt.v01000104.MessageIdentification" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+  				<jb:value data="msgId"  property="id"/>
+  	</jb:bean>
+  	<jb:bean beanId="rtrLmt.bizRpt.curLmt[0].xxx.lmtId.acctId.dmstAcct" class="com.xml.iso20022.camt.v01000104.SimpleIdentificationInformation" createOnElement="com.topfinance.ebo.msg.Nets35500101">
+  				<jb:value data="dmstAcctId"  property="id"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

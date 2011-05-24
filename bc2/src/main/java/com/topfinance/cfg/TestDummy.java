@@ -210,7 +210,7 @@ public class TestDummy extends TestCase implements CfgConstants {
 	public static String OPERATION_913 = "ccms.913.001.01";
 	public static String OPERATION_915 = "ccms.915.001.01";
 	public static String OPERATION_916 = "ccms.916.001.01";
-	public static String OPERATION_917 = "ccms.911.001.02";
+	public static String OPERATION_917 = "ccms.917.001.01";
 	public static String OPERATION_919 = "ccms.919.001.01";
 	public static String OPERATION_921 = "ccms.921.001.01";
 	public static String OPERATION_926 = "ccms.926.001.01";

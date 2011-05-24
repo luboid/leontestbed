@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "CustomerCreditTransfer", propOrder = {
     "pKGGrpHdr",
     "nPCPrcInf",
-    "cstmrCdtTrFinf"
+    "cstmrCdtTrfInf"
 })
 public class CustomerCreditTransfer {
 
@@ -50,7 +50,7 @@ public class CustomerCreditTransfer {
     @XmlElement(name = "NPCPrcInf")
     protected NPCProcessInformation1 nPCPrcInf;
     @XmlElement(name = "CstmrCdtTrfInf", required = true)
-    protected List<CustomerCreditTransferInformation1> cstmrCdtTrFinf = new Vector<CustomerCreditTransferInformation1>();
+    protected List<CustomerCreditTransferInformation1> cstmrCdtTrfInf = new Vector<CustomerCreditTransferInformation1>();
 
     /**
      * Gets the value of the pkgGrpHdr property.
@@ -123,10 +123,10 @@ public class CustomerCreditTransfer {
      * 
      */
     public List<CustomerCreditTransferInformation1> getCstmrCdtTrfInf() {
-        if (cstmrCdtTrFinf == null) {
-        	cstmrCdtTrFinf = new Vector<CustomerCreditTransferInformation1>();
+        if (cstmrCdtTrfInf == null) {
+        	cstmrCdtTrfInf = new Vector<CustomerCreditTransferInformation1>();
         }
-        return this.cstmrCdtTrFinf;
+        return this.cstmrCdtTrfInf;
     }
 
 }

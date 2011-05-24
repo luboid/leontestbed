@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Ccms91500101" createOnElement="Document">
+				<jb:value data="/Document/AuthrtyChngNtfctn/GrpHdr/MsgId" property="msgId"/>    
+  			<jb:value data="/Document/AuthrtyChngNtfctn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/AuthrtyChngNtfctn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
+				<jb:value data="/Document/AuthrtyChngNtfctn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
+				<jb:value data="/Document/AuthrtyChngNtfctn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
+				<jb:value data="/Document/AuthrtyChngNtfctn/GrpHdr/InstdPty/InstdPty" property="instdIndrctPty"/>    
+				<jb:value data="/Document/AuthrtyChngNtfctn/GrpHdr/SysCd" property="sysCd"/>    
+				<jb:value data="/Document/AuthrtyChngNtfctn/GrpHdr/Rmk" property="rmk"/>    
+    		<jb:wiring beanIdRef="authrtyInf[0]" property="authrtyInf"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="authrtyInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="authrtyInf" />
+  </jb:bean>
+	<jb:bean beanId="authrtyInf" class="com.topfinance.ebo.msg.Ccms91500101AuthrtyInf" createOnElement="/Document/AuthrtyChngNtfctn/AuthrtyInf">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/AuthrtyChngNtfctn/AuthrtyInf/ChngCtrl/ChngTp" property="chngTp"/>
+				<jb:value data="/Document/AuthrtyChngNtfctn/AuthrtyInf/ChngCtrl/FctvTp" property="fctvTp"/>
+  			<jb:value data="/Document/AuthrtyChngNtfctn/AuthrtyInf/ChngCtrl/FctvDt" decoder="Date" property="fctvDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+  			<jb:value data="/Document/AuthrtyChngNtfctn/AuthrtyInf/ChngCtrl/IfctvDt" decoder="Date" property="ifctvDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/AuthrtyChngNtfctn/AuthrtyInf/InitPtcpt" property="initPtcpt"/>
+				<jb:value data="/Document/AuthrtyChngNtfctn/AuthrtyInf/RcvPtcpt" property="rcvPtcpt"/>
+
+    		<jb:wiring beanIdRef="bizAuthrtyInf[0]" property="bizAuthrtyInf"/>
+	</jb:bean>  
+  <jb:bean beanId="bizAuthrtyInf[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="bizAuthrtyInf" />
+  </jb:bean>
+	<jb:bean beanId="bizAuthrtyInf" class="com.topfinance.ebo.msg.Ccms91500101BizAuthrtyInf" createOnElement="/Document/AuthrtyChngNtfctn/AuthrtyInf/BizAuthrtyInf">
+		<jb:wiring beanIdRef="authrtyInf" property="fid"/>
+				<jb:value data="/Document/AuthrtyChngNtfctn/AuthrtyInf/BizAuthrtyInf/Mt" property="mT"/>
+				<jb:value data="/Document/AuthrtyChngNtfctn/AuthrtyInf/BizAuthrtyInf/TxTpCd" property="txTpCd"/>
+				<jb:value data="/Document/AuthrtyChngNtfctn/AuthrtyInf/BizAuthrtyInf/AuthrtySgnCd" property="authrtySgnCd"/>
+				<jb:value data="/Document/AuthrtyChngNtfctn/AuthrtyInf/BizAuthrtyInf/AuthrtyWght" property="authrtyWght"/>
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    
