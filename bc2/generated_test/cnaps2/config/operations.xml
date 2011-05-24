@@ -1595,5 +1595,221 @@
       	pathOpClass=""     	
       	>
       </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="hvps.712.001.01"
+      	name="hvps.712.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/DtlReq/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="hvps.713.001.01"
+      	name="hvps.712.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/DtlRspn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/DtlRspn/OrgnlGrpHdr/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="hvps.714.001.01"
+      	name="hvps.714.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/TxDwnldgReq/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="hvps.716.001.01"
+      	name="hvps.716.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/AcctChckng/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.721.001.01"
+      	name="beps.721.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/TtlChck/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/TtlChck/OrgnlGrpHdr/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.723.001.01"
+      	name="beps.723.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/DtlChckRspn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/DtlChckRspn/OrgnlGrpHdr/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.726.001.01"
+      	name="beps.721.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/AcctChck/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.121.001.01"
+      	name="beps.121.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/CstmrCdtTrf/PKGGrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.122.001.01"
+      	name="beps.122.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/FinCdtTrf/PKGGrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.127.001.01"
+      	name="beps.127.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/CstmrDrctDbt/PKGGrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="nets.355.001.01"
+      	name="nets.355.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/RtrLmt/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="saps.369.001.01"
+      	name="saps.369.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/LqdtyQryRspn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/LqdtyQryRspn/OrgnlGrpHdr/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="saps.615.001.01"
+      	name="saps.615.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/PoolIntrBkLnQryRspn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/PoolIntrBkLnQryRspn/OrgnlGrpHdr/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="saps.730.001.01"
+      	name="saps.730.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/ACSABSSttlmColltnChckng/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="saps.732.001.01"
+      	name="saps.732.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/ACSABSSttlmDtlRspn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId="/Document/ACSABSSttlmDtlRspn/OrgnlGrpHdr/OrgnlMsgId/text()"
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="saps.735.001.01"
+      	name="saps.735.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/AcctgDtlDwnLd/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="ccms.915.001.01"
+      	name="ccms.915.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/AuthrtyChngNtfctn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
+      
+      <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="ccms.917.001.01"
+      	name="ccms.917.001.01" 
+      	upIsEnabled="F" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	pathDocId="/Document/BsisChngNtfctn/GrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="" 
+      	pathOpClass=""     	
+      	>
+      </OperationDefinition>
    </list>
 </OperationDefinitions>

@@ -154,7 +154,7 @@ public class Cnaps2Constants {
 		} else if (mesgType.equals(TestDummy.OPERATION_354)) {
 			pkgName = "com.xml.cnaps2.nets.v35400101";
 		} else if (mesgType.equals(TestDummy.OPERATION_355)) {
-			pkgName = "com.xml.cnaps2.nets.v35500101";
+			pkgName = "com.xml.iso20022.camt.v01000104";
 		} else if (mesgType.equals(TestDummy.OPERATION_356)) {
 			pkgName = "com.xml.cnaps2.nets.v35600101";
 		} else if (mesgType.equals(TestDummy.OPERATION_357)) {

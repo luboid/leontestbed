@@ -10,8 +10,8 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@10.60.108.35:1521:tibcodev"/>
-		<!--  <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:ORCL"/>-->
+		<!--  <property name="url" value="jdbc:oracle:thin:@10.60.108.35:1521:tibcodev"/>-->
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:ORCL"/>
 		<property name="username" value="paygw"/>
 		<property name="password" value="12345"/>
 		
@@ -242,6 +242,49 @@
     			<value>com.topfinance.ebo.msg.Hvps71100101</value>
     			<value>com.topfinance.ebo.msg.Hvps71100101ChckMsg</value>
     			<value>com.topfinance.ebo.msg.Hvps71100101ChckPmtInfDtls</value>
+    			<value>com.topfinance.ebo.msg.Hvps71200101</value>
+    			<value>com.topfinance.ebo.msg.Hvps71200101Dtls</value>
+    			<value>com.topfinance.ebo.msg.Hvps71400101</value>
+    			<value>com.topfinance.ebo.msg.Hvps71400101TxsDtls</value>
+    			<value>com.topfinance.ebo.msg.Hvps71600101</value>
+    			<value>com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfRcvg</value>
+    			<value>com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfSndg</value>
+    			<value>com.topfinance.ebo.msg.Hvps71600101Dtls</value>
+    			<!--  
+    			<value>com.topfinance.ebo.msg.Beps12700101</value>
+    			<value>com.topfinance.ebo.msg.Beps12700101BllInf</value>
+    			<value>com.topfinance.ebo.msg.Beps12700101ChqInf</value>
+    			<value>com.topfinance.ebo.msg.Beps12700101CstmrDrctDbtInf</value>
+    			<value>com.topfinance.ebo.msg.Beps12700101EndrsrDtl</value>
+    			<value>com.topfinance.ebo.msg.Beps12700101NtlTrsrCdtInf</value>
+    			<value>com.topfinance.ebo.msg.Beps12700101NtlTrsrInf</value>
+    			<value>com.topfinance.ebo.msg.Beps12700101TxsDtls</value>-->
+    			
+    			<value>com.topfinance.ebo.msg.Beps72100101</value>
+    			<value>com.topfinance.ebo.msg.Beps72100101ChckMsgDtls</value>
+    			<value>com.topfinance.ebo.msg.Beps72100101ChckPmtInfDtls</value>  
+    			<!--  
+    			<value>com.topfinance.ebo.msg.Beps72600101</value>
+    			<value>com.topfinance.ebo.msg.Beps72600101ChckInfDtls1</value>
+    			<value>com.topfinance.ebo.msg.Beps72600101ChckInfDtls2</value>
+    			<value>com.topfinance.ebo.msg.Beps72600101SndDtls1</value>
+    			<value>com.topfinance.ebo.msg.Beps72600101RcvDtls1</value>
+    			<value>com.topfinance.ebo.msg.Beps72600101SndDtls2</value>
+    			<value>com.topfinance.ebo.msg.Beps72600101RcvDtls2</value>-->
+    			
+    			<value>com.topfinance.ebo.msg.Nets35500101</value> 
+    			<value>com.topfinance.ebo.msg.Saps36900101</value> 
+    			<value>com.topfinance.ebo.msg.Saps36900101OthrAcctInf</value> 
+    			<value>com.topfinance.ebo.msg.Saps36900101SttlmAcctInf</value> 
+    			<value>com.topfinance.ebo.msg.Saps61500101</value> 
+    			<value>com.topfinance.ebo.msg.Saps61500101TxDtl</value> 
+    			<value>com.topfinance.ebo.msg.Saps61500101TxList</value>  
+    			<value>com.topfinance.ebo.msg.Saps73500101</value> 
+    			<value>com.topfinance.ebo.msg.Saps73500101AcctList</value> 
+    			<value>com.topfinance.ebo.msg.Saps73500101BookgList</value> 
+    			<value>com.topfinance.ebo.msg.Ccms91500101</value> 
+    			<value>com.topfinance.ebo.msg.Ccms91500101AuthrtyInf</value> 
+    			<value>com.topfinance.ebo.msg.Ccms91500101BizAuthrtyInf</value> 
 			</list>
 		</property>
 		<property name="hibernateProperties">

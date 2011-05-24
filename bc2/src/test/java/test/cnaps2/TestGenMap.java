@@ -502,17 +502,6 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void btestGenerated_712() throws Exception {
-		String msgCode = "hvps.712.001.01";
-		String tpCode = "";
-		String clsCode = "";
-		if(TO_GENERATE) {
-			_testGenPublicMap(msgCode, tpCode, clsCode);
-		} else {
-			_testGenerated(msgCode, tpCode, clsCode);
-		}
-	}
-	
 	public void btestGenerated_713() throws Exception {
 		String msgCode = "hvps.713.001.01";
 		String tpCode = "";
@@ -524,30 +513,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void btestGenerated_714() throws Exception {
-		String msgCode = "hvps.714.001.01";
-		String tpCode = "";
-		String clsCode = "";
-		if(TO_GENERATE) {
-			_testGenPublicMap(msgCode, tpCode, clsCode);
-		} else {
-			_testGenerated(msgCode, tpCode, clsCode);
-		}
-	}
-	
 	public void atestGenerated_715() throws Exception {
 		String msgCode = "hvps.715.001.01";
-		String tpCode = "";
-		String clsCode = "";
-		if(TO_GENERATE) {
-			_testGenPublicMap(msgCode, tpCode, clsCode);
-		} else {
-			_testGenerated(msgCode, tpCode, clsCode);
-		}
-	}
-	
-	public void btestGenerated_716() throws Exception {
-		String msgCode = "hvps.716.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {
@@ -1570,7 +1537,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_712() throws Exception {
+	public void atestGenerated_712() throws Exception {
 		String msgCode = "hvps.712.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1603,7 +1570,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void atestGenerated_716() throws Exception {
+	public void btestGenerated_716() throws Exception {
 		String msgCode = "hvps.716.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1746,7 +1713,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void atestGenerated_915() throws Exception {
+	public void testGenerated_915() throws Exception {
 		String msgCode = "ccms.915.001.01";
 		String tpCode = "";
 		String clsCode = "";
