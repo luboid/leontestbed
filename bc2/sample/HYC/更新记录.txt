@@ -1788,3 +1788,136 @@ T_C2_BIS_ELE_BSC表中,msg_code='hvps.711.001.01'数据报文中
 /Document/SummryFile/OrgnlGrpHdr/OrgnlMT
 /Document/SummryFile/SummryFileInf/ChckPmtInfDtls/SndgCtrlSum
 /Document/SummryFile/SummryFileInf/ChckPmtInfDtls/RcvgCtrlSum
+
+2011-05-23 sunhuazhong
+1、hvps.713.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='hvps.713.001.01'数据报文中
+/Document/DtlRspn/OrgnlGrpHdr/OrgnlMT
+/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfSndg/OrgnlGrpHdr/OrgnlMT
+/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfRcvg/OrgnlGrpHdr/OrgnlMT
+
+2、hvps.714.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='hvps.714.001.01'数据报文中
+/Document/TxDwnldgReq/TxDwnldgReqInf/TxsDtls/OrgnlGrpHdr/OrgnlMT
+
+3、hvps.716.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='hvps.716.001.01'数据报文中
+/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfSndg/OrgnlGrpHdr/OrgnlMT
+/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfRcvg/OrgnlGrpHdr/OrgnlMT
+
+4、beps.121.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.121.001.01'数据报文中
+/Document/CstmrCdtTrf/PKGGrpHdr/MsgId
+/Document/CstmrCdtTrf/PKGGrpHdr/CreDtTm
+/Document/CstmrCdtTrf/PKGGrpHdr/InstgPty/InstgDrctPty
+/Document/CstmrCdtTrf/PKGGrpHdr/InstdPty/InstdDrctPty
+/Document/CstmrCdtTrf/PKGGrpHdr/NbOfTxs
+/Document/CstmrCdtTrf/PKGGrpHdr/CtrlSum
+/Document/CstmrCdtTrf/PKGGrpHdr/SysCd
+/Document/CstmrCdtTrf/PKGGrpHdr/Rmk
+/Document/CstmrCdtTrf/NPCPrcInf/PrcSts
+/Document/CstmrCdtTrf/NPCPrcInf/PrcCd
+/Document/CstmrCdtTrf/NPCPrcInf/RjctInf
+/Document/CstmrCdtTrf/NPCPrcInf/NetgDt
+/Document/CstmrCdtTrf/NPCPrcInf/NetgRnd
+/Document/CstmrCdtTrf/NPCPrcInf/SttlmDt
+/Document/CstmrCdtTrf/NPCPrcInf/RcvTm
+/Document/CstmrCdtTrf/NPCPrcInf/TrnsmtTm
+/Document/CstmrCdtTrf/CstmrCdtTrFinf
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/TxId
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/Dbtr/Nm
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/DbtrAcct/Id/Othr/Id
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/DbtrAcct/Id/Othr/Issr
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/DbtrAgt/BrnchId/Id
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CdtrAgt/BrnchId/Id
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/Cdtr/Nm
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CdtrAcct/Id/Othr/Id
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CdtrAcct/Id/Othr/Issr
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/Amt
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/PmtTpInf/CtgyPurp/Prtry
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/Purp/Prtry
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/AddtlInf
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/ColltnInf
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/ColltnInf/Tp
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/ColltnInf/Dt
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/ColltnInf/Nb
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/ColltnWthAccptncInf
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/ColltnWthAccptncInf/Dt
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/ColltnWthAccptncInf/Nb
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/ColltnWthAccptncInf/AmdsAmt
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/ColltnWthAccptncInf/RctAmt
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/FslInf/FlowNb
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/FslInf/Amt
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/FslInf/RptCd
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/FslInf/RcvCd
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/FslInf/RptFrms
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/FslInf/RptNb
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/NbOfTxs
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/NtlTrsrInfDtls
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/NtlTrsrInfDtls/TpCd
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/NtlTrsrInfDtls/CptlCd
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/NtlTrsrInfDtls/CptlAmt
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/NtlTrsrInfDtls/AcrlCd
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/NtlTrsrInf/NtlTrsrInfDtls/AcrlAmt
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/PmtInf
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/PmtInf/FlowNb
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/PmtInf/Term
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/PmtInf/Tp
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/PmtInf/Rmk
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/RtrInf
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/RtrInf/OrgnlGrpHdr/OrgnlMsgId
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/RtrInf/OrgnlGrpHdr/OrgnlInstgPty
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/RtrInf/OrgnlGrpHdr/OrgnlMsgTp
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/RtrInf/OrgnlTx/InstgIndrctPty
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/RtrInf/OrgnlTx/InstdIndrctPty
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/RtrInf/OrgnlTx/OrgnlTxId
+/Document/CstmrCdtTrf/CstmrCdtTrFinf/CstmrCdtTrfAddtlInf/RtrInf/OrgnlTx/OrgnlTxTpCd
+
+5、beps.122.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.122.001.01'数据报文中
+/Document/FinCdtTrf/FinCdtTrFinf/FinCdtTrfAddtlInf/NtlTrsrCdtInf/FslInf/Amt
+/Document/FinCdtTrf/FinCdtTrFinf/FinCdtTrfAddtlInf/NtlTrsrInf/FslInf/Amt
+
+6、beps.127.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.127.001.01'数据报文中
+/Document/CstmrDrctDbt/PKGGrpHdr/MsgId
+/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/FslInf/Amt
+/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/FslInf/Amt
+/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/FslInf/RcvCd
+
+7、beps.721.001.01
+表T_C2_BEPS_721_APX_XX中字段COOLUMN_11名称修改为INFORCVTTLCNT
+表T_C2_BEPS_721_APX_XX中新增字段INFONBOFCHCKINF	VARCHAR2(8)	Y			信息报文对账记录数
+
+8、beps.723.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='beps.723.001.01'数据报文中
+/Document/DtlChckRspn/DtlChckRspnInf/ChckDt
+
+9、nets.355.001.01
+表T_C2_NETS_355中字段COLUMN_9名称修改为INFORCVTTLCNTDt
+
+10、saps.369.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='saps.369.001.01'数据报文中
+/Document/LqdtyQryRspn/OrgnlGrpHdr/OrgnlMT
+
+11、saps.615.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='saps.615.001.01'数据报文中
+/Document/PoolIntrBkLnQryRspn/OrgnlGrpHdr/OrgnlMT
+ALTER TABLE "T_C2_SAPS_615"
+   DROP CONSTRAINT FK_T_C2_SAP_RFERENCE_T_C2_615H;
+
+ALTER TABLE "T_C2_SAPS_615_DETAIL"
+   DROP CONSTRAINT FK_T_C2_SAP_REFERENCE_T_C2_615;
+
+ALTER TABLE "T_C2_SAPS_615_DETAIL"
+   ADD CONSTRAINT FK_T_C2_SAP_RFERENCE_T_C2_615H FOREIGN KEY (FID)
+      REFERENCES "T_C2_SAPS_615_HDR" (ID);
+
+ALTER TABLE "T_C2_SAPS_615"
+   ADD CONSTRAINT FK_T_C2_SAP_RFERENCE_T_C2_615D FOREIGN KEY (FID)
+      REFERENCES "T_C2_SAPS_615_DETAIL" (ID);
+
+12、saps.732.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='saps.732.001.01'数据报文中	
+/Document/AcsAbsSttlmDtlRspn/OrgnlGrpHdr/OrgnlMT
