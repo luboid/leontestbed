@@ -11,7 +11,7 @@ public class TestGenMap extends TestGenMapLeon {
 	public final static boolean USE_DB = true;
 	
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean TO_GENERATE = false;
+	public final static boolean TO_GENERATE = true;
 	
 	//private static final String basePath = "D:/bankConnector/source/generated_test";
 	private static final String basePath = "D:/DEV.WORK/EBO/bc2/generated_test";
@@ -1581,7 +1581,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void atestGenerated_122() throws Exception {
+	public void testGenerated_122() throws Exception {
 		String msgCode = "beps.122.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1680,7 +1680,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_732() throws Exception {
+	public void atestGenerated_732() throws Exception {
 		String msgCode = "saps.732.001.01";
 		String tpCode = "";
 		String clsCode = "";

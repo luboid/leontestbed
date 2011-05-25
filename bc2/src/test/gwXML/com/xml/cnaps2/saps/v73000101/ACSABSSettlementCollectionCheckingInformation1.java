@@ -170,4 +170,16 @@ public class ACSABSSettlementCollectionCheckingInformation1 {
         return this.netgChckng;
     }
 
+	public void setUnltrlChckng(List<UnilateralChecking1> unltrlChckng) {
+		this.unltrlChckng = unltrlChckng;
+	}
+
+	public void setRvslChckng(List<ReversalChecking1> rvslChckng) {
+		this.rvslChckng = rvslChckng;
+	}
+
+	public void setNetgChckng(List<NettingChecking1> netgChckng) {
+		this.netgChckng = netgChckng;
+	}
+
 }

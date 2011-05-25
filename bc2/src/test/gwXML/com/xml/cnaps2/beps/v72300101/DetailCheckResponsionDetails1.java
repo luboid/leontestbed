@@ -216,4 +216,16 @@ public class DetailCheckResponsionDetails1 {
         return this.orgnlPmtDtls;
     }
 
+	public String getMt() {
+		return mt;
+	}
+
+	public void setMt(String mt) {
+		this.mt = mt;
+	}
+
+	public void setOrgnlPmtDtls(List<OriginalPaymentDetails1> orgnlPmtDtls) {
+		this.orgnlPmtDtls = orgnlPmtDtls;
+	}
+
 }

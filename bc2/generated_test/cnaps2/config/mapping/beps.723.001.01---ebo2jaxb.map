@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.java</param>
+    <param name="input.java" type="input.type.actived">com.topfinance.ebo.msg.Beps72300101</param>
+  </params>
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0].xxx" class="com.xml.cnaps2.beps.v72300101.DetailCheckMessageResponsionDetails1" createOnElement="com.topfinance.ebo.msg.Beps72300101DtlChckMsgRspnDtls">
+    	<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0].xxx.orgnlMsgDtls[0]" property="orgnlMsgDtls"/>
+  				<jb:value data="infoSndRcvTp"  property="sndRcvTp"/>
+  				<jb:value data="infoMT"  property="mt"/>
+  				<jb:value data="infoNbOfDtls"  property="nbOfDtls"/>
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf" class="com.xml.cnaps2.beps.v72300101.DetailCheckPaymentResponsionInformation1" createOnElement="com.topfinance.ebo.msg.Beps72300101">
+    	<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0]" property="dtlChckRspnDtls"/>
+  				<jb:value data="nbOfTxs"  property="nbOfTxs"/>
+  	</jb:bean>
+  	<jb:bean beanId="target" class="com.xml.cnaps2.beps.v72300101.Document" createOnElement="com.topfinance.ebo.msg.Beps72300101">
+    	<jb:wiring beanIdRef="dtlChckRspn" property="dtlChckRspn"/>
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.grpHdr.instgPty" class="com.xml.cnaps2.beps.v72300101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Beps72300101">
+  				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
+  				<jb:value data="instgIndrctPty"  property="instgPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps72300101/dtlChckRspnDtls">
+    	<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0].xxx" class="com.xml.cnaps2.beps.v72300101.DetailCheckResponsionDetails1" createOnElement="com.topfinance.ebo.msg.Beps72300101DtlChckRspnDtls">
+    	<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0].xxx.orgnlPmtDtls[0]" property="orgnlPmtDtls"/>
+  				<jb:value data="bizSndRcvTp"  property="sndRcvTp"/>
+  				<jb:value data="bizTxNetgDt" decoder="Date" property="txNetgDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="bizTxNetgRnd"  property="txNetgRnd"/>
+  				<jb:value data="bizMT"  property="mt"/>
+  				<jb:value data="bizNbOfDtls"  property="nbOfDtls"/>
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.grpHdr.instdPty" class="com.xml.cnaps2.beps.v72300101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Beps72300101">
+  				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
+  				<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.prttn" class="com.xml.cnaps2.beps.v72300101.Partition1" createOnElement="com.topfinance.ebo.msg.Beps72300101">
+  				<jb:value data="ttlNb"  property="ttlNb"/>
+  				<jb:value data="startNb"  property="startNb"/>
+  				<jb:value data="endNb"  property="endNb"/>
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.npcPrcInf" class="com.xml.cnaps2.beps.v72300101.NPCProcessInformation1" createOnElement="com.topfinance.ebo.msg.Beps72300101">
+  				<jb:value data="prcSts"  property="prcSts"/>
+  				<jb:value data="prcCd"  property="prcCd"/>
+  				<jb:value data="rjctInf"  property="rjctInf"/>
+  				<jb:value data="netgDt" decoder="Date" property="netgDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="netgRnd"  property="netgRnd"/>
+  				<jb:value data="sttlmDt" decoder="Date" property="sttlmDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="rcvTm" decoder="Date" property="rcvTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="trnsmtTm" decoder="Date" property="trnsmtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn" class="com.xml.cnaps2.beps.v72300101.DetailCheckMessageResponsion1" createOnElement="com.topfinance.ebo.msg.Beps72300101">
+    	<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0]" property="dtlChckMsgRspnDtls"/>
+  				<jb:value data="bizNbOfTxs"  property="nbOfTxs"/>
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.grpHdr" class="com.xml.cnaps2.beps.v72300101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps72300101">
+    	<jb:wiring beanIdRef="dtlChckRspn.grpHdr.instgPty" property="instgPty"/>
+    	<jb:wiring beanIdRef="dtlChckRspn.grpHdr.instdPty" property="instdPty"/>
+  				<jb:value data="msgId"  property="msgId"/>
+  				<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  				<jb:value data="sysCd"  property="sysCd"/>
+  				<jb:value data="rmk"  property="rmk"/>
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn" class="com.xml.cnaps2.beps.v72300101.DetailCheckResponsion" createOnElement="com.topfinance.ebo.msg.Beps72300101">
+    	<jb:wiring beanIdRef="dtlChckRspn.grpHdr" property="grpHdr"/>
+    	<jb:wiring beanIdRef="dtlChckRspn.prttn" property="prttn"/>
+    	<jb:wiring beanIdRef="dtlChckRspn.orgnlGrpHdr" property="orgnlGrpHdr"/>
+    	<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf" property="dtlChckRspnInf"/>
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf" class="com.xml.cnaps2.beps.v72300101.DetailCheckResponsionInformation1" createOnElement="com.topfinance.ebo.msg.Beps72300101">
+    	<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.npcPrcInf" property="npcPrcInf"/>
+    	<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf" property="dtlChckPmtRspnInf"/>
+    	<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn" property="dtlChckMsgRspn"/>
+  				<jb:value data="chckngDt" decoder="Date" property="chckDt">
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+					</jb:value>
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps72300101/dtlChckMsgRspnDtls">
+    	<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.orgnlGrpHdr" class="com.xml.cnaps2.beps.v72300101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps72300101">
+  				<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  				<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  				<jb:value data="orgnlMT"  property="orgnlMsgTp"/>
+  	</jb:bean>
+	
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0].xxx.orgnlPmtDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps72300101DtlChckRspnDtls">
+  			<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0].xxx.orgnlPmtDtls[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0].xxx.orgnlPmtDtls[0].xxx" class="com.xml.cnaps2.beps.v72300101.OriginalPaymentDetails1" createOnElement="com.topfinance.ebo.msg.Beps72300101OrgnlPmtDtls">
+		<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0].xxx.orgnlPmtDtls[0].xxx.orgnlGrpHdr" property="orgnlGrpHdr"/>
+		<jb:value data="bizTtlCnt" property="ttlCnt"/>
+		<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0].xxx.orgnlPmtDtls[0].xxx.ctrlSum" property="ctrlSum"/>
+		<jb:value data="bizPrcSts" property="prcSts"/>
+  	</jb:bean>
+	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0].xxx.orgnlPmtDtls[0].xxx.ctrlSum" class="com.xml.cnaps2.beps.v72300101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Beps72300101OrgnlPmtDtls">
+  		<jb:value data="bizCtrlSum" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckPmtRspnInf.dtlChckRspnDtls[0].xxx.orgnlPmtDtls[0].xxx.orgnlGrpHdr" class="com.xml.cnaps2.beps.v72300101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps72300101OrgnlPmtDtls">
+		<jb:value data="bizOrgnlMsgId" property="orgnlMsgId"/>
+		<jb:value data="bizOrgnlInstgDrctPty" property="orgnlInstgPty"/>
+		<jb:value data="bizOrgnlMT" property="orgnlMsgTp"/>
+  	</jb:bean>
+
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0].xxx.orgnlMsgDtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Beps72300101DtlChckMsgRspnDtls">
+  			<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0].xxx.orgnlMsgDtls[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0].xxx.orgnlMsgDtls[0].xxx" class="com.xml.cnaps2.beps.v72300101.OriginalMessageDetails1" createOnElement="com.topfinance.ebo.msg.Beps72300101OrgnlMsgDtls">
+		<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0].xxx.orgnlMsgDtls[0].xxx.orgnlGrpHdr" property="orgnlGrpHdr"/>
+		<jb:value data="bizPrcSts" property="prcSts"/>
+  	</jb:bean>
+	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0].xxx.orgnlMsgDtls[0].xxx.orgnlGrpHdr" class="com.xml.cnaps2.beps.v72300101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps72300101OrgnlMsgDtls">
+		<jb:value data="bizOrgnlMsgId" property="orgnlMsgId"/>
+		<jb:value data="bizOrgnlInstgDrctPty" property="orgnlInstgPty"/>
+		<jb:value data="bizOrgnlMT" property="orgnlMsgTp"/>
+  	</jb:bean>
+</smooks-resource-list>  
+    

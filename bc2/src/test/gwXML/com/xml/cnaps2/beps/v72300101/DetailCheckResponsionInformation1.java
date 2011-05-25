@@ -89,7 +89,7 @@ public class DetailCheckResponsionInformation1 {
      *     {@link NPCProcessInformation1 }
      *     
      */
-    public NPCProcessInformation1 getNPCPrcInf() {
+    public NPCProcessInformation1 getNpcPrcInf() {
         return npcPrcInf;
     }
 
@@ -101,7 +101,7 @@ public class DetailCheckResponsionInformation1 {
      *     {@link NPCProcessInformation1 }
      *     
      */
-    public void setNPCPrcInf(NPCProcessInformation1 value) {
+    public void setNpcPrcInf(NPCProcessInformation1 value) {
         this.npcPrcInf = value;
     }
 

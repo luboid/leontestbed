@@ -10,10 +10,10 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-		<!--  <property name="url" value="jdbc:oracle:thin:@10.60.108.35:1521:tibcodev"/>-->
-		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:ORCL"/>
+		<property name="url" value="jdbc:oracle:thin:@10.60.108.35:1521:tibcodev"/>
+		<!--  <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:ORCL"/>-->
 		<property name="username" value="paygw"/>
-		<property name="password" value="12345"/>
+		<property name="password" value="1234"/>
 		
 		<!--<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/bankA3?setUnicode=true&amp;characterEncoding=UTF-8"/>
@@ -303,6 +303,17 @@
     			<value>com.topfinance.ebo.msg.Saps73200101NetgList</value>
     			<value>com.topfinance.ebo.msg.Saps73200101RvslList</value> 
     			<value>com.topfinance.ebo.msg.Saps73200101UnltrlList</value> 
+    			
+    			<value>com.topfinance.ebo.msg.Saps73000101</value>
+    			<value>com.topfinance.ebo.msg.Saps73000101UnltrlChckng</value>
+    			<value>com.topfinance.ebo.msg.Saps73000101RvslChckng</value>
+    			<value>com.topfinance.ebo.msg.Saps73000101NetgChckng</value> 
+    			
+    			<value>com.topfinance.ebo.msg.Beps72300101</value>
+    			<value>com.topfinance.ebo.msg.Beps72300101DtlChckMsgRspnDtls</value>
+    			<value>com.topfinance.ebo.msg.Beps72300101DtlChckRspnDtls</value>
+    			<value>com.topfinance.ebo.msg.Beps72300101OrgnlMsgDtls</value> 
+    			<value>com.topfinance.ebo.msg.Beps72300101OrgnlPmtDtls</value> 
 			</list>
 		</property>
 		<property name="hibernateProperties">

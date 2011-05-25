@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Document", propOrder = {
-    "acsabsSttlmColltnChckng"
+    "acsAbsSttlmColltnChckng"
 })
 public class Document {
 
@@ -50,7 +50,7 @@ public class Document {
      *     {@link ACSABSSttlmColltnChckngV01 }
      *     
      */
-    public ACSABSSttlmColltnChckngV01 getACSABSSttlmColltnChckng() {
+    public ACSABSSttlmColltnChckngV01 getAcsAbsSttlmColltnChckng() {
         return acsAbsSttlmColltnChckng;
     }
 
@@ -62,7 +62,7 @@ public class Document {
      *     {@link ACSABSSttlmColltnChckngV01 }
      *     
      */
-    public void setACSABSSttlmColltnChckng(ACSABSSttlmColltnChckngV01 value) {
+    public void setAcsAbsSttlmColltnChckng(ACSABSSttlmColltnChckngV01 value) {
         this.acsAbsSttlmColltnChckng = value;
     }
 

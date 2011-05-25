@@ -115,9 +115,10 @@
 		<jb:value data="netDbtrAmt" property="dbtrAmt"/>
 		<jb:value data="netCdtrAmt" property="cdtrAmt"/>
 		<jb:value data="netNbOfMmb" property="nbOfMmb"/>
+		<jb:wiring beanIdRef="acsAbsSttlmDtlRspn.acsAbsSttlmDtlRspnInf.chckngInf.netgList[0].xxx.bookgList[0]" property="bookgList"/>
   	</jb:bean>
 
-  	<jb:bean beanId="acsAbsSttlmDtlRspn.acsAbsSttlmDtlRspnInf.chckngInf.netgList[0].xxx.bookgList[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps73200101BookgList">
+  	<jb:bean beanId="acsAbsSttlmDtlRspn.acsAbsSttlmDtlRspnInf.chckngInf.netgList[0].xxx.bookgList[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Saps73200101NetgList">
     		<jb:wiring beanIdRef="acsAbsSttlmDtlRspn.acsAbsSttlmDtlRspnInf.chckngInf.netgList[0].xxx.bookgList[0].xxx" />
   	</jb:bean>
   	<jb:bean beanId="acsAbsSttlmDtlRspn.acsAbsSttlmDtlRspnInf.chckngInf.netgList[0].xxx.bookgList[0].xxx" class="com.xml.cnaps2.saps.v73200101.BookingList1" createOnElement="com.topfinance.ebo.msg.Saps73200101BookgList">

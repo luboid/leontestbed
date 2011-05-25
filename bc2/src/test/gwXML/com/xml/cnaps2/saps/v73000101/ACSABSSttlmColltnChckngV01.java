@@ -78,7 +78,7 @@ public class ACSABSSttlmColltnChckngV01 {
      *     {@link ACSABSSettlementCollectionCheckingInformation1 }
      *     
      */
-    public ACSABSSettlementCollectionCheckingInformation1 getACSABSSttlmColltnChckngInf() {
+    public ACSABSSettlementCollectionCheckingInformation1 getAcsAbsSttlmColltnChckngInf() {
         return acsAbsSttlmColltnChckngInf;
     }
 
@@ -90,7 +90,7 @@ public class ACSABSSttlmColltnChckngV01 {
      *     {@link ACSABSSettlementCollectionCheckingInformation1 }
      *     
      */
-    public void setACSABSSttlmColltnChckngInf(ACSABSSettlementCollectionCheckingInformation1 value) {
+    public void setAcsAbsSttlmColltnChckngInf(ACSABSSettlementCollectionCheckingInformation1 value) {
         this.acsAbsSttlmColltnChckngInf = value;
     }
 
