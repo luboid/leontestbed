@@ -1945,3 +1945,6 @@ T_C2_BIS_ELE_BSC表中,msg_code='beps.121.001.01'数据报文中
 /Document/CstmrCdtTrf/NPCPrcInf/RcvTm
 /Document/CstmrCdtTrf/NPCPrcInf/TrnsmtTm
 /Document/CstmrCdtTrf/CstmrCdtTrfInf/CstmrCdtTrfAddtlInf/RtrInf/Cnts
+
+4、hvps.713.001.01
+表T_C2_HVPS_713新增字段CHCKDT	DATE	Y			对账日期
