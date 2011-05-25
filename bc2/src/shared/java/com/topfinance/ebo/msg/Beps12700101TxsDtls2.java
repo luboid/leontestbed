@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
@@ -22,7 +24,7 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_C2_BEPS_121_APX_GKZJDF")
+@Table(name = "T_C2_BEPS_127_APX_GKZJDF_MX")
 public class Beps12700101TxsDtls2  implements java.io.Serializable {
 
     // Fields 
@@ -44,9 +46,21 @@ public class Beps12700101TxsDtls2  implements java.io.Serializable {
     @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf.txsDtls[0].acrlAmt")
     private Double ntlAcrlAmt;
     
+    private Beps12700101NtlTrsrInf fid;
     
-	
-    /** default constructor */
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps12700101NtlTrsrInf getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps12700101NtlTrsrInf fid) {
+		this.fid = fid;
+	}
+
+
+	/** default constructor */
     public Beps12700101TxsDtls2() {
     }
 	

@@ -250,15 +250,17 @@
     			<value>com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfRcvg</value>
     			<value>com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfSndg</value>
     			<value>com.topfinance.ebo.msg.Hvps71600101Dtls</value>
-    			<!--  
+
     			<value>com.topfinance.ebo.msg.Beps12700101</value>
     			<value>com.topfinance.ebo.msg.Beps12700101BllInf</value>
     			<value>com.topfinance.ebo.msg.Beps12700101ChqInf</value>
     			<value>com.topfinance.ebo.msg.Beps12700101CstmrDrctDbtInf</value>
-    			<value>com.topfinance.ebo.msg.Beps12700101EndrsrDtl</value>
+    			<value>com.topfinance.ebo.msg.Beps12700101EndrsrDtl1</value>
+    			<value>com.topfinance.ebo.msg.Beps12700101EndrsrDtl2</value>
     			<value>com.topfinance.ebo.msg.Beps12700101NtlTrsrCdtInf</value>
     			<value>com.topfinance.ebo.msg.Beps12700101NtlTrsrInf</value>
-    			<value>com.topfinance.ebo.msg.Beps12700101TxsDtls</value>-->
+    			<value>com.topfinance.ebo.msg.Beps12700101TxsDtls1</value>
+    			<value>com.topfinance.ebo.msg.Beps12700101TxsDtls2</value>
     			
     			<value>com.topfinance.ebo.msg.Beps72100101</value>
     			<value>com.topfinance.ebo.msg.Beps72100101ChckMsgDtls</value>

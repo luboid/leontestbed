@@ -129,4 +129,9 @@ public class CustomerDirectDebit {
         return this.cstmrDrctDbtInf;
     }
 
+	public void setCstmrDrctDbtInf(
+			List<CustomerDirectDebitInformation1> cstmrDrctDbtInf) {
+		this.cstmrDrctDbtInf = cstmrDrctDbtInf;
+	}
+
 }

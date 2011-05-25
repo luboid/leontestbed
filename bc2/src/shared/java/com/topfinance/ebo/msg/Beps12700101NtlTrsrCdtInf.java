@@ -24,7 +24,7 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_MSG_BEPS_127_001_01___NtlTrsrCdtInf")
+@Table(name = "T_C2_BEPS_127_APX_HB")
 public class Beps12700101NtlTrsrCdtInf  implements java.io.Serializable {
 
     // Fields 
@@ -224,7 +224,7 @@ public class Beps12700101NtlTrsrCdtInf  implements java.io.Serializable {
    * 
    * @return the credFlowNb1
    */
-    @Column(name = "CREDFLOWNB1")
+    @Column(name = "CREDBUGTLVL")
     public String getCredFlowNb1() {
         return credFlowNb1;
     }	 
@@ -300,7 +300,7 @@ public class Beps12700101NtlTrsrCdtInf  implements java.io.Serializable {
      * 
      * @return the txsDtls
      */
-    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
       public java.util.Set<Beps12700101TxsDtls1> getTxsDtls() {
           return txsDtls;
       }	 

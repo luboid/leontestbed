@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="Ind" type="{urn:cnaps:std:beps:2010:tech:xsd:beps.122.001.01}IndicatorCode1"/>
  *         &lt;element name="BugtTp" type="{urn:cnaps:std:beps:2010:tech:xsd:beps.122.001.01}BudgetTypeCode1"/>
  *         &lt;element name="NbOfTxs" type="{urn:cnaps:std:beps:2010:tech:xsd:beps.122.001.01}Max8NumericText"/>
- *         &lt;element name="NtlTrsrCdtInfDtls" type="{urn:cnaps:std:beps:2010:tech:xsd:beps.122.001.01}NationalTreasuryCreditInformationDetails1" maxOccurs="unbounded"/>
+ *         &lt;element name="TxsDtls" type="{urn:cnaps:std:beps:2010:tech:xsd:beps.122.001.01}NationalTreasuryCreditInformationDetails1" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -47,7 +47,7 @@ import javax.xml.bind.annotation.XmlType;
     "ind",
     "bugtTp",
     "nbOfTxs",
-    "ntlTrsrCdtInfDtls"
+    "txsDtls"
 })
 public class NationalTreasuryCreditInformation1 {
 
@@ -61,8 +61,8 @@ public class NationalTreasuryCreditInformation1 {
     protected String bugtTp;
     @XmlElement(name = "NbOfTxs", required = true)
     protected String nbOfTxs;
-    @XmlElement(name = "NtlTrsrCdtInfDtls", required = true)
-    protected List<NationalTreasuryCreditInformationDetails1> ntlTrsrCdtInfDtls = new Vector<NationalTreasuryCreditInformationDetails1>();
+    @XmlElement(name = "TxsDtls", required = true)
+    protected List<NationalTreasuryCreditInformationDetails1> txsDtls = new Vector<NationalTreasuryCreditInformationDetails1>();
 
     /**
      * Gets the value of the fslInf property.
@@ -206,16 +206,16 @@ public class NationalTreasuryCreditInformation1 {
      * 
      * 
      */
-    public List<NationalTreasuryCreditInformationDetails1> getNtlTrsrCdtInfDtls() {
-        if (ntlTrsrCdtInfDtls == null) {
-            ntlTrsrCdtInfDtls = new Vector<NationalTreasuryCreditInformationDetails1>();
+    public List<NationalTreasuryCreditInformationDetails1> getTxsDtls() {
+        if (txsDtls == null) {
+        	txsDtls = new Vector<NationalTreasuryCreditInformationDetails1>();
         }
-        return this.ntlTrsrCdtInfDtls;
+        return this.txsDtls;
     }
 
-	public void setNtlTrsrCdtInfDtls(
+	public void setTxsDtls(
 			List<NationalTreasuryCreditInformationDetails1> ntlTrsrCdtInfDtls) {
-		this.ntlTrsrCdtInfDtls = ntlTrsrCdtInfDtls;
+		this.txsDtls = ntlTrsrCdtInfDtls;
 	}
 
 }

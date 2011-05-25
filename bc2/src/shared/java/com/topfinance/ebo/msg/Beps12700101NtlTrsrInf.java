@@ -24,7 +24,7 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_MSG_BEPS_127_001_01___NtlTrsrInf")
+@Table(name = "T_C2_BEPS_127_APX_GKZJDF")
 public class Beps12700101NtlTrsrInf  implements java.io.Serializable {
 
     // Fields 
@@ -74,7 +74,7 @@ public class Beps12700101NtlTrsrInf  implements java.io.Serializable {
      * 
      * @return the txsDtls1
      */
-    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
       public java.util.Set<Beps12700101TxsDtls2> getTxsDtls1() {
           return txsDtls1;
       }	 

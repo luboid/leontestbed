@@ -24,7 +24,7 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_MSG_BEPS_127_001_01___ChqInf")
+@Table(name = "T_C2_BEPS_127_APX_ZPJL")
 public class Beps12700101ChqInf  implements java.io.Serializable {
 
     // Fields 
@@ -70,7 +70,7 @@ public class Beps12700101ChqInf  implements java.io.Serializable {
      * 
      * @return the endrsrDtl
      */
-    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
       public java.util.Set<Beps12700101EndrsrDtl1> getEndrsrDtl() {
           return endrsrDtl;
       }	 

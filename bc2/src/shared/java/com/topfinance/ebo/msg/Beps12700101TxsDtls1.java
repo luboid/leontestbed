@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
@@ -22,7 +24,7 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_C2_BEPS_121_APX_GKZJDF")
+@Table(name = "T_C2_BEPS_127_APX_HB_MX")
 public class Beps12700101TxsDtls1  implements java.io.Serializable {
 
     // Fields 
@@ -30,23 +32,29 @@ public class Beps12700101TxsDtls1  implements java.io.Serializable {
     private Integer id;
     
     @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf.txsDtls[0].tpCd")
-    private String ntlTpCd;
+    private String credTpCd;
     
-    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf.txsDtls[0].cptlCd")
-    private String ntlCptlCd;
+    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf.txsDtls[0].sbjtCd")
+    private String credSbjtCd;
     
-    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf.txsDtls[0].cptlAmt")
-    private Double ntlCptlAmt;
+    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf.txsDtls[0].amt")
+    private Double credAmt;
     
-    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf.txsDtls[0].acrlCd")
-    private String ntlAcrlCd;
+    private Beps12700101NtlTrsrCdtInf fid;
     
-    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf.txsDtls[0].acrlAmt")
-    private Double ntlAcrlAmt;
-    
-    
-	
-    /** default constructor */
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps12700101NtlTrsrCdtInf getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps12700101NtlTrsrCdtInf fid) {
+		this.fid = fid;
+	}
+
+
+	/** default constructor */
     public Beps12700101TxsDtls1() {
     }
 	
@@ -72,103 +80,64 @@ public class Beps12700101TxsDtls1  implements java.io.Serializable {
 
     public void  setid(Integer newid) {
         id = newid;
-    }	  
-  /**
-   * Returns the ntlTpCd
-   * 
-   * @return the ntlTpCd
-   */
-    @Column(name = "NTLTPCD")
-    public String getNtlTpCd() {
-        return ntlTpCd;
-    }	 
-     
-  /**
-   * Sets the ntlTpCd
-   *
-   * @param newNtlTpCd the new ntlTpCd
-   */
+    }  
+    /**
+     * Returns the ntlTpCd
+     * 
+     * @return the ntlTpCd
+     */
+      @Column(name = "CREDTPCD")
+      public String getCredTpCd() {
+          return credTpCd;
+      }	 
+       
+    /**
+     * Sets the ntlTpCd
+     *
+     * @param newNtlTpCd the new ntlTpCd
+     */
 
-    public void  setNtlTpCd(String newNtlTpCd) {
-        ntlTpCd = newNtlTpCd;
-    }	  
-  /**
-   * Returns the ntlCptlCd
-   * 
-   * @return the ntlCptlCd
-   */
-    @Column(name = "NTLCPTLCD")
-    public String getNtlCptlCd() {
-        return ntlCptlCd;
-    }	 
-     
-  /**
-   * Sets the ntlCptlCd
-   *
-   * @param newNtlCptlCd the new ntlCptlCd
-   */
+      public void  setCredTpCd(String newNtlTpCd) {
+    	  credTpCd = newNtlTpCd;
+      }	  
+    /**
+     * Returns the ntlCptlCd
+     * 
+     * @return the ntlCptlCd
+     */
+      @Column(name = "CREDSBJTCD")
+      public String getCredSbjtCd() {
+          return credSbjtCd;
+      }	 
+       
+    /**
+     * Sets the ntlCptlCd
+     *
+     * @param newNtlCptlCd the new ntlCptlCd
+     */
 
-    public void  setNtlCptlCd(String newNtlCptlCd) {
-        ntlCptlCd = newNtlCptlCd;
-    }	  
-  /**
-   * Returns the ntlCptlAmt
-   * 
-   * @return the ntlCptlAmt
-   */
-    @Column(name = "NTLCPTLAMT")
-    public Double getNtlCptlAmt() {
-        return ntlCptlAmt;
-    }	 
-     
-  /**
-   * Sets the ntlCptlAmt
-   *
-   * @param newNtlCptlAmt the new ntlCptlAmt
-   */
+      public void  setCredSbjtCd(String newNtlCptlCd) {
+    	  credSbjtCd = newNtlCptlCd;
+      }	  
+    /**
+     * Returns the ntlCptlAmt
+     * 
+     * @return the ntlCptlAmt
+     */
+      @Column(name = "CREDAMT")
+      public Double getCredAmt() {
+          return credAmt;
+      }	 
+       
+    /**
+     * Sets the ntlCptlAmt
+     *
+     * @param newNtlCptlAmt the new ntlCptlAmt
+     */
 
-    public void  setNtlCptlAmt(Double newNtlCptlAmt) {
-        ntlCptlAmt = newNtlCptlAmt;
-    }	  
-  /**
-   * Returns the ntlAcrlCd
-   * 
-   * @return the ntlAcrlCd
-   */
-    @Column(name = "NTLACRLCD")
-    public String getNtlAcrlCd() {
-        return ntlAcrlCd;
-    }	 
-     
-  /**
-   * Sets the ntlAcrlCd
-   *
-   * @param newNtlAcrlCd the new ntlAcrlCd
-   */
-
-    public void  setNtlAcrlCd(String newNtlAcrlCd) {
-        ntlAcrlCd = newNtlAcrlCd;
-    }	  
-  /**
-   * Returns the ntlAcrlAmt
-   * 
-   * @return the ntlAcrlAmt
-   */
-    @Column(name = "NTLACRLAMT")
-    public Double getNtlAcrlAmt() {
-        return ntlAcrlAmt;
-    }	 
-     
-  /**
-   * Sets the ntlAcrlAmt
-   *
-   * @param newNtlAcrlAmt the new ntlAcrlAmt
-   */
-
-    public void  setNtlAcrlAmt(Double newNtlAcrlAmt) {
-        ntlAcrlAmt = newNtlAcrlAmt;
-    }	  
-    
+      public void  setCredAmt(Double newNtlCptlAmt) {
+    	  credAmt = newNtlCptlAmt;
+      }	 
     
 }    
     

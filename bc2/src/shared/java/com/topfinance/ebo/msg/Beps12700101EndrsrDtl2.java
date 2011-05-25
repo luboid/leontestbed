@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
@@ -22,7 +24,7 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_MSG_BEPS_127_001_01___EndrsrDtl")
+@Table(name = "T_C2_BEPS_127_APX_PJJL_BSR")
 public class Beps12700101EndrsrDtl2  implements java.io.Serializable {
 
     // Fields 
@@ -32,24 +34,21 @@ public class Beps12700101EndrsrDtl2  implements java.io.Serializable {
     @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.bllInf.endrsrDtl[0].nm")
     private String commNm;
     
-    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.bllInf.imgTp")
-    private String commImgTp;
+    private Beps12700101BllInf fid;
     
-    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.bllInf.imgFrntLen")
-    private String commImgFrntLen;
-    
-    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.bllInf.imgFrntData")
-    private String commImgFrntData;
-    
-    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.bllInf.imgBckLen")
-    private String commImgBckLen;
-    
-    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.bllInf.imgBckData")
-    private String commImgBckData;
-    
-    
-	
-    /** default constructor */
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps12700101BllInf getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps12700101BllInf fid) {
+		this.fid = fid;
+	}
+
+
+	/** default constructor */
     public Beps12700101EndrsrDtl2() {
     }
 	
@@ -94,102 +93,7 @@ public class Beps12700101EndrsrDtl2  implements java.io.Serializable {
 
     public void  setCommNm(String newCommNm) {
         commNm = newCommNm;
-    }	  
-  /**
-   * Returns the commImgTp
-   * 
-   * @return the commImgTp
-   */
-    @Column(name = "COMMIMGTP")
-    public String getCommImgTp() {
-        return commImgTp;
-    }	 
-     
-  /**
-   * Sets the commImgTp
-   *
-   * @param newCommImgTp the new commImgTp
-   */
-
-    public void  setCommImgTp(String newCommImgTp) {
-        commImgTp = newCommImgTp;
-    }	  
-  /**
-   * Returns the commImgFrntLen
-   * 
-   * @return the commImgFrntLen
-   */
-    @Column(name = "COMMIMGFRNTLEN")
-    public String getCommImgFrntLen() {
-        return commImgFrntLen;
-    }	 
-     
-  /**
-   * Sets the commImgFrntLen
-   *
-   * @param newCommImgFrntLen the new commImgFrntLen
-   */
-
-    public void  setCommImgFrntLen(String newCommImgFrntLen) {
-        commImgFrntLen = newCommImgFrntLen;
-    }	  
-  /**
-   * Returns the commImgFrntData
-   * 
-   * @return the commImgFrntData
-   */
-    @Column(name = "COMMIMGFRNTDATA")
-    public String getCommImgFrntData() {
-        return commImgFrntData;
-    }	 
-     
-  /**
-   * Sets the commImgFrntData
-   *
-   * @param newCommImgFrntData the new commImgFrntData
-   */
-
-    public void  setCommImgFrntData(String newCommImgFrntData) {
-        commImgFrntData = newCommImgFrntData;
-    }	  
-  /**
-   * Returns the commImgBckLen
-   * 
-   * @return the commImgBckLen
-   */
-    @Column(name = "COMMIMGBCKLEN")
-    public String getCommImgBckLen() {
-        return commImgBckLen;
-    }	 
-     
-  /**
-   * Sets the commImgBckLen
-   *
-   * @param newCommImgBckLen the new commImgBckLen
-   */
-
-    public void  setCommImgBckLen(String newCommImgBckLen) {
-        commImgBckLen = newCommImgBckLen;
-    }	  
-  /**
-   * Returns the commImgBckData
-   * 
-   * @return the commImgBckData
-   */
-    @Column(name = "COMMIMGBCKDATA")
-    public String getCommImgBckData() {
-        return commImgBckData;
-    }	 
-     
-  /**
-   * Sets the commImgBckData
-   *
-   * @param newCommImgBckData the new commImgBckData
-   */
-
-    public void  setCommImgBckData(String newCommImgBckData) {
-        commImgBckData = newCommImgBckData;
-    }	  
+    }	
     
     
 }    
