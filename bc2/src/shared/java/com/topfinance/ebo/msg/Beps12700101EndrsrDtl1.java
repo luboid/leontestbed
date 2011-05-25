@@ -23,7 +23,7 @@ import javax.persistence.SequenceGenerator;
  
 @Entity
 @Table(name = "T_MSG_BEPS_127_001_01___EndrsrDtl")
-public class Beps12700101EndrsrDtl  implements java.io.Serializable {
+public class Beps12700101EndrsrDtl1  implements java.io.Serializable {
 
     // Fields 
     @JaxbMapping(objPath="")
@@ -50,7 +50,7 @@ public class Beps12700101EndrsrDtl  implements java.io.Serializable {
     
 	
     /** default constructor */
-    public Beps12700101EndrsrDtl() {
+    public Beps12700101EndrsrDtl1() {
     }
 	
 	

@@ -50,7 +50,7 @@ public class Beps12700101ChqInf  implements java.io.Serializable {
     private String noteNbOfEndrsr;
     
     @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.chqInf.endrsrDtl[0]")
-    private java.util.Set<Beps12700101EndrsrDtl> endrsrDtl;
+    private java.util.Set<Beps12700101EndrsrDtl1> endrsrDtl;
     
     private Beps12700101CstmrDrctDbtInf fid;
     
@@ -71,7 +71,7 @@ public class Beps12700101ChqInf  implements java.io.Serializable {
      * @return the endrsrDtl
      */
     	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
-      public java.util.Set<Beps12700101EndrsrDtl> getEndrsrDtl() {
+      public java.util.Set<Beps12700101EndrsrDtl1> getEndrsrDtl() {
           return endrsrDtl;
       }	 
        
@@ -81,7 +81,7 @@ public class Beps12700101ChqInf  implements java.io.Serializable {
      * @param newEndrsrDtl the new endrsrDtl
      */
 
-      public void  setEndrsrDtl(java.util.Set<Beps12700101EndrsrDtl> newEndrsrDtl) {
+      public void  setEndrsrDtl(java.util.Set<Beps12700101EndrsrDtl1> newEndrsrDtl) {
           endrsrDtl = newEndrsrDtl;
       }	  
     

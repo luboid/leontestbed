@@ -53,7 +53,7 @@ public class Beps12700101NtlTrsrInf  implements java.io.Serializable {
     private String ntlNbOfTxs;
     
     @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf.txsDtls[0]")
-    private java.util.Set<Beps12700101TxsDtls> txsDtls1;
+    private java.util.Set<Beps12700101TxsDtls2> txsDtls1;
     
     private Beps12700101CstmrDrctDbtInf fid;
     
@@ -75,7 +75,7 @@ public class Beps12700101NtlTrsrInf  implements java.io.Serializable {
      * @return the txsDtls1
      */
     	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
-      public java.util.Set<Beps12700101TxsDtls> getTxsDtls1() {
+      public java.util.Set<Beps12700101TxsDtls2> getTxsDtls1() {
           return txsDtls1;
       }	 
        
@@ -85,7 +85,7 @@ public class Beps12700101NtlTrsrInf  implements java.io.Serializable {
      * @param newTxsDtls1 the new txsDtls1
      */
 
-      public void  setTxsDtls1(java.util.Set<Beps12700101TxsDtls> newTxsDtls1) {
+      public void  setTxsDtls1(java.util.Set<Beps12700101TxsDtls2> newTxsDtls1) {
           txsDtls1 = newTxsDtls1;
       }	  
 	

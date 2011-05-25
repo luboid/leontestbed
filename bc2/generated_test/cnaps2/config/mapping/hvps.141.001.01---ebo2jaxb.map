@@ -18,28 +18,28 @@
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.cdtrAcct.id" property="id"/>
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0].xxx.ustrd[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps14100101RmtInf">
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Hvps14100101RmtInf/bizTcCd">
+					<jb:expression execOnElement="bizTcCd">
       			return "/F25/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Hvps14100101RmtInf/bizNum">
+					<jb:expression execOnElement="bizNum">
       			return "/E48/"+_VALUE;
     			</jb:expression>  				
-					<jb:expression execOnElement="/com.topfinance.ebo.msg.Hvps14100101RmtInf/rmk">
+					<jb:expression execOnElement="rmk">
       			return "/H01/"+_VALUE;
     			</jb:expression>  				
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.dbtr.finInstnId.pstlAdr.adrLine[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
   				<jb:value data="/com.topfinance.ebo.msg.Hvps14100101/pyAdrLine"  />
   	</jb:bean>
-  	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.cdtr.brnchId" class="com.xml.iso20022.pacs.v00900102.BranchData2" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
-  				<jb:value data="cdtrAgtBrnchId"  property="id"/>
+  	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.dbtr.brnchId" class="com.xml.iso20022.pacs.v00900102.BranchData2" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
+  				<jb:value data="dbtrAgtBrnchId"  property="id"/>
   	</jb:bean>
-	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.dbtr.brnchId" class="com.xml.iso20022.pacs.v00900102.BranchData2" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
+  	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.cdtr.brnchId" class="com.xml.iso20022.pacs.v00900102.BranchData2" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
   				<jb:value data="cdtrAgtBrnchId"  property="id"/>
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.dbtr" class="com.xml.iso20022.pacs.v00900102.BranchAndFinancialInstitutionIdentification4" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.dbtr.finInstnId" property="finInstnId"/>
-	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.dbtr.brnchId" property="brnchId"/>
+    	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.dbtr.brnchId" property="brnchId"/>
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.dbtr.finInstnId" class="com.xml.iso20022.pacs.v00900102.FinancialInstitutionIdentification7" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.dbtr.finInstnId.clrSysMmbId" property="clrSysMmbId"/>
@@ -67,8 +67,6 @@
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0].xxx" class="com.xml.iso20022.pacs.v00900102.RemittanceInformation2" createOnElement="com.topfinance.ebo.msg.Hvps14100101RmtInf">
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0].xxx.ustrd[0]" property="ustrd"/>
-	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0].xxx.ustrd[0]" property="ustrd"/>
-	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0].xxx.ustrd[0]" property="ustrd"/>
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.cdtrAcct.id" class="com.xml.iso20022.pacs.v00900102.AccountIdentification4Choice" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.cdtrAcct.id.othr" property="othr"/>
@@ -105,7 +103,7 @@
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.cdtrAcct" property="cdtrAcct"/>
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.ultmtCdtr" property="ultmtCdtr"/>
     	<jb:wiring beanIdRef="finInstnCdtTrf.cdtTrfTxInf.rmtInf[0]" property="rmtInf"/>
-  	<jb:value data="sttlmPrty"  property="sttlmPrty"/>
+  				<jb:value data="sttlmPrty"  property="sttlmPrty"/>
   	</jb:bean>
   	<jb:bean beanId="finInstnCdtTrf.cdtTrfTxInf.pmtTpInf.svcLvl" class="com.xml.iso20022.pacs.v00900102.ServiceLevel8Choice" createOnElement="com.topfinance.ebo.msg.Hvps14100101">
   				<jb:value data="prtry"  property="prtry"/>

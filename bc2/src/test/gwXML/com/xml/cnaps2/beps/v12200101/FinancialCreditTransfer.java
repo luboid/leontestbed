@@ -50,7 +50,7 @@ public class FinancialCreditTransfer {
     @XmlElement(name = "NPCPrcInf")
     protected NPCProcessInformation1 npcPrcInf;
     @XmlElement(name = "FinCdtTrfInf", required = true)
-    protected List<FinancialCreditTransferInformation1> finCdtTrFinf = new Vector<FinancialCreditTransferInformation1>();
+    protected List<FinancialCreditTransferInformation1> finCdtTrfInf = new Vector<FinancialCreditTransferInformation1>();
 
     /**
      * Gets the value of the pkgGrpHdr property.
@@ -123,10 +123,23 @@ public class FinancialCreditTransfer {
      * 
      */
     public List<FinancialCreditTransferInformation1> getFinCdtTrfInf() {
-        if (finCdtTrFinf == null) {
-        	finCdtTrFinf = new Vector<FinancialCreditTransferInformation1>();
+        if (finCdtTrfInf == null) {
+        	finCdtTrfInf = new Vector<FinancialCreditTransferInformation1>();
         }
-        return this.finCdtTrFinf;
+        return this.finCdtTrfInf;
     }
+
+	public void setFinCdtTrfInf(
+			List<FinancialCreditTransferInformation1> finCdtTrFinf) {
+		this.finCdtTrfInf = finCdtTrFinf;
+	}
+
+	public NPCProcessInformation1 getNpcPrcInf() {
+		return npcPrcInf;
+	}
+
+	public void setNpcPrcInf(NPCProcessInformation1 npcPrcInf) {
+		this.npcPrcInf = npcPrcInf;
+	}
 
 }

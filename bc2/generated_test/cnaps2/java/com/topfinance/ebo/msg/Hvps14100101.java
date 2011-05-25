@@ -71,10 +71,10 @@ public class Hvps14100101  implements java.io.Serializable {
     @JaxbMapping(objPath="finInstnCdtTrf.cdtTrfTxInf.dbtr.finInstnId.pstlAdr.adrLine[0]")
     private String pyAdrLine;
     
-    @JaxbMapping(objPath="finInstnCdtTrf.cdtTrfTxInf.dbtrAgt.brnchId")
+    @JaxbMapping(objPath="finInstnCdtTrf.cdtTrfTxInf.dbtr.brnchId")
     private String dbtrBrnchId;
     
-    @JaxbMapping(objPath="finInstnCdtTrf.cdtTrfTxInf.dbtrAgt.brnchId.id")
+    @JaxbMapping(objPath="finInstnCdtTrf.cdtTrfTxInf.dbtr.brnchId.id")
     private String dbtrAgtBrnchId;
     
     @JaxbMapping(objPath="finInstnCdtTrf.cdtTrfTxInf.dbtrAcct.id.othr.id")

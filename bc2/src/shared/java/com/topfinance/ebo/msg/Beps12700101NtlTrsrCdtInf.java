@@ -62,7 +62,7 @@ public class Beps12700101NtlTrsrCdtInf  implements java.io.Serializable {
     private String credNbOfTxs;
     
     @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrCdtInf.txsDtls[0]")
-    private java.util.Set<Beps12700101TxsDtls> txsDtls;
+    private java.util.Set<Beps12700101TxsDtls1> txsDtls;
     
     private Beps12700101CstmrDrctDbtInf fid;
     
@@ -301,7 +301,7 @@ public class Beps12700101NtlTrsrCdtInf  implements java.io.Serializable {
      * @return the txsDtls
      */
     	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
-      public java.util.Set<Beps12700101TxsDtls> getTxsDtls() {
+      public java.util.Set<Beps12700101TxsDtls1> getTxsDtls() {
           return txsDtls;
       }	 
        
@@ -311,7 +311,7 @@ public class Beps12700101NtlTrsrCdtInf  implements java.io.Serializable {
      * @param newTxsDtls the new txsDtls
      */
 
-      public void  setTxsDtls(java.util.Set<Beps12700101TxsDtls> newTxsDtls) {
+      public void  setTxsDtls(java.util.Set<Beps12700101TxsDtls1> newTxsDtls) {
           txsDtls = newTxsDtls;
       }	    
     

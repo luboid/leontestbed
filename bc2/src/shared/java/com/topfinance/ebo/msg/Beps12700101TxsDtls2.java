@@ -23,7 +23,7 @@ import javax.persistence.SequenceGenerator;
  
 @Entity
 @Table(name = "T_C2_BEPS_121_APX_GKZJDF")
-public class Beps12700101TxsDtls  implements java.io.Serializable {
+public class Beps12700101TxsDtls2  implements java.io.Serializable {
 
     // Fields 
     @JaxbMapping(objPath="")
@@ -47,7 +47,7 @@ public class Beps12700101TxsDtls  implements java.io.Serializable {
     
 	
     /** default constructor */
-    public Beps12700101TxsDtls() {
+    public Beps12700101TxsDtls2() {
     }
 	
 	

@@ -314,6 +314,11 @@
     			<value>com.topfinance.ebo.msg.Beps72300101DtlChckRspnDtls</value>
     			<value>com.topfinance.ebo.msg.Beps72300101OrgnlMsgDtls</value> 
     			<value>com.topfinance.ebo.msg.Beps72300101OrgnlPmtDtls</value> 
+    			
+    			<value>com.topfinance.ebo.msg.Beps12200101</value>
+    			<value>com.topfinance.ebo.msg.Beps12200101FinCdtTrfInf</value> 
+    			<value>com.topfinance.ebo.msg.Beps12200101NtlTrsrCdtInfDtls</value>
+    			<value>com.topfinance.ebo.msg.Beps12200101NtlTrsrInfDtls</value> 
 			</list>
 		</property>
 		<property name="hibernateProperties">
