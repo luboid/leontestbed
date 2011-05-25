@@ -1948,3 +1948,21 @@ T_C2_BIS_ELE_BSC表中,msg_code='beps.121.001.01'数据报文中
 
 4、hvps.713.001.01
 表T_C2_HVPS_713新增字段CHCKDT	DATE	Y			对账日期
+
+2011-05-25 sunhuazhong
+1、hvps.141.001.01
+T_C2_BIS_ELE_BSC表中,msg_code='hvps.141.001.01'数据报文中
+/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/PstlAdr/AdrLine
+/Document/FinInstnCdtTrf/CdtTrfTxInf/Dbtr/FinInstnId/Nm
+/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd
+
+2、beps.122.001.01
+表T_C2_BEPS_122_HDR新增字段CTRLSUM	NUMBER(20,2)	Y			明细业务总金额
+表T_C2_BEPS_122_HDR新增字段NBOFTXS	VARCHAR2(15)	Y			明细业务总笔数
+表T_C2_BEPS_122新增字段NBOFTXS	VARCHAR2(8)	Y			明细条数
+
+2、beps.127.001.01
+表T_C2_BEPS_127_HDR新增字段CTRLSUM	NUMBER(20,2)	Y			明细业务总金额
+表T_C2_BEPS_127_HDR新增字段NBOFTXS	VARCHAR2(15)	Y			明细业务总笔数
