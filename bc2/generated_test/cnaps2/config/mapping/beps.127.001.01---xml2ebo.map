@@ -20,22 +20,6 @@
 				<jb:value data="/Document/CstmrDrctDbt/PKGRtrLtdInf/PKGRtrLtd" property="pKGRtrLtd"/>    
     		<jb:wiring beanIdRef="cstmrDrctDbtInf[0]" property="cstmrDrctDbtInf"/>
 
-    		<jb:wiring beanIdRef="ntlTrsrCdtInf[0]" property="ntlTrsrCdtInf"/>
-
-    		<jb:wiring beanIdRef="txsDtls[0]" property="txsDtls"/>
-
-    		<jb:wiring beanIdRef="ntlTrsrInf[0]" property="ntlTrsrInf"/>
-
-    		<jb:wiring beanIdRef="txsDtls1[0]" property="txsDtls1"/>
-
-    		<jb:wiring beanIdRef="chqInf[0]" property="chqInf"/>
-
-    		<jb:wiring beanIdRef="endrsrDtl[0]" property="endrsrDtl"/>
-
-    		<jb:wiring beanIdRef="bllInf[0]" property="bllInf"/>
-
-    		<jb:wiring beanIdRef="endrsrDtl1[0]" property="endrsrDtl1"/>
-
 	</jb:bean>
 	
   <jb:bean beanId="cstmrDrctDbtInf[0]" class="java.util.HashSet" createOnElement="Document">
@@ -56,13 +40,22 @@
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/Amt" property="intrBkSttlmAmt"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/PmtTpInf/CtgyPurp/Prtry" property="prtryTpCd"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/Purp/Prtry" property="prtryTcCd"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/AddtlInf" property="addtlInf"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/AddtlInf" property="addtlInf"/>				
+
+				<jb:wiring beanIdRef="ntlTrsrCdtInf[0]" property="ntlTrsrCdtInf"/>
+
+				<jb:wiring beanIdRef="ntlTrsrInf[0]" property="ntlTrsrInf"/>
+
+				<jb:wiring beanIdRef="chqInf[0]" property="chqInf"/>
+
+				<jb:wiring beanIdRef="bllInf[0]" property="bllInf"/>
+
 	</jb:bean>  
-  <jb:bean beanId="ntlTrsrCdtInf[0]" class="java.util.HashSet" createOnElement="Document">
+  <jb:bean beanId="ntlTrsrCdtInf[0]" class="java.util.HashSet" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf">
    	<jb:wiring beanIdRef="ntlTrsrCdtInf" />
   </jb:bean>
 	<jb:bean beanId="ntlTrsrCdtInf" class="com.topfinance.ebo.msg.Beps12700101NtlTrsrCdtInf" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf">
-		<jb:wiring beanIdRef="target" property="fid"/>
+		<jb:wiring beanIdRef="cstmrDrctDbtInf" property="fid"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/FslInf/FlowNb" property="credFlowNb"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/FslInf/Amt" property="credTlAmt"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/FslInf/RptCd" property="credRptCd"/>
@@ -75,21 +68,14 @@
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/Ind" property="credInd"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/BugtTp" property="credBugtTp"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/NbOfTxs" property="credNbOfTxs"/>
-	</jb:bean>  
-  <jb:bean beanId="txsDtls[0]" class="java.util.HashSet" createOnElement="Document">
-   	<jb:wiring beanIdRef="txsDtls" />
-  </jb:bean>
-	<jb:bean beanId="txsDtls" class="com.topfinance.ebo.msg.Beps12700101TxsDtls" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/TxsDtls">
-		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/TxsDtls/TpCd" property="credTpCd"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/TxsDtls/SbjtCd" property="credSbjtCd"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/TxsDtls/Amt" property="credAmt"/>
-	</jb:bean>  
-  <jb:bean beanId="ntlTrsrInf[0]" class="java.util.HashSet" createOnElement="Document">
+				<jb:wiring beanIdRef="txsDtls[0]" property="txsDtls"/>
+	</jb:bean>
+
+  <jb:bean beanId="ntlTrsrInf[0]" class="java.util.HashSet" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf">
    	<jb:wiring beanIdRef="ntlTrsrInf" />
   </jb:bean>
 	<jb:bean beanId="ntlTrsrInf" class="com.topfinance.ebo.msg.Beps12700101NtlTrsrInf" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf">
-		<jb:wiring beanIdRef="target" property="fid"/>
+		<jb:wiring beanIdRef="cstmrDrctDbtInf" property="fid"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/FslInf/FlowNb" property="ntlFlowNb"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/FslInf/Amt" property="ntlTlAmt"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/FslInf/RptCd" property="ntlRptCd"/>
@@ -99,23 +85,14 @@
 				</jb:value>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/FslInf/RptNb" property="ntlRptNb"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/NbOfTxs" property="ntlNbOfTxs"/>
-	</jb:bean>  
-  <jb:bean beanId="txsDtls1[0]" class="java.util.HashSet" createOnElement="Document">
-   	<jb:wiring beanIdRef="txsDtls1" />
-  </jb:bean>
-	<jb:bean beanId="txsDtls1" class="com.topfinance.ebo.msg.Beps12700101TxsDtls" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls">
-		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls/TpCd" property="ntlTpCd"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls/CptlCd" property="ntlCptlCd"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls/CptlAmt" property="ntlCptlAmt"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls/AcrlCd" property="ntlAcrlCd"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls/AcrlAmt" property="ntlAcrlAmt"/>
-	</jb:bean>  
-  <jb:bean beanId="chqInf[0]" class="java.util.HashSet" createOnElement="Document">
+				<jb:wiring beanIdRef="txsDtls1[0]" property="txsDtls"/>
+	</jb:bean> 
+
+  <jb:bean beanId="chqInf[0]" class="java.util.HashSet" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf">
    	<jb:wiring beanIdRef="chqInf" />
   </jb:bean>
 	<jb:bean beanId="chqInf" class="com.topfinance.ebo.msg.Beps12700101ChqInf" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf">
-		<jb:wiring beanIdRef="target" property="fid"/>
+		<jb:wiring beanIdRef="cstmrDrctDbtInf" property="fid"/>
   			<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/IsseDt" decoder="Date" property="noteIsseDt">
     			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
 				</jb:value>
@@ -126,24 +103,14 @@
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/PmtPswd" property="notePmtPswd"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/Purp" property="notePurp"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/NbOfEndrsr" property="noteNbOfEndrsr"/>
+				<jb:wiring beanIdRef="endrsrDtl[0]" property="endrsrDtl"/>
 	</jb:bean>  
-  <jb:bean beanId="endrsrDtl[0]" class="java.util.HashSet" createOnElement="Document">
-   	<jb:wiring beanIdRef="endrsrDtl" />
-  </jb:bean>
-	<jb:bean beanId="endrsrDtl" class="com.topfinance.ebo.msg.Beps12700101EndrsrDtl" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/EndrsrDtl">
-		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/EndrsrDtl/Nm" property="noteNm"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/ImgTp" property="noteImgTp"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/ImgFrntLen" property="noteImgFrntLen"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/ImgFrntData" property="noteImgFrntData"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/ImgBckLen" property="noteImgBckLen"/>
-				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/ImgBckData" property="noteImgBckData"/>
-	</jb:bean>  
-  <jb:bean beanId="bllInf[0]" class="java.util.HashSet" createOnElement="Document">
+
+  <jb:bean beanId="bllInf[0]" class="java.util.HashSet" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf">
    	<jb:wiring beanIdRef="bllInf" />
   </jb:bean>
 	<jb:bean beanId="bllInf" class="com.topfinance.ebo.msg.Beps12700101BllInf" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/BllInf">
-		<jb:wiring beanIdRef="target" property="fid"/>
+		<jb:wiring beanIdRef="cstmrDrctDbtInf" property="fid"/>
   			<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/BllInf/IsseDt" decoder="Date" property="commIsseDt">
     			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
 				</jb:value>
@@ -165,12 +132,46 @@
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/BllInf/TxlCtrctNb" property="commTxlCtrctNb"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/BllInf/Purp" property="commPurp"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/BllInf/NbOfEndrsr" property="commNbOfEndrsr"/>
+				<jb:wiring beanIdRef="endrsrDtl1[0]" property="endrsrDtl"/>
+	</jb:bean>    
+
+  <jb:bean beanId="txsDtls[0]" class="java.util.HashSet" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf">
+   	<jb:wiring beanIdRef="txsDtls" />
+  </jb:bean> 
+	<jb:bean beanId="txsDtls" class="com.topfinance.ebo.msg.Beps12700101TxsDtls1" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/TxsDtls">
+		<jb:wiring beanIdRef="ntlTrsrCdtInf" property="fid"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/TxsDtls/TpCd" property="credTpCd"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/TxsDtls/SbjtCd" property="credSbjtCd"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrCdtInf/TxsDtls/Amt" property="credAmt"/>
 	</jb:bean>  
-  <jb:bean beanId="endrsrDtl1[0]" class="java.util.HashSet" createOnElement="Document">
+  <jb:bean beanId="txsDtls1[0]" class="java.util.HashSet" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf">
+   	<jb:wiring beanIdRef="txsDtls1" />
+  </jb:bean>
+	<jb:bean beanId="txsDtls1" class="com.topfinance.ebo.msg.Beps12700101TxsDtls2" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls">
+		<jb:wiring beanIdRef="ntlTrsrInf" property="fid"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls/TpCd" property="ntlTpCd"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls/CptlCd" property="ntlCptlCd"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls/CptlAmt" property="ntlCptlAmt"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls/AcrlCd" property="ntlAcrlCd"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/NtlTrsrInf/TxsDtls/AcrlAmt" property="ntlAcrlAmt"/>
+	</jb:bean>  
+  <jb:bean beanId="endrsrDtl[0]" class="java.util.HashSet" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf">
+   	<jb:wiring beanIdRef="endrsrDtl" />
+  </jb:bean>
+	<jb:bean beanId="endrsrDtl" class="com.topfinance.ebo.msg.Beps12700101EndrsrDtl1" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/EndrsrDtl">
+		<jb:wiring beanIdRef="chqInf" property="fid"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/EndrsrDtl/Nm" property="noteNm"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/ImgTp" property="noteImgTp"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/ImgFrntLen" property="noteImgFrntLen"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/ImgFrntData" property="noteImgFrntData"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/ImgBckLen" property="noteImgBckLen"/>
+				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/ChqInf/ImgBckData" property="noteImgBckData"/>
+	</jb:bean>  
+  <jb:bean beanId="endrsrDtl1[0]" class="java.util.HashSet" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/BllInf">
    	<jb:wiring beanIdRef="endrsrDtl1" />
   </jb:bean>
-	<jb:bean beanId="endrsrDtl1" class="com.topfinance.ebo.msg.Beps12700101EndrsrDtl" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/BllInf/EndrsrDtl">
-		<jb:wiring beanIdRef="target" property="fid"/>
+	<jb:bean beanId="endrsrDtl1" class="com.topfinance.ebo.msg.Beps12700101EndrsrDtl2" createOnElement="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/BllInf/EndrsrDtl">
+		<jb:wiring beanIdRef="bllInf" property="fid"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/BllInf/EndrsrDtl/Nm" property="commNm"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/BllInf/ImgTp" property="commImgTp"/>
 				<jb:value data="/Document/CstmrDrctDbt/CstmrDrctDbtInf/CstmrDrctDbtAddtlInf/BllInf/ImgFrntLen" property="commImgFrntLen"/>
