@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
@@ -47,6 +49,41 @@ public class Beps12700101ChqInf  implements java.io.Serializable {
     @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.chqInf.nbOfEndrsr")
     private String noteNbOfEndrsr;
     
+    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.chqInf.endrsrDtl[0]")
+    private java.util.Set<Beps12700101EndrsrDtl> endrsrDtl;
+    
+    private Beps12700101CstmrDrctDbtInf fid;
+    
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps12700101CstmrDrctDbtInf getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps12700101CstmrDrctDbtInf fid) {
+		this.fid = fid;
+	}
+    
+    /**
+     * Returns the endrsrDtl
+     * 
+     * @return the endrsrDtl
+     */
+    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+      public java.util.Set<Beps12700101EndrsrDtl> getEndrsrDtl() {
+          return endrsrDtl;
+      }	 
+       
+    /**
+     * Sets the endrsrDtl
+     *
+     * @param newEndrsrDtl the new endrsrDtl
+     */
+
+      public void  setEndrsrDtl(java.util.Set<Beps12700101EndrsrDtl> newEndrsrDtl) {
+          endrsrDtl = newEndrsrDtl;
+      }	  
     
 	
     /** default constructor */

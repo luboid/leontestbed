@@ -26,9 +26,6 @@
     				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
 					</jb:value>
   	</jb:bean>
-  	<jb:bean beanId="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfRcvg[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71300101">
-  				<jb:value data="/com.topfinance.ebo.msg.Hvps71300101/rcvgChckngDtl"  />
-  	</jb:bean>
   	<jb:bean beanId="dtlRspn.dtlRspnInf.dtls[0].xxx.sndgCtrlSum" class="com.xml.cnaps2.hvps.v71300101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps71300101Dtls">
   				<jb:value data="sndgCtrlSum" decoder="BigDecimal" property="value"/>
   	</jb:bean>
@@ -51,9 +48,6 @@
   				<jb:value data="ttlNb"  property="ttlNb"/>
   				<jb:value data="startNb"  property="startNb"/>
   				<jb:value data="endNb"  property="endNb"/>
-  	</jb:bean>
-  	<jb:bean beanId="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfSndg[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71300101">
-  				<jb:value data="/com.topfinance.ebo.msg.Hvps71300101/sndgChckngDtl"  />
   	</jb:bean>
   	<jb:bean beanId="dtlRspn" class="com.xml.cnaps2.hvps.v71300101.DtlRspnV01" createOnElement="com.topfinance.ebo.msg.Hvps71300101">
     	<jb:wiring beanIdRef="dtlRspn.grpHdr" property="grpHdr"/>
@@ -91,6 +85,40 @@
   				<jb:value data="prtry"  property="txTpCd"/>
   				<jb:value data="sndgNbOfTxs"  property="sndgNbOfTxs"/>
   				<jb:value data="rcvgNbOfTxs"  property="rcvgNbOfTxs"/>
+  	</jb:bean>
+  	<jb:bean beanId="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfSndg[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71300101Dtls">
+    	<jb:wiring beanIdRef="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfRcvg[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71300101Dtls">
+    	<jb:wiring beanIdRef="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx" />
+  	</jb:bean>
+
+  	<jb:bean beanId="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx" class="com.xml.cnaps2.hvps.v71300101.SndgAndRcvg1" createOnElement="com.topfinance.ebo.msg.Hvps71300101SndgChckngDtl">
+		<jb:wiring beanIdRef="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx.orgnlGrpHdr" property="orgnlGrpHdr"/>
+		<jb:wiring beanIdRef="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx.amt" property="amt"/>
+		<jb:value data="bizSenPrcSts" property="prcSts"/>
+  	</jb:bean>
+	<jb:bean beanId="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx.orgnlGrpHdr" class="com.xml.cnaps2.hvps.v71300101.OrgnlGrpHdr1" createOnElement="com.topfinance.ebo.msg.Hvps71300101SndgChckngDtl">
+		<jb:value data="bizSenOrgnlMsgId" property="orgnlMsgId"/>
+		<jb:value data="bizSenOrgnlInstgDrctPty" property="orgnlInstgPty"/>
+		<jb:value data="bizSenOrgnlMT" property="orgnlMT"/>
+  	</jb:bean>
+	<jb:bean beanId="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx.amt" class="com.xml.cnaps2.hvps.v71300101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps71300101SndgChckngDtl">
+  		<jb:value data="bizSenAmt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+
+  	<jb:bean beanId="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx" class="com.xml.cnaps2.hvps.v71300101.SndgAndRcvg1" createOnElement="com.topfinance.ebo.msg.Hvps71300101RcvgChckngDtl">
+		<jb:wiring beanIdRef="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx.orgnlGrpHdr" property="orgnlGrpHdr"/>
+		<jb:wiring beanIdRef="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx.amt" property="amt"/>
+		<jb:value data="bizRecPrcSts" property="prcSts"/>
+  	</jb:bean>
+	<jb:bean beanId="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx.orgnlGrpHdr" class="com.xml.cnaps2.hvps.v71300101.OrgnlGrpHdr1" createOnElement="com.topfinance.ebo.msg.Hvps71300101RcvgChckngDtl">
+		<jb:value data="bizRecOrgnlMsgId" property="orgnlMsgId"/>
+		<jb:value data="bizRecOrgnlInstgDrctPty" property="orgnlInstgPty"/>
+		<jb:value data="bizRecOrgnlMT" property="orgnlMT"/>
+  	</jb:bean>
+	<jb:bean beanId="dtlRspn.dtlRspnInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx.amt" class="com.xml.cnaps2.hvps.v71300101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps71300101RcvgChckngDtl">
+  		<jb:value data="bizRecAmt" decoder="BigDecimal" property="value"/>
   	</jb:bean>
 </smooks-resource-list>  
     

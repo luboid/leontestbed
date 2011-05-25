@@ -91,7 +91,7 @@ public class DtlRspnInf1 {
      *     {@link NPCPrcInf1 }
      *     
      */
-    public NPCPrcInf1 getNPCPrcInf() {
+    public NPCPrcInf1 getNpcPrcInf() {
         return npcPrcInf;
     }
 
@@ -103,7 +103,7 @@ public class DtlRspnInf1 {
      *     {@link NPCPrcInf1 }
      *     
      */
-    public void setNPCPrcInf(NPCPrcInf1 value) {
+    public void setNpcPrcInf(NPCPrcInf1 value) {
         this.npcPrcInf = value;
     }
 
@@ -159,5 +159,9 @@ public class DtlRspnInf1 {
         }
         return this.dtls;
     }
+
+	public void setDtls(List<Dtls2> dtls) {
+		this.dtls = dtls;
+	}
 
 }

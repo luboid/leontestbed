@@ -50,7 +50,7 @@ public class Document {
      *     {@link ACSABSSttlmDtlRspnV01 }
      *     
      */
-    public ACSABSSttlmDtlRspnV01 getACSABSSttlmDtlRspn() {
+    public ACSABSSttlmDtlRspnV01 getAcsAbsSttlmDtlRspn() {
         return acsAbsSttlmDtlRspn;
     }
 
@@ -62,7 +62,7 @@ public class Document {
      *     {@link ACSABSSttlmDtlRspnV01 }
      *     
      */
-    public void setACSABSSttlmDtlRspn(ACSABSSttlmDtlRspnV01 value) {
+    public void setAcsAbsSttlmDtlRspn(ACSABSSttlmDtlRspnV01 value) {
         this.acsAbsSttlmDtlRspn = value;
     }
 

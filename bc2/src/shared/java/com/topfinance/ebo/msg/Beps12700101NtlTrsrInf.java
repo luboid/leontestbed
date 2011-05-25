@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
@@ -50,7 +52,42 @@ public class Beps12700101NtlTrsrInf  implements java.io.Serializable {
     @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf.nbOfTxs")
     private String ntlNbOfTxs;
     
+    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf.txsDtls[0]")
+    private java.util.Set<Beps12700101TxsDtls> txsDtls1;
     
+    private Beps12700101CstmrDrctDbtInf fid;
+    
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps12700101CstmrDrctDbtInf getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps12700101CstmrDrctDbtInf fid) {
+		this.fid = fid;
+	}
+    
+    
+    /**
+     * Returns the txsDtls1
+     * 
+     * @return the txsDtls1
+     */
+    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+      public java.util.Set<Beps12700101TxsDtls> getTxsDtls1() {
+          return txsDtls1;
+      }	 
+       
+    /**
+     * Sets the txsDtls1
+     *
+     * @param newTxsDtls1 the new txsDtls1
+     */
+
+      public void  setTxsDtls1(java.util.Set<Beps12700101TxsDtls> newTxsDtls1) {
+          txsDtls1 = newTxsDtls1;
+      }	  
 	
     /** default constructor */
     public Beps12700101NtlTrsrInf() {

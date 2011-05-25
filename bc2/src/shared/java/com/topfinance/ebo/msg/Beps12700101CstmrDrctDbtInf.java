@@ -73,6 +73,18 @@ public class Beps12700101CstmrDrctDbtInf  implements java.io.Serializable {
     @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].addtlInf")
     private String addtlInf;
     
+    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrCdtInf")
+    private java.util.Set<Beps12700101NtlTrsrCdtInf> ntlTrsrCdtInf;
+    
+    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrInf")
+    private java.util.Set<Beps12700101NtlTrsrInf> ntlTrsrInf;
+    
+    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.chqInf")
+    private java.util.Set<Beps12700101ChqInf> chqInf;
+    
+    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.bllInf")
+    private java.util.Set<Beps12700101BllInf> bllInf;
+    
     private Beps12700101 fid;
     
 	@ManyToOne(cascade=CascadeType.ALL)
@@ -380,6 +392,82 @@ public class Beps12700101CstmrDrctDbtInf  implements java.io.Serializable {
     public void  setAddtlInf(String newAddtlInf) {
         addtlInf = newAddtlInf;
     }	  
+    /**
+     * Returns the ntlTrsrCdtInf
+     * 
+     * @return the ntlTrsrCdtInf
+     */
+    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
+      public java.util.Set<Beps12700101NtlTrsrCdtInf> getNtlTrsrCdtInf() {
+          return ntlTrsrCdtInf;
+      }	 
+       
+    /**
+     * Sets the ntlTrsrCdtInf
+     *
+     * @param newNtlTrsrCdtInf the new ntlTrsrCdtInf
+     */
+
+      public void  setNtlTrsrCdtInf(java.util.Set<Beps12700101NtlTrsrCdtInf> newNtlTrsrCdtInf) {
+          ntlTrsrCdtInf = newNtlTrsrCdtInf;
+      }	 
+    /**
+     * Returns the ntlTrsrInf
+     * 
+     * @return the ntlTrsrInf
+     */
+    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
+      public java.util.Set<Beps12700101NtlTrsrInf> getNtlTrsrInf() {
+          return ntlTrsrInf;
+      }	 
+       
+    /**
+     * Sets the ntlTrsrInf
+     *
+     * @param newNtlTrsrInf the new ntlTrsrInf
+     */
+
+      public void  setNtlTrsrInf(java.util.Set<Beps12700101NtlTrsrInf> newNtlTrsrInf) {
+          ntlTrsrInf = newNtlTrsrInf;
+      }	 
+    /**
+     * Returns the chqInf
+     * 
+     * @return the chqInf
+     */
+    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
+      public java.util.Set<Beps12700101ChqInf> getChqInf() {
+          return chqInf;
+      }	 
+       
+    /**
+     * Sets the chqInf
+     *
+     * @param newChqInf the new chqInf
+     */
+
+      public void  setChqInf(java.util.Set<Beps12700101ChqInf> newChqInf) {
+          chqInf = newChqInf;
+      }	 
+    /**
+     * Returns the bllInf
+     * 
+     * @return the bllInf
+     */
+    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
+      public java.util.Set<Beps12700101BllInf> getBllInf() {
+          return bllInf;
+      }	 
+       
+    /**
+     * Sets the bllInf
+     *
+     * @param newBllInf the new bllInf
+     */
+
+      public void  setBllInf(java.util.Set<Beps12700101BllInf> newBllInf) {
+          bllInf = newBllInf;
+      }	  
     
     
 }    

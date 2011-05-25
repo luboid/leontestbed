@@ -289,15 +289,20 @@
     			<value>com.topfinance.ebo.msg.Ccms91700101CityChngInf</value> 
     			<value>com.topfinance.ebo.msg.Beps12400101</value> 
     			<value>com.topfinance.ebo.msg.Hvps11100101</value>
-    			
+    			 
     			<value>com.topfinance.ebo.msg.Beps12100101</value>
-    			<value>com.topfinance.ebo.msg.Beps12100101ColltnInf</value>
-    			<value>com.topfinance.ebo.msg.Beps12100101ColltnWthAccptncInf</value>
     			<value>com.topfinance.ebo.msg.Beps12100101CstmrCdtTrfInf</value>
-    			<value>com.topfinance.ebo.msg.Beps12100101NtlTrsrInf</value>
     			<value>com.topfinance.ebo.msg.Beps12100101NtlTrsrInfDtls</value>
-    			<value>com.topfinance.ebo.msg.Beps12100101PmtInf</value>
-    			<value>com.topfinance.ebo.msg.Beps12100101RtrInf</value>
+    			<value>com.topfinance.ebo.msg.Hvps71300101</value> 
+    			<value>com.topfinance.ebo.msg.Hvps71300101Dtls</value> 
+    			<value>com.topfinance.ebo.msg.Hvps71300101RcvgChckngDtl</value> 
+    			<value>com.topfinance.ebo.msg.Hvps71300101SndgChckngDtl</value>
+    			 
+    			<value>com.topfinance.ebo.msg.Saps73200101</value>
+    			<value>com.topfinance.ebo.msg.Saps73200101BookgList</value>
+    			<value>com.topfinance.ebo.msg.Saps73200101NetgList</value>
+    			<value>com.topfinance.ebo.msg.Saps73200101RvslList</value> 
+    			<value>com.topfinance.ebo.msg.Saps73200101UnltrlList</value> 
 			</list>
 		</property>
 		<property name="hibernateProperties">

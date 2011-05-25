@@ -70,23 +70,40 @@ public class Beps12700101BllInf  implements java.io.Serializable {
     @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.bllInf.nbOfEndrsr")
     private String commNbOfEndrsr;
     
-    private Beps12700101 fid;
+    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.bllInf.endrsrDtl[0]")
+    private java.util.Set<Beps12700101EndrsrDtl> endrsrDtl1;
+    
+    private Beps12700101CstmrDrctDbtInf fid;
     
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="FID", nullable=false, updatable=false)
-    public Beps12700101 getFid() {
+    public Beps12700101CstmrDrctDbtInf getFid() {
 		return fid;
 	}
 
 
-	public void setFid(Beps12700101 fid) {
+	public void setFid(Beps12700101CstmrDrctDbtInf fid) {
 		this.fid = fid;
 	}
+    /**
+     * Returns the endrsrDtl1
+     * 
+     * @return the endrsrDtl1
+     */
+    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+      public java.util.Set<Beps12700101EndrsrDtl> getEndrsrDtl1() {
+          return endrsrDtl1;
+      }	 
+       
+    /**
+     * Sets the endrsrDtl1
+     *
+     * @param newEndrsrDtl1 the new endrsrDtl1
+     */
 
-
-	/** default constructor */
-    public Beps12700101BllInf() {
-    }
+      public void  setEndrsrDtl1(java.util.Set<Beps12700101EndrsrDtl> newEndrsrDtl1) {
+          endrsrDtl1 = newEndrsrDtl1;
+      }	
 	
 	
   /**

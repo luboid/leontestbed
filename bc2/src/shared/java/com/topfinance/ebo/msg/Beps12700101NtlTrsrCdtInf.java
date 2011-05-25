@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import javax.persistence.CascadeType;
@@ -59,9 +61,24 @@ public class Beps12700101NtlTrsrCdtInf  implements java.io.Serializable {
     @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrCdtInf.nbOfTxs")
     private String credNbOfTxs;
     
+    @JaxbMapping(objPath="cstmrDrctDbt.cstmrDrctDbtInf[0].cstmrDrctDbtAddtlInf.ntlTrsrCdtInf.txsDtls[0]")
+    private java.util.Set<Beps12700101TxsDtls> txsDtls;
     
-	
-    /** default constructor */
+    private Beps12700101CstmrDrctDbtInf fid;
+    
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps12700101CstmrDrctDbtInf getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps12700101CstmrDrctDbtInf fid) {
+		this.fid = fid;
+	}
+
+
+	/** default constructor */
     public Beps12700101NtlTrsrCdtInf() {
     }
 	
@@ -277,7 +294,26 @@ public class Beps12700101NtlTrsrCdtInf  implements java.io.Serializable {
 
     public void  setCredNbOfTxs(String newCredNbOfTxs) {
         credNbOfTxs = newCredNbOfTxs;
-    }	  
+    }	 
+    /**
+     * Returns the txsDtls
+     * 
+     * @return the txsDtls
+     */
+    	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+      public java.util.Set<Beps12700101TxsDtls> getTxsDtls() {
+          return txsDtls;
+      }	 
+       
+    /**
+     * Sets the txsDtls
+     *
+     * @param newTxsDtls the new txsDtls
+     */
+
+      public void  setTxsDtls(java.util.Set<Beps12700101TxsDtls> newTxsDtls) {
+          txsDtls = newTxsDtls;
+      }	    
     
     
 }    

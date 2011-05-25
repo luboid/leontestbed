@@ -138,7 +138,7 @@ public class ACSABSSttlmDtlRspnV01 {
      *     {@link NPCProcessInformation1 }
      *     
      */
-    public NPCProcessInformation1 getNPCPrcInf() {
+    public NPCProcessInformation1 getNpcPrcInf() {
         return npcPrcInf;
     }
 
@@ -150,7 +150,7 @@ public class ACSABSSttlmDtlRspnV01 {
      *     {@link NPCProcessInformation1 }
      *     
      */
-    public void setNPCPrcInf(NPCProcessInformation1 value) {
+    public void setNpcPrcInf(NPCProcessInformation1 value) {
         this.npcPrcInf = value;
     }
 
@@ -177,5 +177,14 @@ public class ACSABSSttlmDtlRspnV01 {
     public void setACSABSSttlmDtlRspnInf(ACSABSSettlementDetailResponseInformation1 value) {
         this.acsAbsSttlmDtlRspnInf = value;
     }
+
+	public ACSABSSettlementDetailResponseInformation1 getAcsAbsSttlmDtlRspnInf() {
+		return acsAbsSttlmDtlRspnInf;
+	}
+
+	public void setAcsAbsSttlmDtlRspnInf(
+			ACSABSSettlementDetailResponseInformation1 acsAbsSttlmDtlRspnInf) {
+		this.acsAbsSttlmDtlRspnInf = acsAbsSttlmDtlRspnInf;
+	}
 
 }

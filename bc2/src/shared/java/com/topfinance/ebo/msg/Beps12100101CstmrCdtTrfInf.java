@@ -24,7 +24,7 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_MSG_BEPS_121_001_01___CstmrCdtTrfInf")
+@Table(name = "T_C2_BEPS_121_EXT")
 public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
 
     // Fields 
@@ -488,7 +488,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the infoTp
    */
-    @Column(name = "INFOTP")
+    @Column(name = "SKINFOTP")
     public String getInfoTp() {
         return infoTp;
     }	 
@@ -507,7 +507,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the infoDt
    */
-    @Column(name = "INFODT")
+    @Column(name = "SKINFODT")
     public Date getInfoDt() {
         return infoDt;
     }	 
@@ -526,7 +526,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the infoNb
    */
-    @Column(name = "INFONB")
+    @Column(name = "SKINFONB")
     public String getInfoNb() {
         return infoNb;
     }	 
@@ -545,7 +545,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the acceptDt
    */
-    @Column(name = "ACCEPTDT")
+    @Column(name = "TSACCEPTDT")
     public Date getAcceptDt() {
         return acceptDt;
     }	 
@@ -564,7 +564,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the acceptNb
    */
-    @Column(name = "ACCEPTNB")
+    @Column(name = "TSACCEPTNB")
     public String getAcceptNb() {
         return acceptNb;
     }	 
@@ -583,7 +583,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the amdsAmt
    */
-    @Column(name = "AMDSAMT")
+    @Column(name = "TSAMDSAMT")
     public Double getAmdsAmt() {
         return amdsAmt;
     }	 
@@ -602,7 +602,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the rctAmt
    */
-    @Column(name = "RCTAMT")
+    @Column(name = "TSRCTAMT")
     public Double getRctAmt() {
         return rctAmt;
     }	 
@@ -621,7 +621,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the flowNb
    */
-    @Column(name = "FLOWNB")
+    @Column(name = "GKFLOWNB")
     public String getFlowNb() {
         return flowNb;
     }	 
@@ -640,7 +640,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the amt
    */
-    @Column(name = "AMT")
+    @Column(name = "GKAMT")
     public Double getAmt() {
         return amt;
     }	 
@@ -659,7 +659,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the rptCd
    */
-    @Column(name = "RPTCD")
+    @Column(name = "GKRPTCD")
     public String getRptCd() {
         return rptCd;
     }	 
@@ -678,7 +678,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the rcvCd
    */
-    @Column(name = "RCVCD")
+    @Column(name = "GKRCVCD")
     public String getRcvCd() {
         return rcvCd;
     }	 
@@ -697,7 +697,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the rptFrms
    */
-    @Column(name = "RPTFRMS")
+    @Column(name = "GKRPTFRMS")
     public Date getRptFrms() {
         return rptFrms;
     }	 
@@ -716,7 +716,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the rptNb
    */
-    @Column(name = "RPTNB")
+    @Column(name = "GKRPTNB")
     public String getRptNb() {
         return rptNb;
     }	 
@@ -735,7 +735,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the nbOfTxs
    */
-    @Column(name = "NBOFTXS")
+    @Column(name = "GKNBOFTXS")
     public String getNbOfTxs() {
         return nbOfTxs;
     }	 
@@ -754,7 +754,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the ntlTrsrInfDtls
    */
-  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "parent")
+  	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL, mappedBy = "fid")
     public java.util.Set<Beps12100101NtlTrsrInfDtls> getNtlTrsrInfDtls() {
         return ntlTrsrInfDtls;
     }	 
@@ -773,7 +773,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the flowNb1
    */
-    @Column(name = "FLOWNB1")
+    @Column(name = "JFFLOWNB")
     public String getFlowNb1() {
         return flowNb1;
     }	 
@@ -792,7 +792,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the term
    */
-    @Column(name = "TERM")
+    @Column(name = "JFTERM")
     public String getTerm() {
         return term;
     }	 
@@ -811,7 +811,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the tp
    */
-    @Column(name = "TP")
+    @Column(name = "JFTP")
     public String getTp() {
         return tp;
     }	 
@@ -830,7 +830,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the rmk
    */
-    @Column(name = "RMK")
+    @Column(name = "JFRMK")
     public String getRmk() {
         return rmk;
     }	 
@@ -849,7 +849,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the orgnlMsgId
    */
-    @Column(name = "ORGNLMSGID")
+    @Column(name = "THORGNLMSGID")
     public String getOrgnlMsgId() {
         return orgnlMsgId;
     }	 
@@ -868,7 +868,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the orgnlInstgDrctPty
    */
-    @Column(name = "ORGNLINSTGDRCTPTY")
+    @Column(name = "THORGNLINSTGDRCTPTY")
     public String getOrgnlInstgDrctPty() {
         return orgnlInstgDrctPty;
     }	 
@@ -887,7 +887,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the orgnlMT
    */
-    @Column(name = "ORGNLMT")
+    @Column(name = "THORGNLMT")
     public String getOrgnlMT() {
         return orgnlMT;
     }	 
@@ -906,7 +906,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the instgIndrctPty
    */
-    @Column(name = "INSTGINDRCTPTY")
+    @Column(name = "THINSTGINDRCTPTY")
     public String getInstgIndrctPty() {
         return instgIndrctPty;
     }	 
@@ -925,7 +925,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the instdIndrctPty
    */
-    @Column(name = "INSTDINDRCTPTY")
+    @Column(name = "THINSTDINDRCTPTY")
     public String getInstdIndrctPty() {
         return instdIndrctPty;
     }	 
@@ -944,7 +944,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the orgnlTxId
    */
-    @Column(name = "ORGNLTXID")
+    @Column(name = "THORGNLTXID")
     public String getOrgnlTxId() {
         return orgnlTxId;
     }	 
@@ -963,7 +963,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the orgnlTxTpCd
    */
-    @Column(name = "ORGNLTXTPCD")
+    @Column(name = "THORGNLTXTPCD")
     public String getOrgnlTxTpCd() {
         return orgnlTxTpCd;
     }	 
@@ -982,7 +982,7 @@ public class Beps12100101CstmrCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the cntt
    */
-    @Column(name = "CNTT")
+    @Column(name = "THCNTT")
     public String getCntt() {
         return cntt;
     }	 

@@ -60,6 +60,30 @@
     		<jb:wiring beanIdRef="sndgChckngDtl[0]" property="sndgChckngDtl"/>
     		<jb:wiring beanIdRef="rcvgChckngDtl[0]" property="rcvgChckngDtl"/>
 	</jb:bean>  
+	
+  <jb:bean beanId="sndgChckngDtl[0]" class="java.util.HashSet" createOnElement="/Document/DtlRspn/DtlRspnInf/Dtls">
+   	<jb:wiring beanIdRef="sndgChckngDtl" />
+  </jb:bean>
+	<jb:bean beanId="sndgChckngDtl" class="com.topfinance.ebo.msg.Hvps71300101SndgChckngDtl" createOnElement="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfSndg">
+		<jb:wiring beanIdRef="dtls" property="fid"/>
+				<jb:value data="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfSndg/OrgnlGrpHdr/OrgnlMsgId" property="bizSenOrgnlMsgId"/>
+				<jb:value data="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfSndg/OrgnlGrpHdr/OrgnlInstgPty" property="bizSenOrgnlInstgDrctPty"/>
+				<jb:value data="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfSndg/OrgnlGrpHdr/OrgnlMT" property="bizSenOrgnlMT"/>
+				<jb:value data="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfSndg/Amt" property="bizSenAmt"/>
+				<jb:value data="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfSndg/PrcSts" property="bizSenPrcSts"/>
+	</jb:bean>  
+	
+  <jb:bean beanId="rcvgChckngDtl[0]" class="java.util.HashSet" createOnElement="/Document/DtlRspn/DtlRspnInf/Dtls">
+   	<jb:wiring beanIdRef="rcvgChckngDtl" />
+  </jb:bean>
+	<jb:bean beanId="rcvgChckngDtl" class="com.topfinance.ebo.msg.Hvps71300101RcvgChckngDtl" createOnElement="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfRcvg">
+		<jb:wiring beanIdRef="dtls" property="fid"/>
+				<jb:value data="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfRcvg/OrgnlGrpHdr/OrgnlMsgId" property="bizRecOrgnlMsgId"/>
+				<jb:value data="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfRcvg/OrgnlGrpHdr/OrgnlInstgPty" property="bizRecOrgnlInstgDrctPty"/>
+				<jb:value data="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfRcvg/OrgnlGrpHdr/OrgnlMT" property="bizRecOrgnlMT"/>
+				<jb:value data="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfRcvg/Amt" property="bizRecAmt"/>
+				<jb:value data="/Document/DtlRspn/DtlRspnInf/Dtls/ChckngDtlOfRcvg/PrcSts" property="bizRecPrcSts"/>
+	</jb:bean>  
 
 
 </smooks-resource-list>  

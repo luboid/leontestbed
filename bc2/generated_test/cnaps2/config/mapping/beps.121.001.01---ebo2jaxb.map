@@ -19,11 +19,19 @@
   				<jb:value data="prcSts"  property="prcSts"/>
   				<jb:value data="prcCd"  property="prcCd"/>
   				<jb:value data="rjctInf"  property="rjctInf"/>
-  				<jb:value data="netgDt"  property="netgDt"/>
+  		<jb:value data="netgDt" decoder="Date" property="netgDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+	    </jb:value>
   				<jb:value data="netgRnd"  property="netgRnd"/>
-  				<jb:value data="sttlmDt"  property="sttlmDt"/>
-  				<jb:value data="rcvTm"  property="rcvTm"/>
-  				<jb:value data="trnsmtTm"  property="trnsmtTm"/>
+				  		<jb:value data="sttlmDt" decoder="Date" property="sttlmDt">
+    		<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+	    </jb:value>
+				  		<jb:value data="rcvTm" decoder="Date" property="rcvTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+	    </jb:value>
+				  		<jb:value data="trnsmtTm" decoder="Date" property="trnsmtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+	    </jb:value>
   	</jb:bean>
   	<jb:bean beanId="cstmrCdtTrf.cstmrCdtTrfInf[0].xxx.dbtrAcct.id.othr" class="com.xml.cnaps2.beps.v12100101.Other1" createOnElement="com.topfinance.ebo.msg.Beps12100101CstmrCdtTrfInf">
   				<jb:value data="dbtrAcctId"  property="id"/>
@@ -51,7 +59,9 @@
     	<jb:wiring beanIdRef="cstmrCdtTrf.pKGGrpHdr.instdPty" property="instdPty"/>
     	<jb:wiring beanIdRef="cstmrCdtTrf.pKGGrpHdr.ctrlSum" property="ctrlSum"/>
   				<jb:value data="msgId"  property="msgId"/>
-  				<jb:value data="creDtTm"  property="creDtTm"/>
+				  		<jb:value data="creDtTm" decoder="Date" property="creDtTm">
+    		<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
+	    </jb:value>
   				<jb:value data="nbOfTxs"  property="nbOfTxs"/>
   				<jb:value data="sysCd"  property="sysCd"/>
   				<jb:value data="rmk"  property="rmk"/>
@@ -75,7 +85,9 @@
   	</jb:bean>
   	<jb:bean beanId="cstmrCdtTrf.cstmrCdtTrfInf[0].xxx.cstmrCdtTrfAddtlInf.colltnInf" class="com.xml.cnaps2.beps.v12100101.CollectionInformation1" createOnElement="com.topfinance.ebo.msg.Beps12100101CstmrCdtTrfInf">
   				<jb:value data="infoTp"  property="tp"/>
-  				<jb:value data="infoDt"  property="dt"/>
+				  		<jb:value data="infoDt" decoder="Date" property="dt">
+    		<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+	    </jb:value>
   				<jb:value data="infoNb"  property="nb"/>
   	</jb:bean>
   	<jb:bean beanId="cstmrCdtTrf.pKGGrpHdr.ctrlSum" class="com.xml.cnaps2.beps.v12100101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Beps12100101">
@@ -171,7 +183,9 @@
   	<jb:bean beanId="cstmrCdtTrf.cstmrCdtTrfInf[0].xxx.cstmrCdtTrfAddtlInf.colltnWthAccptncInf" class="com.xml.cnaps2.beps.v12100101.CollectionWithAcceptanceInformation1" createOnElement="com.topfinance.ebo.msg.Beps12100101CstmrCdtTrfInf">
     	<jb:wiring beanIdRef="cstmrCdtTrf.cstmrCdtTrfInf[0].xxx.cstmrCdtTrfAddtlInf.colltnWthAccptncInf.amdsAmt" property="amdsAmt"/>
     	<jb:wiring beanIdRef="cstmrCdtTrf.cstmrCdtTrfInf[0].xxx.cstmrCdtTrfAddtlInf.colltnWthAccptncInf.rctAmt" property="rctAmt"/>
-  				<jb:value data="acceptDt"  property="dt"/>
+				  		<jb:value data="acceptDt" decoder="Date" property="dt">
+    		<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+	    </jb:value>
   				<jb:value data="acceptNb"  property="nb"/>
   	</jb:bean>
   	<jb:bean beanId="cstmrCdtTrf.cstmrCdtTrfInf[0].xxx.cstmrCdtTrfAddtlInf.rtrInf.orgnlTx" class="com.xml.cnaps2.beps.v12100101.OriginalTransaction1" createOnElement="com.topfinance.ebo.msg.Beps12100101CstmrCdtTrfInf">

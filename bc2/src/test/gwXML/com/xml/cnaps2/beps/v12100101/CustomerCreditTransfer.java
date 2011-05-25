@@ -129,4 +129,9 @@ public class CustomerCreditTransfer {
         return this.cstmrCdtTrfInf;
     }
 
+	public void setCstmrCdtTrfInf(
+			List<CustomerCreditTransferInformation1> cstmrCdtTrfInf) {
+		this.cstmrCdtTrfInf = cstmrCdtTrfInf;
+	}
+
 }
