@@ -235,14 +235,13 @@ var TwitteyBot = (function(){
                     $(this).css("border", "SOLID RED 1px");
                 }
                 else {
-                    $(this).attr("value", duration + " minutes").css("border", "")
+                    $(this).attr("value", duration + " minutes").css("border", "0px solid #999");
                 }
             }).click(function(){  	
                   $(this).css("border", "SOLID #999 1px");
             });
             
             $("#scheduler form").submit(function(){
-            	debugger;
                 $("#scheduler input[type=text]").blur();
                 var total = parseInt($("#totalItems").val(), 10) + 1;
                 var interval = 0;
