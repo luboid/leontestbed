@@ -5,6 +5,25 @@ body, table {
     margin: 0;
 }
 
+ul{
+	list-style-type: none;
+	margin:0px;
+	padding:0px;
+}
+.toolbar {
+	height:26px;
+	margin-bottom:10px;
+	background:#E5ECF9;
+	padding:4px 10px;
+	border : 1px solid #CEE2EB;
+}
+.toolbar ul li {
+	float:left;
+}
+.toolbar button{
+	background:
+}
+
 .logo-text {
     font-size: 2em;
     margin-left: 50px;
@@ -32,6 +51,7 @@ form {
 #header {
     width: 100%;
     padding: 1em 0 1em 0;
+    border-bottom:1px solid #36c;
 }
 
 .single-line-list {
@@ -53,7 +73,10 @@ form {
 
 #content {
 }
-
+#content .top{
+    border-top: 1px solid #CEE2EB;
+    padding-bottom: 24px;
+}
 #addTwitterAccount {
     background-color: #E5ECF9;
     border-top: 1px solid #3366CC;
@@ -72,6 +95,35 @@ form {
     list-style-type: none;
     margin: 0 0 0 1.5em;
     padding: 1em 0;
+}
+
+.left-pane ul{
+	list-style-type: none;
+    margin: 0 0 0 1.5em;
+    padding: 1em 0;
+}
+.left-pane li{
+	line-height: 1.5em;
+    padding: 0.5em 0 0 0.5em;
+    margin-right: -2px;
+}
+.left-pane li span{
+	-moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-topleft: 4px;
+    border: SOLID 3px #E5ECF9;
+    border-right: none;
+    padding: 0.5em 0 0.5em 2em;
+    display: block;
+    font-weight: bold;
+    margin-right: -1px;
+    text-decoration: none;
+    background-color: #E5ECF9;
+    color: #6666FF;
+    cursor:pointer;
+}
+.left-pane li span:hover{
+	background-color: #FFFFFF;
+
 }
 
 #twitterAccountList li {
@@ -102,6 +154,41 @@ form {
     width: 79%;
 }
 
+.right-pane .main{
+	margin:0px 10px;
+	height:100px;
+}
+.mytable{
+}
+.mytable table{
+	width:100%;
+	border-top:1px solid #CEE2EB;
+	border-left:1px solid #CEE2EB;
+}
+
+.mytable table th{
+	background:url(../images/grid_bj.gif) repeat-x #E5ECF9;
+	border-right:1px solid #CEE2EB;
+	border-bottom:1px solid #CEE2EB;
+	padding:3px;
+	font-weight:normal;
+}
+
+.mytable table tr td{
+	border-right:1px solid #CEE2EB;
+	border-bottom:1px solid #CEE2EB;
+	padding:3px;
+	align:center;
+	font-weight:normal;
+}
+.mytable table tr td a{
+    margin:6px;
+    color:blue;
+    text-decoration: none;
+}
+.mytable table tr td.action{
+	color:blue;
+}
 #twitterAccount {
     margin: 0;
     padding: 0;
@@ -252,4 +339,63 @@ form {
 .pagination a:hover {
 	background-color : #3366CC;
 	color : #E5ECF9;
+}
+.setting{
+}
+.setting .header{
+	background:#E5ECF9;
+	font-size:13px;
+	padding:6px 4px;
+	line-height:13px;
+	font-weight:bold;
+}
+.setting .content{
+	padding:10px 0px;
+}
+.main-area{
+	padding:20px 10px;
+}
+
+.admin-content{
+	width:auto;
+	margin-left:200px;
+	
+}
+.admin-content .main{
+	width:auto;
+}
+.mytable{
+}
+.nav {
+	height : 80%;
+	border-right : 3px solid #E5ECF9;
+	width : 180px;
+	float:left;
+}
+.nav ul{
+	padding-bottom:20px;
+}
+.nav ul li{
+	padding:6px 0px 6px 30px;
+	color:#000;
+	font-size:13px;
+	
+}
+.nav ul li a{
+	padding:2px 6px 4px 8px;
+	display:block;
+	text-align:left;
+}
+.nav ul li a:visited{
+	color:blue;
+}
+.nav ul li a.selected{
+	font-weight : bold;
+	background-color:#E5ECF9;
+	border-top-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-webkit-border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	-webkit-border-bottom-left-radius: 4px;
 }
