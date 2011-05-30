@@ -122,12 +122,12 @@
   	</jb:bean>
   	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0].xxx.orgnlMsgDtls[0].xxx" class="com.xml.cnaps2.beps.v72300101.OriginalMessageDetails1" createOnElement="com.topfinance.ebo.msg.Beps72300101OrgnlMsgDtls">
 		<jb:wiring beanIdRef="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0].xxx.orgnlMsgDtls[0].xxx.orgnlGrpHdr" property="orgnlGrpHdr"/>
-		<jb:value data="bizPrcSts" property="prcSts"/>
+		<jb:value data="infoPrcSts" property="prcSts"/>
   	</jb:bean>
 	<jb:bean beanId="dtlChckRspn.dtlChckRspnInf.dtlChckMsgRspn.dtlChckMsgRspnDtls[0].xxx.orgnlMsgDtls[0].xxx.orgnlGrpHdr" class="com.xml.cnaps2.beps.v72300101.OriginalGroupHeader1" createOnElement="com.topfinance.ebo.msg.Beps72300101OrgnlMsgDtls">
-		<jb:value data="bizOrgnlMsgId" property="orgnlMsgId"/>
-		<jb:value data="bizOrgnlInstgDrctPty" property="orgnlInstgPty"/>
-		<jb:value data="bizOrgnlMT" property="orgnlMsgTp"/>
+		<jb:value data="infoOrgnlMsgId" property="orgnlMsgId"/>
+		<jb:value data="infoOrgnlInstgDrctPty" property="orgnlInstgPty"/>
+		<jb:value data="infoOrgnlMT" property="orgnlMsgTp"/>
   	</jb:bean>
 </smooks-resource-list>  
     

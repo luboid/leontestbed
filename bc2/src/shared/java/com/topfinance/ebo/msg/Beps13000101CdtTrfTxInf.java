@@ -31,22 +31,25 @@ public class Beps13000101CdtTrfTxInf  implements java.io.Serializable {
     @JaxbMapping(objPath="")
     private Integer id;
     
-    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.grpHdr.sttlmInf.sttlmMtd")
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId")
     private String endToEndId;
     
     @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtId.txId")
     private String txId;
     
-    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId")
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.ctgyPurp.prtry")
     private String prtryTpCd;
     
-    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmAmt")
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmAmt.value")
     private Double amt;
     
-    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.ctgyPurp.prtry")
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].chrgBr")
+    private String chrgBr;
+    
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].dbtr.nm")
     private String dbtrNm;
     
-    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.ctgyPurp")
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.id.othr.id")
     private String dbtrAcctId;
     
     @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.id.othr.issr")
@@ -113,8 +116,20 @@ public class Beps13000101CdtTrfTxInf  implements java.io.Serializable {
     private Date sttlmDt;
     
     private Beps13000101 fid;
-	
-    /** default constructor */
+    
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps13000101 getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps13000101 fid) {
+		this.fid = fid;
+	}
+
+
+	/** default constructor */
     public Beps13000101CdtTrfTxInf() {
     }
 	
@@ -216,6 +231,25 @@ public class Beps13000101CdtTrfTxInf  implements java.io.Serializable {
 
     public void  setAmt(Double newAmt) {
         amt = newAmt;
+    }	  
+  /**
+   * Returns the chrgBr
+   * 
+   * @return the chrgBr
+   */
+    @Column(name = "CHRGBR")
+    public String getChrgBr() {
+        return chrgBr;
+    }	 
+     
+  /**
+   * Sets the chrgBr
+   *
+   * @param newChrgBr the new chrgBr
+   */
+
+    public void  setChrgBr(String newChrgBr) {
+        chrgBr = newChrgBr;
     }	  
   /**
    * Returns the dbtrNm
@@ -653,18 +687,7 @@ public class Beps13000101CdtTrfTxInf  implements java.io.Serializable {
 
     public void  setSttlmDt(Date newSttlmDt) {
         sttlmDt = newSttlmDt;
-    }	
-
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="FID", nullable=false, updatable=false)
-	public Beps13000101 getFid() {
-		return fid;
-	}
-	
-	
-	public void setFid(Beps13000101 fid) {
-		this.fid = fid;
-	}	  
+    }	  
     
     
 }    

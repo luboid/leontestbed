@@ -44,7 +44,7 @@ public class Beps38100101  implements java.io.Serializable {
     @JaxbMapping(objPath="cstmrCdtTrfInitn.grpHdr.initgPty.nm")
     private String instgDrctPty;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.grpHdr.fwdgAgt.finInstnId.clrSysMmbId.mmbId")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.grpHdr.fwdgAgt.fInInstnId.clrSysMmbId.mmbId")
     private String instdDrctPty;
     
     @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0]")

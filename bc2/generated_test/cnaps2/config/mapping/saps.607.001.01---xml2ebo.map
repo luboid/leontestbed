@@ -35,15 +35,19 @@
   </jb:bean>
 	<jb:bean beanId="ntry" class="com.topfinance.ebo.msg.Saps60700101Ntry" createOnElement="/Document/BkToCstmrStmt/Stmt/Ntry">
 		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Amt" property="ntrAmt"/>    
-				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/CdtDbtInd" property="entryCdtDbtInd"/>    
-				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Sts" property="sts"/>    
-				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/BkTxCd" property="bkTxCd"/>    
-				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Amt/Value" property="intrstAmt"/>    
-				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/CdtDbtInd" property="intrstCdtDbtInd"/>    
-				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/Rate/Tp/Pctg" property="pctg"/>    
-				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/FrToDt/FrDtTm" property="frDtTm"/>    
-				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/FrToDt/ToDtTm" property="toDtTm"/>    
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Amt" property="ntrAmt"/>
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/CdtDbtInd" property="entryCdtDbtInd"/>
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Sts" property="sts"/>
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/BkTxCd" property="bkTxCd"/>
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/Amt" property="intrstAmt"/>
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/CdtDbtInd" property="intrstCdtDbtInd"/>
+				<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/Rate/Tp/Pctg" property="pctg"/>
+  			<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/FrToDt/FrDtTm" decoder="Date" property="frDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+  			<jb:value data="/Document/BkToCstmrStmt/Stmt/Ntry/Intrst/FrToDt/ToDtTm" decoder="Date" property="toDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
 	</jb:bean>  
 
 

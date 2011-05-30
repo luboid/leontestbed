@@ -40,7 +40,7 @@ public class Beps13300101DrctDbtTxInf  implements java.io.Serializable {
     @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].pmtId.clrSysRef")
     private String clrSysRef;
     
-    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].intrBkSttlmAmt")
+    @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].intrBkSttlmAmt.value")
     private Double intrBkSttlmAmt;
     
     @JaxbMapping(objPath="fiToFiCstmrDrctDbt.drctDbtTxInf[0].cdtr.nm")
@@ -86,8 +86,20 @@ public class Beps13300101DrctDbtTxInf  implements java.io.Serializable {
     private String ustrdContractId;
     
     private Beps13300101 fid;
-	
-    /** default constructor */
+    
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps13300101 getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps13300101 fid) {
+		this.fid = fid;
+	}
+
+
+	/** default constructor */
     public Beps13300101DrctDbtTxInf() {
     }
 	
@@ -456,33 +468,6 @@ public class Beps13300101DrctDbtTxInf  implements java.io.Serializable {
     public void  setUstrdContractId(String newUstrdContractId) {
         ustrdContractId = newUstrdContractId;
     }	  
-
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="FID", nullable=false, updatable=false)
-	public Beps13300101 getFid() {
-		return fid;
-	}
-	
-	
-	public void setFid(Beps13300101 fid) {
-		this.fid = fid;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Beps13300101DrctDbtTxInf [id=" + id + ", endToEndId="
-				+ endToEndId + ", txId=" + txId + ", clrSysRef=" + clrSysRef
-				+ ", intrBkSttlmAmt=" + intrBkSttlmAmt + ", nm=" + nm
-				+ ", cdtrAcctId=" + cdtrAcctId + ", issr=" + issr
-				+ ", cdtrClrSysMmbId=" + cdtrClrSysMmbId + ", cdtrAgtBrnchId="
-				+ cdtrAgtBrnchId + ", dbtrNm=" + dbtrNm + ", dbtrAcctId="
-				+ dbtrAcctId + ", dbtrAcctIssr=" + dbtrAcctIssr
-				+ ", dbtrClrSysMmbId=" + dbtrClrSysMmbId + ", dbtrAgtBrnchId="
-				+ dbtrAgtBrnchId + ", prtryTcCd=" + prtryTcCd + ", addInfo="
-				+ addInfo + ", rmk=" + rmk + ", ustrdContractId="
-				+ ustrdContractId + ", fid=" + fid.getid() + "]";
-	}
     
     
 }    

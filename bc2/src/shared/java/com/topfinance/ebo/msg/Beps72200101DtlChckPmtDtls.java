@@ -47,7 +47,7 @@ public class Beps72200101DtlChckPmtDtls  implements java.io.Serializable {
     private String bizNbOfTxs;
     
     private Beps72200101 fid;
-	
+    
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="FID", nullable=false, updatable=false)
     public Beps72200101 getFid() {
@@ -58,9 +58,8 @@ public class Beps72200101DtlChckPmtDtls  implements java.io.Serializable {
 	public void setFid(Beps72200101 fid) {
 		this.fid = fid;
 	}
-
-
-	/** default constructor */
+	
+    /** default constructor */
     public Beps72200101DtlChckPmtDtls() {
     }
 	

@@ -67,6 +67,8 @@ public class ParseSampleXmlHelper {
 			clazz = "Double";
 		} else if (metaType.equalsIgnoreCase("ActiveCurrencyAndAmount")) {
 			clazz = "Double";
+		} else if (metaType.equalsIgnoreCase("PercentageRate")) {
+			clazz = "Double";
 		} else if (metaType.equalsIgnoreCase("ISODateTime")) {
 			clazz = "DateTime";
 		} else if (metaType.equalsIgnoreCase("ISODate")) {

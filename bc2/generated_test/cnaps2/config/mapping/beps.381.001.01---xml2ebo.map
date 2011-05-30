@@ -14,7 +14,7 @@
 				<jb:value data="/Document/CstmrCdtTrfInitn/GrpHdr/NbOfTxs" property="nbOfTxs"/>    
 				<jb:value data="/Document/CstmrCdtTrfInitn/GrpHdr/CtrlSum" property="ctrlSum"/>    
 				<jb:value data="/Document/CstmrCdtTrfInitn/GrpHdr/InitgPty/Nm" property="instgDrctPty"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/GrpHdr/FwdgAgt/FinInstnId/ClrSysMmbId/MmbId" property="instdDrctPty"/>    
+				<jb:value data="/Document/CstmrCdtTrfInitn/GrpHdr/FwdgAgt/FInInstnId/ClrSysMmbId/MmbId" property="instdDrctPty"/>    
     		<jb:wiring beanIdRef="pmtInf[0]" property="pmtInf"/>
 
 	</jb:bean>
@@ -24,43 +24,47 @@
   </jb:bean>
 	<jb:bean beanId="pmtInf" class="com.topfinance.ebo.msg.Beps38100101PmtInf" createOnElement="/Document/CstmrCdtTrfInitn/PmtInf">
 		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/PmtInfId" property="pmtInfId"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/PmtTpInf/LclInstrm/Prtry" property="prtryTpCd"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/GrpHdr/InitgPty/Nm" property="dbtrNm"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/GrpHdr/FwdgAgt/FinInstnId/ClrSysMmbId/MmbId" property="dbtrAcctId"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/PmtInfId" property="dbtrAcctIssr"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/PmtMtd" property="dbtrClrSysMmbId"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/PmtTpInf/LclInstrm" property="dbtrAgtBrnchId"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/PmtId/EndToEndId" property="endToEndId"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/PmtTpInf/LclInstrm/Prtry" property="prtry"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/PmtTpInf/CtgyPurp/Prtry" property="lclInstrm"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/Amt/InstdAmt/Value" property="instdAmt"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/CdtrAgt/FinInstnId/ClrSysMmbId/MmbId" property="cdtrClrSysMmbId"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/CdtrAgt/BrnchId/Id" property="cdtrAgtBrnchId"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/Dbtr/Nm" property="cdtrNm"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/DbtrAcct/Id/Othr/Id" property="cdtrAcctId"/>    
-				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/DbtrAcct/Id/Othr/Issr" property="cdtrAcctIssr"/>    
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/PmtInfId" property="pmtInfId"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/PmtMtd" property="pmtMtd"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/PmtTpInf/LclInstrm/Prtry" property="prtryTpCd"/>
+  			<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/ReqdExctnDt" decoder="Date" property="reqdExctnDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/Dbtr/Nm" property="dbtrNm"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/DbtrAcct/Id/Othr/Id" property="dbtrAcctId"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/DbtrAcct/Id/Othr/Issr" property="dbtrAcctIssr"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/DbtrAgt/FInInstnId/ClrSysMmbId/MmbId" property="dbtrClrSysMmbId"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/DbtrAgt/BrnchId/Id" property="dbtrAgtBrnchId"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/PmtId/EndToEndId" property="endToEndId"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/PmtTpInf/LclInstrm/Prtry" property="prtry"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/PmtTpInf/CtgyPurp/Prtry" property="lclInstrm"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/Amt/InstdAmt" property="instdAmt"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/CdtrAgt/FInInstnId/ClrSysMmbId/MmbId" property="cdtrClrSysMmbId"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/CdtrAgt/BrnchId/Id" property="cdtrAgtBrnchId"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/Cdtr/Nm" property="cdtrNm"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/CdtrAcct/Id/Othr/Id" property="cdtrAcctId"/>
+				<jb:value data="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/CdtrAcct/Id/Othr/Issr" property="cdtrAcctIssr"/>
 				<jb:expression property="ustrdAddInfo" execOnElement="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/RmtInf/Ustrd">
 					if (_VALUE contains "H01") {
-		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/H01/");
-		      }else {
-    		  	return null;
-      		}
-    		</jb:expression>
+					return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/H01/");
+				      }else {
+					return null;
+				}
+				</jb:expression>
 				<jb:expression property="ustrdCtractId" execOnElement="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/RmtInf/Ustrd">
-					if (_VALUE contains "E40") {
-		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/E40/");
-		      }else {
-    		  	return null;
-      		}
-    		</jb:expression>
+							if (_VALUE contains "E40") {
+					return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/E40/");
+				      }else {
+					return null;
+				}
+				</jb:expression>
 				<jb:expression property="ustrdCheckId" execOnElement="/Document/CstmrCdtTrfInitn/PmtInf/CdtTrfTxInf/RmtInf/Ustrd">
-					if (_VALUE contains "K33") {
-		        return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/K33/");
-		      }else {
-    		  	return null;
-      		}
-    		</jb:expression>
+							if (_VALUE contains "K33") {
+					return org.apache.commons.lang.StringUtils.substringAfterLast(_VALUE, "/K33/");
+				      }else {
+					return null;
+				}
+				</jb:expression>
 	</jb:bean>  
 
 

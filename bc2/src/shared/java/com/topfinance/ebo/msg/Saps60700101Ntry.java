@@ -31,7 +31,7 @@ public class Saps60700101Ntry  implements java.io.Serializable {
     @JaxbMapping(objPath="")
     private Integer id;
     
-    @JaxbMapping(objPath="bkToCstmrStmt.stmt.ntry[0].amt")
+    @JaxbMapping(objPath="bkToCstmrStmt.stmt.ntry[0].amt.value")
     private Double ntrAmt;
     
     @JaxbMapping(objPath="bkToCstmrStmt.stmt.ntry[0].cdtDbtInd")
@@ -43,7 +43,7 @@ public class Saps60700101Ntry  implements java.io.Serializable {
     @JaxbMapping(objPath="bkToCstmrStmt.stmt.ntry[0].bkTxCd")
     private String bkTxCd;
     
-    @JaxbMapping(objPath="bkToCstmrStmt.stmt.ntry[0].amt.value")
+    @JaxbMapping(objPath="bkToCstmrStmt.stmt.ntry[0].intrst[0].amt.value")
     private Double intrstAmt;
     
     @JaxbMapping(objPath="bkToCstmrStmt.stmt.ntry[0].intrst[0].cdtDbtInd")
@@ -59,8 +59,20 @@ public class Saps60700101Ntry  implements java.io.Serializable {
     private Date toDtTm;
     
     private Saps60700101 fid;
-	
-    /** default constructor */
+    
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Saps60700101 getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Saps60700101 fid) {
+		this.fid = fid;
+	}
+
+
+	/** default constructor */
     public Saps60700101Ntry() {
     }
 	
@@ -217,7 +229,7 @@ public class Saps60700101Ntry  implements java.io.Serializable {
    * @param newPctg the new pctg
    */
 
-    public void setPctg(Double newPctg) {
+    public void  setPctg(Double newPctg) {
         pctg = newPctg;
     }	  
   /**
@@ -257,18 +269,7 @@ public class Saps60700101Ntry  implements java.io.Serializable {
 
     public void  setToDtTm(Date newToDtTm) {
         toDtTm = newToDtTm;
-    }
-
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="FID", nullable=false, updatable=false)
-	public Saps60700101 getFid() {
-		return fid;
-	}
-	
-	
-	public void setFid(Saps60700101 fid) {
-		this.fid = fid;
-	}	  
+    }	  
     
     
 }    

@@ -44,6 +44,9 @@ public class Beps13000101  implements java.io.Serializable {
     @JaxbMapping(objPath="fiToFiCstmrCdtTrf.grpHdr.sttlmInf.sttlmMtd")
     private String sttlmMtd;
     
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.grpHdr.sttlmInf.clrSys.prtry")
+    private String allPrtry;
+    
     @JaxbMapping(objPath=".fiToFiCstmrCdtTrf")
     private java.util.Set<Beps13000101CdtTrfTxInf> cdtTrfTxInf;
     
@@ -170,6 +173,25 @@ public class Beps13000101  implements java.io.Serializable {
 
     public void  setSttlmMtd(String newSttlmMtd) {
         sttlmMtd = newSttlmMtd;
+    }	  
+  /**
+   * Returns the allPrtry
+   * 
+   * @return the allPrtry
+   */
+    @Column(name = "ALLPRTRY")
+    public String getAllPrtry() {
+        return allPrtry;
+    }	 
+     
+  /**
+   * Sets the allPrtry
+   *
+   * @param newAllPrtry the new allPrtry
+   */
+
+    public void  setAllPrtry(String newAllPrtry) {
+        allPrtry = newAllPrtry;
     }	  
   /**
    * Returns the cdtTrfTxInf

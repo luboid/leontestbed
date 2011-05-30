@@ -40,7 +40,31 @@
 				<jb:value data="/Document/AcctChckng/AcctChckngInf/Dtls/RcvgCtrlSum" property="rcvgCtrlSum"/>
     		<jb:wiring beanIdRef="chckngDtlOfSndg[0]" property="chckngDtlOfSndg"/>
     		<jb:wiring beanIdRef="chckngDtlOfRcvg[0]" property="chckngDtlOfRcvg"/>
-	</jb:bean>  
+	</jb:bean> 
+	
+  <jb:bean beanId="chckngDtlOfSndg[0]" class="java.util.HashSet" createOnElement="/Document/AcctChckng/AcctChckngInf/Dtls">
+   	<jb:wiring beanIdRef="chckngDtlOfSndg" />
+  </jb:bean>
+	<jb:bean beanId="chckngDtlOfSndg" class="com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfSndg" createOnElement="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfSndg">
+		<jb:wiring beanIdRef="dtls" property="fid"/>
+				<jb:value data="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfSndg/OrgnlGrpHdr/OrgnlMsgId" property="orgnlMsgId"/>
+				<jb:value data="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfSndg/OrgnlGrpHdr/OrgnlInstgPty" property="orgnlInstgDrctPty"/>
+				<jb:value data="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfSndg/OrgnlGrpHdr/OrgnlMT" property="orgnlMT"/>
+				<jb:value data="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfSndg/Amt" property="amt"/>
+				<jb:value data="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfSndg/PrcSts" property="prcSts"/>
+	</jb:bean>
+	
+  <jb:bean beanId="chckngDtlOfRcvg[0]" class="java.util.HashSet" createOnElement="/Document/AcctChckng/AcctChckngInf/Dtls">
+   	<jb:wiring beanIdRef="chckngDtlOfRcvg" />
+  </jb:bean>
+	<jb:bean beanId="chckngDtlOfRcvg" class="com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfRcvg" createOnElement="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfRcvg">
+		<jb:wiring beanIdRef="dtls" property="fid"/>
+				<jb:value data="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfRcvg/OrgnlGrpHdr/OrgnlMsgId" property="detlOrgnlMsgId"/>
+				<jb:value data="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfRcvg/OrgnlGrpHdr/OrgnlInstgPty" property="detlOrgnlInstgDrctPty"/>
+				<jb:value data="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfRcvg/OrgnlGrpHdr/OrgnlMT" property="detlOrgnlMT"/>
+				<jb:value data="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfRcvg/Amt" property="detlAmt"/>
+				<jb:value data="/Document/AcctChckng/AcctChckngInf/Dtls/ChckngDtlOfRcvg/PrcSts" property="detlPrcSts"/>
+	</jb:bean> 
 
 
 </smooks-resource-list>  

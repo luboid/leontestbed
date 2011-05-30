@@ -6,11 +6,11 @@
     <param name="input.xsd.rootElement">Document</param>
     <param name="input.xsd" type="input.type.actived"></param>
   </params>
-  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps38800101Hdr" createOnElement="Document">
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps38800101" createOnElement="Document">
 				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/MsgId" property="msgId"/>    
-				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">    
-					<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
-				</jb:value>    
+  			<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
 				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/InstgPty/InstgDrctPty" property="instgDrctPty"/>    
 				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/InstgPty/InstgPty" property="instgIndrctPty"/>    
 				<jb:value data="/Document/BtchCstmrsAcctQryRspn/GrpHdr/InstdPty/InstdDrctPty" property="instdDrctPty"/>    
@@ -28,14 +28,14 @@
   <jb:bean beanId="acctDtls[0]" class="java.util.HashSet" createOnElement="Document">
    	<jb:wiring beanIdRef="acctDtls" />
   </jb:bean>
-	<jb:bean beanId="acctDtls" class="com.topfinance.ebo.msg.Beps38800101" createOnElement="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls">
+	<jb:bean beanId="acctDtls" class="com.topfinance.ebo.msg.Beps38800101AcctDtls" createOnElement="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls">
 		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/Id" property="bid"/>    
-				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/Nm" property="nm"/>    
-				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/RspsnSts" property="rspsnSts"/>    
-				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/AcctSts" property="acctSts"/>    
-				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/InstgPty" property="instgDrctPty"/>    
-				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/AcctBk" property="acctDtls"/>    
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/Id" property="bid"/>
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/Nm" property="nm"/>
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/RspsnSts" property="rspsnSts"/>
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/AcctSts" property="acctSts"/>
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/InstgPty" property="instgDrctPty"/>
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/AcctBk" property="acctDtls"/>
 	</jb:bean>  
 
 

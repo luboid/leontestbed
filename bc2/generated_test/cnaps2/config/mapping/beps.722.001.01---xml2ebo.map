@@ -32,21 +32,21 @@
   </jb:bean>
 	<jb:bean beanId="dtlChckPmtDtls" class="com.topfinance.ebo.msg.Beps72200101DtlChckPmtDtls" createOnElement="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls">
 		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/SndRcvTp" property="bizSndRcvTp"/>    
-				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/TxNetgDt" decoder="Date" property="bizTxNetgDt">
-				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
-					</jb:value>
-				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/TxNetgRnd" property="bizTxNetgRnd"/>    
-				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/Mt" property="bizMT"/>    
-				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckMsg/NbOfTxs" property="bizNbOfTxs"/>    
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/SndRcvTp" property="bizSndRcvTp"/>
+  			<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/TxNetgDt" decoder="Date" property="bizTxNetgDt">
+    			<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+				</jb:value>
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/TxNetgRnd" property="bizTxNetgRnd"/>
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckPmtInf/DtlChckPmtDtls/Mt" property="bizMT"/>
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckMsg/NbOfTxs" property="bizNbOfTxs"/>
 	</jb:bean>  
   <jb:bean beanId="dtlChckMsgDtls[0]" class="java.util.HashSet" createOnElement="Document">
    	<jb:wiring beanIdRef="dtlChckMsgDtls" />
   </jb:bean>
 	<jb:bean beanId="dtlChckMsgDtls" class="com.topfinance.ebo.msg.Beps72200101DtlChckMsgDtls" createOnElement="/Document/DtlChckReq/DtlChckReqInf/DtlChckMsg/DtlChckMsgDtls">
 		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckMsg/DtlChckMsgDtls/SndRcvTp" property="infoSndRcvTp"/>    
-				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckMsg/DtlChckMsgDtls/Mt" property="infoMT"/>    
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckMsg/DtlChckMsgDtls/SndRcvTp" property="infoSndRcvTp"/>
+				<jb:value data="/Document/DtlChckReq/DtlChckReqInf/DtlChckMsg/DtlChckMsgDtls/Mt" property="infoMT"/>
 	</jb:bean>  
 
 

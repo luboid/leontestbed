@@ -41,7 +41,7 @@ public class Saps60700101Ntry  implements java.io.Serializable {
     @JaxbMapping(objPath="bkToCstmrStmt.stmt.ntry[0].bkTxCd")
     private String bkTxCd;
     
-    @JaxbMapping(objPath="bkToCstmrStmt.stmt.ntry[0].amt.value")
+    @JaxbMapping(objPath="bkToCstmrStmt.stmt.ntry[0].intrst[0].amt.value")
     private Double intrstAmt;
     
     @JaxbMapping(objPath="bkToCstmrStmt.stmt.ntry[0].intrst[0].cdtDbtInd")

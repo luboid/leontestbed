@@ -34,7 +34,7 @@ public class Ccms31800101TxInf  implements java.io.Serializable {
     @JaxbMapping(objPath="pmtRtr.txInf[0].orgnlTxId")
     private String orgnlTxId;
     
-    @JaxbMapping(objPath="pmtRtr.txInf[0].rtrdIntrBkSttlmAmt")
+    @JaxbMapping(objPath="pmtRtr.txInf[0].rtrdIntrBkSttlmAmt.value")
     private Double rtrdIntrBkSttlmAmt;
     
     @JaxbMapping(objPath="pmtRtr.txInf[0].instgAgt.finInstnId.clrSysMmbId.mmbId")
@@ -50,8 +50,20 @@ public class Ccms31800101TxInf  implements java.io.Serializable {
     private String rInDId;
     
     private Ccms31800101 fid;
-	
-    /** default constructor */
+    
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Ccms31800101 getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Ccms31800101 fid) {
+		this.fid = fid;
+	}
+
+
+	/** default constructor */
     public Ccms31800101TxInf() {
     }
 	
@@ -191,18 +203,7 @@ public class Ccms31800101TxInf  implements java.io.Serializable {
 
     public void  setRInDId(String newRInDId) {
         rInDId = newRInDId;
-    }
-
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="FID", nullable=false, updatable=false)
-	public Ccms31800101 getFid() {
-		return fid;
-	}
-	
-	
-	public void setFid(Ccms31800101 fid) {
-		this.fid = fid;
-	}	  
+    }	  
     
     
 }    

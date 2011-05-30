@@ -93,7 +93,7 @@ public class Hvps71600101ChckngDtlOfRcvg  implements java.io.Serializable {
    * 
    * @return the detlOrgnlMsgId
    */
-    @Column(name = "DETLORGNLMSGID")
+    @Column(name = "ORGNLMSGID")
     public String getDetlOrgnlMsgId() {
         return detlOrgnlMsgId;
     }	 
@@ -112,7 +112,7 @@ public class Hvps71600101ChckngDtlOfRcvg  implements java.io.Serializable {
    * 
    * @return the detlOrgnlInstgDrctPty
    */
-    @Column(name = "DETLORGNLINSTGDRCTPTY")
+    @Column(name = "ORGNLINSTGDRCTPTY")
     public String getDetlOrgnlInstgDrctPty() {
         return detlOrgnlInstgDrctPty;
     }	 
@@ -131,7 +131,7 @@ public class Hvps71600101ChckngDtlOfRcvg  implements java.io.Serializable {
    * 
    * @return the detlOrgnlMT
    */
-    @Column(name = "DETLORGNLMT")
+    @Column(name = "ORGNLMT")
     public String getDetlOrgnlMT() {
         return detlOrgnlMT;
     }	 
@@ -150,7 +150,7 @@ public class Hvps71600101ChckngDtlOfRcvg  implements java.io.Serializable {
    * 
    * @return the detlAmt
    */
-    @Column(name = "DETLAMT")
+    @Column(name = "AMT")
     public Double getDetlAmt() {
         return detlAmt;
     }	 
@@ -169,7 +169,7 @@ public class Hvps71600101ChckngDtlOfRcvg  implements java.io.Serializable {
    * 
    * @return the detlPrcSts
    */
-    @Column(name = "DETLPRCSTS")
+    @Column(name = "PRCSTS")
     public String getDetlPrcSts() {
         return detlPrcSts;
     }	 

@@ -9,7 +9,7 @@
     	<jb:wiring beanIdRef="dtlChckReq.dtlChckReqInf.dtlChckPmtInf" property="dtlChckPmtInf"/>
     	<jb:wiring beanIdRef="dtlChckReq.dtlChckReqInf.dtlChckMsg" property="dtlChckMsg"/>
   				<jb:value data="chckngDt" decoder="Date" property="chckDt">
-    				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
 					</jb:value>
   	</jb:bean>
   	<jb:bean beanId="dtlChckReq.grpHdr.instgPty" class="com.xml.cnaps2.beps.v72200101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Beps72200101">
@@ -34,7 +34,7 @@
   	<jb:bean beanId="dtlChckReq.dtlChckReqInf.dtlChckPmtInf.dtlChckPmtDtls[0].xxx" class="com.xml.cnaps2.beps.v72200101.DetailCheckPaymentDetails1" createOnElement="com.topfinance.ebo.msg.Beps72200101DtlChckPmtDtls">
   				<jb:value data="bizSndRcvTp"  property="sndRcvTp"/>
   				<jb:value data="bizTxNetgDt" decoder="Date" property="txNetgDt">
-    				<jb:decodeParam name="format">yyyy-MM-dd</jb:decodeParam>
+    				<jb:decodeParam name="format">yyyy-MM-dd HH:mm:ss.S z</jb:decodeParam>
 					</jb:value>
   				<jb:value data="bizTxNetgRnd"  property="txNetgRnd"/>
   				<jb:value data="bizMT"  property="mt"/>
@@ -56,7 +56,7 @@
   				<jb:value data="sysCd"  property="sysCd"/>
   				<jb:value data="rmk"  property="rmk"/>
   	</jb:bean>
-  	<jb:bean beanId="dtlChckReq.dtlChckReqInf.dtlChckMsg" class="com.xml.cnaps2.beps.v72200101.DetailCheckMessage1" createOnElement="com.topfinance.ebo.msg.Beps72200101">
+  	<jb:bean beanId="dtlChckReq.dtlChckReqInf.dtlChckMsg" class="com.xml.cnaps2.beps.v72200101.DetailCheckMessage1" createOnElement="com.topfinance.ebo.msg.Beps72200101DtlChckPmtDtls">
     	<jb:wiring beanIdRef="dtlChckReq.dtlChckReqInf.dtlChckMsg.dtlChckMsgDtls[0]" property="dtlChckMsgDtls"/>
   				<jb:value data="bizNbOfTxs"  property="nbOfTxs"/>
   	</jb:bean>

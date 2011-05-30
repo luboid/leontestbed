@@ -29,22 +29,25 @@ public class Beps13000101CdtTrfTxInf  implements java.io.Serializable {
     @JaxbMapping(objPath="")
     private Integer id;
     
-    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.grpHdr.sttlmInf.sttlmMtd")
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId")
     private String endToEndId;
     
     @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtId.txId")
     private String txId;
     
-    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtId.endToEndId")
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.ctgyPurp.prtry")
     private String prtryTpCd;
     
     @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].intrBkSttlmAmt.value")
     private Double amt;
     
-    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.ctgyPurp.prtry")
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].chrgBr")
+    private String chrgBr;
+    
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].dbtr.nm")
     private String dbtrNm;
     
-    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].pmtTpInf.ctgyPurp")
+    @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.id.othr.id")
     private String dbtrAcctId;
     
     @JaxbMapping(objPath="fiToFiCstmrCdtTrf.cdtTrfTxInf[0].dbtrAcct.id.othr.issr")
@@ -214,6 +217,25 @@ public class Beps13000101CdtTrfTxInf  implements java.io.Serializable {
 
     public void  setAmt(Double newAmt) {
         amt = newAmt;
+    }	  
+  /**
+   * Returns the chrgBr
+   * 
+   * @return the chrgBr
+   */
+    @Column(name = "CHRGBR")
+    public String getChrgBr() {
+        return chrgBr;
+    }	 
+     
+  /**
+   * Sets the chrgBr
+   *
+   * @param newChrgBr the new chrgBr
+   */
+
+    public void  setChrgBr(String newChrgBr) {
+        chrgBr = newChrgBr;
     }	  
   /**
    * Returns the dbtrNm

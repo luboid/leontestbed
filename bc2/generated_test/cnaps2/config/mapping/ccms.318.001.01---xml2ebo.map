@@ -30,12 +30,12 @@
   </jb:bean>
 	<jb:bean beanId="txInf" class="com.topfinance.ebo.msg.Ccms31800101TxInf" createOnElement="/Document/PmtRtr/TxInf">
 		<jb:wiring beanIdRef="target" property="fid"/>
-				<jb:value data="/Document/PmtRtr/TxInf/OrgnlTxId" property="orgnlTxId"/>    
-				<jb:value data="/Document/PmtRtr/TxInf/RtrdIntrBkSttlmAmt" property="rtrdIntrBkSttlmAmt"/>    
-				<jb:value data="/Document/PmtRtr/TxInf/InstgAgt/FinInstnId/ClrSysMmbId/MmbId" property="sDMmbId"/>    
-				<jb:value data="/Document/PmtRtr/TxInf/InstgAgt/BrnchId/Id" property="sInDId"/>    
-				<jb:value data="/Document/PmtRtr/TxInf/InstdAgt/FinInstnId/ClrSysMmbId/MmbId" property="rDMmbId"/>    
-				<jb:value data="/Document/PmtRtr/TxInf/InstdAgt/BrnchId/Id" property="rInDId"/>    
+				<jb:value data="/Document/PmtRtr/TxInf/OrgnlTxId" property="orgnlTxId"/>
+				<jb:value data="/Document/PmtRtr/TxInf/RtrdIntrBkSttlmAmt" property="rtrdIntrBkSttlmAmt"/>
+				<jb:value data="/Document/PmtRtr/TxInf/InstgAgt/FinInstnId/ClrSysMmbId/MmbId" property="sDMmbId"/>
+				<jb:value data="/Document/PmtRtr/TxInf/InstgAgt/BrnchId/Id" property="sInDId"/>
+				<jb:value data="/Document/PmtRtr/TxInf/InstdAgt/FinInstnId/ClrSysMmbId/MmbId" property="rDMmbId"/>
+				<jb:value data="/Document/PmtRtr/TxInf/InstdAgt/BrnchId/Id" property="rInDId"/>
 	</jb:bean>  
 
 

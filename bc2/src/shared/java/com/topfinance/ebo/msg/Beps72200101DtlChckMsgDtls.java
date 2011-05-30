@@ -38,7 +38,7 @@ public class Beps72200101DtlChckMsgDtls  implements java.io.Serializable {
     private String infoMT;
     
     private Beps72200101 fid;
-	
+    
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="FID", nullable=false, updatable=false)
     public Beps72200101 getFid() {

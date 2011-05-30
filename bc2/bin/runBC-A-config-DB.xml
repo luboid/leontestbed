@@ -149,7 +149,7 @@
     			<value>com.topfinance.ebo.msg.Beps38400101</value>
     			<value>com.topfinance.ebo.msg.Beps38700101Hdr</value>
     			<value>com.topfinance.ebo.msg.Beps38700101</value>
-    			<value>com.topfinance.ebo.msg.Beps38800101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Beps38800101AcctDtls</value>
     			<value>com.topfinance.ebo.msg.Beps38800101</value>  
     						
     			<value>com.topfinance.ebo.msg.Beps38100101</value>
@@ -190,7 +190,7 @@
     			<value>com.topfinance.ebo.msg.Saps61100101</value>
     			<value>com.topfinance.ebo.msg.Saps73800101Hdr</value>
     			<value>com.topfinance.ebo.msg.Saps73800101</value>
-    			<value>com.topfinance.ebo.msg.Saps73600101Hdr</value>
+    			<value>com.topfinance.ebo.msg.Saps73600101TxList</value>
     			<value>com.topfinance.ebo.msg.Saps73600101</value>
     			<value>com.topfinance.ebo.msg.Saps37300101Hdr</value>
     			<value>com.topfinance.ebo.msg.Saps37300101</value>

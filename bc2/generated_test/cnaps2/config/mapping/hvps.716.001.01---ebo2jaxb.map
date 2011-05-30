@@ -15,9 +15,6 @@
 					</jb:value>
   				<jb:value data="ttlCnt"  property="ttlCnt"/>
   	</jb:bean>
-  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfRcvg[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71600101">
-  				<jb:value data="/com.topfinance.ebo.msg.Hvps71600101/chckngDtlOfRcvg"  />
-  	</jb:bean>
   	<jb:bean beanId="acctChckng.prttn" class="com.xml.cnaps2.hvps.v71600101.Prttn1" createOnElement="com.topfinance.ebo.msg.Hvps71600101">
   				<jb:value data="ttlNb"  property="ttlNb"/>
   				<jb:value data="startNb"  property="startNb"/>
@@ -53,19 +50,50 @@
   				<jb:value data="sysCd"  property="sysCd"/>
   				<jb:value data="rmk"  property="rmk"/>
   	</jb:bean>
-  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71600101/dtls">
+  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71600101">
     	<jb:wiring beanIdRef="acctChckng.acctChckngInf.dtls[0].xxx" />
   	</jb:bean>
   	<jb:bean beanId="acctChckng.grpHdr.instgPty" class="com.xml.cnaps2.hvps.v71600101.InstgPty1" createOnElement="com.topfinance.ebo.msg.Hvps71600101">
   				<jb:value data="instgDrctPty"  property="instgDrctPty"/>
   				<jb:value data="instgIndrctPty"  property="instgPty"/>
   	</jb:bean>
-  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfSndg[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71600101">
-  				<jb:value data="/com.topfinance.ebo.msg.Hvps71600101/chckngDtlOfSndg"  />
-  	</jb:bean>
   	<jb:bean beanId="acctChckng.grpHdr.instdPty" class="com.xml.cnaps2.hvps.v71600101.InstdPty1" createOnElement="com.topfinance.ebo.msg.Hvps71600101">
   				<jb:value data="instdDrctPty"  property="instdDrctPty"/>
   				<jb:value data="instdIndrctPty"  property="instdPty"/>
+  	</jb:bean>
+	
+  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfSndg[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71600101Dtls">
+  			<jb:wiring beanIdRef="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx" class="com.xml.cnaps2.hvps.v71600101.SndgAndRcvg1" createOnElement="com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfSndg">
+  				<jb:wiring beanIdRef="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx.orgnlGrpHdr"  property="orgnlGrpHdr"/>
+  				<jb:wiring beanIdRef="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx.amt"  property="amt"/>
+  				<jb:value data="prcSts"  property="prcSts"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx.orgnlGrpHdr" class="com.xml.cnaps2.hvps.v71600101.OrgnlGrpHdr1" createOnElement="com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfSndg">
+  				<jb:value data="orgnlMsgId"  property="orgnlMsgId"/>
+  				<jb:value data="orgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  				<jb:value data="orgnlMT"  property="orgnlMT"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfSndg[0].xxx.amt" class="com.xml.cnaps2.hvps.v71600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfSndg">
+  				<jb:value data="amt" decoder="BigDecimal" property="value"/>
+  	</jb:bean>
+	
+  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfRcvg[0]" class="java.util.ArrayList" createOnElement="com.topfinance.ebo.msg.Hvps71600101Dtls">
+  			<jb:wiring beanIdRef="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx" />
+  	</jb:bean>
+  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx" class="com.xml.cnaps2.hvps.v71600101.SndgAndRcvg1" createOnElement="com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfRcvg">
+  				<jb:wiring beanIdRef="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx.orgnlGrpHdr"  property="orgnlGrpHdr"/>
+  				<jb:wiring beanIdRef="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx.amt"  property="amt"/>
+  				<jb:value data="detlPrcSts"  property="prcSts"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx.orgnlGrpHdr" class="com.xml.cnaps2.hvps.v71600101.OrgnlGrpHdr1" createOnElement="com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfRcvg">
+  				<jb:value data="detlOrgnlMsgId"  property="orgnlMsgId"/>
+  				<jb:value data="detlOrgnlInstgDrctPty"  property="orgnlInstgPty"/>
+  				<jb:value data="detlOrgnlMT"  property="orgnlMT"/>
+  	</jb:bean>
+  	<jb:bean beanId="acctChckng.acctChckngInf.dtls[0].xxx.chckngDtlOfRcvg[0].xxx.amt" class="com.xml.cnaps2.hvps.v71600101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Hvps71600101ChckngDtlOfRcvg">
+  				<jb:value data="detlAmt" decoder="BigDecimal" property="value"/>
   	</jb:bean>
 </smooks-resource-list>  
     

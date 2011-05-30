@@ -47,7 +47,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "OriginalGroupInformation23", propOrder = {
     "grpCxlId",
-    "case",
+    "Case",
     "orgnlMsgId",
     "orgnlMsgNmId",
     "orgnlCreDtTm",
@@ -60,8 +60,8 @@ public class OriginalGroupInformation23 {
 
     @XmlElement(name = "GrpCxlId")
     protected String grpCxlId;
-    @XmlElement(name = "Case")
-    protected Case2 _case;
+    @XmlElement(name = "Case1")
+    protected Case2 Case;
     @XmlElement(name = "OrgnlMsgId", required = true)
     protected String orgnlMsgId;
     @XmlElement(name = "OrgnlMsgNmId", required = true)
@@ -111,7 +111,7 @@ public class OriginalGroupInformation23 {
      *     
      */
     public Case2 getCase() {
-        return _case;
+        return Case;
     }
 
     /**
@@ -123,7 +123,7 @@ public class OriginalGroupInformation23 {
      *     
      */
     public void setCase(Case2 value) {
-        this._case = value;
+        this.Case = value;
     }
 
     /**

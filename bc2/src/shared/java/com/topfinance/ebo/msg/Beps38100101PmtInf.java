@@ -34,49 +34,55 @@ public class Beps38100101PmtInf  implements java.io.Serializable {
     @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].pmtInfId")
     private String pmtInfId;
     
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].pmtMtd")
+    private String pmtMtd;
+    
     @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].pmtTpInf.lclInstrm.prtry")
     private String prtryTpCd;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.grpHdr.initgPty.nm")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].reqdExctnDt")
+    private Date reqdExctnDt;
+    
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].dbtr.nm")
     private String dbtrNm;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.grpHdr.fwdgAgt.finInstnId.clrSysMmbId.mmbId")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].dbtrAcct.id.othr.id")
     private String dbtrAcctId;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].pmtInfId")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].dbtrAcct.id.othr.issr")
     private String dbtrAcctIssr;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].pmtMtd")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].dbtrAgt.fInInstnId.clrSysMmbId.mmbId")
     private String dbtrClrSysMmbId;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].pmtTpInf.lclInstrm")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].dbtrAgt.brnchId.id")
     private String dbtrAgtBrnchId;
     
     @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].cdtTrfTxInf.pmtId.endToEndId")
     private String endToEndId;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].pmtTpInf.lclInstrm.prtry")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].cdtTrfTxInf.pmtTpInf.lclInstrm.prtry")
     private String prtry;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].pmtTpInf.ctgyPurp.prtry")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].cdtTrfTxInf.pmtTpInf.ctgyPurp.prtry")
     private String lclInstrm;
     
     @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].cdtTrfTxInf.amt.instdAmt.value")
     private Double instdAmt;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].cdtTrfTxInf.cdtrAgt.finInstnId.clrSysMmbId.mmbId")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].cdtTrfTxInf.cdtrAgt.fInInstnId.clrSysMmbId.mmbId")
     private String cdtrClrSysMmbId;
     
     @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].cdtTrfTxInf.cdtrAgt.brnchId.id")
     private String cdtrAgtBrnchId;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].dbtr.nm")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].cdtTrfTxInf.cdtr.nm")
     private String cdtrNm;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].dbtrAcct.id.othr.id")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].cdtTrfTxInf.cdtrAcct.id.othr.id")
     private String cdtrAcctId;
     
-    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].dbtrAcct.id.othr.issr")
+    @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].cdtTrfTxInf.cdtrAcct.id.othr.issr")
     private String cdtrAcctIssr;
     
     @JaxbMapping(objPath="cstmrCdtTrfInitn.pmtInf[0].cdtTrfTxInf.rmtInf.ustrd[0]")
@@ -90,9 +96,19 @@ public class Beps38100101PmtInf  implements java.io.Serializable {
     
     private Beps38100101 fid;
     
-    
-	
-    /** default constructor */
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="FID", nullable=false, updatable=false)
+    public Beps38100101 getFid() {
+		return fid;
+	}
+
+
+	public void setFid(Beps38100101 fid) {
+		this.fid = fid;
+	}
+
+
+	/** default constructor */
     public Beps38100101PmtInf() {
     }
 	
@@ -139,6 +155,25 @@ public class Beps38100101PmtInf  implements java.io.Serializable {
         pmtInfId = newPmtInfId;
     }	  
   /**
+   * Returns the pmtMtd
+   * 
+   * @return the pmtMtd
+   */
+    @Column(name = "PMTMTD")
+    public String getPmtMtd() {
+        return pmtMtd;
+    }	 
+     
+  /**
+   * Sets the pmtMtd
+   *
+   * @param newPmtMtd the new pmtMtd
+   */
+
+    public void  setPmtMtd(String newPmtMtd) {
+        pmtMtd = newPmtMtd;
+    }	  
+  /**
    * Returns the prtryTpCd
    * 
    * @return the prtryTpCd
@@ -156,6 +191,25 @@ public class Beps38100101PmtInf  implements java.io.Serializable {
 
     public void  setPrtryTpCd(String newPrtryTpCd) {
         prtryTpCd = newPrtryTpCd;
+    }	  
+  /**
+   * Returns the reqdExctnDt
+   * 
+   * @return the reqdExctnDt
+   */
+    @Column(name = "REQDEXCTNDT")
+    public Date getReqdExctnDt() {
+        return reqdExctnDt;
+    }	 
+     
+  /**
+   * Sets the reqdExctnDt
+   *
+   * @param newReqdExctnDt the new reqdExctnDt
+   */
+
+    public void  setReqdExctnDt(Date newReqdExctnDt) {
+        reqdExctnDt = newReqdExctnDt;
     }	  
   /**
    * Returns the dbtrNm
@@ -479,18 +533,7 @@ public class Beps38100101PmtInf  implements java.io.Serializable {
 
     public void  setUstrdCheckId(String newUstrdCheckId) {
         ustrdCheckId = newUstrdCheckId;
-    }
-
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="FID", nullable=false, updatable=false)
-	public Beps38100101 getFid() {
-		return fid;
-	}
-	
-	
-	public void setFid(Beps38100101 fid) {
-		this.fid = fid;
-	}	  
+    }	  
     
     
 }    

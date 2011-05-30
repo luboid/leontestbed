@@ -583,4 +583,8 @@ public class BillInformation1 {
         this.imgBckData = value;
     }
 
+	public void setEndrsrDtl(List<EndorsorDetail1> endrsrDtl) {
+		this.endrsrDtl = endrsrDtl;
+	}
+
 }
