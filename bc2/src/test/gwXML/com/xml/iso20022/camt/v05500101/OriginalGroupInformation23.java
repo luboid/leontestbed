@@ -60,7 +60,7 @@ public class OriginalGroupInformation23 {
 
     @XmlElement(name = "GrpCxlId")
     protected String grpCxlId;
-    @XmlElement(name = "Case1")
+    @XmlElement(name = "Case")
     protected Case2 Case;
     @XmlElement(name = "OrgnlMsgId", required = true)
     protected String orgnlMsgId;
