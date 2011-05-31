@@ -678,7 +678,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void atestGenerated_388() throws Exception {
+	public void testGenerated_388() throws Exception {
 		String msgCode = "beps.388.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1339,7 +1339,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_411() throws Exception {
+	public void atestGenerated_411() throws Exception {
 		String msgCode = "beps.411.001.01";
 		String tpCode = "";
 		String clsCode = "";

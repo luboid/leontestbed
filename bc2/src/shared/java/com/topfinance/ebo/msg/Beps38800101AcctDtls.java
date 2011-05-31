@@ -47,7 +47,7 @@ public class Beps38800101AcctDtls  implements java.io.Serializable {
     private String instgDrctPty;
     
     @JaxbMapping(objPath="btchCstmrsAcctQryRspn.btchCstmrsAcctQryRspnInf.acctDtls[0].acctBk")
-    private String acctDtls;
+    private String acctBk;
     
     private Beps38800101 fid;
     
@@ -186,23 +186,23 @@ public class Beps38800101AcctDtls  implements java.io.Serializable {
         instgDrctPty = newInstgDrctPty;
     }	  
   /**
-   * Returns the acctDtls
+   * Returns the acctBk
    * 
-   * @return the acctDtls
+   * @return the acctBk
    */
     @Column(name = "ACCTDTLS")
-    public String getAcctDtls() {
-        return acctDtls;
+    public String getAcctBk() {
+        return acctBk;
     }	 
      
   /**
-   * Sets the acctDtls
+   * Sets the acctBk
    *
-   * @param newAcctDtls the new acctDtls
+   * @param newAcctBk the new acctBk
    */
 
-    public void  setAcctDtls(String newAcctDtls) {
-        acctDtls = newAcctDtls;
+    public void  setAcctBk(String newAcctBk) {
+    	acctBk = newAcctBk;
     }	  
     
     

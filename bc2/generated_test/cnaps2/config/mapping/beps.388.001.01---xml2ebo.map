@@ -35,7 +35,7 @@
 				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/RspsnSts" property="rspsnSts"/>
 				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/AcctSts" property="acctSts"/>
 				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/InstgPty" property="instgDrctPty"/>
-				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/AcctBk" property="acctDtls"/>
+				<jb:value data="/Document/BtchCstmrsAcctQryRspn/BtchCstmrsAcctQryRspnInf/AcctDtls/AcctBk" property="acctBk"/>
 	</jb:bean>  
 
 
