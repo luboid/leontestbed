@@ -24,6 +24,9 @@ public class ParseSampleXmlHelper {
         } else if(name.equals("fIToFICstmrDrctDbt")) {
             // for beps.133
             name = "fiToFiCstmrDrctDbt";            
+        } else if(name.equals("case")) {
+            // for beps.383 beps.411 beps.413 beps.416
+            name = "Case";            
         }
 		return name;
 	}
@@ -37,6 +40,9 @@ public class ParseSampleXmlHelper {
     	}else if("fiToFiCstmrDrctDbt".equals(jaxb)) {
             // for beps.133    		
     		xmlPath="FIToFICstmrDrctDbt";    		
+    	}else if("Case".equals(jaxb)) {
+            // for beps.383 beps.411 beps.413 beps.416		
+    		xmlPath="Case";    		
     	} else {
     		xmlPath = jaxb;
     	}

@@ -6,7 +6,7 @@
     <param name="input.xsd.rootElement">Document</param>
     <param name="input.xsd" type="input.type.actived"></param>
   </params>
-  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps38300101" createOnElement="Document">
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps41600101" createOnElement="Document">
 				<jb:value data="/Document/CstmrPmtCxlReq/Assgnmt/Id" property="msgId"/>    
 				<jb:value data="/Document/CstmrPmtCxlReq/Assgnmt/Assgnr/Agt/FinInstnId/ClrSysMmbId/MmbId" property="instgDrctPty"/>    
 				<jb:value data="/Document/CstmrPmtCxlReq/Assgnmt/Assgne/Agt/FinInstnId/ClrSysMmbId/MmbId" property="instdDrctPty"/>    

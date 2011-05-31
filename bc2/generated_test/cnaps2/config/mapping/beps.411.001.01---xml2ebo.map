@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ASCII"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd" xmlns:jb="http://www.milyn.org/xsd/smooks/javabean-1.2.xsd">
+  <params>
+    <param name="stream.filter.type">SAX</param>
+    <param name="inputType">input.xsd</param>
+    <param name="input.xsd.rootElement">Document</param>
+    <param name="input.xsd" type="input.type.actived"></param>
+  </params>
+  <jb:bean beanId="target" class="com.topfinance.ebo.msg.Beps41100101" createOnElement="Document">
+				<jb:value data="/Document/CstmrPmtCxlReq/Assgnmt/Id" property="msgId"/>    
+				<jb:value data="/Document/CstmrPmtCxlReq/Assgnmt/Assgnr/Agt/FinInstnId/ClrSysMmbId/MmbId" property="instgDrctPty"/>    
+				<jb:value data="/Document/CstmrPmtCxlReq/Assgnmt/Assgnr/Agt/BrnchId/Id" property="instgIndrctPty"/>    
+				<jb:value data="/Document/CstmrPmtCxlReq/Assgnmt/Assgne/Agt/FinInstnId/ClrSysMmbId/MmbId" property="instdDrctPty"/>    
+				<jb:value data="/Document/CstmrPmtCxlReq/Assgnmt/Assgne/Agt/BrnchId/Id" property="instgIndrctPty1"/>    
+  			<jb:value data="/Document/CstmrPmtCxlReq/Assgnmt/CreDtTm" decoder="Date" property="creDtTm">
+    			<jb:decodeParam name="format">yyyy-MM-dd'T'HH:mm:ss</jb:decodeParam>
+				</jb:value>			
+				<jb:value data="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlGrpInfAndCxl/GrpCxlId" property="grpCxlId"/>    
+				<jb:value data="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlGrpInfAndCxl/Case/Id" property="identification"/>    
+				<jb:value data="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlGrpInfAndCxl/Case/Cretr/Agt/FinInstnId/ClrSysMmbId/MmbId" property="mmbId"/>    
+				<jb:value data="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlGrpInfAndCxl/OrgnlMsgId" property="orgnlMsgId"/>    
+				<jb:value data="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlGrpInfAndCxl/OrgnlMsgNmId" property="orgnlMsgNmId"/>    
+				<jb:value data="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlGrpInfAndCxl/CxlRsnInf/AddtlInf" property="addtInf"/>    
+    		<jb:wiring beanIdRef="orgnlPmtInfId1[0]" property="orgnlPmtInfId1"/>
+
+	</jb:bean>
+	
+  <jb:bean beanId="orgnlPmtInfId1[0]" class="java.util.HashSet" createOnElement="Document">
+   	<jb:wiring beanIdRef="orgnlPmtInfId1" />
+  </jb:bean>
+	<jb:bean beanId="orgnlPmtInfId1" class="com.topfinance.ebo.msg.Beps41100101OrgnlPmtInfId" createOnElement="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlPmtInfAndCxl">
+		<jb:wiring beanIdRef="target" property="fid"/>
+				<jb:value data="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlPmtInfAndCxl/OrgnlPmtInfId" property="orgnlPmtInfId"/>
+				<jb:value data="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlPmtInfAndCxl/TxInf/OrgnlTxRef/PmtTpInf/CtgyPurp/Prtry" property="orgnlCd"/>
+				<jb:value data="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlPmtInfAndCxl/TxInf/OrgnlTxRef/RmtInf/Ustrd" property="addInfo"/>
+				<jb:value data="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlPmtInfAndCxl/TxInf/OrgnlTxRef/DbtrAgt/BrnchId/Id" property="debtId"/>
+				<jb:value data="/Document/CstmrPmtCxlReq/Undrlyg/OrgnlPmtInfAndCxl/TxInf/OrgnlTxRef/CdtrAgt/BrnchId/Id" property="credId"/>
+	</jb:bean>  
+
+
+</smooks-resource-list>  
+    

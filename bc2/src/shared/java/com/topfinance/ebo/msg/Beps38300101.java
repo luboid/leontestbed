@@ -22,7 +22,7 @@ import javax.persistence.SequenceGenerator;
  */
  
 @Entity
-@Table(name = "T_MSG_BEPS_383_001_01__")
+@Table(name = "T_C2_BEPS_383")
 public class Beps38300101  implements java.io.Serializable {
 
     // Fields 

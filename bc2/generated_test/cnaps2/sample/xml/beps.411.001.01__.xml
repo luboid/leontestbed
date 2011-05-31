@@ -65,13 +65,40 @@
 							<Ustrd>测试测试测试测试</Ustrd>
 						</RmtInf>
 						<DbtrAgt>
-							<FinInstnId></FinInstnId>
+							<!--<FinInstnId></FinInstnId>-->
 							<BrnchId>
 								<Id>103100000018</Id>
 							</BrnchId>
 						</DbtrAgt>
 						<CdtrAgt>
-							<FinInstnId></FinInstnId>
+							<!--<FinInstnId></FinInstnId>-->
+							<BrnchId>
+								<Id>104100004370</Id>
+							</BrnchId>
+						</CdtrAgt>
+					</OrgnlTxRef>
+				</TxInf>
+		    </OrgnlPmtInfAndCxl>
+		    <OrgnlPmtInfAndCxl>
+				<OrgnlPmtInfId>2010101000000111</OrgnlPmtInfId>
+				<TxInf>
+					<OrgnlTxRef>
+						<PmtTpInf>
+							<CtgyPurp>
+								<Prtry>B100</Prtry>
+							</CtgyPurp>
+						</PmtTpInf>
+						<RmtInf>
+							<Ustrd>测试测试测试测试</Ustrd>
+						</RmtInf>
+						<DbtrAgt>
+							<!--<FinInstnId></FinInstnId>-->
+							<BrnchId>
+								<Id>103100000018</Id>
+							</BrnchId>
+						</DbtrAgt>
+						<CdtrAgt>
+							<!--<FinInstnId></FinInstnId>-->
 							<BrnchId>
 								<Id>104100004370</Id>
 							</BrnchId>

@@ -11,7 +11,7 @@ public class TestGenMap extends TestGenMapLeon {
 	public final static boolean USE_DB = true;
 	
 	// TODO change it to true when you are ready to connect to DB
-	public final static boolean TO_GENERATE = true;
+	public final static boolean TO_GENERATE = false;
 	
 	//private static final String basePath = "D:/bankConnector/source/generated_test";
 	private static final String basePath = "D:/DEV.WORK/EBO/bc2/generated_test";
@@ -557,17 +557,6 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void btestGenerated_413() throws Exception {
-		String msgCode = "beps.413.001.01";
-		String tpCode = "";
-		String clsCode = "";
-		if(TO_GENERATE) {
-			_testGenPublicMap(msgCode, tpCode, clsCode);
-		} else {
-			_testGenerated(msgCode, tpCode, clsCode);
-		}
-	}
-	
 	public void btestGenerated_414() throws Exception {
 		String msgCode = "beps.414.001.01";
 		String tpCode = "";
@@ -581,17 +570,6 @@ public class TestGenMap extends TestGenMapLeon {
 	
 	public void btestGenerated_415() throws Exception {
 		String msgCode = "beps.415.001.01";
-		String tpCode = "";
-		String clsCode = "";
-		if(TO_GENERATE) {
-			_testGenPublicMap(msgCode, tpCode, clsCode);
-		} else {
-			_testGenerated(msgCode, tpCode, clsCode);
-		}
-	}
-	
-	public void btestGenerated_416() throws Exception {
-		String msgCode = "beps.416.001.01";
 		String tpCode = "";
 		String clsCode = "";
 		if(TO_GENERATE) {
@@ -1317,7 +1295,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-		public void atestGenerated_303() throws Exception {
+	public void atestGenerated_303() throws Exception {
 		String msgCode = "ccms.303.001.02";
 		String tpCode = "";
 		String clsCode = "";
@@ -1361,7 +1339,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void btestGenerated_411() throws Exception {
+	public void testGenerated_411() throws Exception {
 		String msgCode = "beps.411.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1372,7 +1350,7 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_383() throws Exception {
+	public void atestGenerated_383() throws Exception {
 		String msgCode = "beps.383.001.01";
 		String tpCode = "";
 		String clsCode = "";
