@@ -3,7 +3,7 @@
 <Document xmlns="urn:cnaps:std:ccms:2010:tech:xsd:ccms.315.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<BizRspn>
 		<GrpHdr>
-			<MsgId>2010101000001260</MsgId>
+			<MsgId>2010101000001261</MsgId>
 			<CreDtTm>2001-12-17T09:30:47</CreDtTm>
 			<InstgPty>
 				<InstgDrctPty>103100000018</InstgDrctPty>
