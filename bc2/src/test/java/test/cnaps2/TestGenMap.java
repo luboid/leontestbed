@@ -289,7 +289,7 @@ public class TestGenMap extends TestGenMapLeon {
 			_testGenerated(msgCode, tpCode, clsCode);
 		}
 	}
-	/**
+	
 	public void testGenerated_370() throws Exception {
 		String msgCode = "saps.370.001.01";
 		String tpCode = "";
@@ -499,7 +499,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_711() throws Exception {
+	// 成功
+	public void atestGenerated_711() throws Exception {
 		String msgCode = "hvps.711.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -521,7 +522,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_717() throws Exception {
+	// 成功
+	public void atestGenerated_717() throws Exception {
 		String msgCode = "hvps.717.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -686,7 +688,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_388() throws Exception {
+	// 成功
+	public void atestGenerated_388() throws Exception {
 		String msgCode = "beps.388.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -896,7 +899,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 
-	public void testGenerated_736() throws Exception {
+	// 成功
+	public void atestGenerated_736() throws Exception {
 		String msgCode = "saps.736.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -984,7 +988,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_398() throws Exception {
+	// 成功
+	public void atestGenerated_398() throws Exception {
 		String msgCode = "beps.398.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -995,7 +1000,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_397() throws Exception {
+	// 成功
+	public void atestGenerated_397() throws Exception {
 		String msgCode = "beps.397.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1006,7 +1012,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_386() throws Exception {
+	// 成功
+	public void atestGenerated_386() throws Exception {
 		String msgCode = "beps.386.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1017,7 +1024,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_395() throws Exception {
+	// 成功
+	public void atestGenerated_395() throws Exception {
 		String msgCode = "beps.395.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1028,7 +1036,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_394() throws Exception {
+	// 成功
+	public void atestGenerated_394() throws Exception {
 		String msgCode = "beps.394.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1039,7 +1048,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_393() throws Exception {
+	// 成功
+	public void atestGenerated_393() throws Exception {
 		String msgCode = "beps.393.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1050,7 +1060,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_392() throws Exception {
+	// 成功
+	public void atestGenerated_392() throws Exception {
 		String msgCode = "beps.392.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1061,7 +1072,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_382() throws Exception {
+	// 成功
+	public void atestGenerated_382() throws Exception {
 		String msgCode = "beps.382.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1072,7 +1084,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_391() throws Exception {
+	// 成功
+	public void atestGenerated_391() throws Exception {
 		String msgCode = "beps.391.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1083,7 +1096,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_132() throws Exception {
+	// 成功
+	public void atestGenerated_132() throws Exception {
 		String msgCode = "beps.132.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1094,7 +1108,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_123() throws Exception {
+	// 成功
+	public void atestGenerated_123() throws Exception {
 		String msgCode = "beps.123.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1105,7 +1120,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_603() throws Exception {
+	// 成功
+	public void atestGenerated_603() throws Exception {
 		String msgCode = "saps.603.001.02";
 		String tpCode = "";
 		String clsCode = "";
@@ -1116,7 +1132,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_377() throws Exception {
+	// 成功
+	public void atestGenerated_377() throws Exception {
 		String msgCode = "nets.377.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1127,7 +1144,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_376() throws Exception {
+	// 成功
+	public void atestGenerated_376() throws Exception {
 		String msgCode = "nets.376.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1138,7 +1156,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_360() throws Exception {
+	// 成功
+	public void atestGenerated_360() throws Exception {
 		String msgCode = "saps.360.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1149,7 +1168,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_350() throws Exception {
+	// 成功
+	public void atestGenerated_350() throws Exception {
 		String msgCode = "nets.350.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1160,7 +1180,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_317() throws Exception {
+	// 成功
+	public void atestGenerated_317() throws Exception {
 		String msgCode = "ccms.317.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1171,7 +1192,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_316() throws Exception {
+	// 成功
+	public void atestGenerated_316() throws Exception {
 		String msgCode = "ccms.316.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1182,7 +1204,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_405() throws Exception {
+	// 成功
+	public void atestGenerated_405() throws Exception {
 		String msgCode = "nets.405.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1193,7 +1216,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_308() throws Exception {
+	// 成功
+	public void atestGenerated_308() throws Exception {
 		String msgCode = "ccms.308.001.02";
 		String tpCode = "";
 		String clsCode = "";
@@ -1204,7 +1228,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_307() throws Exception {
+	// 成功
+	public void atestGenerated_307() throws Exception {
 		String msgCode = "ccms.307.001.02";
 		String tpCode = "";
 		String clsCode = "";
@@ -1215,7 +1240,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_141() throws Exception {
+	// 成功
+	public void atestGenerated_141() throws Exception {
 		String msgCode = "hvps.141.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1226,7 +1252,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_112() throws Exception {
+	// 成功
+	public void atestGenerated_112() throws Exception {
 		String msgCode = "hvps.112.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1237,7 +1264,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_617() throws Exception {
+	// 成功
+	public void atestGenerated_617() throws Exception {
 		String msgCode = "nets.617.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1248,7 +1276,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_407() throws Exception {
+	// 成功
+	public void atestGenerated_407() throws Exception {
 		String msgCode = "nets.407.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1259,7 +1288,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_354() throws Exception {
+	// 成功
+	public void atestGenerated_354() throws Exception {
 		String msgCode = "nets.354.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1270,7 +1300,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_351() throws Exception {
+	// 成功
+	public void atestGenerated_351() throws Exception {
 		String msgCode = "nets.351.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1281,7 +1312,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_413() throws Exception {
+	// 成功
+	public void atestGenerated_413() throws Exception {
 		String msgCode = "beps.413.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1292,7 +1324,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_416() throws Exception {
+	// 成功
+	public void atestGenerated_416() throws Exception {
 		String msgCode = "beps.416.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1336,7 +1369,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_125() throws Exception {
+	// 成功
+	public void atestGenerated_125() throws Exception {
 		String msgCode = "beps.125.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1347,7 +1381,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_411() throws Exception {
+	// 成功
+	public void atestGenerated_411() throws Exception {
 		String msgCode = "beps.411.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1358,7 +1393,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_383() throws Exception {
+	// 成功
+	public void atestGenerated_383() throws Exception {
 		String msgCode = "beps.383.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1369,7 +1405,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_404() throws Exception {
+	// 成功
+	public void atestGenerated_404() throws Exception {
 		String msgCode = "beps.404.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1380,7 +1417,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_381() throws Exception {
+	// 成功
+	public void atestGenerated_381() throws Exception {
 		String msgCode = "beps.381.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1391,7 +1429,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_318() throws Exception {
+	// 成功
+	public void atestGenerated_318() throws Exception {
 		String msgCode = "ccms.318.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1402,7 +1441,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_607() throws Exception {
+	// 成功
+	public void atestGenerated_607() throws Exception {
 		String msgCode = "saps.607.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1413,7 +1453,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_128() throws Exception {
+	// 成功
+	public void atestGenerated_128() throws Exception {
 		String msgCode = "beps.128.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1424,7 +1465,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_134() throws Exception {
+	// 成功
+	public void atestGenerated_134() throws Exception {
 		String msgCode = "beps.134.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1435,7 +1477,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_319() throws Exception {
+	// 成功
+	public void atestGenerated_319() throws Exception {
 		String msgCode = "ccms.319.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1446,7 +1489,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_133() throws Exception {
+	// 成功
+	public void atestGenerated_133() throws Exception {
 		String msgCode = "beps.133.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1457,7 +1501,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_131() throws Exception {
+	// 成功
+	public void atestGenerated_131() throws Exception {
 		String msgCode = "beps.131.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1468,7 +1513,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_722() throws Exception {
+	// 成功
+	public void atestGenerated_722() throws Exception {
 		String msgCode = "beps.722.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1479,7 +1525,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_111() throws Exception {
+	// 成功
+	public void atestGenerated_111() throws Exception {
 		String msgCode = "hvps.111.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1490,7 +1537,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_712() throws Exception {
+	// 成功
+	public void atestGenerated_712() throws Exception {
 		String msgCode = "hvps.712.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1501,7 +1549,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_713() throws Exception {
+	// 成功
+	public void atestGenerated_713() throws Exception {
 		String msgCode = "hvps.713.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1512,7 +1561,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_714() throws Exception {
+	// 成功
+	public void atestGenerated_714() throws Exception {
 		String msgCode = "hvps.714.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1523,7 +1573,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_716() throws Exception {
+	// 成功
+	public void atestGenerated_716() throws Exception {
 		String msgCode = "hvps.716.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1534,7 +1585,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_121() throws Exception {
+	// 成功
+	public void atestGenerated_121() throws Exception {
 		String msgCode = "beps.121.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1545,7 +1597,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_122() throws Exception {
+	// 成功
+	public void atestGenerated_122() throws Exception {
 		String msgCode = "beps.122.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1556,7 +1609,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_127() throws Exception {
+	// 成功
+	public void atestGenerated_127() throws Exception {
 		String msgCode = "beps.127.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1567,7 +1621,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_721() throws Exception {
+	// 成功
+	public void atestGenerated_721() throws Exception {
 		String msgCode = "beps.721.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1578,7 +1633,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_723() throws Exception {
+	// 成功
+	public void atestGenerated_723() throws Exception {
 		String msgCode = "beps.723.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1589,7 +1645,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_726() throws Exception {
+	// 成功
+	public void atestGenerated_726() throws Exception {
 		String msgCode = "beps.726.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1600,7 +1657,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_355() throws Exception {
+	// 成功
+	public void atestGenerated_355() throws Exception {
 		String msgCode = "nets.355.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1611,7 +1669,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_369() throws Exception {
+	// 成功
+	public void atestGenerated_369() throws Exception {
 		String msgCode = "saps.369.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1622,7 +1681,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_615() throws Exception {
+	// 成功
+	public void atestGenerated_615() throws Exception {
 		String msgCode = "saps.615.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1633,7 +1693,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_730() throws Exception {
+	// 成功
+	public void atestGenerated_730() throws Exception {
 		String msgCode = "saps.730.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1644,7 +1705,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_732() throws Exception {
+	// 成功
+	public void atestGenerated_732() throws Exception {
 		String msgCode = "saps.732.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1655,7 +1717,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_735() throws Exception {
+	// 成功
+	public void atestGenerated_735() throws Exception {
 		String msgCode = "saps.735.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1666,7 +1729,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_915() throws Exception {
+	// 成功
+	public void atestGenerated_915() throws Exception {
 		String msgCode = "ccms.915.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1677,7 +1741,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_917() throws Exception {
+	// 成功
+	public void atestGenerated_917() throws Exception {
 		String msgCode = "ccms.917.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1688,7 +1753,8 @@ public class TestGenMap extends TestGenMapLeon {
 		}
 	}
 	
-	public void testGenerated_124() throws Exception {
+	// 成功
+	public void atestGenerated_124() throws Exception {
 		String msgCode = "beps.124.001.01";
 		String tpCode = "";
 		String clsCode = "";
@@ -1698,7 +1764,6 @@ public class TestGenMap extends TestGenMapLeon {
 			_testGenerated(msgCode, tpCode, clsCode);
 		}
 	}
-	*/
 	
 	public void atestNested() throws Exception {
 		String msgCode = "testNested";
