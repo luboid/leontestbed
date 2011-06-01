@@ -11,8 +11,11 @@
   	<jb:bean beanId="balWrngSetng.balWrngSetngInf" class="com.xml.cnaps2.saps.v36100101.BalanceWarningSettingInformation1" createOnElement="com.topfinance.ebo.msg.Saps36100101">
   		<jb:value data="/com.topfinance.ebo.msg.Saps36100101/mmbId"  property="mmbId"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps36100101/swtchTp"  property="swtchTp"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps36100101/acctWrngVal"  property="acctWrngVal"/>
+  		<jb:wiring beanIdRef="balWrngSetng.balWrngSetngInf.acctWrngVal"  property="acctWrngVal"/>
   		<jb:value data="/com.topfinance.ebo.msg.Saps36100101/wrngPlusMnsTp"  property="wrngPlusMnsTp"/>
+  	</jb:bean>
+	<jb:bean beanId="balWrngSetng.balWrngSetngInf.acctWrngVal" class="com.xml.cnaps2.saps.v36100101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Saps36100101">
+  				<jb:value data="acctWrngVal" decoder="BigDecimal" property="value"/>
   	</jb:bean>
   	<jb:bean beanId="balWrngSetng.grpHdr" class="com.xml.cnaps2.saps.v36100101.GroupHeader1" createOnElement="com.topfinance.ebo.msg.Saps36100101">
     	<jb:wiring beanIdRef="balWrngSetng.grpHdr.instgPty" property="instgPty"/>

@@ -49,7 +49,10 @@
   	<jb:bean beanId="bizQry.bizQryInf.orgnlInf" class="com.xml.cnaps2.ccms.v31400101.OrgnlInf1" createOnElement="com.topfinance.ebo.msg.Ccms31400101">
     	<jb:wiring beanIdRef="bizQry.bizQryInf.orgnlInf.orgnlGrpHdr" property="orgnlGrpHdr"/>
     	<jb:wiring beanIdRef="bizQry.bizQryInf.orgnlInf.orgnlTx" property="orgnlTx"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Ccms31400101/amt"  property="amt"/>
+  	<jb:wiring beanIdRef="bizQry.bizQryInf.orgnlInf.orgnlTx.amt"  property="amt"/>
+  	</jb:bean>
+	<jb:bean beanId="bizQry.bizQryInf.orgnlInf.orgnlTx.amt" class="com.xml.cnaps2.ccms.v31400101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Ccms31400101">
+  				<jb:value data="amt" decoder="BigDecimal" property="value"/>
   	</jb:bean>
 </smooks-resource-list>  
     

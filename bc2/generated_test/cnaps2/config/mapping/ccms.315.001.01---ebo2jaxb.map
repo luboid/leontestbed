@@ -40,7 +40,10 @@
   	<jb:bean beanId="bizRspn.bizRspnInf.orgnlInf" class="com.xml.cnaps2.ccms.v31500101.OrgnlInf1" createOnElement="com.topfinance.ebo.msg.Ccms31500101">
     	<jb:wiring beanIdRef="bizRspn.bizRspnInf.orgnlInf.orgnlGrpHdr" property="orgnlGrpHdr"/>
     	<jb:wiring beanIdRef="bizRspn.bizRspnInf.orgnlInf.orgnlTx" property="orgnlTx"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Ccms31500101/orgnlAmt"  property="orgnlAmt"/>
+  	<jb:wiring beanIdRef="bizRspn.bizRspnInf.orgnlInf.orgnlTx.orgnlAmt"  property="orgnlAmt"/>
+  	</jb:bean>
+	<jb:bean beanId="bizRspn.bizRspnInf.orgnlInf.orgnlTx.orgnlAmt" class="com.xml.cnaps2.ccms.v31500101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Ccms31500101">
+  				<jb:value data="orgnlAmt" decoder="BigDecimal" property="value"/>
   	</jb:bean>
   	<jb:bean beanId="bizRspn.bizRspnInf.orgnlInf.orgnlTx" class="com.xml.cnaps2.ccms.v31500101.OrgnlTx1" createOnElement="com.topfinance.ebo.msg.Ccms31500101">
   		<jb:value data="/com.topfinance.ebo.msg.Ccms31500101/orgnlInstgIndrctPty"  property="instgIndrctPty"/>

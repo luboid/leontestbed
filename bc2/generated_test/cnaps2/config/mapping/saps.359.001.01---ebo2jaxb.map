@@ -14,7 +14,10 @@
   	</jb:bean>
   	<jb:bean beanId="fincgRqrmntNtfctn.fincgRqrmntNtfctnInf" class="com.xml.cnaps2.saps.v35900101.FinancingRequirementNotificationInformation1" createOnElement="com.topfinance.ebo.msg.Saps35900101">
   		<jb:value data="/com.topfinance.ebo.msg.Saps35900101/mmbId"  property="mmbId"/>
-  		<jb:value data="/com.topfinance.ebo.msg.Saps35900101/fincgAmt"  property="fincgAmt"/>
+  		<jb:wiring beanIdRef="fincgRqrmntNtfctn.fincgRqrmntNtfctnInf.fincgAmt"  property="fincgAmt"/>
+  	</jb:bean>
+	<jb:bean beanId="fincgRqrmntNtfctn.fincgRqrmntNtfctnInf.fincgAmt" class="com.xml.cnaps2.saps.v35900101.ActiveCurrencyAndAmount" createOnElement="com.topfinance.ebo.msg.Saps35900101">
+  				<jb:value data="fincgAmt" decoder="BigDecimal" property="value"/>
   	</jb:bean>
   	<jb:bean beanId="fincgRqrmntNtfctn" class="com.xml.cnaps2.saps.v35900101.FincgRqrmntNtfctnV01" createOnElement="com.topfinance.ebo.msg.Saps35900101">
     	<jb:wiring beanIdRef="fincgRqrmntNtfctn.grpHdr" property="grpHdr"/>
