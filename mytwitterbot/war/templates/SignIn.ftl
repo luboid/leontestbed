@@ -10,12 +10,12 @@
         <form action="/user" method="post">
            <div>
                <span>User Name</span>
-               <input type='text' name='sign_up_name' value='${userName!""}'/>
+               <input type='text' name='sign_up_name' value='${userName!"1"}'/>
                <span style="color:#ff0000">${errorMessage!""}<span>
            </div>
            <div>    
                <span>Password</span>
-               <input type='password' name='sign_up_password' value='${password!""}'/>
+               <input type='password' name='sign_up_password' value='${password!"1"}'/>
            </div>
            <input type='submit' name="action" value="signin"/>
         </form>

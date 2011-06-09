@@ -5,7 +5,7 @@
     </head>
     <body>
         <center>
-            <H1>Oops, looks like we hit an internal server error</H1>
+            <H1>Oops, looks like we hit an internal server error: <%=exception.getMessage()%></H1>
             <br/>
             <h2>Mistakes happen, but the good thing is that you cna let us know so that we can correct it
                 <br/>

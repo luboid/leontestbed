@@ -40,6 +40,7 @@ import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.datanucleus.util.StringUtils;
 
 
 
@@ -47,7 +48,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  * Responsible for parsing a file that is uploaded with the status messages.
  * Parses the file and presents it to the user to allow modification
  */
-public class StatusManager extends HttpServlet {
+public class StatusManager extends BaseServlet {
 
 	private static final Logger log = Logger.getLogger(StatusManager.class.getName());
 	private static final long serialVersionUID = 1551252388567429753L;
@@ -56,9 +57,7 @@ public class StatusManager extends HttpServlet {
 	private static final String LEVEL_INFO = "info";
 	private static final String LEVEL_ERROR = "error";
 	private static final String LEVEL_WARN = "warn";
-	private static final long PAGE_SIZE = 30;
-	
-	private static final long NO_TXN = -1;
+
 	
 	public static final String DATE_FORMAT = "MM/dd/yyyy";
 	public static final String TIME_FORMAT = "HH:mm";
@@ -71,32 +70,45 @@ public class StatusManager extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getParameter(Pages.PARAM_ACTION);
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		pm.currentTransaction().begin();
+		String twitterScreenName = req.getParameter(Pages.PARAM_SCREENNAME);
+		if(StringUtils.isEmpty(twitterScreenName)) {
+		    throw new RuntimeException("twitterScreenName is empty, sth wrong...");
+		}
 		
+		try {
 		if (action == null) {
 			resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_UPLOAD)) {
-			this.processUpload(req, resp);
+			this.processUpload(req, resp, pm);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_FETCH)) {
-			this.processFetch(req, resp);
+			this.processFetch(req, resp, pm);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
 //			this.processAdd(req, resp);
 //		    throw new RuntimeException("add txn should not come here");
 		    req.getRequestDispatcher("/pages/transaction").forward(req, resp);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_DELETE)) {
-		    this.processUpdate(req, resp, true);
+		    this.processUpdate(req, resp, true, pm);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_UPDATE)) {
-			this.processUpdate(req, resp, false);
+			this.processUpdate(req, resp, false, pm);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_SHOW)) {
-			this.processShow(req, resp);
+			this.processShow(req, resp, pm);
         } else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_SHOW_TWEET_OF_TXN)) {
-            this.processShowTweetsOfTxn(req, resp);			
+            this.processShowTweetsOfTxn(req, resp, pm);			
 		} else {
 			resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 		}
+		} finally {
+		    if(pm!=null) {
+		        pm.currentTransaction().commit();
+		        pm.close();
+		    }
+		}
 	}
 
-	private void processShow(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
+	private void processShow(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
+		
 		long start = 0;
 		long end = PAGE_SIZE;
 		try {
@@ -109,37 +121,31 @@ public class StatusManager extends HttpServlet {
 		}
 		String screenName = req.getParameter(Pages.PARAM_SCREENNAME);
 		
+		// get status of those paid txn
+		// TODO to exclude those sent?
 		User user = AuthFilter.getCurrentUser(req);
-		List<TwitterStatus> statuss = new ArrayList<TwitterStatus>();
-		List<Transact> paidTxns = DsHelper.getTransactList(true,screenName, pm, -1, -1, user);
-		for(Transact txn : paidTxns) {
-		    List<TwitterStatus> s = DsHelper.getTwitterStatus(txn.getKeyId(), pm, start, end);
-		    statuss.addAll(s);
-		}
+//		List<TwitterStatus> statuss = new ArrayList<TwitterStatus>();
+//		List<Transact> paidTxns = DsHelper.getTransactList(true,screenName, pm, -1, -1, user);
+//		for(Transact txn : paidTxns) {
+//		    List<TwitterStatus> s = DsHelper.getTwitterStatus(txn.getKeyId(), pm, start, end);
+//		    statuss.addAll(s);
+//		}
 		
+		List<TwitterStatus> statuss = DsHelper.getScheduledTwitterStatus(screenName, pm, start, end, user);
+        for(TwitterStatus ts : statuss) {
+            log.info("status="+ts.getStatus());
+        }
 		// TODO make it a sing query otherwise start/end won't work
 		this.constructResponse(null, statuss,
 				"Showing " + (end - start) + " tweets", LEVEL_INFO, resp, start, end);
-		pm.close();
+
 	}
 	
-    private void processShowTweetsOfTxn(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        PersistenceManager pm = PMF.get().getPersistenceManager();
-        long start = 0;
-        long end = PAGE_SIZE;
-        long txnId = NO_TXN;
-        try {
-            start = Long.parseLong(req.getParameter(Pages.PARAM_START));
-        } catch (NumberFormatException e) {
-        }
-        try {
-            end = Long.parseLong(req.getParameter(Pages.PARAM_END));
-        } catch (NumberFormatException e) {
-        }
-        try {
-            txnId = Long.parseLong(req.getParameter(Pages.PARAM_TXN_ID));
-        } catch (NumberFormatException e) {
-        }
+
+    private void processShowTweetsOfTxn(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
+        long start = getStart(req);
+        long end = getEnd(req);
+        long txnId = getTxnId(req);
         Transact txn = null;
         if(txnId!=NO_TXN) {
             txn = DsHelper.getTransact(txnId, pm);
@@ -152,14 +158,18 @@ public class StatusManager extends HttpServlet {
         }
         this.constructResponse(txn, DsHelper.getTwitterStatus(txnId, pm, start, end),
                 "Showing " + (end - start) + " tweets", LEVEL_INFO, resp, start, end);
-        pm.close();
     }
     
-	private void processUpdate(HttpServletRequest req, HttpServletResponse resp, boolean delete) throws IOException, ServletException {
+	private void processUpdate(HttpServletRequest req, HttpServletResponse resp, boolean delete, PersistenceManager pm) throws IOException, ServletException {
 	    
+	    long txnId = getTxnId(req);
+	    boolean isPaid = txnId==NO_TXN;
 	    
+	    String twitterScreenName = req.getParameter(Pages.PARAM_SCREENNAME);
+        long start = getStart(req);
+        long end = getEnd(req);
+        
 		int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
-		PersistenceManager pm = PMF.get().getPersistenceManager();
 		User user = AuthFilter.getCurrentUser(req);
 		List<TwitterStatus> twitterStatuses = new ArrayList<TwitterStatus>();
 		List<TwitterStatus> toAddStatuses = new ArrayList<TwitterStatus>();
@@ -173,8 +183,13 @@ public class StatusManager extends HttpServlet {
 					twitterStatus = new TwitterStatus();
 					twitterStatus.setUser(AuthFilter.getCurrentUser(req));
 					twitterStatus.setCanDelete(true);
-					twitterStatus.setTwitterScreenName(req.getParameter(Pages.PARAM_SCREENNAME));
-					twitterStatus.setState(TwitterStatus.State.SCHEDULED);
+					twitterStatus.setTwitterScreenName(twitterScreenName);
+					if(isPaid) {
+					    // well, this may not be allowed (to break and gen new status after payment)
+					    twitterStatus.setState(TwitterStatus.State.SCHEDULED);
+					}else {
+					    // by default is UNPAID state
+					}
 					toAddStatuses.add(twitterStatus);
 				} else {
 					Key key = KeyFactory.createKey(TwitterStatus.class.getSimpleName(),
@@ -193,11 +208,16 @@ public class StatusManager extends HttpServlet {
 						}
 						twitterStatus.setSource(req.getParameter(Pages.PARAM_STATUS_SOURCE + i));
 						twitterStatus.setStatus(req.getParameter(Pages.PARAM_STATUS_STATUS + i));
+						
+//						pm.makePersistent(twitterStatus);
+					}else {
+//					    pm.deletePersistent(twitterStatus);
 					}
 				}
 			}
 		}
 
+		
 		pm.makePersistentAll(toAddStatuses);
 		if (delete) {
 			message = twitterStatuses.size() + " Tweets successfully deleted";
@@ -209,31 +229,42 @@ public class StatusManager extends HttpServlet {
 					message += ", " + toAddStatuses.size() + " Tweets added.";
 				}
 			}
+			pm.makePersistentAll(twitterStatuses);
 		}
-
-//		pm.close();
-//		pm = PMF.get().getPersistenceManager();
-//		pm.close();
 		
-		String txnId = req.getParameter(Pages.PARAM_TXN_ID);
-		log.info("txnId="+txnId);
-        if("".equals(txnId)) {
-            this.constructResponse(this.getTwitterStatus(req.getParameter(Pages.PARAM_SCREENNAME), pm, user), 
-                    message, level, resp);            
+		
+		
+        if(isPaid) {
+            // see processShow
+            List<TwitterStatus> statuss = DsHelper.getScheduledTwitterStatus(twitterScreenName, pm, start, end, user);
+            for(TwitterStatus ts : statuss) {
+                log.info("status="+ts.getStatus());
+            }
+            // TODO make it a sing query otherwise start/end won't work
+            this.constructResponse(null, statuss,
+                    message, LEVEL_INFO, resp, start, end);
+            
         }else {
             // recalculate this txn
-            recalculateTxn(txnId);
-            processShowTweetsOfTxn(req,resp);
+            recalculateTxn(txnId, pm);
+            // see processShowTweetsOfTxn(req,resp, pm);
+            Transact txn = DsHelper.getTransact(txnId, pm);
+            try {
+                PaypalStandard.renderPaypalButton(txn, req.getServerName());
+            } catch (TemplateException e) {
+                log.log(Level.WARNING, "PaypalStandard.renderPaypalButton", e);
+                e.printStackTrace(resp.getWriter());
+            } 
+            this.constructResponse(txn, DsHelper.getTwitterStatus(txnId, pm, start, end),
+                    message, LEVEL_INFO, resp, start, end);
         }
 
 
 		
 	}
 
-	private void recalculateTxn(String txnIdStr) {
+	private void recalculateTxn(long txnId, PersistenceManager pm) {
 	    try {
-	        PersistenceManager pm = PMF.get().getPersistenceManager();
-	        Long txnId = Long.valueOf(txnIdStr);
 	        Transact transact = DsHelper.getTransact(txnId, pm);
 	        // TODO get size via query
 	        List<TwitterStatus> list = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
@@ -241,14 +272,13 @@ public class StatusManager extends HttpServlet {
 	        transact.setNumberOfStatus(size);
 	        transact.setAmount(transact.getUnitPrice()*size);
 	        pm.makePersistent(transact);
-	        pm.close();
 	        
 	    } catch (Exception e){
 	        log.log(Level.SEVERE, "recalculateTxn", e);
 	    }
 	}
 
-	private void processFetch(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void processFetch(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
 		String twitterScreenName = req.getParameter(Pages.PARAM_SCREENNAME);
 		String fileLocation = req.getParameter(Pages.PARAM_STATUS_SOURCE);
 		String message = null;
@@ -283,7 +313,7 @@ public class StatusManager extends HttpServlet {
 		this.constructResponse(statuses, message, level, resp);
 	}
 
-	private void processUpload(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	private void processUpload(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
 		String twitterScreenName = req.getParameter(Pages.PARAM_SCREENNAME);
 		boolean isCSVFile = req.getParameter(Pages.PARAM_CSVFILE) != null ? true : false;
 		ServletFileUpload upload = new ServletFileUpload();
@@ -401,9 +431,9 @@ public class StatusManager extends HttpServlet {
 	
 	
 
-    private List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm, User user) {
-        return DsHelper.getTwitterStatus(screenName, pm, 0, PAGE_SIZE, user);
-    }
+//    private List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm, User user) {
+//        return DsHelper.getTwitterStatus(screenName, pm, 0, PAGE_SIZE, user);
+//    }
 
 	private boolean getBoolFromParam(String param, String trueValue) {
 		if (param != null && param.equals(trueValue)) {

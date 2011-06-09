@@ -126,6 +126,8 @@ public class TwitterAccountManager extends HttpServlet {
 		List<TwitterStatus> twitterStatus = (List<TwitterStatus>) query.execute(screenName, user);
 		pm.deletePersistentAll(twitterStatus);
 
+		// TODO delete all related transactions
+		
 		query.closeAll();
 		pm.close();
 	}

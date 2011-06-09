@@ -97,6 +97,7 @@ var TwitteyBot = (function(){
                 var screenName = $.urlParser(this.href).params["screenName"];
                 $("#twitterScreenName").html(screenName);
                 $("#screenName").attr("value", screenName);
+                $("#screenNameTxn").attr("value", screenName);
                 me.showTweets(true);
                 return false;
             });
@@ -179,6 +180,14 @@ var TwitteyBot = (function(){
                 $("#twitterStatus .item-index").attr("checked", true);
                 return false;
             });
+            $("#selectAllTxn").click(function(){
+                $("#transactionDetail .item-index").attr("checked", true);
+                return false;
+            });          
+            $("#selectNoneTxn").click(function(){
+                $("#transactionDetail .item-index").attr("checked", false);
+                return false;
+            });              
             $("#twitterContent :reset").click(this.showTweets);
             
             this.onStatusLoad = function(content, txnId){
@@ -188,7 +197,7 @@ var TwitteyBot = (function(){
             };
             
 						this.onTxnLoad = function(content){
-								//alert('here onTxnLoad');
+								//alert('here onTxnLoad content='+content);
                 $("#transactionDetail").html(content);
                 me.onTxnsLoaded(true);
                 me.showMessage($("#responseMessage").attr("value"), $("#responseMessage").attr("title"));
@@ -344,8 +353,8 @@ var TwitteyBot = (function(){
             var screenName = $("#twitterScreenName").html();
             var me = this;
             TwitteyBot.showLoading();
-            $("#twitterStatus").load("/pages/transaction", {
-                "action": "CancelTxn",
+            $("#transactionDetail").load("/pages/transaction", {
+                "action": "CancelOneTxn",
                 "screenName": screenName,
                 "txnId": txnId
             });
@@ -359,9 +368,11 @@ var TwitteyBot = (function(){
        payTxn: function(txnId){
             var me = this;
             //alert('payTxn, txnId='+txnId);
+            var screenName = $("#twitterScreenName").html();
             TwitteyBot.showLoading();
-            $("#twitterStatus").load("/pages/transaction", {
+            $("#transactionDetail").load("/pages/transaction", {
                 "action": "PayTxn",
+                "screenName": screenName,
                 "txnId": txnId
             });
 

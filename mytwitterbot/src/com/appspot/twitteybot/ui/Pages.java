@@ -13,7 +13,9 @@ public class Pages {
     
     public static final String PARAM_TXN_ACTION_ADD = "Add";
     public static final String PARAM_TXN_ACTION_SHOW = "Show";
+    public static final String PARAM_TXN_ACTION_MERGE = "MergeTxn";
     public static final String PARAM_TXN_ACTION_CANCEL = "CancelTxn";
+    public static final String PARAM_TXN_ACTION_CANCELONE = "CancelOneTxn";
     public static final String PARAM_TXN_ACTION_PAYTXN = "PayTxn";
     public static final String PARAM_TXN_ACTION_CONFIRM_PAYPAL = "ConfirmPaypal";
     public static final String FTLVAR_TXN = "txnList";

@@ -1,3 +1,9 @@
+I want the app to be able to correctly parse rss feeds content (something similar to twitterfeed) , it does parse feeds now but, doesn't do it properly, like just sending titles with links. Furthermore, I'll like to have a payment process integrated to the app (paypal) and have an admin area where I control everything. The idea is to send tweets in a scheduled base, and have people register or use openID to login. Can you do that?
+
+
+yes, it's as simple as my listing. I don't like complex stuff. I'm high disciple of KISS (Keep It Simple and Stupid)
+  
+so it's actually quite simple in th definition of the task.
 
 Admin area where I can see who uses the app , how many twitter accoundts they have and how many tweets they sent .
 
@@ -12,3 +18,15 @@ everytime a user upload a tweet file, before confirmation, the system compute th
 and then redirect the user to paypal for payment, after payment, user is redirected back to the user admin panel and everything's fine to go.
   
 that's pretty much it.
+
+
+I will provide the landing page of the app, means no need to worry about the front page desing on your part
+
+the user interface is builded with GWT, so we could pick a custom Gmail theme design and apply the css as default admin, to have something similar to gmail user interface in the look (It is already similar to Gmail interface at this point, it just looks boring)
+  
+for the admin section design, you can use Jquery or GWT, it's up to you.
+
+
+
+1. queued status (picked up at the scheduled time and is ready to send to twitter) cannot be cancelled
+2. ?? status longer than 140 must be broke into several smaller, before paying for it. (once paid those long status will always be trimmed and sent)

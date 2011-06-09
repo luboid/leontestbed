@@ -1,8 +1,14 @@
 package com.appspot.twitteybot.task;
 
+import com.appspot.twitteybot.datastore.ApplicationProperty;
+import com.appspot.twitteybot.datastore.PMF;
+import com.appspot.twitteybot.datastore.TwitterAccount;
+import com.appspot.twitteybot.datastore.TwitterStatus;
+import com.appspot.twitteybot.ui.Pages;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,11 +27,6 @@ import javax.servlet.http.HttpServletResponse;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.http.AccessToken;
-
-import com.appspot.twitteybot.datastore.ApplicationProperty;
-import com.appspot.twitteybot.datastore.PMF;
-import com.appspot.twitteybot.datastore.TwitterAccount;
-import com.appspot.twitteybot.ui.Pages;
 
 public class TaskServlet extends HttpServlet {
 
@@ -60,10 +61,16 @@ public class TaskServlet extends HttpServlet {
 				}
 				twitter.updateStatus(status);
 				// TODO Catch DeadlineExceededException
-				String key = req.getParameter(Pages.PARAM_STATUS_KEY);
-				// TODO Add logic to delete this key
+
+                // TODO mark as deleted. when to delete status physically?
+				String id = req.getParameter(Pages.PARAM_STATUS_KEY);
+				PersistenceManager pm = PMF.get().getPersistenceManager();
+                Key key = KeyFactory.createKey(TwitterStatus.class.getSimpleName(), Long.parseLong(id));
+                TwitterStatus twitterStatus = pm.getObjectById(TwitterStatus.class, key);
+                twitterStatus.setState(TwitterStatus.State.TO_DELETE);
+                pm.makePersistent(twitterStatus);
 				
-				log.log(Level.FINE, "Key of this twitter, that can be deleted is " + key);
+				log.log(Level.FINE, "Key of this twitter, that can be deleted is " + id);
 			} catch (CacheException e) {
 				throw new ServletException(e);
 			} catch (TwitterException e) {

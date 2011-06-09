@@ -76,7 +76,7 @@
                                 <td>
                                     send all tweets within a time limit of 
                                     <br/>
-                                    <input id = "scheduleSpan" style ="width:90%" type = "text" value = "1 day, 10 hours"/>
+                                    <input id = "scheduleSpan" style ="width:90%" type = "text" value = "2040 minutes"/>
                                 </td>
                             </tr>
                         </table>
@@ -180,9 +180,11 @@
                                 </div>
                                 <div class = "right-pane" style ="text-align : right">
                                 		<div id = "txnButtons">
-                                				<!--<input type = "Submit" name = "action" value = "PayTxn" class = "button"/>
+                                				<!-- NOT in use...
+                                				<input type = "Submit" name = "action" value = "PayTxn" class = "button"/>
                                 				&nbsp;
-                                				<input type = "Submit" name = "action" value = "CancelTxn" class = "button"/>-->
+                                				<input type = "Submit" name = "action" value = "CancelTxn" class = "button"/>
+                                				-->
                                 		</div>
                                     <div id = "otherButtons">
                                         <input type = "Submit" name = "action" value = "Update" class = "button"/>
@@ -204,7 +206,7 @@
                     </div>
 										<div id = "transactionContent" class = "content-window">
                         <form name = "transactionForm" method = "POST" action = "/pages/transaction" target = "resultFrame">
-                            <input name = "screenName" type = "hidden" id = "screenNameXXX"/>
+                            <input name = "screenName" type = "hidden" id = "screenNameTxn"/>
                             <div id = "txntoolbar">
                                 <div class = "left-pane">
                                     Select&nbsp;
@@ -219,7 +221,8 @@
                                 </div>
                                 <div class = "right-pane" style ="text-align : right">
                                     <div id = "transactionButtons">
-                                        <input type = "reset" value = "Cancel" class = "button"/>
+                                    		<input type = "Submit" name="action" value = "MergeTxn" class = "button"/>
+                                        <input type = "Submit" name="action" value = "CancelTxn" class = "button"/>
                                     </div>
                                 </div>
                                 <div class = "clear">

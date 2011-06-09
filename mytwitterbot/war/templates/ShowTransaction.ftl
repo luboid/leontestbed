@@ -1,4 +1,10 @@
 <div id = "results">
+
+		<!--div>
+			<input type = "hidden" name="action" value = "CancelTxn" class = "button"/>
+			<input type = "Submit" name="action" value = "CancelTxn" class = "button"/>
+		</div-->
+		
     <div class = "pagination">
         <a href = "#" class = "pagination-prev">&#171; prev</a>&nbsp;<a href = "#" class = "pagination-next">next  &#187;</a>
     </div>
@@ -6,7 +12,7 @@
     <!--<#assign totalItems = "0"><#list txnList as item><#assign totalItems = item_index>-->    
     <div class = "tweetLine" >
         <div class = "hidden-fields" style ="display:none">
-
+            <input type = "text" class = "tweet-key" id = "key_${item_index}" name = "key_${item_index}" value = "${item.keyId?c}"/>
         </div>
         <div class = "left-pane" style ="width:2%">
             <!--${item_index}-->
@@ -69,9 +75,9 @@
     </div>
     <br/>
     <div>
-        <input type = "hidden" name = "totalItems" id = "totalItems" value = "{totalItems}" />
-        <input type = "hidden" name = "page-start" id = "page-start" value = "{start}" />
-        <input type = "hidden" name = "page-end" id = "page-end" value = "{end}" />
+        <input type = "hidden" name = "totalItems" id = "totalItems" value = "${totalItems}" />
+        <input type = "hidden" name = "page-start" id = "page-start" value = "${start}" />
+        <input type = "hidden" name = "page-end" id = "page-end" value = "${end}" />
     </div>
     <input id = "responseMessage" title = "${level!""}" style = "display:none" value ='${message!""}'/>
 </div>

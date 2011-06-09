@@ -8,7 +8,6 @@ import com.appspot.twitteybot.datastore.TwitterStatus;
 import com.appspot.twitteybot.datastore.Transact.TxnState;
 import com.appspot.twitteybot.pay.PaypalStandard;
 import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserServiceFactory;
 import freemarker.template.TemplateException;
 
 import java.io.IOException;
@@ -22,10 +21,11 @@ import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-public class TransactionManager extends HttpServlet {
+
+import org.datanucleus.util.StringUtils;
+public class TransactionManager extends BaseServlet {
     private static final String LEVEL_INFO = "info";
     private static final String LEVEL_ERROR = "error";
     private static final String LEVEL_WARN = "warn";
@@ -40,6 +40,12 @@ public class TransactionManager extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter(Pages.PARAM_ACTION);
+        PersistenceManager pm = PMF.get().getPersistenceManager();
+        pm.currentTransaction().begin();
+        String twitterScreenName = req.getParameter(Pages.PARAM_SCREENNAME);
+        if(StringUtils.isEmpty(twitterScreenName)) {
+            throw new RuntimeException("twitterScreenName is empty, sth wrong...");
+        }
         
         String txnId =null;
         try {
@@ -49,29 +55,39 @@ public class TransactionManager extends HttpServlet {
         }
         log.warning("action=="+action+", txnId="+txnId);
         
+        try {
         if (action == null) {
             resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
         } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_ADD)) {
-            this.processAdd(req, resp);
+            this.processAdd(req, resp, pm);
         } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_SHOW)) {
-            this.processShow(req, resp);   
+            this.processShow(req, resp, pm);   
         } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_CANCEL)) {
-            this.processCancel(req, resp);      
+            this.processCancel(req, resp, pm);     
+        } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_CANCELONE)) {
+            this.processCancelOne(req, resp, pm);            
+        } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_MERGE)) {
+            this.processMerge(req, resp, pm);               
         } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_PAYTXN)) {
-            this.processPayTxn(req, resp);                      
+            this.processPayTxn(req, resp, pm);                      
 //        } else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_DELETE ) || action.equalsIgnoreCase(Pages.PARAM_ACTION_UPDATE) ) {
 //            // forwarded to here when submitting from StatusManage with txnId
 //            // recalculate the txn amount and show the statusOftxn page
 //            this.processUpdateTxn(req, resp);
         } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_CONFIRM_PAYPAL)) {
-            this.processConfirmPayTxn(req, resp);           
+            this.processConfirmPayTxn(req, resp, pm);           
         } else {
             resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
         }
+        } finally {
+            if(pm!=null) {
+                pm.currentTransaction().commit();
+                pm.close();
+            }
+        }
     }
     
-    private void processShow(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        PersistenceManager pm = PMF.get().getPersistenceManager();
+    private void processShow(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
         long start = 0;
         long end = PAGE_SIZE;
         try {
@@ -84,18 +100,11 @@ public class TransactionManager extends HttpServlet {
         }
         User user = AuthFilter.getCurrentUser(req);
         List<Transact> list = DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, start, end, user);
-        try {
-            PaypalStandard.renderPaypalButton(list, req.getServerName());
-        } catch (TemplateException e) {
-            log.log(Level.WARNING, "PaypalStandard.renderPaypalButton", e);
-            e.printStackTrace(resp.getWriter());
-        }
-        
         this.constructResponse(list,
-                "Showing " + (end - start) + " transactions", LEVEL_INFO, resp, start, end);
-        pm.close();
+                "Showing " + (end - start) + " transactions", LEVEL_INFO, req,  resp, start, end);
     }
-    private void processPayTxn(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void processPayTxn(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
+        // test only
         long txnId = -1;
         try {
             txnId = Long.parseLong(req.getParameter(Pages.PARAM_TXN_ID));
@@ -104,22 +113,32 @@ public class TransactionManager extends HttpServlet {
         }
         
         User user = AuthFilter.getCurrentUser(req);
-        PersistenceManager pm = PMF.get().getPersistenceManager();
         Transact transact = DsHelper.getTransact(txnId, pm);
+        
+        List<TwitterStatus> statuss = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
+        for(TwitterStatus ts : statuss) {
+            ts.setState(TwitterStatus.State.SCHEDULED);
+        }
+        // TODO make it transaction??
+        // this won't work as not in same group
+        // currently overcome it by set datanucleus.appengine.autoCreateDatastoreTxns=false in jdoconfig.xml, see appengine doc
+        pm.makePersistentAll(statuss);
+//        for(TwitterStatus ts : statuss) {
+//            pm.makePersistent(ts);
+//        }
+        
         transact.setTxnState(TxnState.PAID);
         pm.makePersistent(transact);
         
         log.info("transaction="+txnId+" is paid and confirmed.");
         
         this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE, user),
-                "Showing " + PAGE_SIZE + " transactions", LEVEL_INFO, resp, 0, PAGE_SIZE);
-        pm.close();
+                "Showing " + PAGE_SIZE + " transactions", LEVEL_INFO, req, resp, 0, PAGE_SIZE);
         
     }
     
-    private void processConfirmPayTxn(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        
-        
+    private void processConfirmPayTxn(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
+        // back from paypal
         long txnId = -1;
         try {
             txnId = Long.parseLong(req.getParameter(Pages.PARAM_TXN_ID));
@@ -127,16 +146,20 @@ public class TransactionManager extends HttpServlet {
             ex.printStackTrace();
         }
         
-        PersistenceManager pm = PMF.get().getPersistenceManager();
         Transact transact = DsHelper.getTransact(txnId, pm);
         if(transact!=null) {
+            
+            List<TwitterStatus> statuss = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
+            for(TwitterStatus ts : statuss) {
+                ts.setState(TwitterStatus.State.SCHEDULED);
+            }
+            pm.makePersistentAll(statuss);
             transact.setTxnState(TxnState.PAID);
             pm.makePersistent(transact);
             log.warning("transaction="+txnId+" is paid and confirmed. queryString="+req.getQueryString());
         }
         
         showConfirmPage(transact, resp);
-        pm.close();
         
     }
     private void showConfirmPage(Transact transact, HttpServletResponse resp) throws IOException {
@@ -146,28 +169,92 @@ public class TransactionManager extends HttpServlet {
         FreeMarkerConfiguration.writeResponse(templateValues, Pages.TEMPLATE_CONFIRM_PAYPAL, resp.getWriter());
     }    
     
-    private void processCancel(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        long txnId = -1;
-        try {
-            txnId = Long.parseLong(req.getParameter(Pages.PARAM_TXN_ID));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+    private void processCancelOne(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
         User user = AuthFilter.getCurrentUser(req);
-        PersistenceManager pm = PMF.get().getPersistenceManager();
+        long txnId = getTxnId(req);
         Transact transact = DsHelper.getTransact(txnId, pm);
         List<TwitterStatus> tweets = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
         pm.deletePersistentAll(tweets);
-        pm.deletePersistent(transact);
-        
-        this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE, user),
-                "Showing " + PAGE_SIZE + " transactions", LEVEL_INFO, resp, 0, PAGE_SIZE);
-        pm.close();
+        pm.deletePersistent(transact);                
+
+        List<Transact> list = DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE, user);
+        String message = "transaction "+txnId + " is cancelled";
+        this.constructResponse(list,
+                message, LEVEL_INFO, req, resp, 0, PAGE_SIZE);
         
     }
-    private void processAdd(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    
+    
+    private void processCancel(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
+        User user = AuthFilter.getCurrentUser(req);
         int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
-        PersistenceManager pm = PMF.get().getPersistenceManager();
+        int count=0;
+        for (int i = 0; i <= totalItems; i++) {
+            if (this.getBoolFromParam(req.getParameter(Pages.PARAM_STATUS_CANADD + i), "on")) {
+                count++;
+                long txnId = getLongPara(req, Pages.PARAM_STATUS_KEY + i, NO_TXN);
+                Transact transact = DsHelper.getTransact(txnId, pm);
+                List<TwitterStatus> tweets = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
+                pm.deletePersistentAll(tweets);
+                pm.deletePersistent(transact);                
+            }
+        }
+        List<Transact> list = DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE, user);
+        String message = count+" transactions cancelled";
+        this.constructResponse(list, message, LEVEL_INFO, req, resp, 0, PAGE_SIZE);
+        
+    }
+    
+    private void processMerge(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
+        User user = AuthFilter.getCurrentUser(req);
+        int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
+        
+        List<Transact> transToDelete = new ArrayList<Transact>();
+        Transact transToMergeTo = null;
+        List<Transact> transList = new ArrayList<Transact>();
+        List<TwitterStatus> tweetsList = new ArrayList<TwitterStatus>();
+        for (int i = 0; i <= totalItems; i++) {
+            if (this.getBoolFromParam(req.getParameter(Pages.PARAM_STATUS_CANADD + i), "on")) {
+                long txnId = getLongPara(req, Pages.PARAM_STATUS_KEY + i, NO_TXN);
+                Transact transact = DsHelper.getTransact(txnId, pm);
+                List<TwitterStatus> tweets = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
+                tweetsList.addAll(tweets);
+                transList.add(transact);                
+            }
+        }
+        
+        int i=0;
+        if(transList.size()>1) {
+        for (Transact transact : transList) {
+            i++;
+            if (i == 1) {
+                transToMergeTo = transact;
+                // merge into the first
+                long txnId = transact.getKeyId();
+                for (TwitterStatus tweet : tweetsList) {
+                    tweet.setTransactionId(txnId);
+                }
+                // re-calculate
+                int size = tweetsList.size();
+                transact.setNumberOfStatus(size);
+                transact.setAmount(transact.getUnitPrice() * size);
+            } else {
+                transToDelete.add(transact);
+            }
+        }
+        pm.makePersistentAll(tweetsList);
+        pm.makePersistent(transToMergeTo);
+        pm.deletePersistentAll(transToDelete);
+        }
+        String message = i +" transactions merged"; 
+        List<Transact> list = DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE, user);
+
+        this.constructResponse(list,message, LEVEL_INFO, req, resp, 0, PAGE_SIZE);
+        
+    }
+    
+    private void processAdd(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
+        int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
         String screenName = req.getParameter(Pages.PARAM_SCREENNAME);
         User user = AuthFilter.getCurrentUser(req);
 
@@ -232,12 +319,18 @@ public class TransactionManager extends HttpServlet {
         
         List<Transact> unPaidTransact = getTransactList(false, screenName, pm, user);
 //        this.constructResponse(this.getTwitterStatus(screenName, pm), message, level, resp);
-        this.constructResponse(unPaidTransact, message, level, resp);
-        pm.close();
+
+        this.constructResponse(unPaidTransact, message, level, req, resp);
     }
-    private void constructResponse(List<Transact> list, String message, String level, HttpServletResponse resp,
+    private void constructResponse(List<Transact> list, String message, String level, HttpServletRequest req, HttpServletResponse resp,
             long start, long end) throws IOException {
         log.info("constructResponse!!!!!!");
+        try {
+            PaypalStandard.renderPaypalButton(list, req.getServerName());
+        } catch (TemplateException e) {
+            log.log(Level.WARNING, "PaypalStandard.renderPaypalButton", e);
+            e.printStackTrace(resp.getWriter());
+        }
         Map<String, Object> templateValues = new HashMap<String, Object>();
         templateValues.put(Pages.FTLVAR_TXN, list);
         templateValues.put(Pages.FTLVAR_TXN_LEVEL, level);
@@ -248,8 +341,8 @@ public class TransactionManager extends HttpServlet {
     }
     
     private void constructResponse(List<Transact> list, String message,
-            String level, HttpServletResponse resp) throws IOException {
-        this.constructResponse(list, message, level, resp, 0, PAGE_SIZE);
+            String level, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        this.constructResponse(list, message, level, req, resp, 0, PAGE_SIZE);
     }
     
     private boolean getBoolFromParam(String param, String trueValue) {

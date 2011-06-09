@@ -39,7 +39,7 @@ public class TwitterStatus implements Serializable {
 	@Persistent
 	private String source;
 	@Persistent
-	private State state;
+	private State state = State.UNPAID;
 	@Persistent
 	private boolean canDelete;
 
@@ -47,7 +47,7 @@ public class TwitterStatus implements Serializable {
 	private long transactionId;
 	
 	public enum State {
-		SCHEDULED, TO_DELETE, QUEUED
+		UNPAID, SCHEDULED, TO_DELETE, QUEUED
 	}
 
 	public TwitterStatus() {
@@ -58,7 +58,6 @@ public class TwitterStatus implements Serializable {
 		this.user = user;
 		this.twitterScreenName = twitterScreenName;
 		this.source = source;
-		this.state = State.SCHEDULED;
 		this.updatedTime = updateTime;
 		if (status.length() >= 500) {
 			status = status.substring(0, 499);
@@ -72,7 +71,6 @@ public class TwitterStatus implements Serializable {
 		this.user = user;
 		this.twitterScreenName = twitterScreenName;
 		this.source = source;
-		this.state = State.SCHEDULED;
 		this.setTime(updateTime);
 		this.canDelete = canDelete;
 		if (status.length() > 500) {

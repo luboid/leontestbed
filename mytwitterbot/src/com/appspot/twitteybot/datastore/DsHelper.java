@@ -34,18 +34,34 @@ public class DsHelper {
          return twitterStatuses;
     }
     
-    public static List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm, long start, long end, User user) {
+//    public static List<TwitterStatus> getTwitterStatus(String screenName, PersistenceManager pm, long start, long end, User user) {
+//        Query query = pm.newQuery(TwitterStatus.class);
+//        query.setFilter("twitterScreenName == twitterScreenNameVar && user == userVar");
+//        query.declareParameters("String twitterScreenNameVar, com.google.appengine.api.users.User userVar");
+//        query.setOrdering("updatedTime asc");
+//        query.setRange(start, end);
+//        @SuppressWarnings("unchecked")
+//        List<TwitterStatus> twitterStatuses = (List<TwitterStatus>) query.execute(screenName, user);
+//        return twitterStatuses;
+//    }
+    
+    public static List<TwitterStatus> getScheduledTwitterStatus(String screenName,
+            PersistenceManager pm, long start, long end, User user) {
         Query query = pm.newQuery(TwitterStatus.class);
-        query.setFilter("twitterScreenName == twitterScreenNameVar && user == userVar");
-        query.declareParameters("String twitterScreenNameVar, com.google.appengine.api.users.User userVar");
+        query.setFilter("twitterScreenName == twitterScreenNameVar && user == userVar && state==stateVar");
+        query.declareParameters("String twitterScreenNameVar, com.google.appengine.api.users.User userVar, String stateVar");
         query.setOrdering("updatedTime asc");
-        query.setRange(start, end);
+        if(start==-1 || end==-1) {
+            
+        }else {
+            query.setRange(start, end);
+        }
+        
         @SuppressWarnings("unchecked")
-        List<TwitterStatus> twitterStatuses = (List<TwitterStatus>) query.execute(screenName, user);
+        List<TwitterStatus> twitterStatuses = (List<TwitterStatus>) query
+                .execute(screenName, user, TwitterStatus.State.SCHEDULED);
         return twitterStatuses;
     }
-    
-    
 
     
     public static List<Transact> getTransactList(boolean getpaid, String screenName, PersistenceManager pm, long start, long end, User user) {
@@ -185,6 +201,8 @@ public class DsHelper {
             // TODO should be deleted but deletion not done yet.
             Integer r4 = (Integer)q4.executeWithArray(TwitterStatus.State.SCHEDULED);
             db.setNoOfScheduledStatus(r4);
+            
+            // TODO unpaid status? 
             
             return db;
         } catch (Exception e) {

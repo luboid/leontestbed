@@ -48,7 +48,8 @@ public class CronServlet extends HttpServlet {
 			taskOption.method(Method.POST);
 			taskOption.param(Pages.PARAM_ACTION, Pages.PARAM_ACTION_UPDATE);
 			taskOption.param(Pages.PARAM_STATUS_TWITTER_SCREEN, twitterStatus.getTwitterScreenName());
-			taskOption.param(Pages.PARAM_STATUS_KEY, twitterStatus.getEncodedKey());
+//			taskOption.param(Pages.PARAM_STATUS_KEY, twitterStatus.getEncodedKey());
+			taskOption.param(Pages.PARAM_STATUS_KEY, twitterStatus.getKeyId().toString());
 			taskOption.param(Pages.PARAM_STATUS_STATUS, twitterStatus.getStatus());
 			twitterStatus.setState(State.QUEUED);
 			queue.add(taskOption);
@@ -56,7 +57,8 @@ public class CronServlet extends HttpServlet {
 			out.write(Pages.PAGE_TASK_QUEUE + "?");
 			out.write("&" + Pages.PARAM_ACTION + "=" + Pages.PARAM_ACTION_UPDATE);
 			out.write("&" + Pages.PARAM_STATUS_TWITTER_SCREEN + "=" + twitterStatus.getTwitterScreenName());
-			out.write("&" + Pages.PARAM_STATUS_KEY + "=" + twitterStatus.getEncodedKey());
+//			out.write("&" + Pages.PARAM_STATUS_KEY + "=" + twitterStatus.getEncodedKey());
+			out.write("&" + Pages.PARAM_STATUS_KEY + "=" + twitterStatus.getKeyId());
 			out.write("&" + Pages.PARAM_STATUS_STATUS + "=" + twitterStatus.getStatus());
 			out.println();
 		}
