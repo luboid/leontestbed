@@ -32,7 +32,6 @@ import java.util.logging.Logger;
 import javax.jdo.PersistenceManager;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -184,6 +183,7 @@ public class StatusManager extends BaseServlet {
 					twitterStatus.setUser(AuthFilter.getCurrentUser(req));
 					twitterStatus.setCanDelete(true);
 					twitterStatus.setTwitterScreenName(twitterScreenName);
+					twitterStatus.setTransactionId(txnId);
 					if(isPaid) {
 					    // well, this may not be allowed (to break and gen new status after payment)
 					    twitterStatus.setState(TwitterStatus.State.SCHEDULED);
@@ -232,6 +232,7 @@ public class StatusManager extends BaseServlet {
 			pm.makePersistentAll(twitterStatuses);
 		}
 		
+
 		
 		
         if(isPaid) {
@@ -246,7 +247,10 @@ public class StatusManager extends BaseServlet {
             
         }else {
             // recalculate this txn
-            recalculateTxn(txnId, pm);
+            if(toAddStatuses.size()>0 || delete) {
+                // cost more money...
+                recalculateTxn(txnId, pm);
+            }
             // see processShowTweetsOfTxn(req,resp, pm);
             Transact txn = DsHelper.getTransact(txnId, pm);
             try {

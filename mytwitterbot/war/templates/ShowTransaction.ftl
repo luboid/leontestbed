@@ -76,11 +76,11 @@
     <br/>
     <div>
         <input type = "hidden" name = "totalItems" id = "totalItems" value = "${totalItems}" />
-        <input type = "hidden" name = "page-start" id = "page-start" value = "${start}" />
-        <input type = "hidden" name = "page-end" id = "page-end" value = "${end}" />
+        <input type = "hidden" name = "page-start" id = "page-start-txn" value = "${start}" />
+        <input type = "hidden" name = "page-end" id = "page-end-txn" value = "${end}" />
     </div>
     <input id = "responseMessage" title = "${level!""}" style = "display:none" value ='${message!""}'/>
 </div>
 <script>
-    top.TwitteyBot.onTxnLoad(document.getElementById("results").innerHTML);
+    top.TwitteyBot.onTxnLoad(document.getElementById("results").innerHTML, '${message!""}');
 </script>

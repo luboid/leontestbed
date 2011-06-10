@@ -4,7 +4,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 public abstract class BaseServlet extends HttpServlet {
-    public static final long PAGE_SIZE = 3;
+    // NOTE: need change TwitteyBot.js: onTxnsLoaded and onTweetsLoaded accordingly
+    // var pageSize = 30;
+    public static final long PAGE_SIZE = 30;
 
     public static final long NO_TXN = -1;
 

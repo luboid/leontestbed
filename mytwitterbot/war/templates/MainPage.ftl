@@ -254,6 +254,13 @@
                         <br/>
                         <a style ="display : block; font-size : 1.3em; padding : 0.3em; background-color : #EEEEEE; -moz-border-radius : 5px" href = "#" id = "sampleTweets">Show me some sample tweets.</a>
                     </div>
+                    
+                    <div id = "noTxns" class = "content-window">
+                        No transaction yet. To start a transaction, please upload a file. Use the links above.
+												<br/>
+                        <br/><br/><br/><br/><br/>
+                    </div>                    
+                    
                 </div>
             </div>
             <div class = "clear">

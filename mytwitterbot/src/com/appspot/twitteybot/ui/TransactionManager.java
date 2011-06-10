@@ -29,7 +29,6 @@ public class TransactionManager extends BaseServlet {
     private static final String LEVEL_INFO = "info";
     private static final String LEVEL_ERROR = "error";
     private static final String LEVEL_WARN = "warn";
-    private static final long PAGE_SIZE = 30;    
     private static final Logger log = Logger.getLogger(TransactionManager.class.getName());
     
     @Override

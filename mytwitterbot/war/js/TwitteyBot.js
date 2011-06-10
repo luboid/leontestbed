@@ -196,11 +196,12 @@ var TwitteyBot = (function(){
                 me.showMessage($("#responseMessage").attr("value"), $("#responseMessage").attr("title"));
             };
             
-						this.onTxnLoad = function(content){
-								//alert('here onTxnLoad content='+content);
+						this.onTxnLoad = function(content, msg){
                 $("#transactionDetail").html(content);
+                //alert('here onTxnLoad msg='+msg+',       message='+$("#responseMessage").attr("value"));
                 me.onTxnsLoaded(true);
-                me.showMessage($("#responseMessage").attr("value"), $("#responseMessage").attr("title"));
+                //me.showMessage($("#responseMessage").attr("value"), $("#responseMessage").attr("title"));
+                me.showMessage(msg, $("#responseMessage").attr("title"));
             };
             
             $("#twitterContent form").submit(function(){
@@ -282,6 +283,7 @@ var TwitteyBot = (function(){
             $("#twitterContent").hide();
             $("#transactionContent").hide(); 
             $("#noTweets").hide();
+            $("#noTxns").hide();
         },
         
         updateVisibleTimes: function(){
@@ -390,12 +392,60 @@ var TwitteyBot = (function(){
         onTxnsLoaded: function(caller){
         	//alert('here onTxnsLoaded 3');
         	//$("#actionList").show();
-          $("#scheduler").hide();
+        	
+        		// copy of on TweetsLoaded
+        		
+        		var me = TwitteyBot;
+            var start = parseInt($("#page-start-txn").val(), 10);
+            var end = parseInt($("#page-end-txn").val(), 10);
+        		var pageSize = 30;
+        		
+        	$("#scheduler").hide();
           $("#shrinker").hide();           	
         	$("#showLoading").hide();
-          $("#noTweets").hide();
-          $("#transactionContent").show();        	          
-          $("#twitterContent").hide();        	
+            if ($("#transactionContent .tweetLine").size() === 0) {
+                if (start === 0) {
+                    $("#transactionContent").hide();
+                    $("#noTxns").show();
+                }
+                else {
+                    me.showTxns(null, (start - pageSize) < 0 ? 0 : start - pageSize, start);
+                }
+                return;
+            }
+            else {
+                $("#noTweets").hide();
+                $("#twitterContent").hide();
+                $("#noTxns").hide();
+                $("#transactionContent").show();
+            }        	
+          
+
+        		//alert('start='+start+', end='+end);
+        	  if (start <= 0) {
+                $("div.pagination a.pagination-prev").hide();
+            }
+            else {
+                $("div.pagination a.pagination-prev").show();
+            }
+            if (end - start < pageSize) {
+                $("div.pagination a.pagination-next").hide();
+            }
+            else {
+                $("div.pagination a.pagination-next").show();
+            }
+            
+            
+            $("div.pagination a.pagination-prev").click(function(e){
+                me.showTxns(null, (start - pageSize) < 0 ? 0 : start - pageSize, start);
+                return false;
+            });
+            
+            $("div.pagination a.pagination-next").click(function(e){
+                me.showTxns(null, end, end + pageSize);
+                return false;
+            });
+    	
 					
         },
         
@@ -427,6 +477,7 @@ var TwitteyBot = (function(){
             else {
                 $("#noTweets").hide();
                 $("#twitterContent").show();
+                $("#noTxns").hide();
                 $("#transactionContent").hide();
             }
             
@@ -436,7 +487,7 @@ var TwitteyBot = (function(){
             else {
                 $("div.pagination a.pagination-prev").show();
             }
-            if (end - start < 30) {
+            if (end - start < pageSize) {
                 $("div.pagination a.pagination-next").hide();
             }
             else {
@@ -445,12 +496,21 @@ var TwitteyBot = (function(){
             
             
             $("div.pagination a.pagination-prev").click(function(e){
+            	if(txnId>0) {
+            		me.showTweetsOfTxn(txnId, (start - pageSize) < 0 ? 0 : start - pageSize, start);
+            	}
+            	else {
                 me.showTweets(null, (start - pageSize) < 0 ? 0 : start - pageSize, start);
+              }
                 return false;
             });
             
             $("div.pagination a.pagination-next").click(function(e){
-                me.showTweets(null, end, end + pageSize);
+            	if(txnId>0) {
+                me.showTweetsOfTxn(txnId, end, end+pageSize);
+              }else {
+              	me.showTweets(null, end, end + pageSize);
+              }
                 return false;
             });
             
