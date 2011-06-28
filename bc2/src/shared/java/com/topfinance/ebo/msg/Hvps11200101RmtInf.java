@@ -159,6 +159,14 @@ public class Hvps11200101RmtInf  implements java.io.Serializable {
 
 	public void setFid(Hvps11200101 fid) {
 		this.fid = fid;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Hvps11200101RmtInf [id=" + id + ", bizTcCd=" + bizTcCd
+				+ ", intr=" + intr + ", period=" + period + ", addInfo="
+				+ addInfo + "]";
 	}	  
     
     

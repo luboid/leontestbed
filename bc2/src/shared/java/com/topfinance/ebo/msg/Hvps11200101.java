@@ -607,7 +607,26 @@ public class Hvps11200101  implements java.io.Serializable {
 
     public void  setRmtInf(java.util.Set<Hvps11200101RmtInf> newRmtInf) {
         rmtInf = newRmtInf;
-    }	  
+    }
+
+
+@Override
+public String toString() {
+	return "Hvps11200101 [id=" + id + ", msgId=" + msgId + ", creDtTm="
+			+ creDtTm + ", nbOfTxs=" + nbOfTxs + ", sttlmMtd=" + sttlmMtd
+			+ ", pmtId=" + pmtId + ", endToEndId=" + endToEndId + ", txId="
+			+ txId + ", bizTpCd=" + bizTpCd + ", intrBkSttlmAmt="
+			+ intrBkSttlmAmt + ", sttlmPrty=" + sttlmPrty
+			+ ", dbtrClrSysMmbId=" + dbtrClrSysMmbId + ", dbtrNm=" + dbtrNm
+			+ ", pyAdrLine=" + pyAdrLine + ", dbtrBrnchId=" + dbtrBrnchId
+			+ ", dbtrAgtBrnchId=" + dbtrAgtBrnchId + ", dbtrAcctId="
+			+ dbtrAcctId + ", dbtrAcctIssr=" + dbtrAcctIssr
+			+ ", cdtrClrSysMmbId=" + cdtrClrSysMmbId + ", cdtrNm=" + cdtrNm
+			+ ", recAdrLine=" + recAdrLine + ", cdtrBrnchId=" + cdtrBrnchId
+			+ ", cdtrAgtBrnchId=" + cdtrAgtBrnchId + ", cdtrAcctId="
+			+ cdtrAcctId + ", cdtrAcctIssr=" + cdtrAcctIssr + ", rmtInf="
+			+ rmtInf + "]";
+}	  
     
     
 }    
