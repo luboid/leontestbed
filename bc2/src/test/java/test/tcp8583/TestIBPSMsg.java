@@ -12,12 +12,13 @@ import org.jpos.iso.ISOPackager;
 import org.jpos.iso.ISOUtil;
 
 import com.topfinance.transform.util.ISOIBPSPackager;
+import com.topfinance.transform.util.IsoHelper;
 
 public class TestIBPSMsg {
 	
 	//private static TestIBPSMsg instance = null;
 	
-	public static ISOPackager packager = new ISOIBPSPackager();
+	public static ISOPackager packager = IsoHelper.getDefaultISOPackager();
 	
 	public static String simIBPS101Msg() throws Exception {	
 		Date d = new Date();

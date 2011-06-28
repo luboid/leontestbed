@@ -38,7 +38,7 @@ public class TestTransform extends TestCase {
     public void test8583AndIsoObj() {
         IsoSchema schema = new IsoSchema();
         // prepare 8583 string
-        ISOMsg msg = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), "D:/bankConnector/source/sample/8583/ibps.101.001.01.8583");
+        ISOMsg msg = Iso8583Util.createDummyISOMsg(IsoHelper.getDefaultISOPackager(), "D:/bankConnector/source/sample/8583/ibps.101.001.01.8583");
         String input = Iso8583Util.packMsg(msg);
         debug("input="+input);
         
@@ -82,7 +82,7 @@ public class TestTransform extends TestCase {
     	try {
     	IsoSchema schema = new IsoSchema();
         // prepare 8583 string
-        ISOMsg msg = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), "D:/bankConnector/source/sample/8583/ibps.101.001.01.8583");
+        ISOMsg msg = Iso8583Util.createDummyISOMsg(IsoHelper.getDefaultISOPackager(), "D:/bankConnector/source/sample/8583/ibps.101.001.01.8583");
         String input = Iso8583Util.packMsg(msg);
         debug("input="+input);
         

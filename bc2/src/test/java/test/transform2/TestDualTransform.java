@@ -60,7 +60,7 @@ public class TestDualTransform extends TestCase {
 	public void testXml2Jaxb2Ebo2Iso() {
         IsoSchema schema = new IsoSchema();
         // prepare 8583 string
-        ISOMsg msg = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), "D:/bankConnector/source/sample/8583/ibps.101.001.01.8583");
+        ISOMsg msg = Iso8583Util.createDummyISOMsg(IsoHelper.getDefaultISOPackager(), "D:/bankConnector/source/sample/8583/ibps.101.001.01.8583");
         String input = Iso8583Util.packMsg(msg);
         debug("input="+input);
 		
@@ -101,7 +101,7 @@ public class TestDualTransform extends TestCase {
 	public void testIso2Ebo2Jaxb2Xml() {
         IsoSchema schema = new IsoSchema();
         // prepare 8583 string
-        ISOMsg msg = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), "D:/bankConnector/source/sample/8583/ibps.101.001.01.8583");
+        ISOMsg msg = Iso8583Util.createDummyISOMsg(IsoHelper.getDefaultISOPackager(), "D:/bankConnector/source/sample/8583/ibps.101.001.01.8583");
         String input = Iso8583Util.packMsg(msg);
         debug("input="+input);
 		
