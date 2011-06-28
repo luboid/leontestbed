@@ -2,7 +2,7 @@ package com.topfinance.runtime;
 
 public interface BcConstants {
     
-    public static final String ENV_HOME = "BC2_HOME";
+    public static final String ENV_HOME = "CONFIG_HOME";
     
     public static final String ENCODING = "UTF-8";
     

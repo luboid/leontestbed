@@ -70,7 +70,11 @@ public class FilePathHelper {
 		
 		StringBuffer buf = new StringBuffer();
 		buf.append(basePath).append(PATH_CONFIG_MAPPING).append(opInfo.getMesgType()).append("-")
-			.append(deNull(opInfo.getOpType())).append("-").append(deNull(opInfo.getOpClass())).append("-").append(s).append(".map");
+		     // now public mapping only give to mesgType level
+			//.append(deNull(opInfo.getOpType()))
+			.append("-")
+			//.append(deNull(opInfo.getOpClass()))
+			.append("-").append(s).append(".map");
 		return buf.toString();
 	}
 	

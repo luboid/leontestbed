@@ -214,6 +214,10 @@ public class JpaCfgReader implements ICfgReader {
         }
     }
     
+    public byte[] getMappingRuleAsBytes(OpInfo opInfo, ICfgOperation cfgOpn,
+			String direction) {
+    	throw new RuntimeException("===========not implemented========");
+    }
 	public SimpleMappingRule getMappingRule(OpInfo opInfo, ICfgOperation cfgOpn,
 			String direction) throws CfgAccessException {
 		try {

@@ -1,18 +1,26 @@
 package com.topfinance.util;
 
-import org.apache.commons.beanutils.BeanUtils;
+import java.io.File;
+import java.io.FileWriter;
+
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
-import com.cnaps2.cncc.service.IIBPSManager;
+import com.topfinance.cfg.CfgConstants;
+import com.topfinance.db.dao.IDao;
 import com.topfinance.runtime.Main;
 
 public class AuditMsgUtil {
     private static Logger logger = Logger.getLogger(AuditMsgUtil.class);
 
-    public static IIBPSManager getMgr() {
-        return (IIBPSManager)Main.getBean("ibpsManager");
-    }
-
+//    public static IIBPSManager getMgr() {
+//        return (IIBPSManager)Main.getBean("ibpsManager");
+//    }
+    
+	private static IDao getDao() {
+		IDao dao = (IDao) Main.getBean("dao");
+		return dao;
+	}
     public static void saveMsg(Object ebo) {
         try {
 //            String eboClassName = "com.topfinance.ebo.msg."+ParseSampleXml.getEboClassNameFromOp(op);
@@ -39,14 +47,39 @@ public class AuditMsgUtil {
 //            }
 
             // store the ebo
-            BeanUtils.setProperty(ebo, "uuid", BCUtils.getUniqueId("uid-"));
-
+//            BeanUtils.setProperty(ebo, "uuid", BCUtils.getUniqueId("uid-"));
 //            getMgr().save(ebo);
+        	
+        	if(BCUtils.needSaveMsgDb()) {
+        		getDao().save(ebo);	
+        	}
+        	
+            
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error("Failed to saveMsgDb", ex);
             throw new RuntimeException(ex);
         }
 
     }
+    
+    public static void saveMsgAsFile(String direction, String msgId, String msg) {
+    	FileWriter output = null;
+        try {
+        	if(BCUtils.needSaveMsgFile()) {
+        		String s = CfgConstants.DIRECTION_UP.equals(direction) ? "up" : "down";
+        		output = new FileWriter(new File(BCUtils.getHomeDir()+"/bin/logs", msgId+"-"+s+".log"));
+        		IOUtils.write(msg, output);
+        	}
+        } catch (Exception ex) {
+        	logger.warn("Failed to saveMsgFile, msgId="+msgId+", direction="+direction, ex);
+        } finally {
+        	if(output!=null) {
+        		try {
+        			output.close();
+        		} catch(Exception e) {
+        		}
+        	}
+        }
 
+    }
 }

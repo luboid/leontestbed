@@ -32,6 +32,7 @@ import com.topfinance.runtime.OpInfo;
 import com.topfinance.stubs.StubUtils;
 import com.topfinance.transform.util.ISOIBPSPackager;
 import com.topfinance.transform.util.Iso8583Util;
+import com.topfinance.transform.util.IsoHelper;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.FilePathHelper;
 
@@ -165,13 +166,13 @@ public class PPInitiator implements CfgConstants{
             logger.info("msgCode="+msgCode+", opInfo="+opInfo.toString());
             
             ICfgOperation cfgOpn= reader.getOperation(reader.getProtByInPort(chosenInPort), opInfo.getMesgType());
-            
+            if(cfgOpn==null) {logger.info("Canot find the operation: "+opInfo.getMesgType()); }
             boolean wantSyncReply = CfgConstants.OP_REPLY_TYPE_SYNC.equals(cfgOpn.getUpPpReplyType()); 
                 
             // package request
             if(TCP_PROVIDER_8583.equals(reader.getTransByPortIn(chosenInPort).getProvider())) {
                 
-                ISOMsg m1 = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), FilePathHelper.sample8583(opInfo));
+                ISOMsg m1 = Iso8583Util.createDummyISOMsg(IsoHelper.getDefaultISOPackager(), FilePathHelper.sample8583(opInfo));
 //                Iso8583Util.setField(m1, BcConstants.ISO8583_OP_NAME, opInfo.toString());
                 Iso8583Util.setField(m1, BcConstants.ISO8583_DOC_ID, docId);
                 Iso8583Util.setField(m1, BcConstants.ISO8583_ORIG_DOC_ID, "");
@@ -219,7 +220,7 @@ public class PPInitiator implements CfgConstants{
                     logger.warn("received error msg!!!!!!!");    
                 } else {
                 	// hard coded
-                    ISOMsg iso = Iso8583Util.unpackMsg(syncResp, new ISOIBPSPackager());
+                    ISOMsg iso = Iso8583Util.unpackMsg(syncResp, IsoHelper.getDefaultISOPackager());
 //                    ISOMsg iso = (ISOMsg)new Default8583ToCnaps2UpInMH().parseConvert(syncResp);
                     String iso601Id = Iso8583Util.getField(iso, BcConstants.ISO8583_DOC_ID);
                     logger.info("received sync reply: docId="+iso601Id);
@@ -285,7 +286,7 @@ public class PPInitiator implements CfgConstants{
                   
               }else {
               	// hard coded
-              ISOMsg iso = Iso8583Util.unpackMsg(msg, new ISOIBPSPackager());
+              ISOMsg iso = Iso8583Util.unpackMsg(msg, IsoHelper.getDefaultISOPackager());
 //                  ISOMsg iso = (ISOMsg)new Default8583ToCnaps2UpInMH().parseConvert(msg);
               String iso601Id = Iso8583Util.getField(iso, BcConstants.ISO8583_DOC_ID);
               logger.info("received async reply: docId="+iso601Id);

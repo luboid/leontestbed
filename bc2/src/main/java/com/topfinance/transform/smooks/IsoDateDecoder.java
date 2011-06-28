@@ -16,7 +16,9 @@ public class IsoDateDecoder implements DataDecoder {
             // TODO
             dd = ISODate.parseISODate((String)data);
         } catch (Exception ex) {
+        	
             info("in[CalendarConverter] failed to convert to ISODate from a value="+data);
+            ex.printStackTrace();
             dd = new Date();
         }
         return dd;

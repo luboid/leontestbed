@@ -60,6 +60,9 @@ public class ResendUtil {
         ResendEntry hiber = new ResendEntry();
         for(String key:fields.keySet()) {
             Object val = fields.get(key);
+            if(val==null) {
+            	continue;
+            }
             logger.trace("key="+key+", val="+val+", val.type="+val.getClass().getName());
             if(val instanceof BigInteger) {
                 val = ((BigInteger)val).longValue();

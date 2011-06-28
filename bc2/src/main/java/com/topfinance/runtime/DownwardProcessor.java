@@ -210,6 +210,7 @@ public class DownwardProcessor extends AbstractProcessor{
         getMsgContext().setOrigSender(origSender);
         getMsgContext().setOrigReceiver(origReceiver);
         
+        AuditMsgUtil.saveMsgAsFile(CfgConstants.DIRECTION_DOWN, getMsgContext().getMesgId(), message);
         
         // TODO verify these value, especially mesgType
         
@@ -262,6 +263,7 @@ public class DownwardProcessor extends AbstractProcessor{
                 logger.info("==========docId = "+docId+", origDocId="+origDocId);
                 // TODO use object to do biz level auditing 
                 AuditMsgUtil.saveMsg(parsedMsg);
+                
             }
         } else {
             // must be sth wrong?  
@@ -558,8 +560,8 @@ public class DownwardProcessor extends AbstractProcessor{
     	logger.debug("packed="+msg);
         getMsgContext().setPackagedMsg(msg);
         } catch (Exception ex) {
-        	logger.error(ex);
-        	throw new RuntimeException(ex);
+        	logger.error("failed when convert and pack to internal msg", ex);
+        	throw new RuntimeException("failed when convert and pack to internal msg", ex);
         }
         
 //    	if(CfgConstants.OP_FORMAT_XML.equals(cfgOpn.getDownFormat())){

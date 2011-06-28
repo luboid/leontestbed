@@ -50,6 +50,7 @@ import com.topfinance.runtime.BcException;
 import com.topfinance.runtime.OpInfo;
 import com.topfinance.transform.util.ISOIBPSPackager;
 import com.topfinance.transform.util.Iso8583Util;
+import com.topfinance.transform.util.IsoHelper;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.FilePathHelper;
 import com.topfinance.util.PerfUtil;
@@ -432,7 +433,9 @@ public class Broker implements Processor, CfgConstants{
             outText = outHeader.toText()+bodyText;
             logger.info("forwarding 101 to BankB on url="+outUrl);
             executor.execute(new SendJob(outText, outUrl, camel));
-        } else if(mesgType.equals(TestDummy.OPERATION_111)) {
+        } else if(mesgType.equals(TestDummy.OPERATION_111) 
+        		|| mesgType.equals(TestDummy.OPERATION_112)
+        		|| mesgType.equals(TestDummy.OPERATION_122)) {
             // forward 111 to B
             
             // header contains new unique mesgId??
@@ -446,7 +449,7 @@ public class Broker implements Processor, CfgConstants{
                                              );   
             // body no change
             outText = outHeader.toText()+bodyText;
-            logger.info("================forwarding 111 to BankB on url="+outUrl);
+            logger.info("================forwarding "+mesgType+" to BankB on url="+outUrl);
             executor.execute(new SendJob(outText, outUrl, camel));   
             
             
@@ -571,7 +574,7 @@ public class Broker implements Processor, CfgConstants{
         
         // todo Maybe a Cnaps2Util and a createDummyCnaps2 method
         //load other data from sample. 
-        ISOMsg iso601 = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), iso8583601Sample);
+        ISOMsg iso601 = Iso8583Util.createDummyISOMsg(IsoHelper.getDefaultISOPackager(), iso8583601Sample);
         
 
 //        SimpleMappingRule rule = readerA.getMappingRule(null, cfgOpn, DIRECTION_UP);

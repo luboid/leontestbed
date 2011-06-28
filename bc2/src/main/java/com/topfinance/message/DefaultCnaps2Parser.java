@@ -15,8 +15,6 @@ import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
 import com.topfinance.cfg.CfgConstants;
-import com.topfinance.cfg.CfgImplFactory;
-import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.TestDummy;
 import com.topfinance.plugin.cnaps2.AckRoot;
@@ -99,10 +97,12 @@ public class DefaultCnaps2Parser  {
 
         		
         		String xpathOpType = od.getPathOpType();
-        		opInfo.setOpType(extract(xpath, xpathOpType, doc));
+        		opInfo.setOpType(extract(xpath, xpathOpType, doc));        		
         		
         		String xpathOpClass = od.getPathOpClass();
         		opInfo.setOpClass(extract(xpath, xpathOpClass, doc));
+        		
+        		
         		
                 // xml2ebo
                 InputStream mapping = FormatFactory.loadPluginMapping(opInfo, CfgConstants.DIRECTION_DOWN);
@@ -113,21 +113,35 @@ public class DefaultCnaps2Parser  {
         		throw new RuntimeException(ex);
         	}
             logger.info("bodyText: "+bodyText);
-            logger.info("docId="+docId+", origDocId: "+origDocId);
+            logger.info("docId="+docId+", origDocId: "+origDocId+", opType="+opInfo.getOpType()+", clsType="+opInfo.getOpClass());
         }
         
         
         return parsedObj;
     }
     
-    public String extract(XPath xpath, String xpathStr, Document doc) throws Exception{
+    public static String extract(XPath xpath, String xpathStr, Document doc) throws Exception{
     	String res = null;
 		if(StringUtils.isNotEmpty(xpathStr)) {
 			XPathExpression expr = xpath.compile(xpathStr);
 			res = expr.evaluate(doc);
 		}
+		
+		// e.g. in case of hvps.112.001.01
+		res = truncateHeadingXX(res);
+		
 		return res==null? "" : res.trim();
     }
+
+	public static String truncateHeadingXX(String res) {
+		if(res!=null && res.indexOf("/")>=0 && res.length()>=5) {
+			String s = res.substring(0, 5);
+			if(s.startsWith("/") && s.endsWith("/")) {
+				res = res.substring(5);
+			}
+		}
+		return res;
+	}
     
     public String parseHeader(String msg) throws FatalParseException {
     	

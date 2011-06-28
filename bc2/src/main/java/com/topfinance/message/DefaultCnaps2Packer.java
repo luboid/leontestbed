@@ -29,11 +29,20 @@ public class DefaultCnaps2Packer  {
         // ebo2jaxb
     	
     	long s = PerfUtil.time();
+    	// TODO cache the stream
         InputStream mapping = FormatFactory.loadPluginMapping(opInfo, CfgConstants.DIRECTION_UP);
         long e1 = PerfUtil.time();
         PerfUtil.perfLog(" cost "+(e1-s)+", end loadPluginMapping" );
         
-        Object jaxbObj = SmooksTransformer.java2Java(opInfo.toString(), ebo, mapping);
+        String uniqueId = opInfo.toString()+CfgConstants.DIRECTION_UP+"public";
+        Object jaxbObj = SmooksTransformer.java2Java(uniqueId, ebo, mapping);
+        
+        
+        // debug
+//        com.xml.cnaps2.beps.v12200101.Document d = (com.xml.cnaps2.beps.v12200101.Document)jaxbObj;
+//        Object o = d.getFinCdtTrf().getFinCdtTrfInf().get(0).getFinCdtTrfAddtlInf().getNtlTrsrInf();
+//        debug("o="+o);
+        
         long e2 = PerfUtil.time();
         PerfUtil.perfLog(" cost "+(e2-e1)+", end java2Java" );
         

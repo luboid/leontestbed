@@ -15,14 +15,13 @@ import org.simpleframework.xml.core.Persister;
 import org.simpleframework.xml.strategy.CycleStrategy;
 import org.simpleframework.xml.strategy.Strategy;
 
-
 import com.topfinance.cfg.CfgAccessException;
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.ICfgFormat;
 import com.topfinance.cfg.ICfgFormat8583;
-import com.topfinance.cfg.ICfgPortIn;
 import com.topfinance.cfg.ICfgNode;
 import com.topfinance.cfg.ICfgOperation;
+import com.topfinance.cfg.ICfgPortIn;
 import com.topfinance.cfg.ICfgPortOut;
 import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.cfg.ICfgReader;
@@ -301,8 +300,13 @@ public class XmlCfgReader extends TestCase implements ICfgReader {
         return res;
     }
     
-    public SimpleMappingRule getMappingRule(OpInfo opInfo, ICfgOperation cfgOpn, String direction) {
+    public byte[] getMappingRuleAsBytes(OpInfo opInfo, ICfgOperation cfgOpn, String direction) {
     	byte[] res = null;
+    	res = OmCfgMappingRule.getMapping(opInfo.getMesgType(), opInfo.getOpType(), opInfo.getOpClass(), direction);
+    	return res;
+    }
+    public SimpleMappingRule getMappingRule(OpInfo opInfo, ICfgOperation cfgOpn, String direction) {
+
 //    	for(OmCfgMappingRule rule : getDataHolder().listMappingRule) {
 //    		if(rule.getMesgType().equals(opInfo.getMesgType()) && 
 //    				rule.getOpType().equals(opInfo.getOpType()) &&
@@ -312,8 +316,9 @@ public class XmlCfgReader extends TestCase implements ICfgReader {
 //    		}
 //
 //    	}
-    	res = OmCfgMappingRule.getMapping(opInfo.getMesgType(), opInfo.getOpType(), opInfo.getOpClass(), direction);
-    	return SimpleMappingRule.fromXml(new ByteArrayInputStream(res));
+    	byte[] res = getMappingRuleAsBytes(opInfo, cfgOpn, direction);
+    	SimpleMappingRule rule = SimpleMappingRule.fromXml(new ByteArrayInputStream(res));
+    	return rule;
     }
     public List<ICfgFormat8583> getFormat8583(ICfgFormat format) throws CfgAccessException {
     	List<ICfgFormat8583> res = new ArrayList<ICfgFormat8583>();

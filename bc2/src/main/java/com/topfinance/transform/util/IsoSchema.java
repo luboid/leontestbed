@@ -16,7 +16,16 @@ public class IsoSchema {
     List<IsoField> fields = new ArrayList<IsoField>();
     
     public IsoSchema() {
-        init();
+    	init();
+    }
+    
+    static IsoSchema defInstance;
+    public static IsoSchema getDefault() {
+    	if(defInstance == null) {
+    		defInstance = new IsoSchema();
+//    		defInstance.init();
+    	}
+    	return defInstance;
     }
 
     
@@ -24,93 +33,138 @@ public class IsoSchema {
         // equivalent of ISOIBPSPackager
         fields.add(new IsoField(IFA_NUMERIC, 5, ""));
         fields.add(new IsoField(IFA_BITMAP, 16, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IFA_NUMERIC, 18, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 120, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IF_CHAR, 60, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IFA_NUMERIC, 18, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 120, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IF_CHAR, 60, ""));
+//        
+//        fields.add(new IsoField(IFA_LLLLCHAR, 512, ""));
+//        fields.add(new IsoField(IFA_LLLLCHAR, 4092, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IFB_LLLHCHAR, 2048, ""));
+//        fields.add(new IsoField(IF_CHAR, 2048, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 1, ""));     
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IFA_LLLLCHAR, 512, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IFA_NUMERIC, 18, ""));
+//        fields.add(new IsoField(IFA_NUMERIC, 18, ""));
+//        fields.add(new IsoField(IFA_NUMERIC, 18, ""));   
+//        
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IFA_NUMERIC, 18, ""));
+//        fields.add(new IsoField(IF_CHAR, 4, ""));
+//        fields.add(new IsoField(IF_CHAR, 2048, ""));
+//        fields.add(new IsoField(IF_CHAR, 4, ""));
+//        fields.add(new IsoField(IF_CHAR, 2, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IF_CHAR, 2, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IF_CHAR, 1, ""));
+//        fields.add(new IsoField(IF_CHAR, 4, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IF_CHAR, 4, ""));     
+//        
+//        fields.add(new IsoField(IF_CHAR, 1, ""));
+//        fields.add(new IsoField(IF_CHAR, 2, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IF_CHAR, 20, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 2, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IF_CHAR, 2, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IF_CHAR, 32, ""));
+//        
+//        fields.add(new IsoField(IF_CHAR, 2, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 32, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 120, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 35, ""));
+//        fields.add(new IsoField(IF_CHAR, 8, ""));
+//        fields.add(new IsoField(IF_CHAR, 4, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
+//        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));       
+//        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
         
-        fields.add(new IsoField(IFA_LLLLCHAR, 512, ""));
-        fields.add(new IsoField(IFA_LLLLCHAR, 4092, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IFB_LLLHCHAR, 2048, ""));
-        fields.add(new IsoField(IF_CHAR, 2048, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 1, ""));     
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IFA_LLLLCHAR, 512, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IFA_NUMERIC, 18, ""));
-        fields.add(new IsoField(IFA_NUMERIC, 18, ""));
-        fields.add(new IsoField(IFA_NUMERIC, 18, ""));   
-        
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IFA_NUMERIC, 18, ""));
-        fields.add(new IsoField(IF_CHAR, 4, ""));
-        fields.add(new IsoField(IF_CHAR, 2048, ""));
-        fields.add(new IsoField(IF_CHAR, 4, ""));
-        fields.add(new IsoField(IF_CHAR, 2, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IF_CHAR, 2, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IF_CHAR, 1, ""));
-        fields.add(new IsoField(IF_CHAR, 4, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IF_CHAR, 4, ""));     
-        
-        fields.add(new IsoField(IF_CHAR, 1, ""));
-        fields.add(new IsoField(IF_CHAR, 2, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IF_CHAR, 20, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 2, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IF_CHAR, 2, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IF_CHAR, 32, ""));
-        
-        fields.add(new IsoField(IF_CHAR, 2, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 32, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 120, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 35, ""));
-        fields.add(new IsoField(IF_CHAR, 8, ""));
-        fields.add(new IsoField(IF_CHAR, 4, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));
-        fields.add(new IsoField(IFA_LLLCHAR, 1, ""));       
+        // 2-9 // the zero and 1st pos is number(5) and BITMAP (see top)
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
         fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
         
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
         
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));        
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        
+
+        
+        //40+
         fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
         fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
         fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
@@ -155,6 +209,54 @@ public class IsoSchema {
         fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
         fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
         
+        
+        // 80+
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));        
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
+        
+        
+        // 120-128
         fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
         fields.add(new IsoField(IFA_LLLCHAR, 50, ""));
         fields.add(new IsoField(IFA_LLLCHAR, 50, ""));

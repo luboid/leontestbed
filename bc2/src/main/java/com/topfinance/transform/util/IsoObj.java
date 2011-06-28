@@ -2,7 +2,7 @@ package com.topfinance.transform.util;
 
 import org.apache.commons.beanutils.BeanUtils;
 
-public class IsoObj {
+public class IsoObj implements java.io.Serializable{
     
 
     

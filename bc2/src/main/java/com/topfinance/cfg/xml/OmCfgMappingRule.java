@@ -50,7 +50,8 @@ public class OmCfgMappingRule implements ICfgMappingRule{
 	}
 	public static byte[] getMapping(String mesgType, String opType, String opClass, String direction) {
 		try {
-			String filePath = FilePathHelper.sampleMappingSimple(new OpInfo(mesgType, opType, opClass), direction);
+//			String filePath = FilePathHelper.sampleMappingSimple(new OpInfo(mesgType, opType, opClass), direction);
+			String filePath = FilePathHelper.sampleMapping(new OpInfo(mesgType, opType, opClass), direction);
 			BCUtils.testFileExist(filePath, false);
 			
 				ByteArrayOutputStream out = new ByteArrayOutputStream();

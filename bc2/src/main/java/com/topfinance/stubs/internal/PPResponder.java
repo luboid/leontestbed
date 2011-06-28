@@ -35,6 +35,7 @@ import com.topfinance.runtime.OpInfo;
 import com.topfinance.stubs.StubUtils;
 import com.topfinance.transform.util.ISOIBPSPackager;
 import com.topfinance.transform.util.Iso8583Util;
+import com.topfinance.transform.util.IsoHelper;
 import com.topfinance.util.BCUtils;
 import com.topfinance.util.FilePathHelper;
 
@@ -135,7 +136,7 @@ public class PPResponder implements Processor, CfgConstants{
         logger.info("received async message from url=" + exchange.getFromEndpoint().getEndpointUri());
         logger.debug("rawMsg="+msg);
 
-        ISOMsg m = Iso8583Util.unpackMsg(msg, new ISOIBPSPackager());
+        ISOMsg m = Iso8583Util.unpackMsg(msg, IsoHelper.getDefaultISOPackager());
 //        ISOMsg m = (ISOMsg)new Default8583ToCnaps2UpInMH().parseConvert(msg);
         String docId_101 = Iso8583Util.getField(m, BcConstants.ISO8583_DOC_ID);
         
@@ -177,7 +178,7 @@ public class PPResponder implements Processor, CfgConstants{
         String docId_102 = BCUtils.getUniqueDocId();
         String respText = "";
         if(TCP_PROVIDER_8583.equals(reader.getTransByPortIn(chosenInPort).getProvider())) {
-            ISOMsg m1 = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), FilePathHelper.sample8583(opInfo));
+            ISOMsg m1 = Iso8583Util.createDummyISOMsg(IsoHelper.getDefaultISOPackager(), FilePathHelper.sample8583(opInfo));
             // prepare 102
 //            Iso8583Util.setField(m1, BcConstants.ISO8583_OP_NAME, op);
             Iso8583Util.setField(m1, BcConstants.ISO8583_DOC_ID, docId_102);
@@ -244,7 +245,7 @@ public class PPResponder implements Processor, CfgConstants{
                         if(syncResp.equals(BcConstants.MSG_PP_ERROR)) {
                             logger.warn("received error msg!!!!!!!");    
                         } else {
-                            ISOMsg iso = Iso8583Util.unpackMsg(syncResp, new ISOIBPSPackager());
+                            ISOMsg iso = Iso8583Util.unpackMsg(syncResp, IsoHelper.getDefaultISOPackager());
 //                            ISOMsg iso = (ISOMsg)new Default8583ToCnaps2UpInMH().parseConvert(syncResp);
                             String iso601Id = Iso8583Util.getField(iso, BcConstants.ISO8583_DOC_ID);
                             logger.info("received sync reply: docId="+iso601Id);

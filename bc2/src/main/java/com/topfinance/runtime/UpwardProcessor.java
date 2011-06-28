@@ -8,6 +8,7 @@ import org.apache.camel.Message;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
+import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
 import com.topfinance.cfg.ICfgFormat;
 import com.topfinance.cfg.ICfgPortIn;
@@ -193,6 +194,7 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
         Message min = exchange.getIn();
         String ppreq = min.getBody(String.class);
         logger.info("received msg on uri=" + uri);
+        
         logger.debug("rawMsg=["+ppreq+"]");
 
         auditLog(STATE_RECEIVED_REQ, "Received Message", STATUS_PENDING);
@@ -312,7 +314,8 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
         // TODO error handling
      
         // TODO use object to do biz level auditing
-        AuditMsgUtil.saveMsg(parsedMsg);
+        // defer saving it as it cause problem in transform (duplicated elements)
+//        AuditMsgUtil.saveMsg(parsedMsg);
     }
     
     protected void packReq() {
@@ -377,6 +380,13 @@ public class UpwardProcessor extends AbstractProcessor implements MessageListene
         String body = packer.packBody(getMsgContext().getParsedMsg(), cfgOpn, getMsgContext().getOpInfo());
         String request = packer.addHeader(body, origSender, origReceiver, mesgType, mesgId, mesgRefId);
         getMsgContext().setPackagedMsg(request);
+        
+        AuditMsgUtil.saveMsgAsFile(CfgConstants.DIRECTION_UP, mesgId, request);
+        // TODO use object to do biz level auditing
+        // defer saving it as it cause problem in transform (duplicated elements)
+        AuditMsgUtil.saveMsg(getMsgContext().getParsedMsg());
+        
+        
         
         auditLog(STATE_PKG_OUT_MSG, "packaged message to TP", STATUS_PENDING);
     }

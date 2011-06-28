@@ -3,6 +3,7 @@ package com.topfinance.transform.smooks;
 import java.text.ParseException;
 import java.util.Date;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.jpos.iso.ISODate;
 
 public class IsoDateEncoder {
@@ -19,6 +20,17 @@ public class IsoDateEncoder {
 			e.printStackTrace();
 			return "ERROR";
 		}
+	}
+	
+	public String encode3(Object o) {
+
+		debug("o="+o+", "+ (o==null? "null" : o.getClass().getName()));
+
+		return "";
+	}
+	
+	public void debug(String s) {
+		System.out.println(s);
 	}
 
 }

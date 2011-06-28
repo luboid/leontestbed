@@ -153,7 +153,9 @@ public class ISOIBPSPackager extends ISOBasePackager {
     /*127*/ new IFA_LLLCHAR (  50, ""),
     /*128*/ new IFA_LLLCHAR (  50, "")
    };
-    public ISOIBPSPackager() {
+    
+    // used within package, don't directly use it by runtime
+    ISOIBPSPackager() {
         super();
         setFieldPackager(fld);
     }

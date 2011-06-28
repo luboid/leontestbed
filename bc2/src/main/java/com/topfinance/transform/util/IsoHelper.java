@@ -2,7 +2,9 @@ package com.topfinance.transform.util;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;
@@ -135,7 +137,21 @@ public class IsoHelper {
     	}		
     }
     
+	static Map<IsoSchema, ISOBasePackager> cached = new HashMap<IsoSchema, ISOBasePackager>();
+	public static ISOBasePackager getDefaultISOPackager() {
+		// TODO concurrency
+		IsoSchema schema = IsoSchema.getDefault();
+		ISOBasePackager res = cached.get(schema);
+		if(res==null) {
+			res = toPackager(schema);
+			cached.put(schema, res);
+		} 
+		return res; 
+	}
+	
+	
     public static ISOBasePackager toPackager(IsoSchema schema) {
+    	
         List<ISOFieldPackager> fields = new ArrayList<ISOFieldPackager>();
 
         for (IsoSchema.IsoField f : schema.getFields()) {
@@ -179,6 +195,11 @@ public class IsoHelper {
     }
     
     public static IsoSchema fromConfig(List<ICfgFormat8583> list) {
+    	
+    	if(true) {
+    		return IsoSchema.getDefault();
+    	}
+    	// TODO 
     	IsoSchema schema = new IsoSchema();
     	schema.getFields().clear();
     	for(ICfgFormat8583 f8583 : list) {

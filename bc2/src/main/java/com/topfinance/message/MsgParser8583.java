@@ -3,9 +3,7 @@ package com.topfinance.message;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-
 
 import com.topfinance.cfg.CfgConstants;
 import com.topfinance.cfg.CfgImplFactory;
@@ -14,8 +12,7 @@ import com.topfinance.cfg.ICfgFormat8583;
 import com.topfinance.cfg.ICfgOperation;
 import com.topfinance.cfg.ICfgProtocol;
 import com.topfinance.runtime.OpInfo;
-import com.topfinance.transform.simple.SimpleMappingRule;
-import com.topfinance.transform.simple.SimpleTransformer;
+import com.topfinance.transform.smooks.SmooksTransformer;
 import com.topfinance.transform.util.IsoHelper;
 import com.topfinance.transform.util.IsoObj;
 import com.topfinance.transform.util.IsoSchema;
@@ -77,12 +74,20 @@ public class MsgParser8583 implements IMsgParser {
         
         // iso2ebo
 //		InputStream mapping = FormatFactory.loadPpMapping(opn, CfgConstants.DIRECTION_UP);
-//        byte[] mapping = CfgImplFactory.loadCfgReader().getMappingRule(opInfo, opn, CfgConstants.DIRECTION_UP);
-        SimpleMappingRule rule = CfgImplFactory.loadCfgReader().getMappingRule(opInfo, opn, CfgConstants.DIRECTION_UP);
+
+        
         
         long e2 = PerfUtil.time();
-//        parsedMsg = SmooksTransformer.java2Java(iso, mapping);
-        parsedMsg = new SimpleTransformer().transform(iso, rule);
+        byte[] mapping = CfgImplFactory.loadCfgReader().getMappingRuleAsBytes(opInfo, opn, CfgConstants.DIRECTION_UP);
+//        System.out.println("mapping="+new String(mapping));
+        Object obj = iso;
+//        obj = new Hvps11200101();
+//        obj = new IsoObj();
+        String uniqueId = opInfo.toString()+CfgConstants.DIRECTION_UP+"private";
+        parsedMsg = SmooksTransformer.java2Java(uniqueId, obj, new ByteArrayInputStream(mapping));
+        
+//        SimpleMappingRule rule = CfgImplFactory.loadCfgReader().getMappingRule(opInfo, opn, CfgConstants.DIRECTION_UP);
+//        parsedMsg = new SimpleTransformer().transform(iso, rule);
         long e3 = PerfUtil.time();
         PerfUtil.perfLog(" cost "+(e3-e2)+", end SimpleTransformer().transform" );
         

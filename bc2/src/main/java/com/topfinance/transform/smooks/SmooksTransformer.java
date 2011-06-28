@@ -90,7 +90,19 @@ public class SmooksTransformer {
 	        	ex.printStackTrace();
 	        }
 	        
-			return result.getBean(ROOT_BEAN_ID);
+//	        System.out.println("================src="+src);
+//	        // debug only
+//	        Map map  = result.getResultMap();
+//	        for(Object k : map.keySet()) {
+//	        	String key = (String)k;
+//	        	Object v = map.get(key);
+//	        	System.out.println("key="+key+", v="+v);
+//	        }
+	        Object o = result.getBean(ROOT_BEAN_ID);
+	        if(o==null) {
+	        	throw new RuntimeException("java2Java result is null!");
+	        }
+			return o;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException(ex);

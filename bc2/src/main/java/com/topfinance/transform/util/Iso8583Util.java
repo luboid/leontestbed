@@ -95,6 +95,10 @@ public class Iso8583Util {
                     continue;
                 }
                 String[] arr = StringUtils.split(line, "=");
+                if(arr.length!=2) {
+                	info("WARNING: invalid 8583 sample file, line="+line);
+                	continue;
+                }
                 int pos = Integer.valueOf(arr[0]);
                 String val = arr[1];
                 

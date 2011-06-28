@@ -52,6 +52,7 @@ public interface ICfgReader extends CfgConstants{
 //    public InputStream getMappingRule(ICfgOperation cfgOpn, String direction) throws CfgAccessException;
     
     public SimpleMappingRule getMappingRule(OpInfo opInfo, ICfgOperation cfgOpn, String direction) throws CfgAccessException;
+    public byte[] getMappingRuleAsBytes(OpInfo opInfo, ICfgOperation cfgOpn, String direction);
     
     public List<ICfgFormat8583> getFormat8583(ICfgFormat format) throws CfgAccessException;
     

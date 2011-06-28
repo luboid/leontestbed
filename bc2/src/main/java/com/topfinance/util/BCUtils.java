@@ -104,6 +104,22 @@ public class BCUtils {
         return homeDir;
     }
     
+    public static boolean needSaveMsgDb() {
+    	
+    	String saveMsgDb = System.getProperty("bc2.saveMsgDb", "true");
+    	
+    	// only if value=false, do not save
+    	return !"false".equals(saveMsgDb);
+    	
+    }
+    public static boolean needSaveMsgFile() {
+    	
+    	String saveMsgFile = System.getProperty("bc2.saveMsgFile", "false");
+    	
+    	// only if value=true, save
+    	return "true".equals(saveMsgFile);
+    	
+    }
     public static void testFileExist(String path, boolean expectDir) {
         File file = new File(path);
         if(!file.exists()) {
@@ -339,10 +355,10 @@ public class BCUtils {
         return getUniqueId(prefix, 100);
     }
     public static String getUniqueDocId() {
-        return getUniqueId("docid-");
+        return getUniqueId("doc-", 35);
     }    
     public static String getUniqueTxId() {
-        return getUniqueId("txid-");
+        return getUniqueId("tx-", 35);
     }
     public static String getUniqueMesgId() {
         return getUniqueId("m-", 20);

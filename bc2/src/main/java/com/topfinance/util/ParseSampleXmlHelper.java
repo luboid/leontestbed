@@ -7,6 +7,9 @@ import com.topfinance.util.ParseSampleXml.DataEle;
 
 
 public class ParseSampleXmlHelper {
+	class Case {
+		
+	}
 	/**
 	 * convert between path in jaxb classes and in XML
 	 * @param xpath
@@ -17,7 +20,8 @@ public class ParseSampleXmlHelper {
 		// special case to handle
         if(name.equals("fIToFICstmrCdtTrf")) {
             // for 101 
-            name = "fiToFICstmrCdtTrf";
+//            name = "fiToFICstmrCdtTrf";
+            name = "fiToFiCstmrCdtTrf";
         } else if(name.equals("fIToFIPmtStsRpt")) {
             // for 102
             name = "fiToFIPmtStsRpt";
@@ -111,9 +115,11 @@ public class ParseSampleXmlHelper {
         
 		if(StringUtils.isEmpty(pp.type)) {
 			res = "";
-		}
-		else if (metaType.contains("Text")) {
+		
+		}else if (metaType.contains("Text")) {
 			res = DB_STRING;
+    	}else if (metaType.equalsIgnoreCase("BICIdentifier")) {
+			res = DB_STRING;			
 		} else if (metaType.toLowerCase().contains("code")) {
 			res = DB_STRING;
 		} else if (metaType.equalsIgnoreCase("ActiveCurrencyAndAmount")) {
@@ -126,7 +132,15 @@ public class ParseSampleXmlHelper {
 		} else if (metaType.equalsIgnoreCase("ISODateTime")) {
 			res = DB_DATE;
 		} else if (metaType.equalsIgnoreCase("ISODate")) {
-			res = DB_DATE;			
+			res = DB_DATE;	
+			
+			// why become these?
+		} else if (metaType.equalsIgnoreCase("Date")) {
+			res = DB_DATE;	
+		} else if (metaType.contains("number")) {
+			res = DB_NUMBER;
+		}else if (metaType.contains("varchar2")) {
+			res = DB_STRING;
 		} else {
 			// what is it? 
 			throw new RuntimeException("==============no matching Oracle DB types for metatype=: "+metaType);
@@ -150,8 +164,10 @@ public class ParseSampleXmlHelper {
         
 		if(StringUtils.isEmpty(pp.type)) {
 			res = "";
-		}
-		else if (metaType.contains("Text")) {
+
+    	}else if (metaType.contains("Text")) {
+			res = DB_STRING;
+    	}else if (metaType.equalsIgnoreCase("BICIdentifier")) {
 			res = DB_STRING;
 		} else if (metaType.toLowerCase().contains("code")) {
 			res = DB_STRING;
@@ -165,7 +181,14 @@ public class ParseSampleXmlHelper {
 		} else if (metaType.equalsIgnoreCase("ISODateTime")) {
 			res = DB_DATE;
 		} else if (metaType.equalsIgnoreCase("ISODate")) {
-			res = DB_DATE;			
+			res = DB_DATE;		
+			// why become these?
+		} else if (metaType.equalsIgnoreCase("Date")) {
+			res = DB_DATE;	
+		} else if (metaType.contains("number")) {
+			res = DB_NUMBER;
+		}else if (metaType.contains("varchar2")) {
+			res = DB_STRING;			
 		} else {
 			// what is it? 
 			throw new RuntimeException("==============no matching Oracle DB types for metatype=: "+metaType);

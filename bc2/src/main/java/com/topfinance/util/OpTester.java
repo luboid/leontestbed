@@ -72,7 +72,7 @@ public class OpTester extends TestCase {
 			ICfgFormat format = reader.getFormatByOpn(opn);
 			
 			// prepare 8583
-			ISOMsg isomsg = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), FilePathHelper.sample8583(opInfo));
+			ISOMsg isomsg = Iso8583Util.createDummyISOMsg(IsoHelper.getDefaultISOPackager(), FilePathHelper.sample8583(opInfo));
 			String msg = Iso8583Util.packMsg(isomsg);
 			debug("msg="+msg);
 			

@@ -12,7 +12,6 @@ import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.lang.reflect.Field;
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,8 +20,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
-
-import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -41,8 +38,8 @@ import com.topfinance.plugin.cnaps2.Cnaps2Constants;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.runtime.OpInfo;
 import com.topfinance.transform.smooks.SmooksTransformer;
-import com.topfinance.transform.util.ISOIBPSPackager;
 import com.topfinance.transform.util.Iso8583Util;
+import com.topfinance.transform.util.IsoHelper;
 import com.topfinance.util.MetaJaxbElement.Value;
 import com.topfinance.util.MetaJaxbElement.Wiring;
 
@@ -208,10 +205,10 @@ public class ParseSampleXml{
         outMapPrivateEbo2IsoSimpleFile = FilePathHelper.sampleMappingSimple(opInfo, CfgConstants.DIRECTION_DOWN,basePath);   //basePath+"/sample/mapping/"+op+"-ebo2iso.map";
     }
     private static void debug(String s) {
-        System.out.println("in [ParseSampleXml] DEBUG: "+s);
+//        System.out.println("in [ParseSampleXml] DEBUG: "+s);
     }
     private void info(String s) {
-      System.out.println("in [ParseSampleXml] INFO: "+s);
+//      System.out.println("in [ParseSampleXml] INFO: "+s);
   }
     public static String getJavaName(String name) {
         return StringUtils.uncapitalize(name);
@@ -491,6 +488,9 @@ public class ParseSampleXml{
 
     }
     
+
+    
+    
     private void generateMap() {
         try {
 
@@ -553,39 +553,38 @@ public class ParseSampleXml{
                 }
                 sample8583Buf.append(sample8583Line.toString());
                 
-                StringBuffer reverseLine = new StringBuffer(this8583Pos);
-                reverseLine.append("=").append(key);
-                reverseLine.append("\r\n");
-                // additional new line
-                if (PRINT_EXTRA_NEWLINE) {
-                    reverseLine.append("\r\n");
-                }               
-                reverseMapBuf.append(reverseLine.toString());
-                
-                
-                
+//                StringBuffer reverseLine = new StringBuffer(this8583Pos);
+//                reverseLine.append("=").append(key);
+//                reverseLine.append("\r\n");
+//                // additional new line
+//                if (PRINT_EXTRA_NEWLINE) {
+//                    reverseLine.append("\r\n");
+//                }               
+//                reverseMapBuf.append(reverseLine.toString());
+//                
+//                
+//                
                 // for iso2ebo and ebo2iso
                 StringBuffer javaNameBuf = new StringBuffer();
                 StringBuffer dbNameBuf = new StringBuffer();
                 getEboVariableNameFromJaxbOPath(javaNameBuf, dbNameBuf, pp);
                 
                 tellDuplicate(nameCounter, javaNameBuf, dbNameBuf);
+                
                 String capitizedJavaName = javaNameBuf.toString();
                 String eboPropertyName = StringUtils.uncapitalize(capitizedJavaName);
+
                 
-                // iso2ebo
-                Value valIso2Ebo = new Value();
-//                valIso2Ebo.setData("/test.transform.IsoObj/f"+this8583Pos);
-                // use this instead. see template for reason 
-                valIso2Ebo.setData("f"+this8583Pos);
-                
-                valIso2Ebo.setProperty(eboPropertyName);
-                
-                metaIso2Ebo.getValues().add(valIso2Ebo);
                 Class eboClass = Class.forName(eboPkgName+"."+eboClassName);
-                Field f = eboClass.getDeclaredField(eboPropertyName);
-                String clazz = f.getType().getSimpleName();
+                
+                debug("============eboClassName="+eboClassName+", eboPropertyName="+eboPropertyName+", pp="+pp+"=======================");
                 String decoder = "";
+                try {
+                    if("id".equalsIgnoreCase(eboPropertyName)) {
+                    	throw new NoSuchFieldException("");
+                    }
+                Field f= eboClass.getDeclaredField(eboPropertyName);
+                String clazz = f.getType().getSimpleName();
         		if("Date".equals(clazz)) {
         			decoder = "Date";
         		}else if("BigDecimal".equals(clazz)) {
@@ -593,8 +592,23 @@ public class ParseSampleXml{
         		}else {
         			decoder = "NULL";
         		}
-    			valIso2Ebo.setDecoder(decoder);
-    			
+                } catch (java.lang.NoSuchFieldException e ) {
+                	// field not found!!!!!!!
+                	// need manual change!!!!!
+                	eboPropertyName += "_____";
+                	capitizedJavaName+="_____";
+    				decoder="NULL";
+    			}
+                
+                // iso2ebo
+                Value valIso2Ebo = new Value();
+//                valIso2Ebo.setData("/test.transform.IsoObj/f"+this8583Pos);
+                // use this instead. see template for reason 
+                valIso2Ebo.setData("f"+this8583Pos);
+                valIso2Ebo.setProperty(eboPropertyName);
+                valIso2Ebo.setDecoder(decoder);                
+                metaIso2Ebo.getValues().add(valIso2Ebo);
+
     			
                 // ebo2iso
                 Value valEbo2Iso = new Value();
@@ -620,48 +634,47 @@ public class ParseSampleXml{
             Writer sample8583Out = new OutputStreamWriter(new FileOutputStream(new File(outSample8583File)), ENCODING);
             sample8583Out.write(sample8583Buf.toString());
             sample8583Out.flush();
-//            
-//            System.out.println("end generateMap... generated"+" sample8583 at "+outSample8583File+ ", map at " 
-//                               + outMapFile + "and reverse map at "+outReverseMapFile);
-//            
+            
+            System.out.println("end generateMap... generated"+" sample8583 at "+outSample8583File);
+//            		+ ", map at " + outMapFile + "and reverse map at "+outReverseMapFile);
+            
             
             MetaHolder mhIso2Ebo = new MetaHolder();
             mhIso2Ebo.setInputClassName("test.transform.IsoObj");
-//            mhIso2Ebo.setEboClassName("IsoObj");
-//            mhIso2Ebo.setEboPkgName("test.transform");
             mhIso2Ebo.getMetas().add(metaIso2Ebo);
             metaIso2Ebo.setBeanId(SmooksTransformer.ROOT_BEAN_ID);
             metaIso2Ebo.setBeanClass(eboPkgName+"."+eboClassName);
-            
+//            
             Writer out1 = new OutputStreamWriter(new FileOutputStream(new File(outMapPrivateIso2EboFile)), ENCODING);
-            String map1 = renderTemplate(mhIso2Ebo, TEMPLATE_NAME_MAP_PRIVATE_ISO2EBO);
+            String map1 = renderTemplate(mhIso2Ebo, TEMPLATE_NAME_MAP_PRIVATE_ISO2EBO, templatePath);
             out1.write(map1);
             out1.flush();
             System.out.println("generated outMapPrivateIso2EboFile at " + outMapPrivateIso2EboFile);
-            
+//            
             Writer out11 = new OutputStreamWriter(new FileOutputStream(new File(outMapPrivateIso2EboSimpleFile)), ENCODING);
-            String map11 = renderTemplate(mhIso2Ebo, TEMPLATE_NAME_MAP_PRIVATE_ISO2EBO_SIMPLE);
+            String map11 = renderTemplate(mhIso2Ebo, TEMPLATE_NAME_MAP_PRIVATE_ISO2EBO_SIMPLE, templatePath);
             out11.write(map11);
             out11.flush();
             System.out.println("generated outMapPrivateIso2EboFileSimple at " + outMapPrivateIso2EboSimpleFile);
+//            
             
+            
+            // ebo2iso
             
             MetaHolder mhEbo2Iso = new MetaHolder();
             mhEbo2Iso.setInputClassName(eboPkgName+"."+eboClassName);
-//            mhEbo2Iso.setEboClassName(eboClassName);
-//            mhEbo2Iso.setEboPkgName(eboPkgName);
             mhEbo2Iso.getMetas().add(metaEbo2Iso);
             metaEbo2Iso.setBeanId(SmooksTransformer.ROOT_BEAN_ID);
             metaEbo2Iso.setBeanClass("test.transform.IsoObj");
             
             Writer out2 = new OutputStreamWriter(new FileOutputStream(new File(outMapPrivateEbo2IsoFile)), ENCODING);
-            String map2 = renderTemplate(mhEbo2Iso, TEMPLATE_NAME_MAP_PRIVATE_EBO2ISO);
+            String map2 = renderTemplate(mhEbo2Iso, TEMPLATE_NAME_MAP_PRIVATE_EBO2ISO, templatePath);
             out2.write(map2);
             out2.flush();
             System.out.println("generated outMapPrivateEbo2IsoFile at " + outMapPrivateEbo2IsoFile);
             
             Writer out22 = new OutputStreamWriter(new FileOutputStream(new File(outMapPrivateEbo2IsoSimpleFile)), ENCODING);
-            String map22 = renderTemplate(mhEbo2Iso, TEMPLATE_NAME_MAP_PRIVATE_EBO2ISO_SIMPLE);
+            String map22 = renderTemplate(mhEbo2Iso, TEMPLATE_NAME_MAP_PRIVATE_EBO2ISO_SIMPLE, templatePath);
             out22.write(map22);
             out22.flush();
             System.out.println("generated outMapPrivateEbo2IsoFileSimple at " + outMapPrivateEbo2IsoSimpleFile);
@@ -675,11 +688,11 @@ public class ParseSampleXml{
     public void testGeneratedMap() {
 
         try {
-            ISOMsg m = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), outSample8583File);
+            ISOMsg m = Iso8583Util.createDummyISOMsg(IsoHelper.getDefaultISOPackager(), outSample8583File);
             
             String s = Iso8583Util.packMsg(m);
             
-            ISOMsg m1 = Iso8583Util.unpackMsg(s, new ISOIBPSPackager());
+            ISOMsg m1 = Iso8583Util.unpackMsg(s, IsoHelper.getDefaultISOPackager());
 //            ISOMsg m1 = (ISOMsg)new Default8583ToCnaps2UpInMH().parseConvert(s);
                         
             
@@ -845,6 +858,16 @@ public class ParseSampleXml{
     	String oPath = dataEle.key;
         List<String> temp = new ArrayList<String>();
         String[] words = StringUtils.split(oPath, ".");
+        
+        // broke the old way
+        // now only return the last token
+        if(true) {
+        	String s = words[words.length-1];
+        	javaNameBuf.append(s);
+        	dbNameBuf.append(s);
+        	return;
+        }
+        
         
         // max level to extract
         int maxLevel = 2;
@@ -1280,7 +1303,7 @@ public class ParseSampleXml{
         
         
         Writer out = new OutputStreamWriter(new FileOutputStream(new File(outMapSmooksEbo2JaxbFile)), ENCODING);
-        String content = renderTemplate(holder, TEMPLATE_NAME_MAP_SMOOKS_EBO2JAXB);
+        String content = renderTemplate(holder, TEMPLATE_NAME_MAP_SMOOKS_EBO2JAXB, templatePath);
         out.write(content);
         out.flush();
         System.out.println("generated outMapSmooksEbo2JaxbFile at " + outMapSmooksEbo2JaxbFile);
@@ -1469,21 +1492,21 @@ public class ParseSampleXml{
         
 		Writer eboOut = new OutputStreamWriter(new FileOutputStream(new File(outEboDir, 
 				eboInfo.getDestinationClassName()+".java")), ENCODING);
-		String eboContent = renderTemplate(eboInfo, TEMPLATE_NAME_EBO);
+		String eboContent = renderTemplate(eboInfo, TEMPLATE_NAME_EBO, templatePath);
 		eboOut.write(eboContent);
 		eboOut.flush();
 		System.out.println("generated ebo at " + outEboPath);
 		
 		String outDdlOracleFile = getOutDdlPath(eboInfo, opInfo, true);
 		Writer ddlOut = new OutputStreamWriter(new FileOutputStream(new File(outDdlOracleFile)), ENCODING);
-		String ddlContent = renderTemplate(eboInfo, TEMPLATE_NAME_DDL_ORACLE);
+		String ddlContent = renderTemplate(eboInfo, TEMPLATE_NAME_DDL_ORACLE, templatePath);
 		ddlOut.write(ddlContent);
 		ddlOut.flush();
 		System.out.println("generated oracle ddl at " + outDdlOracleFile);
 		
 		String outDdlMysqlFile = getOutDdlPath(eboInfo, opInfo, false);
 		Writer ddlOutMysql = new OutputStreamWriter(new FileOutputStream(new File(outDdlMysqlFile)), ENCODING);
-		String ddlContentMysql = renderTemplate(eboInfo, TEMPLATE_NAME_DDL_MYSQL);
+		String ddlContentMysql = renderTemplate(eboInfo, TEMPLATE_NAME_DDL_MYSQL, templatePath);
 		ddlOutMysql.write(ddlContentMysql);
 		ddlOutMysql.flush();
 		System.out.println("generated oracle ddl at " + outDdlMysqlFile);
@@ -1496,13 +1519,13 @@ public class ParseSampleXml{
 //            public static final String TEMPLATE_NAME_MAP_PRIVATE_EBO2ISO = "map-private-ebo2iso.ftl";
 		
 		Writer out1 = new OutputStreamWriter(new FileOutputStream(new File(outMapSmooksXml2EboFile)), ENCODING);
-		String map1 = renderTemplate(eboInfo, TEMPLATE_NAME_MAP_SMOOKS_XML2EBO);
+		String map1 = renderTemplate(eboInfo, TEMPLATE_NAME_MAP_SMOOKS_XML2EBO, templatePath);
 		out1.write(map1);
 		out1.flush();
 		System.out.println("generated outMapSmooksXml2EboFile at " + outMapSmooksXml2EboFile);
 	}
     
-    private String renderTemplate(Object data, String templateName) throws IOException,
+    public static String renderTemplate(Object data, String templateName, String templatePath) throws IOException,
         TemplateException {
         Configuration cfg = new Configuration();
 
@@ -1615,7 +1638,9 @@ public class ParseSampleXml{
 //             ,
 //        		TestDummy.OPINFO_601
 //        		,
-        		TestDummy.OPINFO_111
+//        		TestDummy.OPINFO_111
+//        		,
+        		TestDummy.OPINFO_112
 //        		,
 //        		TestDummy.OPINFO_604
         };
@@ -1627,7 +1652,7 @@ public class ParseSampleXml{
         	};
         }
         
-        String basePath = "D:/bankConnector/source/generated";
+        String basePath = "D:/bankConnector/source/generated_test";
         
 //        BCUtils.registerConverter();
         
@@ -1641,10 +1666,10 @@ public class ParseSampleXml{
 //            main.testGeneratedMap();
 
             debug("main.generateMapEbo2Jaxb();");
-            main.generateMapEbo2Jaxb();            
-            main.generateDdlAndEbo();
-            
-            main.testGenerated();
+//            main.generateMapEbo2Jaxb();            
+//            main.generateDdlAndEbo();
+//            
+//            main.testGenerated();
              // must copy the generated ebo java to /src/shared/java/ and compile the project, before calling this
 //              main.testGeneratedEbo();
         }
@@ -1671,7 +1696,7 @@ public class ParseSampleXml{
 		
 		
 		String res = "";
-		
+		res.startsWith("/");
 		
 		String[] tokens = StringUtils.split(xpath, "/");
 		
@@ -1702,6 +1727,12 @@ public class ParseSampleXml{
 //			debug("tokens["+i+"]="+tokens[i]);
 //			String name = ParseSampleXml.getJavaName(tokens[i]);
 			String name = ParseSampleXmlHelper.xpath2opath(tokens[i]);
+			
+			// because now metatdata contains [1] [2] already
+			int index = name.indexOf("[");
+			if(index>=0) {
+				name = name.substring(0, index);
+			}
 			
 //			if(i==1) {
 //				pathStack.push(name);
