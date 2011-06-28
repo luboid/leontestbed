@@ -62,7 +62,7 @@ public class TestGenMapLeon extends TestCase {
 	public final static boolean LIST_META_ONLY = true;
 	
 	// TODO change it to true when you want to generate map files
-	public final static boolean TO_GENERATE = true;
+	public final static boolean TO_GENERATE = false;
 	public final static boolean TO_GEN_PRIVATE = true;
 	public final static boolean TO_GEN_PRIVATE_MAP = true;
 	
@@ -177,24 +177,24 @@ public class TestGenMapLeon extends TestCase {
 			 //tester.up(opInfo);
 			 //tester.down(opInfo);
 
-//			debug("==========================================test Xml2Ebo conversion=========================================");
-//			ebo = tester.downPublic(simpleOp);
-//			debug("ebo=" + ebo);
-//			// to Store this ebo to DB
-//			if (USE_DB) {
-//				getDao().save(ebo);
-//			}
-//			
-//			// debug only
+			debug("==========================================test Xml2Ebo conversion=========================================");
+			ebo = tester.downPublic(simpleOp);
+			debug("ebo=" + ebo);
+			// to Store this ebo to DB
+			if (USE_DB) {
+				getDao().save(ebo);
+			}
+			
+			// debug only
 //			Beps12200101 e = (Beps12200101)ebo;
 //			int size = e.getFinCdtTrfInf().size();
 //			debug("size="+size);
-//			
-//			
-//			if(TEST_PRIVATE) {
-//				Object iso = tester.downPrivate(opInfo, ebo);
-//				debug("iso="+iso);
-//			}
+			
+			
+			if(TEST_PRIVATE) {
+				Object iso = tester.downPrivate(opInfo, ebo);
+				debug("iso="+iso);
+			}
 
 			debug("==========================================test Ebo2XML conversion=========================================");
 			// fetch a clean ebo from DB, rather than use the above ebo
@@ -215,31 +215,30 @@ public class TestGenMapLeon extends TestCase {
 					ebo = tester.upPrivate(opInfo);
 				}
 				
-				Beps12200101 cloned = (Beps12200101)((Beps12200101)ebo).clone();
+				// this works, but deep clone is clumsy
+//				Object cloned = (Beps12200101)((Beps12200101)ebo).clone();
+//				String xml3 = tester.upPublic(cloned, simpleOp);
 				
-				debug("ebo before save=="+ebo.getClass().getName());
+//				debug("ebo before save=="+ebo.getClass().getName());
 				if (USE_DB) {
 					getDao().save(ebo);
 				}				
 				
-				debug("ebo after save=="+ebo.getClass().getName());
-				
-				
+//				debug("ebo after save=="+ebo.getClass().getName());
 				String xml = tester.upPublic(ebo, simpleOp);
 				
-				Beps12200101 b = (Beps12200101)ebo;
-				b.setid(1001);
-				Beps12200101FinCdtTrfInf b1 = b.getFinCdtTrfInf().iterator().next();
-				b1.setid(1002);
-				b1.setFid(b);
-				
-				Beps12200101NtlTrsrCdtInfDtls b2 = b1.getNtlTrsrCdtInfDtls().iterator().next();
-				b2.setid(1003);
-				b2.setFid(b1);
-				
-				String xml2 = tester.upPublic(b, simpleOp);
-				
-				String xml3 = tester.upPublic(cloned, simpleOp);
+				// this does not work. 
+				// EBO after save was changed in unknown way, simply setting the id does not work
+//				Beps12200101 b = (Beps12200101)ebo;
+//				b.setid(1001);
+//				Beps12200101FinCdtTrfInf b1 = b.getFinCdtTrfInf().iterator().next();
+//				b1.setid(1002);
+//				b1.setFid(b);
+//				Beps12200101NtlTrsrCdtInfDtls b2 = b1.getNtlTrsrCdtInfDtls().iterator().next();
+//				b2.setid(1003);
+//				b2.setFid(b1);
+//				String xml2 = tester.upPublic(b, simpleOp);
+
 				
 			}
 			
@@ -732,9 +731,9 @@ public class TestGenMapLeon extends TestCase {
 //			testGenerated_311();
 //		    test_hvps_111_001_01();
 		    
-//		    test_hvps_112_001_01();
+		    test_hvps_112_001_01();
 		    
-            test_beps_122_001_01();
+//            test_beps_122_001_01();
 //            System.setProperty("bc2.saveMsgFile", "true");
 //            AuditMsgUtil.saveMsgAsFile(CfgConstants.DIRECTION_UP, "abc", "xxx");
 		    
