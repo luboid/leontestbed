@@ -18,7 +18,7 @@
 		<ICfgTransOut class="com.topfinance.cfg.xml.OmCfgTransOutAMQ"
 			id="TRANS_OUT_TP_AMQ" name="AMQ" provider="AMQ" prefix="AMQOutTP"
 			isPrivate="F">
-			<config key="brokerUrl">tcp://192.168.68.35:41000</config>
+			<config key="brokerUrl">tcp://127.0.0.1:41000</config>
 		</ICfgTransOut>
 	    <ICfgTransOut class="com.topfinance.cfg.xml.OmCfgTransOutAMQ" 
 	    	id="TRANS_OUT_PP_AMQ" name="AMQ" provider="AMQ" prefix="AMQOutPP" isPrivate="T">
@@ -34,7 +34,7 @@
       <ICfgTransIn class="com.topfinance.cfg.xml.OmCfgTransInAMQ"
       	id="TI_PUBLIC_AMQ" name="PREFIX_PUBLIC_AMQ" provider="AMQ"
       	prefix="amqC-A" isPrivate="F">
-      	<config key="brokerUrl">tcp://192.168.68.35:41000</config>
+      	<config key="brokerUrl">tcp://127.0.0.1:41000</config>
       	<config key="maxConsumer">32</config>
       </ICfgTransIn>
       <ICfgTransIn class="com.topfinance.cfg.xml.OmCfgTransInIBMMQ"
@@ -92,6 +92,24 @@
       	<protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6" />
       	<format class="com.topfinance.cfg.xml.OmCfgFormat" ref="FORMAT_8583"></format>
       </ICfgOperation>
+      
+      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation"
+      	id="hvps.112" name="hvps.112.001.01"
+      	upPpReplyType="N" 
+      	downPpReplyType="N"
+      	>
+      	<protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6" />
+      	<format class="com.topfinance.cfg.xml.OmCfgFormat" ref="FORMAT_8583"></format>
+      </ICfgOperation>
+      
+      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation"
+      	id="beps.112" name="beps.122.001.01"
+      	upPpReplyType="N" 
+      	downPpReplyType="N"
+      	>
+      	<protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6" />
+      	<format class="com.topfinance.cfg.xml.OmCfgFormat" ref="FORMAT_8583"></format>
+      </ICfgOperation>            
       
       <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation"
       	id="saps.604" name="saps.604.001.01"
@@ -207,6 +225,9 @@
       <ICfgRouteRule class="com.topfinance.cfg.xml.OmCfgRouteRule" id="RRU2" name="RRU2" operationMask="hvps." sequence="1" direction="U">
          <outPort class="com.topfinance.cfg.xml.OmCfgPortOut" ref="OP_UP_OUT_TP_AMQ"/>
       </ICfgRouteRule>      
+      <ICfgRouteRule class="com.topfinance.cfg.xml.OmCfgRouteRule" id="RRU3" name="RRU3" operationMask="beps." sequence="1" direction="U">
+         <outPort class="com.topfinance.cfg.xml.OmCfgPortOut" ref="OP_UP_OUT_TP_AMQ"/>
+      </ICfgRouteRule>                  
       
       <ICfgRouteRule class="com.topfinance.cfg.xml.OmCfgRouteRule" id="RRD1" name="RRD1" operationMask="ibps." sequence="1" direction="D">
          <outPort class="com.topfinance.cfg.xml.OmCfgPortOut" ref="8583Out"/>
@@ -223,7 +244,11 @@
       </ICfgRouteRule> 
       <ICfgRouteRule class="com.topfinance.cfg.xml.OmCfgRouteRule" id="RRD3" name="RRD3" operationMask="hvps." sequence="2" direction="D">
          <outPort class="com.topfinance.cfg.xml.OmCfgPortOut" ref="8583Out"/>
-      </ICfgRouteRule>                
+      </ICfgRouteRule>   
+      <ICfgRouteRule class="com.topfinance.cfg.xml.OmCfgRouteRule" id="RRD4" name="RRD4" operationMask="beps." sequence="2" direction="D">
+         <outPort class="com.topfinance.cfg.xml.OmCfgPortOut" ref="8583Out"/>
+      </ICfgRouteRule> 
+                         
    </listRouteRule>
    
    
@@ -259,6 +284,14 @@
    	</ICfgMappingRule>
    	<ICfgMappingRule class="com.topfinance.cfg.xml.OmCfgMappingRule" id="mr110" mesgType="saps.604.001.01" opType="" opClass=""
    		direction="D">
+		</ICfgMappingRule> 
+		
+		
+   	<ICfgMappingRule class="com.topfinance.cfg.xml.OmCfgMappingRule" id="mr111" mesgType="beps.122.001.01" opType="" opClass=""
+   		direction="U" > 
+		</ICfgMappingRule>   		  		
+   	<ICfgMappingRule class="com.topfinance.cfg.xml.OmCfgMappingRule" id="mr112" mesgType="beps.122.001.01" opType="" opClass=""
+   		direction="D">   		
    	</ICfgMappingRule>
    	
    	</listMappingRule>

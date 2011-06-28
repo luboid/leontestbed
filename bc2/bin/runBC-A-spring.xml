@@ -40,12 +40,21 @@
     <bean id="dataSource"  
         class="org.apache.commons.dbcp.BasicDataSource"  
         destroy-method="close">  
-        <property name="driverClassName"  
+        
+     <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@192.168.65.46:1521:bc"/>
+		<property name="username" value="leon"/>
+		<property name="password" value="leon"/>
+		<!--property name="url" value="jdbc:oracle:thin:@192.168.68.74:1521:VITS"/>
+		<property name="username" value="paygw"/>
+		<property name="password" value="1234"/-->
+		
+        <!--property name="driverClassName"  
             value="com.mysql.jdbc.Driver" />  
         <property name="url"  
             value="jdbc:mysql://localhost:3306/bankA3?setUnicode=true&amp;characterEncoding=UTF-8" />  
         <property name="username" value="root" />  
-        <property name="password" value="root" />  
+        <property name="password" value="root" /-->  
     </bean>     
     
     <bean id = "jdbcTemplate"   
@@ -63,6 +72,14 @@
 					<value>com.topfinance.ebo.msg.Saps60100101</value>					
 					<value>com.topfinance.ebo.msg.Hvps11100101</value>
 					<value>com.topfinance.ebo.msg.Saps60400101</value>
+					
+    			<value>com.topfinance.ebo.msg.Hvps11200101</value>
+    			<value>com.topfinance.ebo.msg.Hvps11200101RmtInf</value>		
+    			
+    			<value>com.topfinance.ebo.msg.Beps12200101</value>
+    			<value>com.topfinance.ebo.msg.Beps12200101FinCdtTrfInf</value>
+    			<value>com.topfinance.ebo.msg.Beps12200101NtlTrsrCdtInfDtls</value>
+    			<value>com.topfinance.ebo.msg.Beps12200101NtlTrsrInfDtls</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -108,7 +125,7 @@
         </broker:transportConnectors>
     </broker:broker>
     
-
+		<bean id="dao"   class="com.topfinance.db.dao.HibernateGenericDao"/>
 
 
 </beans>

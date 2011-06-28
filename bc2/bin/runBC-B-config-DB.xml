@@ -48,6 +48,9 @@
     			<value>com.topfinance.ebo.msg.Ibps10100101</value>
     			<value>com.topfinance.ebo.msg.Ibps10200101</value>
     			<value>com.topfinance.ebo.msg.Saps60100101</value>
+    			
+    			<value>com.topfinance.ebo.msg.Hvps11200101</value>
+    			<value>com.topfinance.ebo.msg.Hvps11200101RmtInf</value>	    			
 			</list>
 		</property>
 		<property name="hibernateProperties">

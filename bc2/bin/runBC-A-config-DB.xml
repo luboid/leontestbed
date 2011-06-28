@@ -10,16 +10,18 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@10.60.108.35:1521:tibcodev"/>
+		<!-- property name="url" value="jdbc:oracle:thin:@192.168.65.46:1521:bc"/>
+		<property name="username" value="leon"/>
+		<property name="password" value="leon"/-->
+		<property name="url" value="jdbc:oracle:thin:@192.168.68.74:1521:VITS"/>
 		<!--  <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:ORCL"/>-->
 		<property name="username" value="paygw"/>
 		<property name="password" value="1234"/>
 		
-		<!--<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<!--property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/bankA3?setUnicode=true&amp;characterEncoding=UTF-8"/>
 		<property name="username" value="root"/>
-		<property name="password" value="root"/>
-		-->
+		<property name="password" value="root"/-->		
 	</bean>
 
 	<!--Hibernate SessionFatory-->
@@ -68,6 +70,15 @@
     			<value>com.topfinance.ebo.msg.Ccms90000102</value>
     			<value>com.topfinance.ebo.msg.Ccms90300102</value>
     			<value>com.topfinance.ebo.msg.Ccms91100102</value>
+
+    			
+    			<value>com.topfinance.ebo.msg.Saps73700101</value>
+    			<value>com.topfinance.ebo.msg.Saps73700101TxList</value>
+    			
+    			<value>com.topfinance.payment.ebo.JpaCfgFmtEleMapFileEbo</value>
+    			<value>com.topfinance.payment.ebo.JpaCfgFmtEleMapRuleEbo</value>    
+    			
+
     			<value>com.topfinance.ebo.msg.Saps35800101</value>
     			<value>com.topfinance.ebo.msg.Saps35900101</value>
     			<value>com.topfinance.ebo.msg.Saps36100101</value>
@@ -332,7 +343,7 @@
 		<property name="hibernateProperties">
 			<props>				
 				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
-				<!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>-->
+				<!-- prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop-->
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.cache.use_query_cache">true</prop>

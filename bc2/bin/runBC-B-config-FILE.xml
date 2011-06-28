@@ -92,7 +92,24 @@
       	>
       	<protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6" />
       	<format class="com.topfinance.cfg.xml.OmCfgFormat" ref="FORMAT_8583"></format>
-      </ICfgOperation>      
+      </ICfgOperation>
+      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation"
+      	id="hvps.112" name="hvps.112.001.01"
+      	upPpReplyType="N" 
+      	downPpReplyType="N"
+      	>
+      	<protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6" />
+      	<format class="com.topfinance.cfg.xml.OmCfgFormat" ref="FORMAT_8583"></format>
+      </ICfgOperation>             
+
+      <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation"
+      	id="beps.112" name="beps.122.001.01"
+      	upPpReplyType="N" 
+      	downPpReplyType="N"
+      	>
+      	<protocol class="com.topfinance.cfg.xml.OmCfgProtocol" ref="6" />
+      	<format class="com.topfinance.cfg.xml.OmCfgFormat" ref="FORMAT_8583"></format>
+      </ICfgOperation>
 
       <ICfgOperation class="com.topfinance.cfg.xml.OmCfgOperation"
       	id="saps.604" name="saps.604.001.01"
@@ -207,6 +224,10 @@
       <ICfgRouteRule class="com.topfinance.cfg.xml.OmCfgRouteRule" id="RRU2" name="RRU2" operationMask="hvps." sequence="1" direction="U">
          <outPort class="com.topfinance.cfg.xml.OmCfgPortOut" ref="OP_UP_OUT_TP_AMQ"/>
       </ICfgRouteRule>       
+      <ICfgRouteRule class="com.topfinance.cfg.xml.OmCfgRouteRule" id="RRU3" name="RRU3" operationMask="beps." sequence="1" direction="U">
+         <outPort class="com.topfinance.cfg.xml.OmCfgPortOut" ref="OP_UP_OUT_TP_AMQ"/>
+      </ICfgRouteRule>             
+      
       <ICfgRouteRule class="com.topfinance.cfg.xml.OmCfgRouteRule" id="RRD1" name="RRD1" operationMask="ibps." sequence="1" direction="D">
          <outPort class="com.topfinance.cfg.xml.OmCfgPortOut" ref="8583Out"/>
       </ICfgRouteRule> 
@@ -223,6 +244,9 @@
       <ICfgRouteRule class="com.topfinance.cfg.xml.OmCfgRouteRule" id="RRD3" name="RRD3" operationMask="hvps." sequence="2" direction="D">
          <outPort class="com.topfinance.cfg.xml.OmCfgPortOut" ref="8583Out"/>
       </ICfgRouteRule>      
+      <ICfgRouteRule class="com.topfinance.cfg.xml.OmCfgRouteRule" id="RRD4" name="RRD4" operationMask="beps." sequence="2" direction="D">
+         <outPort class="com.topfinance.cfg.xml.OmCfgPortOut" ref="8583Out"/>
+      </ICfgRouteRule>            
    </listRouteRule>
    
    <listMappingRule class="java.util.ArrayList" id="mr100">
@@ -263,6 +287,13 @@
    		direction="D">
    	</ICfgMappingRule>
    	   	   	
+   	<ICfgMappingRule class="com.topfinance.cfg.xml.OmCfgMappingRule" id="mr111" mesgType="beps.122.001.01" opType="" opClass=""
+   		direction="U"> 
+   	</ICfgMappingRule>  		
+   	<ICfgMappingRule class="com.topfinance.cfg.xml.OmCfgMappingRule" id="mr112" mesgType="beps.122.001.01" opType="" opClass=""
+   		direction="D">   	   	   	
+   	</ICfgMappingRule>  		
+   	
    	</listMappingRule>
    	
    	</dummyCfgReader>

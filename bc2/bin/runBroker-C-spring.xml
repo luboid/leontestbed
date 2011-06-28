@@ -34,7 +34,7 @@
    	<broker:broker useJmx="false" persistent="false" brokerName="localhost">
         <broker:transportConnectors>
             <broker:transportConnector name="publicB" uri="tcp://localhost:40000"/>
-            <broker:transportConnector name="publicA" uri="tcp://localhost:41000"/>
+            <broker:transportConnector name="publicA" uri="tcp://127.0.0.1:41000"/>
         </broker:transportConnectors>
     </broker:broker>
 
