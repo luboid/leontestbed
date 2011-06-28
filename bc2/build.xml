@@ -33,7 +33,12 @@
     </target>
     <target depends="clean" name="cleanall"/>
 	
-	<target depends="build" name="release" >
+	<target depends="" name="release-zip" >
+        <zip  destfile="release-zip/bankConnector.zip"
+       					basedir="release" /> 
+	</target>
+	
+	<target depends="" name="release" >
 		<mkdir dir="release"/>
 		<mkdir dir="release-zip"/>		
 		<mkdir dir="release/bin"/>
@@ -60,8 +65,6 @@
         	<fileset dir="bin" />
         </copy>        
         
-        <zip  destfile="release-zip/bankConnector.zip"
-       					basedir="release" /> 
 	</target>
 	
     <target depends="build-project" name="build"/>
@@ -114,7 +117,7 @@
 	          to put the parent directory of META-INF/persistence.xml here
 	      -->
 	    </classpath>
-	    <hbm2ddl outputfilename="schemaexport2-oracle.sql" format="true"
+	    <hbm2ddl outputfilename="schemaexport2-mysql.sql" format="true"
 	        export="false" drop="true" />
 	  </hibernatetool>
 		
