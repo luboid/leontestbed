@@ -67,6 +67,7 @@ import org.jpos.util.SimpleLogSource;
 import com.topfinance.cfg.TestDummy;
 import com.topfinance.runtime.BcConstants;
 import com.topfinance.transform.util.ISOIBPSPackager;
+import com.topfinance.transform.util.IsoHelper;
 import com.topfinance.util.BCUtils;
 
 public class Test8583 extends SimpleLogSource {
@@ -77,7 +78,7 @@ public class Test8583 extends SimpleLogSource {
         LogEvent evt = new LogEvent (this, "SimpleMessage");
         Date d = new Date();
 
-        ISOPackager packager = new ISOIBPSPackager();  // 1) Create packager
+        ISOPackager packager = IsoHelper.getDefaultISOPackager();  // 1) Create packager
         // comment the following line if you don't want to debug packager
 //        packager.setLogger (getLogger(), "Packager");
 

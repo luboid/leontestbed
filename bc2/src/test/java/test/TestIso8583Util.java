@@ -23,13 +23,13 @@ public class TestIso8583Util extends TestCase {
         try {
             // pack
 //            ISOMsg msg = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), "D:/bankConnector/source/sample/8583/testChinese.8583");
-            ISOMsg msg = Iso8583Util.createDummyISOMsg(new ISOIBPSPackager(), "D:/bankConnector/source/sample/8583/ibps.101.001.01.8583");
+            ISOMsg msg = Iso8583Util.createDummyISOMsg(IsoHelper.getDefaultISOPackager(), "D:/bankConnector/source/sample/8583/ibps.101.001.01.8583");
             debug("raw="+new String(msg.pack(), "UTF-8"));
             String packed = Iso8583Util.packMsg(msg);
             debug("packed="+packed);
             
             // unpack
-            ISOMsg unpacked = Iso8583Util.unpackMsg(packed, new ISOIBPSPackager());
+            ISOMsg unpacked = Iso8583Util.unpackMsg(packed, IsoHelper.getDefaultISOPackager());
 //            Map map = unpacked.getChildren();
 //            Object obj[] = map.keySet().toArray();
 //            for (int i = 0; i < obj.length; i++) {
