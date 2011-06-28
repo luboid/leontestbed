@@ -42,8 +42,8 @@
       	downIsEnabled="T" downReplyType="N" downIsReply="F" downAckType="ASYNC"  
       	pathDocId="/Document/FIToFICstmrCdtTrf/GrpHdr/MsgId/text()" 
       	pathOrigDocId="" 
-      	pathOpType="" 
-      	pathOpClass=""     	
+      	pathOpType="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/PmtTpInf/CtgyPurp/Prtry/text()" 
+      	pathOpClass="/Document/FIToFICstmrCdtTrf/CdtTrfTxInf/Purp/Prtry/text()"   	
       	>
       </OperationDefinition>
       
@@ -1369,6 +1369,19 @@
       </OperationDefinition>
       
       <OperationDefinition
+      	class="com.topfinance.runtime.OperationDefinition" id="beps.122.001.01"
+      	name="beps.122.001.01" 
+      	upIsEnabled="T" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="F"  
+      	pathDocId="/Document/FinCdtTrf/PKGGrpHdr/MsgId/text()" 
+      	pathOrigDocId=""
+      	pathOpType="/Document/FinCdtTrf/FinCdtTrfInf/PmtTpInf/CtgyPurp/Prtry" 
+      	pathOpClass="/Document/FinCdtTrf/FinCdtTrfInf/Purp/Prtry"     	
+      	>
+      </OperationDefinition>      
+      
+      
+      <OperationDefinition
       	class="com.topfinance.runtime.OperationDefinition" id="beps.125.001.01"
       	name="beps.125.001.01" 
       	upIsEnabled="F" 
@@ -1680,17 +1693,7 @@
       	>
       </OperationDefinition>
       
-      <OperationDefinition
-      	class="com.topfinance.runtime.OperationDefinition" id="beps.122.001.01"
-      	name="beps.122.001.01" 
-      	upIsEnabled="F" 
-      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
-      	pathDocId="/Document/FinCdtTrf/PKGGrpHdr/MsgId/text()" 
-      	pathOrigDocId=""
-      	pathOpType="" 
-      	pathOpClass=""     	
-      	>
-      </OperationDefinition>
+
       
       <OperationDefinition
       	class="com.topfinance.runtime.OperationDefinition" id="beps.127.001.01"
