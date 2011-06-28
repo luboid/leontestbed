@@ -1420,12 +1420,12 @@
       <OperationDefinition
       	class="com.topfinance.runtime.OperationDefinition" id="hvps.112.001.01"
       	name="hvps.112.001.01" 
-      	upIsEnabled="F" 
-      	downIsEnabled="T" downReplyType="N" downIsReply="T"  
+      	upIsEnabled="T" 
+      	downIsEnabled="T" downReplyType="N" downIsReply="F"  
       	pathDocId="/Document/FinInstnCdtTrf/GrpHdr/MsgId/text()" 
       	pathOrigDocId=""
-      	pathOpType="" 
-      	pathOpClass=""     	
+      	pathOpType="/Document/FinInstnCdtTrf/CdtTrfTxInf/PmtTpInf/SvcLvl/Prtry" 
+      	pathOpClass="/Document/FinInstnCdtTrf/CdtTrfTxInf/RmtInf/Ustrd[1]"        	
       	>
       </OperationDefinition>
       
