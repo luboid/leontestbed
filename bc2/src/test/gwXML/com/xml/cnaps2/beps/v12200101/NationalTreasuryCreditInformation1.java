@@ -61,7 +61,7 @@ public class NationalTreasuryCreditInformation1 {
     protected String bugtTp;
     @XmlElement(name = "NbOfTxs", required = true)
     protected String nbOfTxs;
-    @XmlElement(name = "TxsDtls", required = true)
+    @XmlElement(name = "NtlTrsrCdtInfDtls", required = true)
     protected List<NationalTreasuryCreditInformationDetails1> txsDtls = new Vector<NationalTreasuryCreditInformationDetails1>();
 
     /**
