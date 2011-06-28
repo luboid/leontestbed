@@ -143,7 +143,8 @@
   	<jb:bean beanId="finCdtTrf.finCdtTrfInf[0].xxx.pmtTpInf.ctgyPurp" class="com.xml.cnaps2.beps.v12200101.CategoryPurpose1" createOnElement="com.topfinance.ebo.msg.Beps12200101FinCdtTrfInf">
   				<jb:value data="tpCdPrtry"  property="prtry"/>
   	</jb:bean>
-  	<jb:bean beanId="finCdtTrf.finCdtTrfInf[0].xxx.finCdtTrfAddtlInf.ntlTrsrCdtInf" class="com.xml.cnaps2.beps.v12200101.NationalTreasuryCreditInformation1" createOnElement="com.topfinance.ebo.msg.Beps12200101FinCdtTrfInf">
+  	<!--jb:bean beanId="finCdtTrf.finCdtTrfInf[0].xxx.finCdtTrfAddtlInf.ntlTrsrCdtInf" class="com.xml.cnaps2.beps.v12200101.NationalTreasuryCreditInformation1" createOnElement="com.topfinance.ebo.msg.Beps12200101FinCdtTrfInf/ntlTrsrCdtInfDtls"-->
+  	<jb:bean beanId="finCdtTrf.finCdtTrfInf[0].xxx.finCdtTrfAddtlInf.ntlTrsrCdtInf" class="com.xml.cnaps2.beps.v12200101.NationalTreasuryCreditInformation1" createOnElement="com.topfinance.ebo.msg.Beps12200101NtlTrsrCdtInfDtls">
     	<jb:wiring beanIdRef="finCdtTrf.finCdtTrfInf[0].xxx.finCdtTrfAddtlInf.ntlTrsrCdtInf.fslInf" property="fslInf"/>
     	<jb:wiring beanIdRef="finCdtTrf.finCdtTrfInf[0].xxx.finCdtTrfAddtlInf.ntlTrsrCdtInf.ntlTrsrCdtInfDtls[0]" property="ntlTrsrCdtInfDtls"/>
   				<jb:value data="bugtLvl"  property="bugtLvl"/>
@@ -154,7 +155,10 @@
   	<jb:bean beanId="finCdtTrf.finCdtTrfInf[0].xxx.cdtrAcct" class="com.xml.cnaps2.beps.v12200101.CreditorAccount1" createOnElement="com.topfinance.ebo.msg.Beps12200101FinCdtTrfInf">
     	<jb:wiring beanIdRef="finCdtTrf.finCdtTrfInf[0].xxx.cdtrAcct.id" property="id"/>
   	</jb:bean>
-  	<jb:bean beanId="finCdtTrf.finCdtTrfInf[0].xxx.finCdtTrfAddtlInf.ntlTrsrInf" class="com.xml.cnaps2.beps.v12200101.NationalTreasuryInformation1" createOnElement="com.topfinance.ebo.msg.Beps12200101FinCdtTrfInf">
+  	<!-- testing... the commented usage will cause an extra empty ntlTrsrInf elements be rendered -->
+  	<!--jb:bean beanId="finCdtTrf.finCdtTrfInf[0].xxx.finCdtTrfAddtlInf.ntlTrsrInf" class="com.xml.cnaps2.beps.v12200101.NationalTreasuryInformation1" createOnElement="com.topfinance.ebo.msg.Beps12200101FinCdtTrfInf/ntlTrsrInfDtls"-->
+  	<!--jb:bean beanId="finCdtTrf.finCdtTrfInf[0].xxx.finCdtTrfAddtlInf.ntlTrsrInf" class="com.xml.cnaps2.beps.v12200101.NationalTreasuryInformation1" createOnElement="com.topfinance.ebo.msg.Beps12200101FinCdtTrfInf"-->
+  	<jb:bean beanId="finCdtTrf.finCdtTrfInf[0].xxx.finCdtTrfAddtlInf.ntlTrsrInf" class="com.xml.cnaps2.beps.v12200101.NationalTreasuryInformation1" createOnElement="com.topfinance.ebo.msg.Beps12200101NtlTrsrInfDtls">
     	<jb:wiring beanIdRef="finCdtTrf.finCdtTrfInf[0].xxx.finCdtTrfAddtlInf.ntlTrsrInf.fslInf" property="fslInf"/>
     	<jb:wiring beanIdRef="finCdtTrf.finCdtTrfInf[0].xxx.finCdtTrfAddtlInf.ntlTrsrInf.ntlTrsrInfDtls[0]" property="ntlTrsrInfDtls"/>
   				<jb:value data="fisNbOfTxs"  property="nbOfTxs"/>
