@@ -25,7 +25,7 @@ import javax.persistence.SequenceGenerator;
  
 @Entity
 @Table(name = "T_C2_BEPS_122_APX_TRG")
-public class Beps12200101NtlTrsrCdtInfDtls  implements java.io.Serializable {
+public class Beps12200101NtlTrsrCdtInfDtls  implements java.io.Serializable,  java.lang.Cloneable  {
 
     // Fields 
     @JaxbMapping(objPath="")
@@ -137,7 +137,21 @@ public class Beps12200101NtlTrsrCdtInfDtls  implements java.io.Serializable {
 
     public void  setAmt(Double newAmt) {
         amt = newAmt;
-    }	  
+    }
+
+
+@Override
+public String toString() {
+	return "Beps12200101NtlTrsrCdtInfDtls [id=" + id + ", tpCd=" + tpCd
+			+ ", sbjtCd=" + sbjtCd + ", amt=" + amt + "]";
+}
+
+
+@Override
+protected Object clone() throws CloneNotSupportedException {
+	// TODO Auto-generated method stub
+	return super.clone();
+}	  
     
     
 }    

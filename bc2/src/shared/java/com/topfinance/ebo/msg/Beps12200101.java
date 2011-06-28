@@ -1,20 +1,19 @@
 package com.topfinance.ebo.msg;
 
-import com.topfinance.ebo.msg.JaxbMapping;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 
 /**
@@ -23,7 +22,7 @@ import javax.persistence.SequenceGenerator;
  
 @Entity
 @Table(name = "T_C2_BEPS_122_HDR")
-public class Beps12200101  implements java.io.Serializable {
+public class Beps12200101  implements java.io.Serializable,  java.lang.Cloneable {
 
     // Fields 
     @JaxbMapping(objPath="")
@@ -431,7 +430,36 @@ public class Beps12200101  implements java.io.Serializable {
 
     public void  setFinCdtTrfInf(java.util.Set<Beps12200101FinCdtTrfInf> newFinCdtTrfInf) {
         finCdtTrfInf = newFinCdtTrfInf;
-    }	  
+    }
+
+
+@Override
+public String toString() {
+	return "Beps12200101 [id=" + id + ", msgId=" + msgId + ", creDtTm="
+			+ creDtTm + ", instgDrctPty=" + instgDrctPty + ", instdDrctPty="
+			+ instdDrctPty + ", nbOfTxs=" + nbOfTxs + ", ctrlSum=" + ctrlSum
+			+ ", sysCd=" + sysCd + ", rmk=" + rmk + ", prcSts=" + prcSts
+			+ ", prcCd=" + prcCd + ", rjctInf=" + rjctInf + ", netgDt="
+			+ netgDt + ", netgRnd=" + netgRnd + ", sttlmDt=" + sttlmDt
+			+ ", rcvTm=" + rcvTm + ", trnsmtTm=" + trnsmtTm + ", finCdtTrfInf="
+			+ finCdtTrfInf + "]";
+}
+
+
+@Override
+public Object clone() throws CloneNotSupportedException {
+	// TODO Auto-generated method stub
+	Beps12200101 b = (Beps12200101) super.clone();
+	Set<Beps12200101FinCdtTrfInf> set = new HashSet<Beps12200101FinCdtTrfInf>();
+	b.setFinCdtTrfInf(set);
+	for(  Beps12200101FinCdtTrfInf orig1 : this.getFinCdtTrfInf()) {
+		Beps12200101FinCdtTrfInf c1 = (Beps12200101FinCdtTrfInf)orig1.clone();
+		c1.setFid(b);
+		set.add(c1);
+	}
+	
+	return b;
+}	  
     
     
 }    

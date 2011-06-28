@@ -182,7 +182,15 @@ public class Beps12200101NtlTrsrInfDtls  implements java.io.Serializable {
 
     public void  setAcrlAmt(Double newAcrlAmt) {
         acrlAmt = newAcrlAmt;
-    }	  
+    }
+
+
+@Override
+public String toString() {
+	return "Beps12200101NtlTrsrInfDtls [id=" + id + ", bankTpCd=" + bankTpCd
+			+ ", cptlCd=" + cptlCd + ", cptlAmt=" + cptlAmt + ", acrlCd="
+			+ acrlCd + ", acrlAmt=" + acrlAmt + "]";
+}	  
     
     
 }    

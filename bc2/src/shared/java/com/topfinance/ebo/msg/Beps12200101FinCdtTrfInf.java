@@ -1,22 +1,21 @@
 package com.topfinance.ebo.msg;
 
-import com.topfinance.ebo.msg.JaxbMapping;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 
 /**
@@ -25,7 +24,7 @@ import javax.persistence.SequenceGenerator;
  
 @Entity
 @Table(name = "T_C2_BEPS_122")
-public class Beps12200101FinCdtTrfInf  implements java.io.Serializable {
+public class Beps12200101FinCdtTrfInf  implements java.io.Serializable ,  java.lang.Cloneable {
 
     // Fields 
     @JaxbMapping(objPath="")
@@ -635,7 +634,7 @@ public class Beps12200101FinCdtTrfInf  implements java.io.Serializable {
    * 
    * @return the nbOfTxs
    */
-    @Column(name = "NBOFTXS")
+    @Column(name = "DNBOFTXS")
     public String getNbOfTxs() {
         return nbOfTxs;
     }	 
@@ -819,7 +818,46 @@ public class Beps12200101FinCdtTrfInf  implements java.io.Serializable {
 
     public void  setNtlTrsrInfDtls(java.util.Set<Beps12200101NtlTrsrInfDtls> newNtlTrsrInfDtls) {
         ntlTrsrInfDtls = newNtlTrsrInfDtls;
-    }	  
+    }
+
+
+@Override
+public String toString() {
+	return "Beps12200101FinCdtTrfInf [id=" + id + ", txId=" + txId
+			+ ", dbtrNm=" + dbtrNm + ", padrLine=" + padrLine + ", dbtrAcctId="
+			+ dbtrAcctId + ", dbtrAcctIssr=" + dbtrAcctIssr
+			+ ", dbtrAgtBrnchId=" + dbtrAgtBrnchId + ", cdtrAgtBrnchId="
+			+ cdtrAgtBrnchId + ", cdtrNm=" + cdtrNm + ", radrLine=" + radrLine
+			+ ", cdtrAcctId=" + cdtrAcctId + ", cdtrAcctIssr=" + cdtrAcctIssr
+			+ ", intrBkSttlmAmt=" + intrBkSttlmAmt + ", tpCdPrtry=" + tpCdPrtry
+			+ ", tcCdPrtry=" + tcCdPrtry + ", addtlInf=" + addtlInf
+			+ ", flowNb=" + flowNb + ", tlAmt=" + tlAmt + ", rptCd=" + rptCd
+			+ ", rcvCd=" + rcvCd + ", rptFrms=" + rptFrms + ", rptNb=" + rptNb
+			+ ", bugtLvl=" + bugtLvl + ", ind=" + ind + ", bugtTp=" + bugtTp
+			+ ", nbOfTxs=" + nbOfTxs + ", ntlTrsrCdtInfDtls="
+			+ ntlTrsrCdtInfDtls + ", fisFlowNb=" + fisFlowNb + ", fisDetlAmt="
+			+ fisDetlAmt + ", fisRptCd=" + fisRptCd + ", fisRcvCd=" + fisRcvCd
+			+ ", fisRptFrms=" + fisRptFrms + ", fisRptNb=" + fisRptNb
+			+ ", fisNbOfTxs=" + fisNbOfTxs + ", ntlTrsrInfDtls="
+			+ ntlTrsrInfDtls + "]";
+}
+
+
+@Override
+protected Object clone() throws CloneNotSupportedException {
+	// TODO Auto-generated method stub
+	Beps12200101FinCdtTrfInf c = (Beps12200101FinCdtTrfInf)super.clone();
+	Set<Beps12200101NtlTrsrCdtInfDtls> set = new HashSet<Beps12200101NtlTrsrCdtInfDtls>();
+	for(Beps12200101NtlTrsrCdtInfDtls orig1 : this.getNtlTrsrCdtInfDtls()) {
+		Beps12200101NtlTrsrCdtInfDtls c1 = (Beps12200101NtlTrsrCdtInfDtls)orig1.clone();
+		c1.setFid(c);
+		set.add(c1);
+	}
+	c.setNtlTrsrCdtInfDtls(set);
+	
+	
+	return c;
+}	  
     
     
 }    
