@@ -399,3 +399,11 @@ form {
 	-moz-border-radius-bottomleft: 4px;
 	-webkit-border-bottom-left-radius: 4px;
 }
+
+.selected-menu-bar {
+    color: green;
+    font:bold;
+}
+.unselected-menu-bar {
+    color: black;
+}

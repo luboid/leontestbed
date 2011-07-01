@@ -1,10 +1,13 @@
 package com.appspot.twitteybot.ui;
 
 import com.appspot.twitteybot.datastore.AppUser;
+import com.appspot.twitteybot.datastore.ApplicationProperty;
 import com.appspot.twitteybot.datastore.PMF;
+import com.sun.syndication.io.impl.Base64;
 
 import java.io.IOException;
-import java.net.URLEncoder;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,19 +54,54 @@ public class RegUserManager extends HttpServlet{
 		    templateValues.put("action", Pages.PARAM_ACTION_SIGNUP);
 			FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNUPPAGE,resp.getWriter());
 		}
+
 		else if(action.equals(Pages.PARAM_ACTION_SHOWSIGNIN)){
 		    templateValues.put("errorMessage", "Please Sign In.");
 		    templateValues.put("action", Pages.PARAM_ACTION_SIGNIN);
+
             FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNINPAGE,resp.getWriter());
         }		
+        else if(action.equals(Pages.PARAM_ACTION_SHOW_CHANGEPWD)){
+            templateValues.put("errorMessage", "Change Password.");
+            templateValues.put("userId", AuthFilter.getCurrentUser(req).getKeyId());            
+            FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_CHANGEPWDPAGE,resp.getWriter());
+        }       		
+		else if(action.equals(Pages.PARAM_ACTION_CHANGEPWD)){
+		    String oldpwd =  req.getParameter(Pages.PARAM_SIGNUP_OLD_PASSWORD);
+		    String newpwd =  req.getParameter(Pages.PARAM_SIGNUP_PASSWORD);
+	        long userId = Long.valueOf(req.getParameter("userId"));
+	        PersistenceManager pm = PMF.get().getPersistenceManager();
+	        try {
+	        AppUser user = pm.getObjectById(AppUser.class, userId);
+	        if(!user.getPassword().equals(oldpwd)) {
+	            templateValues.put("errorMessage", "Old password is not correct.");
+	            templateValues.put("userId", AuthFilter.getCurrentUser(req).getKeyId());            
+	            FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_CHANGEPWDPAGE,resp.getWriter());
+	        }
+	        else {
+	            user.setPassword(newpwd);
+	            pm.makePersistent(user);
+	               templateValues.put("errorMessage", "Password is changed.");
+	                templateValues.put("userId", AuthFilter.getCurrentUser(req).getKeyId());            
+	                FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_CHANGEPWDPAGE,resp.getWriter());
+	        }
+	        } finally {
+	            pm.close();
+	        }
+	          
+	        
+	          
+		}
 		else if(action.equals(Pages.PARAM_ACTION_SIGNUP)){
-			AppUser user = new AppUser();
+			
 			String name =  req.getParameter(Pages.PARAM_SIGNUP_NAME);
 			String pwd =  req.getParameter(Pages.PARAM_SIGNUP_PASSWORD);
-			user.setUserName(name);
+			String email =  req.getParameter(Pages.PARAM_SIGNUP_EMAIL);
+			AppUser user = new AppUser(name);
 			user.setPassword(pwd);
+			user.setEmail(email);
 			if(isUnique(user)){
-				signUp(user);
+				save(user);
 				AuthFilter.setRegUser(req, user);
 				resp.sendRedirect(Pages.PAGE_MAIN);
 			}
@@ -71,6 +109,7 @@ public class RegUserManager extends HttpServlet{
 				templateValues.put("errorMessage", "The user has existed, please change another name ");
 				templateValues.put("userName",name);
 				templateValues.put("password",pwd);
+				templateValues.put("email",email);
 				FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNUPPAGE , resp.getWriter());
 			}
 			
@@ -79,10 +118,10 @@ public class RegUserManager extends HttpServlet{
             
             String name =  req.getParameter(Pages.PARAM_SIGNUP_NAME);
             String pwd =  req.getParameter(Pages.PARAM_SIGNUP_PASSWORD);
-            AppUser user = new AppUser();
-            user.setUserName(name);
-            user.setPassword(pwd);
-		    if(login(user)) {
+            AppUser dummy = new AppUser(name);
+            dummy.setPassword(pwd);
+            AppUser user = login(dummy);
+		    if(user!=null) {
 	              AuthFilter.setRegUser(req, user);
 	              resp.sendRedirect(Pages.PAGE_MAIN);
 		    } else {
@@ -92,15 +131,62 @@ public class RegUserManager extends HttpServlet{
                 FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNINPAGE , resp.getWriter());
 		    }
 		}
+		else if(action.equals(Pages.PARAM_ACTION_RESET)){
+            String name =  req.getParameter(Pages.PARAM_SIGNUP_NAME);
+            AppUser dummy = new AppUser(name);
+            AppUser user = queryUser(dummy);
+            if(user==null) {
+                templateValues.put("errorMessage", "Username is not found.");
+                templateValues.put("userName",name);
+                FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNINPAGE , resp.getWriter());
+            }
+            else {
+
+                String newPassword = Base64.encode(""+Math.floor(Math.random()*100000000l));
+                user.setPassword(newPassword);
+                save(user);
+                
+                Map<String, Object> values = new HashMap<String, Object>();
+                values.put("userName",name);
+                values.put("newpassword",newPassword);
+                StringWriter out = new StringWriter();
+                FreeMarkerConfiguration.writeResponse(values,Pages.TEMPLATE_RESET_EMAIL , new PrintWriter(out));
+                String body = out.toString();
+                
+                String subject = "Your password at"+ApplicationProperty.read(ApplicationProperty.SITE_NAME)+" is reset.";
+                String sendTo = user.getEmail();
+                System.out.println("body="+body);
+                try {
+                    MyUtils.sendEmail(sendTo, name, subject, body);
+                    templateValues.put("errorMessage", "An email containinng the new password is sent to "+sendTo+", you can change password once login.");
+                    templateValues.put("userName",name);
+                    FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNINPAGE , resp.getWriter());                    
+                } catch (Exception e) {
+                    templateValues.put("errorMessage", "Failed to send new password to "+sendTo+", please make sure it is a valid email address. Please contact site owner.");
+                    templateValues.put("userName",name);
+                    FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNINPAGE , resp.getWriter());                    
+                }
+                
+                
+            }
+            
+		}
 	}
 	
-	private void signUp(AppUser user){
+	private void save(AppUser user){
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-		pm.makePersistent(user);
+		try {
+		    pm.makePersistent(user);
+		} finally {
+		    pm.close();
+		}
 	}
+	
+	
 	
 	private Boolean isUnique(AppUser user){
 		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
 		Query query = pm.newQuery(AppUser.class);
 		query.setFilter("userName == userNameParam");
 		query.declareParameters("String userNameParam");
@@ -111,24 +197,40 @@ public class RegUserManager extends HttpServlet{
 			return false;
 		}
 		return true;
+		} finally {
+		    pm.close();
+		}
 	}
 	
-	   private Boolean login(AppUser user){
-	        PersistenceManager pm = PMF.get().getPersistenceManager();
-	        Query query = pm.newQuery(AppUser.class);
-	        query.setFilter("userName == userNameParam");
-	        query.declareParameters("String userNameParam");
-//	      query.setFilter("password == passwordParam");
-//	      query.declareParameters("String passwordParam");
-	        List<AppUser> results = (List<AppUser>) query.execute(user.getUserName());
-	        if(results.size()==0){
-	            return false;
+	
+	
+	private AppUser queryUser(AppUser appUser){
+        PersistenceManager pm = PMF.get().getPersistenceManager();
+        try {
+        Query query = pm.newQuery(AppUser.class);
+        query.setFilter("userName == userNameParam");
+        query.declareParameters("String userNameParam");
+        List<AppUser> results = (List<AppUser>) query.execute(appUser.getUserName());
+        if(results.size()==0){
+            return null;
+        }
+        AppUser res = results.get(0);
+        return res;
+        } finally {
+            pm.close();
+        }
+    }
+	
+	   private AppUser login(AppUser appUser){
+	       
+	        AppUser res = queryUser(appUser);
+	        if(res==null) {
+	            return null;
 	        }
-	        AppUser res = results.get(0);
-	        if(res.getPassword().equals(user.getPassword())) {
-	            return true;
+	        else if(res.getPassword().equals(appUser.getPassword())) {
+	            return res;
 	        }else {
-	            return false;
+	            return null;
 	        }
 	    }
 

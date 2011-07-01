@@ -1,6 +1,7 @@
 package com.appspot.twitteybot.ui;
 
 import com.appspot.twitteybot.datastore.AppUser;
+import com.appspot.twitteybot.datastore.DsHelper;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -8,8 +9,6 @@ import com.google.appengine.api.users.UserServiceFactory;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -21,11 +20,11 @@ import javax.servlet.http.HttpServletRequest;
 
 public class AuthFilter implements Filter {
 
-    public static final String REG_USER_DOMAIN = "thisapp";
     
     
-    public static boolean isRegUser(User user) {
-        return REG_USER_DOMAIN.equals(user.getAuthDomain());
+    
+    public static boolean isRegUser(AppUser user) {
+        return user.isRegUser();
     }
     
     public static void setRegUser(HttpServletRequest req, AppUser user) {
@@ -35,22 +34,34 @@ public class AuthFilter implements Filter {
         req.getSession().removeAttribute("user");
     }
     
-    public static User getCurrentUser(HttpServletRequest req) {
+    public static AppUser getCurrentUser(HttpServletRequest req) {
         UserService userService = UserServiceFactory.getUserService();
-        User user = userService.getCurrentUser();
+        User openId = userService.getCurrentUser();
+        AppUser appUser = null;
         // for openId user, avoid accessing session which might be expensive
-        if(user==null) {
-            AppUser u1 = (AppUser)req.getSession(true).getAttribute("user");
-            if(u1!=null) {
-                // to avoid duplication with openId accounts
-                user = new User(u1.getUserName()+"@registered", REG_USER_DOMAIN);
+        if(openId==null) {
+            appUser = (AppUser)req.getSession(true).getAttribute("user");
+//            if(appUser!=null) {
+//                if(appUser.getOpenId()==null) {
+//                    openId = new User(appUser.getUserName()+"@registered", REG_USER_DOMAIN);
+//                    // will it persist??
+//                    appUser.setOpenId(openId);
+//                }
+//                
+//            }
+        } else {
+            appUser = DsHelper.getAppUserForOpenId(openId);
+            if(appUser==null) {
+                appUser = DsHelper.createAppUserForOpenId(openId);
             }
+            
+            
         }
-        return user;
+        return appUser;
     }
     
     public static String createLogoutURL(String url, HttpServletRequest req) {
-        User user = getCurrentUser(req);
+        AppUser user = getCurrentUser(req);
         if(user==null) {
             return "";
         }

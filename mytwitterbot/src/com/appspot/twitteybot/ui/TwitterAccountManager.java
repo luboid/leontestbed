@@ -5,7 +5,6 @@ import com.appspot.twitteybot.datastore.PMF;
 import com.appspot.twitteybot.datastore.TwitterAccount;
 import com.appspot.twitteybot.datastore.TwitterStatus;
 import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserServiceFactory;
 
 import java.io.IOException;
 import java.util.Date;
@@ -51,7 +50,7 @@ public class TwitterAccountManager extends HttpServlet {
 				.read(ApplicationProperty.CONSUMER_SECRET));
 		log.warning("action="+action+", Using consumer key " + ApplicationProperty.read(ApplicationProperty.CONSUMER_KEY)+", isTesting()="+ApplicationProperty.isTesting());
 		try {
-            User user = AuthFilter.getCurrentUser(req);
+            User user = AuthFilter.getCurrentUser(req).getOpenId();
             
 		    if(ApplicationProperty.isTesting() && action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
 		        saveToken("token", "tokenSecret", "papaya_"+(new Date().getTime()), user);

@@ -11,34 +11,41 @@
    <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
 		  <!--th><input type='checkbox'></th-->
-		  <th class='header'>Twitter Account</td>
-		  <th class='header'>User Account</th>
-		  <th class='header'>No. of Txns Paid</th>
-		  <th class='header'>No. of Txns UnPaid</th>
-		  <th class='header'>No. of tweets Paid</th>
+		  <th class='header'>User</td>
+		  <th class='header'>TwitterAcct</th>
+		  <th class='header'>Txns Paid</th>
+		  <th class='header'>Txns UnPaid</th>
+		  <th class='header'>tweets Paid</th>
 		  <th class='header'>Total Amount Paid</th>
+		  <th class='header'>State</th>
+		  <th class='header'>PayType</th>
+		  <th class='header'>Action</th>
       </tr>  
       <#list usList as us>
       <tr>
         <!--td class='col-checkbox' align='center'><input type='checkbox'></td-->
-        <td align='center'>${us.twitterName}</td>
-        <td align='center'>${us.user}</td>
+        <td align='center'>${us.appUser.userName!""}</td>
+        <td align='center'>${us.twitterNames!""}</td>
         <td align='center'>${us.noOfPaidTxn}</td>
         <td align='center'>${us.noOfUnpaidTxn}</td>
         <td align='center'>${us.noOfTweetsPaid}</td>
         <td align='center'>${us.totalAmountPaid}</td>
+        <td align='center'>
+        <a href='/admin?action=changeState&state=ACTIVE&uid=${us.appUser.keyId?c}' style="<#if (us.appUser.state=="ACTIVE")>font:bold color:blue</#if>">Active</a>
+        <a href='/admin?action=changeState&state=SUSPENDED&uid=${us.appUser.keyId?c}' style="<#if (us.appUser.state=="SUSPENDED")>font:bold color:blue</#if>">Suspended</a>
+        <a href='/admin?action=changeState&state=BANNED&uid=${us.appUser.keyId?c}' style="<#if (us.appUser.state=="BANNED")>font:bold color:blue</#if>">Banned</a>
+        </td>
+        <td align='center'>
+        <a href='/admin?action=changePayType&type=PAY&uid=${us.appUser.keyId?c}' style="<#if (us.appUser.payType=="PAY")>font:bold color:blue</#if>">Pay</a>
+				<a href='/admin?action=changePayType&type=FREE&uid=${us.appUser.keyId?c}' style="<#if (us.appUser.payType=="FREE")>font:bold color:blue</#if>">Free</a>        
+        </td>        
+        <td align='center' class='action'>
+            <a href='/admin?action=deleteUser&uid=${us.appUser.keyId?c}'>Delete</a>
+            <!--|<a href='/admin?action=resetUser&uid=${us.appUser.keyId?c}'>Reset Passwd</a>-->
+        </td>        
+    
       </tr>
       </#list>
-      
-      <!--tr>
-        <td class='col-checkbox' align='center'><input type='checkbox'></td>
-        <td align='center'>zouljs1@gmail.com</td>
-        <td align='center'>zouljisi1</td>
-        <td align='center'>10</td>
-        <td align='center' class='action'>
-            <a href='#'>Suspend</a>|<a href='#'>Delete</a>
-        </td>
-      </tr-->
    </table>
    </div>
 </div>

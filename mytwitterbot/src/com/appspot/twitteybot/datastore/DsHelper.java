@@ -2,7 +2,6 @@ package com.appspot.twitteybot.datastore;
 
 import com.appspot.twitteybot.datastore.Transact.TxnState;
 import com.google.appengine.api.users.User;
-import com.google.appengine.api.users.UserServiceFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -93,24 +92,128 @@ public class DsHelper {
 
     }
     
+    
+    public static AppUser createAppUserForOpenId(User user) {
+        PersistenceManager pm = PMF.get().getPersistenceManager();
+        AppUser appUser = null;
+        try {
+
+        // create a new appUser
+        // TODO concurrent request??
+        appUser = new AppUser(user);
+        pm.makePersistent(appUser);
+        }   catch (Exception ex) {
+            log.log(Level.WARNING, "createAppUserForOpenId", ex);
+        
+        } finally {
+            pm.close();
+        } 
+        return appUser;
+    }
+    public static AppUser getAppUserForOpenId (User user) {
+        PersistenceManager pm = PMF.get().getPersistenceManager();
+        AppUser appUser = null;
+        try {
+        Query query = pm.newQuery(AppUser.class);
+        query.setFilter("openId == openIdParam");
+        query.declareParameters("com.google.appengine.api.users.User openIdParam");
+        List<AppUser> results = (List<AppUser>) query.execute(user);
+        if(results.size()>=2) {
+            log.log(Level.SEVERE, "getAppUserForOpenId", 
+                    "Critical: two AppUser record for a same openId="+user+", caused by competing requests, need manual action!");
+        }
+        if(results.size()>0) {
+            appUser = results.get(0);
+        }
+        }catch (Exception ex) {
+            log.log(Level.WARNING, "getAppUserForOpenId", ex);
+        
+        } finally {
+            pm.close();
+        }
+        return appUser;
+    }
+    
+    public static String deleteUser (long uid) {
+        
+        PersistenceManager pm = PMF.get().getPersistenceManager();
+        String userName = null;
+        try {
+            AppUser user = null;
+            user = (AppUser)pm.getObjectById(AppUser.class, uid);
+            if(user==null) {
+                return null;
+            }
+            userName = user==null? "null": user.getUserName();
+            pm.deletePersistent(user);
+            
+            Query query = pm.newQuery(TwitterAccount.class);
+            query.setFilter("user == userParam");
+            query.declareParameters("com.google.appengine.api.users.User userParam");
+            @SuppressWarnings("unchecked")
+            List<TwitterAccount> taList = (List<TwitterAccount>) query.execute(user);
+            pm.deletePersistentAll(taList);
+            
+            query = pm.newQuery(Transact.class);
+            query.setFilter("user == userParam");
+            query.declareParameters("com.google.appengine.api.users.User userParam");
+            @SuppressWarnings("unchecked")
+            List<Transact> transacts = (List<Transact>) query.execute(user);
+            pm.deletePersistentAll(transacts);
+            
+            query = pm.newQuery(TwitterStatus.class);
+            query.setFilter("user == userParam");
+            query.declareParameters("com.google.appengine.api.users.User userParam");
+            @SuppressWarnings("unchecked")
+            List<TwitterStatus> tweets = (List<TwitterStatus>) query.execute(user);
+            pm.deletePersistentAll(tweets);
+        } catch (Exception e) {
+            log.log(Level.WARNING, "deleteUser="+userName, e);
+            
+        } finally {
+            pm.close();
+        }
+        return userName;
+    
+    }
     public static List<UserSummary> getUserSummaries () {
         
         PersistenceManager pm = PMF.get().getPersistenceManager();
         try {
             
-            Map<String, UserSummary> usermap = new HashMap<String, UserSummary>();
+//            Map<String, UserSummary> usermap = new HashMap<String, UserSummary>();
+            List<UserSummary> res = new ArrayList<UserSummary>();
+            Map<User, UserSummary> usermap = new HashMap<User, UserSummary>();
+            Query query1 = pm.newQuery(AppUser.class);
+            List<AppUser> auList = (List<AppUser>) query1.execute();
+            for(AppUser au : auList) {
+                UserSummary us = new UserSummary();
+                us.setAppUser(au);
+                usermap.put(au.getOpenId(), us);
+                res.add(us);
+            }
+            
+            
+            
+            Map<String, UserSummary> screenNameMap = new HashMap<String, UserSummary>();
             Query query = pm.newQuery(TwitterAccount.class);
             query.setOrdering("user");
-            List<UserSummary> res = new ArrayList<UserSummary>();
             
             @SuppressWarnings("unchecked")
             List<TwitterAccount> taList = (List<TwitterAccount>) query.execute();
             for(TwitterAccount ta : taList) {
-                UserSummary us = new UserSummary();
-                us.setTwitterName(ta.getTwitterScreenName());
-                us.setUser(ta.getUser());
-                usermap.put(ta.getTwitterScreenName(), us);
-                res.add(us);
+                
+                User openId = ta.getUser();
+                UserSummary us = usermap.get(openId);
+                String twitterName = us.getTwitterNames();
+                if(twitterName==null) {
+                    twitterName="";
+                }
+                if(twitterName!=null && twitterName.length()>0) {
+                    twitterName+="<br>";
+                }
+                us.setTwitterNames(twitterName+=ta.getTwitterScreenName());
+                screenNameMap.put(ta.getTwitterScreenName(), us);
             }
             
             
@@ -120,7 +223,7 @@ public class DsHelper {
             List<Transact> transList = (List<Transact>) q2.execute();
             for(Transact trans : transList) {
                 String tsn = trans.getTwitterScreenName();
-                UserSummary us = usermap.get(tsn);
+                UserSummary us = screenNameMap.get(tsn);
                 if(us==null) {
                     continue;
                 }

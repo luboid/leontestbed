@@ -15,15 +15,28 @@
                         <strong>${username!""}</strong>
                         | 
                     </span>
+                    <#if (banned)> <span style="color:green;"> You are Banned.</span>
+                    <#elseif (suspended)> <span style="color:green;"> You are Suspended.</span></#if>
                     <span>
                         <a href = "/help.html">Help</a>
                         | 
                     </span>
+                    <#if ("true"==isRegUser)>
+                    <span>
+                    		<#if (banned)>
+                        <a href = "#" >Change Password</a>
+                        <#else>
+                        <a href = "#" onclick="javascript: window.open('/user?action=showChangePwd', '_blank', 'width=400,height=300');">Change Password</a>
+                        </#if>
+                        | 
+                    </span>
+                    </#if>
                     <span>
                         <a href = "${logoutUrl}">Sign Out</a>
                         | 
-                    </span>
+                    </span>                    
                 </div>
+             
             </div>
             <div class = "clear">
             </div>
@@ -31,7 +44,7 @@
         <div id = "content">
             <div id = "addTwitterAccount">
                 <div class = "left-pane">
-                    <a href = "/pages/manageTwitterAccount?action=Add">Manage a new twitter account</a>
+                    <a href = "<#if (banned)>#<#else>/pages/manageTwitterAccount?action=Add</#if>">Manage a new twitter account</a>
                 </div>
                 <div class = "right-pane" style ="text-align:center">
                     <span id = "message">
@@ -81,7 +94,7 @@
                             </tr>
                         </table>
                         <center>
-                            <input type = "Submit" value = "Schedule Tweets" />
+                            <input <#if (banned)>disabled="true"</#if> type="Submit" value = "Schedule Tweets" />
                         </center>
                     </form>
                 </div>
@@ -91,8 +104,8 @@
                     </div>
                     For tweets that are greater than 140 characters, 
                     <center>
-                        <input type = "button" value = "Remove Vowels" id = "shrinker-removeVowels" style ="width : 80%"/>
-                        <input type = "button" value = "Break into more Tweets" id = "shrinker-wrapTweet" style ="width:80%"/>
+                        <input <#if (banned)>disabled="true"</#if> type = "button" value = "Remove Vowels" id = "shrinker-removeVowels" style ="width : 80%"/>
+                        <input <#if (banned)>disabled="true"</#if> type = "button" value = "Break into more Tweets" id = "shrinker-wrapTweet" style ="width:80%"/>
                     </center>
                 </div>
             </div>
@@ -105,6 +118,11 @@
                                     Not Loaded
                                 </span>
                             </strong>&nbsp;|&nbsp;<a href = "#deleteAccountForm" id = "deleteAccountButton">Un-manage Account </a>
+
+
+											<br><br><a href = "#" id = "showPaidTweetsLink" class="selected-menu-bar" >Scheduled Messages </a>  
+											&nbsp;|&nbsp;<a href = "#" id = "showTxnsLink" class="unselected-menu-bar" >Unpaid Transactions </a>  
+                           
                         </div>
                         <div class = "right-pane" style ="width : 64%">
                             <ul id = "actionList">
@@ -119,23 +137,16 @@
 	                                    &nbsp;|&nbsp;<a href = "#uploadFileForm" id="actionUploadFile"> your computer</a>
 	                                </li>
 									<li>
-											&nbsp;&nbsp;<input type = "button" id = "OneTweet" value = "Schedule One Tweet" class = "button"/>
+											&nbsp;&nbsp;<input <#if (banned)>disabled="true"</#if> type = "button" id = "OneTweet" value = "Schedule One Tweet" class = "button"/>
 									</li>
 						       </ul>
-							   <ul>
-									<li>
-											&nbsp;|&nbsp;<a href = "/pages/transaction?action=showTxns" id = "showTxnsLink">Unpaid Transactions </a>  
-									</li>
-									<li>
-											&nbsp;|&nbsp;<a href = "/pages/status?action=Show" id = "showPaidTweetsLink">My Messages </a>  
-									</li>																
-							   </ul>
+
                             </ul>
                             <div id = "fetchFileForm" style="display:none">
                                 <form target = "resultFrame" action = "#" method = "POST" name = "uploadFile">
-                                    <input type = "text" name = "source_" class = "button" value = "http://time2tweet.appspot.com/tweets.txt"/>
+                                    <input type = "text" name = "source_" class = "button" value = "http://localhost:7777/china.xml"/>
                                     &nbsp;
-                                    <input type = "submit" value = "Upload" class = "button"/>
+                                    <input <#if (banned)>disabled="true"</#if> type = "submit" value = "Upload" class = "button"/>
                                     &nbsp;
                                     <input type = "reset" value = "Cancel" class = "button"/>
                                 </form>
@@ -146,7 +157,7 @@
                                     &nbsp;
                                     <input type = "checkbox" id = "csvFile"/> CSV File
 									&nbsp;
-                                    <input type = "submit" value = "Upload" class = "button"/>
+                                    <input <#if (banned)>disabled="true"</#if> type = "submit" value = "Upload" class = "button"/>
                                     &nbsp;
                                     <input type = "reset" value = "Cancel" class = "button"/>
                                 </form>
@@ -154,7 +165,7 @@
                             <div id = "deleteAccountForm" style="display:none">
                                 <form action = "#/pages/manageTwitterAccount" method = "POST" name = "deleteTwitterAccount">
                                     Are you sure you want to unlink this account ?
-                                    <input type = "submit" value = "Yes" class = "button"/>
+                                    <input <#if (banned)>disabled="true"</#if> type = "submit" value = "Yes" class = "button"/>
                                     &nbsp;
                                     <input type = "reset" value = "No" class = "button"/>
                                 </form>
@@ -187,12 +198,12 @@
                                 				-->
                                 		</div>
                                     <div id = "otherButtons">
-                                        <input type = "Submit" name = "action" value = "Update" class = "button"/>
+                                        <input <#if (banned)>disabled="true"</#if> type = "Submit" name = "action" value = "Update" class = "button"/>
                                         &nbsp;
-                                        <input type = "submit" name = "action" value = "Delete" class = "button"/>
+                                        <input <#if (banned)>disabled="true"</#if> type = "submit" name = "action" value = "Delete" class = "button"/>
                                     </div>
                                     <div id = "uploadButtons">
-                                        <input id = "AddTransaction" type = "Submit" name = "action" value = "Add" class = "button">
+                                        <input <#if (banned)>disabled="true"</#if> id = "AddTransaction" type = "Submit" name = "action" value = "Add" class = "button">
                                         &nbsp;
                                         <input type = "reset" value = "Cancel" class = "button"/>
                                     </div>
@@ -221,8 +232,8 @@
                                 </div>
                                 <div class = "right-pane" style ="text-align : right">
                                     <div id = "transactionButtons">
-                                    		<input type = "Submit" name="action" value = "MergeTxn" class = "button"/>
-                                        <input type = "Submit" name="action" value = "CancelTxn" class = "button"/>
+                                    		<input <#if (banned)>disabled="true"</#if> type = "Submit" name="action" value = "MergeTxn" class = "button"/>
+                                        <input <#if (banned)>disabled="true"</#if> type = "Submit" name="action" value = "CancelTxn" class = "button"/>
                                     </div>
                                 </div>
                                 <div class = "clear">

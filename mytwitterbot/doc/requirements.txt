@@ -30,4 +30,9 @@ for the admin section design, you can use Jquery or GWT, it's up to you.
 0. need physically delete those tweets sent to Twitter?  Or if keep them, need another page allowing user to look back all these sent? 
 1. queued status (picked up at the scheduled time and is ready to send to twitter) cannot be cancelled
 2. ?? status longer than 140 must be broke into several smaller, before paying for it. (once paid those long status will always be trimmed and sent)
-3. highlight the menu "Unpaid Transactions  | My Messages" when clicking one of them
+
+
+GUI enhancement
+1. highlight the menu "Unpaid Transactions  | My Messages" when clicking one of them?  or just a Text title 
+2. confirm (alert) when pay/cancel/merge txn
+3. 

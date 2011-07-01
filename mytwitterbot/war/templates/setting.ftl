@@ -59,6 +59,47 @@
         </tr>
         <tr height='30px'>
             <td>
+                Google URL Shortener Service URL
+            </td>
+            <td>
+                <input name = "shortener_url" style="width:360px;" value = '${shortener_url!"https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyATndQS1kC3cEMRKPgNL30LJnc2E2VM2MI"}'>
+            </td>
+        </tr>   
+        <tr height='30px'>
+            <td>
+                Site Administrator Email 
+            </td>
+            <td>
+                <input name = "adminEmail" style="width:360px;" value = '${adminEmail!""}'>
+            </td>
+        </tr> 
+        <tr height='10px'>
+        		<td colspan="2" align="right"><span style="color:blue">(used in Password Reset Email. Must be added to owner of this AppEngine application)</span></td>
+        </tr>
+        <tr height='30px'>
+            <td>
+                Site Administrator Name 
+            </td>
+            <td>
+                <input name = "adminName" style="width:360px;" value = '${adminName!"Administrator of test.com"}'>
+            </td>
+        </tr>
+        <tr height='10px'>
+        		<td colspan="2" align="right"><span style="color:blue">(used as SenderName of the Password Reset Email)</span></td>
+        </tr>        
+        <tr height='30px'>
+            <td>
+                Site Name 
+            </td>
+            <td>
+                <input name = "siteName" style="width:360px;" value = '${siteName!"test.com"}'>
+            </td>
+        </tr>
+        <tr height='10px'>
+        		<td colspan="2" align="right"><span style="color:blue">(used as Subject of the Password Reset Email)</span></td>
+        </tr>                                     
+        <tr height='30px'>
+            <td>
                 Is Testing
             </td>
             <td>

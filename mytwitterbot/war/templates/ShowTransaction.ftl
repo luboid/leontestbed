@@ -26,18 +26,19 @@
                 <span class = "screenName" id = "screenName_{item_index}">
                     ${item.twitterScreenName}
                 </span>
-                <span class = "source" id = "source_{item_index}">
+                <#-- span class = "source" id = "source_{item_index}">
                     <span style ="color : #000000">
                         | 
                     </span>
                     {item.source} <!--${item.keyId?c}==${item.encodedKey}-->
-                </span>
+                </span -->
                 <span>
                     <span style ="color : #000000">
                         | 
                     </span>                
                 		<a href="#" onClick="javascript: top.TwitteyBot.showTweetsOfTxn(${item.keyId?c});">Edit Detail</a>
-                </span>                		
+                </span>         
+                <#if (!banned)>
                 <span>
                     <span style ="color : #000000">
                         | 
@@ -54,12 +55,15 @@
                     <a href="#" onClick="javascript: top.TwitteyBot.cancelTxn(${item.keyId?c});">Cancel Txn</a>
                 </span>
                 
+                <#if (isTest)>
                 <span>
                     <span style ="color : #000000">
                         | 
                     </span>
                     <a href="#" onClick="javascript: top.TwitteyBot.payTxn(${item.keyId?c});">Mark this Txn as Paid (Test only)</a>
-                </span>             
+                </span>     
+                </#if>
+              </#if>     
             </div>
             <div class = "right-pane" style ="width : 30%; text-align : right; padding : 0.5em; color:#3366CC">
                 No. of Tweets

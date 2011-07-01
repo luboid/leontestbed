@@ -1,13 +1,19 @@
 package com.appspot.twitteybot.ui;
 
+import com.appspot.twitteybot.datastore.AppUser;
 import com.appspot.twitteybot.datastore.DsHelper;
 import com.appspot.twitteybot.datastore.PMF;
 import com.appspot.twitteybot.datastore.Transact;
 import com.appspot.twitteybot.datastore.TwitterStatus;
+import com.appspot.twitteybot.datastore.AppUser.PayType;
 import com.appspot.twitteybot.pay.PaypalStandard;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.users.User;
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.FeedException;
+import com.sun.syndication.io.SyndFeedInput;
 import freemarker.template.TemplateException;
 
 import java.io.BufferedReader;
@@ -83,6 +89,8 @@ public class StatusManager extends BaseServlet {
 			this.processUpload(req, resp, pm);
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_FETCH)) {
 			this.processFetch(req, resp, pm);
+        } else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_FETCHTEXT)) {
+            this.processFetchText(req, resp, pm);			
 		} else if (action.equalsIgnoreCase(Pages.PARAM_ACTION_ADD)) {
 //			this.processAdd(req, resp);
 //		    throw new RuntimeException("add txn should not come here");
@@ -122,7 +130,7 @@ public class StatusManager extends BaseServlet {
 		
 		// get status of those paid txn
 		// TODO to exclude those sent?
-		User user = AuthFilter.getCurrentUser(req);
+		User user = AuthFilter.getCurrentUser(req).getOpenId();
 //		List<TwitterStatus> statuss = new ArrayList<TwitterStatus>();
 //		List<Transact> paidTxns = DsHelper.getTransactList(true,screenName, pm, -1, -1, user);
 //		for(Transact txn : paidTxns) {
@@ -135,7 +143,7 @@ public class StatusManager extends BaseServlet {
             log.info("status="+ts.getStatus());
         }
 		// TODO make it a sing query otherwise start/end won't work
-		this.constructResponse(null, statuss,
+		this.constructResponse(req, null, statuss,
 				"Showing " + (end - start) + " tweets", LEVEL_INFO, resp, start, end);
 
 	}
@@ -155,7 +163,7 @@ public class StatusManager extends BaseServlet {
                 e.printStackTrace(resp.getWriter());
             }            
         }
-        this.constructResponse(txn, DsHelper.getTwitterStatus(txnId, pm, start, end),
+        this.constructResponse(req, txn, DsHelper.getTwitterStatus(txnId, pm, start, end),
                 "Showing " + (end - start) + " tweets", LEVEL_INFO, resp, start, end);
     }
     
@@ -169,7 +177,9 @@ public class StatusManager extends BaseServlet {
         long end = getEnd(req);
         
 		int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
-		User user = AuthFilter.getCurrentUser(req);
+		AppUser appUser = AuthFilter.getCurrentUser(req);
+		User user = appUser.getOpenId();
+		
 		List<TwitterStatus> twitterStatuses = new ArrayList<TwitterStatus>();
 		List<TwitterStatus> toAddStatuses = new ArrayList<TwitterStatus>();
 		String message = null;
@@ -180,7 +190,7 @@ public class StatusManager extends BaseServlet {
 				TwitterStatus twitterStatus = null;
 				if (id.equals("")) {
 					twitterStatus = new TwitterStatus();
-					twitterStatus.setUser(AuthFilter.getCurrentUser(req));
+					twitterStatus.setUser(AuthFilter.getCurrentUser(req).getOpenId());
 					twitterStatus.setCanDelete(true);
 					twitterStatus.setTwitterScreenName(twitterScreenName);
 					twitterStatus.setTransactionId(txnId);
@@ -242,14 +252,14 @@ public class StatusManager extends BaseServlet {
                 log.info("status="+ts.getStatus());
             }
             // TODO make it a sing query otherwise start/end won't work
-            this.constructResponse(null, statuss,
+            this.constructResponse(req, null, statuss,
                     message, LEVEL_INFO, resp, start, end);
             
         }else {
             // recalculate this txn
             if(toAddStatuses.size()>0 || delete) {
                 // cost more money...
-                recalculateTxn(txnId, pm);
+                recalculateTxn(appUser, txnId, pm);
             }
             // see processShowTweetsOfTxn(req,resp, pm);
             Transact txn = DsHelper.getTransact(txnId, pm);
@@ -259,7 +269,7 @@ public class StatusManager extends BaseServlet {
                 log.log(Level.WARNING, "PaypalStandard.renderPaypalButton", e);
                 e.printStackTrace(resp.getWriter());
             } 
-            this.constructResponse(txn, DsHelper.getTwitterStatus(txnId, pm, start, end),
+            this.constructResponse(req, txn, DsHelper.getTwitterStatus(txnId, pm, start, end),
                     message, LEVEL_INFO, resp, start, end);
         }
 
@@ -267,41 +277,95 @@ public class StatusManager extends BaseServlet {
 		
 	}
 
-	private void recalculateTxn(long txnId, PersistenceManager pm) {
+	private void recalculateTxn(AppUser appUser, long txnId, PersistenceManager pm) {
 	    try {
 	        Transact transact = DsHelper.getTransact(txnId, pm);
 	        // TODO get size via query
 	        List<TwitterStatus> list = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
 	        int size = list.size();
 	        transact.setNumberOfStatus(size);
-	        transact.setAmount(transact.getUnitPrice()*size);
+	        transact.setAmount(PayType.FREE==appUser.getPayType()? 0 : transact.getUnitPrice()*size);
 	        pm.makePersistent(transact);
 	        
 	    } catch (Exception e){
 	        log.log(Level.SEVERE, "recalculateTxn", e);
 	    }
 	}
-
+    private void processFetchText(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
+        String twitterScreenName = req.getParameter(Pages.PARAM_SCREENNAME);
+        String fileLocation = req.getParameter(Pages.PARAM_STATUS_SOURCE);
+        String message = null;
+        String level = LEVEL_INFO;
+        User user = AuthFilter.getCurrentUser(req).getOpenId();
+        Date startDate = new Date();
+        List<TwitterStatus> statuses = new ArrayList<TwitterStatus>();
+        BufferedReader reader= null;
+        try {
+            URL url = new URL(fileLocation);
+            // TODO encoding?
+            reader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+          String line;
+          int increment = 0;
+          while ((line = reader.readLine()) != null) {
+              Calendar cal = Calendar.getInstance();
+              cal.setTime(startDate);
+              cal.add(Calendar.MINUTE, increment += DEFAULT_TIME_INCREMENT);
+              statuses.add(new TwitterStatus(user, twitterScreenName, fileLocation, cal.getTime(), line, true));
+          }
+    
+        } catch (MalformedURLException e) {
+            message = "Invalid File location";
+            level = LEVEL_ERROR;
+            log.log(Level.SEVERE, "Invalid URL " + fileLocation);
+        } catch (IOException e) {
+            message = "Could not fetch contents from " + fileLocation;
+            level = LEVEL_ERROR;
+            log.log(Level.SEVERE, "Reading Error from location  " + fileLocation);
+        } finally {
+            if(reader!=null) {
+                try {
+                    reader.close();
+                } catch (Exception e) {
+                }
+            }
+        }
+//      if (message != null) {
+//          message = "Please select the tweets that you would like to schedule and then click on Add";
+//      }
+        this.constructResponse(req, statuses, message, level, resp);
+    }
 	private void processFetch(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
 		String twitterScreenName = req.getParameter(Pages.PARAM_SCREENNAME);
 		String fileLocation = req.getParameter(Pages.PARAM_STATUS_SOURCE);
 		String message = null;
 		String level = LEVEL_INFO;
-		User user = AuthFilter.getCurrentUser(req);
+		User user = AuthFilter.getCurrentUser(req).getOpenId();
 		Date startDate = new Date();
 		List<TwitterStatus> statuses = new ArrayList<TwitterStatus>();
+		BufferedReader reader= null;
 		try {
 			URL url = new URL(fileLocation);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-			String line;
-			int increment = 0;
-			while ((line = reader.readLine()) != null) {
-				Calendar cal = Calendar.getInstance();
-				cal.setTime(startDate);
-				cal.add(Calendar.MINUTE, increment += DEFAULT_TIME_INCREMENT);
-				statuses.add(new TwitterStatus(user, twitterScreenName, fileLocation, cal.getTime(), line, true));
-			}
-			reader.close();
+			// TODO encoding?
+			reader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+			
+            SyndFeed sf = new SyndFeedInput().build(reader);
+            List l = sf.getEntries();
+            int increment = 0;            
+            String line;            
+            for(Object o : l) {
+                SyndEntry item = (SyndEntry)o;
+                // TODO
+                line = item.getTitle()+" ("+MyUtils.getShortUrl(item.getLink())+")";
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(startDate);
+                cal.add(Calendar.MINUTE, increment += DEFAULT_TIME_INCREMENT);
+                statuses.add(new TwitterStatus(user, twitterScreenName, fileLocation, cal.getTime(), line, true));                
+            }
+
+		} catch (FeedException e) {
+            message = "Failed to parse RSS or ATOM";
+            level = LEVEL_ERROR;
+            log.log(Level.SEVERE, "Invalid RSS or ATOM " + fileLocation+", error="+e.getMessage());		    
 		} catch (MalformedURLException e) {
 			message = "Invalid File location";
 			level = LEVEL_ERROR;
@@ -310,11 +374,18 @@ public class StatusManager extends BaseServlet {
 			message = "Could not fetch contents from " + fileLocation;
 			level = LEVEL_ERROR;
 			log.log(Level.SEVERE, "Reading Error from location  " + fileLocation);
+		} finally {
+		    if(reader!=null) {
+                try {
+                    reader.close();
+                } catch (Exception e) {
+                }
+		    }
 		}
-		if (message != null) {
-			message = "Please select the tweets that you would like to schedule and then click on Add";
-		}
-		this.constructResponse(statuses, message, level, resp);
+//		if (message != null) {
+//			message = "Please select the tweets that you would like to schedule and then click on Add";
+//		}
+		this.constructResponse(req, statuses, message, level, resp);
 	}
 
 	private void processUpload(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
@@ -322,7 +393,7 @@ public class StatusManager extends BaseServlet {
 		boolean isCSVFile = req.getParameter(Pages.PARAM_CSVFILE) != null ? true : false;
 		ServletFileUpload upload = new ServletFileUpload();
 		String separator = "\n";
-		User user = AuthFilter.getCurrentUser(req);
+		User user = AuthFilter.getCurrentUser(req).getOpenId();
 		Date startDate = new Date();
 		String message = null, level = LEVEL_INFO;
 		List<TwitterStatus> statuses = new ArrayList<TwitterStatus>();
@@ -384,10 +455,10 @@ public class StatusManager extends BaseServlet {
 			message = "There was a problem in uploading the file";
 			level = LEVEL_ERROR;
 		}
-		if (message == null) {
-			message = "Please select the tweets that you would like to schedule and then click on Add";
-		}
-		this.constructResponse(statuses, message, level, resp);
+//		if (message == null) {
+//			message = "Please select the tweets that you would like to schedule and then click on Add";
+//		}
+		this.constructResponse(req, statuses, message, level, resp);
 	}
 
 	private int getBrowserTimeZone(HttpServletRequest req) {
@@ -406,7 +477,7 @@ public class StatusManager extends BaseServlet {
 		return result;
 	}
 
-	private void constructResponse(Transact txn, List<TwitterStatus> list, String message, String level, HttpServletResponse resp,
+	private void constructResponse(HttpServletRequest req, Transact txn, List<TwitterStatus> list, String message, String level, HttpServletResponse resp,
 			long start, long end) throws IOException {
 	    
 	    Map<String, Object> templateValues = new HashMap<String, Object>();
@@ -414,7 +485,8 @@ public class StatusManager extends BaseServlet {
 	        templateValues.put(Pages.FTLVAR_TWITTER_TXN, txn);
 	    }
 	    
-		
+	    AppUser appUser = AuthFilter.getCurrentUser(req);
+	    templateValues.put(Pages.FTLVAR_ISUSER_BANNED, appUser.isBanned());
 		templateValues.put(Pages.FTLVAR_TWITTER_STATUS, list);
 		templateValues.put(Pages.FTLVAR_LEVEL, level);
 		templateValues.put(Pages.FTLVAR_START, start);
@@ -423,14 +495,9 @@ public class StatusManager extends BaseServlet {
 		FreeMarkerConfiguration.writeResponse(templateValues, Pages.TEMPLATE_STATUSPAGE, resp.getWriter());
 	}
 
-	private void constructResponse(Transact txn, List<TwitterStatus> list, String message, String level, HttpServletResponse resp)
-			throws IOException {
-		this.constructResponse(txn, list, message, level, resp, 0, PAGE_SIZE);
-	}
-	
-    private void constructResponse(List<TwitterStatus> list, String message, String level, HttpServletResponse resp)
+    private void constructResponse(HttpServletRequest req, List<TwitterStatus> list, String message, String level, HttpServletResponse resp)
         throws IOException {
-        this.constructResponse(null, list, message, level, resp, 0, PAGE_SIZE);
+        this.constructResponse(req, null, list, message, level, resp, 0, PAGE_SIZE);
     }
 	
 	

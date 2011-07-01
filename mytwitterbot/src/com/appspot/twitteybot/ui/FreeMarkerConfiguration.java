@@ -1,5 +1,11 @@
 package com.appspot.twitteybot.ui;
 
+import com.appspot.twitteybot.datastore.ApplicationProperty;
+import freemarker.template.Configuration;
+import freemarker.template.DefaultObjectWrapper;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,12 +14,6 @@ import java.io.Writer;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.appspot.twitteybot.datastore.ApplicationProperty;
-import freemarker.template.Configuration;
-import freemarker.template.DefaultObjectWrapper;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
 
 /**
  * Freemaker templates helper file that has the configutations and performs the

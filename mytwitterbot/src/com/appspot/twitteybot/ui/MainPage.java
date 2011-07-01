@@ -1,7 +1,9 @@
 package com.appspot.twitteybot.ui;
 
+import com.appspot.twitteybot.datastore.AppUser;
 import com.appspot.twitteybot.datastore.PMF;
 import com.appspot.twitteybot.datastore.TwitterAccount;
+import com.appspot.twitteybot.datastore.AppUser.State;
 import com.google.appengine.api.users.User;
 
 import java.io.IOException;
@@ -28,17 +30,26 @@ public class MainPage extends HttpServlet {
 			IOException {
 
 //		User user = UserServiceFactory.getUserService().getCurrentUser();
-	    User user = AuthFilter.getCurrentUser(req);
+	    AppUser appUser = AuthFilter.getCurrentUser(req);
+	    
+	    // TODO
+	    if(appUser.getState()== State.ACTIVE) {
+	        
+	    }else {
+	        
+	    }
+	    
+	    User openId = appUser.getOpenId();
 //		if(user==null) {
 //		    user= new User("abc", "def");
 //		}
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-		log.info("Working for user " + user.getEmail());
+		log.info("Working for user " + openId.getEmail());
 		Query query = pm.newQuery(TwitterAccount.class);
 		query.setFilter("user == userVar");
 		query.declareParameters("com.google.appengine.api.users.User userVar");
 		@SuppressWarnings("unchecked")
-		List<TwitterAccount> twitterAccounts = (List<TwitterAccount>) query.execute(user);
+		List<TwitterAccount> twitterAccounts = (List<TwitterAccount>) query.execute(openId);
 
 		if (twitterAccounts == null || twitterAccounts.size() == 0) {
 			twitterAccounts = new ArrayList<TwitterAccount>();
@@ -49,7 +60,10 @@ public class MainPage extends HttpServlet {
 		}
 
 		Map<String, Object> templateValues = new HashMap<String, Object>();
-		templateValues.put(Pages.FTLVAR_USERNAME, user.getEmail());
+		templateValues.put(Pages.FTLVAR_ISREGUSER, String.valueOf(appUser.isRegUser()));
+		templateValues.put(Pages.FTLVAR_ISUSER_BANNED, appUser.isBanned());
+		templateValues.put(Pages.FTLVAR_ISUSER_SUSPENDED, AppUser.State.SUSPENDED==appUser.getState());
+		templateValues.put(Pages.FTLVAR_USERNAME, openId.getEmail());
 //		templateValues.put(Pages.FTLVAR_LOGOUT, UserServiceFactory.getUserService().createLogoutURL(
 //				Pages.PAGE_HOME));
         templateValues.put(Pages.FTLVAR_LOGOUT, AuthFilter.createLogoutURL(Pages.PAGE_HOME, req));		

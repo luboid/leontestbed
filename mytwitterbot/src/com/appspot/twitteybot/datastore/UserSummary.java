@@ -1,13 +1,12 @@
 package com.appspot.twitteybot.datastore;
 
-import com.google.appengine.api.users.User;
 
 public class UserSummary {
     long keyId;
     
-    String twitterName;
+    String twitterNames;
     
-    User user;
+    AppUser appUser;
     
     int noOfPaidTxn;
     int noOfUnpaidTxn;
@@ -36,13 +35,6 @@ public class UserSummary {
         this.noOfUnpaidTxn = noOfUnpaidTxn;
     }
 
-    public String getTwitterName() {
-        return twitterName;
-    }
-
-    public void setTwitterName(String twitterName) {
-        this.twitterName = twitterName;
-    }
 
 
 
@@ -62,13 +54,7 @@ public class UserSummary {
         this.totalAmountPaid = totalAmountPaid;
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public int getNoOfTweetsPaid() {
         return noOfTweetsPaid;
@@ -80,12 +66,28 @@ public class UserSummary {
 
 	@Override
 	public String toString() {
-		return "UserSummary [keyId=" + keyId + ", twitterName=" + twitterName
-				+ ", user=" + user + ", noOfPaidTxn=" + noOfPaidTxn
+		return "UserSummary [keyId=" + keyId + ", twitterNames=" + twitterNames
+				+ ", user=" + appUser + ", noOfPaidTxn=" + noOfPaidTxn
 				+ ", noOfUnpaidTxn=" + noOfUnpaidTxn + ", totalAmountPaid="
 				+ totalAmountPaid + ", noOfTweetsPaid=" + noOfTweetsPaid
 				+ "]";
 	}
+
+    public AppUser getAppUser() {
+        return appUser;
+    }
+
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
+    }
+
+    public String getTwitterNames() {
+        return twitterNames;
+    }
+
+    public void setTwitterNames(String twitterNames) {
+        this.twitterNames = twitterNames;
+    }
     
     
     

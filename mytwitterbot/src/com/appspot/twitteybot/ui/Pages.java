@@ -4,8 +4,10 @@ public class Pages {
     
 //    public static final boolean LOCAL_TEST = true;
     
+    public static final String TEMPLATE_RESET_EMAIL="resetEmail.ftl";
     public static final String TEMPLATE_SIGNINPAGE="SignIn.ftl";
     public static final String TEMPLATE_SIGNUPPAGE="SignUp.ftl";
+    public static final String TEMPLATE_CHANGEPWDPAGE="changePwd.ftl";
     
     public static final String TEMPLATE_CONFIRM_PAYPAL= "ConfirmPaypal.ftl";
     public static final String TEMPLATE_PAYPALBUTTON= "paypalButton.ftl";
@@ -45,6 +47,21 @@ public class Pages {
 	public static final String PARAM_ACTION_SHOW = "Show";
 	public static final String PARAM_ACTION_UPLOAD = "Upload";
 	public static final String PARAM_ACTION_FETCH = "fetch";
+	public static final String PARAM_ACTION_FETCHTEXT = "fetchText";
+	
+	
+	// admin
+	public static final String PARAM_SHOW_TAB = "showTab";
+	public static final String PARAM_TAB_DB = "0";
+	public static final String PARAM_TAB_USER = "1";
+	public static final String PARAM_TAB_SETTING = "2";
+	public static final String PARAM_ACTION_CHANGE_STATE = "changeState";
+	public static final String PARAM_ACTION_CHANGE_PAY_TYPE = "changePayType";
+	public static final String PARAM_ACTION_DELETE_USER = "deleteUser";
+	
+	public static final String PARAM_ADMIN_UID = "uid";
+	public static final String PARAM_ADMIN_STATE = "state";
+	public static final String PARAM_ADMIN_PAY_TYPE = "type";
 	
 	// leon
 	public static final String PARAM_ACTION_SHOW_TWEET_OF_TXN = "ShowTweetOfTxn";
@@ -52,6 +69,9 @@ public class Pages {
 	public static final String PARAM_ACTION_SIGNOUT = "signout";
 	public static final String PARAM_ACTION_SIGNUP = "signup";
 	public static final String PARAM_ACTION_SIGNIN = "signin";
+	public static final String PARAM_ACTION_RESET = "reset";
+	public static final String PARAM_ACTION_SHOW_CHANGEPWD = "showChangePwd";
+	public static final String PARAM_ACTION_CHANGEPWD = "changePwd";
 	
 	public static final String PARAM_ACTION_SHOWSIGNUP = "showsignup";
     public static final String PARAM_ACTION_SHOWSIGNIN = "showsignin";
@@ -59,6 +79,9 @@ public class Pages {
 	// signup
 	public static final String PARAM_SIGNUP_NAME = "sign_up_name";
 	public static final String PARAM_SIGNUP_PASSWORD = "sign_up_password";
+	public static final String PARAM_SIGNUP_EMAIL = "sign_up_email";
+	public static final String PARAM_SIGNUP_OLD_PASSWORD = "old_password";
+	
 	
 	public static final String PARAM_STATUS_CANADD = "item_";
 	public static final String PARAM_TOTAL_ITEMS = "totalItems";
@@ -92,6 +115,10 @@ public class Pages {
 	public static final String FTLVAR_TWITTER_STATUS = "statuses";
 	public static final String FTLVAR_TWITTER_ACCOUNTS = "accounts";
 	public static final String FTLVAR_USERNAME = "username";
+	public static final String FTLVAR_ISTESTING = "isTest";
+	public static final String FTLVAR_ISREGUSER = "isRegUser";
+	public static final String FTLVAR_ISUSER_BANNED = "banned";
+	public static final String FTLVAR_ISUSER_SUSPENDED = "suspended";
 	public static final String FTLVAR_LOGOUT = "logoutUrl";
 	public static final String FTLVAR_MESSAGE = "message";
 	public static final String FTLVAR_LEVEL = "level";

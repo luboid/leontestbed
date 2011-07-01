@@ -22,5 +22,10 @@
 	<classpathentry kind="lib" path="lib/appengine-api-stubs.jar"/>
 	<classpathentry kind="lib" path="lib/appengine-api.jar"/>
 	<classpathentry kind="lib" path="lib/appengine-local-runtime.jar"/>
+	<classpathentry kind="lib" path="lib/google-api-client-1.4.1-beta.jar" sourcepath="/google-api-client-1.4.1"/>
+	<classpathentry kind="lib" path="lib/google-api-client-googleapis-extensions-1.4.1-beta.jar"/>
+	<classpathentry kind="lib" path="lib/google-api-client-extensions-1.4.1-beta.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-asl-1.6.7.jar"/>
+	<classpathentry kind="lib" path="lib/guava-r09.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

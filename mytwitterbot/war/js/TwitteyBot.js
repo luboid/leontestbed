@@ -104,17 +104,25 @@ var TwitteyBot = (function(){
             
 						$("#showTxnsLink").click(function(event){
             		// leon
+            		$("#showTxnsLink").removeClass('unselected-menu-bar');
+            		$("#showTxnsLink").addClass('selected-menu-bar');
+            		$("#showPaidTweetsLink").removeClass('selected-menu-bar');
+                $("#showPaidTweetsLink").addClass('unselected-menu-bar');  
                 me.showTxns(true);
                 return false;
             });            
 						
 						$("#showPaidTweetsLink").click(function(event){
             		// leon
+            		$("#showTxnsLink").removeClass('selected-menu-bar');
+            		$("#showTxnsLink").addClass('unselected-menu-bar');
+            		$("#showPaidTweetsLink").removeClass('unselected-menu-bar');   		
+                $("#showPaidTweetsLink").addClass('selected-menu-bar');              		
                 me.showTweets(true);
                 return false;
             });				
             $("#sampleTweets").click(function(){
-                $("#resultFrame").attr("src", "/pages/status?action=fetch&source_=" + TwitteyBot.__BASE__ +  "tweets.txt&screenName=" +
+                $("#resultFrame").attr("src", "/pages/status?action=fetchText&source_=" + TwitteyBot.__BASE__ +  "tweets.txt&screenName=" +
                 $("#twitterScreenName").html());
                 me.showLoading();
                 me.selectAllByDefault = true;
@@ -123,7 +131,7 @@ var TwitteyBot = (function(){
             });
             
 			$("input#OneTweet").click(function(){
-                $("#resultFrame").attr("src", "/pages/status?action=fetch&source_="+ TwitteyBot.__BASE__ + "onetweet.txt&screenName=" +
+                $("#resultFrame").attr("src", "/pages/status?action=fetchText&source_="+ TwitteyBot.__BASE__ + "onetweet.txt&screenName=" +
                 $("#twitterScreenName").html());
                 me.showLoading();
                 me.selectAllByDefault = true;
@@ -213,9 +221,11 @@ var TwitteyBot = (function(){
         
         initShrinker: function(){
             $("#shrinker-removeVowels").click(function(){
+            	alert('here!');
                 ShrinkTweets("removeVowels");
             });
             $("#shrinker-wrapTweet").click(function(){
+            	alert('here2!');
                 ShrinkTweets("wrapTweet");
             });
         },
@@ -587,6 +597,10 @@ var TwitteyBot = (function(){
             }
         },
         
+        testAlert: function(){
+        	alert('abc');
+        },
+        
         addTweetLine: function(sourceField){
             var changeAttr = function(elem, attrib, num){
                 $(elem).attr(attrib, $(elem).attr(attrib).split("_")[0] + "_" + num);
@@ -613,7 +627,9 @@ var TwitteyBot = (function(){
             return result;
         }
     }
-})();
+}
+)
+();
 
 var ShrinkTweets = function(type){
     var tweetLength = TwitteyBot.tweetLength;
@@ -668,7 +684,8 @@ var ShrinkTweets = function(type){
 };
 
 
-var AppAdmin = {
+var AppAdmin = (function(){
+	return {
     init : function(){
     	var menus = $('a',$('.nav'));
     	var panes = $('.admin-content >div');
@@ -688,12 +705,21 @@ var AppAdmin = {
 
             });    	
             */
-    }
+    },
     
-    /*
-            this.onUserLoad = function(content, txnId){
-            	alert('onUserLoad!!!');
-                $("#adminArea").html(content);
-            };
-            */
+    
+    showTab : function(showTab){
+    	var menus = $('a',$('.nav'));
+    	var panes = $('.admin-content >div');
+    	menus.removeClass('selected');
+    	panes.hide();
+    	$(menus[showTab]).addClass('selected');
+			$(panes[showTab]).show();    	
+    	//	 $("#db").hide();
+        // $("#users").show();
+         //$("#setting").hide();
+    }
+  }
 }
+)
+();

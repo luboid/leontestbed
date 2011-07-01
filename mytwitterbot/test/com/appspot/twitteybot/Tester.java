@@ -7,7 +7,18 @@ import com.appspot.twitteybot.datastore.TwitterAccount;
 import com.appspot.twitteybot.datastore.TwitterStatus;
 import com.appspot.twitteybot.datastore.UserSummary;
 import com.google.appengine.api.users.User;
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.impl.Base64;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,7 +143,19 @@ public class Tester extends BaseDataStoreTestCase {
         
         
     }
-    
+    public void testUserB() {
+        
+        // so equal of user is based on the federateId field...
+        User u1 = new User("abc@reg", "xyz", "xxx", "yyy");
+        
+        User u2 = new User("abc111@reg1", "xyz1", "xxx1", "yyy");
+        
+        User u3 = new User("", "");
+        
+        debug("=?"+u1.equals(u2)+", u1="+u1);
+        
+        
+    }
     public void atestUser() {
 
         try {
@@ -161,5 +184,86 @@ public class Tester extends BaseDataStoreTestCase {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    
+    public void testRssParser() {
+        try {
+//            RssParser parser = RssParserFactory.createDefault();
+//            Rss rss = parser.parse(new URL("http://mydomain.com/document.rss"));
+//            Collection items = rss.getChannel().getItems();
+//            for(Object o : items) {
+//                Item item = (Item)o;
+//            }
+            
+            String fn = "D:/JCommerce/code.google/twitteybot/war/china.xml";
+//            String fn = "D:/JCommerce/code.google/twitteybot/war/atom_sample.xml";
+            Reader reader = new FileReader(new File(fn));
+            
+//            String fileLocation="http://localhost:7777/china.xml";
+//            URL url = new URL(fileLocation);
+//            // TODO encoding?
+//            Reader reader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
+//            WireFeed wf = new WireFeedInput().build(reader);
+//            
+//            //debug("wf="+wf);
+//            if(wf instanceof Channel) {
+//                Channel c = (Channel)wf;
+//                for (Object o : c.getItems()) {
+//                    Item i = (Item)o;
+//                    String t = i.getTitle();
+//                    String u = i.getUri();
+////                    debug("t="+t+", u="+u);
+//                }
+//            }
+            
+            // so link is most generic
+            SyndFeed sf = new SyndFeedInput().build(reader);
+            List l = sf.getEntries();
+            for(Object o : l) {
+                SyndEntry s = (SyndEntry)o;
+                debug("t="+s.getTitle()+", uri="+s.getUri()+", link="+s.getLink());
+            }
+
+        
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void testShortUrl() {
+        try {
+            String toshort = "http://www.sina.com.cn/"; 
+            
+            debug("===========================");
+
+            
+//            String result = read(in);
+//            debug("r="+result);
+            
+
+//            String shortUrl = MyUtils.getShortUrl(toshort);
+//            debug("short="+shortUrl);
+            
+            
+            String newPassword = Base64.encode(""+Math.floor(Math.random()*100000000l));
+            debug(newPassword);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
+        
+        
+    }
+    
+    private String read(InputStream in) throws IOException{
+        BufferedReader r = new BufferedReader(new InputStreamReader(in));
+        String result = null;
+        String content = null;
+        while ((content = r.readLine()) != null) {  
+            result += content + "\n";  
+        }  
+        return result;
     }
 }

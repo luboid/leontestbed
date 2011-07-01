@@ -1,10 +1,12 @@
 package com.appspot.twitteybot.ui;
 
+import com.appspot.twitteybot.datastore.AppUser;
 import com.appspot.twitteybot.datastore.ApplicationProperty;
 import com.appspot.twitteybot.datastore.DsHelper;
 import com.appspot.twitteybot.datastore.PMF;
 import com.appspot.twitteybot.datastore.Transact;
 import com.appspot.twitteybot.datastore.TwitterStatus;
+import com.appspot.twitteybot.datastore.AppUser.PayType;
 import com.appspot.twitteybot.datastore.Transact.TxnState;
 import com.appspot.twitteybot.pay.PaypalStandard;
 import com.google.appengine.api.users.User;
@@ -97,7 +99,7 @@ public class TransactionManager extends BaseServlet {
             end = Long.parseLong(req.getParameter(Pages.PARAM_END));
         } catch (NumberFormatException e) {
         }
-        User user = AuthFilter.getCurrentUser(req);
+        User user = AuthFilter.getCurrentUser(req).getOpenId();
         List<Transact> list = DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, start, end, user);
         this.constructResponse(list,
                 "Showing " + (end - start) + " transactions", LEVEL_INFO, req,  resp, start, end);
@@ -111,7 +113,7 @@ public class TransactionManager extends BaseServlet {
             ex.printStackTrace();
         }
         
-        User user = AuthFilter.getCurrentUser(req);
+        User user = AuthFilter.getCurrentUser(req).getOpenId();
         Transact transact = DsHelper.getTransact(txnId, pm);
         
         List<TwitterStatus> statuss = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
@@ -169,7 +171,7 @@ public class TransactionManager extends BaseServlet {
     }    
     
     private void processCancelOne(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
-        User user = AuthFilter.getCurrentUser(req);
+        User user = AuthFilter.getCurrentUser(req).getOpenId();
         long txnId = getTxnId(req);
         Transact transact = DsHelper.getTransact(txnId, pm);
         List<TwitterStatus> tweets = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
@@ -185,7 +187,7 @@ public class TransactionManager extends BaseServlet {
     
     
     private void processCancel(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
-        User user = AuthFilter.getCurrentUser(req);
+        User user = AuthFilter.getCurrentUser(req).getOpenId();
         int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
         int count=0;
         for (int i = 0; i <= totalItems; i++) {
@@ -205,7 +207,8 @@ public class TransactionManager extends BaseServlet {
     }
     
     private void processMerge(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
-        User user = AuthFilter.getCurrentUser(req);
+        AppUser appUser = AuthFilter.getCurrentUser(req);
+        User user = appUser.getOpenId();
         int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
         
         List<Transact> transToDelete = new ArrayList<Transact>();
@@ -236,7 +239,7 @@ public class TransactionManager extends BaseServlet {
                 // re-calculate
                 int size = tweetsList.size();
                 transact.setNumberOfStatus(size);
-                transact.setAmount(transact.getUnitPrice() * size);
+                transact.setAmount(PayType.FREE==appUser.getPayType()? 0 : transact.getUnitPrice() * size);
             } else {
                 transToDelete.add(transact);
             }
@@ -255,7 +258,8 @@ public class TransactionManager extends BaseServlet {
     private void processAdd(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
         int totalItems = Integer.parseInt(req.getParameter(Pages.PARAM_TOTAL_ITEMS));
         String screenName = req.getParameter(Pages.PARAM_SCREENNAME);
-        User user = AuthFilter.getCurrentUser(req);
+        AppUser appUser = AuthFilter.getCurrentUser(req);
+        User user = appUser.getOpenId();
 
         String message = null;
         String level = LEVEL_INFO;
@@ -301,7 +305,7 @@ public class TransactionManager extends BaseServlet {
             txn.setUnitPrice(ApplicationProperty.getUnitPrice());
             txn.setUpdatedTime(new Date());        
             txn.setUser(user);
-            txn.setAmount(size * txn.getUnitPrice());
+            txn.setAmount(PayType.FREE==appUser.getPayType()? 0 : size * txn.getUnitPrice());
             
             pm.makePersistent(txn);
             
@@ -330,7 +334,10 @@ public class TransactionManager extends BaseServlet {
             log.log(Level.WARNING, "PaypalStandard.renderPaypalButton", e);
             e.printStackTrace(resp.getWriter());
         }
+        AppUser appUser = AuthFilter.getCurrentUser(req);
         Map<String, Object> templateValues = new HashMap<String, Object>();
+        templateValues.put(Pages.FTLVAR_ISTESTING, ApplicationProperty.isTesting());
+        templateValues.put(Pages.FTLVAR_ISUSER_BANNED, appUser.isBanned());
         templateValues.put(Pages.FTLVAR_TXN, list);
         templateValues.put(Pages.FTLVAR_TXN_LEVEL, level);
         templateValues.put(Pages.FTLVAR_TXN_START, start);

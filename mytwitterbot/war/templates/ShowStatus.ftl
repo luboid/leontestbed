@@ -3,6 +3,7 @@
     <div> 
     	<#if (TheTxn??)>
     			This transaction contains ${TheTxn.numberOfStatus} tweets, total cost $${TheTxn.amount} ($${TheTxn.unitPrice} each)
+    			<#if (!banned) >
     			${TheTxn.paypalButton!""}
     			<!--form name = "paypalForm" method = "POST" action = "/pages/paypal" target = "paybox" 
     				onsubmit="window.open('about:blank','paybox','');">
@@ -17,6 +18,12 @@
     					<input type = "hidden" name = "txnId" value = "${TheTxn.keyId?c}" />
     					<input type = "Submit" name = "xxx" value = "Cancel this Txn (tweets will be deleted)" class = "button"/>
     			</form>    			
+    			<form name = "paypalForm" method = "POST" action = "/pages/transaction" target = "resultFrame" >
+    					<input type = "hidden" name = "action" value = "show" />
+    					<input type = "hidden" name = "screenName" value = "${TheTxn.twitterScreenName}" />
+							<input type = "Submit" name = "xxx" value = "Back" class = "button"/>
+    			</form>    			
+    			</#if>
     			
     	</#if>
     </div> 
@@ -31,7 +38,7 @@
         <div class = "hidden-fields" style ="display:none">
 
             <input type = "text" class = "actual-time" id = "updatedTime_${item_index}" name = "updatedTime_${item_index}" value = "${item.time!""}"/>
-            <input type = "text" class = "tweet-key" id = "key_${item_index}" name = "key_${item_index}" value = "${item.keyId!""}"/>
+            <input type = "text" class = "tweet-key" id = "key_${item_index}" name = "key_${item_index}" value = "<#if (item.keyId??)>${item.keyId?c}</#if>"/>
             <input type = "text" class = "tweet-source" id = "source_${item_index}" name = "source_${item_index}" value = "${item.source}"/>
         </div>
         <div class = "left-pane" style ="width:2%">

@@ -1,5 +1,7 @@
 package com.appspot.twitteybot.datastore;
 
+import com.google.appengine.api.datastore.Key;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -14,8 +16,6 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-import com.google.appengine.api.datastore.Key;
-
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
 public class ApplicationProperty {
 
@@ -27,6 +27,13 @@ public class ApplicationProperty {
     
 	public static final String CONSUMER_KEY = "consumer_key";
 	public static final String CONSUMER_SECRET = "consumer_secret";
+	
+	public static final String SHORTENER_URL = "shortener_url";
+	
+	public static final String ADMIN_EMAIL = "adminEmail";
+	public static final String ADMIN_NAME = "adminName";
+	public static final String SITE_NAME = "siteName";
+	
 	private static final String APPLICATION_PROPERTIES = "application_properties";
 
 	   public static final boolean isTesting() {

@@ -52,4 +52,9 @@
     </script>
     <script src="/js/TwitteyBot.js" type="text/javascript">
     </script>
+    
+<script>
+    top.AppAdmin.showTab(${showTab});
+</script>
+
 </html>

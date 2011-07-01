@@ -1,18 +1,6 @@
 package com.appspot.twitteybot.cron;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Calendar;
-import java.util.List;
-import java.util.logging.Logger;
-
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.appspot.twitteybot.datastore.AppUser;
 import com.appspot.twitteybot.datastore.PMF;
 import com.appspot.twitteybot.datastore.TwitterStatus;
 import com.appspot.twitteybot.datastore.TwitterStatus.State;
@@ -22,6 +10,22 @@ import com.google.appengine.api.labs.taskqueue.QueueFactory;
 import com.google.appengine.api.labs.taskqueue.TaskOptions;
 import com.google.appengine.api.labs.taskqueue.TaskOptions.Builder;
 import com.google.appengine.api.labs.taskqueue.TaskOptions.Method;
+import com.google.appengine.api.users.User;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
+
+import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class CronServlet extends HttpServlet {
 
@@ -31,6 +35,15 @@ public class CronServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
+
+		// retrieve all users
+		Map<User, AppUser> userMap = new HashMap<User, AppUser>();
+        Query query1 = pm.newQuery(AppUser.class);
+        List<AppUser> auList = (List<AppUser>) query1.execute();
+        for(AppUser au : auList) {
+            userMap.put(au.getOpenId(), au);
+        }
+		
 		Query query = pm.newQuery(TwitterStatus.class);
 		query.setFilter("updatedTime < maxTime && state == 'SCHEDULED'");
 		query.setOrdering("updatedTime");
@@ -44,6 +57,14 @@ public class CronServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		Queue queue = QueueFactory.getDefaultQueue();
 		for (TwitterStatus twitterStatus : twitterStatuses) {
+		    
+		    User u = twitterStatus.getUser();
+		    AppUser appUser = userMap.get(u);
+		    if(AppUser.State.SUSPENDED==appUser.getState()) {
+		        continue;
+		    }
+		    
+		    
 			TaskOptions taskOption = Builder.url(Pages.PAGE_TASK_QUEUE);
 			taskOption.method(Method.POST);
 			taskOption.param(Pages.PARAM_ACTION, Pages.PARAM_ACTION_UPDATE);

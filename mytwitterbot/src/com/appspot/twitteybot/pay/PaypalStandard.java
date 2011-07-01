@@ -1,10 +1,7 @@
 package com.appspot.twitteybot.pay;
 
 import com.appspot.twitteybot.datastore.ApplicationProperty;
-import com.appspot.twitteybot.datastore.DsHelper;
-import com.appspot.twitteybot.datastore.PMF;
 import com.appspot.twitteybot.datastore.Transact;
-import com.appspot.twitteybot.datastore.Transact.TxnState;
 import com.appspot.twitteybot.ui.FreeMarkerConfiguration;
 import com.appspot.twitteybot.ui.Pages;
 import com.appspot.twitteybot.ui.TransactionManager;
@@ -14,12 +11,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import javax.jdo.PersistenceManager;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public class PaypalStandard extends Pay{
     
