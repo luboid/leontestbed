@@ -76,8 +76,10 @@ public class AdminServlet extends HttpServlet {
                     .getParameter(ApplicationProperty.ADMIN_EMAIL));  
             ApplicationProperty.write(ApplicationProperty.ADMIN_NAME, req
                     .getParameter(ApplicationProperty.ADMIN_NAME));  
-            ApplicationProperty.write(ApplicationProperty.SITE_NAME, req
-                    .getParameter(ApplicationProperty.SITE_NAME));                
+            ApplicationProperty.write(ApplicationProperty.SITE_NAME, 
+                    req.getParameter(ApplicationProperty.SITE_NAME));
+            ApplicationProperty.write(ApplicationProperty.USE_PAYPAL_TESTBED, 
+                    req.getParameter(ApplicationProperty.USE_PAYPAL_TESTBED));            
             ApplicationProperty.write(ApplicationProperty.UNIT_PRICE, req
                     .getParameter(ApplicationProperty.UNIT_PRICE));	
             ApplicationProperty.write(ApplicationProperty.PAYEE_ACCOUNT, req
@@ -138,6 +140,7 @@ public class AdminServlet extends HttpServlet {
 		String adminEmail = ApplicationProperty.read(ApplicationProperty.ADMIN_EMAIL);
 		String adminName = ApplicationProperty.read(ApplicationProperty.ADMIN_NAME);
 		String siteName = ApplicationProperty.read(ApplicationProperty.SITE_NAME);
+		String usePayPalTestBed = ApplicationProperty.read(ApplicationProperty.USE_PAYPAL_TESTBED);
 		String unitPrice = ApplicationProperty.read(ApplicationProperty.UNIT_PRICE);
 		String payeeAccount = ApplicationProperty.read(ApplicationProperty.PAYEE_ACCOUNT);
 		
@@ -150,6 +153,7 @@ public class AdminServlet extends HttpServlet {
 		templateValues.put(ApplicationProperty.ADMIN_EMAIL, adminEmail);
 		templateValues.put(ApplicationProperty.ADMIN_NAME, adminName);
 		templateValues.put(ApplicationProperty.SITE_NAME, siteName);
+		templateValues.put(ApplicationProperty.USE_PAYPAL_TESTBED, usePayPalTestBed);
 		templateValues.put(ApplicationProperty.UNIT_PRICE, unitPrice);
 		templateValues.put(ApplicationProperty.PAYEE_ACCOUNT, payeeAccount);
 		

@@ -12,9 +12,16 @@ import com.appspot.twitteybot.pay.PaypalStandard;
 import com.google.appengine.api.users.User;
 import freemarker.template.TemplateException;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +52,10 @@ public class TransactionManager extends BaseServlet {
         pm.currentTransaction().begin();
         String twitterScreenName = req.getParameter(Pages.PARAM_SCREENNAME);
         if(StringUtils.isEmpty(twitterScreenName)) {
+//            resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
+//            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
             throw new RuntimeException("twitterScreenName is empty, sth wrong...");
+            
         }
         
         String txnId =null;
@@ -75,8 +85,10 @@ public class TransactionManager extends BaseServlet {
 //            // forwarded to here when submitting from StatusManage with txnId
 //            // recalculate the txn amount and show the statusOftxn page
 //            this.processUpdateTxn(req, resp);
-        } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_CONFIRM_PAYPAL)) {
-            this.processConfirmPayTxn(req, resp, pm);           
+        } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_PAYPAL_RETURN)) {
+            this.processPaypalReturn(req, resp, pm);   
+        } else if (action.equalsIgnoreCase(Pages.PARAM_TXN_ACTION_PAYPAL_NOTIFY)) {
+            this.processPaypalNotify(req, resp, pm);             
         } else {
             resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
         }
@@ -106,63 +118,128 @@ public class TransactionManager extends BaseServlet {
     }
     private void processPayTxn(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
         // test only
-        long txnId = -1;
-        try {
-            txnId = Long.parseLong(req.getParameter(Pages.PARAM_TXN_ID));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        long txnId = getTxnId(req);
         
         User user = AuthFilter.getCurrentUser(req).getOpenId();
-        Transact transact = DsHelper.getTransact(txnId, pm);
-        
-        List<TwitterStatus> statuss = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
-        for(TwitterStatus ts : statuss) {
-            ts.setState(TwitterStatus.State.SCHEDULED);
-        }
-        // TODO make it transaction??
-        // this won't work as not in same group
-        // currently overcome it by set datanucleus.appengine.autoCreateDatastoreTxns=false in jdoconfig.xml, see appengine doc
-        pm.makePersistentAll(statuss);
-//        for(TwitterStatus ts : statuss) {
-//            pm.makePersistent(ts);
-//        }
-        
-        transact.setTxnState(TxnState.PAID);
-        pm.makePersistent(transact);
-        
-        log.info("transaction="+txnId+" is paid and confirmed.");
+        Transact transact = txnPaySucceeded(txnId, pm);
+        log.info("DummyTesting: transaction="+txnId+" is paid and confirmed.");
         
         this.constructResponse(DsHelper.getTransactList(false, req.getParameter(Pages.PARAM_SCREENNAME), pm, 0, PAGE_SIZE, user),
                 "Showing " + PAGE_SIZE + " transactions", LEVEL_INFO, req, resp, 0, PAGE_SIZE);
         
     }
     
-    private void processConfirmPayTxn(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
-        // back from paypal
-        long txnId = -1;
-        try {
-            txnId = Long.parseLong(req.getParameter(Pages.PARAM_TXN_ID));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        
+    private Transact txnPaySucceeded(long txnId, PersistenceManager pm) {
         Transact transact = DsHelper.getTransact(txnId, pm);
+        if(transact.getTxnState()==TxnState.PAID) {
+            // already marked as paid. This is to handle the case of receiving multiple NOTIFY from PayPal
+            return transact;
+        }
         if(transact!=null) {
             
             List<TwitterStatus> statuss = DsHelper.getTwitterStatus(txnId, pm, -1, -1);
             for(TwitterStatus ts : statuss) {
                 ts.setState(TwitterStatus.State.SCHEDULED);
             }
+            // TODO make it transaction??
+            // this won't work as not in same group
+            // currently overcome it by set datanucleus.appengine.autoCreateDatastoreTxns=false in jdoconfig.xml, see appengine doc
             pm.makePersistentAll(statuss);
+//            for(TwitterStatus ts : statuss) {
+//                pm.makePersistent(ts);
+//            }
             transact.setTxnState(TxnState.PAID);
             pm.makePersistent(transact);
-            log.warning("transaction="+txnId+" is paid and confirmed. queryString="+req.getQueryString());
-        }
-        
+        }        
+        return transact;
+    }
+    
+    private void processPaypalReturn(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
+        // back from paypal
+        long txnId = getTxnId(req);
+        Transact transact = txnPaySucceeded(txnId, pm);
+        log.warning("Returned from Paypal for transaction="+txnId+". queryString="+req.getQueryString());
         showConfirmPage(transact, resp);
         
     }
+    
+    private void processPaypalNotify(HttpServletRequest req, HttpServletResponse resp, PersistenceManager pm) throws IOException {
+        // Refer to PayPal Document: 5_PayPal_IPN&PDT_Guide_V1.0.pdf
+        long txnId = getTxnId(req);
+        Enumeration en = req.getParameterNames();
+        String str = "cmd=_notify-validate";
+        while(en.hasMoreElements()){
+            String paramName = (String)en.nextElement();
+            String paramValue = req.getParameter(paramName);
+            str = str + "&" + paramName + "=" + URLEncoder.encode(paramValue, "iso-8859-1");
+        }
+        log.warning("Will post back to verify: Received Notfification from Paypal for transaction="+txnId+". paras="+str);
+        
+        //将信息 POST 回给 PayPal 进行验证
+        //设置 HTTP 的头信息
+        //在 Sandbox 情况下，设置：
+        String url = ApplicationProperty.usePayPalTestBed() ? 
+                "http://www.sandbox.paypal.com/cgi-bin/webscr" :
+                    "http://www.paypal.com/cgi-bin/webscr";  
+        URL u = new URL(url);
+        URLConnection uc = u.openConnection();
+        uc.setDoOutput(true);
+        uc.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+        PrintWriter pw = new PrintWriter(uc.getOutputStream());
+        pw.println(str);
+        pw.close();
+        //接受 PayPal 对 IPN 回发的回复信息
+        BufferedReader in= new BufferedReader(new InputStreamReader(uc.getInputStream()));
+        String res = in.readLine();
+        in.close();
+
+        //将 POST 信息分配给本地变量，可以根据您的需要添加
+        //该付款明细所有变量可参考：
+        //https://www.paypal.com/IntegrationCenter/ic_ipn-pdt-variable-reference.html
+        String itemName = req.getParameter("item_name");
+        String itemNumber = req.getParameter("item_number");
+        String paymentStatus = req.getParameter("payment_status");
+        String paymentAmount = req.getParameter("mc_gross");
+        String paymentCurrency = req.getParameter("mc_currency");
+        String txn_Id = req.getParameter("txn_id");
+        String receiverEmail = req.getParameter("receiver_email");
+        String payerEmail = req.getParameter("payer_email");
+        
+        boolean success = false;
+        //…
+        //获取 PayPal 对回发信息的回复信息，判断刚才的通知是否为 PayPal 发出的
+        if(res.equals("VERIFIED")) {
+        //检查付款状态
+        //检查 txn_id 是否已经处理过
+        //检查 receiver_email 是否是您的 PayPal 账户中的 EMAIL 地址
+        //检查付款金额和货币单位是否正确
+        //处理其他数据，包括写数据库
+            log.warning("Validation check succeeded for Notfification received from Paypal for transaction="+txnId);
+            
+            if("Completed".equalsIgnoreCase(paymentStatus)) {
+                txnPaySucceeded(txnId, pm);
+                success = true;
+            }
+        }else if(res.equals("INVALID")) {
+        //非法信息，可以将此记录到您的日志文件中以备调查
+            log.warning("Validation check failed for Notfification received from Paypal for transaction="+txnId+", paras="+str);
+        }else {
+        //处理其他错误
+            log.warning("Validation check failed with unknown reason for Notfification received from Paypal for transaction="+txnId+", paras="+str+", res="+res);
+        }
+        
+        if(!success) {
+            // return 400 error
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
+        else {
+            // return OK
+            resp.getOutputStream().write("OK".getBytes());
+        }
+    }
+    
+    
+    
     private void showConfirmPage(Transact transact, HttpServletResponse resp) throws IOException {
         log.info("showConfirmPage!!!!!!");
         Map<String, Object> templateValues = new HashMap<String, Object>();

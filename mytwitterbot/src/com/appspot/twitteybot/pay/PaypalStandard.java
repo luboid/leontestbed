@@ -21,7 +21,9 @@ public class PaypalStandard extends Pay{
     public static final String VAR_CURRENCY = "currency";
     public static final String VAR_LOCATION = "location";
     public static final String VAR_RETURN = "returnUrl";
-    
+    public static final String VAR_NOTIFY = "notifyUrl";    
+    public static final String VAR_TESTBED = "testBed";
+
 
     
     
@@ -35,7 +37,19 @@ public class PaypalStandard extends Pay{
         templateValues.put(VAR_AMOUNT, transact.getAmount());
         templateValues.put(VAR_CURRENCY, "USD");
         templateValues.put(VAR_LOCATION, "US");
-        templateValues.put(VAR_RETURN, "http://"+serverName+"/pages/transaction?action="+Pages.PARAM_TXN_ACTION_CONFIRM_PAYPAL+"&"+Pages.PARAM_TXN_ID+"="+transact.getKeyId());
+        templateValues.put(VAR_TESTBED, ApplicationProperty.usePayPalTestBed());
+        StringBuffer returnUrl = new StringBuffer().append(
+            "http://").append(serverName).append("/pages/transaction?action=").append(Pages.PARAM_TXN_ACTION_PAYPAL_RETURN)
+            .append("&").append(Pages.PARAM_TXN_ID).append("=").append(transact.getKeyId());
+        
+        templateValues.put(VAR_RETURN, returnUrl.toString());
+        
+        StringBuffer notifyUrl = new StringBuffer().append(
+            "http://").append(serverName).append("/paypal?action=").append(Pages.PARAM_TXN_ACTION_PAYPAL_NOTIFY)
+            .append("&").append(Pages.PARAM_TXN_ID).append("=").append(transact.getKeyId())
+            .append("&").append(Pages.PARAM_SCREENNAME).append("=DUMMY");
+        
+        templateValues.put(VAR_NOTIFY, notifyUrl.toString());
         return FreeMarkerConfiguration.getProcessedTemplate(templateValues, Pages.TEMPLATE_PAYPALBUTTON);
         
 

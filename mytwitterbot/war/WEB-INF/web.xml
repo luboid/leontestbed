@@ -72,6 +72,10 @@
 		<servlet-name>TransactionManager</servlet-name>
 		<url-pattern>/pages/transaction</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TransactionManager</servlet-name>
+		<url-pattern>/paypal</url-pattern>
+	</servlet-mapping>	
 	
 	<servlet>
 		<servlet-name>Paypal</servlet-name>

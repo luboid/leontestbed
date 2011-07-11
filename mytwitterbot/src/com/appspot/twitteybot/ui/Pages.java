@@ -19,7 +19,10 @@ public class Pages {
     public static final String PARAM_TXN_ACTION_CANCEL = "CancelTxn";
     public static final String PARAM_TXN_ACTION_CANCELONE = "CancelOneTxn";
     public static final String PARAM_TXN_ACTION_PAYTXN = "PayTxn";
-    public static final String PARAM_TXN_ACTION_CONFIRM_PAYPAL = "ConfirmPaypal";
+    
+    public static final String PARAM_TXN_ACTION_PAYPAL_RETURN = "PaypalReturn";
+    public static final String PARAM_TXN_ACTION_PAYPAL_NOTIFY = "PaypalNotify";
+    
     public static final String FTLVAR_TXN = "txnList";
     public static final String FTLVAR_TXN_MESSAGE = "message";
     public static final String FTLVAR_TXN_LEVEL = "level";

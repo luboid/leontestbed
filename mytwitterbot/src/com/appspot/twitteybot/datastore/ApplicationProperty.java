@@ -34,6 +34,8 @@ public class ApplicationProperty {
 	public static final String ADMIN_NAME = "adminName";
 	public static final String SITE_NAME = "siteName";
 	
+	public static final String USE_PAYPAL_TESTBED = "usePayPalTestBed";
+	
 	private static final String APPLICATION_PROPERTIES = "application_properties";
 
 	   public static final boolean isTesting() {
@@ -49,6 +51,20 @@ public class ApplicationProperty {
 	            throw new RuntimeException(ex);
 	        }       
 	    }
+       public static final boolean usePayPalTestBed() {
+           
+           String isTesting = read(USE_PAYPAL_TESTBED);
+           if(isTesting==null) {
+               // by default use testbed 
+               return true;
+           }
+           try {
+               Boolean d = Boolean.parseBoolean(isTesting);
+               return d;           
+           } catch (Exception ex) {
+               throw new RuntimeException(ex);
+           }       
+       }	   
 	public static final String getPayeeAccount() {
 	    return read(PAYEE_ACCOUNT);
 	}
