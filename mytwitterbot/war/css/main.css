@@ -1,8 +1,20 @@
 body, table {
     background: #FFFFFF none repeat scroll 0 0;
     font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     margin: 0;
+}
+body{
+	background:url(../images/main-bg.jpg);
+}
+div.header {
+  background: white url(//ssl.gstatic.com/s2/oz/images/header_gradient.png) repeat-x left bottom;
+  background: -webkit-gradient(linear,left top,left bottom,from(white),to(#F7F7F7));
+  background: -moz-linear-gradient(top,white,#F7F7F7);
+  border-bottom: 1px solid #D7D7D7;
+  border-top: 1px solid #EEEEEF;
+  height:56px;
+  position:relative;
 }
 
 ul{
@@ -48,11 +60,6 @@ form {
     font-size: 100%;
 }
 
-#header {
-    width: 100%;
-    padding: 1em 0 1em 0;
-    border-bottom:1px solid #36c;
-}
 
 .single-line-list {
     text-align: right;
@@ -71,21 +78,49 @@ form {
     margin: 0;
 }
 
-#content {
+div.wrapper{
+	width:960;
+	margin:auto;
+	position:relative;
+	height:100%;
 }
 #content .top{
-    border-top: 1px solid #CEE2EB;
     padding-bottom: 24px;
 }
 #addTwitterAccount {
-    background-color: #E5ECF9;
-    border-top: 1px solid #3366CC;
-    margin: 0 0 1.25em;
-    padding: 0.25em 0.5em;
+    background:url(../images/bg1.jpg) repeat-x;
     vertical-align: top;
-    font-size: 130%;
+    height:26px;
+    margin-bottom:20px;
+}
+#addTwitterAccount a{
+	text-decoration: none;
+	color:#7F7F7F;
+	font-size:12px;
+	font-weight:bold;
+}
+.separator{
+	border-right:2px groove #fff;
+	margin:0px 6px;
+}
+#addTwitterAccount a:hover{
+	color:#2b2b2b;
+}
+#addTwitterAccount a:visited{
+	color:#7F7F7F;
 }
 
+.left{
+	position:absolute;
+	left:0;
+	width:180px;
+	top:0;
+}
+.left .menu_title{
+	font-size:14px;
+	font-weight:bold;
+	padding:10px 0px 10px 0px;
+}
 .left-pane {
     float: left;
     width: 20%;
@@ -93,66 +128,47 @@ form {
 
 #twitterAccountList {
     list-style-type: none;
-    margin: 0 0 0 1.5em;
-    padding: 1em 0;
 }
 
 .left-pane ul{
 	list-style-type: none;
-    margin: 0 0 0 1.5em;
-    padding: 1em 0;
 }
 .left-pane li{
 	line-height: 1.5em;
-    padding: 0.5em 0 0 0.5em;
-    margin-right: -2px;
+    font-size:12px;
 }
 .left-pane li span{
-	-moz-border-radius-bottomleft: 4px;
-    -moz-border-radius-topleft: 4px;
-    border: SOLID 3px #E5ECF9;
     border-right: none;
-    padding: 0.5em 0 0.5em 2em;
     display: block;
-    font-weight: bold;
-    margin-right: -1px;
     text-decoration: none;
-    background-color: #E5ECF9;
-    color: #6666FF;
+    color: #333;
     cursor:pointer;
 }
 .left-pane li span:hover{
-	background-color: #FFFFFF;
 
 }
 
 #twitterAccountList li {
     line-height: 1.5em;
-    padding: 0.5em 0 0 0.5em;
-    margin-right: -2px;
 }
 
 #twitterAccountList a {
-    -moz-border-radius-bottomleft: 4px;
-    -moz-border-radius-topleft: 4px;
-    border: SOLID 3px #E5ECF9;
-    border-right: none;
-    padding: 0.5em 0 0.5em 2em;
     display: block;
-    font-weight: bold;
-    margin-right: -1px;
+    font-weight: normal;
     text-decoration: none;
-    background-color: #E5ECF9;
+    font-size:12px;
+    color:#444;
+    padding:10px 0px 0px 0px;
 }
 
 #twitterAccountList a:hover {
-    background-color: #FFFFFF;
+	color:#000;
 }
 
 .right-pane {
-    float: right;
-    width: 79%;
+	float:right;
 }
+
 
 .right-pane .main{
 	margin:0px 10px;
@@ -193,41 +209,47 @@ form {
     margin: 0;
     padding: 0;
     width: 99%;
+    background:#fff;
 }
 
 .actionBar {
-    border: #3366CC SOLID 1px;
     line-height: 1.5em;
     padding: 0.5em;
-    background-color: #E5ECF9;
+    background:url(../images/bg3.jpg);
+}
+#addTwitterAccount .screen_name{
+	position:absolute;
+	text-align:right;
+	font-size:12px;
+	padding:6px 8px;
+	color:#2b2b2b;
+	font-weight:bold;
+	height:15px;
+	left:0;
+	width:160px;
+	border-right:2px solid #bbb;
 }
 
 #actionList {
     padding: 0;
     margin: 0;
     list-style-type: none;
-    text-align: right;
 }
 
 .actionBar .right-pane {
-    text-align: right
 }
 
 #actionList li {
     display: inline;
 }
 
-.content-window {
-    border: SOLID 1px #3366CC;
-}
 
-#toolbar {
-    background-color: #E9E9E9;
+#toolbar,#txntoolbar{
+    background:url(../images/bg1.jpg) repeat;
     padding: 0.3em;
 }
 
 #twitterStatus {
-    margin: 1em 0 0 0;
 }
 
 .clear {
@@ -238,9 +260,16 @@ form {
 }
 
 #message {
-    padding: 0.5em;
     font-weight: bold;
     text-align: center;
+}
+
+.mac-border{
+	border: 1px solid;
+	-webkit-box-shadow:rgba(0, 0, 0, 0.3) 0 1px 3px;
+	-moz-box-shadow:rgba(0, 0, 0, 0.3) 0 1px 3px;
+	box-shadow:rgba(0, 0, 0, 0.3) 0 1px 3px;
+	border-color:#E5E5E5 #DBDBDB #D2D2D2;
 }
 
 .text-box {
@@ -292,8 +321,8 @@ form {
 }
 
 .tweetLine {
-    width: 98%;
-    border: SOLID 2px #CBCBCB;
+    width:750px;
+    border: SOLID 1px #CBCBCB;
     padding: 0;
     margin: 1%;
     -moz-border-radius: 5px;
@@ -326,7 +355,7 @@ form {
 .pagination {
 	width : 98%;
 	text-align : right;
-	margin : 0 1% 0 1%;
+	margin : 0 4px 0 4px;
 }
 
 .pagination a {
@@ -358,7 +387,7 @@ form {
 
 .admin-content{
 	width:auto;
-	margin-left:200px;
+	margin-left:180px;
 	
 }
 .admin-content .main{

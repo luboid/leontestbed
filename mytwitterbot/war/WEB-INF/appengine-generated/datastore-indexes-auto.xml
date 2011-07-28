@@ -1,0 +1,27 @@
+<!-- Indices written at Thu, 28 Jul 2011 05:07:01 UTC -->
+
+<datastore-indexes>
+
+    <!-- Used 181 times in query history -->
+    <datastore-index kind="TwitterStatus" ancestor="false" source="auto">
+        <property name="state" direction="asc"/>
+        <property name="twitterScreenName" direction="asc"/>
+        <property name="user" direction="asc"/>
+        <property name="updatedTime" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 30 times in query history -->
+    <datastore-index kind="Transact" ancestor="false" source="auto">
+        <property name="twitterScreenName" direction="asc"/>
+        <property name="txnState" direction="asc"/>
+        <property name="user" direction="asc"/>
+        <property name="updatedTime" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 2 times in query history -->
+    <datastore-index kind="TwitterStatus" ancestor="false" source="auto">
+        <property name="transactionId" direction="asc"/>
+        <property name="updatedTime" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

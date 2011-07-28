@@ -4,12 +4,16 @@
         <link rel="stylesheet" type=text/css href="/css/main.css"/>
     </head>
     <body>
-        <div id = "header">
-            <div class = "left-pane" style ="margin-left : 2em; width : auto; background:url('/images/logo.png') no-repeat">
+        <div id = "header" class="header">
+            <div style="float:left;width:30%;">
                 <img class = "logo-text" src = "/images/twitter-logo.png" alt = "TweetLater">
                 </img>
             </div>
-            <div class = "right-pane" style ="width : 70%;text-align:right; margin-top : 25px">
+            <div style="float:left;width:40%;padding-top:20px;text-align:center">
+             <span id = "message">
+                    </span>
+            </div>
+            <div class = "right-pane" style ="width :30%;text-align:right; padding:25px 0 0 0">
                 <div class = "single-line-list">
                     <span>
                         <strong>${username!""}</strong>
@@ -33,7 +37,6 @@
                     </#if>
                     <span>
                         <a href = "${logoutUrl}">Sign Out</a>
-                        | 
                     </span>                    
                 </div>
              
@@ -43,17 +46,33 @@
         </div>
         <div id = "content">
             <div id = "addTwitterAccount">
-                <div class = "left-pane">
-                    <a href = "<#if (banned)>#<#else>/pages/manageTwitterAccount?action=Add</#if>">Manage a new twitter account</a>
+                <div class="wrapper">
+            
+                <div style="padding-left:180px;position:relative;">
+                    <div id = "twitterScreenName" class="screen_name">
+                       Not Loaded
+                    </div>
+                    <ul style="height:100%;padding:6px 0;list-style-type: none;">
+                        <li style="float:left"><a href = "<#if (banned)>#<#else>/pages/manageTwitterAccount?action=Add</#if>">New Twitter Account</a></li>
+                        <li style="float:left"><span class="separator"></span></li>
+                        <li style="float:left"><a href = "#deleteAccountForm" id = "deleteAccountButton">Delete Twitter Account </a></li>
+                        <li style="float:left"> <span class="separator"></span></li>
+                        <li style="float:left"><a href = "#" id = "showPaidTweetsLink" class="selected-menu-bar" >Scheduled Messages </a></li>
+                        <li style="float:left"> <span class="separator"></span></li>
+                        <a href = "#" id = "showTxnsLink" class="unselected-menu-bar" >Unpaid Transactions </a>
+                    </ul>
                 </div>
                 <div class = "right-pane" style ="text-align:center">
-                    <span id = "message">
-                    </span>
+                   
                 </div>
                 <div class = "clear">
                 </div>
+                </div>
             </div>
-            <div class = "left-pane" style ="border-right : SOLID #E5ECF9 3px;height : 80%;">
+            <div class="wrapper">
+            <div class = "left">
+                <div style="border-bottom:2px groove #fff;padding:0px 0px 15px 10px;">
+                <div class="menu_title">Twitter Account List</div>
                 <ul id = "twitterAccountList">
                     <#list accounts as item>
                     <li>
@@ -61,8 +80,9 @@
                     </li>
                     </#list>
                 </ul>
-                <div id = "scheduler" class = "side-window">
-                    <div>
+                </div>
+                <div id = "scheduler" style="border-bottom:2px groove #fff;padding:0px 0px 15px 10px;">
+                    <div class="menu_title">
                         Tweet Scheduler
                     </div>
                     <form>
@@ -71,35 +91,25 @@
                             <a href= "#" display : none></a>
                             <input type = "text" style ="width : 10em" value = "today at 10:10"/>
                         </span>
-                        &nbsp;and
-                        <table>
-                            <tr>
-                                <td>
-                                    <input checked = "true" type = "radio" name = "betweenOptions" value = "scheduleInterval"/>
-                                </td>
-                                <td>
-                                    send tweets in intervals of 
-                                    <input type = "text" id = "scheduleInterval" style ="width:90%" value = "40 minutes"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type = "radio" name = "betweenOptions" value = "scheduleSpan"/>
-                                </td>
-                                <td>
-                                    send all tweets within a time limit of 
-                                    <br/>
-                                    <input id = "scheduleSpan" style ="width:90%" type = "text" value = "2040 minutes"/>
-                                </td>
-                            </tr>
-                        </table>
+                      
+                        <input checked = "true" type = "radio" name = "betweenOptions" value = "scheduleInterval"/>
+
+                        send tweets in intervals of 
+                        <input type = "text" id = "scheduleInterval" style ="margin-left:18px;width:140px;" value = "40 minutes"/>
+  
+                        <input type = "radio" name = "betweenOptions" value = "scheduleSpan"/>
+
+                        <span>send all tweets within a time limit of </span>
+       
+                        <input id = "scheduleSpan" style ="margin-left:18px;width:140px;" type = "text" value = "2040 minutes"/>
+             
                         <center>
                             <input <#if (banned)>disabled="true"</#if> type="Submit" value = "Schedule Tweets" />
                         </center>
                     </form>
                 </div>
-                <div id = "shrinker" class = "side-window">
-                    <div>
+                <div id = "shrinker" style="border-bottom:2px groove #fff;padding:0px 0px 15px 10px;">
+                    <div class="menu_title">
                         Tweet Shrinker
                     </div>
                     For tweets that are greater than 140 characters, 
@@ -109,22 +119,10 @@
                     </center>
                 </div>
             </div>
-            <div class = "right-pane">
-                <div id = "twitterAccount">
+            <div class = "right-pane" style="float:none;padding-left:180px;">
+                <div id = "twitterAccount" class="mac-border">
                     <div class = "actionBar">
-                        <div class = "left-pane" style ="width : 35%">
-                            <strong>
-                                <span id = "twitterScreenName">
-                                    Not Loaded
-                                </span>
-                            </strong>&nbsp;|&nbsp;<a href = "#deleteAccountForm" id = "deleteAccountButton">Un-manage Account </a>
-
-
-											<br><br><a href = "#" id = "showPaidTweetsLink" class="selected-menu-bar" >Scheduled Messages </a>  
-											&nbsp;|&nbsp;<a href = "#" id = "showTxnsLink" class="unselected-menu-bar" >Unpaid Transactions </a>  
-                           
-                        </div>
-                        <div class = "right-pane" style ="width : 64%">
+                        <div>
                             <ul id = "actionList">
                             	<ul>
 	                                <li>
@@ -174,7 +172,7 @@
                         <div class = "clear">
                         </div>
                     </div>
-                    <div id = "twitterContent" class = "content-window">
+                    <div id = "twitterContent" class = "">
                         <form id="updateFormId" name = "updateForm" method = "POST" action = "/pages/status" target = "resultFrame">
                             <input name = "screenName" type = "hidden" id = "screenName"/>
                             <div id = "toolbar">
@@ -275,6 +273,7 @@
                 </div>
             </div>
             <div class = "clear">
+            </div>
             </div>
         </div>
         <div id = "footer">
