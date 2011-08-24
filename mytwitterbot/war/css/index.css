@@ -1,5 +1,5 @@
-*{margin:0px;padding:0px;font-size:14px;color:＃444}
-body{background-color:#E9EBF0}
+*{margin:0px;padding:0px;font-size:12px;color:＃444}
+body{background-color:#fff;width:945;margin:auto}
 a{cursor:pointer}
 h1{
 	font-size: 28px;
@@ -11,24 +11,19 @@ h2{
 	font-weight:normal;
 	color:#444;
 }
-ol{
-	padding:10px 10px 10px 20px
-}
-ol li{
-	padding:4px;
+ul{list-style-type:none;}
+ul li{
+	padding-left:55px;
+	margin-bottom:30px;
 }
 div.title{
 	font-weight:bold;
 	font-size:16px;
 }
 div.header {
-  background: white url(//ssl.gstatic.com/s2/oz/images/header_gradient.png) repeat-x left bottom;
-  background: -webkit-gradient(linear,left top,left bottom,from(white),to(#F7F7F7));
-  background: -moz-linear-gradient(top,white,#F7F7F7);
-  border-bottom: 1px solid #D7D7D7;
-  border-top: 1px solid #EEEEEF;
   height:56px;
   position:relative;
+  padding:15px 0px;
 }
 div a.openId{
 	padding:6px;
@@ -43,97 +38,112 @@ div a.login img{
 	left: -10px;
     clip: rect(auto auto auto 12px);
 }
-div.content{
-	padding:20px 0px;
+div.main{
+	position:relative;
+    width:945;
+    height:336px;
+    background:transparent url("../images/landingbg.png") no-repeat;
+    margin-bottom:40px;
 }
-div.content .main{
-	border: 1px solid #D8D9DC;
-    -webkit-border-radius: 2px;
-    padding:20px;
-    background:url("../images/main-bg.png") repeat-x;
+div.main .start_app{
+	position:absolute;
+	right:130px;
+	top:165px;
+	background:transparent url("../images/started.png") no-repeat;
+	height: 32px;
+    width: 104px;
+    display: block;
+    text-indent: -5000px;
+}
+div.introduction{
+	background:transparent url("../images/card.png") no-repeat bottom right;
+	height: 250px;
+	margin-bottom:20px; 
 }
 
-div.wrapper{
-	margin:auto;
-	width:960px;
-	position:relative;
+div.introduction ul li.orange{
+	background:transparent url("../images/orange.png") no-repeat;
 }
-div.left{
-	float:left;
-	padding:10px;
+div.introduction ul li.green{
+	background:transparent url("../images/green.png") no-repeat;
 }
-div.right{
-	float:right;
-	padding:10px;
+div.introduction ul li.pink{
+	background:transparent url("../images/pink.png") no-repeat;
+}
+div.introduction ul li dt{
+	font-size:18px;
+	font-weight:bold;
+}
+div.introduction ul li dd{
+	font-size:18px;
+	color:#666;
 }
 
 div.footer{
-	border: 1px solid #D8D9DC;
-    -webkit-border-radius: 2px;
     text-align:center;
     padding:10px 0px;
-    background:#fff;
 }
 div.footer a{
 	padding:4px;
 }
 div.clear{clear:both}
-
-.login_dialog{
+.error{
 	display:none;
-	position:absolute;
-	right:10px;
-	top:10px;
-	z-index:5000;
-	background: white;
-	width: 300px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	border: solid 1px #B1CBEB;
-	border-radius: 9px;
-	-moz-border-radius: 9px;
-	-webkit-border-radius: 9px;
-	margin: 6px;
-	box-shadow:0 0 1px 4px rgba(193, 207, 223, .5);
-	-moz-box-shadow: 0 0 1px 4px rgba(193, 207, 223, .5);
-	-webkit-box-shadow:0 0 1px 4px rgba(193, 207, 223, .5);
+	color:red;
 }
-.login_dialog input.text{
-	display: block;
-	height: 16px;
-	width: 236px;
-	margin: 12px auto;
-	padding: 12px;
-	border: solid 1px #DDD;
-	border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	box-shadow:inset 0 1px 8px 1px #E2E2E2；
-	-moz-box-shadow：inset 0 1px 8px 1px #E2E2E2；
-	-webkit-box-shadow：inset 0 1px 8px 1px #E2E2E2；
-	color: #666;
-    font-size: 15px;
+.login_form .label,.signup_form .label{
+	font-size:14px;
+	color:#888;
+	padding:3px 0px;
 }
-.login_dialog a.x{
+a.forgot{
+	text-decoration:underline;
 	float:right;
-	margin:4px 8px 0px 0px;
+	color:#06c;
+	font-size:14px;
 }
-.login_dialog p{
+.login_form .text{
+	display:block;
+	height:24px;
+	margin-bottom:8px;
+	-webkit-border-radius: 4px;
+	 width:100%;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border:1px solid #ccc;
+    -moz-box-shadow: 0 0 3px #888;
+    -webkit-box-shadow: 0 0 3px #888;
+    box-shadow: 0 0 3px #888;
+    background:#fff;
+}
+.login_form .submit{
+	background:url("/images/login.png") no-repeat;
+	width:104px;
+	height:44px;
+	padding:0px;
+	margin:0px;
+	border:none;
+	cursor:pointer;
+	float:right;
+}
+.signup_form tr{
+	height:32px;
+	vertial-align:middle;
+}
+.signup_form tr td img.error{
 	display:none;
 }
-.login_dialog div.login{
-	padding:10px 0px 0px 26px;
-	font-size:20px;
-	width:60%;
+.signup_form .text{
+	height:24px;
+	-webkit-border-radius: 4px;
+	 width:200px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border:1px solid #ccc;
+    -moz-box-shadow: 0 0 3px #888;
+    -webkit-box-shadow: 0 0 3px #888;
+    box-shadow: 0 0 3px #888;
+    background:#fff;
+    margin-left:4px;
 }
-.login_dialog input.submit{
-	float: right;
-    margin: 12px 16px;
-}
-.login_dialog a.forgot{
-	display: block;
-	color: #436591;
-	font-size: 13px;
-	margin: 32px 18px;
-}
+

@@ -20,14 +20,20 @@ import javax.servlet.http.HttpServletResponse;
 public class OpenIdManager extends HttpServlet {
     private static final Logger log = Logger.getLogger(OpenIdManager.class.getName());
     
+    private static final String OAUTH_PROVIDER_NAME_GOOGLE = "Google";
+    private static final String OAUTH_PROVIDER_NAME_YAHOO = "Yahoo";
+    private static final String OAUTH_PROVIDER_NAME_MySpace = "MySpace";
+    private static final String OAUTH_PROVIDER_NAME_AOL = "AOL";
+    private static final String OAUTH_PROVIDER_NAME_MYOPENID = "MyOpenId.com";
+    
     private static final Map<String, String> openIdProviders;
     static {
         openIdProviders = new HashMap<String, String>();
-        openIdProviders.put("Google", "google.com/accounts/o8/id");
-        openIdProviders.put("Yahoo", "yahoo.com");
-        openIdProviders.put("MySpace", "myspace.com");
-        openIdProviders.put("AOL", "aol.com");
-        openIdProviders.put("MyOpenId.com", "myopenid.com");
+        openIdProviders.put(OAUTH_PROVIDER_NAME_GOOGLE, "google.com/accounts/o8/id");
+        openIdProviders.put(OAUTH_PROVIDER_NAME_YAHOO, "yahoo.com");
+        openIdProviders.put(OAUTH_PROVIDER_NAME_MySpace, "myspace.com");
+        openIdProviders.put(OAUTH_PROVIDER_NAME_AOL, "aol.com");
+        openIdProviders.put(OAUTH_PROVIDER_NAME_MYOPENID, "myopenid.com");
     }
 
     
@@ -95,12 +101,20 @@ public class OpenIdManager extends HttpServlet {
                 returnUrl = "http://"+req.getServerName()+returnUrl;
             }
             
+            String providerName = req.getParameter("oauth_org");
             
-            for (String providerName : openIdProviders.keySet()) {
+            //for (String providerName : openIdProviders.keySet()) {
                 String providerUrl = openIdProviders.get(providerName);
-                String loginUrl = userService.createLoginURL(returnUrl, null, providerUrl, attributes);
-                out.println("[<a href=\"" + loginUrl + "\">" + providerName + "</a>] ");
-            }
+                if(!providerUrl.equals("")){
+                	String loginUrl = userService.createLoginURL(returnUrl, null, providerUrl, attributes);
+                    resp.sendRedirect(loginUrl);
+                }
+                else {
+                	resp.sendRedirect(returnUrl);
+                }
+                
+//                out.println("[<a href=\"" + loginUrl + "\">" + providerName + "</a>] ");
+//            }
         }
     }
 }

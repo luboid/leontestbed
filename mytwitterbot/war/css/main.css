@@ -5,13 +5,11 @@ body, table {
     margin: 0;
 }
 body{
-	background:url(../images/main-bg.jpg);
 }
 div.header {
   background: white url(//ssl.gstatic.com/s2/oz/images/header_gradient.png) repeat-x left bottom;
   background: -webkit-gradient(linear,left top,left bottom,from(white),to(#F7F7F7));
   background: -moz-linear-gradient(top,white,#F7F7F7);
-  border-bottom: 1px solid #D7D7D7;
   border-top: 1px solid #EEEEEF;
   height:56px;
   position:relative;
@@ -84,6 +82,9 @@ div.wrapper{
 	position:relative;
 	height:100%;
 }
+#content{
+	padding-bottom:8px;
+}
 #content .top{
     padding-bottom: 24px;
 }
@@ -92,6 +93,7 @@ div.wrapper{
     vertical-align: top;
     height:26px;
     margin-bottom:20px;
+    border-bottom:1px solid #ccc;
 }
 #addTwitterAccount a{
 	text-decoration: none;
@@ -125,7 +127,10 @@ div.wrapper{
     float: left;
     width: 20%;
 }
-
+.left-block{
+	padding:0px 0px 15px 10px;
+	border-bottom:1px solid #ccc;
+}
 #twitterAccountList {
     list-style-type: none;
 }
@@ -224,10 +229,10 @@ div.wrapper{
 	padding:6px 8px;
 	color:#2b2b2b;
 	font-weight:bold;
-	height:15px;
+	height:14px;
 	left:0;
 	width:160px;
-	border-right:2px solid #bbb;
+	border-right:1px solid #ccc;
 }
 
 #actionList {

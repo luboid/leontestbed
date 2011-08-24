@@ -50,16 +50,18 @@ public class RegUserManager extends HttpServlet{
 		   
 		}
 		else if(action.equals(Pages.PARAM_ACTION_SHOWSIGNUP)){
-		    templateValues.put("errorMessage", "Please Sign Up.");
-		    templateValues.put("action", Pages.PARAM_ACTION_SIGNUP);
-			FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNUPPAGE,resp.getWriter());
+//		    templateValues.put("errorMessage", "Please Sign Up.");
+//		    templateValues.put("action", Pages.PARAM_ACTION_SIGNUP);
+//			FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNUPPAGE,resp.getWriter());
+			req.getRequestDispatcher("/").forward(req, resp);
 		}
 
 		else if(action.equals(Pages.PARAM_ACTION_SHOWSIGNIN)){
-		    templateValues.put("errorMessage", "Please Sign In.");
-		    templateValues.put("action", Pages.PARAM_ACTION_SIGNIN);
-
-            FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNINPAGE,resp.getWriter());
+//		    templateValues.put("errorMessage", "Please Sign In.");
+//		    templateValues.put("action", Pages.PARAM_ACTION_SIGNIN);
+//
+//            FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNINPAGE,resp.getWriter());
+			req.getRequestDispatcher("/").forward(req, resp);
         }		
         else if(action.equals(Pages.PARAM_ACTION_SHOW_CHANGEPWD)){
             templateValues.put("errorMessage", "Change Password.");
@@ -69,21 +71,23 @@ public class RegUserManager extends HttpServlet{
 		else if(action.equals(Pages.PARAM_ACTION_CHANGEPWD)){
 		    String oldpwd =  req.getParameter(Pages.PARAM_SIGNUP_OLD_PASSWORD);
 		    String newpwd =  req.getParameter(Pages.PARAM_SIGNUP_PASSWORD);
-	        long userId = Long.valueOf(req.getParameter("userId"));
+	        long userId = AuthFilter.getCurrentUser(req).getKeyId();
 	        PersistenceManager pm = PMF.get().getPersistenceManager();
 	        try {
 	        AppUser user = pm.getObjectById(AppUser.class, userId);
 	        if(!user.getPassword().equals(oldpwd)) {
-	            templateValues.put("errorMessage", "Old password is not correct.");
-	            templateValues.put("userId", AuthFilter.getCurrentUser(req).getKeyId());            
-	            FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_CHANGEPWDPAGE,resp.getWriter());
+//	            templateValues.put("errorMessage", "Old password is not correct.");
+//	            templateValues.put("userId", AuthFilter.getCurrentUser(req).getKeyId());            
+//	            FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_CHANGEPWDPAGE,resp.getWriter());
+	        	resp.getWriter().write("0");//password is incorrect;
 	        }
 	        else {
 	            user.setPassword(newpwd);
 	            pm.makePersistent(user);
-	               templateValues.put("errorMessage", "Password is changed.");
-	                templateValues.put("userId", AuthFilter.getCurrentUser(req).getKeyId());            
-	                FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_CHANGEPWDPAGE,resp.getWriter());
+//	               templateValues.put("errorMessage", "Password is changed.");
+//	                templateValues.put("userId", AuthFilter.getCurrentUser(req).getKeyId());            
+//	                FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_CHANGEPWDPAGE,resp.getWriter());
+	            resp.getWriter().write("1");
 	        }
 	        } finally {
 	            pm.close();
@@ -103,32 +107,39 @@ public class RegUserManager extends HttpServlet{
 			if(isUnique(user)){
 				save(user);
 				AuthFilter.setRegUser(req, user);
-				resp.sendRedirect(Pages.PAGE_MAIN);
+				//resp.sendRedirect(Pages.PAGE_MAIN);
+				resp.getWriter().write("1");//success
 			}
 			else {
-				templateValues.put("errorMessage", "The user has existed, please change another name ");
-				templateValues.put("userName",name);
-				templateValues.put("password",pwd);
-				templateValues.put("email",email);
-				FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNUPPAGE , resp.getWriter());
+				resp.getWriter().write("0");// account already exist.
+//				templateValues.put("errorMessage", "The user has existed, please change another name ");
+//				templateValues.put("userName",name);
+//				templateValues.put("password",pwd);
+//				templateValues.put("email",email);
+//				FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNUPPAGE , resp.getWriter());
 			}
 			
 		}
 		else if(action.equals(Pages.PARAM_ACTION_SIGNIN)){
-            
             String name =  req.getParameter(Pages.PARAM_SIGNUP_NAME);
             String pwd =  req.getParameter(Pages.PARAM_SIGNUP_PASSWORD);
             AppUser dummy = new AppUser(name);
             dummy.setPassword(pwd);
             AppUser user = login(dummy);
 		    if(user!=null) {
-	              AuthFilter.setRegUser(req, user);
-	              resp.sendRedirect(Pages.PAGE_MAIN);
+		    	  if(user.getPassword().equals(pwd)){
+		    		  AuthFilter.setRegUser(req, user);
+		    		  resp.getWriter().write("1");//login successfully
+		    	  }
+		    	  else{
+		    		  resp.getWriter().write("2");//password is incorrect;
+		    	  }
 		    } else {
-                templateValues.put("errorMessage", "Username and password is incorrect, please change another name ");
-                templateValues.put("userName",name);
-                templateValues.put("password",pwd);
-                FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNINPAGE , resp.getWriter());
+		    	  resp.getWriter().write("0");//account is not exist.
+//                templateValues.put("errorMessage", "Username and password is incorrect, please change another name ");
+//                templateValues.put("userName",name);
+//                templateValues.put("password",pwd);
+//                FreeMarkerConfiguration.writeResponse(templateValues,Pages.TEMPLATE_SIGNINPAGE , resp.getWriter());
 		    }
 		}
 		else if(action.equals(Pages.PARAM_ACTION_RESET)){
@@ -223,15 +234,15 @@ public class RegUserManager extends HttpServlet{
 	
 	   private AppUser login(AppUser appUser){
 	       
-	        AppUser res = queryUser(appUser);
-	        if(res==null) {
-	            return null;
-	        }
-	        else if(res.getPassword().equals(appUser.getPassword())) {
-	            return res;
-	        }else {
-	            return null;
-	        }
+	       return queryUser(appUser);
+//	        if(res==null) {
+//	            return null;
+//	        }
+//	        else if(res.getPassword().equals(appUser.getPassword())) {
+//	            return res;
+//	        }else {
+//	            return null;
+//	        }
 	    }
 
 }

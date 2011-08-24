@@ -88,7 +88,7 @@ public class AuthFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest)req1;
         if(AuthFilter.getCurrentUser(req)==null) {
             // TODO return to the requesting url??
-            req.getRequestDispatcher("/loginrequired.html").forward(req, resp);           
+            req.getRequestDispatcher("/").forward(req, resp);           
         }
         else {
             // continue
