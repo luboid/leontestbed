@@ -61,6 +61,7 @@ public class MainPage extends HttpServlet {
 
 		Map<String, Object> templateValues = new HashMap<String, Object>();
 		templateValues.put(Pages.FTLVAR_ISREGUSER, String.valueOf(appUser.isRegUser()));
+		templateValues.put(Pages.FTLVAR_ISUSER_ISFREE, appUser.isFree());
 		templateValues.put(Pages.FTLVAR_ISUSER_BANNED, appUser.isBanned());
 		templateValues.put(Pages.FTLVAR_ISUSER_SUSPENDED, AppUser.State.SUSPENDED==appUser.getState());
 		templateValues.put(Pages.FTLVAR_USERNAME, openId.getEmail());

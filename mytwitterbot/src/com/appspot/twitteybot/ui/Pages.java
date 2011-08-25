@@ -120,6 +120,7 @@ public class Pages {
 	public static final String FTLVAR_USERNAME = "username";
 	public static final String FTLVAR_ISTESTING = "isTest";
 	public static final String FTLVAR_ISREGUSER = "isRegUser";
+	public static final String FTLVAR_ISUSER_ISFREE = "isFree";
 	public static final String FTLVAR_ISUSER_BANNED = "banned";
 	public static final String FTLVAR_ISUSER_SUSPENDED = "suspended";
 	public static final String FTLVAR_LOGOUT = "logoutUrl";

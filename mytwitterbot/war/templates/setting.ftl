@@ -9,7 +9,7 @@
 </div-->
 
 <div class='header'>
-   Setting
+   Operation Settings
 </div>
 <div>
 
@@ -22,6 +22,16 @@
                 $<input name = "unit_price" style="width:360px;" value = '${unit_price!""}'>
             </td>
         </tr>
+    </table>
+       
+</div>
+<br/>
+
+<div class='header'>
+   Paypal Settings
+</div>
+<div>
+    <table>
         <tr height='30px'>
             <td>
                 Owner's paypal account
@@ -29,14 +39,25 @@
             <td>
                 <input name = "payee_account" style="width:360px;" value = '${payee_account!""}'>
             </td>
-        </tr>
-	
+        </tr>        
+        <tr height='30px'>
+            <td>
+                Use PayPal TestBed
+            </td>
+            <td>
+                <input name = "usePayPalTestBed" style="width:360px;" value = '${usePayPalTestBed!"true"}'>
+            </td>
+        </tr>	     
+        <tr height='10px'>
+        		<td colspan="2" align="left"><span style="color:blue">NOTE: need enable Instant payment Notification in Paypal's Profile Setting</span></td>
+        </tr> 
+        
     </table>
-       
 </div>
 <br/>
+
 <div class='header'>
-   Application Configuration (To register this application with Twitter as a consumer)
+   Application Settings
 </div>
 <div>
 
@@ -57,6 +78,9 @@
                 <input name = "consumer_secret" style="width:360px;" value = '${consumer_secret!"DG1OrxZZq8UJtsVPwoth5y8n03mKBmI8EFaXnovTg"}'>
             </td>
         </tr>
+        <tr height='10px'>
+        		<td colspan="2" align="right"><span style="color:blue">(To register this application with Twitter as a consumer)</span></td>
+        </tr>                                             
         <tr height='30px'>
             <td>
                 Google URL Shortener Service URL
@@ -98,6 +122,8 @@
         <tr height='10px'>
         		<td colspan="2" align="right"><span style="color:blue">(used as Subject of the Password Reset Email)</span></td>
         </tr>                                     
+       
+        
         <tr height='30px'>
             <td>
                 Is Testing
@@ -105,7 +131,7 @@
             <td>
                 <input name = "is_test" style="width:360px;" value = '${is_test!"false"}'>
             </td>
-        </tr>	
+        </tr>
     </table>
        
 </div>

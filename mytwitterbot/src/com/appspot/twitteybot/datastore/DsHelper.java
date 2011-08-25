@@ -144,31 +144,35 @@ public class DsHelper {
             if(user==null) {
                 return null;
             }
+            User openId = user.getOpenId();
+            
             userName = user==null? "null": user.getUserName();
             pm.deletePersistent(user);
+            
+            
             
             Query query = pm.newQuery(TwitterAccount.class);
             query.setFilter("user == userParam");
             query.declareParameters("com.google.appengine.api.users.User userParam");
             @SuppressWarnings("unchecked")
-            List<TwitterAccount> taList = (List<TwitterAccount>) query.execute(user);
+            List<TwitterAccount> taList = (List<TwitterAccount>) query.execute(openId);
             pm.deletePersistentAll(taList);
             
             query = pm.newQuery(Transact.class);
             query.setFilter("user == userParam");
             query.declareParameters("com.google.appengine.api.users.User userParam");
             @SuppressWarnings("unchecked")
-            List<Transact> transacts = (List<Transact>) query.execute(user);
+            List<Transact> transacts = (List<Transact>) query.execute(openId);
             pm.deletePersistentAll(transacts);
             
             query = pm.newQuery(TwitterStatus.class);
             query.setFilter("user == userParam");
             query.declareParameters("com.google.appengine.api.users.User userParam");
             @SuppressWarnings("unchecked")
-            List<TwitterStatus> tweets = (List<TwitterStatus>) query.execute(user);
+            List<TwitterStatus> tweets = (List<TwitterStatus>) query.execute(openId);
             pm.deletePersistentAll(tweets);
         } catch (Exception e) {
-            log.log(Level.WARNING, "deleteUser="+userName, e);
+            log.log(Level.SEVERE, "Some error when deleting all records for User="+userName+", you may have to delete them manually from AppEngine console", e);
             
         } finally {
             pm.close();
@@ -205,6 +209,9 @@ public class DsHelper {
                 
                 User openId = ta.getUser();
                 UserSummary us = usermap.get(openId);
+                if(us==null) {
+                    continue;
+                }
                 String twitterName = us.getTwitterNames();
                 if(twitterName==null) {
                     twitterName="";

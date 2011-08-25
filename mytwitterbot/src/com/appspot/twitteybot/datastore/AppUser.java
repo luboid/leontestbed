@@ -44,7 +44,10 @@ public class AppUser implements Serializable{
 	   @Persistent
 	    private String email;
 	
-	   
+
+	public boolean isFree() {
+	        return PayType.FREE==getPayType();
+	}	   
 	public boolean isBanned() {
 	    return State.BANNED==getState();
 	}
